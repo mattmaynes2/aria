@@ -8,14 +8,15 @@ class Packet:
 
     def encode (self, payload = ''):
         self.size = len(payload)
-        return chr(self.category) + to_vector(self.size) + self.sender + payload
+        size = ''.join(map(chr, to_vector(self.size)))
+        return chr(self.category) + size + self.sender + payload
 
-    def decode (self, msg):
-        self.category   = ord(msg[:1])
-        self.size       = to_scalar(map, ord(msg[1:5]))
-        self.sender     = msg[5:21]
-        return self
-
+    @staticmethod
+    def decode (msg):
+        packet = Packet(ord(msg[:1]))
+        packet.size     = to_scalar(list(map(ord, msg[1:5])))
+        packet.sender   = msg[5:21]
+        return packet
 
 def to_vector (n, base = 16):
     if n >= base and 1 < base:
