@@ -1,28 +1,43 @@
+import uuid
+import struct
 
 class Packet:
+    header      = 0
+    body        = 38
+    encoding    = 'utf-8'
+    default     = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 
-    def __init__ (self, category, sender = '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'):
-        self.category   = category
-        self.size       = 0
+    def __init__ (self, type_ = 0, sender = default):
+        self.type       = type_
+        self.length     = 0
         self.sender     = sender
+        self.token      = Packet.default
+        self.payload    = ''
+
+    def size (self):
+        return len(self.payload)
 
     def encode (self, payload = ''):
-        self.size = len(payload)
-        size = ''.join(map(chr, to_vector(self.size)))
-        return chr(self.category) + size + self.sender + payload
+        if Packet.default == self.token:
+            self.token = uuid.uuid1().bytes
+
+        self.payload    = payload
+        self.length     = self.size()
+        return struct.pack('H', self.type)
+        + struct.pack('I', self.length)
+        + self.sender
+        + self.token
+        + payload
 
     @staticmethod
-    def decode (msg):
-        packet = Packet(ord(msg[:1]))
-        packet.size     = to_scalar(list(map(ord, msg[1:5])))
-        packet.sender   = msg[5:21]
+    def decode (msg, constructor = None):
+        packet = Packet() if not constructor else constructor()
+
+        packet.type     = struct.unpack('H', msg[0:2])[0]
+        packet.length   = struct.unpack('I', msg[2:6])[0]
+        packet.token    = msg[6:22]
+        packet.sender   = msg[22:38]
+        packet.payload  = msg[38:packet.length]
         return packet
 
-def to_vector (n, base = 16):
-    if n >= base and 1 < base:
-        return to_vector(n // base, base) + [n % base]
-    return [n]
-
-def to_scalar (v, base = 16):
-    return sum([base ** i * v[len(v) - 1 - i] for i in range(len(v))])
 
