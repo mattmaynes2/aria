@@ -1,17 +1,17 @@
 import os
 import socket
 
-if os.name != "nt":
+if os.name != 'nt':
     import fcntl
     import struct
 
     __IF_NAMES = [
-        "eth0"  , "eth1" , "eth2",
-        "wlan0" , "wlan1", "wifi0",
-        "ath0"  , "ath1" , "ppp0"
+        'eth0'  , 'eth1' , 'eth2',
+        'wlan0' , 'wlan1', 'wifi0',
+        'ath0'  , 'ath1' , 'ppp0'
     ]
 
-    def __interface_ip(ifname):
+    def __interface_ip (ifname):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         return socket.inet_ntoa(
             fcntl.ioctl(s.fileno(), 0x8915,
@@ -19,9 +19,9 @@ if os.name != "nt":
             )[20:24]
         )
 
-def get_ip():
+def get_ip ():
     ip = socket.gethostbyname(socket.gethostname())
-    if ip.startswith("127.") and os.name != "nt":
+    if ip.startswith('127.') and os.name != 'nt':
         for ifname in __IF_NAMES:
             try:
                 ip = __interface_ip(ifname)
@@ -32,3 +32,8 @@ def get_ip():
                 # not have sufficient permissions to read it
                 pass
     return ip
+
+def get_local_ips ():
+    base = get_ip().split('.')[:-1]
+    return ['.'.join(base + [str(i)]) for i in range(256)]
+
