@@ -98,6 +98,17 @@ The server will be trained using a watch and learn method. A user will train the
 by using a web interface or manual controls. The user will enter the desired action they would like the building
 to perform at a certain time, the server will store the current sensor information and the desired state.
 
+The server will have three modes:
+* Record and Learn
+
+ The server makes no decisions on its own, it listens to a user and stores desired states
+* Assisted 
+
+ The server makes decisions and the user provides feedback if the server makes a mistake
+* Live
+
+ The server makes all of the decisions with no user input 
+
 #### Central Control Server
 
 This server will encompass the machine learning algorithm as well as database management for logging
