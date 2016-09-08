@@ -15,7 +15,16 @@ Supervisor: Babak Esfandiari
 
 ## Introduction
 
+The maintenance of the environment withing a building such as a home or a school can often be a burden
+on homeowners and maintenance staff. Controlling temperatures and lighting, for instance, is often a 
+repetitive task which would be convenient to automate.
 
+This report contains a proposal for a project to eliminate such tasks. The objective of the project
+is to build a system to automate control of a building's environment which uses machine learning 
+algorithms to minimize manual configuration. The proposal presents several motivations for using 
+the environmental control system, as well as a detailed description of the project's objectives.
+The proposal also includes a timeline for the completion of concrete milestones for the project 
+as well as a technical summary of the proposed solution.
 
 ## Motivation
 
