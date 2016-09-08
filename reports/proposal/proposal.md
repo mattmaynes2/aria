@@ -121,12 +121,9 @@ This will include the central server as well as the machine learning algorithm. 
 use sample data for inputs and output. All learning will be simulated for tuning and testing.
 
 #### 2. Communication Protocol and Service
-
-The communication protocol will define a set of rules that allows devices to  interact with
-the machine learning server.
-
-The communication service will run on top of  the machine learning server. It will pass messages
-between the machine learning server and the exterior devices.
+ By the end of the milestone the protocol will be defined and the comunication service 
+ will be running using simulated data. The service will only be communicating with the
+ machine learning server at this time.
 
 #### 3. Sensor Communication and Discovery
 
