@@ -166,7 +166,8 @@ provide a simple REST API for interacting to the communication service.
 
 ## Required Facilities
 
-
+This project will require access to a variety of sensors and actuators which can be manipulated 
+using a microcontroller such as an Arduino or Raspberry Pi.
 
 
 
