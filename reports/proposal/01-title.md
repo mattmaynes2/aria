@@ -1,5 +1,5 @@
-Machine Learning Smart Home
-===========================
+Machine Learning Smart Building
+===============================
 
 Supervisor: Babak Esfandiari
 
