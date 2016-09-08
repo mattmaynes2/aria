@@ -84,6 +84,12 @@ for optimal output.
 
 #### Central Control Server
 
+This server will encompass the machine learning algorithm as well as database management for logging
+device inputs and control events. These event will be also stored with historical expected outputs
+so that they can be used for future decisions. The central server will also be responsible for
+communicating to the communication service.
+
+
 #### Communication Service
 
 #### Device
