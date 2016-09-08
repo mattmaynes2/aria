@@ -61,14 +61,14 @@ adjust to take these new devices into account when performing its computations.
 
 ## Schedule
 
-| ID | Milestone                               | Date                 |
-|----|-----------------------------------------|----------------------|
-| 1  | Machine Leaning Server Prototype        | September 25th, 2016 |
-| 2  | Communicating Protocol and Service      | October 16th, 2016   |
-| 3  | Sensor Communication and Discovery      | November 6th, 2016   |
-| 4  | Sensors and Actuator Inputs and Control | November 6th, 2016   |
-| 5  | Gateway and Web Client                  | January 29th, 2017   |
-| 6  | Remote Record and Learn                 | February 12th, 2017  |
+| ID   | Milestone                                 | Date                   |
+| ---- | ----------------------------------------- | ---------------------- |
+| 1    | Machine Leaning Server Prototype          | September 25th, 2016   |
+| 2    | Communicating Protocol and Service        | October 16th, 2016     |
+| 3    | Sensor Communication and Discovery        | November 6th, 2016     |
+| 4    | Sensors and Actuators; Inputs and Control | November 6th, 2016     |
+| 5    | Gateway and Web Client                    | January 29th, 2017     |
+| 6    | Remote Record and Learn                   | February 12th, 2017    |
 
 ### Milestones
 
@@ -94,7 +94,9 @@ communication protocol from the previous milestone. To aid in usability, when a 
 added to the network it will follow a discovery protocol to add itself to the machine learning
 server's system. The discovery protocol and implementation will be completed in this milestone.
 
-#### 4. Sensors and Actuators Inputs and Control
+#### 4. Sensors and Actuators; Inputs and Control
+
+
 
 #### 5. Gateway and Web Client
 
