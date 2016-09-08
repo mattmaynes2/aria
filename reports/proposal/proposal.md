@@ -131,9 +131,10 @@ This will include the central server as well as the machine learning algorithm. 
 use sample data for inputs and output. All learning will be simulated for tuning and testing.
 
 #### 2. Communication Protocol and Service
- By the end of the milestone the protocol will be defined and the comunication service 
- will be running using simulated data. The service will only be communicating with the
- machine learning server at this time.
+
+By the end of the milestone the protocol will be defined and the communication service 
+will be running using simulated data. The service will only be communicating with the
+machine learning server at this time.
 
 #### 3. Sensor Communication and Discovery
 
@@ -150,14 +151,13 @@ Data values will be read from sensors while control signals will need to be sent
 The system must log both data values and control values so they can be used to learn the patterns
 of a user and apply them to the system
 
-
 #### 5. Gateway and Web Client
 
 The system will have a user interface for a high level user remote control. This remote will be
 controlled by a web client. This client will be served through a simple web gateway that will
 provide a simple REST API for interacting to the communication service.
 
-#### 6.  Remote Record and Learn
+#### 6. Remote Record and Learn
 
 ## Required Facilities
 
