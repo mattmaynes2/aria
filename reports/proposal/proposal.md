@@ -87,6 +87,7 @@ controlling the server.
 
 #### 2. Communication Protocol and Service
 The communication protocol will define a set of rules that allows devices to  interact with the machine learning server.
+
 The communication service will run on top of  the machine learning server. It will pass messages between the machine learning server and the exterior devices.
 #### 3. Sensor Communication and Discovery
 
