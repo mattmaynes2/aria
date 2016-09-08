@@ -70,7 +70,11 @@ adjust to take these new devices into account when performing its computations.
 | 5  | Gateway + Web Client                    | January 29th, 2017   |
 | 6  | Remote Record and Learn                 | February 12th, 2017  |
 
+### Milestones
+
 1. Machine Learning Server Prototype
+
+The server prototype will use simulated data to 
 
 2. Communication Protocol + Service
 
