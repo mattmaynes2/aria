@@ -76,7 +76,13 @@ adjust to take these new devices into account when performing its computations.
 
 ## Technical Overview
 
-#### Machine Learning
+#### Machine Learning Algorithm
+
+An algorithm that accepts tables of categorical and numerical data and produces sets of decisions
+based on historical decisions. The implementation of this algorithm will be configurable and tunable
+for optimal output.
+
+#### Central Control Server
 
 #### Communication Service
 
