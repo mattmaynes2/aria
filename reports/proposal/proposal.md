@@ -74,7 +74,16 @@ adjust to take these new devices into account when performing its computations.
 
 1. Machine Learning Server Prototype
 
-The server prototype will use simulated data to 
+The server prototype will include a machine learning algorithm. This algorithm will accept
+arbitrary categorical and numerical data. The initial server will use simulated data with
+pre-defined outputs for testing. This will be used to test the machine learning algorithm for
+correctness. The server will also be responsible for database logging and mapping between input
+and output domains.
+
+Interfacing with the server will be done through a simple command line interface for this
+milestone. Communication to other devices will be added in the next milestone but will be
+considered in this one. This will ensure that there is the correct infrastructure for remotely
+controlling the server.
 
 2. Communication Protocol + Service
 
