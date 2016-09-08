@@ -100,7 +100,17 @@ between the server and external devices.
 
 #### HTTP Gateway
 
+The gateway is a thin HTTP wrapper around the communication interface's API and acts as a bridge
+between the web client and the core services. The gateway will serve the web pages for the web client
+and provide a RESTful API for interacting with the communication protocol.
+
+
 #### Web Interface
+
+The web interface provides direct user interaction through a graphical user interface. This
+interface will communicate through the HTTP gateway using a RESTful API. The web client will
+provide remote control capabilities, allow for device simulation and provide overall information
+monitoring.
 
 ## Schedule
 
