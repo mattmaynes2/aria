@@ -3,7 +3,6 @@ Machine Learning Smart Building
 
 Supervisor: Babak Esfandiari
 
-## Members
 
 | Name              | Student Number | Email                              |
 | ----              | -------------- | -----                              |
@@ -11,6 +10,21 @@ Supervisor: Babak Esfandiari
 | Cameron Blanchard | 100886476      | cameronblanchard@cmail.carleton.ca |
 | Jeremy Dunsmore   | 100889935      | jeremydunsmore@cmail.carleton.ca   |
 | Peter Mark        | 100886038      | petermark@cmail.carleton.ca        |
+
+
+
+## Introduction
+
+## Motivation
+
+## Objectives
+
+## Technical Overview
+
+## Schedule
+
+## Required Facilities
+
 
 
 
