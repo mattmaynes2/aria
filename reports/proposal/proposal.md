@@ -92,6 +92,10 @@ communicating to the communication service.
 
 #### Communication Service
 
+The communication service will run on top of  the machine learning server. There will be a defined a 
+protocol by which devices communicate with the machine learning server. The service will relay messages 
+between the server and external devices.
+
 #### Device
 
 #### HTTP Gateway
