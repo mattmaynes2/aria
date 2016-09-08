@@ -15,7 +15,7 @@ Supervisor: Babak Esfandiari
 
 ## Introduction
 
-The maintenance of the environment withing a building such as a home or a school can often be a burden
+The maintenance of the environment within a building such as a home or a school can often be a burden
 on homeowners and maintenance staff. Controlling temperatures and lighting, for instance, is often a 
 repetitive task which would be convenient to automate.
 
@@ -27,6 +27,20 @@ The proposal also includes a timeline for the completion of concrete milestones 
 as well as a technical summary of the proposed solution.
 
 ## Motivation
+
+People spend a large amount of time in their homes, so any task in a home that becomes
+automated saves the building owner a substantial amount of effort. This is particularly important 
+in case where someone has physical limitations preventing them from independently maintaining their
+house.  A system which controls the living environment without requiring substantial configuration
+can give these people more independence, or allow their caregivers to focus on other priorities.
+
+There is also a place for automated environment control in a commercial setting.  An example of
+this is in education buildings, where there are hundreds, if not thousands, of people in many 
+different rooms at all times of day.  Maintaining a single building in this situation requires
+full time staff.  For example, during a lecture at sunset, an instructor may have to adjust the blinds
+and contact the maintenance staff to adjust the temperature at the same time each day.  The cost and 
+effort of this maintenance is multiplied for every building in a given institution.  A system that 
+tracks this activity and learns to handle it automatically would eliminate these issues.
 
 Supervised machine learning traditionally requires massive data sets with a map of inputs to
 expected outputs. It then requires tuning, either automated or manual to achieve a desired level
@@ -41,20 +55,6 @@ Supervised learning also requires massive amounts of computation and data storag
 this system is to have records and learn sessions with live input and interactions from users in
 a physical environment. This data will be mapped to the machine learning algorithm and then mapped
 back to the physical domain.
-
-People spend a large amount of time in their homes, so any task in a home that becomes
-automated saves the building owner a substantial amount of effort. This is particularly important 
-in case where someone has physical limitations preventing them from independently maintaining their
-house.  A system which controls the living environment without requiring substantial configuration
-can give these people more independence, or allow their caregivers to focus on other priorities.
-
-There is a place for automated environment control in a commercial setting as well.  An example of
-this is in education buildings, where there are hundreds, if not thousands, of people in many 
-different rooms at all times of day.  Maintaining a single building in this situation requires
-full time staff, as well as effort from the individuals in the rooms.  For example, a class
-at sunset may have to adjust the blinds at the same time each day, while increasing the 
-temperature of the room.  A system that tracks this activity and learns to handle it all automatically
-would eliminate this issue.
 
 ## Objectives
 
