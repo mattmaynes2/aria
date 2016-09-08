@@ -32,21 +32,29 @@ Supervised machine learning traditionally requires massive data sets with a map 
 expected outputs. It then requires tuning, either automated or manual to achieve a desired level
 of correctness. This process is tedious and massively time consuming.
 
+The downside of existing automated environment systems is the amount of configuration required to
+have the system meet your specific needs. By having the system learn the habits of the user
+dynamically, the configuration is essentially eliminated, leading to an ease of installation that
+does not currently exist.
+
 Supervised learning also requires massive amounts of computation and data storage. One goal of
 this system is to have records and learn sessions with live input and interactions from users in
 a physical environment. This data will be mapped to the machine learning algorithm and then mapped
 back to the physical domain.
 
-The average person spends a large amount of time in their house, so any task in a home that becomes
-automated saves the building owner a substantial amount of effort over time. There are many
-commercial applications as well, such as in schools and nursing homes. Maintaining a building
-requires at least one, if not more, full time staff. This amount of effort can be drastically
-reduced by a system that handles it all automatically, saving time and money.
+People spend a large amount of time in their homes, so any task in a home that becomes
+automated saves the building owner a substantial amount of effort. This is particularly important 
+in case where someone has physical limitations preventing them from independently maintaining their
+house.  A system which controls the living environment without requiring substantial configuration
+can give these people more independence, or allow their caregivers to focus on other priorities.
 
-The downside of existing automated environment systems is the amount of configuration required to
-have the system meet your specific needs. By having the system learn the habits of the user
-dynamically, the configuration is essentially eliminated, leading to an ease of installation that
-does not currently exist.
+There is a place for automated environment control in a commercial setting as well.  An example of
+this is in education buildings, where there are hundreds, if not thousands, of people in many 
+different rooms at all times of day.  Maintaining a single building in this situation requires
+full time staff, as well as effort from the individuals in the rooms.  For example, a class
+at sunset may have to adjust the blinds at the same time each day, while increasing the 
+temperature of the room.  A system that tracks this activity and learns to handle it all automatically
+would eliminate this issue.
 
 ## Objectives
 
