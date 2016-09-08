@@ -115,6 +115,11 @@ server's system. The discovery protocol and implementation will be completed in 
 
 #### 4. Sensors and Actuators; Inputs and Control
 
+During the development of milestone 3, sensor reading and actuator control will be programmed.
+This can be done concurrently with the development of the communication of the sensors themselves.
+Data values will be read from sensors while control signals will need to be sent to actuators.
+The system must log both data values and control values so they can be used to learn the patterns
+of a user and apply them to the system
 
 
 #### 5. Gateway and Web Client
