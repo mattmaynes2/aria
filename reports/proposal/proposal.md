@@ -89,6 +89,11 @@ controlling the server.
 
 #### 3. Sensor Communication and Discovery
 
+Sensor communication will all be routed through the communication service. This will use the
+communication protocol from the previous milestone. To aid in usability, when a new device is
+added to the network it will follow a discovery protocol to add itself to the machine learning
+server's system. The discovery protocol and implementation will be completed in this milestone.
+
 #### 4. Sensors and Actuators Inputs and Control
 
 #### 5. Gateway + Web Client
