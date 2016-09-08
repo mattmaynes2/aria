@@ -62,7 +62,7 @@ adjust to take these new devices into account when performing its computations.
 ## Schedule
 
 | ID | Milestone                               | Date                 |
-| -- | ---------                               | ----                 |
+|----|-----------------------------------------|----------------------|
 | 1  | Machine Leaning Server Prototype        | September 25th, 2016 |
 | 2  | Communicating Protocol + Service        | October 16th, 2016   |
 | 3  | Sensor Communication and Discovery      | November 6th, 2016   |
