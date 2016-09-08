@@ -61,6 +61,15 @@ adjust to take these new devices into account when performing its computations.
 
 ## Schedule
 
+| Item                                    | Date                 |
+| ----                                    | ----                 |
+| Machine Leaning Server Prototype        | September 25th, 2016 |
+| Communicating Protocol + Service        | October 16th, 2016   |
+| Sensor Communication and Discovery      | November 6th, 2016   |
+| Sensors and Actuator Inputs and Control | November 6th, 2016   |
+| Gateway + Web Client                    | January 29th, 2017   |
+| Remote Record and Learn                 | February 12th, 2017  |
+
 ## Required Facilities
 
 
