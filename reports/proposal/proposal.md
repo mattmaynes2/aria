@@ -82,6 +82,12 @@ An algorithm that accepts tables of categorical and numerical data and produces 
 based on historical decisions. The implementation of this algorithm will be configurable and tunable
 for optimal output.
 
+#### Training Method
+
+The server will be trained using a watch and learn method. A user will train the system
+by using a web interface or manual controls. The user will enter the desired action they would like the building
+to perform at a certain time, the server will store the current sensor information and the desired state.
+
 #### Central Control Server
 
 This server will encompass the machine learning algorithm as well as database management for logging
