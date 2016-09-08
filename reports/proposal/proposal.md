@@ -76,6 +76,16 @@ adjust to take these new devices into account when performing its computations.
 
 ## Technical Overview
 
+#### Machine Learning
+
+#### Communication Service
+
+#### Device
+
+#### HTTP Gateway
+
+#### Web Interface
+
 ## Schedule
 
 | ID   | Milestone                                 | Date                   |
