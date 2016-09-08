@@ -72,7 +72,7 @@ adjust to take these new devices into account when performing its computations.
 
 ### Milestones
 
-1. Machine Learning Server Prototype
+#### 1. Machine Learning Server Prototype
 
 The server prototype will include a machine learning algorithm. This algorithm will accept
 arbitrary categorical and numerical data. The initial server will use simulated data with
@@ -85,15 +85,15 @@ milestone. Communication to other devices will be added in the next milestone bu
 considered in this one. This will ensure that there is the correct infrastructure for remotely
 controlling the server.
 
-2. Communication Protocol + Service
+#### 2. Communication Protocol + Service
 
-3. Sensor Communication and Discovery
+#### 3. Sensor Communication and Discovery
 
-4. Sensors and Actuators Inputs and Control
+#### 4. Sensors and Actuators Inputs and Control
 
-5. Gateway + Web Client
+#### 5. Gateway + Web Client
 
-6.  Remote Record and Learn
+#### 6.  Remote Record and Learn
 
 ## Required Facilities
 
