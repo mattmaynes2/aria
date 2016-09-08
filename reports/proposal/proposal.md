@@ -128,6 +128,10 @@ of a user and apply them to the system
 
 #### 5. Gateway and Web Client
 
+The system will have a user interface for a high level user remote control. This remote will be
+controlled by a web client. This client will be served through a simple web gateway that will
+provide a simple REST API for interacting to the communication service.
+
 #### 6.  Remote Record and Learn
 
 ## Required Facilities
