@@ -26,7 +26,6 @@ the environmental control system, as well as a detailed description of the proje
 The proposal also includes a timeline for the completion of concrete milestones for the project 
 as well as a technical summary of the proposed solution.
 
-## Motivation
 
 People spend a large amount of time in their homes, so any task in a home that becomes
 automated saves the building owner a substantial amount of effort. This is particularly important 
@@ -39,8 +38,19 @@ this is in education buildings, where there are hundreds, if not thousands, of p
 different rooms at all times of day.  Maintaining a single building in this situation requires
 full time staff.  For example, during a lecture at sunset, an instructor may have to adjust the blinds
 and contact the maintenance staff to adjust the temperature at the same time each day.  The cost and 
-effort of this maintenance is multiplied for every building in a given institution.  A system that 
-tracks this activity and learns to handle it automatically would eliminate these issues.
+effort of this maintenance is multiplied for every building in a given institution.  If a system could
+be installed in each building that learns to handle this activity automatically, it would help reduce 
+the burden and cost of maintenance.
+
+Another benefit of automated environment control is improved energy efficiency.  It is not uncommon
+to leave a room forgetting to turn off a light, or to leave a building with the air conditioning still
+running.  This leads to neadless consumption of energy, again increasing the cost of maintaining the 
+building.  Removing this responsibility from the building owner also removes this waste of energy.
+An automated environment control can also improve energy efficiency beyond just removing negligence.
+Once the desired temperature of a room for a given time is known, options besides air conditioning
+or heating can be explored first.  If the room temperature must be raised, and the temperature outside
+is warm enough, the system could open the room windows.  Once the desired temperature has been reached, 
+the windows could be automatically shut again.
 
 Supervised machine learning traditionally requires massive data sets with a map of inputs to
 expected outputs. It then requires tuning, either automated or manual to achieve a desired level
