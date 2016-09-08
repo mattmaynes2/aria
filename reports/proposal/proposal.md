@@ -96,7 +96,8 @@ The communication service will run on top of  the machine learning server. There
 protocol by which devices communicate with the machine learning server. The service will relay messages 
 between the server and external devices.
 
-#### Device
+#### Devices
+Sensors and actuators are dynamically addable and removable from the system. The only configuration required is adding the device to the same network as the server. Devices use a discovery protocol to connect to the network. Devices announce themselves with categorical information about the device such that a user will know to accept them. Once the device is connected, it will be added to the machine learning server and be logged and controlled with other devices
 
 #### HTTP Gateway
 
