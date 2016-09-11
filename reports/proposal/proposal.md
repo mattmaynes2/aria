@@ -3,15 +3,12 @@ Machine Learning Smart Building
 
 Supervisor: Babak Esfandiari
 
-
 | Name              | Student Number | Email                              |
 | ----              | -------------- | -----                              |
 | Matthew Maynes    | 100882216      | mattmaynes@cmail.carleton.ca       |
 | Cameron Blanchard | 100886476      | cameronblanchard@cmail.carleton.ca |
 | Jeremy Dunsmore   | 100889935      | jeremydunsmore@cmail.carleton.ca   |
 | Peter Mark        | 100886038      | petermark@cmail.carleton.ca        |
-
-
 
 ## Introduction
 
@@ -26,30 +23,29 @@ the environmental control system, as well as a detailed description of the proje
 The proposal also includes a timeline for the completion of concrete milestones for the project 
 as well as a technical summary of the proposed solution.
 
-
 People spend a large amount of time in their homes, so any task in a home that becomes
 automated saves the building owner a substantial amount of effort. This is particularly important 
 in the case where someone has physical limitations preventing them from independently maintaining their
-house.  A system which controls the living environment without requiring substantial configuration
+house. A system which controls the living environment without requiring substantial configuration
 can give these people more independence, or allow their caregivers to focus on other priorities.
 
-There is also a place for automated environment control in a commercial setting.  An example of
+There is also a place for automated environment control in a commercial setting. An example of
 this is in education buildings, where there are hundreds, if not thousands, of people in many 
-different rooms at all times of day.  Maintaining a single building in this situation requires
-full time staff.  For example, during a lecture at sunset, an instructor may have to adjust the blinds
-and contact the maintenance staff to adjust the temperature at the same time each day.  The cost and 
-effort of this maintenance is multiplied for every building in a given institution.  If a system could
+different rooms at all times of day. Maintaining a single building in this situation requires
+full time staff. For example, during a lecture at sunset, an instructor may have to adjust the blinds
+and contact the maintenance staff to adjust the temperature at the same time each day. The cost and 
+effort of this maintenance is multiplied for every building in a given institution. If a system could
 be installed in each building that learns to handle this activity automatically, it would help reduce 
 the burden and cost of maintenance.
 
-Another benefit of automated environment control is improved energy efficiency.  It is not uncommon
+Another benefit of automated environment control is improved energy efficiency. It is not uncommon
 to leave a room forgetting to turn off a light, or to leave a building with the air conditioning still
-running.  This leads to needless consumption of energy, again increasing the cost of maintaining the 
-building.  Removing this responsibility from the building owner also removes this waste of energy.
+running. This leads to needless consumption of energy, again increasing the cost of maintaining the 
+building. Removing this responsibility from the building owner also removes this waste of energy.
 An automated environment control can also improve energy efficiency beyond just removing negligence.
 Once the desired temperature of a room for a given time is known, options besides air conditioning
-or heating can be explored first.  If the room temperature must be raised, and the temperature outside
-is warm enough, the system could open the room windows.  Once the desired temperature has been reached, 
+or heating can be explored first. If the room temperature must be raised, and the temperature outside
+is warm enough, the system could open the room windows. Once the desired temperature has been reached, 
 the windows could be automatically shut again.
 
 Supervised machine learning traditionally requires massive data sets with a map of inputs to
@@ -101,16 +97,15 @@ The server will have the following three modes: record and learn, assisted and l
 
 In record and learn mode, the server makes no decisions on its own. It records the users interactions with the 
 system and logs them in a database. It then will use these decisions to make future estimations about
-desired behaviour. 
+desired behaviour.
 
-Assisted mode allows the server to make decisions, but will continue to recieve user direction about expected 
+Assisted mode allows the server to make decisions, but will continue to receive user direction about expected 
 behaviour. The system will record all user interactions, using them for behaviour prediction. This will be
 the same as record and learn mode, except the system will make its own decisions. If the system makes a decision
 that a user does not agree with, the user can reject the decision.
 
 Under live mode, the system will make all decisions based on its historically recorded inputs. The system
 will no longer allow the user to reject a behaviour. 
-
 
 #### Central Control Server
 
@@ -119,27 +114,27 @@ device inputs and control events. These event will also be stored with historica
 so that they can be used for future decisions. The central server will also be responsible for
 communicating to the communication service.
 
-
 #### Communication Service
 
-(MEWM - What is this? Describe it briefly) The communication service will run on top of the machine learning server. There will be a defined  
-protocol by which devices communicate with the machine learning server. The service will relay messages 
-between the server and external devices.
+The communication service is the central node for all communications in the network. It is responsible for
+forwarding all messages to all participants in the system. It is the only component that will communicate
+directly to the central server. All devices will communicate to this server using a special protocol that
+will be design for this system
 
 #### Devices
 
-(MEWM - What is this? Describe it briefly) Sensors and actuators are dynamically addable and removable from the system. The only configuration 
-required is adding the device to the same network as the server. Devices use a discovery protocol to
-connect to the network. Devices announce themselves with categorical information about the device such 
-that a user will know to accept them. Once the device is connected, it will be added to the machine 
-learning server and be logged and controlled with other devices.
+To interact with the physical world, different embedded devices will be used in the system. These
+devices will use sensors and actuators to record different properties and interact with their environment.
+The devices will use a discovery protocol to automatically add themselves to the network. This will make
+configuration very simple and dynamic. Devices announce themselves with categorical information about the
+device such that a user will know to accept them. Once the device is connected, it will be added to the
+machine learning server and be logged and controlled with other devices.
 
 #### HTTP Gateway
 
 The gateway is a thin HTTP wrapper around the communication interface's API and acts as a bridge
 between the web client and the core services. The gateway will serve the web pages for the web client
 and provide a RESTful API for interacting with the communication protocol.
-
 
 #### Web Interface
 
@@ -202,6 +197,5 @@ The server will also use training data from a recording session instead of simul
 
 This project will require access to a variety of sensors and actuators which can be manipulated 
 using a microcontroller such as an Arduino or Raspberry Pi.
-
 
 
