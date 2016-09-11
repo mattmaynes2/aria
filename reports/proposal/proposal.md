@@ -29,7 +29,7 @@ as well as a technical summary of the proposed solution.
 
 People spend a large amount of time in their homes, so any task in a home that becomes
 automated saves the building owner a substantial amount of effort. This is particularly important 
-in case where someone has physical limitations preventing them from independently maintaining their
+in the case where someone has physical limitations preventing them from independently maintaining their
 house.  A system which controls the living environment without requiring substantial configuration
 can give these people more independence, or allow their caregivers to focus on other priorities.
 
@@ -44,7 +44,7 @@ the burden and cost of maintenance.
 
 Another benefit of automated environment control is improved energy efficiency.  It is not uncommon
 to leave a room forgetting to turn off a light, or to leave a building with the air conditioning still
-running.  This leads to neadless consumption of energy, again increasing the cost of maintaining the 
+running.  This leads to needless consumption of energy, again increasing the cost of maintaining the 
 building.  Removing this responsibility from the building owner also removes this waste of energy.
 An automated environment control can also improve energy efficiency beyond just removing negligence.
 Once the desired temperature of a room for a given time is known, options besides air conditioning
@@ -88,47 +88,51 @@ adjust to take these new devices into account when performing its computations.
 
 #### Machine Learning Algorithm
 
-An algorithm that accepts tables of categorical and numerical data and produces sets of decisions
-based on historical decisions. The implementation of this algorithm will be configurable and tunable
-for optimal output.
+The machine learning algorithm will accept tables of categorical and numerical data and produce sets
+of decisions based on historical events. The implementation of this algorithm will be configurable and
+tunable for optimal output.
 
 #### Training Method
 
 The server will be trained using a watch and learn method. A user will train the system
 by using a web interface or manual controls. The user will enter the desired action they would like the building
-to perform at a certain time, the server will store the current sensor information and the desired state.
+to perform at a certain time. The server will then store the current sensor information and the desired state.
+The server will have the following three modes: record and learn, assisted and live mode. 
 
-The server will have three modes:
-* Record and Learn
+In record and learn mode, the server makes no decisions on its own. It records the users interactions with the 
+system and logs them in a database. It then will use these decisions to make future estimations about
+desired behaviour. 
 
- The server makes no decisions on its own, it listens to a user and stores desired states
-* Assisted 
+Assisted mode allows the server to make decisions, but will continue to recieve user direction about expected 
+behaviour. The system will record all user interactions, using them for behaviour prediction. This will be
+the same as record and learn mode, except the system will make its own decisions. If the system makes a decision
+that a user does not agree with, the user can reject the decision.
 
- The server makes decisions and the user provides feedback if the server makes a mistake
-* Live
+Under live mode, the system will make all decisions based on its historically recorded inputs. The system
+will no longer allow the user to reject a behaviour. 
 
- The server makes all of the decisions with no user input 
 
 #### Central Control Server
 
 This server will encompass the machine learning algorithm as well as database management for logging
-device inputs and control events. These event will be also stored with historical expected outputs
+device inputs and control events. These event will also be stored with historical expected outputs
 so that they can be used for future decisions. The central server will also be responsible for
 communicating to the communication service.
 
 
 #### Communication Service
 
-The communication service will run on top of  the machine learning server. There will be a defined a 
+(MEWM - What is this? Describe it briefly) The communication service will run on top of the machine learning server. There will be a defined  
 protocol by which devices communicate with the machine learning server. The service will relay messages 
 between the server and external devices.
 
 #### Devices
-Sensors and actuators are dynamically addable and removable from the system. The only configuration 
+
+(MEWM - What is this? Describe it briefly) Sensors and actuators are dynamically addable and removable from the system. The only configuration 
 required is adding the device to the same network as the server. Devices use a discovery protocol to
 connect to the network. Devices announce themselves with categorical information about the device such 
 that a user will know to accept them. Once the device is connected, it will be added to the machine 
-learning server and be logged and controlled with other devices
+learning server and be logged and controlled with other devices.
 
 #### HTTP Gateway
 
@@ -141,7 +145,7 @@ and provide a RESTful API for interacting with the communication protocol.
 
 The web interface provides direct user interaction through a graphical user interface. This
 interface will communicate through the HTTP gateway using a RESTful API. The web client will
-provide remote control capabilities, allow for device simulation and provide overall information
+provide remote control capabilities, allow for device simulation, and provide overall information
 monitoring.
 
 ## Schedule
@@ -172,7 +176,7 @@ machine learning server at this time.
 
 Sensor communication will all be routed through the communication service. This will use the
 communication protocol from the previous milestone. To aid in usability, when a new device is
-added to the network it will follow a discovery protocol to add itself to the machine learning
+added to the network, it will follow a discovery protocol to add itself to the machine learning
 server's system. The discovery protocol and implementation will be completed in this milestone.
 
 #### 4. Sensors and Actuators; Inputs and Control
@@ -191,8 +195,8 @@ provide a simple REST API for interacting to the communication service.
 
 #### 6. Remote Record and Learn
 
-By the end of the milestone the three modes will be added to the machine learining server. 
-The server will also use training data from a recording sesion instead of simulated data.
+By the end of the milestone, the three modes will be added to the machine learining server. 
+The server will also use training data from a recording session instead of simulated data.
 
 ## Required Facilities
 
