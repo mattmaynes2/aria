@@ -12,20 +12,28 @@ Supervisor: Babak Esfandiari
 
 ## Introduction
 
-The maintenance of the environment within a building such as a home or a school can often be a burden
-on homeowners and maintenance staff. Controlling temperatures and lighting, for instance, is often a 
-repetitive task which would be convenient to automate.
+Maintaining a comfortable environment within a building such as a home or a school can often be a burden
+on homeowners and maintenance staff. Adjustment of the temperature and lighting in a room, for instance, 
+is often a repetitive task which it would be convenient to automate.
 
-This report contains a proposal for a project to eliminate such tasks. The objective of the project
+This report contains a proposal for a project to eliminate these manual tasks. The objective of the project
 is to build a system to automate control of a building's environment which uses machine learning 
 algorithms to minimize manual configuration. The proposal presents several motivations for using 
 the environmental control system, as well as a detailed description of the project's objectives.
 The proposal also includes a timeline for the completion of concrete milestones for the project 
 as well as a technical summary of the proposed solution.
 
-People spend a large amount of time in their homes, so any task in a home that becomes
-automated saves the building owner a substantial amount of effort. This is particularly important 
-in the case where someone has physical limitations preventing them from independently maintaining their
+## Background
+
+Any home maintenance task which can be automated can save the owner a substantial amount of time and effort.
+Automated environmental control is not a novel concept; devices such as light timers and programmable 
+thermostats have existed for many years. Most of these common devices, however, must be configured 
+manually. The system propsed in this report is able to configure itself based on normal actions taken
+by the user. By having the system learn the habits of the user dynamically, the configuration is essentially 
+eliminated, leading to an ease of installation that does not currently exist.
+
+One scenario in which a simple home automation system could be a significant help is in the case of 
+a homeowner with physical limitations that prevent them from independently maintaining their
 house. A system which controls the living environment without requiring substantial configuration
 can give these people more independence, or allow their caregivers to focus on other priorities.
 
@@ -47,20 +55,6 @@ Once the desired temperature of a room for a given time is known, options beside
 or heating can be explored first. If the room temperature must be raised, and the temperature outside
 is warm enough, the system could open the room windows. Once the desired temperature has been reached, 
 the windows could be automatically shut again.
-
-Supervised machine learning traditionally requires massive data sets with a map of inputs to
-expected outputs. It then requires tuning, either automated or manual to achieve a desired level
-of correctness. This process is tedious and massively time consuming.
-
-The downside of existing automated environment systems is the amount of configuration required to
-have the system meet your specific needs. By having the system learn the habits of the user
-dynamically, the configuration is essentially eliminated, leading to an ease of installation that
-does not currently exist.
-
-Supervised learning also requires massive amounts of computation and data storage. One goal of
-this system is to have records and learn sessions with live input and interactions from users in
-a physical environment. This data will be mapped to the machine learning algorithm and then mapped
-back to the physical domain.
 
 ## Objectives
 
