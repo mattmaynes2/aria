@@ -89,7 +89,7 @@ will be configurable and tunable for optimal output.
 The server will be trained using a watch and learn method. A user will train the system
 by using a web interface or manual controls. The user will enter the desired action, and
 the server will associate the current sensor information with the desired state. The server
-will have the following three modes: record and learn, assisted, and live mode. 
+will have the following thwo modes: record and learn, assisted. 
 
 In record and learn mode, the server makes no decisions on its own. It records the user's interactions with the 
 system and logs them in a database. It will then use this information to make future estimations about
@@ -100,8 +100,6 @@ behaviour. The system will record all user interactions, using them for behaviou
 makes its own decisions, while still accepting feedback from the user. If the system makes a decision
 that a user does not agree with, the user can reject that decision.
 
-Under live mode, the system will make all decisions based on its historically recorded inputs. The system
-will no longer allow the user to reject a behaviour. 
 
 #### Central Control Server
 
