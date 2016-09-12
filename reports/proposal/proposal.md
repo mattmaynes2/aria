@@ -17,7 +17,7 @@ on homeowners and maintenance staff. Adjustment of the temperature and lighting 
 is often a repetitive task which it would be convenient to automate.
 
 This report contains a proposal for a project to eliminate these manual tasks. The objective of the project
-is to build a system to automate control of a building's environment which uses machine learning 
+is to build a system to automate control of a building's environment, which uses machine learning 
 algorithms to minimize manual configuration. The proposal presents several motivations for using 
 the environmental control system, as well as a detailed description of the project's objectives.
 The proposal also includes a timeline for the completion of concrete milestones for the project 
@@ -25,20 +25,20 @@ as well as a technical summary of the proposed solution.
 
 ## Background
 
-Any home maintenance task which can be automated can save the owner a substantial amount of time and effort.
+Any home maintenance task which can be automated can save the owner a substantial amount of time and money.
 Automated environmental control is not a novel concept; devices such as light timers and programmable 
 thermostats have existed for many years. Most of these common devices, however, must be configured 
-manually. The system propsed in this report is able to configure itself based on normal actions taken
+manually. The system proposed in this report is able to configure itself based on normal actions taken
 by the user. By having the system learn the habits of the user dynamically, the configuration is essentially 
 eliminated, leading to an ease of installation that does not currently exist.
 
-One scenario in which a simple home automation system could be a significant help is in the case of 
+One scenario in which a home automation system could be a significant help is in the case of 
 a homeowner with physical limitations that prevent them from independently maintaining their
 house. A system which controls the living environment without requiring substantial configuration
 can give these people more independence, or allow their caregivers to focus on other priorities.
 
 There is also a place for automated environment control in a commercial setting. An example of
-this is in education buildings, where there are hundreds, if not thousands, of people in many 
+this is in educational buildings, where there are thousands of people in many 
 different rooms at all times of day. Maintaining a single building in this situation requires
 full time staff. For example, during a lecture at sunset, an instructor may have to adjust the blinds
 and contact the maintenance staff to adjust the temperature at the same time each day. The cost and 
@@ -64,69 +64,66 @@ environment where users perform live actions and the system determines relevant 
 environmental factors. This automated learning system will be generic and use only the categorical
 and numerical information provided by sensors and actuators.
 
-Manual adjustment of a home's environment can be tedious. A goal of the project will be to use the
-automated learning system to create a system that can be installed in the home to automatically
-adjust the home environment based on input from a number of sensors. The system should support
-simple configuration of any type of sensor; the system should not contain detailed knowledge about
-any sensors and actuators.
+Manual adjustment of a building's environment can be tedious. A goal of the project will be to create 
+a system which uses automated learning to adjust the environment based on input from a number of sensors. 
+The system should support simple configuration of any type of sensor, and should not contain detailed 
+knowledge about any sensors or actuators.
 
-This system will have dynamically updatable configuration of sensors and actuators. This will have
-minimal overhead for adding and remove new devices from the system. The smart algorithm will then 
-adjust to take these new devices into account when performing its computations.
+This system will support dynamic updates to the configuration of sensors and actuators. Overhead for adding 
+and removing new devices from the system will be minimal. The learning algorithm will then adjust to take these
+new devices into account when altering or maintaining the environment.
 
 ## Technical Overview
 
 This project consists of several smaller components that will be described in more detail in this
-section. These components do not necessarily run on the same computer or even in the same process.
-This is a list of the high level major technical components that will drive this system.
+section. The following is a list of the high level technical components of the system.
 
 #### Machine Learning Algorithm
 
-The machine learning algorithm will accept tables of categorical and numerical data and produce sets
-of decisions based on historical events. The implementation of this algorithm will be configurable and
-tunable for optimal output.
+The machine learning algorithm will accept tables of categorical and numerical data which will be
+used to produce sets of decisions based on historical events. The implementation of this algorithm 
+will be configurable and tunable for optimal output.
 
 #### Training Method
 
 The server will be trained using a watch and learn method. A user will train the system
-by using a web interface or manual controls. The user will enter the desired action they would like the building
-to perform at a certain time. The server will then store the current sensor information and the desired state.
-The server will have the following three modes: record and learn, assisted and live mode. 
+by using a web interface or manual controls. The user will enter the desired action, and
+the server will associate the current sensor information with the desired state. The server
+will have the following three modes: record and learn, assisted, and live mode. 
 
-In record and learn mode, the server makes no decisions on its own. It records the users interactions with the 
-system and logs them in a database. It then will use these decisions to make future estimations about
+In record and learn mode, the server makes no decisions on its own. It records the user's interactions with the 
+system and logs them in a database. It will then use this information to make future estimations about
 desired behaviour.
 
 Assisted mode allows the server to make decisions, but will continue to receive user direction about expected 
-behaviour. The system will record all user interactions, using them for behaviour prediction. This will be
-the same as record and learn mode, except the system will make its own decisions. If the system makes a decision
-that a user does not agree with, the user can reject the decision.
+behaviour. The system will record all user interactions, using them for behaviour prediction. The system
+makes its own decisions, while still accepting feedback from the user. If the system makes a decision
+that a user does not agree with, the user can reject that decision.
 
 Under live mode, the system will make all decisions based on its historically recorded inputs. The system
 will no longer allow the user to reject a behaviour. 
 
 #### Central Control Server
 
-This server will encompass the machine learning algorithm as well as database management for logging
-device inputs and control events. These event will also be stored with historical expected outputs
+This server will contain the machine learning algorithm as well as database management for logging
+device inputs and control events. These events will also be stored with the expected outputs
 so that they can be used for future decisions. The central server will also be responsible for
 communicating to the communication service.
 
 #### Communication Service
 
 The communication service is the central node for all communications in the network. It is responsible for
-forwarding all messages to all participants in the system. It is the only component that will communicate
-directly to the central server. All devices will communicate to this server using a special protocol that
-will be design for this system
+forwarding all messages to the appropriate devices in the system. It is the only component that will communicate
+directly with the central server. All devices will communicate with the communication service using a special 
+protocol that will be designed for this system.
 
 #### Devices
 
 To interact with the physical world, different embedded devices will be used in the system. These
 devices will use sensors and actuators to record different properties and interact with their environment.
 The devices will use a discovery protocol to automatically add themselves to the network. This will make
-configuration very simple and dynamic. Devices announce themselves with categorical information about the
-device such that a user will know to accept them. Once the device is connected, it will be added to the
-machine learning server and be logged and controlled with other devices.
+configuration simple and dynamic. Once the device is connected, it will be added to the machine learning 
+server and be logged and controlled with the other devices.
 
 #### HTTP Gateway
 
@@ -145,7 +142,7 @@ monitoring.
 
 | ID   | Milestone                                 | Date                   |
 | ---- | ----------------------------------------- | ---------------------- |
-| 1    | Machine Leaning Server Prototype          | September 25th, 2016   |
+| 1    | Machine Learning Server Prototype          | September 25th, 2016   |
 | 2    | Communicating Protocol and Service        | October 16th, 2016     |
 | 3    | Sensor Communication and Discovery        | November 6th, 2016     |
 | 4    | Sensors and Actuators; Inputs and Control | November 6th, 2016     |
