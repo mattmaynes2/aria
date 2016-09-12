@@ -82,6 +82,10 @@ adjust to take these new devices into account when performing its computations.
 
 ## Technical Overview
 
+This project consists of several smaller components that will be described in more detail in this
+section. These components do not necessarily run on the same computer or even in the same process.
+This is a list of the high level major technical components that will drive this system.
+
 #### Machine Learning Algorithm
 
 The machine learning algorithm will accept tables of categorical and numerical data and produce sets
