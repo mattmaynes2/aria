@@ -89,7 +89,7 @@ will be configurable and tunable for optimal output.
 The server will be trained using a watch and learn method. A user will train the system
 by using a web interface or manual controls. The user will enter the desired action, and
 the server will associate the current sensor information with the desired state. The server
-will have the following thwo modes: record and learn, assisted. 
+will have the following two modes: record and learn and assisted. 
 
 In record and learn mode, the server makes no decisions on its own. It records the user's interactions with the 
 system and logs them in a database. It will then use this information to make future estimations about
@@ -97,8 +97,7 @@ desired behaviour.
 
 Assisted mode allows the server to make decisions, but will continue to receive user direction about expected 
 behaviour. The system will record all user interactions, using them for behaviour prediction. The system
-makes its own decisions, while still accepting feedback from the user. If the system makes a decision
-that a user does not agree with, the user can reject that decision.
+makes its own decisions, while still accepting feedback from the user.
 
 
 #### Central Control Server
@@ -140,7 +139,7 @@ monitoring.
 
 | ID   | Milestone                                 | Date                   |
 | ---- | ----------------------------------------- | ---------------------- |
-| 1    | Machine Learning Server Prototype          | September 25th, 2016   |
+| 1    | Machine Learning Server Prototype         | September 25th, 2016   |
 | 2    | Communicating Protocol and Service        | October 16th, 2016     |
 | 3    | Sensor Communication and Discovery        | November 6th, 2016     |
 | 4    | Sensors and Actuators; Inputs and Control | November 6th, 2016     |
