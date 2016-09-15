@@ -1,0 +1,5 @@
+language : python3
+node_js  :
+  - stable
+install : "build/install.sh"
+script : "build/run.sh"
