@@ -7,6 +7,6 @@ reviewers:
     - mattmaynes2
     - jed15
     - peter-mark
-    - ctbalnch2
+    - ctblanch2
   name: pullapprove
   required: 1
