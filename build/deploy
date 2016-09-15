@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var fs      = require('fs'),
+    exec    = require('./execute')
+
+console.log('Starting Deploy');
+exec(JSON.parse(fs.readFileSync(__dirname + '/manifest.json')), 'deploy');
+console.log('Deploy Complete');
+

@@ -1,5 +1,11 @@
+sudo: required
+dist: trusty
 language : python3
 node_js  :
-  - stable
-install : "build/install.sh"
-script : "build/run.sh"
+  - "6.x"
+
+before_install:
+    - "sudo apt-get install node"
+    - "node --version"
+install : "./build/install"
+script : "./build/run"
