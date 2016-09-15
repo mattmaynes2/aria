@@ -1,0 +1,6 @@
+{
+    "remote" : {
+        "install"   : "cd ../remote && npm install",
+        "build"     : "cd ../remote && npm run build"
+    }
+}
