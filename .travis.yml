@@ -1,5 +1,5 @@
 language : python3
 node_js  :
   - "6.x"
-install : "./build/install"
+install : "node --version && ./build/install"
 script : "./build/run"
