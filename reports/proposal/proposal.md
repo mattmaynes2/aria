@@ -137,23 +137,20 @@ monitoring.
 
 ## Schedule
 
-| Milestone  | Date                |
-| :--------: | ----------------    |
-| 1          | October 9th, 2016   |
-| 2          | November 13th, 2016 |
-| 3          | January  8th, 2016  |
-| 4          | February 19th, 2016 |
+| Milestone   | Date                   |
+| ----------- | ---------------------- |
+|      1      | October 9th, 2016      |
+|      2      | November 13th, 2016    |
+|      3      | January  8th, 2016     |
+|      4      | February 19th, 2016    |
 
 
 ### Milestones
 
-#### Milestone 1
+#### 1. Machine Learning Server Prototype
 
-This iteration will contain the minimal viable product for the smart building system. This iteration
-will contain a basic regression algorithm acting as the machine learning system. The system's central
-communication service will be operational as well as a database storage system. This initial system
-will use simulated devices to model data and interactions within the system.
-
+This will include the central server as well as the machine learning algorithm. This will
+use sample data for inputs and output. All learning will be simulated for tuning and testing.
 
 #### 2. Communication Protocol and Service
 
@@ -168,13 +165,12 @@ communication protocol from the previous milestone. To aid in usability, when a 
 added to the network, it will follow a discovery protocol to add itself to the machine learning
 server's system. The discovery protocol and implementation will be completed in this milestone.
 
-#### 4. Sensors and Actuators; Inputs and Control
+#### Milestone 4
 
-During the development of milestone 3, sensor reading and actuator control will be programmed.
-This can be done concurrently with the development of the communication of the sensors themselves.
-Data values will be read from sensors while control signals will need to be sent to actuators.
-The system must log both data values and control values so they can be used to learn the patterns
-of a user and apply them to the system
+This iteration will focus on improving the complete system developed in the first three iterations.
+We will add a motion sensor and a light control in order to test the system with multiple types
+of devices. Another goal of this iteration will be to improve the basic machine learning algorithm
+which is used for the first three iterations.
 
 #### 5. Gateway and Web Client
 
