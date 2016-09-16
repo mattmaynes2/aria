@@ -137,20 +137,22 @@ monitoring.
 
 ## Schedule
 
-| Milestone   | Date                   |
-| ----------- | ---------------------- |
-|      1      | October 9th, 2016      |
-|      2      | November 13th, 2016    |
-|      3      | January  8th, 2016     |
-|      4      | February 19th, 2016    |
+| Milestone  | Date                |
+| :--------: | ----------------    |
+| 1          | October 9th, 2016   |
+| 2          | November 13th, 2016 |
+| 3          | January  8th, 2016  |
+| 4          | February 19th, 2016 |
 
 
 ### Milestones
 
-#### 1. Machine Learning Server Prototype
+#### Milestone 1
 
-This will include the central server as well as the machine learning algorithm. This will
-use sample data for inputs and output. All learning will be simulated for tuning and testing.
+This iteration will contain the minimal viable product for the smart building system. This iteration
+will contain a basic regression algorithm acting as the machine learning system. The system's central
+communication service will be operational as well as a database storage system. This initial system
+will use simulated devices to model data and interactions within the system.
 
 #### 2. Communication Protocol and Service
 
