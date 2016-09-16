@@ -154,12 +154,11 @@ will contain a basic regression algorithm acting as the machine learning system.
 communication service will be operational as well as a database storage system. This initial system
 will use simulated devices to model data and interactions within the system.
 
+#### Milestone 2 
 
-#### 2. Communication Protocol and Service
-
-By the end of the milestone the protocol will be defined and the communication service 
-will be running using simulated data. The service will only be communicating with the
-machine learning server at this time.
+This iteration will add the web interface that allows a user to control the system.
+The simulated devices from the previous milestone will be replaced with 2 real devices
+a temperature sensor and a thermostate controller.
 
 #### 3. Sensor Communication and Discovery
 
@@ -168,24 +167,12 @@ communication protocol from the previous milestone. To aid in usability, when a 
 added to the network, it will follow a discovery protocol to add itself to the machine learning
 server's system. The discovery protocol and implementation will be completed in this milestone.
 
-#### 4. Sensors and Actuators; Inputs and Control
+#### Milestone 4
 
-During the development of milestone 3, sensor reading and actuator control will be programmed.
-This can be done concurrently with the development of the communication of the sensors themselves.
-Data values will be read from sensors while control signals will need to be sent to actuators.
-The system must log both data values and control values so they can be used to learn the patterns
-of a user and apply them to the system
-
-#### 5. Gateway and Web Client
-
-The system will have a user interface for a high level user remote control. This remote will be
-controlled by a web client. This client will be served through a simple web gateway that will
-provide a simple REST API for interacting to the communication service.
-
-#### 6. Remote Record and Learn
-
-By the end of the milestone, the three modes will be added to the machine learining server. 
-The server will also use training data from a recording session instead of simulated data.
+This iteration will focus on improving the complete system developed in the first three iterations.
+We will add a motion sensor and a light control in order to test the system with multiple types
+of devices. Another goal of this iteration will be to improve the basic machine learning algorithm
+which is used for the first three iterations.
 
 ## Required Facilities
 
