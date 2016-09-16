@@ -162,10 +162,9 @@ a temperature sensor and a thermostate controller.
 
 #### 3. Sensor Communication and Discovery
 
-Sensor communication will all be routed through the communication service. This will use the
-communication protocol from the previous milestone. To aid in usability, when a new device is
-added to the network, it will follow a discovery protocol to add itself to the machine learning
-server's system. The discovery protocol and implementation will be completed in this milestone.
+This iteration will have a refined web user interface.  This iteration will also introduce
+device discovery. This allows a device to be connected and have it be recognized by the 
+system automatically.  
 
 #### Milestone 4
 
@@ -177,6 +176,10 @@ which is used for the first three iterations.
 ## Required Facilities
 
 This project will require access to a variety of sensors and actuators which can be manipulated 
-using a microcontroller such as an Arduino or Raspberry Pi.
+using a microcontroller such as an Arduino or Raspberry Pi. The required actuators and sensors are:
+- Temperature Sensor
+- Thermostat Controller
+- Motion Sensor
+- Light Switch Controller
 
 
