@@ -160,7 +160,7 @@ This iteration will add the web interface that allows a user to control the syst
 The simulated devices from the previous milestone will be replaced with 2 real devices;
 a temperature sensor and a thermostate controller.
 
-#### 3. Sensor Communication and Discovery
+#### Milestone 3
 
 This iteration will have a refined web user interface.  This iteration will also introduce
 device discovery. This allows a device to be connected and have it be recognized by the 
