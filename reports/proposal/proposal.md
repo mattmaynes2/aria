@@ -172,17 +172,6 @@ We will add a motion sensor and a light control in order to test the system with
 of devices. Another goal of this iteration will be to improve the basic machine learning algorithm
 which is used for the first three iterations.
 
-#### 5. Gateway and Web Client
-
-The system will have a user interface for a high level user remote control. This remote will be
-controlled by a web client. This client will be served through a simple web gateway that will
-provide a simple REST API for interacting to the communication service.
-
-#### 6. Remote Record and Learn
-
-By the end of the milestone, the three modes will be added to the machine learining server. 
-The server will also use training data from a recording session instead of simulated data.
-
 ## Required Facilities
 
 This project will require access to a variety of sensors and actuators which can be manipulated 
