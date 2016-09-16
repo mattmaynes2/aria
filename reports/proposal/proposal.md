@@ -157,7 +157,7 @@ will use simulated devices to model data and interactions within the system.
 #### Milestone 2 
 
 This iteration will add the web interface that allows a user to control the system.
-The simulated devices from the previous milestone will be replaced with 2 real devices
+The simulated devices from the previous milestone will be replaced with 2 real devices;
 a temperature sensor and a thermostate controller.
 
 #### 3. Sensor Communication and Discovery
