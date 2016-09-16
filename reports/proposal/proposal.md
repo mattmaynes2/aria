@@ -137,14 +137,13 @@ monitoring.
 
 ## Schedule
 
-| ID   | Milestone                                 | Date                   |
-| ---- | ----------------------------------------- | ---------------------- |
-| 1    | Machine Learning Server Prototype         | September 25th, 2016   |
-| 2    | Communicating Protocol and Service        | October 16th, 2016     |
-| 3    | Sensor Communication and Discovery        | November 6th, 2016     |
-| 4    | Sensors and Actuators; Inputs and Control | November 6th, 2016     |
-| 5    | Gateway and Web Client                    | January 29th, 2017     |
-| 6    | Remote Record and Learn                   | February 12th, 2017    |
+| Milestone   | Date                   |
+| ----------- | ---------------------- |
+|      1      | October 9th, 2016      |
+|      2      | November 13th, 2016    |
+|      3      | January  8th, 2016     |
+|      4      | February 19th, 2016    |
+
 
 ### Milestones
 
