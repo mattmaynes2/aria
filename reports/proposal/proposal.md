@@ -154,11 +154,11 @@ will contain a basic regression algorithm acting as the machine learning system.
 communication service will be operational as well as a database storage system. This initial system
 will use simulated devices to model data and interactions within the system.
 
-#### 2. Communication Protocol and Service
+#### Milestone 2 
 
-By the end of the milestone the protocol will be defined and the communication service 
-will be running using simulated data. The service will only be communicating with the
-machine learning server at this time.
+This iteration will add the web interface that allows a user to control the system.
+The simulated devices from the previous milestone will be replaced with 2 real devices
+a temperature sensor and a thermostate controller.
 
 #### 3. Sensor Communication and Discovery
 
