@@ -32,6 +32,7 @@ function execute () {
     echo "$START"
     node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
 
+    echo "Exited with status $?"
     if [ 0 -ne $? ]; then
         echo "$FAILED"
         kill -INT $$
@@ -58,9 +59,9 @@ function tests () {
 
 function all () {
     TARGET="$1"
-    
+
     echo "Running Full Build"
-    
+
     enviro "$TARGET"
     deps "$TARGET"
     build "$TARGET"
