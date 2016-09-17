@@ -1,0 +1,23 @@
+{
+  "name": "smart-learning-gateway",
+  "version": "0.0.1",
+  "description": "A RESTful interface between web clients and the smart-learning system",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattmaynes2/smart-home.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattmaynes2/smart-home/issues"
+  },
+  "homepage": "https://github.com/mattmaynes2/smart-home#readme",
+  "devDependencies": {
+    "webpack": "^1.13.2",
+    "webpack-node-externals": "^1.4.3",
+    "webpack-shell-plugin": "^0.4.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/webpack/bin/webpack.js"
+  }
+}

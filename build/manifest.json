@@ -4,6 +4,11 @@
         "deps"      : "cd ../remote && npm install",
         "build"     : "cd ../remote && npm run build"
     },
+    "gateway" : {
+        "enviro"    : "./support/pkman install node",
+        "deps"      : "cd ../gateway && npm install",
+        "build"     : "cd ../gateway && npm run build"
+    },
     "common" : {
         "enviro"    : "./support/pkman install python3"
     }
