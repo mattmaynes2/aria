@@ -3,5 +3,8 @@
         "enviro"    : "./support/pkman install node",
         "install"   : "cd ../remote && npm install",
         "build"     : "cd ../remote && npm run build"
+    },
+    "common" : {
+        "enviro"    : "./support/pkman install python3"
     }
 }
