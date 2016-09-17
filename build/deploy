@@ -1,6 +1,6 @@
 #!/bin/bash
 
 echo 'Deploying Build'
-node execute.js "$(dirname $0)/manifest.json" deploy
+node "$(dirname $0)/execute.js" "$(dirname $0)/manifest.json" deploy
 echo 'Deploy Complete'
 
