@@ -49,8 +49,16 @@ function find () {
 
 function install () {
     if [ -z "$(find $1 $2)" ]; then
-        echo "Installing using: $1 install $2"
-        $1 install $2
+        case $1 in
+            yum) 
+                echo "Installing using: $1 install -y $2"
+                $1 install -y $2
+                ;;
+            *) 
+                echo "Installing using: $1 install $2"
+                $1 install $2
+                ;;
+        esac
     else
         echo "Package $2 already installed"
     fi
