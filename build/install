@@ -1,9 +1,6 @@
-#!/usr/bin/env node
+#!/bin/bash
 
-var fs      = require('fs'),
-    exec    = require('./execute')
-
-console.log('Starting Install');
-exec(JSON.parse(fs.readFileSync(__dirname + '/manifest.json')), 'install');
-console.log('Install Complete');
+echo 'Starting Install'
+node execute.js "$(dirname $0)/manifest.json" install
+echo 'Install Complete'
 
