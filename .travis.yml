@@ -3,7 +3,7 @@ dist: trusty
 language : python3
 before_install:
     - "sudo ./build/support/pkman install node"
-    - "sudo ./build/build-run enviro"
-    - "./build/build-run deps"
-install : "./build/build-run build"
-script : "./build/build-run test"
+    - "sudo ./build/run enviro"
+    - "./build/run deps"
+install : "./build/run build"
+script : "./build/run test"

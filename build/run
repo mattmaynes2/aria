@@ -1,1 +1,83 @@
-build-run
+#!/bin/bash
+
+MANIFEST="$(dirname $0)/manifest.json"
+EXECUTOR="$(dirname $0)/execute.js"
+
+NAME='run'
+VERSION='0.1.0'
+HELP='
+  Usage: run cmd [target]
+    Performs the given build command. If a target is specified then run the
+    command on just the given target.
+
+  Commands:
+    help        Displays this message and exit
+    enviro      Installs environmental dependencies
+    deps        Installs project specific dependencies
+    build       Builds and package project
+    tests       Runs test configurations for project
+'
+
+function info () {
+    echo -e "$NAME $VERSION $HELP"
+}
+
+function enviro () {
+    echo "Installing Environment"
+    node "$EXECUTOR" "$MANIFEST" enviro $1
+    echo "Installation Complete"
+}
+
+function deps () {
+    echo "Installing Dependencies"
+    node "$EXECUTOR" "$MANIFEST" deps $1
+    echo "Installation Complete"
+}
+
+
+function build () {
+    echo "Running Build"
+    node "$EXECUTOR" "$MANIFEST" build $1
+    echo "Build Complete"
+}
+
+function tests () {
+    echo "Running Tests"
+    node "$EXECUTOR" "$MANIFEST" "test" $1
+    echo "Tests Complete"
+}
+
+function all () {
+    echo "Running Complete Build"
+    enviro $1
+    deps $1
+    build $1
+    tests $1
+}
+
+case $1 in
+    help)
+        info
+        ;;
+    enviro)
+        enviro $2
+        ;;
+    deps)
+        deps $2
+        ;;
+    build)
+        build $2
+        ;;
+    test)
+        tests $2
+        ;;
+    all)
+        all $2
+        ;;
+    *)
+        echo "Unknown command $1 - see help for details"
+        exit 1
+        ;;
+esac
+
+
