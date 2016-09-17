@@ -23,14 +23,20 @@ function info () {
 }
 
 function execute () {
-    echo "$2"
-    node "$EXECUTOR" "$MANIFEST" "$1" "$5"
+    CMD="$1"
+    START="$2"
+    SUCCESS="$3"
+    FAILED="$4"
+    TARGET="$5"
+
+    echo "$START"
+    node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
 
     if [ 0 -ne $? ]; then
-        echo "$4"
+        echo "$FAILED"
         kill -INT $$
     else
-        echo "$3"
+        echo "$SUCCESS"
     fi
 }
 
@@ -51,11 +57,14 @@ function tests () {
 }
 
 function all () {
+    TARGET="$1"
+    
     echo "Running Full Build"
-    enviro "$1"
-    deps "$1"
-    build "$1"
-    tests "$1"
+    
+    enviro "$TARGET"
+    deps "$TARGET"
+    build "$TARGET"
+    tests "$TARGET"
 }
 
 case "$1" in
