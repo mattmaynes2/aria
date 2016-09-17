@@ -1,6 +1,1 @@
-#!/bin/bash
-
-echo 'Running Build'
-node "$(dirname $0)/execute.js" "$(dirname $0)/manifest.json" build
-echo 'Build Complete'
-
+build-run

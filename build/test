@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo 'Testing Build'
-node "$(dirname $0)/execute.js" "$(dirname $0)/manifest.json" "test"
-echo 'Tests Complete'
-

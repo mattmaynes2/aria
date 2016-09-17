@@ -1,8 +1,10 @@
-var fs      = require('fs')
+var fs      = require('fs'),
     exec    = require('child_process').execSync;
 
-function run (manifest, cmd) {
-    Object.keys(manifest).forEach((target) => {
+function run (manifest, cmd, target) {
+    Object.keys(manifest).filter((x) => {
+        return target ? target === x : true;
+    }).forEach((target) => {
         if (manifest[target][cmd]) {
             console.log(`Executing '${cmd}' on target '${target}'`);
             exec(`cd ${__dirname} && ` + manifest[target][cmd], (error, stdout, stderr) => {
@@ -18,5 +20,5 @@ function run (manifest, cmd) {
 };
 
 
-run(JSON.parse(fs.readFileSync(process.argv[2])), process.argv[3])
+run(JSON.parse(fs.readFileSync(process.argv[2])), process.argv[3], process.argv[4])
 

@@ -9,7 +9,7 @@
         "deps"      : "cd ../gateway && npm install",
         "build"     : "cd ../gateway && npm run build"
     },
-    "common" : {
+    "common.python" : {
         "enviro"    : "./support/pkman install python3"
     }
 }

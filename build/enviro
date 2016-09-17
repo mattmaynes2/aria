@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo 'Installing Environment'
-node "$(dirname $0)/execute.js" "$(dirname $0)/manifest.json" enviro
-echo 'Install Complete'
-

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-DIR=$(dirname $0)
-
-$DIR/enviro
-$DIR/deps
-$DIR/run
-$DIR/test
-$DIR/deploy
