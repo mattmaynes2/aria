@@ -1,6 +1,6 @@
 #!/bin/bash
 
 echo 'Running Biuld'
-node execute.js "$(dirname $0)/manifest.json" run
+node "$(dirname $0)/execute.js" "$(dirname $0)/manifest.json" run
 echo 'Build Complete'
 
