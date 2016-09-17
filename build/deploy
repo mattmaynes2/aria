@@ -1,9 +1,6 @@
-#!/usr/bin/env node
+#!/bin/bash
 
-var fs      = require('fs'),
-    exec    = require('./execute')
-
-console.log('Starting Deploy');
-exec(JSON.parse(fs.readFileSync(__dirname + '/manifest.json')), 'deploy');
-console.log('Deploy Complete');
+echo 'Deploying Build'
+node execute.js "$(dirname $0)/manifest.json" deploy
+echo 'Deploy Complete'
 

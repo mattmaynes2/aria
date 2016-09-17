@@ -1,6 +1,7 @@
-var exec = require('child_process').execSync;
+var fs      = require('fs')
+    exec    = require('child_process').execSync;
 
-module.exports = function (manifest, cmd) {
+function run (manifest, cmd) {
     Object.keys(manifest).forEach((target) => {
         if (manifest[target][cmd]) {
             console.log(`Executing '${cmd}' on target '${target}'`);
@@ -15,4 +16,7 @@ module.exports = function (manifest, cmd) {
         }
     });
 };
+
+
+run(JSON.parse(fs.readFileSync(process.argv[2])), process.argv[3])
 
