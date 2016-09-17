@@ -1,5 +1,6 @@
 sudo: required
 dist: trusty
+language : python3
 before_install:
     - "sudo ./build/support/pkman install node"
     - "sudo ./build/build-run enviro"
