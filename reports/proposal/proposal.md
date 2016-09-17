@@ -137,57 +137,49 @@ monitoring.
 
 ## Schedule
 
-| ID   | Milestone                                 | Date                   |
-| ---- | ----------------------------------------- | ---------------------- |
-| 1    | Machine Learning Server Prototype         | September 25th, 2016   |
-| 2    | Communicating Protocol and Service        | October 16th, 2016     |
-| 3    | Sensor Communication and Discovery        | November 6th, 2016     |
-| 4    | Sensors and Actuators; Inputs and Control | November 6th, 2016     |
-| 5    | Gateway and Web Client                    | January 29th, 2017     |
-| 6    | Remote Record and Learn                   | February 12th, 2017    |
+| Milestone  | Date                |
+| :--------: | ----------------    |
+| 1          | October 9th, 2016   |
+| 2          | November 13th, 2016 |
+| 3          | January  8th, 2016  |
+| 4          | February 19th, 2016 |
+
 
 ### Milestones
 
-#### 1. Machine Learning Server Prototype
+#### Milestone 1
 
-This will include the central server as well as the machine learning algorithm. This will
-use sample data for inputs and output. All learning will be simulated for tuning and testing.
+This iteration will contain the minimal viable product for the smart building system. This iteration
+will contain a basic regression algorithm acting as the machine learning system. The system's central
+communication service will be operational as well as a database storage system. This initial system
+will use simulated devices to model data and interactions within the system.
 
-#### 2. Communication Protocol and Service
+#### Milestone 2
 
-By the end of the milestone the protocol will be defined and the communication service 
-will be running using simulated data. The service will only be communicating with the
-machine learning server at this time.
+This iteration will add a web interface that allows the user to control the system.
+The simulated devices from the previous milestone will be replaced with 2 real devices;
+a temperature sensor and a thermostat controller.
 
-#### 3. Sensor Communication and Discovery
+#### Milestone 3
 
-Sensor communication will all be routed through the communication service. This will use the
-communication protocol from the previous milestone. To aid in usability, when a new device is
-added to the network, it will follow a discovery protocol to add itself to the machine learning
-server's system. The discovery protocol and implementation will be completed in this milestone.
+This iteration will have a refined web user interface.  This iteration will also introduce
+device discovery. Device discovery allows new devices to be automatically added to the system 
+when they connect to the network.
 
-#### 4. Sensors and Actuators; Inputs and Control
+#### Milestone 4
 
-During the development of milestone 3, sensor reading and actuator control will be programmed.
-This can be done concurrently with the development of the communication of the sensors themselves.
-Data values will be read from sensors while control signals will need to be sent to actuators.
-The system must log both data values and control values so they can be used to learn the patterns
-of a user and apply them to the system
-
-#### 5. Gateway and Web Client
-
-The system will have a user interface for a high level user remote control. This remote will be
-controlled by a web client. This client will be served through a simple web gateway that will
-provide a simple REST API for interacting to the communication service.
-
-#### 6. Remote Record and Learn
-
-By the end of the milestone, the three modes will be added to the machine learining server. 
-The server will also use training data from a recording session instead of simulated data.
+This iteration will focus on improving the complete system developed in the first three iterations.
+We will add a motion sensor and a light control in order to test the system with multiple types
+of devices. Another goal of this iteration will be to improve the basic machine learning algorithm
+which is used for the first three iterations.
 
 ## Required Facilities
 
-This project will require access to a variety of sensors and actuators which can be manipulated 
-using a microcontroller such as an Arduino or Raspberry Pi.
+This project will require access to a variety of sensors and actuators which can be manipulated
+using a microcontroller such as an Arduino or Raspberry Pi. The required actuators and sensors are:
 
+- Temperature Sensor
+- Thermostat Controller
+- Motion Sensor
+- Light Switch Controller
 
