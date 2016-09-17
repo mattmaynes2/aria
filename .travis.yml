@@ -5,6 +5,6 @@ node_js  :
   - "6.x"
 
 before_install:
-    - "sudo ./build/envrio"
+    - "sudo ./build/enviro"
 install : "./build/install"
 script : "./build/run"
