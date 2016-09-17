@@ -1,6 +1,10 @@
 {
     "remote" : {
-        "install"   : "cd ../remote && npm install",
+        "enviro"    : "./support/pkman install node",
+        "deps"      : "cd ../remote && npm install",
         "build"     : "cd ../remote && npm run build"
+    },
+    "common" : {
+        "enviro"    : "./support/pkman install python3"
     }
 }

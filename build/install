@@ -1,9 +1,0 @@
-#!/usr/bin/env node
-
-var fs      = require('fs'),
-    exec    = require('./execute')
-
-console.log('Starting Install');
-exec(JSON.parse(fs.readFileSync(__dirname + '/manifest.json')), 'install');
-console.log('Install Complete');
-

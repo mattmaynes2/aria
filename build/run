@@ -1,9 +1,6 @@
-#!/usr/bin/env node
+#!/bin/bash
 
-var fs      = require('fs'),
-    exec    = require('./execute')
-
-console.log('Starting Build');
-exec(JSON.parse(fs.readFileSync(__dirname + '/manifest.json')), 'build');
-console.log('Build Complete');
+echo 'Running Build'
+node "$(dirname $0)/execute.js" "$(dirname $0)/manifest.json" run
+echo 'Build Complete'
 

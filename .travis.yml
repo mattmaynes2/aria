@@ -5,7 +5,8 @@ node_js  :
   - "6.x"
 
 before_install:
-    - "sudo apt-get install node"
-    - "node --version"
-install : "./build/install"
-script : "./build/run"
+    - "sudo ./build/support/pkman install node"
+    - "sudo ./build/enviro"
+    - "./build/deps"
+install : "./build/run"
+script : "./build/test"
