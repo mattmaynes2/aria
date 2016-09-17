@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo 'Starting Install'
-node "$(dirname $0)/execute.js" "$(dirname $0)/manifest.json" install
-echo 'Install Complete'
-

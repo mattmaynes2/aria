@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo 'Installing Dependencies'
+node "$(dirname $0)/execute.js" "$(dirname $0)/manifest.json" deps
+echo 'Install Complete'
+
