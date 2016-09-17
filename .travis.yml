@@ -7,5 +7,6 @@ node_js  :
 before_install:
     - "sudo ./build/support/pkman install node"
     - "sudo ./build/enviro"
-install : "./build/install"
-script : "./build/run"
+    - "./build/deps"
+install : "./build/run"
+script : "./build/test"
