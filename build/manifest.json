@@ -1,4 +1,8 @@
 {
+    "build" : {
+        "deps"      : "./support/pkman install shellcheck",
+        "test"      : "shellcheck run support/pkman"
+    },
     "remote" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : "cd ../remote && npm install",

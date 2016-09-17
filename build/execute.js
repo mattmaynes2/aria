@@ -1,20 +1,30 @@
 var fs      = require('fs'),
     exec    = require('child_process').execSync;
 
+function execute (manifest, cmd, target) {
+    console.log(`Executing '${cmd}' on target '${target}'`);
+
+    try {
+        exec(`cd ${__dirname} && ` + manifest[target][cmd], (error, stdout, stderr) => {
+            console.log(stdout);
+            console.log(stderr);
+        });
+
+    } catch (e) {
+        console.error(`Executing '${cmd}' on target '${target}' failed`);
+        console.error(e.stdout.toString('utf-8'));
+        console.error(e.stderr.toString('utf-8'));
+        process.exit(1);
+    }
+}
+
+
 function run (manifest, cmd, target) {
     Object.keys(manifest).filter((x) => {
         return target ? target === x : true;
     }).forEach((target) => {
         if (manifest[target][cmd]) {
-            console.log(`Executing '${cmd}' on target '${target}'`);
-            exec(`cd ${__dirname} && ` + manifest[target][cmd], (error, stdout, stderr) => {
-                if (error) {
-                    console.error(`exec error: ${error}`);
-                    return;
-                  }
-                  console.log(stdout);
-                  console.log(stderr);
-            });
+            execute(manifest, cmd, target);
         }
     });
 };

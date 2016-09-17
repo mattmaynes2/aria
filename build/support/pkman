@@ -33,30 +33,30 @@ function pkgmgr () {
     fi
 }
 
-function find () {
-    case $1 in
+function search () {
+    case "$1" in
         apt-get)
-            echo $(dpkg -l | grep $2)
+            dpkg -l | grep "$2"
             ;;
         yum)
-            echo $(yum list installed | grep $2)
+            yum list installed | grep "$2"
             ;;
         brew)
-            echo $(brew list | grep $2)
+            brew list | grep "$2"
             ;;
     esac
 }
 
 function install () {
-    if [ -z "$(find $1 $2)" ]; then
-        case $1 in
+    if [ -z "$(search "$1" "$2")" ]; then
+        case "$1" in
             yum) 
                 echo "Installing using: $1 install -y $2"
-                $1 install -y $2
+                "$1" install -y "$2"
                 ;;
-            *) 
+            *)
                 echo "Installing using: $1 install $2"
-                $1 install $2
+                "$1" install "$2"
                 ;;
         esac
     else
@@ -65,17 +65,17 @@ function install () {
 }
 
 function uninstall () {
-    if [ -z "$(find $1 $2)" ]; then
+    if [ -z "$(search "$1" "$2")" ]; then
         echo "Package $2 not found"
     else
-        case $1 in
+        case "$1" in
             brew)
                 echo "Uninstalling using: $1 uninstall $2"
-                $1 uninstall $2
+                "$1" uninstall "$2"
                 ;;
             *)
                 echo "Uninstalling using: $1 remove $2"
-                $1 remove $2
+                "$1" remove "$2"
                 ;;
         esac
     fi
@@ -89,16 +89,16 @@ if [ -z "$PKGMGR" ]; then
     exit 1
 fi
 
-case $1 in
+case "$1" in
     help)
         help
         exit 0
         ;;
     install)
-        install $PKGMGR $2
+        install "$PKGMGR" "$2"
         ;;
     uninstall)
-        uninstall $PKGMGR $2
+        uninstall "$PKGMGR" "$2"
         ;;
     *)
         echo "Unknown command: $1 - See pkman help for details"
