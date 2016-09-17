@@ -154,17 +154,17 @@ will contain a basic regression algorithm acting as the machine learning system.
 communication service will be operational as well as a database storage system. This initial system
 will use simulated devices to model data and interactions within the system.
 
-#### Milestone 2 
+#### Milestone 2
 
-This iteration will add the web interface that allows a user to control the system.
+This iteration will add a web interface that allows the user to control the system.
 The simulated devices from the previous milestone will be replaced with 2 real devices;
-a temperature sensor and a thermostate controller.
+a temperature sensor and a thermostat controller.
 
 #### Milestone 3
 
 This iteration will have a refined web user interface.  This iteration will also introduce
 device discovery. This allows a device to be connected and have it be recognized by the 
-system automatically.  
+system automatically.
 
 #### Milestone 4
 
@@ -175,11 +175,11 @@ which is used for the first three iterations.
 
 ## Required Facilities
 
-This project will require access to a variety of sensors and actuators which can be manipulated 
+This project will require access to a variety of sensors and actuators which can be manipulated
 using a microcontroller such as an Arduino or Raspberry Pi. The required actuators and sensors are:
+
 - Temperature Sensor
 - Thermostat Controller
 - Motion Sensor
 - Light Switch Controller
-
 
