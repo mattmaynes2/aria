@@ -163,8 +163,8 @@ a temperature sensor and a thermostat controller.
 #### Milestone 3
 
 This iteration will have a refined web user interface.  This iteration will also introduce
-device discovery. This allows a device to be connected and have it be recognized by the 
-system automatically.
+device discovery. Device discovery allows new devices to be automatically added to the system 
+when they connect to the network.
 
 #### Milestone 4
 
