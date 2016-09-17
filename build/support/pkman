@@ -33,25 +33,46 @@ function pkgmgr () {
     fi
 }
 
-
-function install () {
-    echo "Installing using: $1 install $2"
-    $1 install $2
-}
-
-
-function uninstall () {
+function find () {
     case $1 in
-        brew)
-            echo "Uninstalling using: $1 uninstall $2"
-            $1 uninstall $2
+        apt-get)
+            echo $(dpkg -l | grep $2)
             ;;
-        *)
-            echo "Uninstalling using: $1 remove $2"
-            $1 remove $2
+        yum)
+            echo $(yum list installed | grep $2)
+            ;;
+        brew)
+            echo $(brew list | grep $2)
             ;;
     esac
 }
+
+function install () {
+    if [ -z "$(find $1 $2)" ]; then
+        echo "Installing using: $1 install $2"
+        $1 install $2
+    else
+        echo "Package $2 already installed"
+    fi
+}
+
+function uninstall () {
+    if [ -z "$(find $1 $2)" ]; then
+        echo "Package $2 not found"
+    else
+        case $1 in
+            brew)
+                echo "Uninstalling using: $1 uninstall $2"
+                $1 uninstall $2
+                ;;
+            *)
+                echo "Uninstalling using: $1 remove $2"
+                $1 remove $2
+                ;;
+        esac
+    fi
+}
+
 
 PKGMGR=$(pkgmgr)
 
