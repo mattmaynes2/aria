@@ -1,0 +1,81 @@
+#!/bin/sh
+
+set -e
+
+NAME='pkman'
+VERSION='0.0.1'
+HELP='
+  Usage pkman [cmd]
+    Performs package manager operations on various operating systems using the
+    default platform package manager.
+
+  Options:
+    help            Displays this message and exit
+    install [pkg]   Installs the given package on this system
+    uninstall [pkg] Removes the given package from this system
+'
+
+function info () {
+    echo -e "$NAME $VERSION $HELP"
+}
+
+function pkgmgr () {
+    if [ "$(uname)" = "Darwin" ]; then
+        echo "brew"
+    fi
+
+    if [ -n "$(which yum)" ]; then
+        echo "yum"
+    fi
+
+    if [ -n "$(which apt-get)" ]; then
+        echo "apt-get"
+    fi
+}
+
+
+function install () {
+    echo "Installing using: $1 install $2"
+    $1 install $2
+}
+
+
+function uninstall () {
+    case $1 in
+        brew)
+            echo "Uninstalling using: $1 uninstall $2"
+            $1 uninstall $2
+            ;;
+        *)
+            echo "Uninstalling using: $1 remove $2"
+            $1 remove $2
+            ;;
+    esac
+}
+
+PKGMGR=$(pkgmgr)
+
+if [ -z "$PKGMGR" ]; then
+    echo "Unknown platform: $(uname)"
+    exit 1
+fi
+
+case $1 in
+    help)
+        help
+        exit 0
+        ;;
+    install)
+        install $PKGMGR $2
+        ;;
+    uninstall)
+        uninstall $PKGMGR $2
+        ;;
+    *)
+        echo "Unknown command: $1 - See pkman help for details"
+        exit 1
+        ;;
+esac
+
+
+
