@@ -30,6 +30,7 @@ function execute () {
     TARGET="$5"
 
     echo "$START"
+    echo "Executing: node $EXECUTOR $MANIFEST $CMD $TARGET"
     node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
 
     echo "Exited with status $?"
