@@ -10,20 +10,23 @@
         "test"      : "npm test && shellcheck run support/pkman"
     },
     "ctrl-serve"    : {
-        "deps"      : "../ctrl-serve/setup.py develop",
-        "build"     : "../ctrl-serve/setup.py bdist_egg",
-        "test"      : "../ctrl-serve/setup.py test"
+        "deps"      : "cd ../ctrl-serve && ./setup.py develop",
+        "build"     : "cd ../ctrl-serve && ./setup.py bdist_egg",
+        "test"      : "cd ../ctrl-serve && ./setup.py test",
+        "clean"     : "cd ../ctrl-serve && ./setup.py clean"
     },
     "remote" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : "cd ../remote && npm install",
         "build"     : "cd ../remote && npm run build",
-        "test"      : "cd ../remote && npm test"
+        "test"      : "cd ../remote && npm test",
+        "clean"     : "cd ../remote && rm -rf node_modules bin"
     },
     "gateway" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : "cd ../gateway && npm install",
         "build"     : "cd ../gateway && npm run build",
-        "test"      : "cd ../gateway && npm test"
+        "test"      : "cd ../gateway && npm test",
+        "clean"     : "cd ../gateway && rm -rf node_modules bin"
     }
 }

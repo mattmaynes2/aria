@@ -15,6 +15,7 @@ HELP='
     enviro      Installs environmental dependencies
     deps        Installs project specific dependencies
     build       Builds and package project
+    clean       Cleans the build resources
     tests       Runs test configurations for project
 '
 
@@ -52,6 +53,10 @@ function build () {
     execute "build" "Running Build" "Build Complete" "Build Failed" "$1"
 }
 
+function clean () {
+    execute "clean" "Running Clean" "Clean Complete" "Clean Failed" "$1"
+}
+
 function tests () {
     execute "test" "Running Tests" "Tests Complete" "Tests Failed" "$1"
 }
@@ -79,6 +84,9 @@ case "$1" in
         ;;
     build)
         build "$2"
+        ;;
+    clean)
+        clean "$2"
         ;;
     test)
         tests "$2"
