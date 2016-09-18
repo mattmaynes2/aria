@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 MANIFEST="$(dirname "$0")/manifest.json"
 EXECUTOR="$(dirname "$0")/execute.js"
 
