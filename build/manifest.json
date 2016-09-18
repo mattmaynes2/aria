@@ -1,4 +1,10 @@
 {
+    "common.javascript" : {
+        "enviro"    : "sudo npm install -g phantomjs-prebuilt"
+    },
+    "common.python" : {
+        "enviro"    : "./support/pkman install python3"
+    },
     "build" : {
         "deps"      : "npm install && ./support/pkman install shellcheck",
         "test"      : "npm test && shellcheck run support/pkman"
@@ -14,8 +20,5 @@
         "deps"      : "cd ../gateway && npm install",
         "build"     : "cd ../gateway && npm run build",
         "test"      : "cd ../gateway && npm test"
-    },
-    "common.python" : {
-        "enviro"    : "./support/pkman install python3"
     }
 }

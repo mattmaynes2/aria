@@ -26,7 +26,6 @@
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-webpack": "^1.8.0",
-    "phantomjs-prebuilt": "^2.1.12",
     "webpack": "^1.13.2"
   },
   "scripts": {
