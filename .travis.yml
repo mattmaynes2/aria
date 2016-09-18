@@ -3,7 +3,7 @@ dist: trusty
 language : python3
 before_install:
     - "sudo apt-get update"
-    - "sudo apt-get install -y nodejs"
+    - "sudo apt-get install -y node"
     - "node --version"
     - "sudo ./build/run enviro"
     - "sudo ./build/run deps"
