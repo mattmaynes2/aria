@@ -1,20 +1,21 @@
 var webpack     = require('webpack'),
-    externals   = require('webpack-node-externals'),
-    Shell       = require('webpack-shell-plugin');
+    externals   = require('webpack-node-externals');
 
 var output = {
         path        : __dirname + '/bin',
         filename    : 'gateway'
     },
-    outfile = output.path + '/' + output.filename;
+    config = {
+        entry       : __dirname + '/src/gateway.js',
+        target      : 'node',
+        externals   : [externals()],
+        output      : output,
+    };
 
-module.exports = {
-    entry       : __dirname + '/src/gateway.js',
-    target      : 'node',
-    externals   : [externals()],
-    output      : output,
-    plugins     : [
-        new webpack.BannerPlugin('#!/usr/bin/env node\n', { raw : true }),
-        new Shell({ onBuildEnd : ['chmod +x ' + outfile] })
-    ]
-};
+if (process.argv.indexOf('--executable') >= 0) {
+    config.plugins = [
+        new webpack.BannerPlugin('#!/usr/bin/env node\n', { raw : true })
+    ];
+}
+
+module.exports = config;

@@ -6,12 +6,14 @@
     "remote" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : "cd ../remote && npm install",
-        "build"     : "cd ../remote && npm run build"
+        "build"     : "cd ../remote && npm run build",
+        "test"      : "cd ../remote && npm test"
     },
     "gateway" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : "cd ../gateway && npm install",
-        "build"     : "cd ../gateway && npm run build"
+        "build"     : "cd ../gateway && npm run build",
+        "test"      : "cd ../gateway && npm test"
     },
     "common.python" : {
         "enviro"    : "./support/pkman install python3"

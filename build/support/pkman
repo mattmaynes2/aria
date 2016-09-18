@@ -47,7 +47,7 @@ function search () {
     esac
 }
 
-function install () {
+function pkinstall () {
     if [ -z "$(search "$1" "$2")" ]; then
         case "$1" in
             brew)
@@ -56,7 +56,7 @@ function install () {
                 ;;
             *)
                 echo "Installing using: $1 install -y $2"
-                sudo "$1" "install" -y "$2"
+                sudo "$1" install -y "$2"
                 ;;
         esac
     else
@@ -64,7 +64,7 @@ function install () {
     fi
 }
 
-function uninstall () {
+function pkuninstall () {
     if [ -z "$(search "$1" "$2")" ]; then
         echo "Package $2 not found"
     else
@@ -95,10 +95,10 @@ case "$1" in
         exit 0
         ;;
     install)
-        install "$PKGMGR" "$2"
+        pkinstall "$PKGMGR" "$2"
         ;;
     uninstall)
-        uninstall "$PKGMGR" "$2"
+        pkuninstall "$PKGMGR" "$2"
         ;;
     *)
         echo "Unknown command: $1 - See pkman help for details"
