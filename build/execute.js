@@ -32,11 +32,8 @@ function run (manifest, cmd, target) {
     });
 }
 
-console.log('Reading Manifest');
 manifest = process.argv[2];
 target = process.argv[4];
-
-console.log('Executing ' + process.argv[3] + (target ? ' on target ' + target : ''));
 
 run(JSON.parse(fs.readFileSync(manifest)), process.argv[3], target);
 

@@ -30,11 +30,8 @@ function execute () {
     TARGET="$5"
 
     echo "$START"
-    echo "Executing: node $EXECUTOR $MANIFEST $CMD $TARGET"
-    echo "node version: $(node --version)"
     node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
 
-    echo "Exited with status $?"
     if [ 0 -ne $? ]; then
         echo "$FAILED"
         kill -INT $$
