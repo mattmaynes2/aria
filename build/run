@@ -33,9 +33,7 @@ function execute () {
 
     echo "$START"
     V="$(node --version)"
-    node -e "console.log('123')"
-    #node "test.js"
-    #    node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
+     "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
 
     if [ 0 -ne $? ]; then
         echo "$FAILED"
