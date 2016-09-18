@@ -32,12 +32,12 @@ function execute () {
     echo "$START"
     "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
 
-    if [ 0 -ne $? ]; then
-        echo "$FAILED"
-        kill -INT $$
-    else
-        echo "$SUCCESS"
-    fi
+#    if [ 0 -ne $? ]; then
+#        echo "$FAILED"
+#        kill -INT $$
+#    else
+#        echo "$SUCCESS"
+#    fi
 }
 
 function enviro () {
