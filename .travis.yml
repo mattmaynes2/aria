@@ -7,6 +7,7 @@ before_install:
     - "sudo ./build/support/pkman install node"
     - "node --version"
     - "echo $PATH"
+    - "sudo which node"
     - "sudo ./build/run enviro"
     - "sudo ./build/run deps"
 install : "./build/run build"
