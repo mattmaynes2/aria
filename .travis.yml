@@ -5,6 +5,8 @@ node_js:
     - "6"
 before_install:
     - "sudo ./build/support/pkman install node"
+    - "node --version"
+    - "echo $PATH"
     - "sudo ./build/run enviro"
     - "sudo ./build/run deps"
 install : "./build/run build"
