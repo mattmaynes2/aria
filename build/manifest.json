@@ -1,6 +1,6 @@
 {
     "common.javascript" : {
-        "enviro"    : "sudo npm install -g phantomjs-prebuilt"
+        "enviro"    : "npm install -g phantomjs-prebuilt"
     },
     "common.python" : {
         "enviro"    : "./support/pkman install python3"

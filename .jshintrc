@@ -63,6 +63,8 @@
 
     // Environments
     "node"          : true,     // Node.js
+    "browser"       : true,     // Web browser
+    "jasmine"       : true,
 
     // Custom Globals
     "globals"       : {}        // additional predefined global variables

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 var fs      = require('fs'),
     exec    = require('child_process').execSync,
     manifest, target;
