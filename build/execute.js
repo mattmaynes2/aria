@@ -2,10 +2,12 @@ var fs      = require('fs'),
     exec    = require('child_process').execSync;
 
 function execute (manifest, cmd, target) {
+    var fullcmd = `cd ${__dirname} && ` + manifest[target][cmd];
+
     console.log(`Executing '${cmd}' on target '${target}'`);
 
     try {
-        exec(`cd ${__dirname} && ` + manifest[target][cmd], (error, stdout, stderr) => {
+        exec(fullcmd, (error, stdout, stderr) => {
             console.log(stdout);
             console.log(stderr);
         });
@@ -27,8 +29,7 @@ function run (manifest, cmd, target) {
             execute(manifest, cmd, target);
         }
     });
-};
+}
 
-
-run(JSON.parse(fs.readFileSync(process.argv[2])), process.argv[3], process.argv[4])
+run(JSON.parse(fs.readFileSync(process.argv[2])), process.argv[3], process.argv[4]);
 

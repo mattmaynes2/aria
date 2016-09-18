@@ -1,7 +1,7 @@
 {
     "build" : {
-        "deps"      : "./support/pkman install shellcheck",
-        "test"      : "shellcheck run support/pkman"
+        "deps"      : "npm install && ./support/pkman install shellcheck",
+        "test"      : "npm test && shellcheck run support/pkman"
     },
     "remote" : {
         "enviro"    : "./support/pkman install node",

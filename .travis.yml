@@ -4,6 +4,6 @@ language : python3
 before_install:
     - "sudo ./build/support/pkman install node"
     - "sudo ./build/run enviro"
-    - "./build/run deps"
+    - "sudo ./build/run deps"
 install : "./build/run build"
 script : "./build/run test"
