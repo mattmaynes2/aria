@@ -1,6 +1,103 @@
 #!/bin/bash
 
-echo 'Running Build'
-node "$(dirname $0)/execute.js" "$(dirname $0)/manifest.json" run
-echo 'Build Complete'
+MANIFEST="$(dirname "$0")/manifest.json"
+EXECUTOR="$(dirname "$0")/execute.js"
+
+NAME='run'
+VERSION='0.1.0'
+HELP='
+  Usage: run cmd [target]
+    Performs the given build command. If a target is specified then run the
+    command on just the given target.
+
+  Commands:
+    help        Displays this message and exit
+    enviro      Installs environmental dependencies
+    deps        Installs project specific dependencies
+    build       Builds and package project
+    clean       Cleans the build resources
+    tests       Runs test configurations for project
+'
+
+function info () {
+    echo -e "$NAME $VERSION $HELP"
+}
+
+function execute () {
+    CMD="$1"
+    START="$2"
+    SUCCESS="$3"
+    FAILED="$4"
+    TARGET="$5"
+
+    echo "$START"
+    node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
+
+    if [ 0 -ne $? ]; then
+        echo "$FAILED"
+        kill -INT $$
+    else
+        echo "$SUCCESS"
+    fi
+}
+
+function enviro () {
+    execute "enviro" "Installing Environment" "Installation Complete" "Install Failed" "$1"
+}
+
+function deps () {
+    execute "deps" "Installing Dependencies" "Installation Complete" "Install Failed" "$1"
+}
+
+function build () {
+    execute "build" "Running Build" "Build Complete" "Build Failed" "$1"
+}
+
+function clean () {
+    execute "clean" "Running Clean" "Clean Complete" "Clean Failed" "$1"
+}
+
+function tests () {
+    execute "test" "Running Tests" "Tests Complete" "Tests Failed" "$1"
+}
+
+function all () {
+    TARGET="$1"
+
+    echo "Running Full Build"
+
+    enviro "$TARGET"
+    deps "$TARGET"
+    build "$TARGET"
+    tests "$TARGET"
+}
+
+case "$1" in
+    help|"")
+        info
+        ;;
+    enviro)
+        enviro "$2"
+        ;;
+    deps)
+        deps "$2"
+        ;;
+    build)
+        build "$2"
+        ;;
+    clean)
+        clean "$2"
+        ;;
+    test)
+        tests "$2"
+        ;;
+    all)
+        all "$2"
+        ;;
+    *)
+        echo "Unknown command $1 - see help for details"
+        exit 1
+        ;;
+esac
+
 

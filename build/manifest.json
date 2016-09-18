@@ -1,10 +1,32 @@
 {
+    "common.javascript" : {
+        "enviro"    : "npm install -g phantomjs-prebuilt"
+    },
+    "common.python" : {
+        "enviro"    : "./support/pkman install python3"
+    },
+    "build" : {
+        "deps"      : "npm install && ./support/pkman install shellcheck",
+        "test"      : "npm test && shellcheck run support/pkman"
+    },
+    "ctrl-serve"    : {
+        "deps"      : "cd ../ctrl-serve && ./setup.py develop",
+        "build"     : "cd ../ctrl-serve && ./setup.py bdist_egg",
+        "test"      : "cd ../ctrl-serve && ./setup.py test",
+        "clean"     : "cd ../ctrl-serve && ./setup.py clean"
+    },
     "remote" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : "cd ../remote && npm install",
-        "build"     : "cd ../remote && npm run build"
+        "build"     : "cd ../remote && npm run build",
+        "test"      : "cd ../remote && npm test",
+        "clean"     : "cd ../remote && rm -rf node_modules bin"
     },
-    "common" : {
-        "enviro"    : "./support/pkman install python3"
+    "gateway" : {
+        "enviro"    : "./support/pkman install node",
+        "deps"      : "cd ../gateway && npm install",
+        "build"     : "cd ../gateway && npm run build",
+        "test"      : "cd ../gateway && npm test",
+        "clean"     : "cd ../gateway && rm -rf node_modules bin"
     }
 }
