@@ -32,7 +32,8 @@ function execute () {
     TARGET="$5"
 
     echo "$START"
-    node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
+    node ./build/test.js 
+    #    node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
 
     if [ 0 -ne $? ]; then
         echo "$FAILED"
