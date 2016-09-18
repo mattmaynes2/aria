@@ -2,7 +2,7 @@ sudo: required
 dist: trusty
 language : python3
 node_js:
-    - "4.x"
+    - "6"
 before_install:
     - "sudo ./build/support/pkman install node"
     - "sudo ./build/run enviro"
