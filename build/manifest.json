@@ -9,6 +9,11 @@
         "deps"      : "npm install && ./support/pkman install shellcheck",
         "test"      : "npm test && shellcheck run support/pkman"
     },
+    "ctrl-serve"    : {
+        "deps"      : "../ctrl-serve/setup.py develop",
+        "build"     : "../ctrl-serve/setup.py bdist_egg",
+        "test"      : "../ctrl-serve/setup.py test"
+    },
     "remote" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : "cd ../remote && npm install",
