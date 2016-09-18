@@ -5,7 +5,7 @@ node_js:
     - "6"
 before_install:
     - "sudo ./build/support/pkman install node"
-    - "node --version"
+    - "sudo node --version"
     - "sudo echo $PATH"
     - "sudo which node"
     - "sudo ./build/run enviro"
