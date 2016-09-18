@@ -32,7 +32,7 @@ function execute () {
     TARGET="$5"
 
     echo "$START"
-    node --version
+    V="$(node --version)"
     node -e "console.log('123')"
     #node "test.js"
     #    node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
