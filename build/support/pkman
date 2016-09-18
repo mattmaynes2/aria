@@ -50,13 +50,13 @@ function search () {
 function install () {
     if [ -z "$(search "$1" "$2")" ]; then
         case "$1" in
-            yum) 
-                echo "Installing using: $1 install -y $2"
-                "$1" install -y "$2"
-                ;;
-            *)
+            brew)
                 echo "Installing using: $1 install $2"
                 "$1" install "$2"
+                ;;
+            *)
+                echo "Installing using: $1 install -y $2"
+                "$1" install -y "$2"
                 ;;
         esac
     else
