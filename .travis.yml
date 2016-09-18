@@ -2,9 +2,7 @@ sudo: required
 dist: trusty
 language : python3
 before_install:
-    - "sudo apt-get update"
-    - "sudo apt-get install -y node"
-    - "node --version"
+    - "sudo ./build/support/pkman install -y node"
     - "sudo ./build/run enviro"
     - "sudo ./build/run deps"
 install : "./build/run build"
