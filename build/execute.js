@@ -1,5 +1,6 @@
 var fs      = require('fs'),
-    exec    = require('child_process').execSync;
+    exec    = require('child_process').execSync,
+    manifest, target;
 
 function execute (manifest, cmd, target) {
     var fullcmd = `cd ${__dirname} && ` + manifest[target][cmd];
@@ -31,5 +32,11 @@ function run (manifest, cmd, target) {
     });
 }
 
-run(JSON.parse(fs.readFileSync(process.argv[2])), process.argv[3], process.argv[4]);
+console.log('Reading Manifest');
+manifest = process.argv[2];
+target = process.argv[4];
+
+console.log('Executing ' + process.argv[3] + (target ? ' on target ' + target : ''));
+
+run(JSON.parse(fs.readFileSync(manifest)), process.argv[3], target);
 
