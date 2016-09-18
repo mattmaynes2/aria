@@ -4,11 +4,8 @@ language : python3
 node_js:
     - "6"
 before_install:
-    - "sudo ./build/support/pkman install node"
-    - "sudo \"PATH=$PATH\" node --version"
-    - "sudo echo $PATH"
-    - "sudo which node"
-    - "sudo ./build/run enviro"
-    - "sudo ./build/run deps"
+    - "./build/support/pkman install node"
+    - "./build/run enviro"
+    - "./build/run deps"
 install : "./build/run build"
 script : "./build/run test"

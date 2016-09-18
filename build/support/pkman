@@ -36,10 +36,10 @@ function pkgmgr () {
 function search () {
     case "$1" in
         apt-get)
-            dpkg -l | grep -e "$2"
+            sudo dpkg -l | grep -e "$2"
             ;;
         yum)
-            yum list installed | grep -e "$2"
+            sudo yum list installed | grep -e "$2"
             ;;
         brew)
             brew list | grep -e "$2"
@@ -56,7 +56,7 @@ function install () {
                 ;;
             *)
                 echo "Installing using: $1 install -y $2"
-                "$1" install -y "$2"
+                sudo "$1" "install" -y "$2"
                 ;;
         esac
     else
@@ -75,7 +75,7 @@ function uninstall () {
                 ;;
             *)
                 echo "Uninstalling using: $1 remove $2"
-                "$1" remove "$2"
+                sudo "$1" remove "$2"
                 ;;
         esac
     fi
