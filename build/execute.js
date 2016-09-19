@@ -1,11 +1,15 @@
 var fs      = require('fs'),
-    exec    = require('child_process').execSync,
-    manifest, target;
+    exec    = require('child_process').execSync;
 
-function execute (manifest, cmd, target) {
-    var fullcmd = `cd ${__dirname} && ` + manifest[target][cmd];
+function shellJoin (cmd) {
+    return Array.isArray(cmd) ? cmd.join(' && ') : cmd;
+}
 
-    console.log(`Executing '${cmd}' on target '${target}'`);
+function execute (manifest, directive, target) {
+    var cmd         = shellJoin(manifest[target][directive]),
+        fullcmd     = `cd ${__dirname} && ` + cmd;
+
+    console.log(`Executing '${directive}' on target '${target}'`);
 
     try {
         exec(fullcmd, (error, stdout, stderr) => {
@@ -14,7 +18,7 @@ function execute (manifest, cmd, target) {
         });
 
     } catch (e) {
-        console.error(`Executing '${cmd}' on target '${target}' failed`);
+        console.error(`Executing '${directive}' on target '${target}' failed`);
         console.error(e.stdout.toString('utf-8'));
         console.error(e.stderr.toString('utf-8'));
         process.exit(1);
@@ -22,18 +26,19 @@ function execute (manifest, cmd, target) {
 }
 
 
-function run (manifest, cmd, target) {
+function run (manifest, directive, target) {
     Object.keys(manifest).filter((x) => {
         return target ? target === x : true;
     }).forEach((target) => {
-        if (manifest[target][cmd]) {
-            execute(manifest, cmd, target);
+        if (manifest[target][directive]) {
+            execute(manifest, directive, target);
         }
     });
 }
 
-manifest = process.argv[2];
-target = process.argv[4];
+var manPath     = process.argv[2],
+    directive   = process.argv[3],
+    target      = process.argv[4],
+    manifest    = JSON.parse(fs.readFileSync(manPath));
 
-run(JSON.parse(fs.readFileSync(manifest)), process.argv[3], target);
-
+run(manifest, directive, target);

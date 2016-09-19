@@ -1,7 +1,7 @@
 *~
 *.swp
-build/
-bin/
-lib/
-node_modules/
+*/build/*
+*/bin/*
+*/lib/*
+*/node_modules/*
 
