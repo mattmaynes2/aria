@@ -1,13 +1,13 @@
 {
-  "name": "build",
-  "version": "0.2.0",
-  "description": "Build configuration for smart-learning platform",
-  "main": "execute.js",
-  "scripts": {
-    "test": "./node_modules/jshint/bin/jshint"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "jshint": "^2.9.3"
-  }
+    "name": "build",
+    "version": "0.2.0",
+    "description": "Build configuration for smart-learning platform",
+    "main": "execute.js",
+    "scripts": {
+        "test": "./node_modules/jshint/bin/jshint execute.js"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "jshint": "^2.9.3"
+    }
 }
