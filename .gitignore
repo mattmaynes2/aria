@@ -1,0 +1,35 @@
+# Git Ignore
+# ==========
+#
+# Only source code should be checked into the repository. All metadata, configuration,
+# temporary or generated files should be excluded from source control. If a resource
+# must be added that breaks these conventions then it should be reviewed by at least
+# 2 people. Feel free to add exclusions to this ignore but do not remove them.
+
+# Hidden Files
+.*
+
+# Autosaves
+*~
+\#*\#
+
+# Binary files
+*.o
+
+# Reports
+*.doc*
+*.pdf
+
+# Output
+bin
+build
+dist
+
+# Python
+__pycache__
+*.egg-info
+*.pyc
+
+# Resources
+node_modules
+framework

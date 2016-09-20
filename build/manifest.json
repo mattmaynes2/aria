@@ -34,5 +34,14 @@
         "build"     : ["cd ../gateway", "npm run build"],
         "test"      : ["cd ../gateway", "npm test"],
         "clean"     : ["cd ../gateway", "rm -rf node_modules bin"]
+    },
+    "reports" : {
+        "enviro" : "./support/pkman install pandoc"
+    },
+    "reports.proposal" : {
+        "build" : [
+            "cd ../reports/proposal",
+            "pandoc --to docx --from markdown -o proposal.docx proposal.md"
+        ]
     }
 }
