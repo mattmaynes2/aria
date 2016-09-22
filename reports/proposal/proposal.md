@@ -137,41 +137,85 @@ monitoring.
 
 ## Schedule
 
-| Milestone  | Date                |
-| :--------: | ----------------    |
-| 1          | October 9th, 2016   |
-| 2          | November 13th, 2016 |
-| 3          | January  8th, 2016  |
-| 4          | February 19th, 2016 |
+### Iteration 1
+> October 5, 2016
+
+- Arduino micro-controller hooked up to a voltage relay
+- Relay hooked up to a single light switch
+- A single button to toggle the state of the light
+
+### Iteration 2
+> October 12, 2016
+
+- Light sensor reading values
+- Arduinos communicating to central server
+
+### Iteration 3
+> October 19, 2016
+
+- Light sensor communication to light controller
+
+### Iteration 4
+> October 26, 2016
+
+- Arduino motor that moves a curtain track
+- Button that control Arduino motor
+
+### Iteration 5
+> November 2, 2016
+
+- Add communication to curtain Arduino
+
+### Iteration 6
+> November 9, 2016
+
+- Web API
+
+### Iteration 7
+> November 16, 2016
+
+- Static functioning web interface
+
+### Iteration 8
+> November 23, 2016
+
+- Add temperature control buttons
+- Add temperature LED display
+
+### Iteration 9
+> November 30, 2016
+
+- Add temperature device communication
+
+### Iteration 10
+> December 7, 2016
+
+- Add basic decision making software
+
+#### Milestone: Minimum Viable Product
+
+### Iteration 11
+> January 4, 2017
+
+- Add device discovery
+
+### Iteration 12
+> January 11, 2017
+
+- Improved web client
+
+### Iteration 13
+> January 18, 2107
+
+- Improved decision making
+
+### Iteration 14
+> January 25, 2017
+
+- Add record and learn
 
 
-### Milestones
-
-#### Milestone 1
-
-This iteration will contain the minimal viable product for the smart building system. This iteration
-will contain a basic regression algorithm acting as the machine learning system. The system's central
-communication service will be operational as well as a database storage system. This initial system
-will use simulated devices to model data and interactions within the system.
-
-#### Milestone 2
-
-This iteration will add a web interface that allows the user to control the system.
-The simulated devices from the previous milestone will be replaced with 2 real devices;
-a temperature sensor and a thermostat controller.
-
-#### Milestone 3
-
-This iteration will have a refined web user interface.  This iteration will also introduce
-device discovery. Device discovery allows new devices to be automatically added to the system 
-when they connect to the network.
-
-#### Milestone 4
-
-This iteration will focus on improving the complete system developed in the first three iterations.
-We will add a motion sensor and a light control in order to test the system with multiple types
-of devices. Another goal of this iteration will be to improve the basic machine learning algorithm
-which is used for the first three iterations.
+##### Milestone: Complete System
 
 ## Required Facilities
 
