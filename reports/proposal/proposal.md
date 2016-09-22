@@ -219,11 +219,11 @@ monitoring.
 
 ## Required Facilities
 
-This project will require access to a variety of sensors and actuators which can be manipulated
-using a microcontroller such as an Arduino or Raspberry Pi. The required actuators and sensors are:
-
+- 4 Arduinos
+- Photo Transistor
 - Temperature Sensor
-- Thermostat Controller
-- Motion Sensor
-- Light Switch Controller
+- Analog Temperature
+- Standard 16x2 LCD
+- AC voltage relay
+
 
