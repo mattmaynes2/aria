@@ -155,6 +155,8 @@ monitoring.
 
 - Light sensor communication to light controller
 
+#### Milestone: Automated Lighting Control
+
 ### Iteration 4
 > October 26, 2016
 
@@ -166,6 +168,8 @@ monitoring.
 
 - Add communication to curtain Arduino
 
+##### Milestone: Automated Curtain Control
+
 ### Iteration 6
 > November 9, 2016
 
@@ -175,6 +179,8 @@ monitoring.
 > November 16, 2016
 
 - Static functioning web interface
+
+#### Milestone: Functional Web Interface
 
 ### Iteration 8
 > November 23, 2016
@@ -187,17 +193,19 @@ monitoring.
 
 - Add temperature device communication
 
+#### Milestone: Automated Temperature Control
+
 ### Iteration 10
 > December 7, 2016
 
 - Add basic decision making software
 
-#### Milestone: Minimum Viable Product
-
 ### Iteration 11
 > January 4, 2017
 
 - Add device discovery
+
+#### Milestone: Automated Configuration
 
 ### Iteration 12
 > January 11, 2017
@@ -213,7 +221,6 @@ monitoring.
 > January 25, 2017
 
 - Add record and learn
-
 
 ##### Milestone: Complete System
 
