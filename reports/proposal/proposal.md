@@ -238,11 +238,26 @@ on the team to have a good understanding of the entire system.
 
 ## Required Facilities
 
-- 4 Arduinos
+### 4 Arduinos
+
+These will be used for interfacing with senosrs and controlling motors. Two different devices were
+considered for this role; an Arduino and a Raspberry Pi. The size of an Arduino is much smaller than
+a Raspberry Pi and therefore more applicable to the embedded device use case. Working with hardware
+from a Rasperry Pi requires more accessories than an Arduino and is therefore more difficult to setup
+than an Arduino.
+
+### Sensors
+
 - Photo Transistor
 - Digital Temperature Sensor
+
+### Output Devices
+
 - Standard 16x2 LCD
 - AC voltage relay
+
+### Control Devices
+
 - (10) Buttons
 
 
