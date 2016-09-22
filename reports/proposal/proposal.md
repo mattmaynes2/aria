@@ -221,7 +221,7 @@ monitoring.
 
 - 4 Arduinos
 - Photo Transistor
-- Analog Temperature Sensor
+- Digital Temperature Sensor
 - Standard 16x2 LCD
 - AC voltage relay
 - (10) Buttons
