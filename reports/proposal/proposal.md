@@ -137,6 +137,12 @@ monitoring.
 
 ## Schedule
 
+We decided to break the iteraciton down based on what we can commit on week by week basis.
+This was so that we can commit to a set of objectives for each week with concerete goals.
+This will allow us to have a product that alwyas in a working state. This also provides a
+rough timeline for all developement of the system to achive the original use cases.
+
+
 ### Iteration 1
 > October 5, 2016
 
