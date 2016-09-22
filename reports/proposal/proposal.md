@@ -224,6 +224,12 @@ monitoring.
 
 ##### Milestone: Complete System
 
+## Team Responsibilites
+
+Responsibilites will change on an iteration by iteration basis. Each team member will
+rotate and contribute to different elements of the system. This will allow each member
+on the team to have a good understanding of the entire system.
+
 ## Required Facilities
 
 - 4 Arduinos
