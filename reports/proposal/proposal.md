@@ -93,6 +93,11 @@ various stimuli. The home automation system should be capable of automating the 
 
 ### Curtain Automation
 
+The home automation system should be able to detect the current temperature and light levels
+to do the following:
+- Open curtains when cool inside and sunny outside
+- Close curtains when warm inside and sunny outside
+
 ### Temperature Automation
 
 
