@@ -93,6 +93,11 @@ energy, the home automation system should be capable of automating the following
 
 ### Curtain Automation
 
+The home automation system should be able to detect the current temperature and light levels
+to do the following:
+- Open curtains when cool inside and sunny outside
+- Close curtains when warm inside and sunny outside
+
 ### Temperature Automation
 
 ## Schedule
