@@ -88,8 +88,6 @@ various stimuli. The home automation system should be capable of automating the 
 - Turn off lights at a given time
 - Turn on lights when dark outside
 - Turn off lights when light outside
-- Turn off lights when no one in room
-- Turn on lights when occupant enters room
 
 ### Curtain Automation
 
