@@ -73,67 +73,17 @@ This system will support dynamic updates to the configuration of sensors and act
 and removing new devices from the system will be minimal. The learning algorithm will then adjust to take these
 new devices into account when altering or maintaining the environment.
 
-## Technical Overview
+## Scenarios
 
-This project consists of several smaller components that will be described in more detail in this
-section. The following is a list of the high level technical components of the system.
+In order to create concrete goals for the project, we have identified a collection of scenarios. Each
+scenario describes a common situation which occurs in a home's environment, and how the home
+automation system should respond.
 
-#### Machine Learning Algorithm
+### Light Automation
 
-The machine learning algorithm will accept tables of categorical and numerical data which will be
-used to produce sets of decisions based on historical events. The implementation of this algorithm 
-will be configurable and tunable for optimal output.
+### Curtain Automation
 
-#### Training Method
-
-The server will be trained using a watch and learn method. A user will train the system
-by using a web interface or manual controls. The user will enter the desired action, and
-the server will associate the current sensor information with the desired state. The server
-will have the following two modes: record and learn and assisted. 
-
-In record and learn mode, the server makes no decisions on its own. It records the user's interactions with the 
-system and logs them in a database. It will then use this information to make future estimations about
-desired behaviour.
-
-Assisted mode allows the server to make decisions, but will continue to receive user direction about expected 
-behaviour. The system will record all user interactions, using them for behaviour prediction. The system
-makes its own decisions, while still accepting feedback from the user.
-
-
-#### Central Control Server
-
-This server will contain the machine learning algorithm as well as database management for logging
-device inputs and control events. These events will also be stored with the expected outputs
-so that they can be used for future decisions. The central server will also be responsible for
-communicating to the communication service.
-
-#### Communication Service
-
-The communication service is the central node for all communications in the network. It is responsible for
-forwarding all messages to the appropriate devices in the system. It is the only component that will communicate
-directly with the central server. All devices will communicate with the communication service using a special 
-protocol that will be designed for this system.
-
-#### Devices
-
-To interact with the physical world, different embedded devices will be used in the system. These
-devices will use sensors and actuators to record different properties and interact with their environment.
-The devices will use a discovery protocol to automatically add themselves to the network. This will make
-configuration simple and dynamic. Once the device is connected, it will be added to the machine learning 
-server and be logged and controlled with the other devices.
-
-#### HTTP Gateway
-
-The gateway is a thin HTTP wrapper around the communication interface's API and acts as a bridge
-between the web client and the core services. The gateway will serve the web pages for the web client
-and provide a RESTful API for interacting with the communication protocol.
-
-#### Web Interface
-
-The web interface provides direct user interaction through a graphical user interface. This
-interface will communicate through the HTTP gateway using a RESTful API. The web client will
-provide remote control capabilities, allow for device simulation, and provide overall information
-monitoring.
+### Temperature Automation
 
 ## Schedule
 
