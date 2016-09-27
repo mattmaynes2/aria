@@ -82,17 +82,18 @@ automation system should respond.
 ### Light Automation
 
 Nearly every room contains several lights which need to be adjusted regularly in response to
-various stimuli. The home automation system should be capable of automating the following tasks:
+various stimuli. It is very common for occupants to forget to turn off lights when they are
+not in use, leading to and unnecessary waste of money and energy. In order to save money and
+energy, the home automation system should be capable of automating the following tasks:
 
-- Turn on lights at a given time
-- Turn off lights at a given time
-- Turn on lights when dark outside
-- Turn off lights when light outside
+* Turn on lights at a given time
+* Turn off lights at a given time
+* Turn on lights when dark outside
+* Turn off lights when light outside
 
 ### Curtain Automation
 
 ### Temperature Automation
-
 
 ## Schedule
 
@@ -100,8 +101,8 @@ The project has been broken down into several week long iterations. The focus of
 is to introduce a useful (demoable) feature to the system. By breaking the project into 
 demoable iterations, we will be able to commit to a set of concrete goals on a weekly basis. 
 The emphasis on demoable increments will allow us to have a product that always in a working state.
-Iterations have been grouped into largermilestones; each milestone marks the implementation of a 
-complete use case. 
+Iterations have been grouped into larger milestones; each milestone marks the implementation of 
+one of the scenarios described in the previous section.
 
 ### Iteration 1
 > October 5, 2016
