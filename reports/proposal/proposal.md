@@ -137,11 +137,12 @@ monitoring.
 
 ## Schedule
 
-We decided to break the iteraciton down based on what we can commit on week by week basis.
-This was so that we can commit to a set of objectives for each week with concerete goals.
-This will allow us to have a product that alwyas in a working state. This also provides a
-rough timeline for all developement of the system to achive the original use cases.
-
+The project has been broken down into several week long iterations. The focus of each iteration 
+is to introduce a useful (demoable) feature to the system. By breaking the project into 
+demoable iterations, we will be able to commit to a set of concrete goals on a weekly basis. 
+The emphasis on demoable increments will allow us to have a product that always in a working state.
+Iterations have been grouped into largermilestones; each milestone marks the implementation of a 
+complete use case. 
 
 ### Iteration 1
 > October 5, 2016
@@ -248,7 +249,7 @@ than an Arduino.
 
 ### Sensors
 
-- Photo Transistor
+- Photo Transistor Light Sensor
 - Digital Temperature Sensor
 
 ### Output Devices
