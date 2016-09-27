@@ -81,9 +81,20 @@ automation system should respond.
 
 ### Light Automation
 
+Nearly every room contains several lights which need to be adjusted regularly in response to
+various stimuli. The home automation system should be capable of automating the following tasks:
+
+- Turn on lights at a given time
+- Turn off lights at a given time
+- Turn on lights when dark outside
+- Turn off lights when light outside
+- Turn off lights when no one in room
+- Turn on lights when occupant enters room
+
 ### Curtain Automation
 
 ### Temperature Automation
+
 
 ## Schedule
 
