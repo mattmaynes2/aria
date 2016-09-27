@@ -98,6 +98,14 @@ to do the following:
 
 ### Temperature Automation
 
+The climate of a building can fluctuate throughout the day, and there are multiple possible ways to 
+control it.  By automating this process, the desired temperature can be maintained in the most energy
+efficient way.  The temperature automation will be responsible for:
+
+- Raise temperature directly
+- Raise temperature by opening/closing windows
+- Lower temperature directly
+- Lower temperature by opening/closing windows
 
 ## Schedule
 
