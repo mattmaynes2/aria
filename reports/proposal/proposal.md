@@ -73,113 +73,166 @@ This system will support dynamic updates to the configuration of sensors and act
 and removing new devices from the system will be minimal. The learning algorithm will then adjust to take these
 new devices into account when altering or maintaining the environment.
 
-## Technical Overview
+## Scenarios
 
-This project consists of several smaller components that will be described in more detail in this
-section. The following is a list of the high level technical components of the system.
+In order to create concrete goals for the project, we have identified a collection of scenarios. Each
+scenario describes a common situation which occurs in a home's environment, and how the home
+automation system should respond.
 
-#### Machine Learning Algorithm
+### Light Automation
 
-The machine learning algorithm will accept tables of categorical and numerical data which will be
-used to produce sets of decisions based on historical events. The implementation of this algorithm 
-will be configurable and tunable for optimal output.
+Nearly every room contains several lights which need to be adjusted regularly in response to
+various stimuli. It is very common for occupants to forget to turn off lights when they are
+not in use, leading to and unnecessary waste of money and energy. In order to save money and
+energy, the home automation system should be capable of automating the following tasks:
 
-#### Training Method
+* Turn on lights at a given time
+* Turn off lights at a given time
+* Turn on lights when dark outside
+* Turn off lights when light outside
 
-The server will be trained using a watch and learn method. A user will train the system
-by using a web interface or manual controls. The user will enter the desired action, and
-the server will associate the current sensor information with the desired state. The server
-will have the following two modes: record and learn and assisted. 
+### Curtain Automation
 
-In record and learn mode, the server makes no decisions on its own. It records the user's interactions with the 
-system and logs them in a database. It will then use this information to make future estimations about
-desired behaviour.
+The home automation system should be able to detect the current temperature and light levels
+to do the following:
+- Open curtains when cool inside and sunny outside
+- Close curtains when warm inside and sunny outside
 
-Assisted mode allows the server to make decisions, but will continue to receive user direction about expected 
-behaviour. The system will record all user interactions, using them for behaviour prediction. The system
-makes its own decisions, while still accepting feedback from the user.
+### Temperature Automation
 
+The climate of a building can fluctuate throughout the day, and there are multiple possible ways to 
+control it.  By automating this process, the desired temperature can be maintained in the most energy
+efficient way.  The temperature automation will be responsible for:
 
-#### Central Control Server
-
-This server will contain the machine learning algorithm as well as database management for logging
-device inputs and control events. These events will also be stored with the expected outputs
-so that they can be used for future decisions. The central server will also be responsible for
-communicating to the communication service.
-
-#### Communication Service
-
-The communication service is the central node for all communications in the network. It is responsible for
-forwarding all messages to the appropriate devices in the system. It is the only component that will communicate
-directly with the central server. All devices will communicate with the communication service using a special 
-protocol that will be designed for this system.
-
-#### Devices
-
-To interact with the physical world, different embedded devices will be used in the system. These
-devices will use sensors and actuators to record different properties and interact with their environment.
-The devices will use a discovery protocol to automatically add themselves to the network. This will make
-configuration simple and dynamic. Once the device is connected, it will be added to the machine learning 
-server and be logged and controlled with the other devices.
-
-#### HTTP Gateway
-
-The gateway is a thin HTTP wrapper around the communication interface's API and acts as a bridge
-between the web client and the core services. The gateway will serve the web pages for the web client
-and provide a RESTful API for interacting with the communication protocol.
-
-#### Web Interface
-
-The web interface provides direct user interaction through a graphical user interface. This
-interface will communicate through the HTTP gateway using a RESTful API. The web client will
-provide remote control capabilities, allow for device simulation, and provide overall information
-monitoring.
+- Raise temperature directly
+- Raise temperature by opening/closing windows
+- Lower temperature directly
+- Lower temperature by opening/closing windows
 
 ## Schedule
 
-| Milestone  | Date                |
-| :--------: | ----------------    |
-| 1          | October 9th, 2016   |
-| 2          | November 13th, 2016 |
-| 3          | January  8th, 2016  |
-| 4          | February 19th, 2016 |
+The project has been broken down into several week long iterations. The focus of each iteration 
+is to introduce a useful (demoable) feature to the system. By breaking the project into 
+demoable iterations, we will be able to commit to a set of concrete goals on a weekly basis. 
+The emphasis on demoable increments will allow us to have a product that always in a working state.
+Iterations have been grouped into larger milestones; each milestone marks the implementation of 
+one of the scenarios described in the previous section.
 
+### Iteration 1
+> October 5, 2016
 
-### Milestones
+- Arduino micro-controller hooked up to a voltage relay
+- Relay hooked up to a single light switch
+- A single button to toggle the state of the light
 
-#### Milestone 1
+### Iteration 2
+> October 12, 2016
 
-This iteration will contain the minimal viable product for the smart building system. This iteration
-will contain a basic regression algorithm acting as the machine learning system. The system's central
-communication service will be operational as well as a database storage system. This initial system
-will use simulated devices to model data and interactions within the system.
+- Light sensor reading values
+- Arduinos communicating to central server
 
-#### Milestone 2
+### Iteration 3
+> October 19, 2016
 
-This iteration will add a web interface that allows the user to control the system.
-The simulated devices from the previous milestone will be replaced with 2 real devices;
-a temperature sensor and a thermostat controller.
+- Light sensor communication to light controller
 
-#### Milestone 3
+#### Milestone: Automated Lighting Control
 
-This iteration will have a refined web user interface.  This iteration will also introduce
-device discovery. Device discovery allows new devices to be automatically added to the system 
-when they connect to the network.
+### Iteration 4
+> October 26, 2016
 
-#### Milestone 4
+- Arduino motor that moves a curtain track
+- Button that control Arduino motor
 
-This iteration will focus on improving the complete system developed in the first three iterations.
-We will add a motion sensor and a light control in order to test the system with multiple types
-of devices. Another goal of this iteration will be to improve the basic machine learning algorithm
-which is used for the first three iterations.
+### Iteration 5
+> November 2, 2016
+
+- Add communication to curtain Arduino
+
+##### Milestone: Automated Curtain Control
+
+### Iteration 6
+> November 9, 2016
+
+- Web API
+
+### Iteration 7
+> November 16, 2016
+
+- Static functioning web interface
+
+#### Milestone: Functional Web Interface
+
+### Iteration 8
+> November 23, 2016
+
+- Add temperature control buttons
+- Add temperature LED display
+
+### Iteration 9
+> November 30, 2016
+
+- Add temperature device communication
+
+#### Milestone: Automated Temperature Control
+
+### Iteration 10
+> December 7, 2016
+
+- Add basic decision making software
+
+### Iteration 11
+> January 4, 2017
+
+- Add device discovery
+
+#### Milestone: Automated Configuration
+
+### Iteration 12
+> January 11, 2017
+
+- Improved web client
+
+### Iteration 13
+> January 18, 2107
+
+- Improved decision making
+
+### Iteration 14
+> January 25, 2017
+
+- Add record and learn
+
+##### Milestone: Complete System
+
+## Team Responsibilites
+
+Responsibilites will change on an iteration by iteration basis. Each team member will
+rotate and contribute to different elements of the system. This will allow each member
+on the team to have a good understanding of the entire system.
 
 ## Required Facilities
 
-This project will require access to a variety of sensors and actuators which can be manipulated
-using a microcontroller such as an Arduino or Raspberry Pi. The required actuators and sensors are:
+### 4 Arduinos
 
-- Temperature Sensor
-- Thermostat Controller
-- Motion Sensor
-- Light Switch Controller
+These will be used for interfacing with senosrs and controlling motors. Two different devices were
+considered for this role; an Arduino and a Raspberry Pi. The size of an Arduino is much smaller than
+a Raspberry Pi and therefore more applicable to the embedded device use case. Working with hardware
+from a Rasperry Pi requires more accessories than an Arduino and is therefore more difficult to setup
+than an Arduino.
+
+### Sensors
+
+- Photo Transistor Light Sensor
+- Digital Temperature Sensor
+
+### Output Devices
+
+- Standard 16x2 LCD
+- AC voltage relay
+
+### Control Devices
+
+- (10) Buttons
+
 
