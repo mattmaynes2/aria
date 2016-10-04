@@ -26,5 +26,17 @@ unnecessary for this project.
 
 ## Wemo
 
-## Zigbee
+## ZigBee
 
+ZigBee provides an alternative to WiFi for device to device communication.  It operates
+with a lower power consumption, leading to a much longer device battery time when compared
+to WiFi. Once a set-top box is set up, it provides a cloud connection for all the Zigbee 
+devices in your home.
+
+ZigBee can interface with an arduinos simple by using an Xbee shield. Two arduinos with ZigBee
+shields communicate with each other 
+
+In order to develop commercial products with ZigBee, one must join the ZigBee Alliance. The
+lowest level of entry is the Alliance level, costing $4000 USD/year. However, for non-commercial
+purposes, access to the specification is free. This makes it a viable option for this project,
+but would have to be considered differently if it were to turn into a commercial project.
