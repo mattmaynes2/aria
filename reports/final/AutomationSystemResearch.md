@@ -8,4 +8,5 @@ home automation systems and smart devices the project.
 
 ## Wemo
 
-## Zigby
+## Zigbee
+
