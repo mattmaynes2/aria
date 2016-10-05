@@ -24,8 +24,6 @@ the project, it appears that any software that uses Nest devices must be integra
 with the entire Nest smart home system, which adds a level of complexity that is 
 unnecessary for this project.
 
-## Wemo
-
 ## ZigBee
 
 ZigBee provides an alternative to WiFi for device to device communication.  It operates
