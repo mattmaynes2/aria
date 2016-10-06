@@ -32,12 +32,13 @@ while in proximity to the central hub.
 Smart home systems are becoming more readily available in the general market place. This system
 builds upon traditional home automation systems by adding true automation in the form of learning.
 Unlike traditional smart home systems, the Smart Learning system observes user interaction and
-automatically makes decisions based on historical behaviours. The combination of these fields
-merges the fields of machine learning and home automation to provide an end user with a more
+automatically makes decisions based on historical behaviours. By combining the fields of machine
+learning and home automation, the smart learning system will provide an end user with a more
 customized smart home experience.
 
 
 **INSERT DESCRIPTION OF SYSTEM ORGANIZATION**
+
 **INSERT DIAGRAM OF SYSTEM**
 
 ### 2.2 Product Functions
