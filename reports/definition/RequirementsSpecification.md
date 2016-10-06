@@ -14,7 +14,7 @@ instead tasks will be automated based on the user's interaction with devices in 
 ### 1.2 Product Scope
 
 The Smart Learning is intended to used for home and building automation. This plug and play
-system is easy setup, configure, control and expand. By connecting the learning automation hub
+system is easy to setup, configure, control and expand. By connecting the learning automation hub
 to a home network, you can begin adding devices to control. The automation hub provides a simple
 interface for controlling the modes of the learning system. A simple remote interface can be
 connected to using a web browser to control the hub or any device connected to the home
