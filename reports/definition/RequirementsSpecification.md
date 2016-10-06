@@ -156,6 +156,14 @@ decisions.
 2. User interacts with system
 3. System makes decisions based on historical data
 
+#### Standby Mode
+
+The system can be put in a state where it no longer observes user interaction and idles. This
+still allows the user to manually control all devices through the system but the system will
+not make any decisions.
+
+1. User enters standby mode
+
 **INSERT USE CASE DIAGRAM**
 
 ## 5. Other Nonfunctional Requirements
