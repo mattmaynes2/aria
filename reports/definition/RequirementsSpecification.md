@@ -136,6 +136,21 @@ amount of time then they will be logged out automatically.
 
 #### Smart Hub Interface
 
+To maximize simplicity, the smart hub interface will have a clean and minimal interface. It will
+provide the user with two control buttons and one reset button. The control buttons will allow
+the user power off and on the device as well as toggle the state between training mode and
+playback mode.
+
+The hub will provide user feedback with a single multi-colour LED. The LED will be used to indicate
+the state of the device. There will be a state for all three operation modes; training, playback
+and standby. If there is an error in the device, the LED can be used to indicate the error.
+
+There will also be two external ports on the device. One will be used to power the device from a
+standard home wall outlet. The other will be a standard Ethernet port and be used to connect to
+the smart home network.
+
+**INSERT IMAGE OF HUB DESIGN**
+
 #### Communication Interface
 
 ### 3.3 Software Interfaces
