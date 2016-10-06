@@ -51,12 +51,6 @@ This resulted in in different companies having their own protocols for ZigBee de
 be purchased and assumed to work together. This limited interoperability has been somewhat fixed with the introduction of the
 ZigBee Alliance, but could present some legacy issues.
 
-  
-
-## Evaluation
-
-How does this specific item do against our criteria?
------------------------
 
 ## Citations
 &mdash; <cite>"What Technology?," in SMARTHOME® - Home Automation Superstore, 1995. [Online]. Available: http://www.smarthome.com/sc-what-technology. Accessed: Oct. 6, 2016. </cite>
