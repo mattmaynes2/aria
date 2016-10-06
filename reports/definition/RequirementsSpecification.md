@@ -11,16 +11,7 @@ and automate common tasks. Task automation in the system will not require any us
 instead tasks will be automated based on the user's interaction with devices in the system.
 
 
-
-- Product Name
-- Scope of the product (does it describe the whole system or a subsystem)
-
 ### 1.2 Product Scope
-
-- Short description of the software and its purpose
-- Benefits, objectives, and goals (business)
-
-## 2. Overall Description
 
 The Smart Learning is intended to used for home and building automation. This plug and play
 system is easy setup, configure, control and expand. By connecting the learning automation hub
@@ -34,6 +25,7 @@ As new devices are connected, their input will be used to make more predictive d
 behaviour. New devices can be added to the system by simply plugging them in and turning them on
 while in proximity to the central hub.
 
+## 2. Overall Description
 
 
 ### 2.1 Product Perspective
