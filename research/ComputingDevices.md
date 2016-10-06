@@ -123,15 +123,53 @@ Arduino Pro
 
 ## Description
 
-What is this item?
+The Arduino Pro is a slim, no frills version of the Ardiuno Uno. This board has a much more
+involved interface than the standard Ardiuno.
 
 ## Technical Overview
 
-Technically speaking, what does this item do?
+##### Operation Criteria
+
+| Criteria                   | Specification  |
+| --------                   | -------------  |
+| Operating System           | None           |
+| Processor Size             | 32-bit         |
+| Processor Family           | ATmega         |
+| Operating Voltage          | 3.3V - 5V      |
+| Input Voltage              | 7-12V          |
+| Clock Speed                | 8 MHz - 16 MHz |
+| Digital Pins               | 14             |
+| Pulse with Modulation Pins | 4              |
+| Analog Input Pins          | 6              |
+| DC Current per Pin         | 40 mA          |
+| Flash Memory               | 32 KB          |
+| System Size                | 2 KB           |
+| SRAM                       | 2 KB           |
+| EEPROM                     | 1 KB           |
+
+##### Features
+
+| Feature                                       |       |
+| -------                                       | ----- |
+| Universal Asynchronous Receiver / Transmitter | Yes   |
+| Serial Peripheral Interface Bus               | Yes   |
+| Inter-Integrated Circuit                      | Yes   |
+
+##### Physical Characteristics
+
+| Dimension | Length   |
+| --------- | ------   |
+| Length    | 52.07 mm |
+| Width     | 53.34 mm |
 
 ## Evaluation
 
 How does this specific item do against our criteria?
+
+## References
+
+[1] "ArduinoBoardPro," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardPro. Accessed: Oct. 6, 2016.
+
 
 Arduino Micro
 -------------
@@ -142,11 +180,47 @@ What is this item?
 
 ## Technical Overview
 
-Technically speaking, what does this item do?
+##### Operation Criteria
+
+| Criteria                   | Specification |
+| --------                   | ------------- |
+| Operating System           | None          |
+| Processor Size             | 8-bit         |
+| Processor Family           | ATmega        |
+| Operating Voltage          | 5V            |
+| Input Voltage              | 7-12V         |
+| Clock Speed                | 16 MHz        |
+| Digital Pins               | 20            |
+| Pulse with Modulation Pins | 7             |
+| Analog Input Pins          | 12            |
+| DC Current per Pin         | 20 mA         |
+| Flash Memory               | 32 KB         |
+| System Size                | 4 KB          |
+| SRAM                       | 2.5 KB        |
+| EEPROM                     | 1 KB          |
+
+##### Features
+
+| Feature |           |
+| ------- | -----     |
+| USB     | USB-Micro |
+
+##### Physical Characteristics
+
+| Dimension | Length |
+| --------- | ------ |
+| Length    | 48 mm  |
+| Width     | 18 mm  |
+| Weight    | 13 g   |
 
 ## Evaluation
 
 How does this specific item do against our criteria?
+
+## References
+
+[1] "ArduinoBoardMicro," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
+
 
 Arduino Pro Mini
 ----------------
