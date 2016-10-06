@@ -80,6 +80,8 @@ is outside of the scope of the project for now.
 
 [3] Insteon®, "WHITEPAPER: Compared,". [Online]. Available: http://cache.insteon.com/documentation/insteon_compared.pdf. Accessed: Oct. 6, 2016.
 
+[5] Insteon®, "WHITEPAPER: The Details,". [Online]. Available: http://cache.insteon.com/documentation/insteon_details.pdf. Accessed: Oct. 6, 2016.
+
 [4] SMARTHOME®, "Insteon home automation,". [Online]. Available: http://www.smarthome.com/sc-what-is-insteon-home-automation. Accessed: Oct. 6, 2016.
 -----------------------
 
@@ -122,11 +124,22 @@ What is this item?
 
 ## Technical Overview
 
-Technically speaking, what does this item do?
+Uses Z-Wave and ZigBee and wifi.
+
+### API
+	provides a Groovy API to create SmartApps that allow control of devices.
+
+#### Limitations
+
+requires a SmartThings hub and connection to the SmartThings cloud.
 
 ## Evaluation
 
 How does this specific item do against our criteria?
+
+## References
+
+[1]	"Samsung SmartThings hub FAQ — SmartThings developer documentation," 2016. [Online]. Available: http://docs.smartthings.com/en/latest/sept-2015-faq.html. Accessed: Oct. 6, 2016.
 
 -----------------------
 
