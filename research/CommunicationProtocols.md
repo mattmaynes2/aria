@@ -19,7 +19,8 @@ ZigBee
 
 ## Description
 
-ZigBee provides an alternative to WiFi. 
+ZigBee provides an alternative to WiFi. The goal of ZigBee is to provide simple transmission for a low amount of data, withen
+a limited range.
 
 ## Technical Overview
 
@@ -32,6 +33,8 @@ redundant connections in the network.
   ZigBee operates within three possible frequency bands: 868-870 MHz, 902-928 MHz, and 2.4-2.4835 GHz. The lowest band only
 has one available channel, the middle band has ten available channels, and the highest band has 16 available channels. The
 respective data transfer rates are 20Kbps, 40Kbps, and 250Kbps.
+
+  One of the
 
 ## Evaluation
 
