@@ -231,11 +231,47 @@ What is this item?
 
 ## Technical Overview
 
-Technically speaking, what does this item do?
+##### Operation Criteria
+
+| Criteria                   | Specification  |
+| --------                   | -------------  |
+| Operating System           | None           |
+| Processor Size             | 8-bit          |
+| Processor Family           | ATmega         |
+| Operating Voltage          | 3.3V - 5V      |
+| Input Voltage              | 7-12V          |
+| Clock Speed                | 8 MHz - 16 MHz |
+| Digital Pins               | 20             |
+| Pulse with Modulation Pins | 7              |
+| Analog Input Pins          | 12             |
+| DC Current per Pin         | 20 mA          |
+| Flash Memory               | 32 KB          |
+| System Size                | 2 KB           |
+| SRAM                       | 2 KB           |
+| EEPROM                     | 1 KB           |
+
+##### Features
+
+| Feature                                       |       |
+| -------                                       | ----- |
+| Universal Asynchronous Receiver / Transmitter | Yes   |
+| Serial Peripheral Interface Bus               | Yes   |
+| Inter-Integrated Circuit                      | Yes   |
+
+##### Physical Characteristics
+
+| Dimension | Length  |
+| --------- | ------  |
+| Length    | 17.9 mm |
+| Width     | 33 mm   |
 
 ## Evaluation
 
 How does this specific item do against our criteria?
+
+## References
+
+[1] "ArduinoBoardProMini," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardProMini. Accessed: Oct. 6, 2016.
 
 
 Raspberry Pi 3 Model B
