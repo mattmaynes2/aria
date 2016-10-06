@@ -91,9 +91,11 @@ their own devices that communicate to the system.
 
 ### 2.4 Design and Implementation Constraints
 
+
+
 ### 2.5 Assumptions and Dependencies
 
-## 3. Eternal Interface Requirements
+## 3. External Interface Requirements
 
 ### 3.1 User Interfaces
 
@@ -105,8 +107,78 @@ their own devices that communicate to the system.
 
 ## 4. System Features
 
-- Organize the required features of the system by use case
+#### Install Hub
+
+Installation of the central hub simply requires a connection to a home network.
+
+1. User plugs hub into outlet and turns power on
+2. User connects hub to home network using Ethernet
+3. Hub provides confirmation that system is online
+
+#### Add Device
+
+Devices can be added to the home automation system simply by powering them on and connecting
+to the smart learning network.
+
+1. User plugs in device and turns power on
+2. Device discovers network
+3. Hub discovers device and provides confirmation
+
+#### Remove device
+
+Devices will stop recording when removed from the smart learning network. To remove the history
+of the device, the user can delete it using the remote interface.
+
+1. User removes device from smart network
+2. User uses remote interface to delete device history
+
+#### Reset Device
+
+If the input of a device is causing unexpected or undesired output then it can be reset by the
+user through the remote interface.
+
+1. User uses remote interface to delete device history
+
+#### Training Mode
+
+To train the system, the user must enter training mode. Training mode puts the system into a state
+that observes the users interactions but does not control devices.
+
+1. User enters training mode
+2. User interacts with system and system records
+
+#### Playback Mode
+
+In playback mode, after the system has been trained, it can react to different inputs and make
+decisions.
+
+1. User enters playback mode
+2. User interacts with system
+3. System makes decisions based on historical data
+
+**INSERT USE CASE DIAGRAM**
 
 ## 5. Other Nonfunctional Requirements
+
+- Battery life
+- Range
+- Reliability
+- Interoperability
+- Transmission rate
+- Frequency of operation
+- Number of connections
+
+
+- Discovery time
+- Observability
+    - Frequency of observation
+    - Number of properties
+- Controllability
+    - Response time for action
+- False positive rate
+- Power rates
+- Noise rates
+ 
+
 
 
