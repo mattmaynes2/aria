@@ -29,9 +29,9 @@ from other nodes. Having every node connected allows for data to be transmitted 
 network stability be not relying on one central node. This increase in stability come at the cost of having potentially many
 redundant connections in the network.
 
-    ZigBee operates within three possible frequency bands: 868-870 MHz, 902-928 MHz, and 2.4-2.4835 GHz. The lowest band only
-  has one available channel, the middle band has ten available channels, and the highest band has 16 available channels. The
-  respective data transfer rates are 20Kbps, 40Kbps, and 250Kbps
+  ZigBee operates within three possible frequency bands: 868-870 MHz, 902-928 MHz, and 2.4-2.4835 GHz. The lowest band only
+has one available channel, the middle band has ten available channels, and the highest band has 16 available channels. The
+respective data transfer rates are 20Kbps, 40Kbps, and 250Kbps.
 
 ## Evaluation
 
