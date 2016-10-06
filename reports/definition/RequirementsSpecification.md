@@ -1,4 +1,5 @@
-# Requirements Specification for Learning Home Automation System
+Requirements Specification for a Learning Smart Home
+====================================================
 
 ## 1. Introduction
 
