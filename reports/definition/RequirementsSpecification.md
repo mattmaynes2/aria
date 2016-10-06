@@ -1,4 +1,4 @@
-# Software Requirements Specification for Learning Home Automation System
+# Requirements Specification for Learning Home Automation System
 
 ## 1. Introduction
 
@@ -10,20 +10,29 @@ owner to set up a collection of devices in their home to automatically control t
 and automate common tasks. Task automation in the system will not require any user configuration,
 instead tasks will be automated based on the user's interaction with devices in the system.
 
+The system will consist of a hub device with a simple interface that a homeowner can connect to 
+a home network. After connecting the hub, the homeowner can add enabled devices for the system to
+control by simply connecting them to the network. As new devices are connected, their input
+will be used to make more predictive decisions about user behaviour.
 
 ### 1.2 Product Scope
 
-The Smart Learning is intended to used for home and building automation. This plug and play
-system is easy to setup, configure, control and expand. By connecting the learning automation hub
-to a home network, you can begin adding devices to control. The automation hub provides a simple
-interface for controlling the modes of the learning system. A simple remote interface can be
-connected to using a web browser to control the hub or any device connected to the home
-automation system.
+The purpose of the learning home automation system is to make home automation as easy as possible
+to set up. Many existing home automation systems require some form of programming from the user,
+in the form of a schedule or explicit scenarios which describe how their devices should behave. This
+project will improve upon such systems by inferring the desired state of devices from data collected
+during the homeowner's routine use of the devices.
 
-The automation system can connect many different devices which will allow you to expand the system.
-As new devices are connected, their input will be used to make more predictive decisions about user
-behaviour. New devices can be added to the system by simply plugging them in and turning them on
-while in proximity to the central hub.
+Activities which are "In Scope":
+
+- Provide a range of devices that can be installed in a home which showcase the learning capabilities
+  of the system 
+ 
+- Create a hub device that collects data from installed sensors, and uses this data to infer the 
+  desired values of actuators. The hub must provide a simple interface which allows the homeowner
+  to toggle on/off automated control of devices.
+
+- Develop a protocol which allows developers to enable new types of devices for use in the system
 
 ## 2. Overall Description
 
