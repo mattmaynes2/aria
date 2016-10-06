@@ -253,7 +253,16 @@ is as responsive as possible when a user performs an action.
 
 #### Device Connection Security
 
+- All commands to devices must be authenticated to ensure that they are from an authorized 
+source, in order to eliminate the possibility of malicious entities taking control of a 
+home's devices.
+
 #### Remote Interface Security
+
+- Digital access to the hub's configuration interface must be secured using TLS 1.2 
+(RFC 5246) using HTTP basic authentication as described in RFC 2617. Use of these
+Internet Official Protocol Standards ensures that the system uses widely accepted
+authentication practices.
 
 ### 5.3 Quality Requirements
 
