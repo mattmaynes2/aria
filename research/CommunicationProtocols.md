@@ -11,8 +11,7 @@ appropriate for our system.
 
 ### Selection Criteria
   The available communication protocols will be evaluated based largly on the non-functional requirements of our
-system. For the protocols, this includes: battery life of devices, range, reliability, interoperability, data transmission rate,
-number of concurrent connections, device discovery time, and cost.
+system. For the protocols, this includes: ease of integration with devices, battery life of devices, range, reliability, interoperability, data transmission rate, number of concurrent connections, device discovery time, and cost.
 
 
 ZigBee
