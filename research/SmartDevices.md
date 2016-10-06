@@ -35,6 +35,7 @@ Technically speaking, what does this item do?
 [1]	B. International, "WeMo," WeMo, 2014. [Online]. Available: http://www.belkin.com/whatiswemo/. Accessed: Oct. 6, 2016.
 
 [2]	"Ouimeaux 0.8: Python package index,". [Online]. Available: https://pypi.python.org/pypi/ouimeaux. Accessed: Oct. 6, 2016.
+
 -----------------------
 
 Nest 
