@@ -168,6 +168,7 @@ not make any decisions.
 
 ## 5. Other Nonfunctional Requirements
 
+
 - Battery life
 - Range
 - Reliability
