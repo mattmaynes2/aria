@@ -63,7 +63,22 @@ in the system as well as view their recorded interactions.
 
 ### 2.3 User Classes
 
-- What kinds of users do we have
+While this primary audience of the smart learning system is a home owner, it is also for building
+owners, nursing home residence or anyone who needs building automation. The end user of this
+product is intended to be non-technical users who want simple control and access of their building.
+This product will also provide utilities for more technically proficient users who wish to create
+their own devices that communicate to the system.
+
+#### Base User (Non-Technical Users)
+
+- End user of the system that needs simple interface to use system
+- Will want low maintenance to keep system running and expect system to perform correctly
+
+#### Developers (Technical Users)
+
+- Will require technical documentation about the system
+- Will require set development toolkit for creating custom devices for the system
+- May also be a base user
 
 ### 2.4 Design and Implementation Constraints
 
