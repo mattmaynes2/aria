@@ -77,7 +77,7 @@ is outside of the scope of the project for now.
 [1]	Apiary, "Insteon API · Apiary,". [Online]. Available: http://docs.insteon.apiary.io/. Accessed: Oct. 6, 2016.
 [2]	Insteon®, "Home," in Insteon, Insteon, 2016. [Online]. Available: http://www.insteon.com/. Accessed: Oct. 6, 2016.
 [3] Insteon®, "WHITEPAPER: Compared,". [Online]. Available: http://cache.insteon.com/documentation/insteon_compared.pdf. Accessed: Oct. 6, 2016.
-
+[4] SMARTHOME®, "Insteon home automation,". [Online]. Available: http://www.smarthome.com/sc-what-is-insteon-home-automation. Accessed: Oct. 6, 2016.
 -----------------------
 
 Wink
@@ -149,16 +149,25 @@ WeMo
 
 ## Description
 
-What is this item?
+WeMo is a line of smart products made by belkin. These devices are able to
+be controled over a wifi connection with a phone.
 
 ## Technical Overview
 
 Technically speaking, what does this item do?
 
+### API
+ There is a comunity supported open source python API for controlling WeMo devices `ouimeaux`
+ 
+
 ## Evaluation
 
-How does this specific item do against our criteria?
 
+
+## References
+
+[1]	B. International, "WeMo," WeMo, 2014. [Online]. Available: http://www.belkin.com/whatiswemo/. Accessed: Oct. 6, 2016.
+[2]	"Ouimeaux 0.8: Python package index,". [Online]. Available: https://pypi.python.org/pypi/ouimeaux. Accessed: Oct. 6, 2016.
 -----------------------
 
 
