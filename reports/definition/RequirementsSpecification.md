@@ -107,6 +107,10 @@ their own devices that communicate to the system.
 
 ## 4. System Features
 
+![image](./SystemUseCase.png)
+
+-----------------------------
+
 #### Install Hub
 
 Installation of the central hub simply requires a connection to a home network.
@@ -164,7 +168,6 @@ not make any decisions.
 
 1. User enters standby mode
 
-**INSERT USE CASE DIAGRAM**
 
 ## 5. Other Nonfunctional Requirements
 
