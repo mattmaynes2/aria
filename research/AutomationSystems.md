@@ -81,6 +81,7 @@ is outside of the scope of the project for now.
 [3] Insteon®, "WHITEPAPER: Compared,". [Online]. Available: http://cache.insteon.com/documentation/insteon_compared.pdf. Accessed: Oct. 6, 2016.
 
 [4] SMARTHOME®, "Insteon home automation,". [Online]. Available: http://www.smarthome.com/sc-what-is-insteon-home-automation. Accessed: Oct. 6, 2016.
+
 -----------------------
 
 Wink
