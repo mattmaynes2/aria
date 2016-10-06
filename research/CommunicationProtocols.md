@@ -10,7 +10,7 @@ of this section is to discover communication options, and to evaluate them again
 appropriate for our system.
 
 ### Selection Criteria
-  The available communication protocols will be evaluated based on the functional and non-functional requirements of our
+  The available communication protocols will be evaluated based largly on the non-functional requirements of our
 system. For the protocols, this includes: battery life of devices, range, reliability, interoperability, data transmission rate,
 number of concurrent connections, device discovery time, and cost.
 
