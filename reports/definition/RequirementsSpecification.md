@@ -1,28 +1,33 @@
-Requirements Specification for a Learning Smart Home
-====================================================
+Requirements Specification for the Learning Home Automation System
+==================================================================
 
 ## 1. Introduction
 
-
 ### 1.1 Introduction
 
-The Smart Learning system is a learning home automation system. The system will allow a home
-owner to set up a collection of devices in their home to automatically control their environment
-and automate common tasks. Task automation in the system will not require any user configuration,
-instead tasks will be automated based on the user's interaction with devices in the system.
+The Learning Home Automation System will allow a homeowner to set up a collection of devices in their
+home which  automatically control their environment and automate common tasks. Task automation in the 
+system will not require any user configuration, instead tasks will be automated based on the user's
+interaction with devices in the system.
 
 The system will consist of a hub device with a simple interface that a homeowner can connect to 
 a home network. After connecting the hub, the homeowner can add enabled devices for the system to
 control by simply connecting them to the network. As new devices are connected, their input
 will be used to make more predictive decisions about user behaviour.
 
+### Document Conventions
+
+In the remainder of this document, "the system" refers to the Learning Home Automation System 
+described in the introduction. The format of the this report was adapted from the format
+recommended in IEEE-830 (Recommended Practice for Software Requirements Specifications).
+
 ### 1.2 Product Scope
 
 The purpose of the learning home automation system is to make home automation as easy as possible
 to set up. Many existing home automation systems require some form of programming from the user,
-in the form of a schedule or explicit scenarios which describe how their devices should behave. This
-project will improve upon such systems by inferring the desired state of devices from data collected
-during the homeowner's routine use of the devices.
+in the form of a schedule or explicit scenarios which describe how the devices connected to
+them should behave. This project will improve upon such systems by inferring the correct state
+of connected devices from data collected during the homeowner's routine use of the devices.
 
 Activities which are "In Scope":
 
@@ -30,8 +35,9 @@ Activities which are "In Scope":
   of the system 
  
 - Create a hub device that collects data from installed sensors, and uses this data to infer the 
-  desired values of actuators. The hub must provide a simple interface which allows the homeowner
-  to toggle on/off automated control of devices.
+  desired values of actuators. 
+  
+- Provide a simple interface which allows the homeowner to toggle on/off automated control of devices.
 
 - Develop a protocol which allows developers to enable new types of devices for use in the system
 
@@ -41,16 +47,16 @@ Activities which are "In Scope":
 
 Smart home systems are becoming more readily available in the general market place. This system
 builds upon traditional home automation systems by adding true automation in the form of learning.
-Unlike traditional smart home systems, the Smart Learning system observes user interaction and
-automatically makes decisions based on historical behaviours. By combining the fields of machine
-learning and home automation, the smart learning system will provide an end user with a more
-customized smart home experience.
+Unlike traditional smart home systems, the Learning Home Automation System  observes the homeowner's
+interactions with devices and automatically makes decisions based on historical behaviours.
+By combining the fields of machine learning and home automation, the smart learning system will 
+provide an end user with a simplified smart home experience.
 
 **INSERT DIAGRAM OF SYSTEM**
 
 ### 2.2 Product Functions
 
-To provide simplicity and seamless interaction, the smart learning system must be easy to use
+To provide simplicity and seamless interaction, the system must be easy to use
 and highly interactive. The smart learning system will provide a central hub that will be the
 base of computation and communication for all other components in the system.
 
@@ -297,4 +303,7 @@ authentication practices.
 
 #### Device Interoperability
 
+### Appendix A: Gl******ossary
+
+*****************Device**: A sensor or an actuator, or a combination of both.
 
