@@ -65,9 +65,6 @@ ZigBee Alliance, but could present some legacy issues.
 
 &mdash; <cite>	W. Mardini, Y. Khamayseh, R. Jaradatand, and R. Hijjawi, "Interference Problem between ZigBee and WiFi," 2012. [Online]. Available: http://www.ipcsit.com/vol30/024-ICNCS2012-G3061.pdf. Accessed: Oct. 6, 2016.</cite>
 
-&mdash; <cite></cite>
-
-&mdash; <cite></cite>
 
 Z-Wave
 ------------
