@@ -53,7 +53,7 @@ can act as a controller to send messages, a repeater to forward messages or a re
  Insteon provides a REST API to interact with their devices. 
  The API provides supports adding devices, 
  
- #### Limitations 
+#### Limitations 
  
  In order to use the API an Insteon Hub is required also adding new Insteon devices to 
  a network still require configuration through the Insteon App.
@@ -75,8 +75,11 @@ is outside of the scope of the project for now.
 ## Refrences
 
 [1]	Apiary, "Insteon API · Apiary,". [Online]. Available: http://docs.insteon.apiary.io/. Accessed: Oct. 6, 2016.
+
 [2]	Insteon®, "Home," in Insteon, Insteon, 2016. [Online]. Available: http://www.insteon.com/. Accessed: Oct. 6, 2016.
+
 [3] Insteon®, "WHITEPAPER: Compared,". [Online]. Available: http://cache.insteon.com/documentation/insteon_compared.pdf. Accessed: Oct. 6, 2016.
+
 [4] SMARTHOME®, "Insteon home automation,". [Online]. Available: http://www.smarthome.com/sc-what-is-insteon-home-automation. Accessed: Oct. 6, 2016.
 -----------------------
 
