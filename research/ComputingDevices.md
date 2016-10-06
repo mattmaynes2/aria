@@ -386,7 +386,43 @@ How does this specific item do against our criteria?
 
 ### Summary of Evaluation
 
-All of the evaluation grouped together
+
+##### Operation Criteria
+
+| Criteria                   | Arduino Uno | Arduino 101    | Arduino Pro    | Ardunio Micro | Arduino Pro Mini |
+| --------                   | ----------- | -----------    | -----------    | ------------- | ---------------- |
+| Operating System           | None        | RTOS           | None           | None          | None             |
+| Processor Size             | 8-bit       | 32-bit         | 32-bit         | 8-bit         | 8-bit            |
+| Processor Family           | ATmega      | Intel          | ATmega         | ATmega        | ATmega           |
+| Operating Voltage          | 5V          | 3.3V - 5V      | 3.3V - 5V      | 5V            | 3.3V - 5V        |
+| Input Voltage              | 7-12V       | 7-12V          | 7-12V          | 7-12V         | 7-12V            |
+| Clock Speed                | 16 MHz      | 8 MHz - 16 MHz | 8 MHz - 16 MHz | 16 MHz        | 8 MHz - 16 MHz   |
+| Digital Pins               | 14          | 14             | 14             | 20            | 20               |
+| Pulse with Modulation Pins | 6           | 4              | 4              | 7             | 7                |
+| Analog Input Pins          | 6           | 6              | 6              | 12            | 12               |
+| DC Current per Pin         | 20 mA       | 20 mA          | 40 mA          | 20 mA         | 20 mA            |
+| Flash Memory               | 32 KB       | 196 KB         | 32 KB          | 32 KB         | 32 KB            |
+| System Size                | 0.5 KB      | 2 KB           | 2 KB           | 4 KB          | 2 KB             |
+| SRAM                       | 2 KB        | 2 KB           | 2 KB           | 2.5 KB        | 2 KB             |
+| EEPROM                     | 1 KB        | 1 KB           | 1 KB           | 1 KB          | 1 KB             |
+
+
+##### Features
+
+| Feature                                       | Arduino Uno |
+| -------                                       | ----------- | 
+| USB                                           | USB-Mini    |
+| Universal Asynchronous Receiver / Transmitter | Yes         |
+| Serial Peripheral Interface Bus               | Yes         |
+| Inter-Integrated Circuit                      | Yes         |
+
+##### Physical Characteristics
+
+| Dimension | Length  |
+| --------- | ------  |
+| Length    | 17.9 mm |
+| Width     | 33 mm   |
+
 
 ### Conclusion
 
