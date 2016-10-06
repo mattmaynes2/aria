@@ -171,7 +171,8 @@ the smart home network.
 
 #### Install Hub
 
-Installation of the central hub simply requires a connection to a home network.
+The user installs the learning hub in their home in order to enable automation
+of their smart devices.
 
 1. User plugs hub into outlet and turns power on
 2. User connects hub to home network using Ethernet
@@ -182,50 +183,73 @@ Installation of the central hub simply requires a connection to a home network.
 Devices can be added to the home automation system simply by powering them on and connecting
 to the smart learning network.
 
+Precondition: A learning hub must be installed in the user's home.
+
 1. User plugs in device and turns power on
 2. Device discovers network
 3. Hub discovers device and provides confirmation
+
+Postcondition: The device's state will now be used as input in training mode. If the 
+device contains an actuator, the actuator will be controlled by the learning hub in 
+playback mode.
+
+#### Enter Training Mode
+
+The user enters training mode in order to indicate to the system that it should begin recording
+changes in the state of connected devices, without attempting to control them. Training mode
+accomplishes the user's goal of configuring the system without manual programming.
+
+1. User selects enter training mode
+2. While the system is in training mode, the system will record the user's interactions with
+   connected devices.
+3. When the user selects playback mode or standby mode, the system exits training mode.
+
+Postcondition: The system saves changes in the state of connected devices.
+
+#### Enter Playback Mode
+
+The user enters playback mode in order to instruct the system to begin controlling connected
+devices.
+
+1. User selects enter playback mode
+2. System exits the currently active mode
+3. System begins controlling connected actuators, using the data collected during training mode
+   to infer the desired state of the system.
+
+Postcondition: The system maintains control over connected actuators.
+
+#### Standby Mode
+
+The user enters standby mode in order to instruct the system that control over connected 
+devices should be halted, and changes in the state of devices should not be accepted as 
+training data. Standby mode allows a user to control their devices under exceptional 
+circumstances without training the system to perform an incorrect task.
+
+1. User enters standby mode
+2. System exits the active mode
+
+Postcondition: System does not accept training data, System does not modify the state of devices
 
 #### Remove device
 
 Devices will stop recording when removed from the smart learning network. To remove the history
 of the device, the user can delete it using the remote interface.
 
-1. User removes device from smart network
-2. User uses remote interface to delete device history
+1. User disconnects device from smart network
+2. If the user wishes to remove the device permanently, include use case Reset Device
 
 #### Reset Device
 
 If the input of a device is causing unexpected or undesired output then it can be reset by the
 user through the remote interface.
 
-1. User uses remote interface to delete device history
+1. User logs in to remote interface
+2. User selects a device
+3. User selects reset device
+4. System erases the saved historical states of the device
 
-#### Training Mode
-
-To train the system, the user must enter training mode. Training mode puts the system into a state
-that observes the users interactions but does not control devices.
-
-1. User enters training mode
-2. User interacts with system and system records
-
-#### Playback Mode
-
-In playback mode, after the system has been trained, it can react to different inputs and make
-decisions.
-
-1. User enters playback mode
-2. User interacts with system
-3. System makes decisions based on historical data
-
-#### Standby Mode
-
-The system can be put in a state where it no longer observes user interaction and idles. This
-still allows the user to manually control all devices through the system but the system will
-not make any decisions.
-
-1. User enters standby mode
-
+Postcondition: States of the selected devices from before the reset are no longer used to infer
+states in playback mode.
 
 ## 5. Other Nonfunctional Requirements
 
