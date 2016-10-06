@@ -171,26 +171,41 @@ not make any decisions.
 
 ## 5. Other Nonfunctional Requirements
 
+### 5.1 Performance Requirements
 
-- Battery life
-- Range
-- Reliability
-- Interoperability
-- Transmission rate
-- Frequency of operation
-- Number of connections
+#### Device Communication Range
 
+Devices must be able to communicate wirelessly using the smart home network. The range of
+communication must be sufficiently large that devices can be placed anywhere in an average home.
+The smart home devices will need to be powerful enough to receive and transmit data using this
+network with enough range.
 
-- Discovery time
-- Observability
-    - Frequency of observation
-    - Number of properties
-- Controllability
-    - Response time for action
-- False positive rate
-- Power rates
-- Noise rates
- 
+**INSERT STATEMENT ABOUT DISTANCE**
+- Need to discuss allowable range of different protocols
+- Need to discuss average dimensions of a home
 
+#### Number of Devices
+
+#### Discovery Time
+
+#### Frequency of Updates
+
+#### Device Response Time
+
+#### Hub Power Consumption
+
+### 5.2 Security Requirements
+
+#### Device Connection Security
+
+#### Remote Interface Security
+
+### 5.3 Quality Requirements
+
+#### Hub Reliability
+
+#### Device Reliability
+
+#### Device Interoperability
 
 
