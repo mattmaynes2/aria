@@ -153,11 +153,11 @@ the smart home network.
 
 #### Communication Interface
 
-### 3.3 Software Interfaces
-
-### 3.4 Communications Interfaces
+### 3.3 Communications Interfaces
 
 #### Remote Communications
+
+
 
 #### Device Communications
 
