@@ -36,14 +36,24 @@ automatically makes decisions based on historical behaviours. By combining the f
 learning and home automation, the smart learning system will provide an end user with a more
 customized smart home experience.
 
-
-**INSERT DESCRIPTION OF SYSTEM ORGANIZATION**
-
 **INSERT DIAGRAM OF SYSTEM**
 
 ### 2.2 Product Functions
 
-- Major functions the system must perform
+To provide simplicity and seamless interaction, the smart learning system must be easy to use
+and highly interactive. The smart learning system will provide a central hub that will be the
+base of computation and communication for all other components in the system.
+
+The system will have many different smart devices. These devices can either be used for control
+or for a task. To allow for expansion of the automation system, it must be able to accept new
+devices. The system must then retain its previous model of the user's interactions but add in
+the new device as evidence for predicting future behaviours. For example, a system might include
+a light sensor, thermostat and curtain puller. If the ambient light outside was to drop and the
+user closed the curtains then the system might predict that a change in light corresponds to that
+action. If the user then changes the temperature, the system may relate light to temperature as
+well. If later a temperature sensor was added to the system and the user changes the temperature
+when it is too cold, the system will use this information to predict future actions.
+
 
 ### 2.3 User Classes
 
