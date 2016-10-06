@@ -184,26 +184,13 @@ network with enough range.
 - Need to discuss allowable range of different protocols
 - Need to discuss average dimensions of a home
 
+#### System Responsiveness
 
-#### Discovery Time
-
-For a device to be discovered by the smart home system it must first be connected to the smart
-home network. The amount of time to connect to the network is an artifact of the protocol that
-is chosen for the network. Once a device has connected to the network, it must then be discovered
-by the smart home system. The amount of time required to establish this connection needs to be
-minimal so that the user does is not concerned with the device operation. The well known **INSERT
-STUDY HERE** study has discovered that the average human attention span is 8 seconds. To ensure
-that the end user maintains focus on the system, the discovery protocol must be faster than 8
-seconds. If this threshold is passed then the device should indicate that an error has occurred
-during the discovery.
-
-#### Frequency of Updates
-
-
-
-#### Device Response Time
-
-#### Hub Power Consumption
+The smart home automation system must readily adapt to environmental changes to be effective.
+When in training mode, the smart home system does not make any decisions and therefore has
+no responsiveness requirement. However, when the system enters playback mode the system must
+make decisions as fast as they are entered into the system. This will ensure that the system
+is as responsive as possible when a user performs an action.
 
 ### 5.2 Security Requirements
 
