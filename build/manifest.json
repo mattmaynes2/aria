@@ -1,14 +1,16 @@
 {
     "common.javascript" : {
-        "enviro" : "npm install -g phantomjs-prebuilt"
+        "enviro" : "./support/pkman install -p npm phantomjs-prebuilt"
     },
     "common.python" : {
         "enviro" : "./support/pkman install python3"
     },
+    "common.bash" : {
+        "deps" : "./support/pkman install --try shellcheck"
+    },
     "build" : {
         "deps" : [
-            "npm install",
-            "./support/pkman install shellcheck"
+            "npm install"
         ],
         "test" : [
             "npm test",
@@ -35,8 +37,23 @@
         "test"      : ["cd ../gateway", "npm test"],
         "clean"     : ["cd ../gateway", "rm -rf node_modules bin"]
     },
+    "uml" : {
+        "enviro" : [
+            "./support/pkman install --try -p brew pkg-config cairo libpng jpeg giflib",
+            "./support/pkman install --try -p apt-get libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++",
+            "./support/pkman install --try -p yum cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel"
+        ],
+        "deps" : [
+            "./support/pkman install --try -p npm mdgen"
+        ],
+        "build" : [
+            "find ../ -name '*.mdj' -exec ./support/try -e mdgen image -m {} \\;"
+        ]
+    },
     "reports" : {
-        "enviro" : "./support/pkman install pandoc"
+        "enviro" : [
+            "./support/pkman install pandoc"
+        ]
     },
     "reports.proposal" : {
         "build" : [

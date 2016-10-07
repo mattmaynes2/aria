@@ -49,6 +49,9 @@ function search () {
         brew)
             brew list | grep -e "$2"
             ;;
+        npm)
+            npm list -g | grep "$2"
+            ;;
     esac
 }
 
@@ -109,23 +112,36 @@ if [ -z "$PKGMGR" ]; then
     exit 1
 fi
 
+## Parse Arguments
+#
+#
+IFS=' ' read -r -a args <<< "$@"
+CMD="${args[0]}"
+TARGETS=""
+
 ## Parse Options
 #
 # Parse all the input options and set the appropriate flags
+args=("${args[@]:1}")
+while [ "${#args[@]}" -ne 0 ]
+do
+    arg="${args[0]}"
+    args=("${args[@]:1}")
 
-IFS=' ' read -r -a args <<< "$@"
-for ((i=2; i < ${#args[@]}; i++)); do
-    case "${args[i]}" in
+    case "$arg" in
         -p | --pkgmgr)
-            USRMGR="${args[i+1]}"
-            i=$i+1
+            USRMGR="${args[0]}"
+            args=("${args[@]:1}")
             ;;
         -t | --try)
             TRY=true
             ;;
-        *)
-            echo "Unknown option: ${args[i]} - See pkman help for details"
+        -*)
+            echo "Unknown option: $arg - See pkman help for details"
             exit 1
+            ;;
+        *)
+            TARGETS="$TARGETS $arg"
             ;;
     esac
 done
@@ -146,31 +162,30 @@ fi
 ## Run Command
 #
 # Run the user specified command
-
-case "$1" in
-    help)
-        info
-        exit 0
-        ;;
-    install)
-        if [ "$TRY" = true ]; then
-            pkinstall "$PKGMGR" "$2" || echo "[WARN] Install of '$2' failed"
-        else
-            pkinstall "$PKGMGR" "$2"
-        fi
-        ;;
-    uninstall)
-        if [ "$TRY" = true ]; then
-            pkuninstall "$PKGMGR" "$2" || echo "[WARN] Uninstall of '$2' failed"
-        else
-            pkuninstall "$PKGMGR" "$2"
-        fi
-        ;;
-    *)
-        echo "Unknown command: $1 - See pkman help for details"
-        exit 1
-        ;;
-esac
-
-
-
+for target in $TARGETS
+do
+    case "$CMD" in
+        help)
+            info
+            exit 0
+            ;;
+        install)
+            if [ "$TRY" = true ]; then
+                pkinstall "$PKGMGR" "$target" || echo "[WARN] Install of '$target' failed"
+            else
+                pkinstall "$PKGMGR" "$target"
+            fi
+            ;;
+        uninstall)
+            if [ "$TRY" = true ]; then
+                pkuninstall "$PKGMGR" "$target" || echo "[WARN] Uninstall of '$target' failed"
+            else
+                pkuninstall "$PKGMGR" "$target"
+            fi
+            ;;
+        *)
+            echo "Unknown command: $CMD - See pkman help for details"
+            exit 1
+            ;;
+    esac
+done
