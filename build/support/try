@@ -1,0 +1,89 @@
+#!/bin/bash
+
+set -e
+
+NAME='try'
+VERSION='0.0.1'
+HELP='
+  Usage try [options ...] [cmd]
+    Tries to execute a bash command. Upon failure a warning is printed but a
+    zero exit status is returned. Note that all options must be before the
+    command argument.
+  
+  Options:
+    -e, --exists    Run the command without a catch if it exists
+    -h, --help      Print this message and exit.
+'
+
+function info () {
+    echo -e "$NAME $VERSION $HELP"
+}
+
+function join {
+    local IFS="$1"
+    shift
+    echo "$*"
+}
+
+## Instance Variables
+#
+#
+
+CMD=""
+TARGET=""
+EXISTS=true
+FULLCMD=true
+IFS=' ' read -r -a args <<< "$@"
+
+## Parse Options
+#
+# Parse out the try specific arguments from the desired command
+
+while [ "${#args[@]}" -ne 0 ]
+do
+    arg="${args[0]}"
+    args=("${args[@]:1}")
+
+    case "$arg" in
+        -h | --help)
+            info
+            exit 0
+            ;;
+        -e | --exists)
+            FULLCMD=false
+            ;;
+        -* | --*)
+            echo "Unknown command $arg - See try --help for details"
+            exit 0
+            ;;
+        *)
+            TARGET="$arg"
+            CMD="$(join ' ' "$arg" "${args[@]}")"
+            break
+            ;;
+    esac
+done
+
+## Check Existence
+#
+# Ensure that the desired target exists
+
+if [ -z "$(which "$TARGET")" ]; then
+    if [ "$EXISTS" == true ]; then
+        echo "[WARN] Command '$TARGET' not found"
+        exit 0
+    else
+        echo "Command '$TARGET' not found"
+        exit 1
+    fi
+fi
+
+## Run Command
+#
+# Run the full command
+
+if [ "$FULLCMD" == true ]; then
+    $CMD || echo "[WARN] Command '$CMD' failed"
+else
+    $CMD
+fi

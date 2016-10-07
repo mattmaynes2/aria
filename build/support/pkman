@@ -3,16 +3,21 @@
 set -e
 
 NAME='pkman'
-VERSION='0.0.1'
+VERSION='0.1.0'
+PROGNAME="$0"
 HELP='
-  Usage pkman [cmd]
+  Usage pkman [cmd] [flags ...]
     Performs package manager operations on various operating systems using the
     default platform package manager.
 
+  Commands:
+    help                Displays this message and exit
+    install [pkg]       Installs the given package on this system
+    uninstall [pkg]     Removes the given package from this system
+
   Options:
-    help            Displays this message and exit
-    install [pkg]   Installs the given package on this system
-    uninstall [pkg] Removes the given package from this system
+    -p, --pkgmgr [mgr]  Run this command only for a specific package manager
+    -t, --try           Try to install package but ignore failure
 '
 
 function info () {
@@ -54,6 +59,10 @@ function pkinstall () {
                 echo "Installing using: $1 install $2"
                 "$1" install "$2"
                 ;;
+            npm)
+                echo "Installing using: $1 install -g $2"
+                "$1" install -g "$2"
+                ;;
             *)
                 echo "Installing using: $1 install -y $2"
                 sudo "$1" install -y "$2"
@@ -73,7 +82,11 @@ function pkuninstall () {
                 echo "Uninstalling using: $1 uninstall $2"
                 "$1" uninstall "$2"
                 ;;
-            *)
+            npm)
+                echo "Uninstalling using: $1 uninstall -g $2"
+                "$1" uninstall -g "$2"
+                ;;
+             *)
                 echo "Uninstalling using: $1 remove $2"
                 sudo "$1" remove "$2"
                 ;;
@@ -82,23 +95,76 @@ function pkuninstall () {
 }
 
 
+TRY=false
 PKGMGR=$(pkgmgr)
+USRMGR=""
+
+## Check Platform
+#
+# Check that the user platform is known. If there is no suitable package manager
+# then exit with an error.
 
 if [ -z "$PKGMGR" ]; then
     echo "Unknown platform: $(uname)"
     exit 1
 fi
 
+## Parse Options
+#
+# Parse all the input options and set the appropriate flags
+
+IFS=' ' read -r -a args <<< "$@"
+for ((i=2; i < ${#args[@]}; i++)); do
+    case "${args[i]}" in
+        -p | --pkgmgr)
+            USRMGR="${args[i+1]}"
+            i=$i+1
+            ;;
+        -t | --try)
+            TRY=true
+            ;;
+        *)
+            echo "Unknown option: ${args[i]} - See pkman help for details"
+            exit 1
+            ;;
+    esac
+done
+
+## Validate Options
+#
+# Ensure that we can perform all the tasks that were required. If not then exit
+# appropriately.
+
+if [ "$USRMGR" == "npm" ]; then
+    "$PROGNAME" install npm
+    PKGMGR="$USRMGR"
+elif [ -n "$USRMGR" ] && [ "$USRMGR" != "$PKGMGR" ]; then
+   echo "[WARN] Platform package manager '$PKGMGR' does not match specified manager '$USRMGR'"
+   exit 0
+fi
+
+## Run Command
+#
+# Run the user specified command
+
 case "$1" in
     help)
-        help
+        info
         exit 0
         ;;
     install)
-        pkinstall "$PKGMGR" "$2"
+        if [ "$TRY" = true ]; then
+            pkinstall "$PKGMGR" "$2" || echo "[WARN] Install of '$2' failed"
+        else
+            pkinstall "$PKGMGR" "$2"
+        fi
         ;;
     uninstall)
-        pkuninstall "$PKGMGR" "$2"
+        if [ "$TRY" = true ]; then
+            pkuninstall "$PKGMGR" "$2" || echo "[WARN] Uninstall of '$2' failed"
+        else
+            pkuninstall "$PKGMGR" "$2"
+        fi
         ;;
     *)
         echo "Unknown command: $1 - See pkman help for details"
