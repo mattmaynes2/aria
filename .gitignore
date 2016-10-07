@@ -24,8 +24,8 @@
 *.png
 *.jpg
 *.jpeg
-*.bmp
 *.gif
+*.bmp
 
 # Output
 bin
