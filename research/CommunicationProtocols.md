@@ -20,7 +20,7 @@ ZigBee
 ## Description
 
   ZigBee provides an alternative to WiFi. The goal of ZigBee is to provide simple transmission for a low amount of data, within
-a limited range. The decrease in data transmission rates and range provides an increased battery life for components.
+a limited range. The decrease in data transmission rates and range provides an increased battery life for components. A computing device can be turned into a ZigBee device with the appropriate shield, and some ZigBee devices, such as a lightswitch, can be purchased. 
 
 ## Technical Overview
 
@@ -28,21 +28,20 @@ a limited range. The decrease in data transmission rates and range provides an i
 in the network is connected. Each node transmitts it's own information, as well as assisting in relaying information received
 from other nodes. Having every node connected allows for data to be transmitted between nodes simultaneously, and increases 
 network stability be not relying on one central node. This increase in stability come at the cost of having potentially many
-redundant connections in the network.
+redundant connections in the network. Zigbee devices use the mesh topology to send messages using message routing. This means that if the endpoint device is out of range of the initial device, intermediate devices will relay the message through the mesh until it reaches it's endpoint.
 
   ZigBee operates within three possible frequency bands: 868-870 MHz, 902-928 MHz, and 2.4-2.4835 GHz. The lowest band only
 has one available channel, the middle band has ten available channels, and the highest band has 16 available channels. The
-respective data transfer rates are 20Kbps, 40Kbps, and 250Kbps.
+respective data transfer rates are 20Kbps, 40Kbps, and 250Kbps. It should be noted that devices on different frequency bands cannot communicate with each other, and generally only devices using the 2.4 Ghz range are produced.
 
   The low power consumption of ZigBee devices when compared to WiFi leads to large power consumption and battery life gains.
 A ZigBee decive can last for up to ten years.
 
   A ZigBee device can be added to the network in approximatly thirty milliseconds, and 256 devices can be connected to one
-network in theory. However, in practice, the system performance tends to degrade at around thirty devices.
+network in theory. However, in practice, the system performance tends to degrade at around thirty devices. 
 
   One of the major drawbacks of ZigBee is that for it to be effective, it must operate in the 2.4 GHz frequency band. This 
-would not be an issue, except for the fact that this is the same frequency band as WiFi. This can cause interference between 
-the two networks, resulting in packet loss for both networks. The lost packets have to be retransmitted until they are recieved
+would not be an issue, except for the fact that this is the same frequency band as WiFi. This can cause interference between the two networks, resulting in packet loss for both networks. The lost packets have to be retransmitted until they are recieved
 by the intended endpoint, causing lag in both networks. ZigBee packets suffer more from this interference in practice, with the
 level of interference rising as the number of nodes and the amount of traffic rises.
 
@@ -53,6 +52,7 @@ ZigBee Alliance, but could present some legacy issues.
 
 
 ## Citations
+
 &mdash; <cite>"What Technology?," in SMARTHOME® - Home Automation Superstore, 1995. [Online]. Available: http://www.smarthome.com/sc-what-technology. Accessed: Oct. 6, 2016. </cite>
 
 &mdash; <cite>L. LABS, "Z-Wave vs. Zigbee," in Wireless Technology, Link Labs, 2015. [Online]. Available: http://www.link-labs.com/z-wave-vs-zigbee/. Accessed: Oct. 6, 2016.</cite>
@@ -71,18 +71,36 @@ Z-Wave
 
 ## Description
 
-Z-Wave was designed to be a successor to ZigBee.   
+Z-Wave is a very similar option to ZigBee, except it uses a proprietary radio design. This limits the number of devices available
+for it, as they are only produced by Sigma Designs. The advantage to this is that because the chips are made by one manufacturer, there is a high level of interoperation.
 
 ## Technical Overview
 
-Technically speaking, what does this item do?
+One area where Z-Wave differs from ZigBee is the frequency range of operation. It operates at 908.42 MHz instead of at 2.4 GHz, which avoids the issue of conflicting with WiFi signals. In terms of device limits, it is very similar, being able to handle between 30 and 40 devices before issues start to occur. Z-Wave is similar to ZigBee in terms of device range and power consumption. 
 
-## Evaluation
+## Citations
+&mdash; <cite>"What is Z-Wave," in SMARTHOME® - Home Automation Superstore, 1995. [Online]. Available: http://www.smarthome.com/sc-what-is-zwave-home-automation. Accessed: Oct. 6, 2016. </cite>
+&mdash; <cite>"Z-Wave vs. Zigbee," in Link Labs, Link Labs, 2015. [Online]. Available: http://www.link-labs.com/z-wave-vs-zigbee/. Accessed: Oct. 6, 2016.</cite>
+&mdash; <cite>	L. Frenzel, "What’s the difference between ZigBee and Z-Wave?," in Electronic Design, 2012. [Online]. Available: http://electronicdesign.com/communications/what-s-difference-between-zigbee-and-z-wave. Accessed: Oct. 6, 2016.</cite>
 
-How does this specific item do against our criteria?
+&mdash; <cite></cite>
 
+INSTEON
+------------
+
+## Description
+
+INSTEON is substatially different from the two above protocols.
+
+## Technical Overview
+
+INSTEON uses a similar mesh topology as the above protocols, but it is not limited to radio frequencies. It utalizes a dual-mesh system to increase overall stability. The dual-mesh system is a combination of radio frequencies at 915 MHz (in the US), and powerline layer operating at 131.65 KHz. When the radio frequencies encounter interference, the powerline layer makes sure the message gets broadcasted to the appropriate destination. INSTEON also uses a different message devilvery system compared to ZygBee and Z-Wave. Instead of sending a message from one device and routing it through other devices, it takes advantage of simucasting. This is the process of having multiple devices broadcasting the same message, so the intended recipient gets the message faster and more reliably. This method is not feasible for high data rates, but INSTEON shares it's low data rates with ZygBee and Z-Wave.
+
+INSTEON offers much higher 
+## Citations
 -----------------------
 
+&mdash; <cite>	"WHITEPAPER: Compared," in INSTEON. [Online]. Available: http://cache.insteon.com/pdf/INSTEONCompared.pdf. Accessed: Oct. 6, 2016.</cite>
 
 ### Summary of Evaluation
 
