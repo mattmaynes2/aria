@@ -1,14 +1,22 @@
 {
     "common.javascript" : {
-        "enviro" : "npm install -g phantomjs-prebuilt"
+        "enviro" : "./support/pkman install -p npm phantomjs-prebuilt"
     },
     "common.python" : {
         "enviro" : "./support/pkman install python3"
     },
+    "common.bash" : {
+        "deps" : "./support/pkman install --try shellcheck"
+    },
+    "common.markdown" : {
+        "enviro" : [
+            "./support/pkman install pandoc",
+            "./support/pkman install -p cask wkhtmltopdf"
+        ]
+    },
     "build" : {
         "deps" : [
-            "npm install",
-            "./support/pkman install shellcheck"
+            "npm install"
         ],
         "test" : [
             "npm test",
@@ -35,13 +43,44 @@
         "test"      : ["cd ../gateway", "npm test"],
         "clean"     : ["cd ../gateway", "rm -rf node_modules bin"]
     },
-    "reports" : {
-        "enviro" : "./support/pkman install pandoc"
+    "uml" : {
+        "enviro" : [
+            "./support/pkman install --try -p brew pkg-config cairo libpng jpeg giflib",
+            "./support/pkman install --try -p apt-get libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++",
+            "./support/pkman install --try -p yum cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel"
+        ],
+        "deps" : [
+            "./support/pkman install --try -p npm mdgen"
+        ],
+        "build" : [
+            "mkdir -p mdtmp__",
+            "cd mdtmp__ && MDJ=$(find ../../ -name '*.mdj') && for file in $MDJ; do mdgen image -m $file; mv *.png $(dirname $file); done && cd ..",
+            "rm -rf mdtmp__"
+        ]
+    },
+    "research" : {
+        "build" : [
+            "cd ../research",
+            "cat *.md > Research.markdown",
+            "../build/support/try pandoc -c ../build/styles/style.css -t html -f markdown Research.markdown > Research.html",
+            "../build/support/try wkhtmltopdf Research.html Research.pdf",
+            "rm -f Research.markdown Research.html"
+        ]
     },
     "reports.proposal" : {
         "build" : [
             "cd ../reports/proposal",
-            "pandoc --to docx --from markdown -o proposal.docx proposal.md"
+            "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Proposal.md > Proposal.html",
+            "../../build/support/try wkhtmltopdf Proposal.html Proposal.pdf",
+            "rm -f Proposal.html"
+        ]
+    },
+    "reports.spec" : {
+        "build" : [
+            "cd ../reports/spec",
+            "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Specification.md > Specification.html",
+            "../../build/support/try wkhtmltopdf Specification.html Specification.pdf",
+            "rm -f Specification.html"
         ]
     }
 }

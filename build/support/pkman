@@ -3,16 +3,21 @@
 set -e
 
 NAME='pkman'
-VERSION='0.0.1'
+VERSION='0.1.0'
+PROGNAME="$0"
 HELP='
-  Usage pkman [cmd]
+  Usage pkman [cmd] [flags ...]
     Performs package manager operations on various operating systems using the
     default platform package manager.
 
+  Commands:
+    install [pkg]       Installs the given package on this system
+    uninstall [pkg]     Removes the given package from this system
+
   Options:
-    help            Displays this message and exit
-    install [pkg]   Installs the given package on this system
-    uninstall [pkg] Removes the given package from this system
+    -h, --help          Display this message and exit
+    -p, --pkgmgr [mgr]  Run this command only for a specific package manager
+    -t, --try           Try to install package but ignore failure
 '
 
 function info () {
@@ -44,6 +49,9 @@ function search () {
         brew)
             brew list | grep -e "$2"
             ;;
+        npm)
+            npm list -g | grep "$2"
+            ;;
     esac
 }
 
@@ -51,8 +59,16 @@ function pkinstall () {
     if [ -z "$(search "$1" "$2")" ]; then
         case "$1" in
             brew)
-                echo "Installing using: $1 install $2"
-                "$1" install "$2"
+                echo "Installing using: brew install $2"
+                brew install "$2"
+                ;;
+            cask)
+                echo "Installing using: brew cask install $2"
+                brew cask install "$2"
+                ;;
+            npm)
+                echo "Installing using: npm install -g $2"
+                npm install -g "$2"
                 ;;
             *)
                 echo "Installing using: $1 install -y $2"
@@ -73,7 +89,11 @@ function pkuninstall () {
                 echo "Uninstalling using: $1 uninstall $2"
                 "$1" uninstall "$2"
                 ;;
-            *)
+            npm)
+                echo "Uninstalling using: $1 uninstall -g $2"
+                "$1" uninstall -g "$2"
+                ;;
+             *)
                 echo "Uninstalling using: $1 remove $2"
                 sudo "$1" remove "$2"
                 ;;
@@ -82,29 +102,98 @@ function pkuninstall () {
 }
 
 
+TRY=false
 PKGMGR=$(pkgmgr)
+USRMGR=""
+
+## Check Platform
+#
+# Check that the user platform is known. If there is no suitable package manager
+# then exit with an error.
 
 if [ -z "$PKGMGR" ]; then
     echo "Unknown platform: $(uname)"
     exit 1
 fi
 
-case "$1" in
-    help)
-        help
-        exit 0
-        ;;
-    install)
-        pkinstall "$PKGMGR" "$2"
-        ;;
-    uninstall)
-        pkuninstall "$PKGMGR" "$2"
-        ;;
-    *)
-        echo "Unknown command: $1 - See pkman help for details"
-        exit 1
-        ;;
-esac
+## Parse Arguments
+#
+#
+IFS=' ' read -r -a args <<< "$@"
+CMD="${args[0]}"
+TARGETS=""
 
+## Parse Options
+#
+# Parse all the input options and set the appropriate flags
+while [ "${#args[@]}" -ne 0 ]
+do
+    arg="${args[0]}"
+    args=("${args[@]:1}")
 
+    case "$arg" in
+        -h | --help)
+            info
+            exit 0
+            ;;
+        -p | --pkgmgr)
+            USRMGR="${args[0]}"
+            args=("${args[@]:1}")
+            ;;
+        -t | --try)
+            TRY=true
+            ;;
+        -*)
+            echo "Unknown option: $arg - See pkman --help for details"
+            exit 1
+            ;;
+        *)
+            if [ "$arg" != "install" ] && [ "$arg" != "uninstall" ]; then
+                TARGETS="$TARGETS $arg"
+            fi
+            ;;
+    esac
+done
 
+## Validate Options
+#
+# Ensure that we can perform all the tasks that were required. If not then exit
+# appropriately.
+
+if [ "$USRMGR" == "npm" ]; then
+    "$PROGNAME" install npm
+    PKGMGR="$USRMGR"
+elif [ "$USRMGR" == "cask" ] && [ "$PKGMGR" != "brew" ]; then
+    echo "[WARN] Cask package manager only available with homebrew"
+    exit 0
+elif [ -n "$USRMGR" ] && [ "$USRMGR" != "$PKGMGR" ]; then
+   echo "[WARN] Platform package manager '$PKGMGR' does not match specified manager '$USRMGR'"
+   exit 0
+fi
+
+## Run Command
+#
+# Run the user specified command
+for target in $TARGETS
+do
+    case "$CMD" in
+       install)
+            if [ "$TRY" = true ]; then
+                pkinstall "$PKGMGR" "$target" || echo "[WARN] Install of '$target' failed"
+            else
+                pkinstall "$PKGMGR" "$target"
+            fi
+            ;;
+        uninstall)
+            if [ "$TRY" = true ]; then
+                pkuninstall "$PKGMGR" "$target" || echo "[WARN] Uninstall of '$target' failed"
+            else
+                pkuninstall "$PKGMGR" "$target"
+            fi
+            ;;
+        *)
+            echo "Unknown command: $CMD - See pkman --help for details"
+            exit 1
+            ;;
+    esac
+done
