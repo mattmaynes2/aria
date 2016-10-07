@@ -8,6 +8,10 @@
     "common.bash" : {
         "deps" : "./support/pkman install --try shellcheck"
     },
+    "common.markdown" : {
+        "enviro" : "./support/pkman install -p cask install wkhtmltopdf",
+        "deps" : "./support/pkman -p npm install mkpdf"
+    },
     "build" : {
         "deps" : [
             "npm install"
@@ -52,15 +56,24 @@
             "rm -rf mdtmp__"
         ]
     },
-    "reports" : {
-        "enviro" : [
-            "./support/pkman install pandoc"
+    "research" : {
+        "build" : [
+            "cd ../research",
+            "cat *.md > Research.md",
+            "../../build/support/try mkpdf -s ../../build/styles/style.css Research.md",
+            "rm -f Research.md"
         ]
     },
     "reports.proposal" : {
         "build" : [
             "cd ../reports/proposal",
-            "pandoc --to docx --from markdown -o proposal.docx proposal.md"
+            "../../build/support/try mkpdf -s ../../build/styles/style.css Proposal.md"
+        ]
+    },
+    "reports.spec" : {
+        "build" : [
+            "cd ../reports/spec",
+            "../../build/support/try mkpdf -s ../../build/styles/style.css *.md"
         ]
     }
 }

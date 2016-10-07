@@ -173,7 +173,7 @@ the network.
 
 ## 4. System Features
 
-![image](./SystemUseCase.png)
+![image](./uml/SystemUseCase.png)
 
 -----------------------------
 
