@@ -9,8 +9,10 @@
         "deps" : "./support/pkman install --try shellcheck"
     },
     "common.markdown" : {
-        "enviro" : "./support/pkman install -p cask install wkhtmltopdf",
-        "deps" : "./support/pkman -p npm install mkpdf"
+        "enviro" : [
+            "./support/pkman install pandoc",
+            "./support/pkman install -p cask wkhtmltopdf"
+        ]
     },
     "build" : {
         "deps" : [
@@ -59,21 +61,26 @@
     "research" : {
         "build" : [
             "cd ../research",
-            "cat *.md > Research.md",
-            "../../build/support/try mkpdf -s ../../build/styles/style.css Research.md",
-            "rm -f Research.md"
+            "cat *.md > Research.markdown",
+            "../build/support/try pandoc -c ../build/styles/style.css -t html -f markdown Research.markdown > Research.html",
+            "../build/support/try wkhtmltopdf Research.html Research.pdf",
+            "rm -f Research.markdown Research.html"
         ]
     },
     "reports.proposal" : {
         "build" : [
             "cd ../reports/proposal",
-            "../../build/support/try mkpdf -s ../../build/styles/style.css Proposal.md"
+            "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Proposal.md > Proposal.html",
+            "../../build/support/try wkhtmltopdf Proposal.html Proposal.pdf",
+            "rm -f Proposal.html"
         ]
     },
     "reports.spec" : {
         "build" : [
             "cd ../reports/spec",
-            "../../build/support/try mkpdf -s ../../build/styles/style.css *.md"
+            "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Specification.md > Specification.html",
+            "../../build/support/try wkhtmltopdf Specification.html Specification.pdf",
+            "rm -f Specification.html"
         ]
     }
 }
