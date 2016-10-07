@@ -47,7 +47,9 @@
             "./support/pkman install --try -p npm mdgen"
         ],
         "build" : [
-            "find ../ -name '*.mdj' -exec ./support/try -e mdgen image -m {} \\;"
+            "mkdir -p mdtmp__",
+            "cd mdtmp__ && MDJ=$(find ../../ -name '*.mdj') && for file in $MDJ; do mdgen image -m $file; mv *.png $(dirname $file); done && cd ..",
+            "rm -rf mdtmp__"
         ]
     },
     "reports" : {
