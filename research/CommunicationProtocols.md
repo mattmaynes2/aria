@@ -14,6 +14,7 @@ appropriate for our system.
 system. For the protocols, this includes: ease of integration with devices, battery life of devices, range, reliability, interoperability, data transmission rate, number of concurrent connections, device discovery time, and cost.
 
 
+
 ZigBee
 ------------
 
@@ -66,13 +67,13 @@ ZigBee Alliance, but could present some legacy issues.
 &mdash; <cite>	W. Mardini, Y. Khamayseh, R. Jaradatand, and R. Hijjawi, "Interference Problem between ZigBee and WiFi," 2012. [Online]. Available: http://www.ipcsit.com/vol30/024-ICNCS2012-G3061.pdf. Accessed: Oct. 6, 2016.</cite>
 
 
+
 Z-Wave
 ------------
 
 ## Description
 
-Z-Wave is a very similar option to ZigBee, except it uses a proprietary radio design. This limits the number of devices available
-for it, as they are only produced by Sigma Designs. The advantage to this is that because the chips are made by one manufacturer, there is a high level of interoperation.
+Z-Wave is a very similar option to ZigBee, except it uses a proprietary radio design. This slightly limits the number of devices available for it, as chips are mostly produced by Sigma Designs. The advantage to this is that because the chips are made largely by one manufacturer, there is a high level of interoperation.
 
 ## Technical Overview
 
@@ -80,7 +81,9 @@ One area where Z-Wave differs from ZigBee is the frequency range of operation. I
 
 ## Citations
 &mdash; <cite>"What is Z-Wave," in SMARTHOME® - Home Automation Superstore, 1995. [Online]. Available: http://www.smarthome.com/sc-what-is-zwave-home-automation. Accessed: Oct. 6, 2016. </cite>
+
 &mdash; <cite>"Z-Wave vs. Zigbee," in Link Labs, Link Labs, 2015. [Online]. Available: http://www.link-labs.com/z-wave-vs-zigbee/. Accessed: Oct. 6, 2016.</cite>
+
 &mdash; <cite>	L. Frenzel, "What’s the difference between ZigBee and Z-Wave?," in Electronic Design, 2012. [Online]. Available: http://electronicdesign.com/communications/what-s-difference-between-zigbee-and-z-wave. Accessed: Oct. 6, 2016.</cite>
 
 &mdash; <cite></cite>
@@ -94,13 +97,23 @@ INSTEON is substatially different from the two above protocols.
 
 ## Technical Overview
 
-INSTEON uses a similar mesh topology as the above protocols, but it is not limited to radio frequencies. It utalizes a dual-mesh system to increase overall stability. The dual-mesh system is a combination of radio frequencies at 915 MHz (in the US), and powerline layer operating at 131.65 KHz. When the radio frequencies encounter interference, the powerline layer makes sure the message gets broadcasted to the appropriate destination. INSTEON also uses a different message devilvery system compared to ZygBee and Z-Wave. Instead of sending a message from one device and routing it through other devices, it takes advantage of simucasting. This is the process of having multiple devices broadcasting the same message, so the intended recipient gets the message faster and more reliably. This method is not feasible for high data rates, but INSTEON shares it's low data rates with ZygBee and Z-Wave.
+INSTEON uses a similar mesh topology as the above protocols, but it is not limited to radio frequencies. It utalizes a dual-mesh system to increase overall stability. The dual-mesh system is a combination of radio frequencies at 915 MHz (in the US), and powerline layer operating at 131.65 KHz. When the radio frequencies encounter interference, the powerline layer makes sure the message gets broadcasted to the appropriate destination. INSTEON also uses a different message devilvery system compared to ZigBee and Z-Wave. Instead of sending a message from one device and routing it through other devices, it takes advantage of simucasting. This is the process of having multiple devices broadcasting the same message, so the intended recipient gets the message faster and more reliably. This method is not feasible for high data rates, but INSTEON shares it's low data rates with ZigBee and Z-Wave.
 
-INSTEON offers much higher 
+One thing INSTEON is lacking compared to ZigBee and Z-Wave is third part support for their devices. They manufacture almost all of their own devices, which leads to a limited amount of choice in terms of different types of devices designed for the same task. 
+
+A unique advantage of INSTEON is its ability to interface with devices following the X10 protocol. The X10 protocol was one of the origional protocols designed to work using only powerlines. It is outdated now in terms of being a reasonable choice for a new system, as it was designed over 30 years ago. This means that there is no wireless communication involved, which is essential for a modern day smart home communication protocol. That said, there are many legacy automation systems in place which still use X10 devices. If this were the case, then INSTEON would be an ideal choice for a communication protocol.
+
 ## Citations
 -----------------------
 
-&mdash; <cite>	"WHITEPAPER: Compared," in INSTEON. [Online]. Available: http://cache.insteon.com/pdf/INSTEONCompared.pdf. Accessed: Oct. 6, 2016.</cite>
+&mdash; <cite>"WHITEPAPER: Compared," in INSTEON. [Online]. Available: http://cache.insteon.com/pdf/INSTEONCompared.pdf. Accessed: Oct. 6, 2016.</cite>
+
+&mdash; <cite>"X10," in Build Your Smarthome, 2014. [Online]. Available: http://buildyoursmarthome.co/home-automation/protocols/x10/. Accessed: Oct. 8, 2016.
+</cite>
+
+&mdash; <cite>"What home automation protocol should I choose?," in Intellihome, 2015. [Online]. Available: https://www.intellihome.be/en/kbase/INSTEON/What_home_automation_protocol_should_I_choose_-2.html. Accessed: Oct. 8, 2016.
+</cite>
+
 
 ### Summary of Evaluation
 
