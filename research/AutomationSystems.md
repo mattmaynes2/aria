@@ -3,17 +3,11 @@ Automation Systems
 
 ### Background
 
-There are many different 
-
-### Relation to System
-
-We are looking at other home automation systems so that we can see if
-there are any devices that exist on the market that our system could 
-use in order to lower the time required to build our own. Adding 
-support for other smart devices also makes our system more appealing
-to the end user because they are not limited to only using devices we
-create but can go to a store and purchase any device that from 
-supported vendors. 
+There are many different home automation systems. We are looking at
+these other automation systems so that we can see know what 
+already exists on the market. Find standards that the existing 
+systems use. We also want to see what other systems do well so
+we can take this into consideration while designing our system.
 
 <note need to rework this>
 
@@ -173,6 +167,21 @@ How does this specific item do against our criteria?
 ### Summary of Evaluation
 
 All of the evaluation grouped together
+It appears that most of these systems support the NEST thermostat
+with most of these systems supporting one product this would 
+suggest that <insert market leader statment> because our system
+is more about the machine learning and communication between
+devices it seems to make sense to use the NEST thermostat
+rather than spending time creating our own.
+<reword and maybe move to nest section in devices>
+
+These systems seem to all provide a central hub that is used
+to as a central device that controls devices as well as provides
+an API that allows apps to control devices. This suggest that 
+our system should also provide a central server with an API.
+
+<reword maybe provide better reason>
+
 
 ### Conclusion
 
