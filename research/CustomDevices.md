@@ -1,4 +1,4 @@
-Section Title
+custom-Built Devices
 =============
 
 ### Background
@@ -43,14 +43,14 @@ are not readily available.
 The system is only useful if its decisions are observable through the devices which are connected to it. 
 Therefore, we must be abale to trust that any custom devices are highly reliable.
 
-- Compatibility with computing devices and communication protocols
+#### Compatibility with computing devices and communication protocols
 
 What communication protocols can be supported by the device? How does it interact with a processor?
 
-- Ease of use
+#### Ease of use
 
 The principle objective of the product is to simplify configuration of home automation systems. Devices
-which require complex setup are cointrary to the system's objectives. 
+which require complex setup are contrary to the system's objectives. 
 
 
 ### Devices of Interest
@@ -78,8 +78,8 @@ haven't thought of which would present challenging cases for the machine learnin
 
 Digital locks are of interest because correct control of locks is a concern of homeowners. While their 
 output is binary (locked/unlocked), their behaviour is potentially affected by many factors
- (lighting levels, time of day, motion sensors, etc.), which could be challenging for the machine
- learning algorithm to infer.
+(lighting levels, time of day, motion sensors, etc.), which could be challenging for the machine
+learning algorithm to infer.
 
 - Light Sensor
 
@@ -88,7 +88,7 @@ the level of light in a room may be related to the behaviour of many other devic
 
 - Dimmer switch
 
-A dimmer switch is a nexample of a non-binary output device. 
+A dimmer switch is an example of a non-binary output device. 
 
 - Alarm Clock
 
@@ -104,6 +104,9 @@ Motion Sensor
 ### Description
 
 ### Technical Overview
+
+This section considers devices that can be used to alert the system when a person
+enters or leaves an area of the home. 
 
 ### Sensor Technologies
 
@@ -135,7 +138,14 @@ switch circuit, consisting of a single push button used to toggle an LED. Theref
 time required for the complete device is expected to be under 10 hours.
 
 PIR sensor modules are reliable because they do not typically contain any moving components, 
-other than potentiometer used for sensitivity adjustment. 
+other than potentiometer used for sensitivity adjustment.
+
+PIR sensors are easy to use, the main difficulties that a user may encounter in setting up a 
+PIR sensor are ensuring that the detectorès field of view covers the correct area, as well 
+as potentially adjusting the sensitivity of the detector.
+
+PIR sensors are available with a range which is suitable for a typical room (approximately 7m range).
+
 
 The following tutorials explain how to interface with PIR modules:
 
@@ -149,21 +159,94 @@ Relation to research objectives
 - Widely Available
 - Estimated time investment is under 10 hours
 
-#### Microwave
+#### Doppler-Effect based sensors
 
+Several types of motion detectors use the Doppler effect to detect motion. The detector transmits
+A signal of a known frequency. This signal is reflected by any objects in its path and 
+detected when it returns to the sensor. The sensor tracks frequency of the reflected wave; when
+a wave is reflected off of a moving object the frequency of the reflected wave differs from that 
+of the incident wave due to the Doppler effect. This change in frequency is detected by the 
+sensor and registered as motion. 
 
+#### Infrared Break-Beam 
 
-#### Vibration
+An infrared break-beam sensor consists of two physical modules separated by some distance. 
+One side of the detector transmits a beam of infrared light which is detected by the other
+side. 
 
-#### Ultrasonic
+Expertise Required 
+- Little expertise required, circuits are simple 
+- Tutorials widely available online
 
-#### Reflective Infrared
+Time Investment
+- Comparable to light switch; the software and hardware complexity is low
+
+Component Availability
+- Components widely available
+
+Reliability
+- Sensors generally have a lower range than PIR sensors, availability of detectors with a longer
+range may be lower
+- Allows for finer control over the area of detection than a PIR sensor
+
+Useability
+- More difficult than a PIR sensor, requires the user to precisely aim the transmitted beam.
 
 ### Evaluation
 
 How does this specific item do against our criteria?
 
 -----------------------
+
+Dimmer Switch
+-----------------------
+
+The objective of thios device is to allow precise control of the amount of AC power given 
+to a device such as a light bulb or a fan. 
+
+Expertise Required
+
+- Safety concerns: A dimmer switch is likely to be used with devices that plugin in to 
+wall outlets. Therefore, building this device may involve the use of high voltages which
+should not be undertaken without the proper training. For this reason alone, the dimmer
+switch may not be a good candidate for a custom-built device.
+
+
+Time Investment
+
+- Circuits presented in mopst online tutorials are much more complex than the simple 
+light switch circuit. This would lead to a higher amount of time investment required
+to understand and construct the circuit.
+
+Light Sensor
+-----------------
+
+## Description
+
+This section investigates devices which can detect the amount of ambient light in an
+area of the house.
+
+Expertise Required
+-------------------
+- Circuits are simple, requires only basic electronics knowledge
+
+Component Availability
+----------------------
+- Components are readily available online and in electronics component shops
+
+
+
+Alarm Clock
+-----------------
+
+Energy monitoring switch
+-------------------------
+
+Coloured Lighting
+------------------
+
+Coffee Makers
+--------------
 
 
 ### Summary of Evaluation
