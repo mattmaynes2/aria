@@ -116,16 +116,6 @@ is outside of the scope of the project for now.
 
 -----------------------
 
-Apple HomeKit
--------------
-
-## Description
-
-## Technical Overview
-
-
--------------
-
 Wink
 ------------
 
@@ -201,6 +191,16 @@ How does this specific item do against our criteria?
 
 -----------------------
 
+Apple HomeKit
+-------------
+
+## Description
+
+## Technical Overview
+
+## References
+
+-------------
 
 ### Summary of Evaluation
 
