@@ -98,6 +98,13 @@ board.
 
 ## Technical Overview
 
+The Ardunio 101 is the most feature rich board that Ardunio is offers. It comes with a full
+Real-Time Operating System (RTOS) that is powered by the Intel Curie. The processor is a 32-bit,
+8 MHz or 16 MHz backed by 196 KB of flash memory. The RTOS is a light weight OS that only
+occupies 2 KB of memory to provide managed, concurrent applications.
+
+
+
 ##### Operation Criteria
 
 | Criteria                   | Specification  |
@@ -174,18 +181,19 @@ involved interface than the standard Ardiuno.
 
 ##### Features
 
-| Feature                                       |       |
-| -------                                       | ----- |
-| Universal Asynchronous Receiver / Transmitter | Yes   |
-| Serial Peripheral Interface Bus               | Yes   |
-| Inter-Integrated Circuit                      | Yes   |
+| Feature                                       |           |
+| -------                                       | -----     |
+| USB                                           | USB-Micro |
+| Universal Asynchronous Receiver / Transmitter | Yes       |
+| Serial Peripheral Interface Bus               | Yes       |
+| Inter-Integrated Circuit                      | Yes       |
 
 ##### Physical Characteristics
 
-| Dimension | Length   |
-| --------- | ------   |
-| Length    | 52.07 mm |
-| Width     | 53.34 mm |
+| Dimension | Length  |
+| --------- | ------  |
+| Length    | 52.1 mm |
+| Width     | 53.3 mm |
 
 ## Evaluation
 
@@ -277,11 +285,12 @@ What is this item?
 
 ##### Features
 
-| Feature                                       |       |
-| -------                                       | ----- |
-| Universal Asynchronous Receiver / Transmitter | Yes   |
-| Serial Peripheral Interface Bus               | Yes   |
-| Inter-Integrated Circuit                      | Yes   |
+| Feature                                       |           |
+| -------                                       | -----     |
+| USB                                           | USB-Micro |
+| Universal Asynchronous Receiver / Transmitter | Yes       |
+| Serial Peripheral Interface Bus               | Yes       |
+| Inter-Integrated Circuit                      | Yes       |
 
 ##### Physical Characteristics
 
@@ -297,6 +306,50 @@ How does this specific item do against our criteria?
 ## References
 
 [1] "ArduinoBoardProMini," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardProMini. Accessed: Oct. 6, 2016.
+
+
+Comparison of Arduinos
+-------------------
+
+##### Operation Criteria
+
+| Criteria                   | Arduino Uno | Arduino 101    | Arduino Pro    | Ardunio Micro | Arduino Pro Mini |
+| --------                   | ----------- | -----------    | -----------    | ------------- | ---------------- |
+| Operating System           | None        | RTOS           | None           | None          | None             |
+| Processor Size             | 8-bit       | 32-bit         | 32-bit         | 8-bit         | 8-bit            |
+| Processor Family           | ATmega      | Intel          | ATmega         | ATmega        | ATmega           |
+| Operating Voltage          | 5V          | 3.3V - 5V      | 3.3V - 5V      | 5V            | 3.3V - 5V        |
+| Input Voltage              | 7-12V       | 7-12V          | 7-12V          | 7-12V         | 7-12V            |
+| Clock Speed                | 16 MHz      | 8 MHz - 16 MHz | 8 MHz - 16 MHz | 16 MHz        | 8 MHz - 16 MHz   |
+| Digital Pins               | 14          | 14             | 14             | 20            | 20               |
+| Pulse with Modulation Pins | 6           | 4              | 4              | 7             | 7                |
+| Analog Input Pins          | 6           | 6              | 6              | 12            | 12               |
+| DC Current per Pin         | 20 mA       | 20 mA          | 40 mA          | 20 mA         | 20 mA            |
+| Flash Memory               | 32 KB       | 196 KB         | 32 KB          | 32 KB         | 32 KB            |
+| System Size                | 0.5 KB      | 2 KB           | 2 KB           | 4 KB          | 2 KB             |
+| SRAM                       | 2 KB        | 2 KB           | 2 KB           | 2.5 KB        | 2 KB             |
+| EEPROM                     | 1 KB        | 1 KB           | 1 KB           | 1 KB          | 1 KB             |
+
+
+##### Features
+
+| Feature                                       | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro | Ardunio Pro Mini |
+| -------                                       | ----------- | ----------- | ----------- | ------------- | ---------------- |
+| USB                                           | USB-Mini    | USB-Mini    | USB-Micro   | USB-Micro     | USB-Micro        |
+| Accelerometer                                 | No          | 6-Axis Gyro | No          | No            | No               |
+| Bluetooth                                     | No          | Yes         | No          | No            | No               |
+| Universal Asynchronous Receiver / Transmitter | No          | No          | Yes         | No            | Yes              |
+| Serial Peripheral Interface Bus               | No          | No          | Yes         | No            | Yes              |
+| Inter-Integrated Circuit                      | No          | No          | Yes         | No            | Yes              |
+
+##### Physical Characteristics
+
+| Dimension | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro | Ardunio Pro Mini |
+| --------- | ----------- | ----------- | ----------- | ------------- | ---------------- |
+| Length    | 68.6 mm     | 68.6 mm     | 52.1 mm     | 48 mm         | 17.9 mm          |
+| Width     | 53.4 mm     | 53.4 mm     | 53.3 mm     | 18 mm         | 33 mm            |
+| Weight    | 25 g        | 34 g        | N/A         | 13 g          | N/A              |
+
 
 
 Raspberry Pi 3 Model B
@@ -410,43 +463,6 @@ How does this specific item do against our criteria?
 
 
 ### Summary of Evaluation
-
-
-##### Operation Criteria
-
-| Criteria                   | Arduino Uno | Arduino 101    | Arduino Pro    | Ardunio Micro | Arduino Pro Mini |
-| --------                   | ----------- | -----------    | -----------    | ------------- | ---------------- |
-| Operating System           | None        | RTOS           | None           | None          | None             |
-| Processor Size             | 8-bit       | 32-bit         | 32-bit         | 8-bit         | 8-bit            |
-| Processor Family           | ATmega      | Intel          | ATmega         | ATmega        | ATmega           |
-| Operating Voltage          | 5V          | 3.3V - 5V      | 3.3V - 5V      | 5V            | 3.3V - 5V        |
-| Input Voltage              | 7-12V       | 7-12V          | 7-12V          | 7-12V         | 7-12V            |
-| Clock Speed                | 16 MHz      | 8 MHz - 16 MHz | 8 MHz - 16 MHz | 16 MHz        | 8 MHz - 16 MHz   |
-| Digital Pins               | 14          | 14             | 14             | 20            | 20               |
-| Pulse with Modulation Pins | 6           | 4              | 4              | 7             | 7                |
-| Analog Input Pins          | 6           | 6              | 6              | 12            | 12               |
-| DC Current per Pin         | 20 mA       | 20 mA          | 40 mA          | 20 mA         | 20 mA            |
-| Flash Memory               | 32 KB       | 196 KB         | 32 KB          | 32 KB         | 32 KB            |
-| System Size                | 0.5 KB      | 2 KB           | 2 KB           | 4 KB          | 2 KB             |
-| SRAM                       | 2 KB        | 2 KB           | 2 KB           | 2.5 KB        | 2 KB             |
-| EEPROM                     | 1 KB        | 1 KB           | 1 KB           | 1 KB          | 1 KB             |
-
-
-##### Features
-
-| Feature                                       | Arduino Uno |
-| -------                                       | ----------- | 
-| USB                                           | USB-Mini    |
-| Universal Asynchronous Receiver / Transmitter | Yes         |
-| Serial Peripheral Interface Bus               | Yes         |
-| Inter-Integrated Circuit                      | Yes         |
-
-##### Physical Characteristics
-
-| Dimension | Length  |
-| --------- | ------  |
-| Length    | 17.9 mm |
-| Width     | 33 mm   |
 
 
 ### Conclusion
