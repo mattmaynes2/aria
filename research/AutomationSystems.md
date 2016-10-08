@@ -88,7 +88,7 @@ repeater to forward messages or a responder to receive messages.
  Insteon devices to a network still require configuration through the
  Insteon App.
 
-### Evaluation
+## Evaluation
 
 Issue with integrating with insteon using their API is that it
 requires their central hub. Their hub system does most of what we 
@@ -102,7 +102,7 @@ command structures  is <something here>. Adding support for Insteon
 devices is something that could be looked at in the future though 
 is outside of the scope of the project for now.
 
-### Refrences
+## Refrences
 
 [1]	Apiary, "Insteon API · Apiary,". [Online]. Available: http://docs.insteon.apiary.io/. Accessed: Oct. 6, 2016.
 
