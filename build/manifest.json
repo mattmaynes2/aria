@@ -34,14 +34,14 @@
         "deps"      : ["cd ../remote", "npm install"],
         "build"     : ["cd ../remote", "npm run build"],
         "test"      : ["cd ../remote", "npm test"],
-        "clean"     : ["cd ../remote", "rm -rf node_modules bin"]
+        "clean"     : ["cd ../remote", "rm -rf bin"]
     },
     "gateway" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : ["cd ../gateway", "npm install"],
         "build"     : ["cd ../gateway", "npm run build"],
         "test"      : ["cd ../gateway", "npm test"],
-        "clean"     : ["cd ../gateway", "rm -rf node_modules bin"]
+        "clean"     : ["cd ../gateway", "rm -rf bin"]
     },
     "uml" : {
         "enviro" : [
@@ -61,11 +61,12 @@
     "research" : {
         "build" : [
             "cd ../research",
-            "cat *.md > Research.markdown",
+            "for f in *.md; do (cat \"$f\"; echo) >> Research.markdown; done",
             "../build/support/try pandoc -c ../build/styles/style.css -t html -f markdown Research.markdown > Research.html",
             "../build/support/try wkhtmltopdf Research.html Research.pdf",
             "rm -f Research.markdown Research.html"
-        ]
+        ],
+        "clean" : "rm -f ../research/*.pdf"
     },
     "reports.proposal" : {
         "build" : [
@@ -73,7 +74,8 @@
             "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Proposal.md > Proposal.html",
             "../../build/support/try wkhtmltopdf Proposal.html Proposal.pdf",
             "rm -f Proposal.html"
-        ]
+        ],
+        "clean" : "rm -f ../reports/proposal/*.pdf"
     },
     "reports.spec" : {
         "build" : [
@@ -81,6 +83,7 @@
             "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Specification.md > Specification.html",
             "../../build/support/try wkhtmltopdf Specification.html Specification.pdf",
             "rm -f Specification.html"
-        ]
+        ],
+        "clean" : "rm -f ../reports/spec/*.pdf"
     }
 }
