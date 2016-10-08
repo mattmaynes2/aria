@@ -19,12 +19,12 @@ system. For the protocols, this includes: ease of integration with devices, batt
 ZigBee
 ------------
 
-## Description
+### Description
 
   ZigBee provides an alternative to WiFi. The goal of ZigBee is to provide simple transmission for a low amount of data, within
 a limited range. The decrease in data transmission rates and range provides an increased battery life for components. A computing device can be turned into a ZigBee device with the appropriate shield, and some ZigBee devices, such as a lightswitch, can be purchased. 
 
-## Technical Overview
+### Technical Overview
 
   ZigBee uses a mesh networking topology, as opposed to the star topology used by Wifi.  A mesh topology means that every node
 in the network is connected. Each node transmitts it's own information, as well as assisting in relaying information received
@@ -53,7 +53,7 @@ be purchased and assumed to work together. This limited interoperability has bee
 ZigBee Alliance, but could present some legacy issues.
 
 
-## Citations
+### Citations
 
 &mdash; <cite>"What Technology?," in SMARTHOME® - Home Automation Superstore, 1995. [Online]. Available: http://www.smarthome.com/sc-what-technology. Accessed: Oct. 6, 2016. </cite>
 
@@ -73,15 +73,15 @@ ZigBee Alliance, but could present some legacy issues.
 Z-Wave
 ------------
 
-## Description
+### Description
 
 Z-Wave is a very similar option to ZigBee, except it uses a proprietary radio design. This slightly limits the number of devices available for it, as chips are mostly produced by Sigma Designs. The advantage to this is that because the chips are made largely by one manufacturer, there is a high level of interoperation.
 
-## Technical Overview
+### Technical Overview
 
 One area where Z-Wave differs from ZigBee is the frequency range of operation. It operates at 908.42 MHz instead of at 2.4 GHz, which avoids the issue of conflicting with WiFi signals. In terms of device limits, it is very similar, being able to handle between 30 and 40 devices before issues start to occur. Z-Wave is similar to ZigBee in terms of device range and power consumption. 
 
-## Citations
+### Citations
 
 &mdash; <cite>"What is Z-Wave," in SMARTHOME® - Home Automation Superstore, 1995. [Online]. Available: http://www.smarthome.com/sc-what-is-zwave-home-automation. Accessed: Oct. 6, 2016. </cite>
 
@@ -95,11 +95,11 @@ One area where Z-Wave differs from ZigBee is the frequency range of operation. I
 INSTEON
 ------------
 
-## Description
+### Description
 
 INSTEON is substatially different from the two above protocols.
 
-## Technical Overview
+### Technical Overview
 
 INSTEON uses a similar mesh topology as the above protocols, but it is not limited to radio frequencies. It utalizes a dual-mesh system to increase overall stability. The dual-mesh system is a combination of radio frequencies at 915 MHz (in the US), and powerline layer operating at 131.65 KHz. When the radio frequencies encounter interference, the powerline layer makes sure the message gets broadcasted to the appropriate destination. INSTEON also uses a different message devilvery system compared to ZigBee and Z-Wave. Instead of sending a message from one device and routing it through other devices, it takes advantage of simucasting. This is the process of having multiple devices broadcasting the same message, so the intended recipient gets the message faster and more reliably. This method is not feasible for high data rates, but INSTEON shares it's low data rates with ZigBee and Z-Wave. Simulcasting is also a result of the fact that an INSTEON network does not have a master/slave relationship. Every node has the ability to send and recieve messages without having a controller. This makes it possible to have any number of devices in a network without being restricted by a maximum number of connections to a controlling device.
 
@@ -107,7 +107,7 @@ One thing INSTEON is lacking compared to ZigBee and Z-Wave is third part support
 
 A unique advantage of INSTEON is its ability to interface with devices following the X10 protocol. The X10 protocol was one of the origional protocols designed to work using only powerlines. It is outdated now in terms of being a reasonable choice for a new system, as it was designed over 30 years ago. This means that there is no wireless communication involved, which is essential for a modern day smart home communication protocol. That said, there are many legacy automation systems in place which still use X10 devices. If this were the case, then INSTEON would be an ideal choice for a communication protocol.
 
-## Citations
+### Citations
 
 &mdash; <cite>"WHITEPAPER: Compared," in INSTEON. [Online]. Available: http://cache.insteon.com/pdf/INSTEONCompared.pdf. Accessed: Oct. 6, 2016.</cite>
 
@@ -123,10 +123,10 @@ A unique advantage of INSTEON is its ability to interface with devices following
 WiFi
 ------------
 
-## Description
+### Description
 WiFi is by far the most common communication protocol used in a home on a daily basis. Nearly every other communication protol is compatible with WiFi devices, and they tend to be easy to install. There are several pros and cons associated with using WiFi for home automation, which are outlined below.
 
-## Technical Overview
+### Technical Overview
 WiFi operates using a star network topology. Every node is connected to a central server node. All communications go from the source node, through the central server node, and arrive at the destination node. This means that if the central server goes down, no messages can be passed, leading to potential stability issues. Because messages cannot be routed through intermediate nodes, the communication range must generally be much larger than in a mesh network. WiFi also boasts substationally higher data transmission rates than the previously discussed communication protocols. A Wi-Fi (802.11b) connection can transfer data at a rate of 54Mbits/sec at a range of 100 metersA As stated earlier, WiFi typically operates at a frequency of 2.4 GHz.
 
 The biggest advantage of using WiFi for home automation is the simplicity. There is virtually no limit to the number of devices that are WiFi compatibal, as devices using nearly every other big communication protocol for home automation are also compatible with WiFi. It also requires no extra hardware to communicate with WiFi, which reduces the complexity of setting up hardware. Non-technical users are still generally familiar with WiFi, making the setup process easier. 
@@ -135,7 +135,7 @@ An issue with using WiFi for home automation is that in terms of required range 
 
 Another issue stems directly from the prevalence of WiFi. Having a smart home network sharing a WiFi network with regular household uses can cause the network as a whole to slow, due to the bandwidth being shared across so many devices.
 
-## Citations
+### Citations
 
 &mdash; <cite>"Introduction to Wi-Fi (802.11 or WiFi)," in CCM Benchmark, CCM, 2016. [Online]. Available: http://ccm.net/contents/802-introduction-to-wi-fi-802-11-or-wifi. Accessed: Oct. 8, 2016.
 </cite>

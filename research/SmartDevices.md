@@ -19,12 +19,12 @@ technologies we support.
 WeMo
 ------------
 
-## Description
+### Description
 
 WeMo is a line of smart products made by belkin. These devices are able to
 be controled over a wifi connection with a phone.
 
-## Technical Overview
+### Technical Overview
 
 ### Comuniction Protocol
 uses wifi
@@ -33,11 +33,11 @@ uses wifi
  There is a comunity supported open source python API for controlling WeMo devices `ouimeaux`
  
 
-## Evaluation
+### Evaluation
 
 
 
-## References
+### References
 
 [1]	B. International, "WeMo," WeMo, 2014. [Online]. Available: http://www.belkin.com/whatiswemo/. Accessed: Oct. 6, 2016.
 
@@ -48,15 +48,15 @@ uses wifi
 Nest 
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -65,15 +65,15 @@ How does this specific item do against our criteria?
 Philips Hue lights
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -82,15 +82,15 @@ How does this specific item do against our criteria?
 SkyBell
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -99,15 +99,15 @@ How does this specific item do against our criteria?
 Lutrin Serena
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -116,15 +116,15 @@ How does this specific item do against our criteria?
 Osram
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -134,15 +134,15 @@ How does this specific item do against our criteria?
 Leviton
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -151,15 +151,15 @@ How does this specific item do against our criteria?
 ecobee
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -168,15 +168,15 @@ How does this specific item do against our criteria?
 Bose LifeStyle
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -185,15 +185,15 @@ How does this specific item do against our criteria?
 Aeon Labs remotes
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -202,15 +202,15 @@ How does this specific item do against our criteria?
 Spruce Irrigation
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -219,15 +219,15 @@ How does this specific item do against our criteria?
 OSO PlantLink
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -236,15 +236,15 @@ How does this specific item do against our criteria?
 Keen Home
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -253,15 +253,15 @@ How does this specific item do against our criteria?
 FortrezZ
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 

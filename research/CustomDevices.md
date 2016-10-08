@@ -101,9 +101,9 @@ A dimmer switch is a nexample of a non-binary output device.
 Motion Sensor
 ------------
 
-## Description
+### Description
 
-## Technical Overview
+### Technical Overview
 
 ### Sensor Technologies
 
@@ -159,7 +159,7 @@ Relation to research objectives
 
 #### Reflective Infrared
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 

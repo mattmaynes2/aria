@@ -13,15 +13,15 @@ Why is this section being considered?
 Section Item
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 

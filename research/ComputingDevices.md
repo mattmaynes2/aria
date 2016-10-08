@@ -19,13 +19,13 @@ computing options with a focus on the areas of need within the system.
 Arduino Uno
 -----------
 
-## Description
+### Description
 
 The Arduino Uno is a small starter microcontroller that is intended for hobby projects and
 newcomers to embedded programming. The Uno is intended for rapid prototyping of small circuits
 and small embedded systems.
 
-## Technical Overview
+### Technical Overview
 
 The Uno is a microcontroller that uses the Arduino boot loader software for launching the system
 and executing code. The Uno is fully compatible with the Arduino SDK that provides simple
@@ -76,27 +76,27 @@ board continually.
 | Width     | 53.4 mm |
 | Weight    | 25 g    |
 
-## Evaluation
+### Evaluation
 
 The Ardunio Uno offers fast and simple prototyping options for quickly building embedded circuits.
 This board is very useful for rapidly testing but would not be practical in a mass production
 system. For the smart learning system, this board would be optimal for experimentation and
 quick deployment.
 
-## References
+### References
 
 [1] "ArduinoBoardUno," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardUno. Accessed: Oct. 6, 2016.
 
 Arduino 101
 -----------
 
-## Description
+### Description
 
 The Arduino 101 is a more sophisticated board that uses the Intel Curie processor for computing.
 This board leverages the Real-Time Operating System (RTOS) developed by Intel for running the
 board.
 
-## Technical Overview
+### Technical Overview
 
 The Ardunio 101 is the most feature rich board that Ardunio is offers. It comes with a full
 Real-Time Operating System (RTOS) that is powered by the Intel Curie. The processor is a 32-bit,
@@ -141,11 +141,11 @@ occupies 2 KB of memory to provide managed, concurrent applications.
 | Width     | 53.4 mm |
 | Weight    | 34 g    |
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
-## References
+### References
 
 [1] "ArduinoBoard101," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoard101. Accessed: Oct. 6, 2016.
 
@@ -153,12 +153,12 @@ How does this specific item do against our criteria?
 Arduino Pro
 -----------
 
-## Description
+### Description
 
 The Arduino Pro is a slim, no frills version of the Ardiuno Uno. This board has a much more
 involved interface than the standard Ardiuno.
 
-## Technical Overview
+### Technical Overview
 
 ##### Operation Criteria
 
@@ -195,11 +195,11 @@ involved interface than the standard Ardiuno.
 | Length    | 52.1 mm |
 | Width     | 53.3 mm |
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
-## References
+### References
 
 [1] "ArduinoBoardPro," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardPro. Accessed: Oct. 6, 2016.
 
@@ -207,11 +207,11 @@ How does this specific item do against our criteria?
 Arduino Micro
 -------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 ##### Operation Criteria
 
@@ -246,11 +246,11 @@ What is this item?
 | Width     | 18 mm  |
 | Weight    | 13 g   |
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
-## References
+### References
 
 [1] "ArduinoBoardMicro," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
@@ -258,11 +258,11 @@ How does this specific item do against our criteria?
 Arduino Pro Mini
 ----------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 ##### Operation Criteria
 
@@ -299,17 +299,17 @@ What is this item?
 | Length    | 17.9 mm |
 | Width     | 33 mm   |
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
-## References
+### References
 
 [1] "ArduinoBoardProMini," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardProMini. Accessed: Oct. 6, 2016.
 
 
 Comparison of Arduinos
--------------------
+-----------------------
 
 ##### Operation Criteria
 
@@ -355,60 +355,60 @@ Comparison of Arduinos
 Raspberry Pi 3 Model B
 ----------------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
 Raspberry Pi 2 Model B
 ----------------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
 Raspberry Pi 1 Model A+
 -----------------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
 Raspberry Pi Zero
 -----------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -416,45 +416,45 @@ How does this specific item do against our criteria?
 BeagleBone
 -----------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
 BeagleBone Black
 -----------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
 BeagleBone Green
 -----------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 

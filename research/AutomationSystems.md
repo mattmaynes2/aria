@@ -1,7 +1,7 @@
 Automation Systems
 =============
 
-## Background
+### Background
 
 There are many different home automation systems. We are looking at
 these other automation systems so that we can see know what 
@@ -39,13 +39,13 @@ This section will concentrate on the following characteristics:
 Insteon
 ------------
 
-## Description
+### Description
 
 Insteon is a home automation system that allows control of the home 
 through a phone. 
 The system 
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 Insteon has a line of smart sensors and devices that using their hub. 
@@ -82,7 +82,7 @@ repeater to forward messages or a responder to receive messages
  Insteon devices to a network still require configuration through the
  Insteon App.
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
@@ -98,7 +98,7 @@ command structures  is <something here>. Adding support for Insteon
 devices is something that could be looked at in the future though 
 is outside of the scope of the project for now.
 
-## Refrences
+### Refrences
 
 [1]	Apiary, "Insteon API · Apiary,". [Online]. Available: http://docs.insteon.apiary.io/. Accessed: Oct. 6, 2016.
 
@@ -115,13 +115,13 @@ is outside of the scope of the project for now.
 Wink
 ------------
 
-## Description
+### Description
 
 Wink Hub is a hub that allows connections from many different smart devices. For the most part
 this system seems to provide an app that allows the user to interface with multiple different
 smart devices from different manufacturers.
 
-## Technical Overview
+### Technical Overview
 
 Wink Hub supports the following communication protocols:
 - Wifi
@@ -132,11 +132,11 @@ Wink Hub supports the following communication protocols:
 - Kidde
 
 
-## Evaluation
+### Evaluation
 
 This system supports multiple 
 
-## References
+### References
 
 [1]	"Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: http://wiki.winkathome.net/Wink_FAQ. Accessed: Oct. 6, 2016.
 
@@ -145,11 +145,11 @@ This system supports multiple
 SmartThings
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Uses Z-Wave and ZigBee and wifi.
 
@@ -160,11 +160,11 @@ Uses Z-Wave and ZigBee and wifi.
 
 requires a SmartThings hub and connection to the SmartThings cloud.
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
-## References
+### References
 
 [1]	"Samsung SmartThings hub FAQ — SmartThings developer documentation," 2016. [Online]. Available: http://docs.smartthings.com/en/latest/sept-2015-faq.html. Accessed: Oct. 6, 2016.
 
@@ -173,15 +173,15 @@ How does this specific item do against our criteria?
 Lowes Iris
 ------------
 
-## Description
+### Description
 
 What is this item?
 
-## Technical Overview
+### Technical Overview
 
 Technically speaking, what does this item do?
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
