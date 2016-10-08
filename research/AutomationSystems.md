@@ -11,25 +11,25 @@ we can take this into consideration while designing our system.
 
 This section will concentrate on the following characteristics:
 
-### Supported Communication protocols
+- **Supported Communication protocols**
 
-What different protocols do the systems support. We want
-to find the protocols that the other systems have decided
-are the most important to support.
+ What different protocols do the systems support. We want
+ to find the protocols that the other systems have decided
+ are the most important to support.
 
-### Device Discovery/Setup
+- **Device Discovery/Setup**
 
-How are new devices added to the automation systems network.
+ How are new devices added to the automation systems network.
 
-### Home Network (Design, layout, configuration?) <need to pick name>
+- **Home Network (Design, layout, configuration?)** <need to pick name>
 
-How do these systems setup the network of devices. Do they use a 
-central server, are all devices independent etc..
+ How do these systems setup the network of devices. Do they use a 
+ central server, are all devices independent etc..
 
-### API
+- **API**
 
-Does the system provide an API that our system could potentially use
-to control the devices from these systems.
+ Does the system provide an API that our system could potentially use
+ to control the devices from these systems.
 
 
 <note need to rework this>
