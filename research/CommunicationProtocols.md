@@ -1,5 +1,5 @@
-Section Title
-=============
+Communication Protocols
+=======================
 
 ### Background
 
