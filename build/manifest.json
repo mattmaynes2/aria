@@ -54,7 +54,7 @@
         ],
         "build" : [
             "mkdir -p mdtmp__",
-            "cd mdtmp__ && MDJ=$(find ../../ -name '*.mdj') && for file in $MDJ; do mdgen image -m $file; mv *.png $(dirname $file); done && cd ..",
+            "cd mdtmp__ && MDJ=$(find ../../ -name '*.mdj') && for file in $MDJ; do ../support/try mdgen image -m $file; mv *.png $(dirname $file); done && cd ..",
             "rm -rf mdtmp__"
         ]
     },
