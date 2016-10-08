@@ -1,13 +1,36 @@
 Automation Systems
 =============
 
-### Background
+## Background
 
 There are many different home automation systems. We are looking at
 these other automation systems so that we can see know what 
 already exists on the market. Find standards that the existing 
 systems use. We also want to see what other systems do well so
 we can take this into consideration while designing our system.
+
+This section will concentrate on the following characteristics:
+
+- **Supported Communication protocols**
+
+ What different protocols do the systems support. We want
+ to find the protocols that the other systems have decided
+ are the most important to support.
+
+- **Device Discovery/Setup**
+
+ How are new devices added to the automation systems network.
+
+- **Home Network (Design, layout, configuration?)** <need to pick name>
+
+ How do these systems setup the network of devices. Do they use a 
+ central server, are all devices independent etc..
+
+- **API**
+
+ Does the system provide an API that our system could potentially use
+ to control the devices from these systems.
+
 
 <note need to rework this>
 
@@ -42,6 +65,7 @@ Insteon supports control of:
 - thermostats
 - cameras 
 
+### Communication Protocols 
 
 Insteon uses a peer-to-peer network to connect the devices. All of 
 Insteon's devices can act as a controller to send messages, a 
