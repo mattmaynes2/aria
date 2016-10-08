@@ -121,12 +121,18 @@ Wink
 
 ### Description
 
-Wink Hub is a hub that allows connections from many different smart devices. For the most part
-this system seems to provide an app that allows the user to interface with multiple different
-smart devices from different manufacturers.
+Wink Hub is a hub that allows connections from many different smart 
+devices. For the most part this system seems to provide an app that 
+allows the user to interface with multiple different smart devices 
+from different manufacturers.
 
 ### Technical Overview
 
+Wink is a central hub that supports most of the popular
+connection protocols so that users can connect and control 
+a variety of smart devices from different vendors in one app.
+
+#### Communication Protocol
 Wink Hub supports the following communication protocols:
 - Wifi
 - Bluetooth smart (BLE)
@@ -134,6 +140,17 @@ Wink Hub supports the following communication protocols:
 - ZigBee
 - Lutron's Caseta
 - Kidde
+
+#### Device Discovery/Setup
+
+
+
+#### Network
+
+The Wink system is a central hub that connects different devices.
+All of the different devices are controlled through the central hub
+
+#### API
 
 
 ### Evaluation
@@ -143,6 +160,8 @@ This system supports multiple
 ### References
 
 [1]	"Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: http://wiki.winkathome.net/Wink_FAQ. Accessed: Oct. 6, 2016.
+
+[2] Wink, "A simpler smart home," Wink, 2016. [Online]. Available: http://www.wink.com/help/faq/. Accessed: Oct. 8, 2016.
 
 -----------------------
 
