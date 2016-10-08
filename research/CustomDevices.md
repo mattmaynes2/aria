@@ -41,10 +41,50 @@ The principle objective of the product is to simplify configuration of home auto
 which require complex setup are cointrary to the system's objectives. 
 
 
-### Relation to System
+### Devices of Interest
 
-Why is this section being considered?
+This section contains a list of device types which were investigated, and a short explanation of why 
+the devices could showcase the machine learning capabilities of the system.
 
+- Motion Sensors
+
+Many actions could be triggered by aa person entering or leaving a house or a room. A motion sensor could
+potentially interact with every other device on this list. Due to the wide range of potential interactions,
+we expect that a motion sensor will be a good test of the machine learning component's ability to 
+determine the relationships inputs and outputs. The motion sensor could also reveal flaws in the 
+machine laerning algorithm. For example, the machine learning algorithm may determine that when a motion
+sensor is triggered outside a homeowner's bedroom, the coffee machine should be turned on. However, this 
+behaviour would only be desired during certain hours of the day (the coffee machine should not turn on
+when the homeowner goes to bed, for example). It is likely that there are many such scenarios that we 
+haven't thought of which would present challenging cases for the machine learning component to handle.
+
+- Range Sensors
+
+- Thermostat
+
+- Digital Locks
+
+Digital locks are of interest because correct control of locks is a concern of homeowners. While their 
+output is binary (locked/unlocked), their behaviour is potentially affected by many factors
+ (lighting levels, time of day, motion sensors, etc.), which could be challenging for the machine
+ learning algorithm to infer.
+
+- Light Sensor
+
+A light sensor provides a non-binary input to the machine learning component. Similar to a motion sensor,
+the level of light in a room may be related to the behaviour of many other devices.
+
+- Music Playback Devices
+
+- Dimmer switch
+
+- Alarm Clock
+
+- Energy monitoring switch
+
+- Coloured Lighting
+
+- Coffee Makers
 
 Section Item
 ------------
