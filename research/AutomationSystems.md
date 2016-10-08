@@ -42,49 +42,53 @@ Insteon
 ## Description
 
 Insteon is a home automation system that allows control of the home 
-through a phone. 
-The system 
+through a phone. The system supports changing device states based 
+on a schedule or through **scenes**. 
+
+A scene is configured a configuration for a room that the user 
+sets up at a specific time or when specific environmental 
+conditions are met. Insteon has all of the devices remember their
+current states and whenever it sees those states it has the devices
+recreate the saved scene.
 
 ## Technical Overview
 
-Technically speaking, what does this item do?
-Insteon has a line of smart sensors and devices that using their hub. 
+#### Supported Communication Protocols
 
-### Insteon Hub
+Insteon created their own protocol also called Insteon 
+which is the communication system they support (see Communication
+protocols section for more on information on the Insteon protocol).
 
-The hub is a central device that connects to all of the Insteon 
-devices sending commands and monitoring sensor states. The hub is 
-able to schedule devices to turn on and off  
+#### Device Discovery/ Setup
 
-### Insteon devices
+Adding a new device is done through the Insteon app. The device is
+automatically discovered by the system. Using the app the user
+selects the new device and enters the device ID after the ID is 
+entered the device is able to be configured, naming the device 
+adding it to a room etc.. 
 
-Insteon supports control of:
+#### Network
 
-- lights
-- outlets
-- thermostats
-- cameras 
-
-### Communication Protocols 
+Insteon uses a central hub to communicate between the devices and
+the users app.The central hub is required in order for the system
+to work (can't use Insteon devices individually).
 
 Insteon uses a peer-to-peer network to connect the devices. All of 
 Insteon's devices can act as a controller to send messages, a 
-repeater to forward messages or a responder to receive messages
+repeater to forward messages or a responder to receive messages.
 
-### API 
+#### API 
 
  Insteon provides a REST API to interact with their devices. 
  The API provides supports adding devices, 
  
-#### Limitations 
+###### Limitations 
  
  In order to use the API an Insteon Hub is required also adding new 
  Insteon devices to a network still require configuration through the
  Insteon App.
 
 ## Evaluation
-
-How does this specific item do against our criteria?
 
 Issue with integrating with insteon using their API is that it
 requires their central hub. Their hub system does most of what we 
@@ -111,6 +115,16 @@ is outside of the scope of the project for now.
 [4] SMARTHOME®, "Insteon home automation,". [Online]. Available: http://www.smarthome.com/sc-what-is-insteon-home-automation. Accessed: Oct. 6, 2016.
 
 -----------------------
+
+Apple HomeKit
+-------------
+
+## Description
+
+## Technical Overview
+
+
+-------------
 
 Wink
 ------------
