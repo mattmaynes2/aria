@@ -1,4 +1,4 @@
-Section Title
+Smart Devices
 =============
 
 ### Background
@@ -6,9 +6,15 @@ Section Title
 What is this section in the context of this system?
 
 ### Relation to System
+We are looking at existing smart devices so that we can see if there
+are any devices that exist on the market that our system could 
+use in order to lower the time required to build our own. Adding 
+support for other smart devices also makes our system more appealing
+to the end user because they are not limited to only using devices we
+create but can go to a store and purchase any device that use
+technologies we support. 
 
-Why is this section being considered?
-
+**Might need to reword**
 
 WeMo
 ------------
