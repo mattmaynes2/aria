@@ -160,35 +160,17 @@ controlled through the central hub.
 #### API
 
 #### Third Party Integrations
+
 Wink has support for the following manufacturers:
 
-- Nest
-- Philips
-- GE
-- Leviton
-- Honeywell
-- TCP
-- Kidde
-- Kwiset
-- Rheem
-- Lutron
-- rachio
-- Bali
-- Amazon
-- Andersen
-- Canary
-- Carrier
-- Chamberlain
-- Commercial Electric
-- Cree
-- Dropcam
-- Ecobee
-- Emerson
-- GoControl
-- Hampton Bay
-- IHome
-- Leaksmart
-- Osram
+|    		|     	 	 |     			|     		|        |
+| --- 		| --- 		 | --- 			| --- 		| ---    |
+| Nest 		| Philips 	 | GE 			| Leviton 	| Rheem  |
+| Honeywell 	| TCP 		 | Kidde 		| Kwiset	| Lutron |
+| Rachio 	| Bali		 | Amazon 		| Andersen 	| Canary |
+| Carrier	| Chamberlain	 | Commercial Electric  | Cree 		| Dropcam|
+| Ecobee 	| Emerson 	 | GoControl 		| Hampton Bay 	| IHome	 |
+| Leaksmart 	| Osram 	 | 			| 		| 	 |
 
 
 ### Evaluation
