@@ -154,6 +154,16 @@ Wink Hub supports the following communication protocols:
 
 #### Device Discovery/Setup
 
+Supporting many different manufacturers means that there are a 
+variety of different ways for devices to connect to the Wink Hub.
+The two most common ways are:
+
+1) Pressing a button on the Wink Hub to start transmitting a pairing
+signal and the new device will receive the signal and connect to the
+Hub. 
+
+2) The device needs to be setup in the manufacturers app once
+this is done the device can be added to Wink through the Wink app.
 
 #### Network
 
@@ -161,6 +171,15 @@ The Wink system is a central hub that connects different devices.  All of the di
 controlled through the central hub.
 
 #### API
+
+Wink provides a RESTful service through the Wink hub and a secondary
+partner PubNub. 
+
+| Feature                                | supported |
+| ---------                              | --------  |
+| List all devices                       |    Y      |
+| Receive update on device state change  |    Y      |
+| Modify device state                    |    Y      |
 
 #### Third Party Integrations
 
@@ -178,14 +197,17 @@ Wink has support for the following manufacturers:
 
 ### Evaluation
 
-This system supports multiple
 
 ### References
 
-[1] "Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: http://wiki.winkathome.net/Wink_FAQ.
+[1] Apiary, "Wink API · Apiary,". [Online]. Available:
+http://docs.winkapiv2.apiary.io/#reference/oauth/obtain-access-token.
+Accessed: Oct. 9, 2016.
+
+[2] "Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: http://wiki.winkathome.net/Wink_FAQ.
 Accessed: Oct. 6, 2016.
 
-[2] Wink, "A simpler smart home," Wink, 2016. [Online]. Available: http://www.wink.com/help/faq/.
+[3] Wink, "A simpler smart home," Wink, 2016. [Online]. Available: http://www.wink.com/help/faq/.
 Accessed: Oct. 8, 2016.
 
 -----------------------
