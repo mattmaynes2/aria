@@ -62,7 +62,7 @@
         "build" : [
             "cd ../reports/proposal",
             "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Proposal.md > Proposal.html",
-            "../../build/support/try wkhtmltopdf Proposal.html Proposal.pdf",
+            "../../build/support/try wkhtmltopdf -s Letter Proposal.html Proposal.pdf",
             "rm -f Proposal.html"
         ],
         "clean" : "rm -f ../reports/proposal/*.pdf"
@@ -72,7 +72,7 @@
             "cd ../reports/research",
             "for f in *.md; do (cat \"$f\"; echo) >> Research.markdown; done",
             "../../build/support/try pandoc --toc --toc-depth 2 -c ../../build/styles/style.css -t html -f markdown -B Cover.html Research.markdown > Research.html",
-            "../../build/support/try wkhtmltopdf Research.html Research.pdf",
+            "../../build/support/try wkhtmltopdf -s Letter Research.html Research.pdf",
             "rm -f Research.markdown Research.html"
         ],
         "clean" : "rm -f ../docs/research/*.pdf"
@@ -81,7 +81,7 @@
         "build" : [
             "cd ../reports/spec",
             "../../build/support/try pandoc --toc -c ../../build/styles/style.css -t html -f markdown -B Cover.html Specification.md > Specification.html",
-            "../../build/support/try wkhtmltopdf Specification.html Specification.pdf",
+            "../../build/support/try wkhtmltopdf -s Letter Specification.html Specification.pdf",
             "rm -f Specification.html"
         ],
         "clean" : "rm -f ../reports/spec/*.pdf"
