@@ -265,15 +265,26 @@ the connection again.
 
 
 
+4.7 WeMo
+---------
+
+### Description
+
+### Technical Overview
+
+### Refrences
 
 
 
-4.5 Summary of Evaluation
+
+
+
+4.8 Summary of Evaluation
 -------------------------
 
 All of the evaluation grouped together
 
-4.6 Conclusion
+4.9 Conclusion
 --------------
 
 What did we decide upon? Why?
