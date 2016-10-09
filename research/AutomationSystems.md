@@ -42,49 +42,53 @@ Insteon
 ### Description
 
 Insteon is a home automation system that allows control of the home 
-through a phone. 
-The system 
+through a phone. The system supports changing device states based 
+on a schedule or through **scenes**. 
 
-### Technical Overview
+A scene is configured a configuration for a room that the user 
+sets up at a specific time or when specific environmental 
+conditions are met. Insteon has all of the devices remember their
+current states and whenever it sees those states it has the devices
+recreate the saved scene.
 
-Technically speaking, what does this item do?
-Insteon has a line of smart sensors and devices that using their hub. 
+## Technical Overview
 
-### Insteon Hub
+#### Supported Communication Protocols
 
-The hub is a central device that connects to all of the Insteon 
-devices sending commands and monitoring sensor states. The hub is 
-able to schedule devices to turn on and off  
+Insteon created their own protocol also called Insteon 
+which is the communication system they support (see Communication
+protocols section for more on information on the Insteon protocol).
 
-### Insteon devices
+#### Device Discovery/ Setup
 
-Insteon supports control of:
+Adding a new device is done through the Insteon app. The device is
+automatically discovered by the system. Using the app the user
+selects the new device and enters the device ID after the ID is 
+entered the device is able to be configured, naming the device 
+adding it to a room etc.. 
 
-- lights
-- outlets
-- thermostats
-- cameras 
+#### Network
 
-### Communication Protocols 
+Insteon uses a central hub to communicate between the devices and
+the users app.The central hub is required in order for the system
+to work (can't use Insteon devices individually).
 
 Insteon uses a peer-to-peer network to connect the devices. All of 
 Insteon's devices can act as a controller to send messages, a 
-repeater to forward messages or a responder to receive messages
+repeater to forward messages or a responder to receive messages.
 
-### API 
+#### API 
 
  Insteon provides a REST API to interact with their devices. 
  The API provides supports adding devices, 
  
-#### Limitations 
+###### Limitations 
  
  In order to use the API an Insteon Hub is required also adding new 
  Insteon devices to a network still require configuration through the
  Insteon App.
 
-### Evaluation
-
-How does this specific item do against our criteria?
+## Evaluation
 
 Issue with integrating with insteon using their API is that it
 requires their central hub. Their hub system does most of what we 
@@ -98,7 +102,7 @@ command structures  is <something here>. Adding support for Insteon
 devices is something that could be looked at in the future though 
 is outside of the scope of the project for now.
 
-### Refrences
+## Refrences
 
 [1]	Apiary, "Insteon API · Apiary,". [Online]. Available: http://docs.insteon.apiary.io/. Accessed: Oct. 6, 2016.
 
@@ -117,12 +121,18 @@ Wink
 
 ### Description
 
-Wink Hub is a hub that allows connections from many different smart devices. For the most part
-this system seems to provide an app that allows the user to interface with multiple different
-smart devices from different manufacturers.
+Wink Hub is a hub that allows connections from many different smart 
+devices. For the most part this system seems to provide an app that 
+allows the user to interface with multiple different smart devices 
+from different manufacturers.
 
 ### Technical Overview
 
+Wink is a central hub that supports most of the popular
+connection protocols so that users can connect and control 
+a variety of smart devices from different vendors in one app.
+
+#### Communication Protocol
 Wink Hub supports the following communication protocols:
 - Wifi
 - Bluetooth smart (BLE)
@@ -130,6 +140,17 @@ Wink Hub supports the following communication protocols:
 - ZigBee
 - Lutron's Caseta
 - Kidde
+
+#### Device Discovery/Setup
+
+
+
+#### Network
+
+The Wink system is a central hub that connects different devices.
+All of the different devices are controlled through the central hub
+
+#### API
 
 
 ### Evaluation
@@ -139,6 +160,8 @@ This system supports multiple
 ### References
 
 [1]	"Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: http://wiki.winkathome.net/Wink_FAQ. Accessed: Oct. 6, 2016.
+
+[2] Wink, "A simpler smart home," Wink, 2016. [Online]. Available: http://www.wink.com/help/faq/. Accessed: Oct. 8, 2016.
 
 -----------------------
 
@@ -187,6 +210,16 @@ How does this specific item do against our criteria?
 
 -----------------------
 
+Apple HomeKit
+-------------
+
+## Description
+
+## Technical Overview
+
+## References
+
+-------------
 
 ### Summary of Evaluation
 
