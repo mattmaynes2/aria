@@ -62,7 +62,7 @@
         "build" : [
             "cd ../research",
             "for f in *.md; do (cat \"$f\"; echo) >> Research.markdown; done",
-            "../build/support/try pandoc -c ../build/styles/style.css -t html -f markdown Research.markdown > Research.html",
+            "../build/support/try pandoc --toc --toc-depth 2 -c ../build/styles/style.css -t html -f markdown -B Cover.html Research.markdown > Research.html",
             "../build/support/try wkhtmltopdf Research.html Research.pdf",
             "rm -f Research.markdown Research.html"
         ],
