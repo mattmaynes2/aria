@@ -234,45 +234,16 @@ Requires a SmartThings hub and connection to the SmartThings cloud.
 
 ### Third Party Integrations
 
-
-2Gig
-Aeon Labs
-Amazon
-Belkin
-Bose
-Cree
-ecobee
-Ecolink
-EcoNet Controls
-Enerwave
-Everspring
-Fibaro
-Fidure
-First Alert
-FortrezZ
-GE
-Google
-Honeywell
-iHome
-Keen Home
-Kwikset
-Leak Intelligence
-Leviton
-LiFi Labs
-Linear
-Netgear
-OSO Technologies
-OSRAM LIGHTIFY
-Philips Hue
-Remotec Technology
-Samsung
-Samsung SmartThings
-Schlage
-Sengled
-Skybell
-Spruce
-Yale
-Zen
+|    	   |     	       |     	      |     		|                   |
+| --- 	   | --- 	       | --- 	      | --- 		| ---    	    |
+|2Gig	   |Aeon Labs 	       |Amazon	      |Belkin   	| Bose 		    |	 
+|Cree 	   |ecobee 	       |Ecolink       |EcoNet Controls 	| Enerwave	    |
+|Everspring|Fibaro 	       |Fidure 	      |First Alert     	|FortrezZ	    |
+|GE 	   |Google 	       |Honeywell     |iHome       	|Keen Home	    |
+|Kwikset   |Leak Intelligence  |Leviton	      |LiFi Labs   	| Linear	    |
+|Netgear   |OSO Technologies   |OSRAM LIGHTIFY|Philips Hue 	| Remotec Technology|
+|Samsung   |Samsung SmartThings|Schlage       |Sengled     	| Skybell	    |
+|Spruce    |Yale 	       |Zen 	      | 		| 	  	    |  
 
 ## Evaluation
 
