@@ -29,6 +29,9 @@ This section will concentrate on the following characteristics:
  Does the system provide an API that our system could potentially use to control the devices from
  these systems.
 
+- **Third Party Integrations**
+ 
+ Which companies have these systems decided are important to support
 
 <note need to rework this>
 
