@@ -1,37 +1,39 @@
-Smart Devices
-=============
+# 3. Smart Devices
 
-### Background
+3.1 Background
+--------------
 
 What is this section in the context of this system?
 
-### Relation to System
-We are looking at existing smart devices so that we can see if there
-are any devices that exist on the market that our system could 
-use in order to lower the time required to build our own. Adding 
-support for other smart devices also makes our system more appealing
-to the end user because they are not limited to only using devices we
-create but can go to a store and purchase any device that use
-technologies we support. 
+3.2 Relation to System
+----------------------
+
+We are looking at existing smart devices so that we can see if there are any devices that exist on
+the market that our system could use in order to lower the time required to build our own. Adding
+support for other smart devices also makes our system more appealing to the end user because they
+are not limited to only using devices we create but can go to a store and purchase any device that
+use technologies we support.
 
 **Might need to reword**
 
-WeMo
-------------
+3.3 WeMo
+--------
 
 ### Description
 
-WeMo is a line of smart products made by belkin. These devices are able to
-be controled over a wifi connection with a phone.
+WeMo is a line of smart products made by belkin. These devices are able to be controled over a wifi
+connection with a phone.
 
 ### Technical Overview
 
-### Comuniction Protocol
+#### Communication Protocol
+
 uses wifi
 
-### API
- There is a comunity supported open source python API for controlling WeMo devices `ouimeaux`
- 
+#### API
+
+There is a comunity supported open source python API for controlling WeMo devices `ouimeaux`
+
 
 ### Evaluation
 
@@ -39,14 +41,16 @@ uses wifi
 
 ### References
 
-[1]	B. International, "WeMo," WeMo, 2014. [Online]. Available: http://www.belkin.com/whatiswemo/. Accessed: Oct. 6, 2016.
+[1] B. International, "WeMo," WeMo, 2014. [Online]. Available:
+http://www.belkin.com/whatiswemo/. Accessed: Oct. 6, 2016.
 
-[2]	"Ouimeaux 0.8: Python package index,". [Online]. Available: https://pypi.python.org/pypi/ouimeaux. Accessed: Oct. 6, 2016.
+[2] "Ouimeaux 0.8: Python package index,". [Online]. Available:
+https://pypi.python.org/pypi/ouimeaux. Accessed: Oct. 6, 2016.
 
 -----------------------
 
-Nest 
-------------
+3.4 Nest
+--------
 
 ### Description
 
@@ -62,8 +66,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-Philips Hue lights
-------------
+3.5 Philips Hue
+---------------
 
 ### Description
 
@@ -79,8 +83,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-SkyBell
-------------
+3.6 SkyBell
+-----------
 
 ### Description
 
@@ -96,8 +100,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-Lutrin Serena
-------------
+3.7 Lutrin Serena
+-----------------
 
 ### Description
 
@@ -113,8 +117,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-Osram
-------------
+3.8 Osram
+---------
 
 ### Description
 
@@ -131,8 +135,8 @@ How does this specific item do against our criteria?
 -----------------------
 
 
-Leviton
-------------
+3.9 Leviton
+-----------
 
 ### Description
 
@@ -148,8 +152,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-ecobee
-------------
+3.10 ecobee
+-----------
 
 ### Description
 
@@ -165,8 +169,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-Bose LifeStyle
-------------
+3.11 Bose LifeStyle
+-------------------
 
 ### Description
 
@@ -182,8 +186,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-Aeon Labs remotes
-------------
+3.12 Aeon Labs Remotes
+----------------------
 
 ### Description
 
@@ -199,8 +203,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-Spruce Irrigation
-------------
+3.13 Spruce Irrigation
+-----------------------
 
 ### Description
 
@@ -216,8 +220,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-OSO PlantLink
-------------
+3.14 OSO PlantLink
+-------------------
 
 ### Description
 
@@ -233,8 +237,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-Keen Home
-------------
+3.15 Keen Home
+--------------
 
 ### Description
 
@@ -250,8 +254,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-FortrezZ
-------------
+3.16 FortrezZ
+--------------
 
 ### Description
 
@@ -267,14 +271,17 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-### Summary of Evaluation
+3.17 Summary of Evaluation
+--------------------------
 
 All of the evaluation grouped together
 
 ### Resources
 
-[1]	R. Crist, "Best smart home devices of 2016," CNET, 2016. [Online]. Available: https://www.cnet.com/topics/smart-home/best-smart-home-devices/. Accessed: Oct. 6, 2016.
+[1] R. Crist, "Best smart home devices of 2016," CNET, 2016. [Online]. Available:
+https://www.cnet.com/topics/smart-home/best-smart-home-devices/. Accessed: Oct. 6, 2016.
 
-### Conclusion
+3.18 Conclusion
+---------------
 
 What did we decide upon? Why?
