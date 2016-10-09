@@ -56,7 +56,20 @@ which require complex setup are contrary to the system's objectives.
 ### Devices of Interest
 
 This section contains a list of device types which were investigated, and a short explanation of why 
-the devices could showcase the machine learning capabilities of the system.
+the devices could showcase the machine learning capabilities of the system. In general, we believe that 
+in order to showcase the machine learning capabilities of the system, it will be important to 
+include a wide range of sensors, as well as actuators whose desired states may be influenced by several 
+unrelated sensors. By providing such a range of devices, we hope to demonstrate that the machine
+learning algorithm is capable of identifying more complex interactions between devices than a 
+simple "If this then that" relationship.
+
+In addition to providing a varied range of sensors, we would like to provide several sensors and 
+actuators with non-binary inputs and outputs. The interactions between such devices may be more
+complex than for binary devices due to the increased number of possible states.
+
+With the goal of providing a range of actuators which are potentially related to multiple different
+sensors, as well as devices with non-binary inputs and outputs, we have investigated the following
+devices:
 
 - Motion Sensors
 
@@ -178,6 +191,8 @@ Expertise Required
 - Little expertise required, circuits are simple 
 - Tutorials widely available online
 
+INSERT CIRCUIT DIAGRAM
+
 Time Investment
 - Comparable to light switch; the software and hardware complexity is low
 
@@ -226,15 +241,40 @@ Light Sensor
 This section investigates devices which can detect the amount of ambient light in an
 area of the house.
 
-Expertise Required
--------------------
-- Circuits are simple, requires only basic electronics knowledge
+### Photoresistors
 
-Component Availability
-----------------------
-- Components are readily available online and in electronics component shops
+Light sensors generally make use of a component called a photoresistor. The resistance
+of a photoresistor differs depending on the amount of light incident to the component.
+Phtoresistors are also called photocells.
 
+## Reliability Characteristics
 
+- Photoresistors are unsuitable for precise lighting measurements because its resistance
+may vary due to temperature as well as light
+
+- Photoresistor may exhibit latency (delay between a change in light and a change in resistance)
+
+### Photodiode 
+
+Photodiodes are components which can be used similarly to photoresistors to detect light.
+A photodiode allows electrons to pass when there is light shining on it. The current
+allowed to pass is proportional to the amount of light incident on the device.
+
+Unlike photoresistors, a photodiode is not sensitive to temperature changes and may allow
+for more accurate light detection. The circuit required to interface with a photodiode is
+of similar complexity to the circuit required to interface with a photoresistor.
+
+## Expertise Required
+
+INSERT CIRCUIT DIAGRAM
+
+## Time Investment Required
+
+Due to the simplicity of the photoresistor circuit and the wide availability of the 
+required components and tutorials, a custom-built light sensor is expected to require
+less than 5 hours to build.
+
+[http://www.resistorguide.com/photoresistor/]
 
 Alarm Clock
 -----------------
