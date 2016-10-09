@@ -103,7 +103,8 @@ Real-Time Operating System (RTOS) that is powered by the Intel Curie. The proces
 8 MHz or 16 MHz backed by 196 KB of flash memory. The RTOS is a light weight OS that only
 occupies 2 KB of memory to provide managed, concurrent applications.
 
-
+The 101 comes with a number of additional features above other microcontrollers in the Arduino
+family. 
 
 ##### Operation Criteria
 

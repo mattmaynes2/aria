@@ -1,5 +1,5 @@
-custom-Built Devices
-=============
+Custom-Built Devices
+=====================
 
 ### Background
 
@@ -236,25 +236,25 @@ to understand and construct the circuit.
 Light Sensor
 -----------------
 
-## Description
+### Description
 
 This section investigates devices which can detect the amount of ambient light in an
 area of the house.
 
-### Photoresistors
+#### Photoresistors
 
 Light sensors generally make use of a component called a photoresistor. The resistance
 of a photoresistor differs depending on the amount of light incident to the component.
 Phtoresistors are also called photocells.
 
-## Reliability Characteristics
+##### Reliability Characteristics
 
 - Photoresistors are unsuitable for precise lighting measurements because its resistance
 may vary due to temperature as well as light
 
 - Photoresistor may exhibit latency (delay between a change in light and a change in resistance)
 
-### Photodiode 
+#### Photodiode 
 
 Photodiodes are components which can be used similarly to photoresistors to detect light.
 A photodiode allows electrons to pass when there is light shining on it. The current
@@ -264,11 +264,11 @@ Unlike photoresistors, a photodiode is not sensitive to temperature changes and 
 for more accurate light detection. The circuit required to interface with a photodiode is
 of similar complexity to the circuit required to interface with a photoresistor.
 
-## Expertise Required
+### Expertise Required
 
 INSERT CIRCUIT DIAGRAM
 
-## Time Investment Required
+##### Time Investment Required
 
 Due to the simplicity of the photoresistor circuit and the wide availability of the 
 required components and tutorials, a custom-built light sensor is expected to require
