@@ -286,6 +286,15 @@ for the light switch (5 hours)
 
 [http://playground.arduino.cc/Main/ACPhaseControl]
 
+|Feature              | Custom         | GE Z-Wave Plugin-in Smart Dimmer       | Philips Hue Dimmer Switch         | Lutron Caseta Wireless Plugin-In Lamp Dimmer  |
+|-------              |----------------|----------------------------------------|-----------------------------------|-----------------------------------------------|
+| Compatible Devices  | AC devices     | AC devices						        | Philips Hue Products              | AC Devices                                    |
+| Interfaces          | _              | Z-Wave                                 | ZigBee                            | Lutron Integration Protocol                   |
+
+Philips Hue: http://www.developers.meethue.com/documentation/how-hue-works
+Lutron: https://www.lutron.com/technicaldocumentlibrary/040249.pdf
+GE Z-Wave: http://www.zwaveproducts.com/shop/brands/ge/z-wave-plug-in-smart-dimmer-1
+
 6.4 Light Sensor
 ----------------
 
@@ -426,9 +435,6 @@ In order to interface a microcontroller with more sophisticated coffee machines,
 of reverse engineering of the coffee machine's control circuits would be necessaary. This
 would greatly increase the amount of time necessary to create the device, due to the 
 lack of electronics knowledge on the team.
-
-6.9 Audio Sensor
------------------
 
 6.9 Summary of Evaluation
 -------------------------
