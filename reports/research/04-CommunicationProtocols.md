@@ -68,7 +68,7 @@ This limited interoperability has been somewhat fixed with the introduction of t
 but could present some legacy issues.
 
 
-### Citations
+### Refrences
 
 [1] "What Technology?," in SMARTHOME® - Home Automation Superstore, 1995. [Online].  Available:
 http://www.smarthome.com/sc-what-technology. Accessed: Oct. 6, 2016.
@@ -109,7 +109,7 @@ MHz instead of at 2.4 GHz, which avoids the issue of conflicting with WiFi signa
 device limits, it is very similar, being able to handle between 30 and 40 devices before issues
 start to occur. Z-Wave is similar to ZigBee in terms of device range and power consumption.
 
-### Citations
+### Refrences
 
 [1] "What is Z-Wave," in SMARTHOME® - Home Automation Superstore, 1995. [Online].  Available:
 http://www.smarthome.com/sc-what-is-zwave-home-automation. Accessed: Oct. 6, 2016.
@@ -159,16 +159,16 @@ modern day smart home communication protocol. That said, there are many legacy a
 place which still use X10 devices. If this were the case, then INSTEON would be an ideal choice for
 a communication protocol.
 
-### Citations
+### Refrences
 
-[1] >"WHITEPAPER: Compared," in INSTEON. [Online]. Available:
+[1] "WHITEPAPER: Compared," in INSTEON. [Online]. Available:
 http://cache.insteon.com/pdf/INSTEONCompared.pdf. Accessed: Oct. 6, 2016.
 
 [2] "X10," in Build Your Smarthome, 2014. [Online]. Available:
 http://buildyoursmarthome.co/home-automation/protocols/x10/. Accessed: Oct. 8, 2016.
 
 [3] "What home automation protocol should I choose?," in Intellihome, 2015. [Online].  Available:
-`https://www.intellihome.be/en/kbase/INSTEON/What_home_automation_protocol_should_I_choose_-2.html`.
+https://www.intellihome.be/en/kbase/INSTEON/What_home_automation_protocol_should_I_choose_-2.html.
 Accessed: Oct. 8, 2016.
 
 
@@ -212,7 +212,7 @@ Another issue stems directly from the prevalence of WiFi. Having a smart home ne
 network with regular household uses can cause the network as a whole to slow, due to the bandwidth
 being shared across so many devices.
 
-### Citations
+### Refrences
 
 [1] "Introduction to Wi-Fi (802.11 or WiFi)," in CCM Benchmark, CCM, 2016. [Online].  Available:
 http://ccm.net/contents/802-introduction-to-wi-fi-802-11-or-wifi. Accessed: Oct. 8, 2016.
@@ -221,6 +221,51 @@ http://ccm.net/contents/802-introduction-to-wi-fi-802-11-or-wifi. Accessed: Oct.
 House, 2016. [Online]. Available:
 https://www.electronichouse.com/smart-home/home-automation-protocols-what-technology-is-right-for-you/.
 Accessed: Oct. 8, 2016.
+
+
+
+4.6 Bluetooth
+---------
+
+### Description
+Bluetooth is the most similar to WiFi of the alternative options. It is fairly common in households, 
+and non-technical users are more likely to be familier with it than other protocols. There are 
+two main classifications of bluetooth when it comes to home automation, both of which will be 
+discussed below.
+
+### Technical Overview
+Bluetooth operates in the 2.4 GHz frequency band, alongside WiFi and ZigBee. Bluetooth also shares
+the star network topology with WiFi, where there needs to be designated master and slave devices. 
+This can lead to the same issues of interference that were discussed above. As the number of devices
+on the same radio frequency increases, the competition for bandwith also increases, causing potential 
+lag and interference. The range and data transfer rate for bluetooth ranges from 1 Mbps and 10 meters
+to 24 Mbps and 100 meters. All of these data transfer rates are acceptable, if not overkill, for a 
+smarthome system. The range on the earlier versions of bluetooth is potentially very restricting. 
+Bluetoothis somewhere between WiFi devices and ZigBee/Z-Wave devices in terms of power consumption.
+
+There is another choice for bluetooth that addresses some of the issues above. Bluetooth version 4.0,
+also branded as Bluetooth Low Energy (BLE). This is a direct competitor with ZigBee and Z-Wave. The range
+for a BLE device is 50 meters, but BLE is able to take advantage of a mesh netowrk topology. The maximum 
+data transfer rate 1 Mbps in theory, but it is generally much lower than that in practice. BLE splits the
+2.4 GHz channel into smaller sub-channels to help avoid interference with WiFi channels. 
+
+One of the goals of BLE is to make devices that do not require constant data transmission more efficient.
+It accomplishes this by not keeping connections active while there is no data being transferred. Once 
+data needs to be transferred, it reestablishes the necessary connection, completes the transfer, and closes
+the connection again.
+
+### Refrences
+
+[1] Jim, "Bluetooth basics," in sparkfun. [Online]. Available: https://learn.sparkfun.com/tutorials/bluetooth-basics/common-versions. Accessed: Oct. 9, 2016.
+
+[2] "Data rates using BLE," in Anaren atmosphere. [Online]. Available: https://atmosphere.anaren.com/wiki/Data_rates_using_BLE. Accessed: Oct. 9, 2016.
+
+[3] "Bluetooth low energy," in CSR. [Online]. Available: https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336. Accessed: Oct. 9, 2016.
+
+
+
+
+
 
 
 4.5 Summary of Evaluation
