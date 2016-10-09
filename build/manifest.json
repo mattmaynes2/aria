@@ -11,7 +11,10 @@
     "common.markdown" : {
         "enviro" : [
             "./support/pkman install pandoc",
-            "./support/pkman install -p cask wkhtmltopdf"
+            "./support/pkman install -p cask wkhtmltopdf",
+            "sudp ./support/try add-apt-repository ppa:ecometrica/servers",
+            "sudo ./support/try apt-get update",
+            "sudo ./support/try apt-get install wkhtmltopdf"
         ]
     },
     "build" : {
@@ -20,7 +23,7 @@
         ],
         "test" : [
             "npm test",
-            "shellcheck run support/pkman"
+            "./support/try shellcheck run support/pkman support/try"
         ]
     },
     "ctrl-serve" : {
