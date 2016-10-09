@@ -315,8 +315,73 @@ less than 5 hours to build.
 
 [http://www.resistorguide.com/photoresistor/]
 
+6.5 Thermostat
+---------------
+
+This section considers controlling a typical wall-mounted thermostat using a microcontroller
+such as an Arduino. 
+
+### Expertise Required
+
+- Safety: Controlling a wall-mounted thermostat means working with mains voltage levels. 
+Without knowledge in using high voltages, building this device is a significant safety
+risk
+
+### Reliability
+
+- It is very unlikely that we could build a device which is compatible with the thermostats 
+in the homes of most users. The time investment required to create a product which is 
+comparable to the thermostats in most homes could be a project in itself. 
+
+### Time Investment
+
+- Due to the lack of trusted tutorials online, as well as the wealth of features that
+users are used to having in a thermostat, the time investment required to built a 
+fully-featured thermostat is very high (weeks to months)
+
 6.5 Alarm Clock
 ---------------
+
+Due to the large variety of features available for alarm clocks, this section will focus
+on a simple alarm clock that beeps at a programmed time of day. The clock should have 
+manual (button) input in order to allow the user to set alarm times so that the machine
+learning component can be trained. More sophisticated clocks are expected to be much too
+complex for the team to build.
+
+After review of many online tutorials for building alarm clocks, a common structure for 
+a clock circuit has been identified.
+
+The basic alarm clock circuit generally requires the following components:
+
+- LCD display
+- Microcontroller
+- Piezo Buzzer or Speaker
+- Varying numbers of push buttons for manual configuration
+
+A typical circuit has the following form:
+
+INSERT IMAGE HERE 
+http://fritzing.org/media/fritzing-repo/projects/a/arduino-lcd-alarm-clock/images/Untitled.png
+
+### Time Investment
+
+Due to the need to interface with an LCD display, and because of the large number of components, a
+custom build of an alarm clock is expected to be more complex than the light switch (more than 5 hours
+of time investment)
+
+### Ease of Use
+
+Homeowners may be used to alarm clocks with nice interfaces, often in the form of an app on their 
+phone. The custom alarm clocks investigated have significantly inferior interfaces, making use
+of a 4-button interface to set the time. The clocks considered here also lack features such as 
+adjustable alarm sounds, configuring multiple alarms, and setting weekly alarm schedules. Making
+a custom built alarm clock as usable as commercially available clocks would require significant time
+investment.
+
+[http://www.engineersgarage.com/microcontroller/8051projects/LCD-digital-alarm-clock-AT89C51-circuit]
+[http://www.instructables.com/id/Arduino-alarm-clock/]
+[http://circuitdigest.com/microcontroller-projects/arduino-alarm-clock]
+
 
 6.6 Energy Monitoring Switch
 ----------------------------
@@ -326,6 +391,32 @@ less than 5 hours to build.
 
 6.8 Coffee Makers
 -----------------
+
+### Using a relay switch
+
+A simple way to connect a coffee machine to a microcontroller is by using a voltage relay. A
+voltage relay is an electrically controlled switch for high power devices. A simple coffee 
+machine that only needs to be plugged in in order to start brewing could be controlled using 
+a simple voltage relay circuit. 
+
+### Time Investment
+
+The same circuit which is used in the LED switch could be used to control the coffee machine,
+since both the coffee machine and LED can be connected to the same voltage relay.
+
+### Required Expertise
+
+- Safety risks: Coffee machine are normally connected directly into a wall socket. Controlling
+the coffee machine using a voltage relay would therefore involve high voltage levels which 
+are unsafe to work with without proper training
+
+[http://www.instructables.com/id/Tweet-a-Pot-Twitter-Enabled-Coffee-Pot/]
+
+In order to interface a microcontroller with more sophisticated coffee machines, some level
+of reverse engineering of the coffee machine's control circuits would be necessaary. This
+would greatly increase the amount of time necessary to create the device, due to the 
+lack of electronics knowledge on the team.
+
 
 6.9 Summary of Evaluation
 -------------------------
