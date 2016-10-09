@@ -1,7 +1,7 @@
-Computing Devices
-=================
+# 5. Computing Devices
 
-### Background
+5.1 Background
+--------------
 
 Computing devices are any electronic device that can be used to process data and send it over
 a smart home network. Computing devices include computers, micro-controllers and other
@@ -9,15 +9,16 @@ embedded devices. Computing devices that are being examined all offer control of
 hardware interfaces. This report examines computing devices that can be used for prototyping
 embedded control of sensors and actuators.
 
-### Relation to System
+5.2 Relation to System
+----------------------
 
 Computing devices will be used for many aspects of the smart home system. A computing device will
 be used for the central smart hub as well as for various other devices in the system. Different
 devices will be more suitable to some tasks than others. This report compares a number of these
 computing options with a focus on the areas of need within the system.
 
-Arduino Uno
------------
+5.3 Arduino Uno
+---------------
 
 ### Description
 
@@ -43,39 +44,6 @@ weight of approximately 25 g. The Uno also includes an integrated USB-Mini port 
 communication and as a power source. The board includes a 5 V DC power input for running the
 board continually.
 
-##### Operation Criteria
-
-| Criteria                   | Specification |
-| --------                   | ------------- |
-| Operating System           | None          |
-| Processor Size             | 8-bit         |
-| Processor Family           | ATmega        |
-| Operating Voltage          | 5V            |
-| Input Voltage              | 7-12V         |
-| Clock Speed                | 16 MHz        |
-| Digital Pins               | 14            |
-| Pulse with Modulation Pins | 6             |
-| Analog Input Pins          | 6             |
-| DC Current per Pin         | 20 mA         |
-| Flash Memory               | 32 KB         |
-| System Size                | 0.5 KB        |
-| SRAM                       | 2 KB          |
-| EEPROM                     | 1 KB          |
-
-##### Features
-
-| Feature |          |
-| ------- | ------   |
-| USB     | USB-Mini |
-
-##### Physical Characteristics
-
-| Dimension | Length  |
-| --------- | ------  |
-| Length    | 68.6 mm |
-| Width     | 53.4 mm |
-| Weight    | 25 g    |
-
 ### Evaluation
 
 The Ardunio Uno offers fast and simple prototyping options for quickly building embedded circuits.
@@ -88,8 +56,8 @@ quick deployment.
 [1] "ArduinoBoardUno," in Arduino, 2016. [Online]. Available:
 https://www.arduino.cc/en/Main/ArduinoBoardUno. Accessed: Oct. 6, 2016.
 
-Arduino 101
------------
+5.4 Arduino 101
+----------------
 
 ### Description
 
@@ -112,42 +80,6 @@ deployment use.
 The 101 offers many of the same prototyping capabilities as the Uno with 14 digital pins, 4
 of which provide pulse with modulation. The 101 also exposes 6 analog to digital pins.
 
-##### Operation Criteria
-
-| Criteria                   | Specification  |
-| --------                   | -------------  |
-| Operating System           | RTOS           |
-| Processor Size             | 32-bit         |
-| Processor Family           | Intel          |
-| Operating Voltage          | 3.3V - 5V      |
-| Input Voltage              | 7-12V          |
-| Clock Speed                | 8 MHz - 16 MHz |
-| Digital Pins               | 14             |
-| Pulse with Modulation Pins | 4              |
-| Analog Input Pins          | 6              |
-| DC Current per Pin         | 20 mA          |
-| Flash Memory               | 196 KB         |
-| System Size                | 2 KB           |
-| SRAM                       | 2 KB           |
-| EEPROM                     | 1 KB           |
-
-##### Features
-
-| Feature       |              |
-| -------       | -----        |
-| Bluetooth     | Yes          |
-| USB           | USB-Mini     |
-| Accelerometer | 6-Axis Gyros |
-
-
-##### Physical Characteristics
-
-| Dimension | Length  |
-| --------- | ------  |
-| Length    | 68.6 mm |
-| Width     | 53.4 mm |
-| Weight    | 34 g    |
-
 ### Evaluation
 
 The 101 is a much more feature rich board than the Uno, however the added features are not
@@ -161,8 +93,8 @@ and simple circuit design.
 https://www.arduino.cc/en/Main/ArduinoBoard101. Accessed: Oct. 6, 2016.
 
 
-Arduino Pro
------------
+5.5 Arduino Pro
+----------------
 
 ### Description
 
@@ -184,41 +116,6 @@ be pulse with modulation, and 6 analog pins. The Pro also provides some more adv
 options with a universal asynchronous receiver / transmitter (UART), serial peripheral
 interface (SPI) bus, and an inter-integrated circuit (I2C) connection.
 
-##### Operation Criteria
-
-| Criteria                   | Specification  |
-| --------                   | -------------  |
-| Operating System           | None           |
-| Processor Size             | 32-bit         |
-| Processor Family           | ATmega         |
-| Operating Voltage          | 3.3V - 5V      |
-| Input Voltage              | 7-12V          |
-| Clock Speed                | 8 MHz - 16 MHz |
-| Digital Pins               | 14             |
-| Pulse with Modulation Pins | 4              |
-| Analog Input Pins          | 6              |
-| DC Current per Pin         | 40 mA          |
-| Flash Memory               | 32 KB          |
-| System Size                | 2 KB           |
-| SRAM                       | 2 KB           |
-| EEPROM                     | 1 KB           |
-
-##### Features
-
-| Feature |           |
-| ------- | -----     |
-| USB     | USB-Micro |
-| UART    | Yes       |
-| SPI Bus | Yes       |
-| I2C     | Yes       |
-
-##### Physical Characteristics
-
-| Dimension | Length  |
-| --------- | ------  |
-| Length    | 52.1 mm |
-| Width     | 53.3 mm |
-
 ### Evaluation
 
 The Pro has many advanced features but offers little in the way of rapid prototyping. The Pro is
@@ -232,8 +129,8 @@ redistributed, the Pro would be useful for building a final product for an unmod
 https://www.arduino.cc/en/Main/ArduinoBoardPro. Accessed: Oct. 6, 2016.
 
 
-Arduino Micro
--------------
+5.6 Arduino Micro
+-----------------
 
 ### Description
 
@@ -284,8 +181,8 @@ How does this specific item do against our criteria?
 https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 
-Arduino Pro Mini
-----------------
+5.7 Arduino Pro Mini
+--------------------
 
 ### Description
 
@@ -338,8 +235,8 @@ How does this specific item do against our criteria?
 https://www.arduino.cc/en/Main/ArduinoBoardProMini. Accessed: Oct. 6, 2016.
 
 
-Comparison of Arduinos
-----------------------
+5.8 Comparison of Arduinos
+--------------------------
 
 ##### Operation Criteria
 
@@ -383,53 +280,53 @@ Comparison of Arduinos
 
 ----------
 
-Raspberry Pi 3 Model B
+5.8 Raspberry Pi 3 Model B
+--------------------------
+
+### Description
+
+What is this item?
+
+### Technical Overview
+
+Technically speaking, what does this item do?
+
+### Evaluation
+
+How does this specific item do against our criteria?
+
+5.9 Raspberry Pi 2 Model B
+--------------------------
+
+### Description
+
+What is this item?
+
+### Technical Overview
+
+Technically speaking, what does this item do?
+
+### Evaluation
+
+How does this specific item do against our criteria?
+
+5.10 Raspberry Pi 1 Model A+
+----------------------------
+
+### Description
+
+What is this item?
+
+### Technical Overview
+
+Technically speaking, what does this item do?
+
+### Evaluation
+
+How does this specific item do against our criteria?
+
+5.11 Raspberry Pi Zero
 ----------------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
-Raspberry Pi 2 Model B
-----------------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
-Raspberry Pi 1 Model A+
------------------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
-Raspberry Pi Zero
------------------
 
 ### Description
 
@@ -445,8 +342,8 @@ How does this specific item do against our criteria?
 
 ----------
 
-BeagleBone
------------
+5.12 BeagleBone
+---------------
 
 ### Description
 
@@ -460,8 +357,8 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
-BeagleBone Black
------------------
+5.13 BeagleBone Black
+---------------------
 
 ### Description
 
@@ -475,8 +372,8 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
-BeagleBone Green
------------------
+5.14 BeagleBone Green
+---------------------
 
 ### Description
 
@@ -494,9 +391,10 @@ How does this specific item do against our criteria?
 -----------------------
 
 
-### Summary of Evaluation
+5.15 Summary of Evaluation
+--------------------------
 
-
-### Conclusion
+5.16 Conclusion
+---------------
 
 What did we decide upon? Why?
