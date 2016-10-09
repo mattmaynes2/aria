@@ -19,15 +19,17 @@ This section will concentrate on the following characteristics:
 
  How are new devices added to the automation systems network.
 
-- **Home Network (Design, layout, configuration?)** <need to pick name>
-
+- **Network**
  How do these systems setup the network of devices. Do they use a central server, are all devices
  independent etc..
 
 - **API**
 
- Does the system provide an API that our system could potentially use to control the devices from
- these systems.
+ Does the system provide an API that our system could potentially use to control the devices 
+connected to these systems. In order to control these devices 
+we require that the following; a way to view all connected devices, 
+a way to get notifications when a device in the system changes states,
+a way to change the state of a device.
 
 - **Third Party Integrations**
  
@@ -217,7 +219,7 @@ Accessed: Oct. 8, 2016.
 
 ### Description
 
-What is this item?
+SmartThings is Samsung's home automation system. 
 
 ### Technical Overview
 
