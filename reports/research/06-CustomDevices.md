@@ -73,7 +73,7 @@ devices:
 
 - Motion Sensors
 
-Many actions could be triggered by aa person entering or leaving a house or a room. A motion sensor could
+Many actions could be triggered by a person entering or leaving a house or a room. A motion sensor could
 potentially interact with every other device on this list. Due to the wide range of potential interactions,
 we expect that a motion sensor will be a good test of the machine learning component's ability to 
 determine the relationships inputs and outputs. The motion sensor could also reveal flaws in the 
@@ -99,11 +99,14 @@ learning algorithm to infer.
 A light sensor provides a non-binary input to the machine learning component. Similar to a motion sensor,
 the level of light in a room may be related to the behaviour of many other devices.
 
-- Dimmer switch
+- Variable-voltage switch
 
-A dimmer switch is an example of a non-binary output device. 
+A variable-voltage switch is an example of a non-binary output device. A variable-voltage switch could 
+be used to control the brightness of lights, or the speed of a fan. 
 
 - Alarm Clock
+
+- Audio Sensor
 
 - Energy monitoring switch
 
@@ -205,7 +208,7 @@ range may be lower
 - Allows for finer control over the area of detection than a PIR sensor
 
 Useability
-- More difficult than a PIR sensor, requires the user to precisely aim the transmitted beam.
+- More difficult setup than a PIR sensor, requires the user to precisely aim the transmitted beam.
 
 ### Evaluation
 
@@ -213,25 +216,61 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-6.3 Dimmer Switch
-------------------
+6.3 Variable-Voltage Switch
+---------------------------
 
-The objective of thios device is to allow precise control of the amount of AC power given 
-to a device such as a light bulb or a fan. 
+The characteristics of variable-voltage switches vary significantly depending on the type of 
+device that the switch is expected to control (DC vs AC).
 
-Expertise Required
+### Controlling DC power
 
-- Safety concerns: A dimmer switch is likely to be used with devices that plugin in to 
-wall outlets. Therefore, building this device may involve the use of high voltages which
-should not be undertaken without the proper training. For this reason alone, the dimmer
-switch may not be a good candidate for a custom-built device.
+If the type of device being controlled requires DC power input, the amount of power supplied
+to the device can be controlled using pulse-width modulation. A digital output is used
+to create a square wave. By varying the frequency of the square wave, it is possible to 
+simulate the application of a steady voltage between the pin's high and low voltages. 
 
+[https://www.arduino.cc/en/Tutorial/PWM]
 
-Time Investment
+Limitations to simple PWM
 
-- Circuits presented in mopst online tutorials are much more complex than the simple 
-light switch circuit. This would lead to a higher amount of time investment required
-to understand and construct the circuit.
+- Power available to the device is limited by the power supplied by the controlling device
+- Limited to DC devices
+
+#### Expertise Required
+
+Minimal expertise is required to use PWM to control a device. The circuits required are as
+simple as the circuits required to power a simple LED.
+
+#### Reliability
+
+Simple PWM circuits are limited to controlling devices with low power requirements. While 
+the technique is reliable for devices which meet the power requirements, such as LED lamps, 
+the power requirements of most home devices means that the applicability of this technique
+will be severely limited. Most devices are intended to be connected to a wall socket, meaning
+that they are expecting AC current, with a significantly higher amount of power than is
+available from a microcontroller such as an Arduino. 
+
+### Controlling AC power
+
+#### Expertise Required
+
+- Safety concerns: Controlling devices which expect to receive the voltages available from
+a wall socket means dealing with high voltages. Without any team members trained in 
+using high voltages, building a device to control high voltages is a very serious safety risk.
+
+- Lack of trusted tutorials: For most of the circuits considered during this research, it has 
+been possible to find tutorials online from trusted sources, such as the official Arduino 
+website. 
+
+#### Time Investment
+
+- When it was possible to find a tutorial online for building a circuit to control AC 
+voltages, the circuit was found to be much more complex than the simple light switch
+circuit. Due to the amount of time required to fully understand these circuits, it
+is estimated that time investment will be significantly higher than the time required 
+for the light switch (5 hours)
+
+[http://playground.arduino.cc/Main/ACPhaseControl]
 
 6.4 Light Sensor
 ----------------
@@ -287,7 +326,6 @@ less than 5 hours to build.
 
 6.8 Coffee Makers
 -----------------
-
 
 6.9 Summary of Evaluation
 -------------------------
