@@ -67,8 +67,13 @@ controller to send messages, a repeater to forward messages or a responder to re
 
 #### API
 
-Insteon provides a REST API to interact with their devices.  The API provides supports adding
-devices,
+Insteon provides a REST API to interact with their devices. 
+
+| Feature                                | supported |
+| ---------                              | --------  |
+| List all devices                       |    Y      |
+| Receive update on device state change  |    Y      |
+| Modify device state                    |    Y      |
 
 ###### Limitations
 
@@ -77,13 +82,11 @@ still require configuration through the Insteon App.
 
 ### Evaluation
 
-Issue with integrating with insteon using their API is that it requires their central hub. Their hub
-system does most of what we want our system to do and we ould like to learn how to do this rather
-than just use someone elses.
+<need to go over evaluation>
 
-Insteon has a spec for their messageing system and command structure which would allow us to
+Insteon has a spec for their messaging system and command structure which would allow us to
 communicate with their devices without the use of the hub, however adding the support using their
-messageing and command structures  is <something here>. Adding support for Insteon devices is
+messaging and command structures  is <something here>. Adding support for Insteon devices is
 something that could be looked at in the future though is outside of the scope of the project for
 now.
 
