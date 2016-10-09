@@ -280,7 +280,8 @@ How does this specific item do against our criteria?
 
 ### References
 
-[1] "ArduinoBoardMicro," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
+[1] "ArduinoBoardMicro," in Arduino, 2016. [Online]. Available:
+https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 
 Arduino Pro Mini
@@ -333,11 +334,12 @@ How does this specific item do against our criteria?
 
 ### References
 
-[1] "ArduinoBoardProMini," in Arduino, 2016. [Online]. Available: https://www.arduino.cc/en/Main/ArduinoBoardProMini. Accessed: Oct. 6, 2016.
+[1] "ArduinoBoardProMini," in Arduino, 2016. [Online]. Available:
+https://www.arduino.cc/en/Main/ArduinoBoardProMini. Accessed: Oct. 6, 2016.
 
 
 Comparison of Arduinos
------------------------
+----------------------
 
 ##### Operation Criteria
 
@@ -379,6 +381,7 @@ Comparison of Arduinos
 | Weight    | 25 g        | 34 g        | N/A         | 13 g          | N/A              |
 
 
+----------
 
 Raspberry Pi 3 Model B
 ----------------------
@@ -440,6 +443,7 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
+----------
 
 BeagleBone
 -----------
