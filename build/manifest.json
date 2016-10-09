@@ -80,7 +80,7 @@
     "reports.spec" : {
         "build" : [
             "cd ../reports/spec",
-            "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Specification.md > Specification.html",
+            "../../build/support/try pandoc --toc -c ../../build/styles/style.css -t html -f markdown -B Cover.html Specification.md > Specification.html",
             "../../build/support/try wkhtmltopdf Specification.html Specification.pdf",
             "rm -f Specification.html"
         ],

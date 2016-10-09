@@ -1,14 +1,3 @@
-<div style="text-align:right; padding-top: 200px;">
-<h3>Requirements Specification</h3>
-<h4>for</h4>
-<h3>Machine Learning Smart Home</h3>
-
-<h4>Prepared By:</h4>
-<h6>Matthew Maynes</h6>
-<h6>Cameron Blanchard</h6>
-<h6>Peter Mark</h6>
-<h6>Jeremy Dunsmore</h6>
-</div>
 <p style="page-break-after:always;"></p>
 
 ## 1. Introduction
@@ -25,13 +14,13 @@ home network. After connecting the hub, the homeowner can add enabled devices fo
 control by simply connecting them to the network. As new devices are connected, their input will be
 used to make more predictive decisions about user behaviour.
 
-### Document Conventions
+### 1.2 Document Conventions
 
 In the remainder of this document, "the system" refers to the Learning Home Automation System
 described in the introduction. The format of the this report was adapted from the format recommended
 in IEEE-830 (Recommended Practice for Software Requirements Specifications).
 
-### 1.2 Product Scope
+### 1.3 Product Scope
 
 The purpose of the system is to make home automation as easy as possible to set up. Many existing
 home automation systems require some form of programming from the user, in the form of a schedule or
@@ -311,7 +300,7 @@ Standards ensures that the system uses widely accepted authentication practices.
 
 #### Device Interoperability
 
-### Appendix A: Glossary
+## Appendix A: Glossary
 
 **Device**: A sensor or an actuator, or a combination of both.
 
