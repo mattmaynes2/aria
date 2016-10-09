@@ -75,10 +75,25 @@ Insteon provides a REST API to interact with their devices.
 | Receive update on device state change  |    Y      |
 | Modify device state                    |    Y      |
 
+In order to use the API approval from Insteon is required. Applying
+for an API key is done through the Insteon website.
+
 ###### Limitations
 
 In order to use the API an Insteon Hub is required also adding new Insteon devices to a network
 still require configuration through the Insteon App.
+
+### Third Party Support
+
+Insteon supports devices from the following manufacturers:
+
+- Nest
+- Amazon Echo
+- logitech
+- first Alert
+- Sonos 
+- MiLOCKS
+- Apple HomeKit
 
 ### Evaluation
 
@@ -140,9 +155,40 @@ Wink Hub supports the following communication protocols:
 #### Network
 
 The Wink system is a central hub that connects different devices.  All of the different devices are
-controlled through the central hub
+controlled through the central hub.
 
 #### API
+
+#### Third Party Integrations
+Wink has support for the following manufacturers:
+
+- Nest
+- Philips
+- GE
+- Leviton
+- Honeywell
+- TCP
+- Kidde
+- Kwiset
+- Rheem
+- Lutron
+- rachio
+- Bali
+- Amazon
+- Andersen
+- Canary
+- Carrier
+- Chamberlain
+- Commercial Electric
+- Cree
+- Dropcam
+- Ecobee
+- Emerson
+- GoControl
+- Hampton Bay
+- IHome
+- Leaksmart
+- Osram
 
 
 ### Evaluation
