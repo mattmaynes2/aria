@@ -1,7 +1,7 @@
-Custom-Built Devices
-=====================
+# 6. Custom-Built Devices
 
-### Background
+6.1 Background
+--------------
 
 The purpose of this section is to present our investigation into the process of building various types
 of smart devices which might be of use for home automation. The purpose of this investigation is to provide 
@@ -111,8 +111,8 @@ A dimmer switch is an example of a non-binary output device.
 
 - Coffee Makers
 
-Motion Sensor
-------------
+6.2 Motion Sensor
+-----------------
 
 ### Description
 
@@ -213,8 +213,8 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-Dimmer Switch
------------------------
+6.3 Dimmer Switch
+------------------
 
 The objective of thios device is to allow precise control of the amount of AC power given 
 to a device such as a light bulb or a fan. 
@@ -233,8 +233,8 @@ Time Investment
 light switch circuit. This would lead to a higher amount of time investment required
 to understand and construct the circuit.
 
-Light Sensor
------------------
+6.4 Light Sensor
+----------------
 
 ### Description
 
@@ -276,23 +276,25 @@ less than 5 hours to build.
 
 [http://www.resistorguide.com/photoresistor/]
 
-Alarm Clock
+6.5 Alarm Clock
+---------------
+
+6.6 Energy Monitoring Switch
+----------------------------
+
+6.7 Coloured Lighting
+---------------------
+
+6.8 Coffee Makers
 -----------------
 
-Energy monitoring switch
+
+6.9 Summary of Evaluation
 -------------------------
-
-Coloured Lighting
-------------------
-
-Coffee Makers
---------------
-
-
-### Summary of Evaluation
 
 All of the evaluation grouped together
 
-### Conclusion
+6.10 Conclusion
+---------------
 
 What did we decide upon? Why?
