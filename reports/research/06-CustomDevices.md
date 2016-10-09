@@ -28,10 +28,13 @@ expertise necessary to build the device safely).
 #### Time Investment
 
 The project has a fixed deadline; in order to allow the team to focus on the machine learning aspects
-of the system, devices which can be used to demonstrate the system must be available quickly. For each 
-device, an estimate of the time investment required to build the devices will be an important factor
-in the decision of whether to use a commercially available alternative or not. When possible, an
-estimate of the number of hours required should be sought out.
+of the system, devices which can be used to demonstrate the system must be available quickly. In order
+to measure this criteria, the amount of effort required to build an LED controlled through a 
+voltage relay will be used as a baseline for estimation. The following scale will be used:
+
+1 - Comparable to baseline
+2 - High effort (ie. hours)
+3 - Extreme effort (ie. days or more)
 
 #### Component Availability
 
@@ -107,10 +110,6 @@ be used to control the brightness of lights, or the speed of a fan.
 - Alarm Clock
 
 - Audio Sensor
-
-- Energy monitoring switch
-
-- Coloured Lighting
 
 - Coffee Makers
 
@@ -209,6 +208,21 @@ range may be lower
 
 Useability
 - More difficult setup than a PIR sensor, requires the user to precisely aim the transmitted beam.
+
+### Feature Comparison
+
+|Feature     | Custom | D-Link Wifi Motion Sensor | Samsung Smartthings Motion Sensor | Belkin WeMo Switch + Motion |
+|-------     |--------|---------------------------|-----------------------------------|-----------------------------|
+| Range      | 7m     | 8m						  | 15m - 40m                         | 3m                          |
+| Interfaces | _      | Wifi                      | ZigBee                            | Wifi                        |
+| Type       | PIR    | PIR                       | PIR                               | PIR                         |
+
+Note: The custom device can potentially support multiple different communication interfaces
+
+Custom device: https://www.adafruit.com/product/189
+D-Link: http://ca.dlink.com/products/connected-home/wi-fi-motion-sensor/
+Samsung: https://shop.smartthings.com/#!/products/samsung-smartthings-motion-sensor
+WeMo: http://www.belkin.com/au/p/P-F5Z0340-APL/
 
 ### Evaluation
 
@@ -382,10 +396,6 @@ investment.
 [http://www.instructables.com/id/Arduino-alarm-clock/]
 [http://circuitdigest.com/microcontroller-projects/arduino-alarm-clock]
 
-
-6.6 Energy Monitoring Switch
-----------------------------
-
 6.7 Coloured Lighting
 ---------------------
 
@@ -417,6 +427,8 @@ of reverse engineering of the coffee machine's control circuits would be necessa
 would greatly increase the amount of time necessary to create the device, due to the 
 lack of electronics knowledge on the team.
 
+6.9 Audio Sensor
+-----------------
 
 6.9 Summary of Evaluation
 -------------------------
