@@ -12,9 +12,7 @@
         "enviro" : [
             "./support/pkman install pandoc",
             "./support/pkman install -p cask wkhtmltopdf",
-            "./support/try add-apt-repository ppa:ecometrica/servers",
-            "./support/try apt-get update",
-            "./support/try apt-get install wkhtmltopdf"
+            "./support/pkman install -t -p apt-get wkhtmltopdf"
         ]
     },
     "build" : {
