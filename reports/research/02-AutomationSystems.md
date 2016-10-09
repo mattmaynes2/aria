@@ -217,11 +217,11 @@ Accessed: Oct. 8, 2016.
 2.4 SmartThings
 ---------------
 
-### Description
+## Description
 
 SmartThings is Samsung's home automation system. 
 
-### Technical Overview
+## Technical Overview
 
 Uses Z-Wave and ZigBee and wifi.
 
@@ -230,9 +230,51 @@ Uses Z-Wave and ZigBee and wifi.
 
 #### Limitations
 
-requires a SmartThings hub and connection to the SmartThings cloud.
+Requires a SmartThings hub and connection to the SmartThings cloud.
 
-### Evaluation
+### Third Party Integrations
+
+
+2Gig
+Aeon Labs
+Amazon
+Belkin
+Bose
+Cree
+ecobee
+Ecolink
+EcoNet Controls
+Enerwave
+Everspring
+Fibaro
+Fidure
+First Alert
+FortrezZ
+GE
+Google
+Honeywell
+iHome
+Keen Home
+Kwikset
+Leak Intelligence
+Leviton
+LiFi Labs
+Linear
+Netgear
+OSO Technologies
+OSRAM LIGHTIFY
+Philips Hue
+Remotec Technology
+Samsung
+Samsung SmartThings
+Schlage
+Sengled
+Skybell
+Spruce
+Yale
+Zen
+
+## Evaluation
 
 How does this specific item do against our criteria?
 
