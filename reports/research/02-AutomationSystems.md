@@ -42,8 +42,9 @@ This section will concentrate on the following characteristics:
 
 ### Description
 
-INSTEON is a home automation system that allows control of the home through a phone. The system
-supports changing device states based on a schedule or through **scenes**.
+INSTEON is a home automation system that allows control of the home through a phone. 
+Insteon supports contorling devices based on a scheduled, using IFTTT or through setting 
+up **scenes**.
 
 A scene is configured a configuration for a room that the user sets up at a specific time or when
 specific environmental conditions are met. INSTEON has all of the devices remember their current
@@ -130,9 +131,8 @@ http://www.smarthome.com/sc-what-is-insteon-home-automation. Accessed: Oct. 6, 2
 
 ### Description
 
-Wink Hub is a hub that allows connections from many different smart devices. For the most part this
-system seems to provide an app that allows the user to interface with multiple different smart
-devices from different manufacturers.
+Wink Hub is a hub that allows connections from many different smart devices. Wink supports
+control of devices using scheduling and IFTTT. 
 
 ### Technical Overview
 
@@ -195,6 +195,9 @@ Wink has support for the following manufacturers:
 
 ### Evaluation
 
+Providing support for the most popular communication protocols allows Wink
+to connect with almost any device a user can purchase. This makes them more
+attractive to consumers.
 
 ### References
 
@@ -215,7 +218,7 @@ Accessed: Oct. 8, 2016.
 
 ### Description
 
-SmartThings is Samsung's home automation system. 
+SmartThings is Samsung's home automation system. The System provides a 
 
 ### Technical Overview
 
