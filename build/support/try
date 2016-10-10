@@ -5,7 +5,7 @@ set -e
 NAME='try'
 VERSION='0.0.1'
 HELP='
-  Usage try [options ...] [cmd]
+  Usage: try <cmd> [options ...]
     Tries to execute a bash command. Upon failure a warning is printed but a
     zero exit status is returned. Note that all options must be before the
     command argument.
