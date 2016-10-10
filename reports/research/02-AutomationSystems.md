@@ -3,9 +3,9 @@
 2.1 Background
 --------------
 
-There are many different home automation systems. We are looking at these other automation systems
-so that we can see know what already exists on the market. Find standards that the existing systems
-use. We also want to see what other systems do well so we can take this into consideration while
+There are many different home automation systems.In this section we are looking at
+existing systems so that we can better understand what technologies currently 
+exist in the market as well  ... so we can take these into consideration while
 designing our system.
 
 This section will concentrate on the following characteristics:
@@ -20,22 +20,22 @@ This section will concentrate on the following characteristics:
  How are new devices added to the automation systems network.
 
 - **Network**
+ 
  How do these systems setup the network of devices. Do they use a central server, are all devices
  independent etc..
 
 - **API**
 
  Does the system provide an API that our system could potentially use to control the devices 
-connected to these systems. In order to control these devices 
-we require that the following; a way to view all connected devices, 
-a way to get notifications when a device in the system changes states,
-a way to change the state of a device.
+ connected to these systems. In order to control these devices 
+ we require that the following; a way to view all connected devices, 
+ a way to get notifications when a device in the system changes states,
+ a way to change the state of a device.
 
 - **Third Party Integrations**
  
  Which companies have these systems decided are important to support
 
-<note need to rework this>
 
 2.2 INSTEON
 -----------
@@ -102,13 +102,9 @@ INSTEON supports devices from the following manufacturers:
 
 ### Evaluation
 
-<need to go over evaluation>
-
-INSTEON has a spec for their messaging system and command structure which would allow us to
-communicate with their devices without the use of the hub, however adding the support using their
-messaging and command structures  is <something here>. Adding support for INSTEON devices is
-something that could be looked at in the future though is outside of the scope of the project for
-now.
+The INSTEON system is very reliable and easy to setup however because they use their own
+communication protocol the devices that can be added is limited mostly to those manufactured by 
+INSTEON.
 
 ### Refrences
 
@@ -234,16 +230,16 @@ Requires a SmartThings hub and connection to the SmartThings cloud.
 
 ### Third Party Integrations
 
-|    	   |     	       |     	      |     		|                   |
-| --- 	   | --- 	       | --- 	      | --- 		| ---    	    |
-|2Gig	   |Aeon Labs 	       |Amazon	      |Belkin   	| Bose 		    |	 
-|Cree 	   |ecobee 	       |Ecolink       |EcoNet Controls 	| Enerwave	    |
-|Everspring|Fibaro 	       |Fidure 	      |First Alert     	|FortrezZ	    |
-|GE 	   |Google 	       |Honeywell     |iHome       	|Keen Home	    |
-|Kwikset   |Leak Intelligence  |Leviton	      |LiFi Labs   	| Linear	    |
-|Netgear   |OSO Technologies   |OSRAM LIGHTIFY|Philips Hue 	| Remotec Technology|
-|Samsung   |Samsung SmartThings|Schlage       |Sengled     	| Skybell	    |
-|Spruce    |Yale 	       |Zen 	      | 		| 	  	    |  
+|    	   |     	            |     	        |     		     |                      |
+| --- 	   | --- 	            | --- 	        | --- 		     | ---    	            |
+|2Gig	   |Aeon Labs 	        |Amazon	        |Belkin   	     | Bose 		        |	 
+|Cree 	   |ecobee 	            |Ecolink        |EcoNet Controls | Enerwave	            |
+|Everspring|Fibaro 	            |Fidure 	    |First Alert     | FortrezZ	            |
+|GE 	   |Google 	            |Honeywell      |iHome       	 | Keen Home            |
+|Kwikset   |Leak Intelligence   |Leviton	    |LiFi Labs       | Linear	            |
+|Netgear   |OSO Technologies    |OSRAM LIGHTIFY |Philips Hue 	 | Remotec Technology   |
+|Samsung   |Samsung SmartThings |Schlage        |Sengled     	 | Skybell	            |
+|Spruce    |Yale 	            |Zen            | 		         |          	  	    |  
 
 ### Evaluation
 
