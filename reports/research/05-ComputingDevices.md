@@ -369,6 +369,15 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
+### References
+
+[1] "Bone-original,". [Online]. Available: http://beagleboard.org/bone-original.
+Accessed: Oct. 10, 2016.
+
+[1] "BeagleBone Schematic," Jun. 28, 2012. [Online]. Available:
+https://github.com/CircuitCo/BeagleBone-RevA6/blob/master/BEAGLEBONE_REV_A6A.pdf?raw=true.
+Accessed: Oct. 10, 2016.
+
 5.14 BeagleBone Black
 ---------------------
 
@@ -383,6 +392,14 @@ Technically speaking, what does this item do?
 ### Evaluation
 
 How does this specific item do against our criteria?
+
+### References
+
+[1] "BeagleBone Black,". [Online]. Available: http://beagleboard.org/black.
+Accessed: Oct. 10, 2016.
+
+[2] "Beagleboard: BeagleBoneBlack,". [Online].
+Available: http://elinux.org/Beagleboard:BeagleBoneBlack. Accessed: Oct. 10, 2016.
 
 5.15 BeagleBone Green
 ---------------------
@@ -399,8 +416,51 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
+### References
+
+[1]	"BeagleBone Green,". [Online]. Available: http://beagleboard.org/green.
+Accessed: Oct. 10, 2016.
+
 5.16 Comparison of BeagleBone
 -----------------------------
+
+##### Operation Criteria
+
+| Criteria                   | BeagleBone | BeagleBone Black | BeagleBone Green |
+| --------                   | ---------- | ---------------- | ---------------- |
+| Operating System           | Angstrom   | Debian           | Debian           |
+| Processor Size             | 32-bit     | 32-bit           | 32-bit           |
+| Processor Family           | ARM        | ARM              | ARM              |
+| Operating Voltage          | 5V         | 5V               | 5V               |
+| Input Voltage              | 1.8V       | 1.8V             | 1.8V             |
+| Clock Speed                | 700MHz     | 1GHz             | 1GHz             |
+| Digital Pins               | 60         | 69               | 65               |
+| Pulse with Modulation Pins | 4          | 4                | 8                |
+| Analog Input Pins          | 4          | 4                | 7                |
+| Flash Memory               | 256MB      | 512MB            | 512 MB           |
+| System Size                | 1.8 GB     | 2.2GB            | 2.2 GB           |
+
+##### Features
+
+| Feature   | BeagleBone | BeagleBone Black | BeagleBone Green |
+| -------   | ---------- | ---------------- | ---------------- |
+| USB       | 2          | 2                | 2                |
+| HDMI      | No         | Yes              | No               |
+| Bluetooth | No         | Yes              | Yes              |
+| WiFI      | No         | Yes              | Yes              |
+| Ethernet  | Yes        | Yes              | Yes              |
+| UART      | No         | Yes              | Yes              |
+| I2C       | No         | No               | Yes              |
+| Micro SD  | Yes        | Yes              | Yes              |
+
+
+##### Physical Characteristics
+
+| Dimension | BeagleBone | BeagleBone Black | BeagleBone Green |
+| --------- | ---------- | ---------------- | ---------------- |
+| Length    | 86 mm      | 86 mm            | 86 mm            |
+| Width     | 54 mm      | 54 mm            | 54 mm            |
+
 
 -----------------------
 
