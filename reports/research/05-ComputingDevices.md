@@ -305,15 +305,27 @@ https://www.raspberrypi.org/products/raspberry-pi-2-model-b/. Accessed: Oct. 10,
 
 ### Description
 
-What is this item?
+The Raspberry Pi 3 Model B is the most advanced Raspberry Pi available. The Pi 3 is a
+computer board that uses a very similar design to the other Pi Models. The Pi 3 offers more
+computing performance than all of its predecessors and is a very suitable candidate for the
+smart hub.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The Raspberry Pi 3 offers massive embedded performance with a 1.2GHz 64-bit Quad-core Arm
+processor. Similar to the Pi 2, the Pi 3 also comes with 1GB of RAM. As with all other Pi models,
+the Pi 3 provides a 40 GPIO pin configuration for external devices.
+
+The Pi 3 also comes with a number of standard options that set it apart from all other Pi models.
+It comes with integrated WiFi, Ethernet and Bluetooth communication interfaces. It has 4 standard
+USB ports and an HDMI output for visual feedback.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The Raspberry Pi 3 is the most advanced Raspberry Pi board available. Its extra computing power
+would be a good asset for heavy computation making this an ideal candidate for the central smart
+hub. The Pi 3 comes with many standard features including WiFi and Bluetooth communication which
+will make external interfacing simple with minimal investment.
 
 ### References
 
