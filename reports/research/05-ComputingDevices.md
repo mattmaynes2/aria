@@ -134,46 +134,31 @@ https://www.arduino.cc/en/Main/ArduinoBoardPro. Accessed: Oct. 6, 2016.
 
 ### Description
 
-What is this item?
+The Arduino Micro is the smallest microcontroller of the Arduino family. The Micro also
+provides the most external ports of any Arduino making it suitable for large circuits.
 
 ### Technical Overview
 
-##### Operation Criteria
+The Micro provides high performance embedded computing with a 8-bit, 16 MHz ATmega32U4 processor.
+The Micro also comes standard with the Arduino bootloader and a standard 32 KB of flash memory.
+The Micro has a operating voltage of 5 V and comes with a standard DC power input.
 
-| Criteria                   | Specification |
-| --------                   | ------------- |
-| Operating System           | None          |
-| Processor Size             | 8-bit         |
-| Processor Family           | ATmega        |
-| Operating Voltage          | 5V            |
-| Input Voltage              | 7-12V         |
-| Clock Speed                | 16 MHz        |
-| Digital Pins               | 20            |
-| Pulse with Modulation Pins | 7             |
-| Analog Input Pins          | 12            |
-| DC Current per Pin         | 20 mA         |
-| Flash Memory               | 32 KB         |
-| System Size                | 4 KB          |
-| SRAM                       | 2.5 KB        |
-| EEPROM                     | 1 KB          |
+The Micro has 20 exposed digital pins, 7 of which can be pulse with modulation. These extra
+pins make the Micro very suitable for large complex circuits that require many inputs or
+outputs. The Micro also has 12 analog to digital pins. The Micro does lack in special features.
+It only offers serial communication over a standard USB-Micro port. There are other special
+features with this device.
 
-##### Features
-
-| Feature |           |
-| ------- | -----     |
-| USB     | USB-Micro |
-
-##### Physical Characteristics
-
-| Dimension | Length |
-| --------- | ------ |
-| Length    | 48 mm  |
-| Width     | 18 mm  |
-| Weight    | 13 g   |
+Appropriately, the Micro is the smallest and lightest microcontroller in the  Arduino family.
+It is only 48 mm long and 18 mm wide. The Micro also only has a weight of roughly 13 g.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+This Ardunio would be perfectly suited to a mass production environment where size and weight
+were valuable resources. If the learning home automation system was to be commercially
+produced, this could be a very valuable microcontroller. This microcontroller could be used
+for this system would take more effort for prototyping and would likely not be a suitable
+fit.
 
 ### References
 
@@ -181,101 +166,46 @@ How does this specific item do against our criteria?
 https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 
-5.7 Arduino Pro Mini
---------------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-##### Operation Criteria
-
-| Criteria                   | Specification  |
-| --------                   | -------------  |
-| Operating System           | None           |
-| Processor Size             | 8-bit          |
-| Processor Family           | ATmega         |
-| Operating Voltage          | 3.3V - 5V      |
-| Input Voltage              | 7-12V          |
-| Clock Speed                | 8 MHz - 16 MHz |
-| Digital Pins               | 20             |
-| Pulse with Modulation Pins | 7              |
-| Analog Input Pins          | 12             |
-| DC Current per Pin         | 20 mA          |
-| Flash Memory               | 32 KB          |
-| System Size                | 2 KB           |
-| SRAM                       | 2 KB           |
-| EEPROM                     | 1 KB           |
-
-##### Features
-
-| Feature |           |
-| ------- | -----     |
-| USB     | USB-Micro |
-| UART    | Yes       |
-| SPI Bus | Yes       |
-| I2C     | Yes       |
-
-##### Physical Characteristics
-
-| Dimension | Length  |
-| --------- | ------  |
-| Length    | 17.9 mm |
-| Width     | 33 mm   |
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
-### References
-
-[1] "ArduinoBoardProMini," in Arduino, 2016. [Online]. Available:
-https://www.arduino.cc/en/Main/ArduinoBoardProMini. Accessed: Oct. 6, 2016.
-
-
-5.8 Comparison of Arduinos
+5.7 Comparison of Arduinos
 --------------------------
 
 ##### Operation Criteria
 
-| Criteria                   | Arduino Uno | Arduino 101    | Arduino Pro    | Ardunio Micro | Arduino Pro Mini |
-| --------                   | ----------- | -----------    | -----------    | ------------- | ---------------- |
-| Operating System           | None        | RTOS           | None           | None          | None             |
-| Processor Size             | 8-bit       | 32-bit         | 32-bit         | 8-bit         | 8-bit            |
-| Processor Family           | ATmega      | Intel          | ATmega         | ATmega        | ATmega           |
-| Operating Voltage          | 5V          | 3.3V - 5V      | 3.3V - 5V      | 5V            | 3.3V - 5V        |
-| Input Voltage              | 7-12V       | 7-12V          | 7-12V          | 7-12V         | 7-12V            |
-| Clock Speed                | 16 MHz      | 8 MHz - 16 MHz | 8 MHz - 16 MHz | 16 MHz        | 8 MHz - 16 MHz   |
-| Digital Pins               | 14          | 14             | 14             | 20            | 20               |
-| Pulse with Modulation Pins | 6           | 4              | 4              | 7             | 7                |
-| Analog Input Pins          | 6           | 6              | 6              | 12            | 12               |
-| DC Current per Pin         | 20 mA       | 20 mA          | 40 mA          | 20 mA         | 20 mA            |
-| Flash Memory               | 32 KB       | 196 KB         | 32 KB          | 32 KB         | 32 KB            |
-| System Size                | 0.5 KB      | 2 KB           | 2 KB           | 4 KB          | 2 KB             |
-| SRAM                       | 2 KB        | 2 KB           | 2 KB           | 2.5 KB        | 2 KB             |
-| EEPROM                     | 1 KB        | 1 KB           | 1 KB           | 1 KB          | 1 KB             |
-
+| Criteria                   | Arduino Uno | Arduino 101    | Arduino Pro    | Ardunio Micro |
+| --------                   | ----------- | -----------    | -----------    | ------------- |
+| Operating System           | None        | RTOS           | None           | None          |
+| Processor Size             | 8-bit       | 32-bit         | 32-bit         | 8-bit         |
+| Processor Family           | ATmega      | Intel          | ATmega         | ATmega        |
+| Operating Voltage          | 5V          | 3.3V - 5V      | 3.3V - 5V      | 5V            |
+| Input Voltage              | 7-12V       | 7-12V          | 7-12V          | 7-12V         |
+| Clock Speed                | 16 MHz      | 8 MHz - 16 MHz | 8 MHz - 16 MHz | 16 MHz        |
+| Digital Pins               | 14          | 14             | 14             | 20            |
+| Pulse with Modulation Pins | 6           | 4              | 4              | 7             |
+| Analog Input Pins          | 6           | 6              | 6              | 12            |
+| DC Current per Pin         | 20 mA       | 20 mA          | 40 mA          | 20 mA         |
+| Flash Memory               | 32 KB       | 196 KB         | 32 KB          | 32 KB         |
+| System Size                | 0.5 KB      | 2 KB           | 2 KB           | 4 KB          |
+| SRAM                       | 2 KB        | 2 KB           | 2 KB           | 2.5 KB        |
+| EEPROM                     | 1 KB        | 1 KB           | 1 KB           | 1 KB          |
 
 ##### Features
 
-| Feature       | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro | Ardunio Pro Mini |
-| -------       | ----------- | ----------- | ----------- | ------------- | ---------------- |
-| USB           | USB-Mini    | USB-Mini    | USB-Micro   | USB-Micro     | USB-Micro        |
-| Accelerometer | No          | 6-Axis Gyro | No          | No            | No               |
-| Bluetooth     | No          | Yes         | No          | No            | No               |
-| UART          | No          | No          | Yes         | No            | Yes              |
-| SPI Bus       | No          | No          | Yes         | No            | Yes              |
-| I2C           | No          | No          | Yes         | No            | Yes              |
+| Feature       | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro |
+| -------       | ----------- | ----------- | ----------- | ------------- |
+| USB           | USB-Mini    | USB-Mini    | USB-Micro   | USB-Micro     |
+| Accelerometer | No          | 6-Axis Gyro | No          | No            |
+| Bluetooth     | No          | Yes         | No          | No            |
+| UART          | No          | No          | Yes         | No            |
+| SPI Bus       | No          | No          | Yes         | No            |
+| I2C           | No          | No          | Yes         | No            |
 
 ##### Physical Characteristics
 
-| Dimension | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro | Ardunio Pro Mini |
-| --------- | ----------- | ----------- | ----------- | ------------- | ---------------- |
-| Length    | 68.6 mm     | 68.6 mm     | 52.1 mm     | 48 mm         | 17.9 mm          |
-| Width     | 53.4 mm     | 53.4 mm     | 53.3 mm     | 18 mm         | 33 mm            |
-| Weight    | 25 g        | 34 g        | N/A         | 13 g          | N/A              |
+| Dimension | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro |
+| --------- | ----------- | ----------- | ----------- | ------------- |
+| Length    | 68.6 mm     | 68.6 mm     | 52.1 mm     | 48 mm         |
+| Width     | 53.4 mm     | 53.4 mm     | 53.3 mm     | 18 mm         |
+| Weight    | 25 g        | 34 g        | N/A         | 13 g          |
 
 
 ----------
