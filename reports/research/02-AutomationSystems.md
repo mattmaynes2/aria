@@ -217,15 +217,15 @@ Accessed: Oct. 8, 2016.
 2.4 SmartThings
 ---------------
 
-## Description
+### Description
 
 SmartThings is Samsung's home automation system. 
 
-## Technical Overview
+### Technical Overview
 
 Uses Z-Wave and ZigBee and wifi.
 
-### API
+#### API
 	provides a Groovy API to create SmartApps that allow control of devices.
 
 #### Limitations
@@ -245,7 +245,7 @@ Requires a SmartThings hub and connection to the SmartThings cloud.
 |Samsung   |Samsung SmartThings|Schlage       |Sengled     	| Skybell	    |
 |Spruce    |Yale 	       |Zen 	      | 		| 	  	    |  
 
-## Evaluation
+### Evaluation
 
 How does this specific item do against our criteria?
 
