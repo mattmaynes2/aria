@@ -9,7 +9,7 @@ their home which will automatically control their environment and automate commo
 automation in the system will not require any user configuration, instead tasks will be automated
 based on the user's interaction with devices in the system.
 
-The system will consist of a hub device with a simple interface that a homeowner can connect their
+The system will consist of a hub device with a simple interface that a homeowner can connect to their
 home network. After connecting the hub, the homeowner can add enabled devices for the system to
 control by simply connecting them to the network. As new devices are connected, their input will be
 used to make more predictive decisions about user behaviour.
@@ -17,7 +17,7 @@ used to make more predictive decisions about user behaviour.
 ### 1.2 Document Conventions
 
 In the remainder of this document, "the system" refers to the Learning Home Automation System
-described in the introduction. The format of the this report was adapted from the format recommended
+described in the introduction. The format of this report was adapted from the format recommended
 in IEEE-830 (Recommended Practice for Software Requirements Specifications).
 
 ### 1.3 Product Scope
