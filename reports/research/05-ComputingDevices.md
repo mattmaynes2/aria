@@ -330,7 +330,7 @@ Accessed: Oct. 10, 2016.
 
 | Feature           | Raspberry Pi Zero | Raspberry Pi 1 | Raspberry Pi 2 | Raspberry Pi 3 |
 | -------           | ----------------- | -------------- | -------------- | -------------- |
-| USB               | USB-Micro         | 1`             | 4              | 4              | `
+| USB               | USB-Micro         | 1              | 4              | 4              |
 | HDMI              | Mini-HDMI         | Yes            | Yes            | Yes            |
 | Bluetooth         | No                | No             | No             | Yes            |
 | WiFI              | No                | No             | No             | Yes            |
