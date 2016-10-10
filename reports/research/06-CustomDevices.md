@@ -7,54 +7,40 @@ The purpose of this section is to present our investigation into the process of 
 of smart devices which might be of use for home automation. The purpose of this investigation is to provide 
 information that the team can use to decide which devices will be included in the system to showcase 
 its machine learning capabilities. In particular, this section will examine the feasibility of 
-assembling such devices from basic electronic components, rather than purchasing a complete off-the-shelf
-system.
+assembling such devices from basic electronic components, rather than purchasing a commercial device.
 
 In this section, a **smart device** refers to a sensor or actuator which can be controlled over a 
 wireless network. The process of building a smart device is expected to consist of interfacing 
-a basic hardware module with a microcontroller which is capable of controlling the device and 
+a hardware module with a microcontroller which is capable of controlling the device and 
 communicating over a network.
 
-The research will focus determining several characteristics:
+Evaluation of custom devices will focus on the following characteristics:
 
 #### Expertise required
 
-The team consists solely of software engineering students. Some complex devices will be impractical
-for the team to build due to the lack of hardware knowledge available on the team. Factors which 
-will be considered in the evaluation of the devices include the availability of tutorials and 
+How difficult is it for a team of software engineering students to build the device?.
+Some complex devices will be impractical for the team to build due to the lack of hardware knowledge. 
+Factors which  will be considered in the evaluation of the devices include the availability of tutorials and 
 development kits. Safety will also be a critical factor (Does the team have the facilities and 
 expertise necessary to build the device safely).
 
-#### Time Investment
+#### Level of Effort
 
-The project has a fixed deadline; in order to allow the team to focus on the machine learning aspects
-of the system, devices which can be used to demonstrate the system must be available quickly. In order
-to measure this criteria, the amount of effort required to build an LED controlled through a 
-voltage relay will be used as a baseline for estimation. The following scale will be used:
+In order to allow the team to focus on the machine learning aspects of the system, devices which 
+can be used to demonstrate the system must be available quickly. In order to measure this criteria, 
+the amount of effort required to build an LED controlled through a voltage relay will be used as a baseline for 
+estimation. The following scale will be used:
 
-1 - Comparable to baseline
-2 - High effort (ie. hours)
-3 - Extreme effort (ie. days or more)
+Low- Comparable to baseline (less than a day of work)
+High - High effort (A couple days)
+Extreme - Extreme effort (many days or weeks)
 
-#### Component Availability
+#### Quality Comparisons
 
-Due to the time constraints of the project, it may be infeasible to build a device for which components
-are not readily available.
-
-#### Reliability
-
-The system is only useful if its decisions are observable through the devices which are connected to it. 
-Therefore, we must be abale to trust that any custom devices are highly reliable.
-
-#### Compatibility with computing devices and communication protocols
-
-What communication protocols can be supported by the device? How does it interact with a processor?
-
-#### Ease of use
-
-The principle objective of the product is to simplify configuration of home automation systems. Devices
-which require complex setup are contrary to the system's objectives. 
-
+Commercially available devices may offer features which could be useful to demonstrate the system, but are
+difficult to include in a custom-built device. It will be useful to determine whether or not the devices described
+by most custom-build tutorials are fully featured. In some cases, the features of a typical custom-built
+device will be compared against several commercial options.
 
 ### Devices of Interest
 
@@ -86,32 +72,25 @@ behaviour would only be desired during certain hours of the day (the coffee mach
 when the homeowner goes to bed, for example). It is likely that there are many such scenarios that we 
 haven't thought of which would present challenging cases for the machine learning component to handle.
 
-- Range Sensors
-
 - Thermostat
 
-- Digital Locks
-
-Digital locks are of interest because correct control of locks is a concern of homeowners. While their 
-output is binary (locked/unlocked), their behaviour is potentially affected by many factors
-(lighting levels, time of day, motion sensors, etc.), which could be challenging for the machine
-learning algorithm to infer.
+The setting of a thermostat may be affected by several different factors, such as temperature, time of
+day, and light levels. Since thermostats are also a non-binary output device, their behaviour when
+controlled by the machine learning algorithms may be more varied than other devices.
 
 - Light Sensor
 
 A light sensor provides a non-binary input to the machine learning component. Similar to a motion sensor,
 the level of light in a room may be related to the behaviour of many other devices.
 
-- Variable-voltage switch
+- Dimmer switch
 
 A variable-voltage switch is an example of a non-binary output device. A variable-voltage switch could 
-be used to control the brightness of lights, or the speed of a fan. 
-
-- Alarm Clock
-
-- Audio Sensor
+be used to control the brightness of lights, or the speed of a fan.
 
 - Coffee Makers
+
+The coffee maker could be turned on in response to several different input devices (light sensor, motion sensor)
 
 6.2 Motion Sensor
 -----------------
@@ -174,6 +153,7 @@ Relation to research objectives
 - Widely Available
 - Estimated time investment is under 10 hours
 
+
 #### Doppler-Effect based sensors
 
 Several types of motion detectors use the Doppler effect to detect motion. The detector transmits
@@ -211,11 +191,11 @@ Useability
 
 ### Feature Comparison
 
-|Feature     | Custom | D-Link Wifi Motion Sensor | Samsung Smartthings Motion Sensor | Belkin WeMo Switch + Motion |
-|-------     |--------|---------------------------|-----------------------------------|-----------------------------|
-| Range      | 7m     | 8m						  | 15m - 40m                         | 3m                          |
-| Interfaces | _      | Wifi                      | ZigBee                            | Wifi                        |
-| Type       | PIR    | PIR                       | PIR                               | PIR                         |
+| Feature    | Custom   | D-Link Wifi Motion Sensor   | Samsung Smartthings Motion Sensor   | Belkin WeMo Switch + Motion   |
+| -------    | -------- | --------------------------- | ----------------------------------- | ----------------------------- |
+| Range      | 7m       | 8m                          | 15m - 40m                           | 3m                            |
+| Interfaces | _        | Wifi                        | ZigBee                              | Wifi                          |
+| Type       | PIR      | PIR                         | PIR                                 | PIR                           |
 
 Note: The custom device can potentially support multiple different communication interfaces
 
@@ -226,7 +206,11 @@ WeMo: http://www.belkin.com/au/p/P-F5Z0340-APL/
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+|Criterion         | Score |
+|------------------|-------|
+|Expertise Required| Low   |
+|Level of Effort   | Low   |
+|Quality Comparison| Equal |
 
 -----------------------
 
@@ -276,7 +260,7 @@ using high voltages, building a device to control high voltages is a very seriou
 been possible to find tutorials online from trusted sources, such as the official Arduino 
 website. 
 
-#### Time Investment
+#### Level of Effort
 
 - When it was possible to find a tutorial online for building a circuit to control AC 
 voltages, the circuit was found to be much more complex than the simple light switch
@@ -286,6 +270,8 @@ for the light switch (5 hours)
 
 [http://playground.arduino.cc/Main/ACPhaseControl]
 
+INSERT SCHEMATIC HERE
+
 |Feature              | Custom         | GE Z-Wave Plugin-in Smart Dimmer       | Philips Hue Dimmer Switch         | Lutron Caseta Wireless Plugin-In Lamp Dimmer  |
 |-------              |----------------|----------------------------------------|-----------------------------------|-----------------------------------------------|
 | Compatible Devices  | AC devices     | AC devices						        | Philips Hue Products              | AC Devices                                    |
@@ -294,6 +280,16 @@ for the light switch (5 hours)
 Philips Hue: http://www.developers.meethue.com/documentation/how-hue-works
 Lutron: https://www.lutron.com/technicaldocumentlibrary/040249.pdf
 GE Z-Wave: http://www.zwaveproducts.com/shop/brands/ge/z-wave-plug-in-smart-dimmer-1
+
+### Evaluation
+
+|Criterion         | Score |
+|------------------|-------|
+|Expertise Required| High  |
+|Level of Effort   | Low   |
+|Quality Comparison| Equal |
+
+Note: There are safety concerns for custom-building this device
 
 6.4 Light Sensor
 ----------------
@@ -328,15 +324,37 @@ of similar complexity to the circuit required to interface with a photoresistor.
 
 ### Expertise Required
 
+Minimal expertise is required to build the devices described by most guides and tutorials.
+The circuit is not significantly more complex than the light switch.
+
 INSERT CIRCUIT DIAGRAM
 
-##### Time Investment Required
+### Level of effort
 
 Due to the simplicity of the photoresistor circuit and the wide availability of the 
-required components and tutorials, a custom-built light sensor is expected to require
-less than 5 hours to build.
+required components and tutorials, a custom-built light sensor is required requires 
+a low amount of effort.
 
-[http://www.resistorguide.com/photoresistor/]
+### Feature Comparison
+
+Many commercially available light sensors are included in combination devices which include
+several different types of sensors. Commercial solutions provide very little data about
+the range of light that their products can detect. For a custom built solution, the range
+of detectable light depends on combination of the particular photocell chosen. Assuming 
+that both a custom device and most commercial devices are able to differentiate between
+daytime and evening levels of light, additional features available from commercial 
+devices are generally related to other types of sensors
+
+Everspring Z-Wave illumination sensor: http://www.smarthome.com/everspring-st815-z-wave-wireless-illumination-sensor-with-lcd-screen.html
+HomeSeer Z-Wave: http://www.smarthome.com/homeseer-hsm200-z-wave-multi-sensor.html
+
+### Evaluation
+
+|Criterion         | Score |
+|------------------|-------|
+|Expertise Required| Low   |
+|Level of Effort   | Low   |
+|Quality Comparison| Equal |
 
 6.5 Thermostat
 ---------------
@@ -346,26 +364,25 @@ such as an Arduino.
 
 ### Expertise Required
 
-- Safety: Controlling a wall-mounted thermostat means working with mains voltage levels. 
+Safety: Controlling a wall-mounted thermostat means working with mains voltage levels. 
 Without knowledge in using high voltages, building this device is a significant safety
 risk
 
-### Reliability
+### Effort Level
 
-- It is very unlikely that we could build a device which is compatible with the thermostats 
-in the homes of most users. The time investment required to create a product which is 
-comparable to the thermostats in most homes could be a project in itself. 
-
-### Time Investment
-
-- Due to the lack of trusted tutorials online, as well as the wealth of features that
+Due to the lack of trusted tutorials online, as well as the wealth of features that
 users are used to having in a thermostat, the time investment required to built a 
-fully-featured thermostat is very high (weeks to months)
+fully-featured thermostat is extreme (weeks to months)
 
-6.5 Alarm Clock
+### Evaluation
+
+Due to the extreme level of effort required and the safety concerns with building a 
+thermostat, a custom-built thermostat is not feasible for this project.
+
+6.6 Alarm Clock
 ---------------
 
-Due to the large variety of features available for alarm clocks, this section will focus
+There are a  large variety of features available for alarm clocks, this section will focus
 on a simple alarm clock that beeps at a programmed time of day. The clock should have 
 manual (button) input in order to allow the user to set alarm times so that the machine
 learning component can be trained. More sophisticated clocks are expected to be much too
@@ -389,10 +406,10 @@ http://fritzing.org/media/fritzing-repo/projects/a/arduino-lcd-alarm-clock/image
 ### Time Investment
 
 Due to the need to interface with an LCD display, and because of the large number of components, a
-custom build of an alarm clock is expected to be more complex than the light switch (more than 5 hours
-of time investment)
+custom build of an alarm clock is expected to be more complex than the light switch, so the time
+investment may be high.
 
-### Ease of Use
+### Feature Comparison
 
 Homeowners may be used to alarm clocks with nice interfaces, often in the form of an app on their 
 phone. The custom alarm clocks investigated have significantly inferior interfaces, making use
@@ -405,10 +422,7 @@ investment.
 [http://www.instructables.com/id/Arduino-alarm-clock/]
 [http://circuitdigest.com/microcontroller-projects/arduino-alarm-clock]
 
-6.7 Coloured Lighting
----------------------
-
-6.8 Coffee Makers
+6.7 Coffee Makers
 -----------------
 
 ### Using a relay switch
@@ -436,12 +450,25 @@ of reverse engineering of the coffee machine's control circuits would be necessa
 would greatly increase the amount of time necessary to create the device, due to the 
 lack of electronics knowledge on the team.
 
-6.9 Summary of Evaluation
+### Evaluation 
+
+Custom builds of both simple and fully-featured coffee makers may be infeasible due safety 
+concerns when controlling high voltage devices.
+
+6.8 Summary of Evaluation
 -------------------------
 
-All of the evaluation grouped together
+| Device        | Level of Effort | Safety Concerns | Fully-Featured |
+| ------        | --------------- | --------------- | -------------- |
+| Motion Sensor | Low             | None            | Yes            |
+| Light Sensor  | Low             | None            | Yes            |
+| Dimmer Switch | Low             | High Voltage    | Yes            |
+| Coffee Maker  | High            | High Voltage    | No             |
+| Thermostat    | High            | High Voltage    | No             |
+| Alarm Clock   | Low             | None            | No             |
 
-6.10 Conclusion
+
+6.9 Conclusion
 ---------------
 
 What did we decide upon? Why?
