@@ -310,6 +310,9 @@ for this project, while supporting WiFi devices as well.
 4.8 Z-Wave Implementation Specifics
 -----------------------------------
 
-Any microcontroller or processing unit that is shield compatible can be turned into a Z-Wave
-communication device. 
+Any processing unit with USB support can be easily turned into a Z-Wave master, using a Z-Wave 
+USB stick. Converting an arduino into a Z-Wave slave is not a simple. There are specialized 
+arduino boards that have the Z-Wave protocol built in. Another option is to attach a radio
+frequency device to an arduino, and to implement the Z-Wave stack protocol manually. The easiest
+way to have Z-Wave slave devices is simply not to make them, but to buy them.
 
