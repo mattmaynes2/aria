@@ -271,6 +271,9 @@ How does this specific item do against our criteria?
 
 ### References
 
+[1] "Raspberry pi 2 model B," Raspberry Pi. [Online]. Available:
+https://www.raspberrypi.org/products/raspberry-pi-2-model-b/. Accessed: Oct. 10, 2016.
+
 5.11 Raspberry Pi 3 Model B
 ---------------------------
 
