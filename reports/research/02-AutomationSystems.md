@@ -136,7 +136,7 @@ control of devices using scheduling and IFTTT.
 
 ### Technical Overview
 
-Wink is a central hub that supports most of the popular connection protocols so that users can
+6Wink is a central hub that supports most of the popular connection protocols so that users can
 connect and control a variety of smart devices from different vendors in one app.
 
 #### Communication Protocol
@@ -219,13 +219,41 @@ Accessed: Oct. 8, 2016.
 ### Description
 
 SmartThings is Samsung's home automation system. The System provides a 
+hub that connects smart devices together. These devices are able to be controlled through
+the SmartThings App. The app supports controlling devices using a schedule or using IFTTT.
 
 ### Technical Overview
 
-Uses Z-Wave and ZigBee and wifi.
+#### Communication Protocols 
+    
+    - Z-wave
+    - Zigbee
+    - Wifi
+
+
+#### Device Discovery/Setup
+ Adding a new device is done through the app. A user will click "find device" the hub will
+ then search for new z-wave and zigbee devices. After the device is found the user adds 
+ it to a room and names the device.
+
+
+### Network
+
+SmartThings uses a central Hub to connect all of the smart devices. The SmartThings
+app talks with the SmartThings Cloud which talks to the Hub which then controls the 
+devices.
 
 #### API
+
 	provides a Groovy API to create SmartApps that allow control of devices.
+
+
+| Feature                                | supported |
+| ---------                              | --------  |
+| List all devices                       |    Y      |
+| Receive update on device state change  |    Y      |
+| Modify device state                    |    Y      |
+
 
 #### Limitations
 
@@ -244,31 +272,14 @@ Requires a SmartThings hub and connection to the SmartThings cloud.
 |Samsung   |Samsung SmartThings |Schlage        |Sengled     	 | Skybell	            |
 |Spruce    |Yale 	            |Zen            | 		         |          	  	    |  
 
-### Evaluation
-
-How does this specific item do against our criteria?
 
 ### References
 
 [1] "Samsung SmartThings hub FAQ — SmartThings developer documentation," 2016. [Online].
 Available: http://docs.smartthings.com/en/latest/sept-2015-faq.html. Accessed: Oct. 6, 2016.
 
------------------------
-
-2.5 Lowes Iris
----------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
+[2] SmartThings, "How it works," SmartThings, 2016. [Online]. 
+Available: https://www.smartthings.com/how-it-works. Accessed: Oct. 10, 2016.
 
 -----------------------
 
@@ -277,7 +288,17 @@ How does this specific item do against our criteria?
 
 ### Description
 
+
+
 ### Technical Overview
+
+#### Communication Protocol
+
+#### Device Discovery/Setup
+
+#### Network
+
+#### API
 
 ### References
 
