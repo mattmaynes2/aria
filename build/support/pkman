@@ -161,7 +161,6 @@ done
 # appropriately.
 
 if [ "$USRMGR" == "npm" ]; then
-    "$PROGNAME" install npm
     PKGMGR="$USRMGR"
 elif [ "$USRMGR" == "cask" ] && [ "$PKGMGR" != "brew" ]; then
     echo "[WARN] Cask package manager only available with homebrew"
