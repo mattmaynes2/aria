@@ -185,8 +185,6 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 | DC Current per Pin         | 20 mA       | 20 mA          | 40 mA          | 20 mA         |
 | Flash Memory               | 32 KB       | 196 KB         | 32 KB          | 32 KB         |
 | System Size                | 0.5 KB      | 2 KB           | 2 KB           | 4 KB          |
-| SRAM                       | 2 KB        | 2 KB           | 2 KB           | 2.5 KB        |
-| EEPROM                     | 1 KB        | 1 KB           | 1 KB           | 1 KB          |
 
 ##### Features
 
@@ -207,72 +205,153 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 | Width     | 53.4 mm     | 53.4 mm     | 53.3 mm     | 18 mm         |
 | Weight    | 25 g        | 34 g        | N/A         | 13 g          |
 
+----------
+
+5.8 Raspberry Pi Zero
+---------------------
+
+### Description
+
+What is this item?
+
+### Technical Overview
+
+Technically speaking, what does this item do?
+
+### Evaluation
+
+How does this specific item do against our criteria?
+
+### Reference
+
+[1] "Raspberry pi Zero," Raspberry Pi. [Online]. Available:
+https://www.raspberrypi.org/products/pi-zero/. Accessed: Oct. 10, 2016.
+
+[2] "Raspberry Pi Zero,". [Online]. Available:
+https://shop.pimoroni.com/products/raspberry-pi-zero. Accessed: Oct. 10, 2016.
+
+5.9 Raspberry Pi 1 Model A+
+---------------------------
+
+### Description
+
+What is this item?
+
+### Technical Overview
+
+Technically speaking, what does this item do?
+
+### Evaluation
+
+How does this specific item do against our criteria?
+
+### References
+
+[1] "Raspberry pi 1 model A+," Raspberry Pi. [Online]. Available:
+https://www.raspberrypi.org/products/model-a-plus/. Accessed: Oct. 10, 2016.
+
+[2] J. Adams, "Raspberry Pi Model B+," Mar. 07, 2014. [Online]. Available:
+https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/Raspberry-Pi-B-Plus-V1.2-Mechanical-Drawing.pdf.
+Accessed: Oct. 10, 2016.
+
+5.10 Raspberry Pi 2 Model B
+---------------------------
+
+### Description
+
+What is this item?
+
+### Technical Overview
+
+Technically speaking, what does this item do?
+
+### Evaluation
+
+How does this specific item do against our criteria?
+
+### References
+
+5.11 Raspberry Pi 3 Model B
+---------------------------
+
+### Description
+
+What is this item?
+
+### Technical Overview
+
+Technically speaking, what does this item do?
+
+### Evaluation
+
+How does this specific item do against our criteria?
+
+### References
+
+[1] "Raspberry pi 3 model B," Raspberry Pi. [Online]. Available:
+https://www.raspberrypi.org/products/raspberry-pi-3-model-b/. Accessed: Oct. 10, 2016.
+
+[2] "Power supply - raspberry pi documentation,". [Online]. Available:
+https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md.
+Accessed: Oct. 10, 2016.
+
+[3] "GPIO - raspberry pi documentation,". [Online]. Available:
+https://www.raspberrypi.org/documentation/hardware/raspberrypi/gpio/README.md.
+Accessed: Oct. 10, 2016.
+
+[4] "Raspbian - raspberry pi documentation,". [Online]. Available:
+https://www.raspberrypi.org/documentation/raspbian/. Accessed: Oct. 10, 2016.
+
+[5]	J. Adams, "Raspberry Pi 3 Model B," Jun. 10, 2015. [Online]. Available:
+https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/RPI-3B-V1_2.pdf.
+Accessed: Oct. 10, 2016.
+
+5.12 Comparison of Raspberry Pi
+-------------------------------
+
+##### Operation Criteria
+
+| Criteria                   | Raspberry Pi Zero | Raspberry Pi 1 | Raspberry Pi 2 | Raspberry Pi 3 |
+| --------                   | ----------------- | -------------- | -------------- | -------------- |
+| Operating System           | Raspbian          | Raspbian       | Raspbian       | Raspbian       |
+| Processor Size             | 32-bit            | 32-bit         | 32-bit         | 64-bit         |
+| Processor Family           | Arm               | Arm            | Arm            | Arm            |
+| Operating Voltage          | 5V                | 5V             | 5V             | 5V             |
+| Input Voltage              | 3.3V              | 3.3V           | 3.3V           | 3.3V           |
+| Clock Speed                | 1 GHz             | 700 MHz        | 900 MHz        | 1.2 GHz        |
+| Digital Pins               | 40                | 40             | 40             | 40             |
+| Pulse with Modulation Pins | N/A               | N/A            | N/A            | N/A            |
+| Analog Input Pins          | N/A               | N/A            | N/A            | N/A            |
+| DC Current per Pin         | 50 mA             | 50 mA          | 50 mA          | 50 mA          |
+| Flash Memory               | 512 MB            | 256 MB         | 1 GB           | 1 GB           |
+| System Size                | 1.6 GB            | 1.6 GB         | 1.6 GB         | 1.6 GB         |
+
+##### Features
+
+| Feature           | Raspberry Pi Zero | Raspberry Pi 1 | Raspberry Pi 2 | Raspberry Pi 3 |
+| -------           | ----------------- | -------------- | -------------- | -------------- |
+| USB               | USB-Micro         | 1`             | 4              | 4              | `
+| HDMI              | Mini-HDMI         | Yes            | Yes            | Yes            |
+| Bluetooth         | No                | No             | No             | Yes            |
+| WiFI              | No                | No             | No             | Yes            |
+| Audio             | No                | 3.5 mm Jack    | 3.5 mm Jack    | 3.5 mm Jack    |
+| Ethernet          | No                | Yes            | Yes            | Yes            |
+| Camera Interface  | No                | Yes            | Yes            | Yes            |
+| Display Interface | No                | Yes            | Yes            | Yes            |
+| Micro SD          | Yes               | Yes            | Yes            | Yes            |
+
+
+##### Physical Characteristics
+
+| Dimension | Raspberry Pi Zero | Raspberry Pi 1 | Raspberry Pi 2 | Raspberry Pi 3 |
+| --------- | ----------------- | -------------- | -------------- | -------------- |
+| Length    | 65 mm             | 85 mm          | 85 mm          | 85 mm          |
+| Width     | 30 mm             | 56 mm          | 56 mm          | 56 mm          |
+
 
 ----------
 
-5.8 Raspberry Pi 3 Model B
---------------------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
-5.9 Raspberry Pi 2 Model B
---------------------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
-5.10 Raspberry Pi 1 Model A+
-----------------------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
-5.11 Raspberry Pi Zero
-----------------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
-----------
-
-5.12 BeagleBone
+5.13 BeagleBone
 ---------------
 
 ### Description
@@ -287,7 +366,7 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
-5.13 BeagleBone Black
+5.14 BeagleBone Black
 ---------------------
 
 ### Description
@@ -302,7 +381,7 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
-5.14 BeagleBone Green
+5.15 BeagleBone Green
 ---------------------
 
 ### Description
@@ -317,14 +396,16 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
+5.16 Comparison of BeagleBone
+-----------------------------
 
 -----------------------
 
 
-5.15 Summary of Evaluation
+5.17 Summary of Evaluation
 --------------------------
 
-5.16 Conclusion
+5.18 Conclusion
 ---------------
 
 What did we decide upon? Why?
