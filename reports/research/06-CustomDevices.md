@@ -146,13 +146,6 @@ The following tutorials explain how to interface with PIR modules:
 [https://cdn-learn.adafruit.com/downloads/pdf/pir-passive-infrared-proximity-motion-sensor.pdf]
 [https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/]
 
-Relation to research objectives
-
-- Low level of hardware expertise required
-- Reliable
-- Widely Available
-- Estimated time investment is under 10 hours
-
 
 #### Doppler-Effect based sensors
 
@@ -172,11 +165,6 @@ side.
 Expertise Required 
 - Little expertise required, circuits are simple 
 - Tutorials widely available online
-
-INSERT CIRCUIT DIAGRAM
-
-Time Investment
-- Comparable to light switch; the software and hardware complexity is low
 
 Component Availability
 - Components widely available
@@ -265,12 +253,10 @@ website.
 - When it was possible to find a tutorial online for building a circuit to control AC 
 voltages, the circuit was found to be much more complex than the simple light switch
 circuit. Due to the amount of time required to fully understand these circuits, it
-is estimated that time investment will be significantly higher than the time required 
-for the light switch (5 hours)
+is estimated that effort required is high.
 
 [http://playground.arduino.cc/Main/ACPhaseControl]
 
-INSERT SCHEMATIC HERE
 
 |Feature              | Custom         | GE Z-Wave Plugin-in Smart Dimmer       | Philips Hue Dimmer Switch         | Lutron Caseta Wireless Plugin-In Lamp Dimmer  |
 |-------              |----------------|----------------------------------------|-----------------------------------|-----------------------------------------------|
@@ -286,7 +272,7 @@ GE Z-Wave: http://www.zwaveproducts.com/shop/brands/ge/z-wave-plug-in-smart-dimm
 |Criterion         | Score |
 |------------------|-------|
 |Expertise Required| High  |
-|Level of Effort   | Low   |
+|Level of Effort   | High  |
 |Quality Comparison| Equal |
 
 Note: There are safety concerns for custom-building this device
@@ -326,8 +312,6 @@ of similar complexity to the circuit required to interface with a photoresistor.
 
 Minimal expertise is required to build the devices described by most guides and tutorials.
 The circuit is not significantly more complex than the light switch.
-
-INSERT CIRCUIT DIAGRAM
 
 ### Level of effort
 
@@ -372,7 +356,7 @@ risk
 
 Due to the lack of trusted tutorials online, as well as the wealth of features that
 users are used to having in a thermostat, the time investment required to built a 
-fully-featured thermostat is extreme (weeks to months)
+fully-featured thermostat is extreme.
 
 ### Evaluation
 
@@ -400,14 +384,13 @@ The basic alarm clock circuit generally requires the following components:
 
 A typical circuit has the following form:
 
-INSERT IMAGE HERE 
 http://fritzing.org/media/fritzing-repo/projects/a/arduino-lcd-alarm-clock/images/Untitled.png
 
-### Time Investment
+### Level of Effort
 
 Due to the need to interface with an LCD display, and because of the large number of components, a
-custom build of an alarm clock is expected to be more complex than the light switch, so the time
-investment may be high.
+custom build of an alarm clock is expected to be more complex than the light switch, so the level
+of effort is high.
 
 ### Feature Comparison
 
@@ -432,10 +415,11 @@ voltage relay is an electrically controlled switch for high power devices. A sim
 machine that only needs to be plugged in in order to start brewing could be controlled using 
 a simple voltage relay circuit. 
 
-### Time Investment
+### Level of Effort
 
 The same circuit which is used in the LED switch could be used to control the coffee machine,
-since both the coffee machine and LED can be connected to the same voltage relay.
+since both the coffee machine and LED can be connected to the same voltage relay, so the
+level of effort required is low.
 
 ### Required Expertise
 
