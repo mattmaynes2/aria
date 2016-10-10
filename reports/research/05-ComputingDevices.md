@@ -46,7 +46,7 @@ board continually.
 
 ### Evaluation
 
-The Ardunio Uno offers fast and simple prototyping options for quickly building embedded circuits.
+The Arduino Uno offers fast and simple prototyping options for quickly building embedded circuits.
 This board is very useful for rapidly testing but would not be practical in a mass production
 system. For the smart learning system, this board would be optimal for experimentation and
 quick deployment.
@@ -67,7 +67,7 @@ board.
 
 ### Technical Overview
 
-The Ardunio 101 is the most feature rich board that Ardunio is offers. It comes with a full
+The Arduino 101 is the most feature rich board that Arduino is offers. It comes with a full
 Real-Time Operating System (RTOS) that is powered by the Intel Curie. The processor is a 32-bit,
 8 MHz or 16 MHz backed by 196 KB of flash memory. The RTOS is a light weight OS that only
 occupies 2 KB of memory to provide managed, concurrent applications.
@@ -154,7 +154,7 @@ It is only 48 mm long and 18 mm wide. The Micro also only has a weight of roughl
 
 ### Evaluation
 
-This Ardunio would be perfectly suited to a mass production environment where size and weight
+This Arduino would be perfectly suited to a mass production environment where size and weight
 were valuable resources. If the learning home automation system was to be commercially
 produced, this could be a very valuable microcontroller. This microcontroller could be used
 for this system would take more effort for prototyping and would likely not be a suitable
@@ -171,7 +171,7 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 ##### Operation Criteria
 
-| Criteria                   | Arduino Uno | Arduino 101    | Arduino Pro    | Ardunio Micro |
+| Criteria                   | Arduino Uno | Arduino 101    | Arduino Pro    | Arduino Micro |
 | --------                   | ----------- | -----------    | -----------    | ------------- |
 | Operating System           | None        | RTOS           | None           | None          |
 | Processor Size             | 8-bit       | 32-bit         | 32-bit         | 8-bit         |
@@ -188,7 +188,7 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 ##### Features
 
-| Feature       | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro |
+| Feature       | Arduino Uno | Arduino 101 | Arduino Pro | Arduino Micro |
 | -------       | ----------- | ----------- | ----------- | ------------- |
 | USB           | USB-Mini    | USB-Mini    | USB-Micro   | USB-Micro     |
 | Accelerometer | No          | 6-Axis Gyro | No          | No            |
@@ -199,7 +199,7 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 ##### Physical Characteristics
 
-| Dimension | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro |
+| Dimension | Arduino Uno | Arduino 101 | Arduino Pro | Arduino Micro |
 | --------- | ----------- | ----------- | ----------- | ------------- |
 | Length    | 68.6 mm     | 68.6 mm     | 52.1 mm     | 48 mm         |
 | Width     | 53.4 mm     | 53.4 mm     | 53.3 mm     | 18 mm         |
@@ -506,7 +506,32 @@ Accessed: Oct. 10, 2016.
 5.17 Summary of Evaluation
 --------------------------
 
-5.18 Conclusion
----------------
+### Embedded Devices
 
-What did we decide upon? Why?
+There will be a number of applications for embedded devices in the smart home system. There may be
+various computing devices that are suitable for different tasks depending on the requirements.
+However, for the general needs of the embedded computing in this system, the Arduino Uno will
+likely be the most suitable candidate.
+
+The Uno provides a rapid prototyping environment with support for a wide array of custom devices.
+It has sufficient computing power with minimal power consumption for the requirements of the general
+devices that have been identified in the system scenarios.
+
+As an added benefit, the Arduino community offers many high quality tutorial, examples and
+documentation of system usage. The extensive support offered by the community is a major advantage
+over the other systems and will be a major asset for developing on this device.
+
+### Learning Hub
+
+The learning hub will require a significant amount of computational performance to make decisions
+about home environment. For this component, full computer boards were considered as they provide
+more performance than the available microcontrollers. After a close examination of a number of
+computing devices it was determined that the Raspberry Pi 3 Model B is the most suitable
+option for this roll in the system.
+
+Since this device is heavily reliant on performance, the decision was reduced to 2 candidates,
+the Raspberry Pi 3 and the BeagleBone Black. They both offer considerable performance but the Pi 3
+offers more processing cores with a higher clock speed, larger registers and more RAM. This
+makes the decision simple, the Pi 3 is the better candidate.
+
+

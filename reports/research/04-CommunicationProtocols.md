@@ -68,7 +68,7 @@ This limited interoperability has been somewhat fixed with the introduction of t
 but could present some legacy issues.
 
 
-### Refrences
+### References
 
 [1] "What Technology?," in SMARTHOME® - Home Automation Superstore, 1995. [Online].  Available:
 http://www.smarthome.com/sc-what-technology. Accessed: Oct. 6, 2016.
@@ -134,16 +134,16 @@ INSTEON is substantially different from the two above protocols.
 ### Technical Overview
 
 INSTEON uses a similar mesh topology as the above protocols, but it is not limited to radio
-frequencies. It utalizes a dual-mesh system to increase overall stability. The dual-mesh system is a
+frequencies. It utilizes a dual-mesh system to increase overall stability. The dual-mesh system is a
 combination of radio frequencies at 915 MHz (in the US), and powerline layer operating at 131.65
 KHz. When the radio frequencies encounter interference, the powerline layer makes sure the message
 gets broadcasted to the appropriate destination. INSTEON also uses a different message delivery 
 system compared to ZigBee and Z-Wave. Instead of sending a message from one device and routing it
-through other devices, it takes advantage of simucasting. This is the process of having multiple
+through other devices, it takes advantage of simulcasting. This is the process of having multiple
 devices broadcasting the same message, so the intended recipient gets the message faster and more
 reliably. This method is not feasible for high data rates, but INSTEON shares it's low data rates
 with ZigBee and Z-Wave. Simulcasting is also a result of the fact that an INSTEON network does not
-have a master/slave relationship. Every node has the ability to send and recieve messages without
+have a master/slave relationship. Every node has the ability to send and receive messages without
 having a controller. This makes it possible to have any number of devices in a network without being
 restricted by a maximum number of connections to a controlling device.
 
@@ -159,7 +159,7 @@ modern day smart home communication protocol. That said, there are many legacy a
 place which still use X10 devices. If this were the case, then INSTEON would be an ideal choice for
 a communication protocol.
 
-### Refrences
+### References
 
 [1] "WHITEPAPER: Compared," in INSTEON. [Online]. Available:
 http://cache.insteon.com/pdf/INSTEONCompared.pdf. Accessed: Oct. 6, 2016.
@@ -192,7 +192,7 @@ destination node. This means that if the central server goes down, no messages c
 leading to potential stability issues. Because messages cannot be routed through intermediate nodes,
 the communication range must generally be much larger than in a mesh network.  WiFi also boasts
 substantially higher data transmission rates than the previously discussed communication protocols.
-A Wi-Fi (802.11b) connection can transfer data at a rate of 54Mbits/sec at a range of 100 metersA As
+A WiFi (802.11b) connection can transfer data at a rate of 54 Mbps at a range of 100 meters. As
 stated earlier, WiFi typically operates at a frequency of 2.4 GHz.
 
 The biggest advantage of using WiFi for home automation is the simplicity. There is virtually no
@@ -212,7 +212,7 @@ Another issue stems directly from the prevalence of WiFi. Having a smart home ne
 network with regular household uses can cause the network as a whole to slow, due to the bandwidth
 being shared across so many devices.
 
-### Refrences
+### References
 
 [1] "Introduction to Wi-Fi (802.11 or WiFi)," in CCM Benchmark, CCM, 2016. [Online].  Available:
 http://ccm.net/contents/802-introduction-to-wi-fi-802-11-or-wifi. Accessed: Oct. 8, 2016.
@@ -229,7 +229,7 @@ Accessed: Oct. 8, 2016.
 
 ### Description
 Bluetooth is the most similar to WiFi of the alternative options. It is fairly common in households, 
-and non-technical users are more likely to be familier with it than other protocols. There are 
+and non-technical users are more likely to be familiar with it than other protocols. There are 
 two main classifications of bluetooth when it comes to home automation, both of which will be 
 discussed below.
 
@@ -237,15 +237,15 @@ discussed below.
 Bluetooth operates in the 2.4 GHz frequency band, alongside WiFi and ZigBee. Bluetooth also shares
 the star network topology with WiFi, where there needs to be designated master and slave devices. 
 This can lead to the same issues of interference that were discussed above. As the number of devices
-on the same radio frequency increases, the competition for bandwith also increases, causing potential 
+on the same radio frequency increases, the competition for bandwidth also increases, causing potential 
 lag and interference. The range and data transfer rate for bluetooth ranges from 1 Mbps and 10 meters
 to 24 Mbps and 100 meters. All of these data transfer rates are acceptable, if not overkill, for a 
 smarthome system. The range on the earlier versions of bluetooth is potentially very restricting. 
-Bluetoothis somewhere between WiFi devices and ZigBee/Z-Wave devices in terms of power consumption.
+Bluetooth is somewhere between WiFi devices and ZigBee/Z-Wave devices in terms of power consumption.
 
 There is another choice for bluetooth that addresses some of the issues above. Bluetooth version 4.0,
 also branded as Bluetooth Low Energy (BLE). This is a direct competitor with ZigBee and Z-Wave. The range
-for a BLE device is 50 meters, but BLE is able to take advantage of a mesh netowrk topology. The maximum 
+for a BLE device is 50 meters, but BLE is able to take advantage of a mesh network topology. The maximum 
 data transfer rate 1 Mbps in theory, but it is generally much lower than that in practice. BLE splits the
 2.4 GHz channel into smaller sub-channels to help avoid interference with WiFi channels. 
 
@@ -254,37 +254,65 @@ It accomplishes this by not keeping connections active while there is no data be
 data needs to be transferred, it reestablishes the necessary connection, completes the transfer, and closes
 the connection again.
 
-### Refrences
+### References
 
-[1] Jim, "Bluetooth basics," in sparkfun. [Online]. Available: https://learn.sparkfun.com/tutorials/bluetooth-basics/common-versions. Accessed: Oct. 9, 2016.
+[1] Jim, "Bluetooth basics," in sparkfun. [Online]. Available: 
+https://learn.sparkfun.com/tutorials/bluetooth-basics/common-versions. Accessed: Oct. 9, 2016.
 
-[2] "Data rates using BLE," in Anaren atmosphere. [Online]. Available: https://atmosphere.anaren.com/wiki/Data_rates_using_BLE. Accessed: Oct. 9, 2016.
+[2] "Data rates using BLE," in Anaren atmosphere. [Online]. Available:
+https://atmosphere.anaren.com/wiki/Data_rates_using_BLE. Accessed: Oct. 9, 2016.
 
-[3] "Bluetooth low energy," in CSR. [Online]. Available: https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336. Accessed: Oct. 9, 2016.
-
-
-
-
-4.7 WeMo
----------
-
-### Description
-
-### Technical Overview
-
-### Refrences
+[3] "Bluetooth low energy," in CSR. [Online]. Available: 
+https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336. Accessed: Oct. 9, 2016.
 
 
 
-
-
-
-4.8 Summary of Evaluation
+4.7 Summary of Evaluation
 -------------------------
 
-All of the evaluation grouped together
+As stated above, the goal of this research was to pick an appropriate protocol for our system.
+One of the differing attibutes between the protocols is the data transfer rates, which are
+summerized here using the general rate used.
 
-4.9 Conclusion
---------------
+|  Communication Protocol  | Data Transfer Rate |
+| ------------------------ | ------------------ |
+| ZigBee | 250 Kbps |
+| Z-Wave | 40 Kbps |
+| INSTEON | 13 Kbps |
+| WiFi | 54 Mbps |
+| BLE | 10 Kbps |
 
-What did we decide upon? Why?
+The required data rate for most smart home devices is minimal, and a higher data rate demands
+more power. The data rate provided by WiFi is clearly overkill for our project, so it will not
+be the primary communication protocal used. That being said, being WiFi compatible is important
+to us because of its prevalence in homes, and because of the enormous amount of devices supported
+by WiFi.
+
+Having as inclusive device support as possible is a key aspect to our project, as it allows a
+user to have whatever functionality they desire. This heavily influanced us in deciding not
+to use INSTEON as our primary protocol, as the backwards compatibility with X10 is not something
+we require.
+
+ZigBee and Z-Wave are very similar, with the key difference in our eyes being the frequancy they
+operate at. Being able to avoid conflicts between the WiFi already assumed to be in the house and
+the home automation system is a clear benifit. Z-Wave operates in the less used 900 MHz frequency
+band, avoing any potential conflicts.
+
+A mesh network topology makes more sense than a star topology for home automation. The stability
+offered by a mesh topology is substantial, and the amount of data transmission is low enough that
+the redundant connections are not costly. This made Z-Wave a more attractive option to us over 
+Bluetooth Low Energy.
+
+Overall, we decided that using Z-Wave as our primary communication protocol was the best choice
+for this project, while supporting WiFi devices as well.
+
+
+4.8 Z-Wave Implementation Specifics
+-----------------------------------
+
+Any processing unit with USB support can be easily turned into a Z-Wave master, using a Z-Wave 
+USB stick. Converting an arduino into a Z-Wave slave is not a simple. There are specialized 
+arduino boards that have the Z-Wave protocol built in. Another option is to attach a radio
+frequency device to an arduino, and to implement the Z-Wave stack protocol manually. The easiest
+way to have Z-Wave slave devices is simply not to make them, but to buy them.
+
