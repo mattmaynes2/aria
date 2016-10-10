@@ -31,8 +31,7 @@ during the homeowner's routine use of the devices.
 Activities which are "In Scope":
 
 - Provide a range of devices that can be installed in a home which showcase the learning
-capabilities
-  of the system.
+capabilities of the system.
 
 - Create a hub device that collects data from installed sensors, and uses this data to infer the
   desired values of actuators.
@@ -47,9 +46,9 @@ devices.
 ### 2.1 Product Perspective
 
 Systems are becoming more readily available in the general market place. This system builds upon
-traditional home automation systems by adding true automation in the form of learning.  Unlike
+traditional home automation systems by adding true automation in the form of learning. Unlike
 traditional systems, this system observes the homeowner's interactions with devices and
-automatically makes decisions based on historical behaviours.  By combining the fields of machine
+automatically makes decisions based on historical behaviours. By combining the fields of machine
 learning and home automation, the smart learning system will provide an end user with a simplified
 smart home experience.
 
@@ -82,7 +81,7 @@ view their recorded interactions.
 
 While the primary audience of the system is a homeowner, it is also for building owners, nursing
 home residence or anyone who needs building automation. The end user of this product is intended to
-be non-technical users who want simple control and automation of their building.  This product will
+be non-technical users who want simple control and automation of their building. This product will
 also provide utilities for more technically proficient users who wish to create their own devices
 that communicate to the system.
 
@@ -263,16 +262,17 @@ states in playback mode.
 #### Device Communication Range
 
 Devices must be able to communicate wirelessly using the network. The range of communication must be
-sufficiently large that devices can be placed anywhere in an average home.  The smart home devices
+sufficiently large that devices can be placed anywhere in an average home. The smart home devices
 will need to be capable of receiving and transmitting data using this network with enough range.
 
 **INSERT STATEMENT ABOUT DISTANCE**
+
 - Need to discuss allowable range of different protocols
 - Need to discuss average dimensions of a home
 
 #### System Responsiveness
 
-The system must readily adapt to environmental changes to be effective.  When in training mode, the
+The system must readily adapt to environmental changes to be effective. When in training mode, the
 system does not make any decisions and therefore has no responsiveness requirement. However, when
 the system enters playback mode it must make decisions as fast as environmental changes are
 received. This will ensure that the system is as responsive as possible when a user performs an
@@ -294,7 +294,18 @@ Standards ensures that the system uses widely accepted authentication practices.
 
 ### 5.3 Quality Requirements
 
-#### Hub Reliability
+#### Learning Hub Reliability
+
+The learning hub is the center of communications and is responsible for interfacing with the system
+user. It must record data on some form of internal storage to log actions that have occurred as
+well as decisions that is has made. It is critical that the learning hub not lose its data as this
+would set the system back to its initial, untrained state. Precautions should be taken so that in
+the case of a system failure or power failure, the critical system data is preserved. Hub
+operations should be atomic and reversible should they fail.
+
+The learning hub must also be online and available to record system events. If the learning hub is
+to go into a state faulty state then it should indicate this to the user. The system must provide
+a mechanism for resetting itself if errors are occurring.
 
 #### Device Reliability
 
