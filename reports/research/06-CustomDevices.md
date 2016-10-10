@@ -56,9 +56,7 @@ In addition to providing a varied range of sensors, we would like to provide sev
 actuators with non-binary inputs and outputs. The interactions between such devices may be more
 complex than for binary devices due to the increased number of possible states.
 
-With the goal of providing a range of actuators which are potentially related to multiple different
-sensors, as well as devices with non-binary inputs and outputs, we have investigated the following
-devices:
+This section investigates some smart devices which are potentially within the team's ability to build.
 
 - Motion Sensors
 
