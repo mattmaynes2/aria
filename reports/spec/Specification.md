@@ -52,8 +52,6 @@ automatically makes decisions based on historical behaviours. By combining the f
 learning and home automation, the smart learning system will provide an end user with a simplified
 smart home experience.
 
-**INSERT DIAGRAM OF SYSTEM**
-
 ### 2.2 Product Functions
 
 To provide simplicity and seamless interaction, the system must be easy to use and highly
@@ -134,7 +132,7 @@ Once the user is finished with the remote interface, they can log out or simply 
 application. For security reasons, if a user is inactive in their session for more than a set amount
 of time then they will be logged out automatically.
 
-**INSERT REMOTE USE CASE**
+![](./uml/RemoteUseCase.png)
 
 ### 3.2 Hardware Interfaces
 
@@ -153,8 +151,6 @@ There will also be two external ports on the device. One will be used to power t
 standard home wall outlet. The other can be a standard Ethernet port and be used to connect to the
 network.
 
-**INSERT IMAGE OF HUB DESIGN**
-
 #### Communication Interface
 
 ### 3.3 Communications Interfaces
@@ -168,7 +164,7 @@ network.
 
 ## 4. System Features
 
-![image](./uml/SystemUseCase.png)
+![](./uml/SystemUseCase.png)
 
 -----------------------------
 
