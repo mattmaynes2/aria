@@ -6,7 +6,7 @@ NAME='pkman'
 VERSION='0.1.0'
 PROGNAME="$0"
 HELP='
-  Usage pkman [cmd] [flags ...]
+  Usage: pkman <cmd> [options...]
     Performs package manager operations on various operating systems using the
     default platform package manager.
 
@@ -161,11 +161,9 @@ done
 # appropriately.
 
 if [ "$USRMGR" == "npm" ]; then
-    "$PROGNAME" install npm
     PKGMGR="$USRMGR"
-elif [ "$USRMGR" == "cask" ] && [ "$PKGMGR" != "brew" ]; then
-    echo "[WARN] Cask package manager only available with homebrew"
-    exit 0
+elif [ "$USRMGR" == "cask" ] && [ "$PKGMGR" == "brew" ]; then
+    PKGMGR="$USRMGR"
 elif [ -n "$USRMGR" ] && [ "$USRMGR" != "$PKGMGR" ]; then
    echo "[WARN] Platform package manager '$PKGMGR' does not match specified manager '$USRMGR'"
    exit 0

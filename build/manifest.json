@@ -11,7 +11,8 @@
     "common.markdown" : {
         "enviro" : [
             "./support/pkman install pandoc",
-            "./support/pkman install -p cask wkhtmltopdf"
+            "./support/pkman install -p cask wkhtmltopdf",
+            "./support/pkman install -t -p apt-get wkhtmltopdf"
         ]
     },
     "build" : {
@@ -20,7 +21,8 @@
         ],
         "test" : [
             "npm test",
-            "shellcheck run support/pkman"
+            "./support/try shellcheck run support/pkman support/try",
+            "./support/try shellcheck markdown/mkpdf"
         ]
     },
     "ctrl-serve" : {
@@ -34,14 +36,14 @@
         "deps"      : ["cd ../remote", "npm install"],
         "build"     : ["cd ../remote", "npm run build"],
         "test"      : ["cd ../remote", "npm test"],
-        "clean"     : ["cd ../remote", "rm -rf node_modules bin"]
+        "clean"     : ["cd ../remote", "rm -rf bin"]
     },
     "gateway" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : ["cd ../gateway", "npm install"],
         "build"     : ["cd ../gateway", "npm run build"],
         "test"      : ["cd ../gateway", "npm test"],
-        "clean"     : ["cd ../gateway", "rm -rf node_modules bin"]
+        "clean"     : ["cd ../gateway", "rm -rf bin"]
     },
     "uml" : {
         "enviro" : [
@@ -58,29 +60,20 @@
             "rm -rf mdtmp__"
         ]
     },
-    "research" : {
-        "build" : [
-            "cd ../research",
-            "cat *.md > Research.markdown",
-            "../build/support/try pandoc -c ../build/styles/style.css -t html -f markdown Research.markdown > Research.html",
-            "../build/support/try wkhtmltopdf Research.html Research.pdf",
-            "rm -f Research.markdown Research.html"
-        ]
+   "reports.proposal" : {
+        "build" : "./support/try ./markdown/mkpdf -o Proposal.pdf ../reports/proposal",
+        "clean" : "rm -f ../reports/proposal/*.pdf"
     },
-    "reports.proposal" : {
-        "build" : [
-            "cd ../reports/proposal",
-            "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Proposal.md > Proposal.html",
-            "../../build/support/try wkhtmltopdf Proposal.html Proposal.pdf",
-            "rm -f Proposal.html"
-        ]
+    "reports.research" : {
+        "build" : "./support/try ./markdown/mkpdf --toc -o Research.pdf -c Cover.html ../reports/research",
+        "clean" : "rm -f ../reports/research/*.pdf"
     },
-    "reports.spec" : {
-        "build" : [
-            "cd ../reports/spec",
-            "../../build/support/try pandoc -c ../../build/styles/style.css -t html -f markdown Specification.md > Specification.html",
-            "../../build/support/try wkhtmltopdf Specification.html Specification.pdf",
-            "rm -f Specification.html"
-        ]
+    "reports.scenarios" :{
+        "build" : "./support/try ./markdown/mkpdf --toc -o Scenarios.pdf -c Cover.html ../reports/scenarios",
+        "clean" : "rm -f ../reports/scenarios/*.pdf"
+    },
+     "reports.spec" : {
+        "build" : "./support/try ./markdown/mkpdf --toc --toc-depth 3 -o Specification.pdf -c Cover.html ../reports/spec",
+        "clean" : "rm -f ../reports/spec/*.pdf"
     }
 }

@@ -1,0 +1,100 @@
+#!/bin/bash
+
+SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+NAME='mkpdf'
+VERSION='0.0.1'
+HELP='
+  Usage: mkpdf [options ...] <path>
+    Convert all markdown files at the given path into a single PDF output.
+
+  Options:
+    -c, --cover <path>  Path of title page to include
+    -h, --help          Print this message and exit.
+    -o, --output <name> Name of output file.
+    -s, --style <path>  CSS style file
+    --toc               Insert a table of contents
+'
+
+
+COVER=""
+OUTPUT="Output.pdf"
+TOC=""
+TOC_DEPTH="2"
+TARGET="./"
+STYLE="$SCRIPT_PATH/./styles/style.css"
+
+function info () {
+    echo -e "$NAME $VERSION $HELP"
+}
+
+function concat () {
+    for file in $1; do
+        (cat "$file"; echo) >> "$2"
+    done
+}
+
+function tohtml () {
+    FLAGS="$TOC --toc-depth $TOC_DEPTH -c $STYLE -t html -f markdown"
+
+    if [ -n "$COVER" ]; then
+        FLAGS="$FLAGS -B $COVER"
+    fi
+
+    # shellcheck disable=SC2086
+    pandoc $FLAGS "$1" > "$2"
+}
+
+function topdf () {
+    wkhtmltopdf -s Letter "$1" "$2"
+}
+
+IFS=' ' read -r -a args <<< "$@"
+
+## Parse Options
+#
+# Parse out the try specific arguments from the desired command
+
+while [ "${#args[@]}" -ne 0 ]
+do
+    arg="${args[0]}"
+    args=("${args[@]:1}")
+
+    case "$arg" in
+        -h | --help)
+            info
+            exit 0
+            ;;
+        -c | --cover)
+            COVER="${args[0]}"
+            args=("${args[@]:1}")
+            ;;
+        -o | --output)
+            OUTPUT="${args[0]}"
+            args=("${args[@]:1}")
+            ;;
+        -s | --style)
+            STYLE="${args[0]}"
+            args=("${args[@]:1}")
+            ;;
+        --toc)
+            TOC="--toc"
+            ;;
+        --toc-depth)
+            TOC_DEPTH="${args[0]}"
+            args=("${args[@]:1}")
+            ;;
+        -* | --*)
+            echo "Unknown command $arg - See try --help for details"
+            exit 0
+            ;;
+        *)
+            TARGET="$arg"
+            break
+            ;;
+    esac
+done
+
+# Run Conversion
+
+cd "$TARGET" && concat '*.md' .tmp.markdown && tohtml .tmp.markdown .tmp.html && topdf .tmp.html "$OUTPUT" && rm  .tmp.markdown .tmp.html
+
