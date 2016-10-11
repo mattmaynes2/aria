@@ -283,44 +283,64 @@ Available: https://www.smartthings.com/how-it-works. Accessed: Oct. 10, 2016.
 
 -----------------------
 
-2.6 Apple HomeKit
+2.5 Apple HomeKit
 -----------------
 
 ### Description
 
+Apple HomeKit allows users to control their smart devices 
+using their IPad or IPhone. Apple HomeKit doesn't require any 
+central hub however if a user wants to control devices when not 
+at home their needs to be an Apple device in the home that the devices are
+connected to, this device can be an Ipad or apple TV.
 
 
 ### Technical Overview
 
+The smart devices are able to be scheduled and controlled in groups from the app.
+ex. All the lights in the living room turn off at 11:00 pm.
+
 #### Communication Protocol
+
+Apple HomeKit uses Wifi as the communication protocol,
 
 #### Device Discovery/Setup
 
+Adding new devices is done through the app. Once a device is connected to the network
+it can be added to the home through Apple's app, some devices require some configuration
+in their manufacturers apps.
+
 #### Network
+
+HomeKit uses the homes wifi network to connect devices and all devices on the network are 
+able to communicate with one another.
 
 #### API
 
+| Feature                                | supported |
+| ---------                              | --------  |
+| List all devices                       |    Y      |
+| Receive update on device state change  |    Y      |
+| Modify device state                    |    Y      |
+
+
+
 ### References
+
+[1] "Use the home app on your iPhone, iPad, and iPod touch," Apple Support, 2016. [Online]. 
+Available: https://support.apple.com/en-ca/HT204893. Accessed: Oct. 10, 2016.
+
+[2] Apple, "Creating homes and adding accessories," 2016. [Online]. 
+Available: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/
+HomeKitDeveloperGuide/WritingtotheHomeKitDatabase/WritingtotheHomeKitDatabase.html#//apple_ref/doc/uid/TP40015050-CH4-SW1. Accessed: Oct. 10, 2016.
+
+[3] E. Betters, "Apple HomeKit and home app: What are they and how do they work?," Pocket-lint, 2016. [Online]. Available: 
+http://www.pocket-lint.com/news/129922-apple-homekit-and-home-app-what-are-they-and-how-do-they-work. Accessed: Oct. 10, 2016.
 
 -------------
 
 2.7 Summary of Evaluation
 -------------------------
 
-All of the evaluation grouped together It appears that most of these systems support the NEST
-thermostat with most of these systems supporting one product this would suggest that <insert market
-leader statment> because our system is more about the machine learning and communication between
-devices it seems to make sense to use the NEST thermostat rather than spending time creating our
-own.  <reword and maybe move to nest section in devices>
-
-These systems seem to all provide a central hub that is used to as a central device that controls
-devices as well as provides an API that allows apps to control devices. This suggest that our system
-should also provide a central server with an API.
-
-<reword maybe provide better reason>
 
 
-2.8 Conclusion
---------------
-
-What did we decide upon? Why?
