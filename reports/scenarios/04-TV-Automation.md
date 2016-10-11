@@ -1,7 +1,7 @@
-Scenario
---------
+# 4. TV Automation
 
-### Description
+4.1 Description
+---------------
 
 Your family watches Game of Thrones every Sunday evening. Everyone generally moves from 
 around the house to meet in the family room, getting ready to enjoy the show. As you settle
@@ -12,7 +12,8 @@ The next week is Thanksgiving Sunday, and the family is out of town. The house i
 When Game of Thrones begins, the television remains off, and the DVR silently begins recording
 everyone's favourite show. No lights turn on when the show concludes.
 
-### System Requirements
+4.2 Devices of Interest
+-----------------------
 
 - Motion Sensors
 - Light Sensors

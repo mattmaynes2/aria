@@ -1,5 +1,7 @@
-Scenario: Hosting a party
--------------------------
+# 2. Hosting a Party
+
+2.1 Description
+---------------
 
 A big group of people arrive at the house for a party. Your home 
 automation system has learned how to set up your environment
@@ -11,8 +13,9 @@ to make your party awesome.
 - Adjusting music volume
 - Change which speakers are active as people move between rooms
 
-Interesting Devices
--------------------
+2.2 Interesting Devices
+-----------------------
+
 - Motion Sensor
 - Speaker System
 - Mood Lights
