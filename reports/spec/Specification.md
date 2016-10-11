@@ -95,9 +95,6 @@ keep system running and expect system to perform correctly
 - Will require technical documentation about the system - Will require a development toolkit for
 creating custom devices for the system - May also be a base user
 
-### 2.4 Design and Implementation Constraints
-
-### 2.5 Assumptions and Dependencies
 
 ## 3. External Interface Requirements
 
@@ -265,10 +262,8 @@ Devices must be able to communicate wirelessly using the network. The range of c
 sufficiently large that devices can be placed anywhere in an average home. The smart home devices
 will need to be capable of receiving and transmitting data using this network with enough range.
 
-**INSERT STATEMENT ABOUT DISTANCE**
-
-- Need to discuss allowable range of different protocols
-- Need to discuss average dimensions of a home
+The distance between nodes in our system must be no more than 50 meters. The will allow for any
+protocol to communicate with the necessary nodes.
 
 #### System Responsiveness
 

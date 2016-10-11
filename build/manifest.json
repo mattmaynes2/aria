@@ -73,7 +73,7 @@
         "clean" : "rm -f ../reports/scenarios/*.pdf"
     },
      "reports.spec" : {
-        "build" : "./support/try ./markdown/mkpdf --toc -o Specification.pdf -c Cover.html ../reports/spec",
+        "build" : "./support/try ./markdown/mkpdf --toc --toc-depth 3 -o Specification.pdf -c Cover.html ../reports/spec",
         "clean" : "rm -f ../reports/spec/*.pdf"
     }
 }
