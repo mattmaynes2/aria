@@ -389,7 +389,6 @@ Accessed: Oct. 10, 2016.
 | Length    | 65 mm             | 85 mm          | 85 mm          | 85 mm          |
 | Width     | 30 mm             | 56 mm          | 56 mm          | 56 mm          |
 
-
 ----------
 
 5.13 BeagleBone
@@ -410,11 +409,14 @@ is driven by a 32-bit 700MHz Arm processor with 256MB of flash memory. This comp
 
 The BeagleBone stands out from the Raspberry Pi with its general pin configurations, as it offers
 60 GPIO pins. This makes the BeagleBone more suitable for embedded computing than the Raspberry
-Pi models.
+Pi models. The BeagleBone is a Linux compatible board that comes with the Angstrom distribution.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The BeagleBone has a number of useful features for embedded computing but does not provide as much
+computation performance as the Raspberry Pi 3. The BeagleBone may be suitable for other devices
+in the system that require more computational power than what a traditional microcontroller can
+provide.
 
 ### References
 
@@ -430,15 +432,28 @@ Accessed: Oct. 10, 2016.
 
 ### Description
 
-What is this item?
+The BeagleBone Black is a more advanced version of the standard BeagleBone. It provides more
+features and is a higher performance system than the standard board. The BeagleBone Black is most
+comparable to the Raspberry Pi 3 board in terms of performance and features. The Black model still
+offers all of the major BeagleBone embedded features making it a good candidate for both the
+learning hub and other computing devices
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The BeagleBone Black is driven by a 32-bit 1GHz Arm processor and is backed by 512MB of RAM. It
+also comes with more standard communication options than is predecessor including WiFi and
+Bluetooth. The Black model comes standard with 2 USB connections for serial communication and an
+HDMI interface for video feedback.
+
+The Black Model uses the same pin configuration as the basic BeagleBone with a few extra specialty
+pins. It provides 68 GPIO pins with an additional UART connection.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The BeagleBone Black is does have many powerful features but cannot complete with the Raspberry Pi
+3 for the learning hub roll. The Black model may be useful for embedded devices that require
+additional computation but since it requires more power than the standard BeagleBone with minimal
+gain it may not be feasible.
 
 ### References
 
@@ -453,15 +468,24 @@ Available: http://elinux.org/Beagleboard:BeagleBoneBlack. Accessed: Oct. 10, 201
 
 ### Description
 
-What is this item?
+The BeagleBone Green is the best embedded option of the BeagleBone family. It is a computing board
+that runs a full operating system but has the most available circuit controlling pins. It is an
+ideal candidate for both the learning hub and smart devices.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The BeagleBone Green model is powered by the same 32-bit 1GHz processor as the Black model. It also
+has the same 512MB of RAM available. Almost all of the core features of the Green model are the
+same as the Black model. The Green model stands out with its 4 additional pulse with modulation
+pins and 3 additional analog pins. In addition to a UART connection, the Green model provides an
+I2C connection.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The Green model shares many of the same features as the Black and is therefore not an adequate
+alternative for the Raspberry Pi 3 and the learning hub. However, the Green does require less
+energy than the Black model and is possibly a better candidate for embedded devices.
+
 
 ### References
 
@@ -481,7 +505,7 @@ Accessed: Oct. 10, 2016.
 | Operating Voltage          | 5V         | 5V               | 5V               |
 | Input Voltage              | 1.8V       | 1.8V             | 1.8V             |
 | Clock Speed                | 700MHz     | 1GHz             | 1GHz             |
-| Digital Pins               | 60         | 69               | 65               |
+| Digital Pins               | 60         | 68               | 65               |
 | Pulse with Modulation Pins | 4          | 4                | 8                |
 | Analog Input Pins          | 4          | 4                | 7                |
 | Flash Memory               | 256MB      | 512MB            | 512 MB           |
