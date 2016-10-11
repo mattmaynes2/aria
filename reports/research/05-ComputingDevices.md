@@ -3,7 +3,7 @@
 5.1 Background
 --------------
 
-Computing devices are any electronic device that can be used to process data and send it over
+A computing devices is any electronic device that can be used to process data and send it over
 a smart home network. Computing devices include computers, micro-controllers and other
 embedded devices. Computing devices that are being examined all offer control of external
 hardware interfaces. This report examines computing devices that can be used for prototyping
@@ -40,7 +40,7 @@ voltage of 5 V and will accept between 7-12 V for input pins. The maximum voltag
 input pins are 6-20V.
 
 The Uno is a medium sized microcontroller that is 68.6 mm long and 53.4 mm wide. It has a total
-weight of approximately 25 g. The Uno also includes an integrated USB-Mini port for serial
+weight of approximately 25 g. The Uno also includes an integrated USB-Mini port used for serial
 communication and as a power source. The board includes a 5 V DC power input for running the
 board continually.
 
@@ -157,7 +157,7 @@ It is only 48 mm long and 18 mm wide. The Micro also only has a weight of roughl
 This Arduino would be perfectly suited to a mass production environment where size and weight
 were valuable resources. If the learning home automation system was to be commercially
 produced, this could be a very valuable microcontroller. This microcontroller could be used
-for this system would take more effort for prototyping and would likely not be a suitable
+for this system, but would take more effort for prototyping and would likely not be a suitable
 fit.
 
 ### References
@@ -226,12 +226,12 @@ Despite these losses, the board is still equip with a 32-bit 1GHz Broadcom BCM28
 by 512MB of flash storage.
 
 The Zero provides a lot of room for flexibility with 40 available GPIO pins. The combination of
-the Zero's computing power and general IO makes it ideal for small spaces that need a lots of
+the Zero's computing power and general IO makes it ideal for small spaces that need a lot of
 power.
 
 ### Evaluation
 
-The Zero could be useful for programming devices in the system. However, while the Zero does offer
+The Zero could be useful for programming devices in the system; however, while the Zero does offer
 a smaller physical footprint and more GPIO than the Arduino Uno, it does require more power to
 maintain operation. This extra power consumption does come with more performance which may be
 useful but likely unnecessary for the smart learning system.
@@ -251,7 +251,7 @@ https://shop.pimoroni.com/products/raspberry-pi-zero. Accessed: Oct. 10, 2016.
 
 The Raspberry Pi 1 Model A+ is the original Raspberry Pi with some performance improvements.
 This device is a computing board that provides desktop equivalent computing power in only a few
-square inches of space. The Pi 1 is the first candidate being considered for the roll of the
+square inches of space. The Pi 1 is the first candidate being considered for the role of the
 smart home learning hub.
 
 ### Technical Overview
@@ -397,11 +397,20 @@ Accessed: Oct. 10, 2016.
 
 ### Description
 
-What is this item?
+The BeagleBone is another computing board that is on the edge of embedded computing. The BeagleBone
+is a small, feature rich, Linux system for concurrent, real-time embedded programming. This board
+could be used for the learning hub or even a small device that requires more computation power than
+a microcontroller can offer.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The standard BeagleBone is very comparable to the Raspberry Pi 2 in features and performance. It
+is driven by a 32-bit 700MHz Arm processor with 256MB of flash memory. This computing board offers
+2 USB ports and a standard Ethernet port for external communication.
+
+The BeagleBone stands out from the Raspberry Pi with its general pin configurations, as it offers
+60 GPIO pins. This makes the BeagleBone more suitable for embedded computing than the Raspberry
+Pi models.
 
 ### Evaluation
 
