@@ -83,39 +83,6 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-3.6 SkyBell
------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
------------------------
-
-3.7 Lutrin Serena
------------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
------------------------
 
 3.8 Osram
 ---------
@@ -135,22 +102,6 @@ How does this specific item do against our criteria?
 -----------------------
 
 
-3.9 Leviton
------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
------------------------
 
 3.10 ecobee
 -----------
@@ -237,39 +188,6 @@ How does this specific item do against our criteria?
 
 -----------------------
 
-3.15 Keen Home
---------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
------------------------
-
-3.16 FortrezZ
---------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
------------------------
 
 3.17 Summary of Evaluation
 --------------------------
