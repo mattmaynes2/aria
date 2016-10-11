@@ -3,9 +3,9 @@
 2.1 Background
 --------------
 
-There are many different home automation systems. We are looking at these other automation systems
-so that we can see know what already exists on the market. Find standards that the existing systems
-use. We also want to see what other systems do well so we can take this into consideration while
+There are many different home automation systems.In this section we are looking at
+existing systems so that we can better understand what technologies currently 
+exist in the market as well  ... so we can take these into consideration while
 designing our system.
 
 This section will concentrate on the following characteristics:
@@ -20,30 +20,31 @@ This section will concentrate on the following characteristics:
  How are new devices added to the automation systems network.
 
 - **Network**
+ 
  How do these systems setup the network of devices. Do they use a central server, are all devices
  independent etc..
 
 - **API**
 
  Does the system provide an API that our system could potentially use to control the devices 
-connected to these systems. In order to control these devices 
-we require that the following; a way to view all connected devices, 
-a way to get notifications when a device in the system changes states,
-a way to change the state of a device.
+ connected to these systems. In order to control these devices 
+ we require that the following; a way to view all connected devices, 
+ a way to get notifications when a device in the system changes states,
+ a way to change the state of a device.
 
 - **Third Party Integrations**
  
  Which companies have these systems decided are important to support
 
-<note need to rework this>
 
 2.2 INSTEON
 -----------
 
 ### Description
 
-INSTEON is a home automation system that allows control of the home through a phone. The system
-supports changing device states based on a schedule or through **scenes**.
+INSTEON is a home automation system that allows control of the home through a phone. 
+Insteon supports contorling devices based on a scheduled, using IFTTT or through setting 
+up **scenes**.
 
 A scene is configured a configuration for a room that the user sets up at a specific time or when
 specific environmental conditions are met. INSTEON has all of the devices remember their current
@@ -102,13 +103,9 @@ INSTEON supports devices from the following manufacturers:
 
 ### Evaluation
 
-<need to go over evaluation>
-
-INSTEON has a spec for their messaging system and command structure which would allow us to
-communicate with their devices without the use of the hub, however adding the support using their
-messaging and command structures  is <something here>. Adding support for INSTEON devices is
-something that could be looked at in the future though is outside of the scope of the project for
-now.
+The INSTEON system is very reliable and easy to setup however because they use their own
+communication protocol the devices that can be added is limited mostly to those manufactured by 
+INSTEON.
 
 ### Refrences
 
@@ -134,13 +131,12 @@ http://www.smarthome.com/sc-what-is-insteon-home-automation. Accessed: Oct. 6, 2
 
 ### Description
 
-Wink Hub is a hub that allows connections from many different smart devices. For the most part this
-system seems to provide an app that allows the user to interface with multiple different smart
-devices from different manufacturers.
+Wink Hub is a hub that allows connections from many different smart devices. Wink supports
+control of devices using scheduling and IFTTT. 
 
 ### Technical Overview
 
-Wink is a central hub that supports most of the popular connection protocols so that users can
+6Wink is a central hub that supports most of the popular connection protocols so that users can
 connect and control a variety of smart devices from different vendors in one app.
 
 #### Communication Protocol
@@ -199,6 +195,9 @@ Wink has support for the following manufacturers:
 
 ### Evaluation
 
+Providing support for the most popular communication protocols allows Wink
+to connect with almost any device a user can purchase. This makes them more
+attractive to consumers.
 
 ### References
 
@@ -219,14 +218,42 @@ Accessed: Oct. 8, 2016.
 
 ### Description
 
-SmartThings is Samsung's home automation system. 
+SmartThings is Samsung's home automation system. The System provides a 
+hub that connects smart devices together. These devices are able to be controlled through
+the SmartThings App. The app supports controlling devices using a schedule or using IFTTT.
 
 ### Technical Overview
 
-Uses Z-Wave and ZigBee and wifi.
+#### Communication Protocols 
+    
+    - Z-wave
+    - Zigbee
+    - Wifi
+
+
+#### Device Discovery/Setup
+ Adding a new device is done through the app. A user will click "find device" the hub will
+ then search for new z-wave and zigbee devices. After the device is found the user adds 
+ it to a room and names the device.
+
+
+### Network
+
+SmartThings uses a central Hub to connect all of the smart devices. The SmartThings
+app talks with the SmartThings Cloud which talks to the Hub which then controls the 
+devices.
 
 #### API
+
 	provides a Groovy API to create SmartApps that allow control of devices.
+
+
+| Feature                                | supported |
+| ---------                              | --------  |
+| List all devices                       |    Y      |
+| Receive update on device state change  |    Y      |
+| Modify device state                    |    Y      |
+
 
 #### Limitations
 
@@ -234,42 +261,25 @@ Requires a SmartThings hub and connection to the SmartThings cloud.
 
 ### Third Party Integrations
 
-|    	   |     	       |     	      |     		|                   |
-| --- 	   | --- 	       | --- 	      | --- 		| ---    	    |
-|2Gig	   |Aeon Labs 	       |Amazon	      |Belkin   	| Bose 		    |	 
-|Cree 	   |ecobee 	       |Ecolink       |EcoNet Controls 	| Enerwave	    |
-|Everspring|Fibaro 	       |Fidure 	      |First Alert     	|FortrezZ	    |
-|GE 	   |Google 	       |Honeywell     |iHome       	|Keen Home	    |
-|Kwikset   |Leak Intelligence  |Leviton	      |LiFi Labs   	| Linear	    |
-|Netgear   |OSO Technologies   |OSRAM LIGHTIFY|Philips Hue 	| Remotec Technology|
-|Samsung   |Samsung SmartThings|Schlage       |Sengled     	| Skybell	    |
-|Spruce    |Yale 	       |Zen 	      | 		| 	  	    |  
+|    	   |     	            |     	        |     		     |                      |
+| --- 	   | --- 	            | --- 	        | --- 		     | ---    	            |
+|2Gig	   |Aeon Labs 	        |Amazon	        |Belkin   	     | Bose 		        |	 
+|Cree 	   |ecobee 	            |Ecolink        |EcoNet Controls | Enerwave	            |
+|Everspring|Fibaro 	            |Fidure 	    |First Alert     | FortrezZ	            |
+|GE 	   |Google 	            |Honeywell      |iHome       	 | Keen Home            |
+|Kwikset   |Leak Intelligence   |Leviton	    |LiFi Labs       | Linear	            |
+|Netgear   |OSO Technologies    |OSRAM LIGHTIFY |Philips Hue 	 | Remotec Technology   |
+|Samsung   |Samsung SmartThings |Schlage        |Sengled     	 | Skybell	            |
+|Spruce    |Yale 	            |Zen            | 		         |          	  	    |  
 
-### Evaluation
-
-How does this specific item do against our criteria?
 
 ### References
 
 [1] "Samsung SmartThings hub FAQ — SmartThings developer documentation," 2016. [Online].
 Available: http://docs.smartthings.com/en/latest/sept-2015-faq.html. Accessed: Oct. 6, 2016.
 
------------------------
-
-2.5 Lowes Iris
----------------
-
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
+[2] SmartThings, "How it works," SmartThings, 2016. [Online]. 
+Available: https://www.smartthings.com/how-it-works. Accessed: Oct. 10, 2016.
 
 -----------------------
 
@@ -278,7 +288,17 @@ How does this specific item do against our criteria?
 
 ### Description
 
+
+
 ### Technical Overview
+
+#### Communication Protocol
+
+#### Device Discovery/Setup
+
+#### Network
+
+#### API
 
 ### References
 

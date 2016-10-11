@@ -3,7 +3,7 @@
 5.1 Background
 --------------
 
-Computing devices are any electronic device that can be used to process data and send it over
+A computing devices is any electronic device that can be used to process data and send it over
 a smart home network. Computing devices include computers, micro-controllers and other
 embedded devices. Computing devices that are being examined all offer control of external
 hardware interfaces. This report examines computing devices that can be used for prototyping
@@ -40,13 +40,13 @@ voltage of 5 V and will accept between 7-12 V for input pins. The maximum voltag
 input pins are 6-20V.
 
 The Uno is a medium sized microcontroller that is 68.6 mm long and 53.4 mm wide. It has a total
-weight of approximately 25 g. The Uno also includes an integrated USB-Mini port for serial
+weight of approximately 25 g. The Uno also includes an integrated USB-Mini port used for serial
 communication and as a power source. The board includes a 5 V DC power input for running the
 board continually.
 
 ### Evaluation
 
-The Ardunio Uno offers fast and simple prototyping options for quickly building embedded circuits.
+The Arduino Uno offers fast and simple prototyping options for quickly building embedded circuits.
 This board is very useful for rapidly testing but would not be practical in a mass production
 system. For the smart learning system, this board would be optimal for experimentation and
 quick deployment.
@@ -67,7 +67,7 @@ board.
 
 ### Technical Overview
 
-The Ardunio 101 is the most feature rich board that Ardunio is offers. It comes with a full
+The Arduino 101 is the most feature rich board that Arduino is offers. It comes with a full
 Real-Time Operating System (RTOS) that is powered by the Intel Curie. The processor is a 32-bit,
 8 MHz or 16 MHz backed by 196 KB of flash memory. The RTOS is a light weight OS that only
 occupies 2 KB of memory to provide managed, concurrent applications.
@@ -154,10 +154,10 @@ It is only 48 mm long and 18 mm wide. The Micro also only has a weight of roughl
 
 ### Evaluation
 
-This Ardunio would be perfectly suited to a mass production environment where size and weight
+This Arduino would be perfectly suited to a mass production environment where size and weight
 were valuable resources. If the learning home automation system was to be commercially
 produced, this could be a very valuable microcontroller. This microcontroller could be used
-for this system would take more effort for prototyping and would likely not be a suitable
+for this system, but would take more effort for prototyping and would likely not be a suitable
 fit.
 
 ### References
@@ -171,7 +171,7 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 ##### Operation Criteria
 
-| Criteria                   | Arduino Uno | Arduino 101    | Arduino Pro    | Ardunio Micro |
+| Criteria                   | Arduino Uno | Arduino 101    | Arduino Pro    | Arduino Micro |
 | --------                   | ----------- | -----------    | -----------    | ------------- |
 | Operating System           | None        | RTOS           | None           | None          |
 | Processor Size             | 8-bit       | 32-bit         | 32-bit         | 8-bit         |
@@ -188,7 +188,7 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 ##### Features
 
-| Feature       | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro |
+| Feature       | Arduino Uno | Arduino 101 | Arduino Pro | Arduino Micro |
 | -------       | ----------- | ----------- | ----------- | ------------- |
 | USB           | USB-Mini    | USB-Mini    | USB-Micro   | USB-Micro     |
 | Accelerometer | No          | 6-Axis Gyro | No          | No            |
@@ -199,7 +199,7 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 ##### Physical Characteristics
 
-| Dimension | Arduino Uno | Arduino 101 | Ardunio Pro | Arduino Micro |
+| Dimension | Arduino Uno | Arduino 101 | Arduino Pro | Arduino Micro |
 | --------- | ----------- | ----------- | ----------- | ------------- |
 | Length    | 68.6 mm     | 68.6 mm     | 52.1 mm     | 48 mm         |
 | Width     | 53.4 mm     | 53.4 mm     | 53.3 mm     | 18 mm         |
@@ -212,15 +212,29 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 
 ### Description
 
-What is this item?
+The Raspberry Pi Zero is a minimal computer board that offers a full computing platform in a
+compact form for embedded computing. The Zero is the smallest board in the Raspberry Pi family
+and is ideal for medium to heavy computation with minimal footprint. The Raspberry Pi Zero is one
+of the only Raspberry Pi boards that competes for a real embedded computing experience.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The Raspberry Pi Zero has the smallest surface area of any of the Pi's, measuring in at only
+65mm long by 30mm wide. To make the board as small as possible, many of the standard Raspberry Pi
+features were removed. This means that the Zero has no on-board WiFi, Bluetooth or even Ethernet.
+Despite these losses, the board is still equip with a 32-bit 1GHz Broadcom BCM283 processor backed
+by 512MB of flash storage.
+
+The Zero provides a lot of room for flexibility with 40 available GPIO pins. The combination of
+the Zero's computing power and general IO makes it ideal for small spaces that need a lot of
+power.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The Zero could be useful for programming devices in the system; however, while the Zero does offer
+a smaller physical footprint and more GPIO than the Arduino Uno, it does require more power to
+maintain operation. This extra power consumption does come with more performance which may be
+useful but likely unnecessary for the smart learning system.
 
 ### Reference
 
@@ -235,15 +249,22 @@ https://shop.pimoroni.com/products/raspberry-pi-zero. Accessed: Oct. 10, 2016.
 
 ### Description
 
-What is this item?
+The Raspberry Pi 1 Model A+ is the original Raspberry Pi with some performance improvements.
+This device is a computing board that provides desktop equivalent computing power in only a few
+square inches of space. The Pi 1 is the first candidate being considered for the role of the
+smart home learning hub.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The Pi 1 is the base Raspberry Pi that is powered by a 32-bit 700MHz Arm processor and 256MB of
+DDR2 RAM. The Pi 1 comes with a standard HDMI output for visual output. The board also comes with
+a standard Ethernet port, and a single USB port for serial communication. The Pi 1 does also offer
+40 GPIO pins for more embedded purposes.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The Raspberry Pi 1 is a good candidate for the central hub as it uses low power and provides
+adequate computing performance.
 
 ### References
 
@@ -259,15 +280,20 @@ Accessed: Oct. 10, 2016.
 
 ### Description
 
-What is this item?
+The Raspberry Pi 2 Model B is the second generation of Raspberry Pi designs. The Pi 2 uses the same
+design as the Pi 1 with all the same features and more performance.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The Pi 2 is very similar to the Pi 1 but provides a slight faster 32-bit 900MHz Arm processor. The
+Pi 2 has significantly more RAM than the Pi 1 with 1GB of DDR2. The Pi 2 comes with a standard
+HDMI video output for monitoring it from a screen. It also is equip with an Ethernet port and 4
+USB ports. The Pi 2 also provides the same 40 GPIO pin configuration as the Pi 1
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The Pi 2 out performs the Pi 1 in all areas and is likely a better candidate for the smart hub. It
+uses the same amount of power but provides far more computing performance.
 
 ### References
 
@@ -279,15 +305,27 @@ https://www.raspberrypi.org/products/raspberry-pi-2-model-b/. Accessed: Oct. 10,
 
 ### Description
 
-What is this item?
+The Raspberry Pi 3 Model B is the most advanced Raspberry Pi available. The Pi 3 is a
+computer board that uses a very similar design to the other Pi Models. The Pi 3 offers more
+computing performance than all of its predecessors and is a very suitable candidate for the
+smart hub.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The Raspberry Pi 3 offers massive embedded performance with a 1.2GHz 64-bit Quad-core Arm
+processor. Similar to the Pi 2, the Pi 3 also comes with 1GB of RAM. As with all other Pi models,
+the Pi 3 provides a 40 GPIO pin configuration for external devices.
+
+The Pi 3 also comes with a number of standard options that set it apart from all other Pi models.
+It comes with integrated WiFi, Ethernet and Bluetooth communication interfaces. It has 4 standard
+USB ports and an HDMI output for visual feedback.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The Raspberry Pi 3 is the most advanced Raspberry Pi board available. Its extra computing power
+would be a good asset for heavy computation making this an ideal candidate for the central smart
+hub. The Pi 3 comes with many standard features including WiFi and Bluetooth communication which
+will make external interfacing simple with minimal investment.
 
 ### References
 
@@ -318,7 +356,7 @@ Accessed: Oct. 10, 2016.
 | --------                   | ----------------- | -------------- | -------------- | -------------- |
 | Operating System           | Raspbian          | Raspbian       | Raspbian       | Raspbian       |
 | Processor Size             | 32-bit            | 32-bit         | 32-bit         | 64-bit         |
-| Processor Family           | Arm               | Arm            | Arm            | Arm            |
+| Processor Family           | Broadcom          | Arm            | Arm            | Arm            |
 | Operating Voltage          | 5V                | 5V             | 5V             | 5V             |
 | Input Voltage              | 3.3V              | 3.3V           | 3.3V           | 3.3V           |
 | Clock Speed                | 1 GHz             | 700 MHz        | 900 MHz        | 1.2 GHz        |
@@ -351,7 +389,6 @@ Accessed: Oct. 10, 2016.
 | Length    | 65 mm             | 85 mm          | 85 mm          | 85 mm          |
 | Width     | 30 mm             | 56 mm          | 56 mm          | 56 mm          |
 
-
 ----------
 
 5.13 BeagleBone
@@ -359,15 +396,27 @@ Accessed: Oct. 10, 2016.
 
 ### Description
 
-What is this item?
+The BeagleBone is another computing board that is on the edge of embedded computing. The BeagleBone
+is a small, feature rich, Linux system for concurrent, real-time embedded programming. This board
+could be used for the learning hub or even a small device that requires more computation power than
+a microcontroller can offer.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The standard BeagleBone is very comparable to the Raspberry Pi 2 in features and performance. It
+is driven by a 32-bit 700MHz Arm processor with 256MB of flash memory. This computing board offers
+2 USB ports and a standard Ethernet port for external communication.
+
+The BeagleBone stands out from the Raspberry Pi with its general pin configurations, as it offers
+60 GPIO pins. This makes the BeagleBone more suitable for embedded computing than the Raspberry
+Pi models. The BeagleBone is a Linux compatible board that comes with the Angstrom distribution.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The BeagleBone has a number of useful features for embedded computing but does not provide as much
+computation performance as the Raspberry Pi 3. The BeagleBone may be suitable for other devices
+in the system that require more computational power than what a traditional microcontroller can
+provide.
 
 ### References
 
@@ -383,15 +432,28 @@ Accessed: Oct. 10, 2016.
 
 ### Description
 
-What is this item?
+The BeagleBone Black is a more advanced version of the standard BeagleBone. It provides more
+features and is a higher performance system than the standard board. The BeagleBone Black is most
+comparable to the Raspberry Pi 3 board in terms of performance and features. The Black model still
+offers all of the major BeagleBone embedded features making it a good candidate for both the
+learning hub and other computing devices
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The BeagleBone Black is driven by a 32-bit 1GHz Arm processor and is backed by 512MB of RAM. It
+also comes with more standard communication options than is predecessor including WiFi and
+Bluetooth. The Black model comes standard with 2 USB connections for serial communication and an
+HDMI interface for video feedback.
+
+The Black Model uses the same pin configuration as the basic BeagleBone with a few extra specialty
+pins. It provides 68 GPIO pins with an additional UART connection.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The BeagleBone Black is does have many powerful features but cannot complete with the Raspberry Pi
+3 for the learning hub roll. The Black model may be useful for embedded devices that require
+additional computation but since it requires more power than the standard BeagleBone with minimal
+gain it may not be feasible.
 
 ### References
 
@@ -406,15 +468,24 @@ Available: http://elinux.org/Beagleboard:BeagleBoneBlack. Accessed: Oct. 10, 201
 
 ### Description
 
-What is this item?
+The BeagleBone Green is the best embedded option of the BeagleBone family. It is a computing board
+that runs a full operating system but has the most available circuit controlling pins. It is an
+ideal candidate for both the learning hub and smart devices.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+The BeagleBone Green model is powered by the same 32-bit 1GHz processor as the Black model. It also
+has the same 512MB of RAM available. Almost all of the core features of the Green model are the
+same as the Black model. The Green model stands out with its 4 additional pulse with modulation
+pins and 3 additional analog pins. In addition to a UART connection, the Green model provides an
+I2C connection.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+The Green model shares many of the same features as the Black and is therefore not an adequate
+alternative for the Raspberry Pi 3 and the learning hub. However, the Green does require less
+energy than the Black model and is possibly a better candidate for embedded devices.
+
 
 ### References
 
@@ -434,7 +505,7 @@ Accessed: Oct. 10, 2016.
 | Operating Voltage          | 5V         | 5V               | 5V               |
 | Input Voltage              | 1.8V       | 1.8V             | 1.8V             |
 | Clock Speed                | 700MHz     | 1GHz             | 1GHz             |
-| Digital Pins               | 60         | 69               | 65               |
+| Digital Pins               | 60         | 68               | 65               |
 | Pulse with Modulation Pins | 4          | 4                | 8                |
 | Analog Input Pins          | 4          | 4                | 7                |
 | Flash Memory               | 256MB      | 512MB            | 512 MB           |
@@ -468,7 +539,32 @@ Accessed: Oct. 10, 2016.
 5.17 Summary of Evaluation
 --------------------------
 
-5.18 Conclusion
----------------
+### Embedded Devices
 
-What did we decide upon? Why?
+There will be a number of applications for embedded devices in the smart home system. There may be
+various computing devices that are suitable for different tasks depending on the requirements.
+However, for the general needs of the embedded computing in this system, the Arduino Uno will
+likely be the most suitable candidate.
+
+The Uno provides a rapid prototyping environment with support for a wide array of custom devices.
+It has sufficient computing power with minimal power consumption for the requirements of the general
+devices that have been identified in the system scenarios.
+
+As an added benefit, the Arduino community offers many high quality tutorial, examples and
+documentation of system usage. The extensive support offered by the community is a major advantage
+over the other systems and will be a major asset for developing on this device.
+
+### Learning Hub
+
+The learning hub will require a significant amount of computational performance to make decisions
+about home environment. For this component, full computer boards were considered as they provide
+more performance than the available microcontrollers. After a close examination of a number of
+computing devices it was determined that the Raspberry Pi 3 Model B is the most suitable
+option for this roll in the system.
+
+Since this device is heavily reliant on performance, the decision was reduced to 2 candidates,
+the Raspberry Pi 3 and the BeagleBone Black. They both offer considerable performance but the Pi 3
+offers more processing cores with a higher clock speed, larger registers and more RAM. This
+makes the decision simple, the Pi 3 is the better candidate.
+
+
