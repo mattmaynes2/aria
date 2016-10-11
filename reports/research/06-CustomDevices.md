@@ -449,8 +449,10 @@ concerns when controlling high voltage devices.
 | Thermostat    | High            | High Voltage    | No             |
 | Alarm Clock   | Low             | None            | No             |
 
-
-6.9 Conclusion
+6.9 Conclusions
 ---------------
 
-What did we decide upon? Why?
+It is feasible for the team to build motion sensor, light sensors, and an alarm clock if no 
+acceptable commercial solution is available. We should avoid building dimmer switches, coffe
+makers, and thermostats due to the potential high-voltage work involved and the lack of 
+electronics knowledge available.
