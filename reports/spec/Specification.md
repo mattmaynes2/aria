@@ -309,6 +309,14 @@ a mechanism for resetting itself if errors are occurring.
 
 #### Device Reliability
 
+Devices in the system do not need to meet as high of a standard as the learning hub for
+reliability. However, devices should have some indicator when faults occur. Devices may be hard
+to access so any device that can be restarted should provide functionality for doing so from the
+remote interface. If this is not possible then as a minimum, the remote interface should
+indicate whether or not a device has encountered a fault or if it is no longer responding.
+Restarting a device in the network should then reconnect to the system and retain all of its
+history within the learning hub.
+
 #### Device Interoperability
 
 ## Appendix A: Glossary
