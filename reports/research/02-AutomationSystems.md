@@ -342,5 +342,10 @@ http://www.pocket-lint.com/news/129922-apple-homekit-and-home-app-what-are-they-
 2.7 Summary of Evaluation
 -------------------------
 
+Looking at these systems we found that we should research the
+Z-wave, Zigbee, Insteon and Wifi communication protocols. We 
+also found some manufacturers that are commonly supported that we 
+should look at, in order to potentially provide support for their 
+devices.
 
 
