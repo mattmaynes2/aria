@@ -5,7 +5,7 @@
 
 Your family watches Game of Thrones every Sunday evening. Everyone generally moves from 
 around the house to meet in the family room, getting ready to enjoy the show. As you settle
-in, all the lights on that floor turn off, the television turns on, and the show begins. As
+in, the system turns off all the lights on the floor turn, turns the television on, and the show begins. As
 it finishes up an hour later, the floor lights come back on.
 
 The next week is Thanksgiving Sunday, and the family is out of town. The house is silent. 
