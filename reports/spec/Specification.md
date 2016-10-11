@@ -95,9 +95,6 @@ keep system running and expect system to perform correctly
 - Will require technical documentation about the system - Will require a development toolkit for
 creating custom devices for the system - May also be a base user
 
-### 2.4 Design and Implementation Constraints
-
-### 2.5 Assumptions and Dependencies
 
 ## 3. External Interface Requirements
 
