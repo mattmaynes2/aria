@@ -90,17 +90,68 @@ How does this specific item do against our criteria?
 3.5 Philips Hue
 ---------------
 
-### Description
+### Devices Provided
 
-What is this item?
+1. White Bulbs
+Least features of all bulbs. Simple white light.
+- On/Off Automation
+- Dimming
 
-### Technical Overview
+2. White Ambiance Bulbs
+Same features as white bulbs but the shade of white can be changed
 
-Technically speaking, what does this item do?
+3. Colour Ambiance Bulbs
+Same features as white bulbs but the colour can be changed
 
-### Evaluation
+4. Lightstrips
+Adhesive strips of lights. 
+Dimmable.
+Can change colours.
+Dynamic lighting/colour schemes
+Can't do white
 
-How does this specific item do against our criteria?
+5. Lightstrip Plus
+Able to do white (All light)
+Brighter (1600 Lumen)
+Fine fading control
+
+6. Dimmer switch
+- Battery-powered switch to dim ^hue lights
+- Doesn't require the Hue bridge
+- Can't use it with other AC devices, no electrical contact with bulbs
+
+7. Tap Switch
+Powered by touch - no battery or wires
+Need bridge and app to set this up
+
+### Developing with Hue
+
+- Devices use ZigBee Light Link
+
+- The Hue bridge is the device that allows lights to be controlled using Wifi. It bridges 
+  the ZigBee protocol used by lights to Wifi used by apps.
+
+- Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
+  when you're on the same LAN as the bridge.
+
+### Inputs and Outputs
+
+There are numerous inputs and outputs possible with the Philips Hue API, I have included
+ones that an end-user cares about.
+
+#### Lights
+
+- on/off (both)
+- brightness (both)
+- colour (both)
+- saturation (both)
+
+#### Sensors
+
+- can't tell yet, need to wait for an accout
+
+[http://www.developers.meethue.com/documentation/how-hue-works]
+[http://www.developers.meethue.com/]
 
 -----------------------
 
@@ -139,40 +190,38 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
------------------------
 
-3.11 Bose LifeStyle
--------------------
+-----------------
 
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
------------------------
-
-3.12 Aeon Labs Remotes
-----------------------
+3.12 Aeon Labs 
+-----------------
 
 ### Description
 
-What is this item?
+Aeon Labs is a company that produces a large varity of Z-Wave devices. They also provide
+the ability to create your own home automation hub.  
+
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+Aeon Labs produce a USB dongle that allows you to turn any computing device into a Z-Wave communication
+hub. This hub allows the user to manually control any Z-Wave device on the Z-Wave network, and provides
+the functinallity to add and remove devices to/from the network. To add a Z-Wave device, start by 
+unplugging the dongle from the hub and pushing the button on it. Then walk to the new device and push the 
+button on the device. The dongle must also be unplugged to remove a device from the network. To put it in 
+removal mode, push and hold the button on the dongle. Then go to each device you wish to remove from the
+network and push the button.
+
+The list of Z-Wave devices from Aeon Labs alone is fairly extensive. The list include but is not limited to:
+door sensors, window sensors, lights, energy meters, range extenders, etc. 
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+### References
 
+[1]	"Z-Stick 2E manual," Aeotec, Aeon Labs, 2012. [Online]. Available: http://aeotec.com/z-wave-usb-stick/913-z-stick-manual-instructions.html. Accessed: Oct. 13, 2016.
+
+[2]	"Home automation products," in Aeotec, Aeon Labs, 2006. [Online]. Available: http://aeotec.com/homeautomation. Accessed: Oct. 13, 2016.
 -----------------------
 
 3.13 Spruce Irrigation
