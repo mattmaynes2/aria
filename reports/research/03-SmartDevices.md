@@ -1,4 +1,4 @@
-# 3. Smart Devices
+ 3. Smart Devices
 
 3.1 Background
 --------------
@@ -21,23 +21,44 @@ use technologies we support.
 
 ### Description
 
-WeMo is a line of smart products made by belkin. These devices are able to be controled over a wifi
+WeMo is a line of smart products made by Belkin. These devices are able to be controlled over a WiFi
 connection with a phone.
+
+### Devices
+
+WeMo have the following smart devices:
+- Light switch
+- Outlet switch
+- Camera
+- LED lights
+- Slow Cooker
+- Coffeemaker
+- Air Purifier
+- Humidifier 
+- Heater
+
 
 ### Technical Overview
 
+
 #### Communication Protocol
 
-uses wifi
+WeMo only supports WiFi for communicating with devices. With WeMo devices no central
+hub is required in oder to be controlled, it is possible to communicate and control 
+the devices directly.
+
+WeMo uses Universal Plug And Play protocol for discovery and operating the devices.
+
 
 #### API
 
-There is a comunity supported open source python API for controlling WeMo devices `ouimeaux`
+There is a community supported open source python API for controlling WeMo devices `ouimeaux`. 
+There is are also many UPnP libraries available that can allow us to communicate with the devices.
 
 
 ### Evaluation
 
-
+These devices seem easy to connect with an
 
 ### References
 
