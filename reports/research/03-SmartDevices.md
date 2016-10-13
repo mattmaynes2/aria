@@ -217,6 +217,11 @@ door sensors, window sensors, lights, energy meters, range extenders, etc.
 
 ### Evaluation
 
+### References
+
+[1]	"Z-Stick 2E manual," Aeotec, Aeon Labs, 2012. [Online]. Available: http://aeotec.com/z-wave-usb-stick/913-z-stick-manual-instructions.html. Accessed: Oct. 13, 2016.
+
+[2]	"Home automation products," in Aeotec, Aeon Labs, 2006. [Online]. Available: http://aeotec.com/homeautomation. Accessed: Oct. 13, 2016.
 -----------------------
 
 3.13 Spruce Irrigation
