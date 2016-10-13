@@ -90,17 +90,68 @@ How does this specific item do against our criteria?
 3.5 Philips Hue
 ---------------
 
-### Description
+### Devices Provided
 
-What is this item?
+1. White Bulbs
+Least features of all bulbs. Simple white light.
+- On/Off Automation
+- Dimming
 
-### Technical Overview
+2. White Ambiance Bulbs
+Same features as white bulbs but the shade of white can be changed
 
-Technically speaking, what does this item do?
+3. Colour Ambiance Bulbs
+Same features as white bulbs but the colour can be changed
 
-### Evaluation
+4. Lightstrips
+Adhesive strips of lights. 
+Dimmable.
+Can change colours.
+Dynamic lighting/colour schemes
+Can't do white
 
-How does this specific item do against our criteria?
+5. Lightstrip Plus
+Able to do white (All light)
+Brighter (1600 Lumen)
+Fine fading control
+
+6. Dimmer switch
+- Battery-powered switch to dim ^hue lights
+- Doesn't require the Hue bridge
+- Can't use it with other AC devices, no electrical contact with bulbs
+
+7. Tap Switch
+Powered by touch - no battery or wires
+Need bridge and app to set this up
+
+### Developing with Hue
+
+- Devices use ZigBee Light Link
+
+- The Hue bridge is the device that allows lights to be controlled using Wifi. It bridges 
+  the ZigBee protocol used by lights to Wifi used by apps.
+
+- Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
+  when you're on the same LAN as the bridge.
+
+### Inputs and Outputs
+
+There are numerous inputs and outputs possible with the Philips Hue API, I have included
+ones that an end-user cares about.
+
+#### Lights
+
+- on/off (both)
+- brightness (both)
+- colour (both)
+- saturation (both)
+
+#### Sensors
+
+- can't tell yet, need to wait for an accout
+
+[http://www.developers.meethue.com/documentation/how-hue-works]
+[http://www.developers.meethue.com/]
 
 -----------------------
 
