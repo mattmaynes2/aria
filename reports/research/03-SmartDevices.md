@@ -190,39 +190,32 @@ Technically speaking, what does this item do?
 
 How does this specific item do against our criteria?
 
------------------------
 
-3.11 Bose LifeStyle
--------------------
+-----------------
 
-### Description
-
-What is this item?
-
-### Technical Overview
-
-Technically speaking, what does this item do?
-
-### Evaluation
-
-How does this specific item do against our criteria?
-
------------------------
-
-3.12 Aeon Labs Remotes
-----------------------
+3.12 Aeon Labs 
+-----------------
 
 ### Description
 
-What is this item?
+Aeon Labs is a company that produces a large varity of Z-Wave devices. They also provide
+the ability to create your own home automation hub.  
+
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+Aeon Labs produce a USB dongle that allows you to turn any computing device into a Z-Wave communication
+hub. This hub allows the user to manually control any Z-Wave device on the Z-Wave network, and provides
+the functinallity to add and remove devices to/from the network. To add a Z-Wave device, start by 
+unplugging the dongle from the hub and pushing the button on it. Then walk to the new device and push the 
+button on the device. The dongle must also be unplugged to remove a device from the network. To put it in 
+removal mode, push and hold the button on the dongle. Then go to each device you wish to remove from the
+network and push the button.
+
+The list of Z-Wave devices from Aeon Labs alone is fairly extensive. The list include but is not limited to:
+door sensors, window sensors, lights, energy meters, range extenders, etc. 
 
 ### Evaluation
-
-How does this specific item do against our criteria?
 
 -----------------------
 
