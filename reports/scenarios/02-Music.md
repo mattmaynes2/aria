@@ -36,7 +36,7 @@ appropriately adjust the music.
 | Sensor             | Usage                                                    |
 | ------             | -----                                                    |
 | Beam Motion Sensor | 2 Beam sensors in series can be used to detect occupancy |
-| Audio sensor       | Audio sensor for tuning music volume to the atmosphere   |
+| Audio Sensor       | Audio sensor for tuning music volume to the atmosphere   |
 
 The system will require some devices to be able to produce the desired outputs. The following
 table lists example devices to allow this system to perform the tasks outlined in this
