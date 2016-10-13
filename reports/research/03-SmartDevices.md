@@ -219,12 +219,19 @@ The list include but is not limited to: door sensors, window sensors, lights, en
 etc. Most of these devices cost around $60 - $80. 
 
 The specification for interacting with Z-Wave devices is public, and available at 
-http://zwavepublic.com/specifications. There is also an open Z wave sdk available, which allows us to not
-be responsible for implementing the Z-Wave stack protocol, while also allowing us the freeodm to develop
-the functionallity we desire.
+http://zwavepublic.com/specifications. There is also an open Z-Wave sdk available, to communicate from
+the controller to devices.
 
 
 ### Evaluation
+
+Aeon Labs is an ideal solution for our project. To start, there is an easy way to set up our own hub, instead
+of being constrained to buying one. This allows us to implement the features we want, and add support for
+protocols we want without restriction. Having access to an sdk is very important to us as well. It lets us
+not be responsible for implementing the Z-Wave stack protocol, while also giving us the freedom to use the
+information recieved by the devices in a unique way. Specifically, this will provide us with data for the
+machine learning algorithm. 
+
 
 ### References
 
