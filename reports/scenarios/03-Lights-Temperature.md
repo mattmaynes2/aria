@@ -20,7 +20,19 @@ on until later. In the winter months, the home turns the lights on earlier.
 3.2 System Interaction
 ----------------------
 
+The system will need to interact with a multiple sensors as well as light and temperature
+controllers. The remote interface will need to be able to display the state of all the sensors
+in the system. The remote will also need to offer control of the other devices in the system.
 
+The system will also be able to be trained to obtain the desired output. To be able to have the
+lights turn off when the user leaves the room, the user could enter training mode with the
+lights on, leave the room and then turn off the lights. If this interaction was repeated then the
+system might learn this behaviour.
+
+For the system to learn the desired temperature that the user desired, the learning process may
+be much longer. At different times of day the user will change the temperature. As environmental
+factors changes, the system will make these observations and use them to decide what the should
+be set to.
 
 3.3 System Requirements
 -----------------------
@@ -36,9 +48,12 @@ sensors that will be needed for this scenario.
 | Temperature Sensor | Need to observe the temperature of the home              |
 | Motion Sensor      | Will provide information about the occupancy of the home |
 
+To enable this scenario, the system will need to be able to control a number of devices. The system
+will need to have control of the home's lights and thermostat. In addition to having the devices in
+the system, the system's user interface will need to provide control mechanisms for the device.
+The following is a list of the devices that will be needed and how they will be used in the system.
 
-- Light sensor
-- Temperature sensor
-- Motion sensor
-- Thermostat control
-- Light controller
+| Device                | Usage                                                    |
+| ------                | -----                                                    |
+| Smart Lights          | Lights that can be controlled through an API             |
+| Thermostat Controller | A device that can control the temperature through an API |
