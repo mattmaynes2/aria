@@ -132,6 +132,8 @@ Need bridge and app to set this up
 - The Hue bridge is the device that allows lights to be controlled using Wifi. It bridges 
   the ZigBee protocol used by lights to Wifi used by apps.
 
+- Bridge works with standard ZigBee lights
+
 - Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
   when you're on the same LAN as the bridge.
 
@@ -149,7 +151,7 @@ ones that an end-user cares about.
 
 #### Sensors
 
-- can't tell yet, need to wait for an accout
+- can't tell yet, need to wait for an account
 
 [http://www.developers.meethue.com/documentation/how-hue-works]
 [http://www.developers.meethue.com/]
@@ -157,20 +159,42 @@ ones that an end-user cares about.
 -----------------------
 
 
-3.8 Osram
+3.8 Osram LIGHTIFY
 ---------
 
 ### Description
 
-What is this item?
+LIGHTIFY is a line of lighting products which are designed to be controlled using 
+the LIGHTIFY mobile app. LIGHTIFY provides two separate product lines; LIGHTIFY Pro
+and LIGHTIFY Home. LIGHTIFY Pro products are designed to be highly scalable for
+office environments. This research focuses on the LIGHTIFY Home line of products.
+
+The LIGHTIFY system consists of a gateway which connects to all of the bulbs installed
+in the home. Using the LIGHTIFY app, a homeowner can control connected lights from a 
+mobile device.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+LIGHTIFY products use the ZigBee protocol for communication between the gateway and 
+lighting products. The gateway connects to a local Wifi network, allowing the 
+LIGHTIFY app to control the system over the Internet.
+
+Due to the use of the open ZigBee protocol, LIGHTIFY products can be controlled using any 
+ZigBee controller
+
+The LIGHTIFY gateway also provides a RESTful API for controlling lights over internet. One
+notable limitation of the LIGHTIFY API is that it is a cloud-only API. This means that 
+the LIGHTIFY gateway is strongly tied to a homeowner's LIGHTIFY account; Osram does not 
+document any local-only API for controlling devices using a gateway
+
+Developer information [https://us.lightify-api.org]
 
 ### Evaluation
 
-How does this specific item do against our criteria?
+| Product     | Protocol | API Support | Developer Support |
+| ----------  | -------- | ----------- | ----------------- |
+| LIGHTIFY    | ZigBee   | Cloud Only  | Limited           |
+| Philips Hue | ZigBee   | Local Only  | Very good         |
 
 -----------------------
 
