@@ -76,16 +76,26 @@ https://pypi.python.org/pypi/ouimeaux. Accessed: Oct. 6, 2016.
 ### Description
 
 The nest thermostat is a smart learning thermostat. The thermostat 
-
+doesn't need to be programed through use the thermostat learns the home
+owner's routine and sets the temperature accordingly. It is also able 
+to turn off when no one is home and be controlled remotely.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+Nest communicates using WiFi and a custom nest protocol called **Nest Weave**. Nest Weave uses
+WiFi and Thread.
+
+Nest provides API support through the nest cloud. They provide access
+either through using Firebase or REST.
 
 ### Evaluation
 
-How does this specific item do against our criteria?
 
+### References
+
+[1] "Meet the nest learning thermostat," Nest Labs, 2016. [Online]. Available: https://nest.com/ca/thermostat/meet-nest-thermostat/. Accessed: Oct. 24, 2016.
+
+[2] [Online]. Available: https://developers.nest.com/documentation/cloud/data-structure-and-access. Accessed: Oct. 24, 2016.
 -----------------------
 
 3.5 Philips Hue
