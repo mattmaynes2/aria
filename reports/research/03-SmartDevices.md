@@ -211,12 +211,36 @@ the functinallity to add and remove devices to/from the network. To add a Z-Wave
 unplugging the dongle from the hub and pushing the button on it. Then walk to the new device and push the 
 button on the device. The dongle must also be unplugged to remove a device from the network. To put it in 
 removal mode, push and hold the button on the dongle. Then go to each device you wish to remove from the
-network and push the button.
+network and push the button. The dongle can be bought for about $60.
 
-The list of Z-Wave devices from Aeon Labs alone is fairly extensive. The list include but is not limited to:
-door sensors, window sensors, lights, energy meters, range extenders, etc. 
+They do not provide their own hub, which is ideal for out project. They simply allow the ability to turn
+a computing device into a custom hub by providing the required RF signal to communicate with Z-Wave devices.
+To begin development for Z-Wave devices, The list of Z-Wave devices from Aeon Labs alone is fairly extensive.
+The list include but is not limited to: door sensors, window sensors, lights, energy meters, range extenders, 
+etc. Most of these devices cost around $60 - $80. 
+
+The specification for interacting with Z-Wave devices is public, and available at 
+http://zwavepublic.com/specifications. There is also an open Z-Wave sdk available, to communicate from
+the controller to devices.
+
 
 ### Evaluation
+
+Aeon Labs is an ideal solution for our project. To start, there is an easy way to set up our own hub, instead
+of being constrained to buying one. This allows us to implement the features we want, and add support for
+protocols we want without restriction. Having access to an sdk is very important to us as well. It lets us
+not be responsible for implementing the Z-Wave stack protocol, while also giving us the freedom to use the
+information recieved by the devices in a unique way. Specifically, this will provide us with data for the
+machine learning algorithm. 
+
+
+### References
+
+[1]	"Z-Stick 2E manual," Aeotec, Aeon Labs, 2012. [Online]. Available: http://aeotec.com/z-wave-usb-stick/913-z-stick-manual-instructions.html. Accessed: Oct. 13, 2016.
+
+[2]	"Home automation products," in Aeotec, Aeon Labs, 2006. [Online]. Available: http://aeotec.com/homeautomation. Accessed: Oct. 13, 2016.
+
+[3]	"OpenZWave library," in OpenZWave. [Online]. Available: http://www.openzwave.com/dev/index.html. Accessed: Oct. 13, 2016.
 
 -----------------------
 
