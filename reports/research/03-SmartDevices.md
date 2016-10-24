@@ -58,7 +58,7 @@ There is are also many UPnP libraries available that can allow us to communicate
 
 ### Evaluation
 
-These devices seem easy to connect with an
+
 
 ### References
 
@@ -70,12 +70,13 @@ https://pypi.python.org/pypi/ouimeaux. Accessed: Oct. 6, 2016.
 
 -----------------------
 
-3.4 Nest
+3.4 Nest Thermostat 
 --------
 
 ### Description
 
-What is this item?
+The nest thermostat is a smart learning thermostat. The thermostat 
+
 
 ### Technical Overview
 
