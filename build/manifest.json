@@ -68,6 +68,10 @@
         "build" : "./support/try ./markdown/mkpdf --toc -o Research.pdf -c Cover.html ../reports/research",
         "clean" : "rm -f ../reports/research/*.pdf"
     },
+    "reports.architecture" : {
+        "build" : "./support/try ./markdown/mkpdf -o Architecture.pdf ../reports/architecture",
+        "clean" : "rm -f ../reports/architecture/*.pdf"
+    },
     "reports.scenarios" :{
         "build" : "./support/try ./markdown/mkpdf --toc -o Scenarios.pdf -c Cover.html ../reports/scenarios",
         "clean" : "rm -f ../reports/scenarios/*.pdf"
