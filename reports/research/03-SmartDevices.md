@@ -4,7 +4,7 @@
 --------------
 
 In the context of this project, a smart device is a device that is capable of communicating with
-a computer or microcontroller using a wireless protocol, such as Wifi or Z-Wave. Each device 
+a computer or microcontroller using a wireless protocol, such as WiFi or Z-Wave. Each device 
 provides a set of inputs and outputs which can be controlled and examined using the communication
 protocol.
 
@@ -57,7 +57,7 @@ the devices directly.
 WeMo uses Universal Plug And Play protocol for discovery and operating the devices.
 
 
-#### API
+#### Developer support
 
 There is a community supported open source python API for controlling WeMo devices `ouimeaux`. 
 There is are also many UPnP libraries available that can allow us to communicate with the devices.
