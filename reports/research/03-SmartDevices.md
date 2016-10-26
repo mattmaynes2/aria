@@ -210,7 +210,7 @@ Need bridge and app to set this up
 - Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
   when you're on the same LAN as the bridge.
 
-### Research Criteria
+### Research Attributes
 
 **Hue Lights**
 
@@ -222,7 +222,6 @@ Need bridge and app to set this up
 | Saturation         | Saturation          |                                   |          |                  |
 | Colour Temperature | Colour Temperature  |                                   |          |                  |
 | Dynamic Effect     | Dynamic Effect      |                                   |          |                  |
-| ------------------ | ------------------- | --------------------------------- | -------- | ---------------- |
 
 **Hue Motion Sensor**
 
@@ -230,14 +229,12 @@ Need bridge and app to set this up
 | ------             | -------             |
 | sensitivity        | presence            |
 |                    | light level         |
-| ------------------ | ------------------- |
 
 Hue Dimmer Switch, Hue Tap 
 
 | Inputs             | Outputs             |
 | ------             | -------             |
 |                    | button event        |
-| ------------------ | ------------------- |
 
 
 3.7 Osram LIGHTIFY
@@ -286,16 +283,44 @@ document any local-only API for controlling devices using a gateway
 
 Developer information [https://us.lightify-api.org]
 
-### Evaluation
+### Research Attributes
 
-| Product     | Protocol | API Support | Developer Support | 
-| ----------  | -------- | ----------- | ----------------- |
-| LIGHTIFY    | ZigBee   | Cloud Only  | Limited           |
-| Philips Hue | ZigBee   | Local Only  | Very good         |
+| Inputs                    | Outputs            | Developer Support    | Protocol | API Restrictions          |
+| ------                    | -------            | -----------------    | -------- | ----------------          |
+| on/off                    | on/off             | REST API description | ZigBee   | Cloud Only                |
+| colour                    | colour             | Sample Application   |          | LIGHTIFY Account Required |
+| colour temperature        | colour temperature | No Official SDKs     |          |                           |
+| brightness                | brightness         |                      |          |                           |
+| saturation                | saturation         |                      |          |                           |
+| transition time (effects) | transition time    |                      |          |                           |
 
 -----------------------
 
+3.7 Aeotec Light Bulbs
+----------------------
 
+### Description
+
+Aeotec sells lightbulbs which are compatible with the Z-Wave protocol. Aeotec products are compatible
+with most Z-Wave gateways, but do not provide an API specifically for their products.
+
+### Available Devices
+
+1. LED Bulb
+- Dimmable
+- Configurable Colour
+
+2. LED Strip
+- Dimmable
+- Configurable Colour
+
+### Research Attributes
+
+| Inputs     | Outputs    | Developer Support   | Protocol | API Restrictions     |
+| ------     | -------    | -----------------   | -------- | ----------------     |
+| on/off     | on/off     | Not Aeotec Specific | Z-Wave   | No REST API Provided |
+| colour     | colour     | Z-Wave Developer    |          |                      |
+| brightness | brightness |                     |          |                      |
 
 3.8 Aeon Labs 
 -----------------
