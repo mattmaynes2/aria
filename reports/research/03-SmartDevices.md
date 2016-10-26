@@ -164,6 +164,11 @@ Fine fading control
 Powered by touch - no battery or wires
 Need bridge and app to set this up
 
+8. Hue Motion Sensor
+- Detects motion in the vicinity of a PIR sensor
+- Comes with an integrated daylight sensor
+
+
 ### Developing with Hue
 
 - Devices use ZigBee Light Link
@@ -189,6 +194,22 @@ Need bridge and app to set this up
 | Colour Temperature | Colour Temperature  |                                   |          |                  |
 | Dynamic Effect     | Dynamic Effect      |                                   |          |                  |
 | ------------------ | ------------------- | --------------------------------- | -------- | ---------------- |
+
+**Hue Motion Sensor**
+
+| Inputs             | Outputs             |
+| ------             | -------             |
+| sensitivity        | presence            |
+|                    | light level         |
+| ------------------ | ------------------- |
+
+Hue Dimmer Switch, Hue Tap 
+
+| Inputs             | Outputs             |
+| ------             | -------             |
+|                    | button event        |
+| ------------------ | ------------------- |
+
 
 3.8 Osram LIGHTIFY
 ------------------
