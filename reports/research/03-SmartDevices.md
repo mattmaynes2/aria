@@ -210,21 +210,31 @@ Developer information [https://us.lightify-api.org]
 
 
 
-3.10 ecobee
+3.10 Honeywell VisionPro Thermostat
 -----------
 
 ### Description
 
-What is this item?
+The Honeywell VisionPro Thermostat is a regular programmable
+thermostat without any *smart* features other than it is able
+to be controlled through z-wave.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+### Communication 
 
-### Evaluation
+The thermostat communicates can be controlled through the
+touch screen or through z-wave. 
 
-How does this specific item do against our criteria?
+### API
 
+There is no API provided by Honeywell. The thermostat 
+is controllable using the z-wave protocol.
+
+
+### References 
+
+[1]Honeywell. [Online]. Available: http://library.ademconet.com/MWT/fs2/5800ZBRIDGE/ZWSTAT-Dealer-Data-Sheet.pdf. Accessed: Oct. 26, 2016.
 
 -----------------
 
