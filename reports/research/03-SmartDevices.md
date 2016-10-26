@@ -3,7 +3,10 @@
 3.1 Background
 --------------
 
-What is this section in the context of this system?
+In the context of this project, a smart device is a device that is capable of communicating with
+a computer or microcontroller using a wireless protocol, such as Wifi or Z-Wave. Each device 
+provides a set of inputs and outputs which can be controlled and examined using the communication
+protocol.
 
 3.2 Relation to System
 ----------------------
@@ -14,7 +17,11 @@ support for other smart devices also makes our system more appealing to the end 
 are not limited to only using devices we create but can go to a store and purchase any device that
 use technologies we support.
 
-**Might need to reword**
+**Rough List of Attributes**
+
+- list of inputs and outputs
+- communication protocol
+- developer support
 
 3.3 WeMo
 --------
