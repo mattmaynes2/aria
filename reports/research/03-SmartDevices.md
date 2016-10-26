@@ -168,22 +168,19 @@ Need bridge and app to set this up
 - Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
   when you're on the same LAN as the bridge.
 
-#### Lights
+### Research Criteria
 
-- on/off (both)
-- brightness (both)
-- colour (both)
-- saturation (both)
+**Hue Lights**
 
-#### Sensors
-
-- can't tell yet, need to wait for an account
-
-[http://www.developers.meethue.com/documentation/how-hue-works]
-[http://www.developers.meethue.com/]
-
------------------------
-
+| Inputs             | Outputs             | Developer Support                 | Protocol | API Restrictions |
+| ------             | -------             | -----------------                 | -------- | ---------------- |
+| On/Off             | On/Off              | Tutorials on Hue website          | ZigBee   | Local Only       |
+| Brightness         | Brightness          | Android, Java, IOS Official SDKs  |          |                  |
+| Hue                | Hue                 | Numerous 3rd party SDKs           |          |                  |
+| Saturation         | Saturation          |                                   |          |                  |
+| Colour Temperature | Colour Temperature  |                                   |          |                  |
+| Dynamic Effect     | Dynamic Effect      |                                   |          |                  |
+| ------------------ | ------------------- | --------------------------------- | -------- | ---------------- |
 
 3.8 Osram LIGHTIFY
 ------------------
