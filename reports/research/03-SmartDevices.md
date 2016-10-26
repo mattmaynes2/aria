@@ -20,8 +20,21 @@ use technologies we support.
 **Rough List of Attributes**
 
 - list of inputs and outputs
+
+What can be controlled? What types of information can we get from sensors?
+
 - communication protocol
+
+Which communication protocol(s) are supported by the device?
+
 - developer support
+
+Is the device's API well-documented? Is there a developer website?
+
+- API restrictions
+
+What restrictions does their API put on the system? For example, do users need to create an 
+account with the company in order to use the device with our system?
 
 3.3 WeMo
 --------
@@ -115,6 +128,7 @@ Least features of all bulbs. Simple white light.
 - On/Off Automation
 - Dimming
 
+
 2. White Ambiance Bulbs
 Same features as white bulbs but the shade of white can be changed
 
@@ -153,11 +167,6 @@ Need bridge and app to set this up
 
 - Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
   when you're on the same LAN as the bridge.
-
-### Inputs and Outputs
-
-There are numerous inputs and outputs possible with the Philips Hue API, I have included
-ones that an end-user cares about.
 
 #### Lights
 
