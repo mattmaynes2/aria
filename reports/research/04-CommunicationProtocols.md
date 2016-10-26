@@ -12,10 +12,9 @@ appropriate for our system.
 
 ### Selection Criteria
 
-The available communication protocols will be evaluated based largely on the non-functional
-requirements of our system. For the protocols, this includes: ease of integration with devices,
-battery life of devices, range, reliability, interoperability, data transmission rate, number of
-concurrent connections, device discovery time, and cost.
+The non-functional requirements of our system compose the criteria for evaluating a communication 
+protocol. The key requirements pertaining to communication protocols are: ease of integration with devices, battery life of devices, range, interoperability, data transfer rate, number of
+concurrent connections. Another important aspect of a communication protocol that will be evaluated is what frequency it operates on.
 
 4.2 ZigBee
 ----------
@@ -30,12 +29,12 @@ purchased.
 
 ### Technical Overview
 
-ZigBee uses a mesh networking topology, as opposed to the star topology used by Wifi. A mesh
+ZigBee uses a mesh networking topology, as opposed to the star topology used by WiFi. A mesh
 topology means that every node in the network is connected. Each node transmits it's own
 information, as well as assisting in relaying information received from other nodes. Having every
 node connected allows for data to be transmitted between nodes simultaneously, and increases network
 stability be not relying on one central node. This increase in stability come at the cost of having
-potentially many redundant connections in the network. Zigbee devices use the mesh topology to send
+potentially many redundant connections in the network. ZigBee devices use the mesh topology to send
 messages using message routing. This means that if the endpoint device is out of range of the
 initial device, intermediate devices will relay the message through the mesh until it reaches it's
 endpoint.
@@ -50,7 +49,7 @@ The low power consumption of ZigBee devices when compared to WiFi leads to large
 and battery life gains.  A ZigBee device can last for up to ten years.
 
 A ZigBee device can be added to the network in approximately thirty milliseconds, and 256 devices
-can be connected to one network in theory. However, in practice, the system performance tends to
+can be connected to one network in theory. However, in practise, the system performance tends to
 degrade at around thirty devices.
 
 One of the major drawbacks of ZigBee is that for it to be effective, it must operate in the 2.4 GHz
@@ -58,7 +57,7 @@ frequency band. This would not be an issue, except for the fact that this is the
 as WiFi. This can cause interference between the two networks, resulting in packet loss for both
 networks. The lost packets have to be retransmitted until they are received by the intended
 endpoint, causing lag in both networks. ZigBee packets suffer more from this interference in
-practice, with the level of interference rising as the number of nodes and the amount of traffic
+practise, with the level of interference rising as the number of nodes and the amount of traffic
 rises.
 
 A second potential drawback of ZigBee is the historical lack of official standard for communication
@@ -109,7 +108,7 @@ MHz instead of at 2.4 GHz, which avoids the issue of conflicting with WiFi signa
 device limits, it is very similar, being able to handle between 30 and 40 devices before issues
 start to occur. Z-Wave is similar to ZigBee in terms of device range and power consumption.
 
-### Refrences
+### References
 
 [1] "What is Z-Wave," in SMARTHOME® - Home Automation Superstore, 1995. [Online].  Available:
 http://www.smarthome.com/sc-what-is-zwave-home-automation. Accessed: Oct. 6, 2016.
@@ -230,7 +229,7 @@ Accessed: Oct. 8, 2016.
 ### Description
 Bluetooth is the most similar to WiFi of the alternative options. It is fairly common in households, 
 and non-technical users are more likely to be familiar with it than other protocols. There are 
-two main classifications of bluetooth when it comes to home automation, both of which will be 
+two main classifications of Bluetooth when it comes to home automation, both of which will be 
 discussed below.
 
 ### Technical Overview
@@ -238,15 +237,15 @@ Bluetooth operates in the 2.4 GHz frequency band, alongside WiFi and ZigBee. Blu
 the star network topology with WiFi, where there needs to be designated master and slave devices. 
 This can lead to the same issues of interference that were discussed above. As the number of devices
 on the same radio frequency increases, the competition for bandwidth also increases, causing potential 
-lag and interference. The range and data transfer rate for bluetooth ranges from 1 Mbps and 10 meters
+lag and interference. The range and data transfer rate for Bluetooth ranges from 1 Mbps and 10 meters
 to 24 Mbps and 100 meters. All of these data transfer rates are acceptable, if not overkill, for a 
-smarthome system. The range on the earlier versions of bluetooth is potentially very restricting. 
+smarthome system. The range on the earlier versions of Bluetooth is potentially very restricting. 
 Bluetooth is somewhere between WiFi devices and ZigBee/Z-Wave devices in terms of power consumption.
 
-There is another choice for bluetooth that addresses some of the issues above. Bluetooth version 4.0,
+There is another choice for Bluetooth that addresses some of the issues above. Bluetooth version 4.0,
 also branded as Bluetooth Low Energy (BLE). This is a direct competitor with ZigBee and Z-Wave. The range
 for a BLE device is 50 meters, but BLE is able to take advantage of a mesh network topology. The maximum 
-data transfer rate 1 Mbps in theory, but it is generally much lower than that in practice. BLE splits the
+data transfer rate 1 Mbps in theory, but it is generally much lower than that in practise. BLE splits the
 2.4 GHz channel into smaller sub-channels to help avoid interference with WiFi channels. 
 
 One of the goals of BLE is to make devices that do not require constant data transmission more efficient.
@@ -270,33 +269,28 @@ https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336. Access
 4.7 Summary of Evaluation
 -------------------------
 
+###Evaluation Criteria
+
+| Protocol | Transfer Rate | Battery Life | Interoperability | # of Connections | Frequency | Range   | Topology |
+| ---------| ------------  | ------------ | ---------------- | ---------------- | --------- | ------- | -------- |   
+| ZigBee   | 250 Kbps      |  good        |  good            |    256           |  2.4 GHz  | 35 ft   |  Mesh    |           
+| Z-Wave   | 40 Kbps       |  great       |  great           |    232           |  915 MHz  | 100 ft  |  Mesh    |          
+| INSTEON  | 13 Kbps       |  good        |  bad             |    N/A           |  915 MHz  | 150 ft  |  Mesh    |           
+| WiFi     | 54 Mbps       |  bad         |  great           |    256           |  2.4 GHz  | 105 ft  |  Star    |             
+| BLE      | 10 Kbps       |  good        |  great           |     9            |  2.4 GHz  | 200 ft  |  Star    |
+ 
 As stated above, the goal of this research was to pick an appropriate protocol for our system.
-One of the differing attibutes between the protocols is the data transfer rates, which are
-summerized here using the general rate used.
-
-|  Communication Protocol  | Data Transfer Rate |
-| ------------------------ | ------------------ |
-| ZigBee | 250 Kbps |
-| Z-Wave | 40 Kbps |
-| INSTEON | 13 Kbps |
-| WiFi | 54 Mbps |
-| BLE | 10 Kbps |
-
-The required data rate for most smart home devices is minimal, and a higher data rate demands
-more power. The data rate provided by WiFi is clearly overkill for our project, so it will not
-be the primary communication protocal used. That being said, being WiFi compatible is important
-to us because of its prevalence in homes, and because of the enormous amount of devices supported
-by WiFi.
+One of the differing attributes between the protocols is the data transfer rates. The required data rate for most smart home devices is minimal, and a higher data rate demands more power. The data rate provided by WiFi is clearly overkill for our project, so it will not be the primary communication protocol used. That being said, being WiFi compatible is important to us because of its prevalence in homes, and because of the enormous amount of devices supported by WiFi.
 
 Having as inclusive device support as possible is a key aspect to our project, as it allows a
-user to have whatever functionality they desire. This heavily influanced us in deciding not
+user to have whatever functionality they desire. This heavily influenced us in deciding not
 to use INSTEON as our primary protocol, as the backwards compatibility with X10 is not something
 we require.
 
-ZigBee and Z-Wave are very similar, with the key difference in our eyes being the frequancy they
+ZigBee and Z-Wave are very similar, with the key difference in our eyes being the frequency they
 operate at. Being able to avoid conflicts between the WiFi already assumed to be in the house and
-the home automation system is a clear benifit. Z-Wave operates in the less used 900 MHz frequency
-band, avoing any potential conflicts.
+the home automation system is a clear benefit. Z-Wave operates in the less used 900 MHz frequency
+band, avoiding any potential conflicts.
 
 A mesh network topology makes more sense than a star topology for home automation. The stability
 offered by a mesh topology is substantial, and the amount of data transmission is low enough that

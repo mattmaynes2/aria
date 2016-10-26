@@ -1,10 +1,10 @@
- 3. Smart Devices
+# 3. Smart Devices
 
 3.1 Background
 --------------
 
 In the context of this project, a smart device is a device that is capable of communicating with
-a computer or microcontroller using a wireless protocol, such as Wifi or Z-Wave. Each device 
+a computer or microcontroller using a wireless protocol, such as WiFi or Z-Wave. Each device 
 provides a set of inputs and outputs which can be controlled and examined using the communication
 protocol.
 
@@ -67,17 +67,24 @@ WeMo only supports WiFi for communicating with devices. With WeMo devices no cen
 hub is required in oder to be controlled, it is possible to communicate and control 
 the devices directly.
 
-WeMo uses Universal Plug And Play protocol for discovery and operating the devices.
+WeMo uses Universal Plug And Play (UPnP) protocol for discovery and operating the devices.
 
 
-#### API
+#### Developing with WeMo
 
-There is a community supported open source python API for controlling WeMo devices `ouimeaux`. 
-There is are also many UPnP libraries available that can allow us to communicate with the devices.
+- Open source python API for controlling WeMo devices `ouimeaux`. 
+- WeMo devices can be controlled using UPnP. This allows us to 
+implement one protocol and comunicate with all WeMo devices as well as
+any other smart devices from other vendors that also use UPnP.
 
+### Research Criteria
 
-### Evaluation
+All WeMo Devices
 
+| Inputs | Outputs | Developer Support | Protocol | API Restrictions    |
+| ------ | ------- | ----------------- | -------- | ----------------    |
+| On/Off | On/Off  | ouimeaux library  | WiFi     | Local Only          |
+|        |         |                   | UPnP     | We need to Write it |
 
 
 ### References
@@ -118,7 +125,37 @@ either through using Firebase or REST.
 [2] [Online]. Available: https://developers.nest.com/documentation/cloud/data-structure-and-access. Accessed: Oct. 24, 2016.
 -----------------------
 
-3.5 Philips Hue
+3.5 Honeywell VisionPro Thermostat
+-----------
+
+### Description
+
+The Honeywell VisionPro Thermostat is a regular programmable
+thermostat without any *smart* features other than it is able
+to be controlled through z-wave.
+
+### Technical Overview
+
+### Communication 
+
+The thermostat communicates can be controlled through the
+touch screen or through z-wave. 
+
+### API
+
+There is no API provided by Honeywell. The thermostat 
+is controllable using the z-wave protocol.
+
+
+### References 
+
+[1]Honeywell. [Online]. Available: http://library.ademconet.com/MWT/fs2/5800ZBRIDGE/ZWSTAT-Dealer-Data-Sheet.pdf. Accessed: Oct. 26, 2016.
+
+-----------------
+
+
+
+3.6 Philips Hue
 ---------------
 
 ### Available Devices
@@ -156,6 +193,11 @@ Fine fading control
 Powered by touch - no battery or wires
 Need bridge and app to set this up
 
+8. Hue Motion Sensor
+- Detects motion in the vicinity of a PIR sensor
+- Comes with an integrated daylight sensor
+
+
 ### Developing with Hue
 
 - Devices use ZigBee Light Link
@@ -168,7 +210,7 @@ Need bridge and app to set this up
 - Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
   when you're on the same LAN as the bridge.
 
-### Research Criteria
+### Research Attributes
 
 **Hue Lights**
 
@@ -180,9 +222,22 @@ Need bridge and app to set this up
 | Saturation         | Saturation          |                                   |          |                  |
 | Colour Temperature | Colour Temperature  |                                   |          |                  |
 | Dynamic Effect     | Dynamic Effect      |                                   |          |                  |
-| ------------------ | ------------------- | --------------------------------- | -------- | ---------------- |
 
-3.8 Osram LIGHTIFY
+**Hue Motion Sensor**
+
+| Inputs             | Outputs             |
+| ------             | -------             |
+| sensitivity        | presence            |
+|                    | light level         |
+
+Hue Dimmer Switch, Hue Tap 
+
+| Inputs             | Outputs             |
+| ------             | -------             |
+|                    | button event        |
+
+
+3.7 Osram LIGHTIFY
 ------------------
 
 ### Description
@@ -228,46 +283,46 @@ document any local-only API for controlling devices using a gateway
 
 Developer information [https://us.lightify-api.org]
 
-### Evaluation
+### Research Attributes
 
-| Product     | Protocol | API Support | Developer Support | 
-| ----------  | -------- | ----------- | ----------------- |
-| LIGHTIFY    | ZigBee   | Cloud Only  | Limited           |
-| Philips Hue | ZigBee   | Local Only  | Very good         |
+| Inputs                    | Outputs            | Developer Support    | Protocol | API Restrictions          |
+| ------                    | -------            | -----------------    | -------- | ----------------          |
+| on/off                    | on/off             | REST API description | ZigBee   | Cloud Only                |
+| colour                    | colour             | Sample Application   |          | LIGHTIFY Account Required |
+| colour temperature        | colour temperature | No Official SDKs     |          |                           |
+| brightness                | brightness         |                      |          |                           |
+| saturation                | saturation         |                      |          |                           |
+| transition time (effects) | transition time    |                      |          |                           |
 
 -----------------------
 
-
-
-3.10 Honeywell VisionPro Thermostat
------------
+3.7 Aeotec Light Bulbs
+----------------------
 
 ### Description
 
-The Honeywell VisionPro Thermostat is a regular programmable
-thermostat without any *smart* features other than it is able
-to be controlled through z-wave.
+Aeotec sells lightbulbs which are compatible with the Z-Wave protocol. Aeotec products are compatible
+with most Z-Wave gateways, but do not provide an API specifically for their products.
 
-### Technical Overview
+### Available Devices
 
-### Communication 
+1. LED Bulb
+- Dimmable
+- Configurable Colour
 
-The thermostat communicates can be controlled through the
-touch screen or through z-wave. 
+2. LED Strip
+- Dimmable
+- Configurable Colour
 
-### API
+### Research Attributes
 
-There is no API provided by Honeywell. The thermostat 
-is controllable using the z-wave protocol.
+| Inputs     | Outputs    | Developer Support   | Protocol | API Restrictions     |
+| ------     | -------    | -----------------   | -------- | ----------------     |
+| on/off     | on/off     | Not Aeotec Specific | Z-Wave   | No REST API Provided |
+| colour     | colour     | Z-Wave Developer    |          |                      |
+| brightness | brightness |                     |          |                      |
 
-
-### References 
-
-[1]Honeywell. [Online]. Available: http://library.ademconet.com/MWT/fs2/5800ZBRIDGE/ZWSTAT-Dealer-Data-Sheet.pdf. Accessed: Oct. 26, 2016.
-
------------------
-
-3.12 Aeon Labs 
+3.8 Aeon Labs 
 -----------------
 
 ### Description
@@ -317,7 +372,7 @@ machine learning algorithm.
 
 -----------------------
 
-3.13 Spruce Irrigation
+3.9 Spruce Irrigation
 -----------------------
 
 ### Description
@@ -359,7 +414,7 @@ Accessed: Oct. 13, 2016.
 
 -----------------------
 
-3.14 OSO PlantLink
+3.10 OSO PlantLink
 -------------------
 
 ### Description
@@ -398,7 +453,7 @@ Accessed: Oct. 13, 2016.
 -----------------------
 
 
-3.17 Summary of Evaluation
+3.11 Summary of Evaluation
 --------------------------
 
 All of the evaluation grouped together
@@ -408,7 +463,7 @@ All of the evaluation grouped together
 [1] R. Crist, "Best smart home devices of 2016," CNET, 2016. [Online]. Available:
 https://www.cnet.com/topics/smart-home/best-smart-home-devices/. Accessed: Oct. 6, 2016.
 
-3.18 Conclusion
+3.12 Conclusion
 ---------------
 
 What did we decide upon? Why?
