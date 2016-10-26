@@ -1,4 +1,4 @@
- 3. Smart Devices
+# 3. Smart Devices
 
 3.1 Background
 --------------
