@@ -6,10 +6,10 @@ Architecture
 
 ## Components
 
-![image](./SystemArchitecure.png)
+![](./SystemOrganization.png)
 
 
 
 ## Deployment
 
-![image](./DeploymentDiagram.png)
+![](./DeploymentDiagram.png)
