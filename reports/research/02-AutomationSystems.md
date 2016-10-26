@@ -3,10 +3,15 @@
 2.1 Background
 --------------
 
-There are many different home automation systems.In this section we are looking at
+There are many different home automation systems. In this section we are looking at
 existing systems so that we can better understand what technologies currently 
-exist in the market as well  ... so we can take these into consideration while
-designing our system.
+exist in the market so we can take these into consideration while
+designing our system. 
+
+We are not looking at using any of these systems as we 
+want to learn to interface directly with the devices ourselves. We are looking 
+at these systems to see what others have done and how they have done it so
+we can learn from them when designing and building our own system.
 
 This section will concentrate on the following characteristics:
 
