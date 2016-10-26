@@ -3,26 +3,24 @@
 2.1 Background
 --------------
 
-There are many different home automation systems. In this section we are looking at
-existing systems so that we can better understand what technologies currently 
-exist in the market so we can take these into consideration while
-designing our system. 
+In this section we are looking at existing systems so that we can better understand what technologies currently 
+exist in the market. Having a better grasp of existing technology will help us understand how we can differentiante 
+our smart home automation system. In particular, we are interested in which features are common in home automation
+systems and their benifits to the end user. 
 
-We are not looking at using any of these systems as we 
-want to learn to interface directly with the devices ourselves. We are looking 
-at these systems to see what others have done and how they have done it so
-we can learn from them when designing and building our own system.
+An important aspect of our project is to have custom logic for controlling smart devices in a home automation system.
+Existing systems implement their own logic, so we will not be using them directly. Looking at existing systems gives us 
+a better understanding of what the end user expects of home automation, allowing us to better design our own system.
 
-This section will concentrate on the following characteristics:
+The research will investigate the following characteristics of existing home automation systems:
 
 - **Supported Communication protocols**
 
- What different protocols do the systems support. We want to find the protocols that the other
- systems have decided are the most important to support.
+ Which protocols does the system support?
 
 - **Device Discovery/Setup**
 
- How are new devices added to the automation systems network.
+ How are new devices added to the system's network?
 
 - **Network**
  
