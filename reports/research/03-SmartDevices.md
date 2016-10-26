@@ -101,7 +101,7 @@ either through using Firebase or REST.
 3.5 Philips Hue
 ---------------
 
-### Devices Provided
+### Available Devices
 
 1. White Bulbs
 Least features of all bulbs. Simple white light.
@@ -170,7 +170,7 @@ ones that an end-user cares about.
 
 
 3.8 Osram LIGHTIFY
----------
+------------------
 
 ### Description
 
@@ -182,6 +182,22 @@ office environments. This research focuses on the LIGHTIFY Home line of products
 The LIGHTIFY system consists of a gateway which connects to all of the bulbs installed
 in the home. Using the LIGHTIFY app, a homeowner can control connected lights from a 
 mobile device.
+
+### Available Devices
+
+1. Surface Light TW
+- Dimmable
+- Adjustable colour temperature
+- White only
+
+2. Surface Light W
+- Dimmable
+- White only
+
+3. Flex RGBW
+- RGB colour control
+- Adjustable colour temperature
+- Dimmable
 
 ### Technical Overview
 
@@ -201,13 +217,12 @@ Developer information [https://us.lightify-api.org]
 
 ### Evaluation
 
-| Product     | Protocol | API Support | Developer Support |
+| Product     | Protocol | API Support | Developer Support | 
 | ----------  | -------- | ----------- | ----------------- |
 | LIGHTIFY    | ZigBee   | Cloud Only  | Limited           |
 | Philips Hue | ZigBee   | Local Only  | Very good         |
 
 -----------------------
-
 
 
 3.10 ecobee
