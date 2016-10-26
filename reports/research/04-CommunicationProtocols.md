@@ -271,15 +271,14 @@ https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336. Access
 
 ###Evaluation Criteria
 
-| Protocol | Transfer Rate | Battery Life | Inter -     | # of        | Frequency | Range   | Topology |
-|          |               |              | operability | Connections |           |         |          |
-| ---------| ------------  | ------------ | ----------- | ----------- | --------- | ------- | -------- |   
-| ZigBee   | 250 Kbps      |    -[x]      |  -[x]       |    256      |  2.4 GHz  | 35 ft   |  Mesh    |           
-| Z-Wave   | 40 Kbps       |    -[x] -[x] |  -[x] -[x]  |    232      |  915 MHz  | 100 ft  |  Mesh    |          
-| INSTEON  | 13 Kbps       |    -[x]      |  -[ ]       |    N/A      |  915 MHz  | 150 ft  |  Mesh    |           
-| WiFi     | 54 Mbps       |    -[ ]      |  -[x] -[x]  |    256      |  2.4 GHz  | 105 ft  |  Star    |             
-| BLE      | 10 Kbps       |    -[x]      |  -[x] -[x]  |     9       |  2.4 GHz  | 200 ft  |  Star    |
-
+| Protocol | Transfer Rate | Battery Life | Interoperability | # of Connections | Frequency | Range   | Topology |
+| ---------| ------------  | ------------ | ---------------- | ---------------- | --------- | ------- | -------- |   
+| ZigBee   | 250 Kbps      |  good        |  good            |    256           |  2.4 GHz  | 35 ft   |  Mesh    |           
+| Z-Wave   | 40 Kbps       |  great       |  great           |    232           |  915 MHz  | 100 ft  |  Mesh    |          
+| INSTEON  | 13 Kbps       |  good        |  bad             |    N/A           |  915 MHz  | 150 ft  |  Mesh    |           
+| WiFi     | 54 Mbps       |  bad         |  great           |    256           |  2.4 GHz  | 105 ft  |  Star    |             
+| BLE      | 10 Kbps       |  good        |  great           |     9            |  2.4 GHz  | 200 ft  |  Star    |
+ 
 As stated above, the goal of this research was to pick an appropriate protocol for our system.
 One of the differing attributes between the protocols is the data transfer rates. The required data rate for most smart home devices is minimal, and a higher data rate demands more power. The data rate provided by WiFi is clearly overkill for our project, so it will not be the primary communication protocol used. That being said, being WiFi compatible is important to us because of its prevalence in homes, and because of the enormous amount of devices supported by WiFi.
 
