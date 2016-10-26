@@ -126,7 +126,37 @@ either through using Firebase or REST.
 [2] [Online]. Available: https://developers.nest.com/documentation/cloud/data-structure-and-access. Accessed: Oct. 24, 2016.
 -----------------------
 
-3.5 Philips Hue
+3.5 Honeywell VisionPro Thermostat
+-----------
+
+### Description
+
+The Honeywell VisionPro Thermostat is a regular programmable
+thermostat without any *smart* features other than it is able
+to be controlled through z-wave.
+
+### Technical Overview
+
+### Communication 
+
+The thermostat communicates can be controlled through the
+touch screen or through z-wave. 
+
+### API
+
+There is no API provided by Honeywell. The thermostat 
+is controllable using the z-wave protocol.
+
+
+### References 
+
+[1]Honeywell. [Online]. Available: http://library.ademconet.com/MWT/fs2/5800ZBRIDGE/ZWSTAT-Dealer-Data-Sheet.pdf. Accessed: Oct. 26, 2016.
+
+-----------------
+
+
+
+3.6 Philips Hue
 ---------------
 
 ### Available Devices
@@ -211,7 +241,7 @@ Hue Dimmer Switch, Hue Tap
 | ------------------ | ------------------- |
 
 
-3.8 Osram LIGHTIFY
+3.7 Osram LIGHTIFY
 ------------------
 
 ### Description
@@ -268,35 +298,7 @@ Developer information [https://us.lightify-api.org]
 
 
 
-3.10 Honeywell VisionPro Thermostat
------------
-
-### Description
-
-The Honeywell VisionPro Thermostat is a regular programmable
-thermostat without any *smart* features other than it is able
-to be controlled through z-wave.
-
-### Technical Overview
-
-### Communication 
-
-The thermostat communicates can be controlled through the
-touch screen or through z-wave. 
-
-### API
-
-There is no API provided by Honeywell. The thermostat 
-is controllable using the z-wave protocol.
-
-
-### References 
-
-[1]Honeywell. [Online]. Available: http://library.ademconet.com/MWT/fs2/5800ZBRIDGE/ZWSTAT-Dealer-Data-Sheet.pdf. Accessed: Oct. 26, 2016.
-
------------------
-
-3.12 Aeon Labs 
+3.8 Aeon Labs 
 -----------------
 
 ### Description
@@ -346,7 +348,7 @@ machine learning algorithm.
 
 -----------------------
 
-3.13 Spruce Irrigation
+3.9 Spruce Irrigation
 -----------------------
 
 ### Description
@@ -388,7 +390,7 @@ Accessed: Oct. 13, 2016.
 
 -----------------------
 
-3.14 OSO PlantLink
+3.10 OSO PlantLink
 -------------------
 
 ### Description
@@ -427,7 +429,7 @@ Accessed: Oct. 13, 2016.
 -----------------------
 
 
-3.17 Summary of Evaluation
+3.11 Summary of Evaluation
 --------------------------
 
 All of the evaluation grouped together
@@ -437,7 +439,7 @@ All of the evaluation grouped together
 [1] R. Crist, "Best smart home devices of 2016," CNET, 2016. [Online]. Available:
 https://www.cnet.com/topics/smart-home/best-smart-home-devices/. Accessed: Oct. 6, 2016.
 
-3.18 Conclusion
+3.12 Conclusion
 ---------------
 
 What did we decide upon? Why?
