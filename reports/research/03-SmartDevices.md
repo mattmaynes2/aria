@@ -67,17 +67,25 @@ WeMo only supports WiFi for communicating with devices. With WeMo devices no cen
 hub is required in oder to be controlled, it is possible to communicate and control 
 the devices directly.
 
-WeMo uses Universal Plug And Play protocol for discovery and operating the devices.
+WeMo uses Universal Plug And Play (UPnP) protocol for discovery and operating the devices.
 
 
-#### Developer support
+#### Developing with WeMo
 
-There is a community supported open source python API for controlling WeMo devices `ouimeaux`. 
-There is are also many UPnP libraries available that can allow us to communicate with the devices.
+- Open source python API for controlling WeMo devices `ouimeaux`. 
+- WeMo devices can be controlled using UPnP. This allows us to 
+implement one protocol and comunicate with all WeMo devices as well as
+any other smart devices from other vendors that also use UPnP.
 
+### Research Criteria
 
-### Evaluation
+All WeMo Devices
 
+| Inputs | Outputs | Developer Support | Protocol | API Restrictions    |
+| ------ | ------- | ----------------- | -------- | ----------------    |
+| On/Off | On/Off  | ouimeaux library  | WiFi     | Local Only          |
+|        |         |                   | UPnP     | We need to Write it |
+| ---    | ---     | ---               | ---      | ---                 |
 
 
 ### References
