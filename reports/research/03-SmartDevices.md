@@ -85,7 +85,6 @@ All WeMo Devices
 | ------ | ------- | ----------------- | -------- | ----------------    |
 | On/Off | On/Off  | ouimeaux library  | WiFi     | Local Only          |
 |        |         |                   | UPnP     | We need to Write it |
-| ---    | ---     | ---               | ---      | ---                 |
 
 
 ### References
