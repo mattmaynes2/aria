@@ -3,7 +3,10 @@
 3.1 Background
 --------------
 
-What is this section in the context of this system?
+In the context of this project, a smart device is a device that is capable of communicating with
+a computer or microcontroller using a wireless protocol, such as Wifi or Z-Wave. Each device 
+provides a set of inputs and outputs which can be controlled and examined using the communication
+protocol.
 
 3.2 Relation to System
 ----------------------
@@ -14,7 +17,24 @@ support for other smart devices also makes our system more appealing to the end 
 are not limited to only using devices we create but can go to a store and purchase any device that
 use technologies we support.
 
-**Might need to reword**
+**Rough List of Attributes**
+
+- list of inputs and outputs
+
+What can be controlled? What types of information can we get from sensors?
+
+- communication protocol
+
+Which communication protocol(s) are supported by the device?
+
+- developer support
+
+Is the device's API well-documented? Is there a developer website?
+
+- API restrictions
+
+What restrictions does their API put on the system? For example, do users need to create an 
+account with the company in order to use the device with our system?
 
 3.3 WeMo
 --------
@@ -101,12 +121,13 @@ either through using Firebase or REST.
 3.5 Philips Hue
 ---------------
 
-### Devices Provided
+### Available Devices
 
 1. White Bulbs
 Least features of all bulbs. Simple white light.
 - On/Off Automation
 - Dimming
+
 
 2. White Ambiance Bulbs
 Same features as white bulbs but the shade of white can be changed
@@ -147,30 +168,22 @@ Need bridge and app to set this up
 - Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
   when you're on the same LAN as the bridge.
 
-### Inputs and Outputs
+### Research Criteria
 
-There are numerous inputs and outputs possible with the Philips Hue API, I have included
-ones that an end-user cares about.
+**Hue Lights**
 
-#### Lights
-
-- on/off (both)
-- brightness (both)
-- colour (both)
-- saturation (both)
-
-#### Sensors
-
-- can't tell yet, need to wait for an account
-
-[http://www.developers.meethue.com/documentation/how-hue-works]
-[http://www.developers.meethue.com/]
-
------------------------
-
+| Inputs             | Outputs             | Developer Support                 | Protocol | API Restrictions |
+| ------             | -------             | -----------------                 | -------- | ---------------- |
+| On/Off             | On/Off              | Tutorials on Hue website          | ZigBee   | Local Only       |
+| Brightness         | Brightness          | Android, Java, IOS Official SDKs  |          |                  |
+| Hue                | Hue                 | Numerous 3rd party SDKs           |          |                  |
+| Saturation         | Saturation          |                                   |          |                  |
+| Colour Temperature | Colour Temperature  |                                   |          |                  |
+| Dynamic Effect     | Dynamic Effect      |                                   |          |                  |
+| ------------------ | ------------------- | --------------------------------- | -------- | ---------------- |
 
 3.8 Osram LIGHTIFY
----------
+------------------
 
 ### Description
 
@@ -182,6 +195,22 @@ office environments. This research focuses on the LIGHTIFY Home line of products
 The LIGHTIFY system consists of a gateway which connects to all of the bulbs installed
 in the home. Using the LIGHTIFY app, a homeowner can control connected lights from a 
 mobile device.
+
+### Available Devices
+
+1. Surface Light TW
+- Dimmable
+- Adjustable colour temperature
+- White only
+
+2. Surface Light W
+- Dimmable
+- White only
+
+3. Flex RGBW
+- RGB colour control
+- Adjustable colour temperature
+- Dimmable
 
 ### Technical Overview
 
@@ -201,7 +230,7 @@ Developer information [https://us.lightify-api.org]
 
 ### Evaluation
 
-| Product     | Protocol | API Support | Developer Support |
+| Product     | Protocol | API Support | Developer Support | 
 | ----------  | -------- | ----------- | ----------------- |
 | LIGHTIFY    | ZigBee   | Cloud Only  | Limited           |
 | Philips Hue | ZigBee   | Local Only  | Very good         |
@@ -210,21 +239,31 @@ Developer information [https://us.lightify-api.org]
 
 
 
-3.10 ecobee
+3.10 Honeywell VisionPro Thermostat
 -----------
 
 ### Description
 
-What is this item?
+The Honeywell VisionPro Thermostat is a regular programmable
+thermostat without any *smart* features other than it is able
+to be controlled through z-wave.
 
 ### Technical Overview
 
-Technically speaking, what does this item do?
+### Communication 
 
-### Evaluation
+The thermostat communicates can be controlled through the
+touch screen or through z-wave. 
 
-How does this specific item do against our criteria?
+### API
 
+There is no API provided by Honeywell. The thermostat 
+is controllable using the z-wave protocol.
+
+
+### References 
+
+[1]Honeywell. [Online]. Available: http://library.ademconet.com/MWT/fs2/5800ZBRIDGE/ZWSTAT-Dealer-Data-Sheet.pdf. Accessed: Oct. 26, 2016.
 
 -----------------
 
