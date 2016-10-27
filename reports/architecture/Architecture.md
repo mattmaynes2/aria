@@ -145,3 +145,45 @@ communicating to the central smart hub.
 The web client is the end user's browser and will present a remote interface for controlling the
 smart hub as well as all devices that are connected to the system. The web interface must be able
 to render on various industry standard browsers (Chrome, Firefox, IE, Safari).
+
+
+
+# ER
+
+![](./SystemER.png)
+
+### Devices
+
+The individual devices connected to the system
+
+### Device_Types 
+
+The different types of possible devices, (switch,light sensor, etc...)
+
+### Communication_Protocol
+
+The different types of communication protocols that a device uses to communicate (WiFi,Z-Wave)
+
+### User
+
+A person that can add and control devices
+
+### Permission 
+
+Allow users to perform specific functions (add device,control devices, admin, etc)
+
+### User_Permissions
+
+The different permissions associated with a user
+
+### User_Devices
+
+The devices a user has access to
+
+### Event
+
+A snapshot of a device state at a certain time
+
+### Event_Type
+
+A type of action that caused an event to happen
