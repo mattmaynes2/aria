@@ -3,14 +3,16 @@
 2.1 Background
 --------------
 
-In this section we are looking at existing systems so that we can better understand what technologies currently 
-exist in the market. Having a better grasp of existing technology will help us understand how we can differentiante 
-our smart home automation system. In particular, we are interested in which features are common in home automation
-systems and their benifits to the end user. 
+In this section we are looking at existing systems so that we can better understand what
+technologies currently  exist in the market. Having a better grasp of existing technology will help
+us understand how we can differentiante  our smart home automation system. In particular, we are
+interested in which features are common in home automation systems and their benifits to the end
+user. 
 
-An important aspect of our project is to have custom logic for controlling smart devices in a home automation system.
-Existing systems implement their own logic, so we will not be using them directly. Looking at existing systems gives us 
-a better understanding of what the end user expects of home automation, allowing us to better design our own system.
+An important aspect of our project is to have custom logic for controlling smart devices in a home
+automation system. Existing systems implement their own logic, so we will not be using them
+directly. Looking at existing systems gives us a better understanding of what the end user expects
+of home automation, allowing us to better design our own system.
 
 The research will investigate the following characteristics of existing home automation systems:
 
