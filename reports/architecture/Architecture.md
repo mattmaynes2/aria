@@ -73,9 +73,25 @@ that needs to be processed by the algorithm.
 
 ### Communication Server
 
+The communication server is responsible for routing all messages through the smart home system.
+The server has a cache of all connected devices and must store any related settings for each.
+Events and messages are routed through the communication server using the event interface. The
+communication server is also responsible for sending messages to other third party protocols.
+The server should provide a mechanism for installing plugins for other third party devices that
+are not natively supported.
+
 ### HTTP Gateway
 
+The HTTP gateway is responsible for supporting the web client interface. It must serve the web
+client's requests over a REST interface and translate them to the internal event interface used
+by the communication server. The gateway must be able to support multiple web clients.
+
 ### REST Interface
+
+The REST interface allows web communication from web clients to the HTTP gateway. This
+representational state transfer protocol must allow the web client to carry out interactions
+with the various devices connected in the system as well as view the current system state. This
+interface must provide both a monitoring and controlling the system.
 
 ### Device Communication
 
@@ -111,7 +127,50 @@ This interface allows the device communication to pass events to the Device cont
 
 ### Smart Hub
 
+The central point of control of this smart home system is the smart hub. This hub is the central
+point of communication for all devices in the smart home system. It houses all of the data
+storage for events in the system and makes decisions using a smart learning algorithm. The hub
+will provide a minimal hardware interface for starting the system and changing the system state
+from training to normal to standby. The smart hub needs to be connected to a internet access
+point in order for it to serve the web interface to a client's computing device.
+
 ### Smart Device
 
+In this diagram, smart device refers to any smart device in the system. This could be a custom
+built device or a third party device. There will be many of these devices within the system all
+communicating to the central smart hub.
+
 ### Web Client
+
+The web client is the end user's browser and will present a remote interface for controlling the
+smart hub as well as all devices that are connected to the system. The web interface must be able
+to render on various industry standard browsers (Chrome, Firefox, IE, Safari).
+
+
+
+# ER
+
+![](./SystemER.png)
+
+### Devices
+
+The individual devices connected to the system
+
+### Device_Types 
+
+The different types of possible devices, (WeMo switch,,Hue lights, etc...)
+
+
+### User
+
+A person that can add and control devices
+
+
+### User_Devices
+
+The devices a user has access to
+
+### Event
+
+A snapshot of a device state at a certain time
 
