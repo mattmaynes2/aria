@@ -3,16 +3,14 @@
 2.1 Background
 --------------
 
-In this section we are looking at existing systems so that we can better understand what
-technologies currently  exist in the market. Having a better grasp of existing technology will help
-us understand how we can differentiante  our smart home automation system. In particular, we are
-interested in which features are common in home automation systems and their benifits to the end
-user. 
+In this section we are looking at existing systems so that we can better understand what technologies currently 
+exist in the market. Having a better grasp of existing technology will help us understand how we can differentiante 
+our smart home automation system. In particular, we are interested in which features are common in home automation
+systems and their benifits to the end user. 
 
-An important aspect of our project is to have custom logic for controlling smart devices in a home
-automation system. Existing systems implement their own logic, so we will not be using them
-directly. Looking at existing systems gives us a better understanding of what the end user expects
-of home automation, allowing us to better design our own system.
+An important aspect of our project is to have custom logic for controlling smart devices in a home automation system.
+Existing systems implement their own logic, so we will not be using them directly. Looking at existing systems gives us 
+a better understanding of what the end user expects of home automation, allowing us to better design our own system.
 
 The research will investigate the following characteristics of existing home automation systems:
 
@@ -31,15 +29,15 @@ The research will investigate the following characteristics of existing home aut
 
 - **API**
 
- Does the system provide an API that our system could potentially use to control the devices 
- connected to these systems. In order to control these devices 
- we require that the following; a way to view all connected devices, 
- a way to get notifications when a device in the system changes states,
- a way to change the state of a device.
+ Does the system provide an API that our system could use to control the connected devices? 
+ In order to control these devices we require the following:
+ - a way to view all connected devices 
+ - a way to get notifications when a device in the system changes states
+ - a way to change the state of a device
 
 - **Third Party Integrations**
  
- Which companies have these systems decided are important to support
+ How much third party support does this company have?
 
 
 2.2 INSTEON
@@ -47,34 +45,36 @@ The research will investigate the following characteristics of existing home aut
 
 ### Description
 
-INSTEON is a home automation system that allows control of the home through a phone. 
-Insteon supports contorling devices based on a scheduled, using IFTTT or through setting 
+INSTEON is an automation system that allows control of the home through a smart phone. 
+INSTEON supports controlling devices based on a schedule, using IFTTT or through setting 
 up **scenes**.
 
-A scene is configured a configuration for a room that the user sets up at a specific time or when
-specific environmental conditions are met. INSTEON has all of the devices remember their current
-states and whenever it sees those states it has the devices recreate the saved scene.
+A scene is a user defined configuration for a room that has a trigger. A trigger can be a 
+specific time or be when specific environmental conditions are met. When triggered, the system
+will set the environment of the room according to the scene.  
 
 ### Technical Overview
 
 #### Supported Communication Protocols
 
-INSTEON created their own protocol also called [INSTEON](#4.4-INSTEON) which is the communication protocol they
-support
+INSTEON created their own protocol also called [INSTEON](#4.4-INSTEON) which is the communication 
+protocol they support.
 
 #### Device Discovery/ Setup
 
-Adding a new device is done through the INSTEON app. The device is automatically discovered by the
-system. Using the app the user selects the new device and enters the device ID after the ID is
-entered the device is able to be configured, naming the device adding it to a room etc..
+Adding a new device is done through the INSTEON app. When a new device is introduced, it is automatically
+discovered by the system. The user selects the new device using the INSTEON app and enters the device ID.
+After the ID is entered the device is able to be configured and controlled by the system.
 
 #### Network
 
-INSTEON uses a central hub to communicate between the devices and the users app.The central hub is
-required in order for the system to work (can't use INSTEON devices individually).
+INSTEON uses a central hub to facilitate communication across the system. The central hub is
+required in order for the system to work, meaning INSTEON devices cannot function independent
+of the hub.
 
-INSTEON uses a peer-to-peer network to connect the devices. All of INSTEON's devices can act as a
-controller to send messages, a repeater to forward messages or a responder to receive messages.
+INSTEON uses a peer-to-peer network, connecting devices to other devices. This allows any INSTEON
+device to act as a controller to send messages, a repeater to forward messages, or a receiver
+to receive messages.
 
 #### API
 
@@ -88,11 +88,6 @@ INSTEON provides a REST API to interact with their devices.
 
 In order to use the API approval from INSTEON is required. Applying
 for an API key is done through the INSTEON website.
-
-###### Limitations
-
-In order to use the API an INSTEON Hub is required also adding new INSTEON devices to a network
-still require configuration through the INSTEON App.
 
 ### Third Party Support
 
@@ -108,9 +103,9 @@ INSTEON supports devices from the following manufacturers:
 
 ### Evaluation
 
-The INSTEON system is very reliable and easy to setup however because they use their own
-communication protocol the devices that can be added is limited mostly to those manufactured by 
-INSTEON.
+The INSTEON system is reliable and easy to setup, but is limited by having their own communication
+protocol. This limits the devices that can be added to the system, as they are largly only manufactured 
+by INSTEON. A closed system such as this is not what we are striving for with this project.
 
 ### Refrences
 
@@ -136,13 +131,13 @@ http://www.smarthome.com/sc-what-is-insteon-home-automation. Accessed: Oct. 6, 2
 
 ### Description
 
-Wink Hub is a hub that allows connections from many different smart devices. Wink supports
-control of devices using scheduling and IFTTT. 
+Wink Hub is a hub that specializes in allowing communication between many different smart devices.
+Wink supports control of devices using scheduling and IFTTT. 
 
 ### Technical Overview
 
-6Wink is a central hub that supports most of the popular connection protocols so that users can
-connect and control a variety of smart devices from different vendors in one app.
+Wink is a central hub that supports most of the popular communication protocols for home automation,
+giving users the freedom of connecting and controlling a variety of smart devices in one system.
 
 #### Communication Protocol
 
@@ -161,17 +156,21 @@ Supporting many different manufacturers means that there are a
 variety of different ways for devices to connect to the Wink Hub.
 The two most common ways are:
 
-1) Pressing a button on the Wink Hub to start transmitting a pairing
-signal and the new device will receive the signal and connect to the
-Hub. 
+1) Button Pressing 
+Pressing a button on the Wink Hub broadcasts a pairing signal across the network.
+Any new device that recieves this signal will then appear on the network, and
+can be viewed from the Wink app. The user then selects the new device and enters
+the device ID (located on the physical device) to add it to the automation system. 
 
-2) The device needs to be setup in the manufacturers app once
-this is done the device can be added to Wink through the Wink app.
+2) Manufacturer Setup
+The new device must be added to the home network using the app provided by the manufacturer.
+Once it has been added through the manyfacturers app, it will be visible using the Wink
+app. It can be added to the automation system from here using the Wink app.
 
 #### Network
 
-The Wink system is a central hub that connects different devices.  All of the different devices are
-controlled through the central hub.
+The Wink system uses a central hub to connects different devices. Devices communicate only 
+with the central hub.
 
 #### API
 
@@ -201,8 +200,10 @@ Wink has support for the following manufacturers:
 ### Evaluation
 
 Providing support for the most popular communication protocols allows Wink
-to connect with almost any device a user can purchase. This makes them more
-attractive to consumers.
+to connect with almost any device a user can purchase, making them an
+attractive option to consumers. This is a feature that we hope to mimic,
+although not to the full extent of Wink. Specifically, the methods of connecting
+devices from any manufacturer will likely be useful to us for this project.
 
 ### References
 
@@ -223,23 +224,20 @@ Accessed: Oct. 8, 2016.
 
 ### Description
 
-SmartThings is Samsung's home automation system. The System provides a 
-hub that connects smart devices together. These devices are able to be controlled through
-the SmartThings App. The app supports controlling devices using a schedule or using IFTTT.
+SmartThings is Samsung's home automation system. Similar to  Wink, they provide their
+own app allowing a user to control devices using scheduling or IFTTT.
 
 ### Technical Overview
 
 #### Communication Protocols 
     
-    - Z-wave
-    - Zigbee
-    - Wifi
-
+SmartThings supports devices that communicate using the Z-Wave, ZigBee, or WiFi 
+communication protocols
 
 #### Device Discovery/Setup
- Adding a new device is done through the app. A user will click "find device" the hub will
- then search for new z-wave and zigbee devices. After the device is found the user adds 
- it to a room and names the device.
+Adding a new device is done through the app. A user will click "find device", prompting the hub
+to search for any new Z-Wave, ZigBee, or WiFi devices. When the device is found the user adds 
+it to a room and names the device.
 
 
 ### Network
@@ -277,6 +275,12 @@ Requires a SmartThings hub and connection to the SmartThings cloud.
 |Samsung   |Samsung SmartThings |Schlage        |Sengled     	 | Skybell	            |
 |Spruce    |Yale 	            |Zen            | 		         |          	  	    |  
 
+### Evaluation
+
+The Samsung home automation system provides a reasonable level of support for
+different communication protocols, giving it a healthy amount of third party support.
+This is something that we will be striving for in out project. The dependency on the 
+connection to a cloud service is something that we would like to avoid for our project.
 
 ### References
 
@@ -294,10 +298,12 @@ Available: https://www.smartthings.com/how-it-works. Accessed: Oct. 10, 2016.
 ### Description
 
 Apple HomeKit allows users to control their smart devices 
-using their IPad or IPhone. Apple HomeKit doesn't require any 
-central hub however if a user wants to control devices when not 
-at home their needs to be an Apple device in the home that the devices are
-connected to, this device can be an Ipad or apple TV.
+using their IPad or IPhone. Apple HomeKit does not require any 
+central hub to control the devices, but does require there to be 
+Apple device connected to the network at all times. If a user wants to 
+control devices with an IPhone while not at home, the devices must be 
+connected to an Apple product that is connected to the network, such as 
+an Ipad or apple TV.
 
 
 ### Technical Overview
@@ -307,7 +313,7 @@ ex. All the lights in the living room turn off at 11:00 pm.
 
 #### Communication Protocol
 
-Apple HomeKit uses Wifi as the communication protocol,
+Apple HomeKit uses Wifi as the only communication protocol.
 
 #### Device Discovery/Setup
 
@@ -328,6 +334,14 @@ able to communicate with one another.
 | Receive update on device state change  |    Y      |
 | Modify device state                    |    Y      |
 
+### Evaluation
+
+There are a few aspecs of the Apple HomeKit that are not ideal for incorperation into 
+our project. First, it is Apple excluse, which goes against the goal of having many
+third party support options. The lack of a central hub also makes it difficult to 
+having support for many different types of devices. The level of communication
+between devices that is offered by the Apple solution is a desirable feature,
+but will be difficult to achieve while maintaining diverse third party support.
 
 
 ### References
@@ -347,10 +361,16 @@ http://www.pocket-lint.com/news/129922-apple-homekit-and-home-app-what-are-they-
 2.7 Summary of Evaluation
 -------------------------
 
-Looking at these systems we found that we should research the
-Z-wave, Zigbee, Insteon and Wifi communication protocols. We 
-also found some manufacturers that are commonly supported that we 
-should look at, in order to potentially provide support for their 
-devices.
+A common theme among existing home automation systems is that systems with a large amount of
+third party support rely on a central communication hub. Having a hub allows components from
+different manufacturers to communicate to each other through the hub. A challenge that supporting
+a large number of devices presents is how to discover new devices into a system, which can be delt
+with in several different ways such as manual button pressing or app configuration. 
+
+Looking at these systems also presented several communcation protocols to investigate, including
+Z-wave, Zigbee, Insteon and WiFi. Along side these are devices from many different manufacturers 
+which operate using these communication protocols. Deciding on a communicaiton protocol and 
+subsequent device manufactures to support is an important part of our design for our home
+automation system.
 
 
