@@ -28,9 +28,9 @@ the machine learning algorithm, and what can be controlled?
 - Which communication protocol(s) are supported by the device?
 
 - Are the interfaces used to communicate with the device well-documented? Are there tutorials and SDKs
-available?s
+available?
 
-- What restrictions does their API put on the system? For example, do users need to create an
+- What restrictions does the device introduce to the system? For example, do users need to create an
 account with another company in order to use the device with our system?
 
 3.3 WeMo
@@ -38,12 +38,13 @@ account with another company in order to use the device with our system?
 
 ### Description
 
-WeMo is a line of smart products made by Belkin. These devices are able to be controlled over a WiFi
-connection with a phone.
+WeMo is a line of smart devices made by Belkin. WeMo devices can be controlled over a WiFi connection
+using a smartphone app.
 
-### Devices
+### Available Devices
 
-WeMo have the following smart devices:
+The following WeMo products are available:
+
 - Light switch
 - Outlet switch
 - Camera
@@ -54,25 +55,22 @@ WeMo have the following smart devices:
 - Humidifier 
 - Heater
 
-
 ### Technical Overview
 
 
 #### Communication Protocol
 
-WeMo only supports WiFi for communicating with devices. With WeMo devices no central
-hub is required in oder to be controlled, it is possible to communicate and control 
-the devices directly.
+WeMo only supports WiFi for communicating with devices. No central hub is required in order to 
+control WeMo devices, each device connects to a WiFi network directly.
 
 WeMo uses Universal Plug And Play (UPnP) protocol for discovery and operating the devices.
 
 
 #### Developing with WeMo
 
-- Open source python API for controlling WeMo devices `ouimeaux`. 
-- WeMo devices can be controlled using UPnP. This allows us to 
-implement one protocol and comunicate with all WeMo devices as well as
-any other smart devices from other vendors that also use UPnP.
+- *ouimeaux* is an Open source python API for controlling WeMo devices.
+- WeMo devices can be controlled using UPnP. This allows us to implement one protocol and comunicate with 
+all WeMo devices as well as any other smart devices from other vendors that use UPnP.
 
 ### Research Criteria
 
@@ -99,18 +97,18 @@ https://pypi.python.org/pypi/ouimeaux. Accessed: Oct. 6, 2016.
 
 ### Description
 
-The nest thermostat is a smart learning thermostat. The thermostat 
-doesn't need to be programed through use the thermostat learns the home
-owner's routine and sets the temperature accordingly. It is also able 
-to turn off when no one is home and be controlled remotely.
+The Nest thermostat is a smart learning thermostat. Over time  the thermostat learns the 
+homeowner's routine and adjusts the temperature accordingly. The thermostat also turns
+off automatically when it detects that nobody is home, and can be remotely controlled 
+using a smartphone app.
 
 ### Technical Overview
 
 Nest communicates using WiFi and a custom nest protocol called **Nest Weave**. Nest Weave uses
-WiFi and Thread.
+WiFi and the Thread protocol.
 
-Nest provides API support through the nest cloud. They provide access
-either through using Firebase or REST.
+Nest provides API support through the nest cloud. The API is accessed as a RESTful service or 
+using Firebase.
 
 ### Evaluation
 
@@ -127,9 +125,9 @@ either through using Firebase or REST.
 
 ### Description
 
-The Honeywell VisionPro Thermostat is a regular programmable
-thermostat without any *smart* features other than it is able
-to be controlled through z-wave.
+The Honeywell VisionPro Thermostat is a smart programmable thermostat which can be controlled
+using the Z-Wave protocol. Unlike the Nest thermostat, the VisionPro does not include learning
+features.
 
 ### Technical Overview
 
@@ -151,74 +149,83 @@ is controllable using the z-wave protocol.
 -----------------
 
 
-
 3.6 Philips Hue
 ---------------
 
 ### Available Devices
 
 1. White Bulbs
-Least features of all bulbs. Simple white light.
-- On/Off Automation
+- On/Off 
 - Dimming
 
 
 2. White Ambiance Bulbs
-Same features as white bulbs but the shade of white can be changed
+- On/Off
+- Dimming
+- Supports multiple shades of white
 
 3. Colour Ambiance Bulbs
-Same features as white bulbs but the colour can be changed
+- On/Off
+- Dimming
+- Configurable colour
 
 4. Lightstrips
-Adhesive strips of lights. 
-Dimmable.
-Can change colours.
-Dynamic lighting/colour schemes
-Can't do white
+- Adhesive strips of LED lights
+- Dimming
+- Configurable colours
+- Dynamic lighting/colour schemes
+- White light not supported
 
 5. Lightstrip Plus
-Able to do white (All light)
-Brighter (1600 Lumen)
-Fine fading control
+- Adhesive strips of LED lights
+- Dimming
+- Configurable colours
+- Dynamic lighting/colour schemes
+- Supports white light
+- Brighter than regular Lightstrips (1600 Lumen)
+- Fine-grained fading control
 
 6. Dimmer switch
-- Battery-powered switch to dim ^hue lights
+- Battery-powered
 - Doesn't require the Hue bridge
 - Can't use it with other AC devices, no electrical contact with bulbs
 
 7. Tap Switch
-Powered by touch - no battery or wires
-Need bridge and app to set this up
+- Powered by touch - no battery or wires
+- Hue bridge and app required
 
 8. Hue Motion Sensor
 - Detects motion in the vicinity of a PIR sensor
-- Comes with an integrated daylight sensor
+- Includes an integrated daylight sensor
 
 
 ### Developing with Hue
 
 - Devices use ZigBee Light Link
 
-- The Hue bridge is the device that allows lights to be controlled using Wifi. It bridges 
+- The Hue bridge is a hub device that allows lights to be controlled using WiFi. It bridges 
   the ZigBee protocol used by lights to Wifi used by apps.
 
-- Bridge works with standard ZigBee lights
+- Bridge works with most standard ZigBee lights
 
 - Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
   when you're on the same LAN as the bridge.
 
-### Research Attributes
+### Research Criteria
+
+Inputs and outputs differ by device type; developer support, communication protocol, and API restrictions
+are common to all Philips Hue devics.
 
 **Hue Lights**
 
-| Inputs             | Outputs             | Developer Support                 | Protocol | API Restrictions |
-| ------             | -------             | -----------------                 | -------- | ---------------- |
-| On/Off             | On/Off              | Tutorials on Hue website          | ZigBee   | Local Only       |
-| Brightness         | Brightness          | Android, Java, IOS Official SDKs  |          |                  |
-| Hue                | Hue                 | Numerous 3rd party SDKs           |          |                  |
-| Saturation         | Saturation          |                                   |          |                  |
-| Colour Temperature | Colour Temperature  |                                   |          |                  |
-| Dynamic Effect     | Dynamic Effect      |                                   |          |                  |
+| Inputs             | Outputs            | Developer Support                | Protocol | API Restrictions        |
+| ------             | -------            | -----------------                | -------- | ----------------        |
+| On/Off             | On/Off             | Tutorials on Hue website         | ZigBee   | Local Only              |
+| Brightness         | Brightness         | Android, Java, IOS Official SDKs |          | REST API requires a hub |
+| Hue                | Hue                | Numerous 3rd party SDKs          |          |                         |
+| Saturation         | Saturation         |                                  |          |                         |
+| Colour Temperature | Colour Temperature |                                  |          |                         |
+| Dynamic Effect     | Dynamic Effect     |                                  |          |                         |
 
 **Hue Motion Sensor**
 
@@ -227,7 +234,7 @@ Need bridge and app to set this up
 | sensitivity        | presence            |
 |                    | light level         |
 
-Hue Dimmer Switch, Hue Tap 
+**Hue Dimmer Switch, Hue Tap**
 
 | Inputs             | Outputs             |
 | ------             | -------             |
@@ -239,12 +246,12 @@ Hue Dimmer Switch, Hue Tap
 
 ### Description
 
-LIGHTIFY is a line of lighting products which are designed to be controlled using 
+LIGHTIFY is a line of lighting products which are can be controlled using 
 the LIGHTIFY mobile app. LIGHTIFY provides two separate product lines; LIGHTIFY Pro
 and LIGHTIFY Home. LIGHTIFY Pro products are designed to be highly scalable for
 office environments. This research focuses on the LIGHTIFY Home line of products.
 
-The LIGHTIFY system consists of a gateway which connects to all of the bulbs installed
+The LIGHTIFY system consists of a gateway device which connects to all of the bulbs installed
 in the home. Using the LIGHTIFY app, a homeowner can control connected lights from a 
 mobile device.
 
@@ -282,14 +289,14 @@ Developer information [https://us.lightify-api.org]
 
 ### Research Attributes
 
-| Inputs                    | Outputs            | Developer Support    | Protocol | API Restrictions          |
-| ------                    | -------            | -----------------    | -------- | ----------------          |
-| on/off                    | on/off             | REST API description | ZigBee   | Cloud Only                |
-| colour                    | colour             | Sample Application   |          | LIGHTIFY Account Required |
-| colour temperature        | colour temperature | No Official SDKs     |          |                           |
-| brightness                | brightness         |                      |          |                           |
-| saturation                | saturation         |                      |          |                           |
-| transition time (effects) | transition time    |                      |          |                           |
+| Inputs                    | Outputs            | Developer Support    | Protocol | API Restrictions                   |
+| ------                    | -------            | -----------------    | -------- | ----------------                   |
+| on/off                    | on/off             | REST API description | ZigBee   | REST API is Cloud Only             |
+| colour                    | colour             | Sample Application   |          | REST API requires LIGHTIFY account |
+| colour temperature        | colour temperature | No Official SDKs     |          | REST API requires a hub            |
+| brightness                | brightness         |                      |          |                                    |
+| saturation                | saturation         |                      |          |                                    |
+| transition time (effects) | transition time    |                      |          |                                    |
 
 -----------------------
 
@@ -299,7 +306,7 @@ Developer information [https://us.lightify-api.org]
 ### Description
 
 Aeotec sells lightbulbs which are compatible with the Z-Wave protocol. Aeotec products are compatible
-with most Z-Wave gateways, but do not provide an API specifically for their products.
+with most Z-Wave hubsAeotec does not provide a proprietary API for their products.
 
 ### Available Devices
 
@@ -315,24 +322,24 @@ with most Z-Wave gateways, but do not provide an API specifically for their prod
 
 | Inputs     | Outputs    | Developer Support   | Protocol | API Restrictions     |
 | ------     | -------    | -----------------   | -------- | ----------------     |
-| on/off     | on/off     | Not Aeotec Specific | Z-Wave   | No REST API Provided |
+| on/off     | on/off     | Not Aeotec Specific | Z-Wave   | None                 |
 | colour     | colour     | Z-Wave Developer    |          |                      |
 | brightness | brightness |                     |          |                      |
 
-3.8 Aeon Labs 
+3.8 Aeon Labs
 -----------------
 
 ### Description
 
 Aeon Labs is a company that produces a large varity of Z-Wave devices. They also provide
-the ability to create your own home automation hub.  
+the ability to create your own home automation hub.
 
 
 ### Technical Overview
 
 Aeon Labs produce a USB dongle that allows you to turn any computing device into a Z-Wave communication
 hub. This hub allows the user to manually control any Z-Wave device on the Z-Wave network, and provides
-the functinallity to add and remove devices to/from the network. To add a Z-Wave device, start by 
+the functionality to add and remove devices to/from the network. To add a Z-Wave device, start by 
 unplugging the dongle from the hub and pushing the button on it. Then walk to the new device and push the 
 button on the device. The dongle must also be unplugged to remove a device from the network. To put it in 
 removal mode, push and hold the button on the dongle. Then go to each device you wish to remove from the
