@@ -4,7 +4,7 @@
 --------------
 
 In the context of this project, a smart device is a device that is capable of communicating over
-a wireless computer network, such as WiFi or ZigBee. Each device provides a set of inputs and outputs
+a wireless computer network, such as WiFi or z-wave. Each device provides a set of inputs and outputs
 which can be controlled and examined using some protocol.
 
 3.2 Relation to System
