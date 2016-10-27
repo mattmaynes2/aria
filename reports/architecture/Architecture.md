@@ -79,6 +79,10 @@ that needs to be processed by the algorithm.
 
 ### Device Communication
 
+Device Communication is responsible for passing events between the device and 
+the Communication Server. The Device Communication consumes the Device Control, Sensor Interface
+and the Event Interface.
+
 ### Sensor Interface
 
 This interface allows the Device Communication to read events from sensors and 
@@ -92,7 +96,14 @@ events when sensor data changes. The Sensor Reader will provide the Sensor Inter
 
 ### Device Controller
 
+The Device Controller is responsible for controlling the physical device. It consumes events
+and modifies the output of the device accordingly. The Device Controller provides the Device 
+Control Interface.
+
 ### Device Control
+
+This interface allows the device communication to pass events to the Device controller.
+
 
 ## Deployment
 
