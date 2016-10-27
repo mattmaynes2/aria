@@ -144,6 +144,7 @@ using Firebase.
 [1] "Meet the nest learning thermostat," Nest Labs, 2016. [Online]. Available: https://nest.com/ca/thermostat/meet-nest-thermostat/. Accessed: Oct. 24, 2016.
 
 [2] [Online]. Available: https://developers.nest.com/documentation/cloud/data-structure-and-access. Accessed: Oct. 24, 2016.
+
 -----------------------
 
 3.5 Honeywell VisionPro Thermostat
