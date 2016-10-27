@@ -18,7 +18,7 @@ Evaluation of custom devices will focus on the following characteristics:
 
 #### Expertise required
 
-How difficult is it for a team of software engineering students to build the device?.
+How difficult is it for a team of software engineering students to build the device?
 Some complex devices will be impractical for the team to build due to the lack of hardware knowledge. 
 Factors which  will be considered in the evaluation of the devices include the availability of tutorials and 
 development kits. Safety will also be a critical factor (Does the team have the facilities and 
@@ -50,7 +50,7 @@ in order to showcase the machine learning capabilities of the system, it will be
 include a wide range of sensors, as well as actuators whose desired states may be influenced by several 
 unrelated sensors. By providing such a range of devices, we hope to demonstrate that the machine
 learning algorithm is capable of identifying more complex interactions between devices than a 
-simple "If this then that" relationship.
+simple IFTTT relationship.
 
 In addition to providing a varied range of sensors, we would like to provide several sensors and 
 actuators with non-binary inputs and outputs. The interactions between such devices may be more
@@ -63,8 +63,8 @@ This section investigates some smart devices which are potentially within the te
 Many actions could be triggered by a person entering or leaving a house or a room. A motion sensor could
 potentially interact with every other device on this list. Due to the wide range of potential interactions,
 we expect that a motion sensor will be a good test of the machine learning component's ability to 
-determine the relationships inputs and outputs. The motion sensor could also reveal flaws in the 
-machine laerning algorithm. For example, the machine learning algorithm may determine that when a motion
+determine the relationships between inputs and outputs. The motion sensor could also reveal flaws in the 
+machine learning algorithm. For example, the machine learning algorithm may determine that when a motion
 sensor is triggered outside a homeowner's bedroom, the coffee machine should be turned on. However, this 
 behaviour would only be desired during certain hours of the day (the coffee machine should not turn on
 when the homeowner goes to bed, for example). It is likely that there are many such scenarios that we 
@@ -148,8 +148,8 @@ The following tutorials explain how to interface with PIR modules:
 #### Doppler-Effect based sensors
 
 Several types of motion detectors use the Doppler effect to detect motion. The detector transmits
-A signal of a known frequency. This signal is reflected by any objects in its path and 
-detected when it returns to the sensor. The sensor tracks frequency of the reflected wave; when
+a signal of a known frequency. This signal is reflected by any objects in its path and 
+detected when it returns to the sensor. The sensor tracks the frequency of the reflected wave; when
 a wave is reflected off of a moving object the frequency of the reflected wave differs from that 
 of the incident wave due to the Doppler effect. This change in frequency is detected by the 
 sensor and registered as motion. 
@@ -180,7 +180,7 @@ Useability
 | Feature    | Custom   | D-Link Wifi Motion Sensor   | Samsung Smartthings Motion Sensor   | Belkin WeMo Switch + Motion   |
 | -------    | -------- | --------------------------- | ----------------------------------- | ----------------------------- |
 | Range      | 7m       | 8m                          | 15m - 40m                           | 3m                            |
-| Interfaces | _        | Wifi                        | ZigBee                              | Wifi                          |
+| Interfaces | _        | WiFi                        | ZigBee                              | WiFi                          |
 | Type       | PIR      | PIR                         | PIR                                 | PIR                           |
 
 Note: The custom device can potentially support multiple different communication interfaces
@@ -209,7 +209,7 @@ device that the switch is expected to control (DC vs AC).
 ### Controlling DC power
 
 If the type of device being controlled requires DC power input, the amount of power supplied
-to the device can be controlled using pulse-width modulation. A digital output is used
+to the device can be controlled using pulse-width modulation (PWM). A digital output is used
 to create a square wave. By varying the frequency of the square wave, it is possible to 
 simulate the application of a steady voltage between the pin's high and low voltages. 
 
@@ -231,7 +231,7 @@ Simple PWM circuits are limited to controlling devices with low power requiremen
 the technique is reliable for devices which meet the power requirements, such as LED lamps, 
 the power requirements of most home devices means that the applicability of this technique
 will be severely limited. Most devices are intended to be connected to a wall socket, meaning
-that they are expecting AC current, with a significantly higher amount of power than is
+that they are expecting AC current, which a significantly higher amount of power than is
 available from a microcontroller such as an Arduino. 
 
 ### Controlling AC power
@@ -239,19 +239,19 @@ available from a microcontroller such as an Arduino.
 #### Expertise Required
 
 - Safety concerns: Controlling devices which expect to receive the voltages available from
-a wall socket means dealing with high voltages. Without any team members trained in 
-using high voltages, building a device to control high voltages is a very serious safety risk.
+ a wall socket means dealing with high voltages. Without any team members trained in 
+ using high voltages, building a device to control high voltages is a very serious safety risk.
 
 - Lack of trusted tutorials: For most of the circuits considered during this research, it has 
-been possible to find tutorials online from trusted sources, such as the official Arduino 
-website. 
+ been possible to find tutorials online from trusted sources, such as the official Arduino 
+ website. 
 
 #### Level of Effort
 
 - When it was possible to find a tutorial online for building a circuit to control AC 
-voltages, the circuit was found to be much more complex than the simple light switch
-circuit. Due to the amount of time required to fully understand these circuits, it
-is estimated that effort required is high.
+ voltages, the circuit was found to be much more complex than the simple light switch
+ circuit. Due to the amount of time required to fully understand these circuits, it
+ is estimated that effort required is high.
 
 [http://playground.arduino.cc/Main/ACPhaseControl]
 
@@ -292,9 +292,9 @@ Phtoresistors are also called photocells.
 ##### Reliability Characteristics
 
 - Photoresistors are unsuitable for precise lighting measurements because its resistance
-may vary due to temperature as well as light
+ may vary due to temperature as well as light
 
-- Photoresistor may exhibit latency (delay between a change in light and a change in resistance)
+- Photoresistors may exhibit latency (delay between a change in light and a change in resistance)
 
 #### Photodiode 
 
@@ -353,7 +353,7 @@ risk
 ### Effort Level
 
 Due to the lack of trusted tutorials online, as well as the wealth of features that
-users are used to having in a thermostat, the time investment required to built a 
+users are used to having in a thermostat, the time investment required to build a 
 fully-featured thermostat is extreme.
 
 ### Evaluation
@@ -364,7 +364,7 @@ thermostat, a custom-built thermostat is not feasible for this project.
 6.6 Alarm Clock
 ---------------
 
-There are a  large variety of features available for alarm clocks, this section will focus
+There are a large variety of features available for alarm clocks, this section will focus
 on a simple alarm clock that beeps at a programmed time of day. The clock should have 
 manual (button) input in order to allow the user to set alarm times so that the machine
 learning component can be trained. More sophisticated clocks are expected to be much too
@@ -387,8 +387,8 @@ http://fritzing.org/media/fritzing-repo/projects/a/arduino-lcd-alarm-clock/image
 ### Level of Effort
 
 Due to the need to interface with an LCD display, and because of the large number of components, a
-custom build of an alarm clock is expected to be more complex than the light switch, so the level
-of effort is high.
+custom build of an alarm clock is expected to be more complex than the light switch. The level
+of effort is estimated to be high because of this.
 
 ### Feature Comparison
 
@@ -422,8 +422,8 @@ level of effort required is low.
 ### Required Expertise
 
 - Safety risks: Coffee machine are normally connected directly into a wall socket. Controlling
-the coffee machine using a voltage relay would therefore involve high voltage levels which 
-are unsafe to work with without proper training
+ the coffee machine using a voltage relay would therefore involve high voltage levels which 
+ are unsafe to work with without proper training
 
 [http://www.instructables.com/id/Tweet-a-Pot-Twitter-Enabled-Coffee-Pot/]
 
@@ -453,6 +453,6 @@ concerns when controlling high voltage devices.
 ---------------
 
 It is feasible for the team to build motion sensor, light sensors, and an alarm clock if no 
-acceptable commercial solution is available. We should avoid building dimmer switches, coffe
+acceptable commercial solution is available. We should avoid building dimmer switches, coffee
 makers, and thermostats due to the potential high-voltage work involved and the lack of 
 electronics knowledge available.
