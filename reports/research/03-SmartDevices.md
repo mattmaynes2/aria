@@ -4,7 +4,7 @@
 --------------
 
 In the context of this project, a smart device is a device that is capable of communicating over
-a wireless computer network, such as WiFi or ZigBee. Each device provides a set of inputs and outputs
+a wireless computer network, such as WiFi or z-wave. Each device provides a set of inputs and outputs
 which can be controlled and examined using some protocol.
 
 3.2 Relation to System
@@ -136,14 +136,20 @@ WiFi and the Thread protocol.
 Nest provides API support through the nest cloud. The API is accessed as a RESTful service or 
 using Firebase.
 
-### Evaluation
+### Evalutaion
 
+The nest thermostat already has some machine learning on it. Trying to control it using our
+algorithm could cause unexpected results. They also require the use of a cloud API to control
+the thermostat and we are trying to avoid this and communicate locally with our devices. Due to
+these resons it seems like the nest thermostat is not a great fit for our system and we should
+not invest time into integrating with it.
 
 ### References
 
 [1] "Meet the nest learning thermostat," Nest Labs, 2016. [Online]. Available: https://nest.com/ca/thermostat/meet-nest-thermostat/. Accessed: Oct. 24, 2016.
 
 [2] [Online]. Available: https://developers.nest.com/documentation/cloud/data-structure-and-access. Accessed: Oct. 24, 2016.
+
 -----------------------
 
 3.5 Honeywell VisionPro Thermostat
@@ -167,6 +173,10 @@ touch screen or through z-wave.
 There is no API provided by Honeywell. The thermostat 
 is controllable using the z-wave protocol.
 
+### Evaluation
+
+This is a simple thermostat that will be easy to control using z-wave and as it 
+doesn't have any learning on it, so there won't be any conflicts with our system.
 
 ### References 
 
@@ -181,48 +191,48 @@ is controllable using the z-wave protocol.
 ### Available Devices
 
 1. White Bulbs
-- On/Off 
-- Dimming
+ - On/Off 
+ - Dimming
 
 
 2. White Ambiance Bulbs
-- On/Off
-- Dimming
-- Supports multiple shades of white
+ - On/Off
+ - Dimming
+ - Supports multiple shades of white
 
 3. Colour Ambiance Bulbs
-- On/Off
-- Dimming
-- Configurable colour
+ - On/Off
+ - Dimming
+ - Configurable colour
 
 4. Lightstrips
-- Adhesive strips of LED lights
-- Dimming
-- Configurable colours
-- Dynamic lighting/colour schemes
-- White light not supported
+ - Adhesive strips of LED lights
+ - Dimming
+ - Configurable colours
+ - Dynamic lighting/colour schemes
+ - White light not supported
 
 5. Lightstrip Plus
-- Adhesive strips of LED lights
-- Dimming
-- Configurable colours
-- Dynamic lighting/colour schemes
-- Supports white light
-- Brighter than regular Lightstrips (1600 Lumen)
-- Fine-grained fading control
+ - Adhesive strips of LED lights
+ - Dimming
+ - Configurable colours
+ - Dynamic lighting/colour schemes
+ - Supports white light
+ - Brighter than regular Lightstrips (1600 Lumen)
+ - Fine-grained fading control
 
 6. Dimmer switch
-- Battery-powered
-- Doesn't require the Hue bridge
-- Can't use it with other AC devices, no electrical contact with bulbs
+ - Battery-powered
+ - Doesn't require the Hue bridge
+ - Can't use it with other AC devices, no electrical contact with bulbs
 
 7. Tap Switch
-- Powered by touch - no battery or wires
-- Hue bridge and app required
+ - Powered by touch - no battery or wires
+ - Hue bridge and app required
 
 8. Hue Motion Sensor
-- Detects motion in the vicinity of a PIR sensor
-- Includes an integrated daylight sensor
+ - Detects motion in the vicinity of a PIR sensor
+ - Includes an integrated daylight sensor
 
 
 ### Developing with Hue

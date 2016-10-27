@@ -3,53 +3,53 @@
 4.1 Background
 --------------
 
-There are many different ways to connect devices across a network. The every day example is WiFi but
-that is not the only option. There are different protocols available that specialize in different
-aspects of wireless communication.  To achieve a connected smart home environment, our devices need
-to communicate to each other and to the system. The goal of this section is to discover
-communication options, and to evaluate them against each other to determine which is most
-appropriate for our system.
+There are many different ways to connect devices across a network. A familiar example is WiFi, but
+other protocols are available that specialize in different aspects of wireless communication.
+The goal of this section is to investigate the strengths and weaknesses of different communication protocols,
+and evaluate them against each other.
 
 ### Selection Criteria
 
-The non-functional requirements of our system compose the criteria for evaluating a communication 
-protocol. The key requirements pertaining to communication protocols are: ease of integration with devices, battery life of devices, range, interoperability, data transfer rate, number of
-concurrent connections. Another important aspect of a communication protocol that will be evaluated is what frequency it operates on.
+The criteria used for evaluating communication protocols are based on the non-functional requirements
+identified for the system. The key requirements pertaining to communication protocols are: ease of integration with devices,
+battery life of devices, range, interoperability, data transfer rate, number of concurrent connections.
+Another important aspect of a communication protocol that will be evaluated is what frequency it operates on.
 
 4.2 ZigBee
 ----------
 
 ### Description
 
-ZigBee provides an alternative to WiFi. The goal of ZigBee is to provide simple transmission for a
-low amount of data, within a limited range. The decrease in data transmission rates and range
-provides an increased battery life for components. A computing device can be turned into a ZigBee
-device with the appropriate shield, and some ZigBee devices, such as a light switch, can be
-purchased.
+The goal of the ZigBee protocol is to provide a means to transfer small amounts of data over a limited distance.
+Relative to WiFi, The decreased in data transmission rates and range of ZigBee allows compatible 
+devices to consume less power; this allows for increased battery life and energy efficiency. ZigBee shields
+are available for many popular embedded communication devices, allowing them to communicate with ZigBee-compatible
+smart devices. Many companies offer smart devices which are compatible with the ZigBee protocol, such as lights 
+and light switches.
 
 ### Technical Overview
 
 ZigBee uses a mesh networking topology, as opposed to the star topology used by WiFi. A mesh
-topology means that every node in the network is connected. Each node transmits it's own
+topology means that every node in the network is connected. Each node transmits its own
 information, as well as assisting in relaying information received from other nodes. Having every
 node connected allows for data to be transmitted between nodes simultaneously, and increases network
-stability be not relying on one central node. This increase in stability come at the cost of having
+stability be not relying on one central node. This increase in stability comes at the cost of having
 potentially many redundant connections in the network. ZigBee devices use the mesh topology to send
 messages using message routing. This means that if the endpoint device is out of range of the
-initial device, intermediate devices will relay the message through the mesh until it reaches it's
+initial device, intermediate devices will relay the message through the mesh until it reaches its
 endpoint.
 
 ZigBee operates within three possible frequency bands: 868-870 MHz, 902-928 MHz, and 2.4-2.4835 GHz.
 The lowest band only has one available channel, the middle band has ten available channels, and the
 highest band has 16 available channels. The respective data transfer rates are 20Kbps, 40Kbps, and
 250Kbps. It should be noted that devices on different frequency bands cannot communicate with each
-other, and generally only devices using the 2.4 Ghz range are produced.
+other, and generally only devices using the 2.4 Ghz range are commercially available.
 
-The low power consumption of ZigBee devices when compared to WiFi leads to large power consumption
+The low power consumption of ZigBee devices when compared to WiFi leads to large energy efficiency
 and battery life gains.  A ZigBee device can last for up to ten years.
 
-A ZigBee device can be added to the network in approximately thirty milliseconds, and 256 devices
-can be connected to one network in theory. However, in practise, the system performance tends to
+A device can be added to a ZigBee network in approximately thirty millisecondss. Theoretically, up to
+256 devices can be connected to one network. However, in practise, the system performance tends to
 degrade at around thirty devices.
 
 One of the major drawbacks of ZigBee is that for it to be effective, it must operate in the 2.4 GHz
@@ -57,14 +57,15 @@ frequency band. This would not be an issue, except for the fact that this is the
 as WiFi. This can cause interference between the two networks, resulting in packet loss for both
 networks. The lost packets have to be retransmitted until they are received by the intended
 endpoint, causing lag in both networks. ZigBee packets suffer more from this interference in
-practise, with the level of interference rising as the number of nodes and the amount of traffic
+practice, with the level of interference rising as the number of nodes and the amount of traffic
 rises.
 
-A second potential drawback of ZigBee is the historical lack of official standard for communication
-protocols between devices.  This resulted in in different companies having their own protocols for
-ZigBee device communication, and not all devices could be purchased and assumed to work together.
-This limited interoperability has been somewhat fixed with the introduction of the ZigBee Alliance,
-but could present some legacy issues.
+A second potential drawback of ZigBee is the historical lack of official standards for application-level
+protocols for ZigBee devices. While ZigBee devices all communicate using the same physical layer 
+protocol, each device may use a different high-level protocol for device control.The result of this lack 
+of standardization is that different companies have their own protocols for ZigBee device communication, 
+so devices from different companies cannot be assumed to be compatible. The limited interoperability has
+been somewhat fixed with the introduction of the ZigBee Alliance, but could present some legacy issues.
 
 
 ### References
@@ -99,7 +100,8 @@ Oct. 6, 2016.
 Z-Wave is a very similar option to ZigBee, except it uses a proprietary radio design. This slightly
 limits the number of devices available for it, as chips are mostly produced by Sigma Designs. The
 advantage to this is that because the chips are made largely by one manufacturer, there is a high
-level of interoperation.
+level of interoperability. In addition, the Z-Wave protocol includes high-level commands for 
+controlling certain classes of devices, which further increases interoperability of Z-Wave systems. 
 
 ### Technical Overview
 
@@ -132,10 +134,11 @@ INSTEON is substantially different from the two above protocols.
 
 ### Technical Overview
 
-INSTEON uses a similar mesh topology as the above protocols, but it is not limited to radio
+INSTEON uses a similar mesh topology to the above protocols, but it is not limited to radio
 frequencies. It utilizes a dual-mesh system to increase overall stability. The dual-mesh system is a
 combination of radio frequencies at 915 MHz (in the US), and powerline layer operating at 131.65
-KHz. When the radio frequencies encounter interference, the powerline layer makes sure the message
+KHz.Powerline communication is a technology that uses a home's electrical wiring to transfer data.  
+When the radio frequencies encounter interference, the powerline layer makes sure the message
 gets broadcasted to the appropriate destination. INSTEON also uses a different message delivery 
 system compared to ZigBee and Z-Wave. Instead of sending a message from one device and routing it
 through other devices, it takes advantage of simulcasting. This is the process of having multiple
@@ -146,7 +149,7 @@ have a master/slave relationship. Every node has the ability to send and receive
 having a controller. This makes it possible to have any number of devices in a network without being
 restricted by a maximum number of connections to a controlling device.
 
-One thing INSTEON is lacking compared to ZigBee and Z-Wave is third part support for their devices.
+One thing INSTEON is lacking compared to ZigBee and Z-Wave is third party support for their devices.
 They manufacture almost all of their own devices, which leads to a limited amount of choice in terms
 of different types of devices designed for the same task.
 
@@ -167,7 +170,7 @@ http://cache.insteon.com/pdf/INSTEONCompared.pdf. Accessed: Oct. 6, 2016.
 http://buildyoursmarthome.co/home-automation/protocols/x10/. Accessed: Oct. 8, 2016.
 
 [3] "What home automation protocol should I choose?," in Intellihome, 2015. [Online].  Available:
-https://www.intellihome.be/en/kbase/INSTEON/What_home_automation_protocol_should_I_choose_-2.html.
+https://www.intellihome.be/en/kbase/INSTEON/What_home_automation_protocol_should_I_choose\_-2.html.
 Accessed: Oct. 8, 2016.
 
 
@@ -190,7 +193,7 @@ communications go from the source node, through the central server node, and arr
 destination node. This means that if the central server goes down, no messages can be passed,
 leading to potential stability issues. Because messages cannot be routed through intermediate nodes,
 the communication range must generally be much larger than in a mesh network.  WiFi also boasts
-substantially higher data transmission rates than the previously discussed communication protocols.
+substantially higher data transmission rates than the communication protocols discussed previously.
 A WiFi (802.11b) connection can transfer data at a rate of 54 Mbps at a range of 100 meters. As
 stated earlier, WiFi typically operates at a frequency of 2.4 GHz.
 
@@ -235,12 +238,13 @@ discussed below.
 ### Technical Overview
 Bluetooth operates in the 2.4 GHz frequency band, alongside WiFi and ZigBee. Bluetooth also shares
 the star network topology with WiFi, where there needs to be designated master and slave devices. 
-This can lead to the same issues of interference that were discussed above. As the number of devices
-on the same radio frequency increases, the competition for bandwidth also increases, causing potential 
-lag and interference. The range and data transfer rate for Bluetooth ranges from 1 Mbps and 10 meters
-to 24 Mbps and 100 meters. All of these data transfer rates are acceptable, if not overkill, for a 
-smarthome system. The range on the earlier versions of Bluetooth is potentially very restricting. 
-Bluetooth is somewhere between WiFi devices and ZigBee/Z-Wave devices in terms of power consumption.
+This can lead to the same interferece problems as discussed in the WiFi and ZigBee secions. As the 
+number of devices on the same radio frequency increases, the competition for bandwidth also increases,
+causing potential lag and interference. The range and data transfer rate for Bluetooth ranges
+from 1 Mbps and 10 meters to 24 Mbps and 100 meters. All of these data transfer rates are acceptable, 
+if not overkill, for a smarthome system. The range on the earlier versions of Bluetooth is potentially 
+very restricting. Bluetooth is somewhere between WiFi devices and ZigBee/Z-Wave devices in terms of
+power consumption.
 
 There is another choice for Bluetooth that addresses some of the issues above. Bluetooth version 4.0,
 also branded as Bluetooth Low Energy (BLE). This is a direct competitor with ZigBee and Z-Wave. The range
@@ -280,17 +284,21 @@ https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336. Access
 | BLE      | 10 Kbps       |  good        |  great           |     9            |  2.4 GHz  | 200 ft  |  Star    |
  
 As stated above, the goal of this research was to pick an appropriate protocol for our system.
-One of the differing attributes between the protocols is the data transfer rates. The required data rate for most smart home devices is minimal, and a higher data rate demands more power. The data rate provided by WiFi is clearly overkill for our project, so it will not be the primary communication protocol used. That being said, being WiFi compatible is important to us because of its prevalence in homes, and because of the enormous amount of devices supported by WiFi.
+One of the differing attributes between the protocols is the data transfer rates. 
+The required data rate for most smart home devices is minimal, and a higher data rate demands more power. 
+The data rate provided by WiFi is clearly overkill for our project, so it will not be the primary communication protocol used. 
+That being said, WiFi compatibility is important to this project because of its prevalence in homes, and because of the
+enormous amount of devices that communicate over WiFi.
 
 Having as inclusive device support as possible is a key aspect to our project, as it allows a
 user to have whatever functionality they desire. This heavily influenced us in deciding not
 to use INSTEON as our primary protocol, as the backwards compatibility with X10 is not something
 we require.
 
-ZigBee and Z-Wave are very similar, with the key difference in our eyes being the frequency they
-operate at. Being able to avoid conflicts between the WiFi already assumed to be in the house and
-the home automation system is a clear benefit. Z-Wave operates in the less used 900 MHz frequency
-band, avoiding any potential conflicts.
+ZigBee and Z-Wave are very similar, with the key difference in our eyes being the consistent 
+interface that Z-Wave devices provide for controlling them. In additionally, avoiding  conflicts
+between the WiFi already assumed to be in the house and the home automation system is a clear benefit.
+Z-Wave operates in the less used 900 MHz frequency band, avoiding any potential conflicts.
 
 A mesh network topology makes more sense than a star topology for home automation. The stability
 offered by a mesh topology is substantial, and the amount of data transmission is low enough that
@@ -305,8 +313,8 @@ for this project, while supporting WiFi devices as well.
 -----------------------------------
 
 Any processing unit with USB support can be easily turned into a Z-Wave master, using a Z-Wave 
-USB stick. Converting an arduino into a Z-Wave slave is not a simple. There are specialized 
-arduino boards that have the Z-Wave protocol built in. Another option is to attach a radio
-frequency device to an arduino, and to implement the Z-Wave stack protocol manually. The easiest
+USB stick. Converting an Arduino into a Z-Wave slave is not simple. There are specialized 
+Arduino boards that have the Z-Wave protocol built in. Another option is to attach a radio
+frequency device to an Arduino, and to implement the Z-Wave stack protocol manually. The easiest
 way to have Z-Wave slave devices is simply not to make them, but to buy them.
 

@@ -3,7 +3,7 @@
 5.1 Background
 --------------
 
-A computing devices is any electronic device that can be used to process data and send it over
+A computing device is any electronic device that can be used to process data and send it over
 a smart home network. Computing devices include computers, micro-controllers and other
 embedded devices. Computing devices that are being examined all offer control of external
 hardware interfaces. This report examines computing devices that can be used for prototyping
@@ -34,8 +34,8 @@ access to all pins and controls on the board. The Uno comes with a 8-bit ATmega3
 running at 16 MHz. The system comes with 32 KB of on board flash memory as well as 2 KB of SRAM
 and 1 KB of EEPROM. The system boot loader occupies 0.5 KB of the flash memory capacity.
 
-The Uno comes with 14 digital pins, 6 of which can be programmed to use pulse with modulation.
-Included in the microcontroller is 6 analog to digital input pins. The board has a operating
+The Uno comes with 14 digital pins, 6 of which can be programmed to use pulse width modulation.
+Included in the microcontroller are 6 analog to digital input pins. The board has a operating
 voltage of 5 V and will accept between 7-12 V for input pins. The maximum voltage range of the
 input pins are 6-20V.
 
@@ -99,7 +99,7 @@ https://www.arduino.cc/en/Main/ArduinoBoard101. Accessed: Oct. 6, 2016.
 ### Description
 
 The Arduino Pro is a slim, no frills version of the Ardiuno Uno. This board requires more
-technical knowledge then the Uno or the 101. All pins exposed on the Pro require soldering to
+technical knowledge than the Uno or the 101. All pins exposed on the Pro require soldering to
 make a connection. The Pro is intended for replication of a complex circuit design with
 requirements for a wide range of input and output ports.
 
@@ -143,7 +143,7 @@ The Micro provides high performance embedded computing with a 8-bit, 16 MHz ATme
 The Micro also comes standard with the Arduino bootloader and a standard 32 KB of flash memory.
 The Micro has a operating voltage of 5 V and comes with a standard DC power input.
 
-The Micro has 20 exposed digital pins, 7 of which can be pulse with modulation. These extra
+The Micro has 20 exposed digital pins, 7 of which can be pulse width modulation. These extra
 pins make the Micro very suitable for large complex circuits that require many inputs or
 outputs. The Micro also has 12 analog to digital pins. The Micro does lack in special features.
 It only offers serial communication over a standard USB-Micro port. There are other special
@@ -232,7 +232,7 @@ power.
 ### Evaluation
 
 The Zero could be useful for programming devices in the system; however, while the Zero does offer
-a smaller physical footprint and more GPIO than the Arduino Uno, it does require more power to
+a smaller physical footprint and more GPIO pins than the Arduino Uno, it does require more power to
 maintain operation. This extra power consumption does come with more performance which may be
 useful but likely unnecessary for the smart learning system.
 
@@ -287,12 +287,12 @@ design as the Pi 1 with all the same features and more performance.
 
 The Pi 2 is very similar to the Pi 1 but provides a slight faster 32-bit 900MHz Arm processor. The
 Pi 2 has significantly more RAM than the Pi 1 with 1GB of DDR2. The Pi 2 comes with a standard
-HDMI video output for monitoring it from a screen. It also is equip with an Ethernet port and 4
-USB ports. The Pi 2 also provides the same 40 GPIO pin configuration as the Pi 1
+HDMI video output for monitoring it from a screen. It also is equipped with an Ethernet port and 4
+USB ports. The Pi 2 also provides the same 40 GPIO pin configuration as the Pi 1.
 
 ### Evaluation
 
-The Pi 2 out performs the Pi 1 in all areas and is likely a better candidate for the smart hub. It
+The Pi 2 outperforms the Pi 1 in all areas and is likely a better candidate for the smart hub. It
 uses the same amount of power but provides far more computing performance.
 
 ### References
@@ -550,7 +550,7 @@ The Uno provides a rapid prototyping environment with support for a wide array o
 It has sufficient computing power with minimal power consumption for the requirements of the general
 devices that have been identified in the system scenarios.
 
-As an added benefit, the Arduino community offers many high quality tutorial, examples and
+As an added benefit, the Arduino community offers many high quality tutorials, examples and
 documentation of system usage. The extensive support offered by the community is a major advantage
 over the other systems and will be a major asset for developing on this device.
 
