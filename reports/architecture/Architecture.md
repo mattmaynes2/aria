@@ -158,23 +158,13 @@ The individual devices connected to the system
 
 ### Device_Types 
 
-The different types of possible devices, (switch,light sensor, etc...)
+The different types of possible devices, (WeMo switch,,Hue lights, etc...)
 
-### Communication_Protocol
-
-The different types of communication protocols that a device uses to communicate (WiFi,Z-Wave)
 
 ### User
 
 A person that can add and control devices
 
-### Permission 
-
-Allow users to perform specific functions (add device,control devices, admin, etc)
-
-### User_Permissions
-
-The different permissions associated with a user
 
 ### User_Devices
 
@@ -184,6 +174,3 @@ The devices a user has access to
 
 A snapshot of a device state at a certain time
 
-### Event_Type
-
-A type of action that caused an event to happen
