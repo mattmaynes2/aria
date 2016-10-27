@@ -6,3 +6,6 @@ and vehicles, which feature connectivity to a computer network.
 {#glossary-SmartDevice}**Smart Device**: A household device which can communicate using a computer network.
 
 {#glossary-IFTTT}**IFTTT**: If this then that. A service that allows the user to make a chain of conditional statements with a trigger.
+
+{#glossary-Shield}Shield: A shield is a circuit board which expands the hardware capabilities of a microcontroller by connecting
+directly to I/O pins (without jumper wires)
