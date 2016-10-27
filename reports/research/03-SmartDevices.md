@@ -3,38 +3,35 @@
 3.1 Background
 --------------
 
-In the context of this project, a smart device is a device that is capable of communicating with
-a computer or microcontroller using a wireless protocol, such as WiFi or Z-Wave. Each device 
-provides a set of inputs and outputs which can be controlled and examined using the communication
-protocol.
+In the context of this project, a smart device is a device that is capable of communicating over
+a wireless computer network, such as WiFi or ZigBee. Each device provides a set of inputs and outputs
+which can be controlled and examined using some protocol.
 
 3.2 Relation to System
 ----------------------
 
-We are looking at existing smart devices so that we can see if there are any devices that exist on
-the market that our system could use in order to lower the time required to build our own. Adding
-support for other smart devices also makes our system more appealing to the end user because they
-are not limited to only using devices we create but can go to a store and purchase any device that
-use technologies we support.
+This section examines several commercial smart device products which are available off-the-shelf.
+The goal of this research is to determine what types of devices are commercially available, and 
+to compare alternative products which have similar functionality. By purchasing off-the-shelf smart
+devices, the development time for the project can be focused on building the machine learning features
+which differentiate our product from many existing automation systems. An awareness of existing 
+smart devices will also allow us to select common technologies to support in the system. Support for 
+support for commercial smart devices makes our system more appealing to the end user because they
+are not limited to only using devices we create.
 
-**Rough List of Attributes**
+Where possible, research will focus on answering the following questions about a product or
+line of products:
 
-- list of inputs and outputs
+- What inputs and outputs does the device have? What type of information can the device provide to 
+the machine learning algorithm, and what can be controlled?
 
-What can be controlled? What types of information can we get from sensors?
+- Which communication protocol(s) are supported by the device?
 
-- communication protocol
+- Are the interfaces used to communicate with the device well-documented? Are there tutorials and SDKs
+available?s
 
-Which communication protocol(s) are supported by the device?
-
-- developer support
-
-Is the device's API well-documented? Is there a developer website?
-
-- API restrictions
-
-What restrictions does their API put on the system? For example, do users need to create an 
-account with the company in order to use the device with our system?
+- What restrictions does their API put on the system? For example, do users need to create an
+account with another company in order to use the device with our system?
 
 3.3 WeMo
 --------
