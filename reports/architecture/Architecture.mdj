@@ -10971,7 +10971,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFYBtpkKil8qHc="
 					},
-					"name": "ERDDiagram1",
+					"name": "SystemERDiagram",
 					"visible": true,
 					"defaultDiagram": false,
 					"ownedViews": [
