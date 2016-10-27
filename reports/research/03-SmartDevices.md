@@ -181,48 +181,48 @@ is controllable using the z-wave protocol.
 ### Available Devices
 
 1. White Bulbs
-- On/Off 
-- Dimming
+ - On/Off 
+ - Dimming
 
 
 2. White Ambiance Bulbs
-- On/Off
-- Dimming
-- Supports multiple shades of white
+ - On/Off
+ - Dimming
+ - Supports multiple shades of white
 
 3. Colour Ambiance Bulbs
-- On/Off
-- Dimming
-- Configurable colour
+ - On/Off
+ - Dimming
+ - Configurable colour
 
 4. Lightstrips
-- Adhesive strips of LED lights
-- Dimming
-- Configurable colours
-- Dynamic lighting/colour schemes
-- White light not supported
+ - Adhesive strips of LED lights
+ - Dimming
+ - Configurable colours
+ - Dynamic lighting/colour schemes
+ - White light not supported
 
 5. Lightstrip Plus
-- Adhesive strips of LED lights
-- Dimming
-- Configurable colours
-- Dynamic lighting/colour schemes
-- Supports white light
-- Brighter than regular Lightstrips (1600 Lumen)
-- Fine-grained fading control
+ - Adhesive strips of LED lights
+ - Dimming
+ - Configurable colours
+ - Dynamic lighting/colour schemes
+ - Supports white light
+ - Brighter than regular Lightstrips (1600 Lumen)
+ - Fine-grained fading control
 
 6. Dimmer switch
-- Battery-powered
-- Doesn't require the Hue bridge
-- Can't use it with other AC devices, no electrical contact with bulbs
+ - Battery-powered
+ - Doesn't require the Hue bridge
+ - Can't use it with other AC devices, no electrical contact with bulbs
 
 7. Tap Switch
-- Powered by touch - no battery or wires
-- Hue bridge and app required
+ - Powered by touch - no battery or wires
+ - Hue bridge and app required
 
 8. Hue Motion Sensor
-- Detects motion in the vicinity of a PIR sensor
-- Includes an integrated daylight sensor
+ - Detects motion in the vicinity of a PIR sensor
+ - Includes an integrated daylight sensor
 
 
 ### Developing with Hue
