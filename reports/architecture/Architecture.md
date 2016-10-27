@@ -73,9 +73,25 @@ that needs to be processed by the algorithm.
 
 ### Communication Server
 
+The communication server is responsible for routing all messages through the smart home system.
+The server has a cache of all connected devices and must store any related settings for each.
+Events and messages are routed through the communication server using the event interface. The
+communication server is also responsible for sending messages to other third party protocols.
+The server should provide a mechanism for installing plugins for other third party devices that
+are not natively supported.
+
 ### HTTP Gateway
 
+The HTTP gateway is responsible for supporting the web client interface. It must serve the web
+client's requests over a REST interface and translate them to the internal event interface used
+by the communication server. The gateway must be able to support multiple web clients.
+
 ### REST Interface
+
+The REST interface allows web communication from web clients to the HTTP gateway. This
+representational state transfer protocol must allow the web client to carry out interactions
+with the various devices connected in the system as well as view the current system state. This
+interface must provide both a monitoring and controlling the system.
 
 ### Device Communication
 
