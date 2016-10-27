@@ -157,12 +157,14 @@ variety of different ways for devices to connect to the Wink Hub.
 The two most common ways are:
 
 1) Button Pressing 
+
 Pressing a button on the Wink Hub broadcasts a pairing signal across the network.
 Any new device that recieves this signal will then appear on the network, and
 can be viewed from the Wink app. The user then selects the new device and enters
 the device ID (located on the physical device) to add it to the automation system. 
 
 2) Manufacturer Setup
+
 The new device must be added to the home network using the app provided by the manufacturer.
 Once it has been added through the manyfacturers app, it will be visible using the Wink
 app. It can be added to the automation system from here using the Wink app.
