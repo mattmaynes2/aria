@@ -136,8 +136,13 @@ WiFi and the Thread protocol.
 Nest provides API support through the nest cloud. The API is accessed as a RESTful service or 
 using Firebase.
 
-### Evaluation
+### Evalutaion
 
+The nest thermostat already has some machine learning on it. Trying to control it using our
+algorithm could cause unexpected results. They also require the use of a cloud API to control
+the thermostat and we are trying to avoid this and communicate locally with our devices. Due to
+these resons it seems like the nest thermostat is not a great fit for our system and we should
+not invest time into integrating with it.
 
 ### References
 
@@ -168,6 +173,10 @@ touch screen or through z-wave.
 There is no API provided by Honeywell. The thermostat 
 is controllable using the z-wave protocol.
 
+### Evaluation
+
+This is a simple thermostat that will be easy to control using z-wave and as it 
+doesn't have any learning on it there won't be any conflicts with our system.
 
 ### References 
 
