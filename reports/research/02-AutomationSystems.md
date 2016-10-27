@@ -16,69 +16,78 @@ of home automation, allowing us to better design our own system.
 
 The research will investigate the following characteristics of existing home automation systems:
 
-- **Supported Communication protocols**
+##### Supported Communication protocols
 
- Which protocols does the system support?
+Which protocols does the system support? If there are common protocols across all main automation
+systems then they should be considered for this system. Industry standard protocols may be
+discovered by reviewing these existing systems.
 
-- **Device Discovery/Setup**
+##### Device Discovery/Setup
 
- How are new devices added to the system's network?
+How are new devices added to the system's network? If there is a special focus on the ease of use
+then this system should consider the efforts that other systems have taken.
 
-- **Network**
+##### Network
  
- How do these systems setup the network of devices. Do they use a central server, are all devices
- independent etc..
+How do these systems setup the network of devices. Do they use a central server, are all devices
+independent? The network configuration of a system will govern its performance, power consumption
+and allowable number of connections. This research will investigate how these systems organize
+their network topologies to satisfy these quality attributes.
 
-- **API**
+##### API
 
- Does the system provide an API that our system could potentially use to control the devices 
- connected to these systems. In order to control these devices 
- we require that the following; a way to view all connected devices, 
- a way to get notifications when a device in the system changes states,
- a way to change the state of a device.
+Does the system provide an API that our system could potentially use to control the devices
+connected to these systems. In order to control these devices we require that the following; a way
+to view all connected devices, a way to get notifications when a device in the system changes
+states, a way to change the state of a device.
 
-- **Third Party Integrations**
- 
- Which companies have these systems decided are important to support
+##### Third Party Integrations
+
+Which companies have these systems decided are important to support? If there are accepted standards
+of third party integrations then this system should consider them in its design to maximize overall
+interoperability.
 
 
-2.2 INSTEON
+2.2 Insteon
 -----------
 
 ### Description
 
-INSTEON is a home automation system that allows control of the home through a phone. 
-Insteon supports contorling devices based on a scheduled, using IFTTT or through setting 
-up **scenes**.
+Insteon is a home automation system that allows smart devices to connect over a home area network
+with a focus on ease of use. Insteon allows you to monitor and control all of the devices within
+the system. All devices in connect through a central Insteon smart hub which is then controlled
+by the user through a app on the user's mobile device. Controlling of devices can also be automated
+using manually configured schedules, IFTTT or 
+through the use of **scenes**. 
 
 A scene is configured a configuration for a room that the user sets up at a specific time or when
-specific environmental conditions are met. INSTEON has all of the devices remember their current
-states and whenever it sees those states it has the devices recreate the saved scene.
+specific environmental conditions are met. Insteon has all of the devices remember their current
+states and whenever these states are met then it has the devices recreate the saved scene.
 
 ### Technical Overview
 
 #### Supported Communication Protocols
 
-INSTEON created their own protocol also called [INSTEON](#4.4-INSTEON) which is the communication protocol they
-support
+Insteon has a proprietary self titled [Insteon](#4.4-Insteon). This protocol is used for device 
+communication.
 
 #### Device Discovery/ Setup
 
-Adding a new device is done through the INSTEON app. The device is automatically discovered by the
+Adding a new device is done through the Insteon app. The device is automatically discovered by the
 system. Using the app the user selects the new device and enters the device ID after the ID is
 entered the device is able to be configured, naming the device adding it to a room etc..
 
 #### Network
 
-INSTEON uses a central hub to communicate between the devices and the users app.The central hub is
-required in order for the system to work (can't use INSTEON devices individually).
+Insteon uses a central hub to communicate between the devices and the users app.The central hub is
+required in order for the system to work (can't use Insteon devices individually).
 
-INSTEON uses a peer-to-peer network to connect the devices. All of INSTEON's devices can act as a
+Insteon uses a peer-to-peer network to connect the devices. All of Insteon's devices can act as a
 controller to send messages, a repeater to forward messages or a responder to receive messages.
 
 #### API
 
-INSTEON provides a REST API to interact with their devices. 
+Insteon provides a REST API to interact with their devices. 
 
 | Feature                                | supported |
 | ---------                              | --------  |
@@ -86,17 +95,17 @@ INSTEON provides a REST API to interact with their devices.
 | Receive update on device state change  |    Y      |
 | Modify device state                    |    Y      |
 
-In order to use the API approval from INSTEON is required. Applying
-for an API key is done through the INSTEON website.
+In order to use the API approval from Insteon is required. Applying
+for an API key is done through the Insteon website.
 
 ###### Limitations
 
-In order to use the API an INSTEON Hub is required also adding new INSTEON devices to a network
-still require configuration through the INSTEON App.
+In order to use the API an Insteon Hub is required also adding new Insteon devices to a network
+still require configuration through the Insteon App.
 
 ### Third Party Support
 
-INSTEON supports devices from the following manufacturers:
+Insteon supports devices from the following manufacturers:
 
 - Nest
 - Amazon Echo
@@ -108,26 +117,27 @@ INSTEON supports devices from the following manufacturers:
 
 ### Evaluation
 
-The INSTEON system is very reliable and easy to setup however because they use their own
+The Insteon system is very reliable and easy to setup however because they use their own
 communication protocol the devices that can be added is limited mostly to those manufactured by 
-INSTEON.
+Insteon.
 
-### Refrences
+### References
 
-[1] Apiary, "INSTEON API · Apiary,". [Online]. Available: http://docs.insteon.apiary.io/.
+[1] Apiary, "Insteon API · Apiary,". [Online]. Available: http://docs.Insteon.apiary.io/.
 Accessed: Oct. 6, 2016.
 
-[2] INSTEON®, "Home," in INSTEON, INSTEON, 2016. [Online]. Available: http://www.insteon.com/.
+[2] Insteon®, "Home," in Insteon, Insteon, 2016. [Online]. Available: http://www.Insteon.com/.
 Accessed: Oct. 6, 2016.
 
-[3] INSTEON®, "WHITEPAPER: Compared,". [Online]. Available:
-http://cache.insteon.com/documentation/insteon_compared.pdf. Accessed: Oct. 6, 2016.
+[3] Insteon®, "WHITEPAPER: Compared,". [Online]. Available:
+http://cache.Insteon.com/documentation/Insteon_compared.pdf. Accessed: Oct. 6, 2016.
 
-[5] INSTEON®, "WHITEPAPER: The Details,". [Online]. Available:
-http://cache.insteon.com/documentation/insteon_details.pdf. Accessed: Oct. 6, 2016.
+[4] Insteon®, "WHITEPAPER: The Details,". [Online]. Available:
+http://cache.Insteon.com/documentation/Insteon_details.pdf. Accessed: Oct. 6, 2016.
 
-[4] SMARTHOME®, "INSTEON home automation,". [Online]. Available:
-http://www.smarthome.com/sc-what-is-insteon-home-automation. Accessed: Oct. 6, 2016.
+[5] SMARTHOME®, "Insteon home automation,". [Online]. Available:
+http://www.smarthome.com/sc-what-is-Insteon-home-automation. Accessed: Oct. 6, 2016.
+
 
 -----------------------
 
