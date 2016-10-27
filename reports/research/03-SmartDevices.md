@@ -176,7 +176,7 @@ is controllable using the z-wave protocol.
 ### Evaluation
 
 This is a simple thermostat that will be easy to control using z-wave and as it 
-doesn't have any learning on it there won't be any conflicts with our system.
+doesn't have any learning on it, so there won't be any conflicts with our system.
 
 ### References 
 
