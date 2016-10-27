@@ -81,7 +81,14 @@ that needs to be processed by the algorithm.
 
 ### Sensor Interface
 
+This interface allows the Device Communication to read events from sensors and 
+pass them on to the communication server. This interface is provided by the
+Sensor Reader and consumed by the Device Communication.
+
 ### Sensor Reader
+
+The Sensor Reader is responsible for listening to a sensor and providing 
+events when sensor data changes. The Sensor Reader will provide the Sensor Interface.
 
 ### Device Controller
 
