@@ -173,9 +173,6 @@ http://buildyoursmarthome.co/home-automation/protocols/x10/. Accessed: Oct. 8, 2
 https://www.intellihome.be/en/kbase/INSTEON/What_home_automation_protocol_should_I_choose\_-2.html.
 Accessed: Oct. 8, 2016.
 
-
-
-
 4.5 WiFi
 ---------
 
@@ -224,10 +221,8 @@ House, 2016. [Online]. Available:
 https://www.electronichouse.com/smart-home/home-automation-protocols-what-technology-is-right-for-you/.
 Accessed: Oct. 8, 2016.
 
-
-
 4.6 Bluetooth
----------
+-------------
 
 ### Description
 Bluetooth is the most similar to WiFi of the alternative options. It is fairly common in households, 
@@ -269,20 +264,19 @@ https://atmosphere.anaren.com/wiki/Data_rates_using_BLE. Accessed: Oct. 9, 2016.
 https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336. Accessed: Oct. 9, 2016.
 
 
-
 4.7 Summary of Evaluation
 -------------------------
 
-###Evaluation Criteria
+### Evaluation Criteria
 
-| Protocol | Transfer Rate | Battery Life | Interoperability | # of Connections | Frequency | Range   | Topology |
-| ---------| ------------  | ------------ | ---------------- | ---------------- | --------- | ------- | -------- |   
-| ZigBee   | 250 Kbps      |  good        |  good            |    256           |  2.4 GHz  | 35 ft   |  Mesh    |           
-| Z-Wave   | 40 Kbps       |  great       |  great           |    232           |  915 MHz  | 100 ft  |  Mesh    |          
-| INSTEON  | 13 Kbps       |  good        |  bad             |    N/A           |  915 MHz  | 150 ft  |  Mesh    |           
-| WiFi     | 54 Mbps       |  bad         |  great           |    256           |  2.4 GHz  | 105 ft  |  Star    |             
-| BLE      | 10 Kbps       |  good        |  great           |     9            |  2.4 GHz  | 200 ft  |  Star    |
- 
+| Protocol  | Transfer Rate | Battery Life | Interoperability | # of Connections | Frequency | Range   | Topology |
+| --------- | ------------  | ------------ | ---------------- | ---------------- | --------- | ------- | -------- |
+| ZigBee    | 250 Kbps      | good         | good             | 256              | 2.4 GHz   | 35 ft   | Mesh     |
+| Z-Wave    | 40 Kbps       | great        | great            | 232              | 915 MHz   | 100 ft  | Mesh     |
+| INSTEON   | 13 Kbps       | good         | bad              | N/A              | 915 MHz   | 150 ft  | Mesh     |
+| WiFi      | 54 Mbps       | bad          | great            | 256              | 2.4 GHz   | 105 ft  | Star     |
+| BLE       | 10 Kbps       | good         | great            | 9                | 2.4 GHz   | 200 ft  | Star     |
+
 As stated above, the goal of this research was to pick an appropriate protocol for our system.
 One of the differing attributes between the protocols is the data transfer rates. 
 The required data rate for most smart home devices is minimal, and a higher data rate demands more power. 
@@ -309,12 +303,12 @@ Overall, we decided that using Z-Wave as our primary communication protocol was 
 for this project, while supporting WiFi devices as well.
 
 
-4.8 Z-Wave Implementation Specifics
------------------------------------
+### Z-Wave Implementation Specifics
 
 Any processing unit with USB support can be easily turned into a Z-Wave master, using a Z-Wave 
 USB stick. Converting an Arduino into a Z-Wave slave is not simple. There are specialized 
 Arduino boards that have the Z-Wave protocol built in. Another option is to attach a radio
 frequency device to an Arduino, and to implement the Z-Wave stack protocol manually. The easiest
 way to have Z-Wave slave devices is simply not to make them, but to buy them.
+ss
 

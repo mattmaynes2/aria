@@ -336,7 +336,7 @@ Developer information [https://us.lightify-api.org]
 
 -----------------------
 
-3.7 Aeotec Light Bulbs
+3.8 Aeotec Light Bulbs
 ----------------------
 
 ### Description
@@ -362,7 +362,7 @@ with most Z-Wave hubsAeotec does not provide a proprietary API for their product
 | colour     | colour     | Z-Wave Developer    |          |                      |
 | brightness | brightness |                     |          |                      |
 
-3.8 Aeon Labs
+3.9 Aeon Labs
 -----------------
 
 ### Description
@@ -412,7 +412,7 @@ machine learning algorithm.
 
 -----------------------
 
-3.9 Spruce Irrigation
+3.10 Spruce Irrigation
 -----------------------
 
 ### Description
@@ -454,7 +454,7 @@ Accessed: Oct. 13, 2016.
 
 -----------------------
 
-3.10 OSO PlantLink
+3.11 OSO PlantLink
 -------------------
 
 ### Description
@@ -490,10 +490,11 @@ there we plan on integrating with another smart system
 [1] "PlantLink," PlantLink, 2016. [Online]. Available: https://myplantlink.com/in-action.
 Accessed: Oct. 13, 2016.
 
+
 -----------------------
 
 
-3.11 Summary of Evaluation
+3.12 Summary of Evaluation
 --------------------------
 
 All of the evaluation grouped together
