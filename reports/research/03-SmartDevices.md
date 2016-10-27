@@ -43,17 +43,43 @@ using a smartphone app.
 
 ### Available Devices
 
-The following WeMo products are available:
+1. Light switch
+ - On/Off
 
-- Light switch
-- Outlet switch
-- Camera
-- LED lights
-- Slow Cooker
-- Coffeemaker
-- Air Purifier
-- Humidifier 
-- Heater
+2. Outlet switch
+ - On/Off
+
+3. Camera
+ - On/Off
+ - Motion detection
+
+4. LED lights
+ - On/Off
+ - Dimming
+
+5. Slow Cooker
+ - On/Off
+ - Temperature Control
+
+6. Coffeemaker
+ - On/Off
+ - Brew status
+ - Change filter
+
+7. Air Purifier
+ - Fan speed
+ - Ionizing On/Off
+ - Filter life
+ 
+8. Humidifier 
+ - Humidity level
+ - Water status
+ - Filter status
+
+9. Heater
+ - On/Off
+ - Temperature
+ - Power level
 
 ### Technical Overview
 
