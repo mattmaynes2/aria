@@ -58,13 +58,18 @@ as long as it provides the decision interface. The ML algorithm will receive dat
 event logger using snapshots of data. These data snapshots will reduce the amount of information
 that the ML algorithm needs to process by removing redundant information.
 
-
 ### Decision Interface
 
+The decision interface allows the ML algorithm to enter commands into the communication server
+which will be translated into events for the system. This interface must be provided by the ML
+algorithm and will be consumed by the communication server.
 
 ### Snapshot Interface
 
-
+This interface allows the ML algorithm to receive a subset of the data from the event logger.
+The snapshots remove any duplicate information before sending it to the ML algorithm for
+processing. This reduces the amount of data that needs to be sent as well as the amount of data
+that needs to be processed by the algorithm.
 
 ### Communication Server
 
