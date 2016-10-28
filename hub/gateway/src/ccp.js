@@ -18,4 +18,17 @@ module.exports.parse = function (buffer) {
 
 module.exports.serialize = function(packet) {
 
+    var payloadSize = JSON.stringify(packet.payload).length
+    var packetSize = 1 + 4 + 16 + 16 + payloadSize
+
+    var buf = new Buffer(5)
+
+    buf.writeUInt8(packet.type, 0)
+    buf.writeUInt32BE(payloadSize, 1)
+
+
+    return  Buffer.concat ([buf,
+                           packet.sender,
+                           packet.destination,
+                           Buffer.from(JSON.stringify(packet.payload))]);
 }
