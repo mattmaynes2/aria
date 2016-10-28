@@ -12,8 +12,5 @@ def parse ():
         usage       = '%(prog)s [options]',
         description = DESCRIPTION
     )
-    parser.add_argument(
-        help = 'Sets the server port for device communications'
-    )
 
     return parser.parse_args()
