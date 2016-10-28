@@ -36,9 +36,3 @@ describe('Parse packet', function () {
         expect(packets.parse(buf)).to.deep.equal(expectedStructure);
     });
 });
-
-describe('Serialize packet', function() {
-
-})
-
-

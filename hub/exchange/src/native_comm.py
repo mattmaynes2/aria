@@ -8,15 +8,15 @@ class NativeComm (comm.Comm):
     def __init__ (self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.port = NativeComm.PORT
+        self._addresses={}
 
-    def setup (self):
+    def setup (self ):
         try:
             self.socket.bind(('localhost', self.port))
             print('Socket opened to port ' + str(self.port))
         except socket.error as msg:
             print('Socket failed to connect to port ' + str(self.port) + ' with: ' + msg);
-            return False;
-        return True
+        self.receive()
 
     def teardown (self):
         self.socket.close()
@@ -31,9 +31,25 @@ class NativeComm (comm.Comm):
     """
     send a message to a device
     """
-    def send(device, msg):pass
+    def send(self, msg, address = None):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+        if (address):
+            receiver = address
+        elif (msg.receiver in self._addresses):
+            receiver = self._addresses[msg.receiver]
+        else:
+            raise NameError('Unknown receiver')
+
+        sock.sendto(msg.encode(), receiver)
 
     """
     listen for messages from devices
     """
-    def receive(): pass
+    def receive(self):
+        data,address = self.socket.recvfrom(1024)
+        msg = message.Message.decode(data)
+        self._addresses[msg.sender]=address
+        print ('Got Message')
+        # self.listener.message(msg)
+

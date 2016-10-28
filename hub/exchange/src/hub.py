@@ -1,10 +1,11 @@
 import exchange
 import cli
+import hub_comm
+
 
 from hubmode import HubMode
 
 class Hub:
-    PORT = 7600
     VERSION = '0.0.2'
 
     def __init__ (self, args = {}):
@@ -13,12 +14,14 @@ class Hub:
         self.name = 'My Hub'
         self.mode = HubMode.Normal
 
-        self.exchange.port = args.port if args.port else Hub.PORT
+        self.hub_comm = hub_comm.HubComm(self)
 
         cli.CLI(self).start()
 
     def start (self):
-        self.exchange.bind()
+        # TODO change device type
+        self.exchange.register('hub', self.hub_comm)
+
 
     def stop (self):
         self.exchange.release()
@@ -28,8 +31,10 @@ class Hub:
             return self.status()
 
     def exit (self):
+        print('Tearing down connections')
         # TODO teardown all connections
         self.stop()
+        print('Complete')
 
     def status (self):
         return {

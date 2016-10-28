@@ -19,7 +19,7 @@ class Comm:
     """
     send a message to a device
     """
-    def send (device, message) : pass
+    def send (message) : pass
 
     """
     close connections and unbind from port
