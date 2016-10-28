@@ -7,8 +7,12 @@ tests that need to be completed for a minimum viable product.
 ## Startup
 
 The server should start up and connect to a port for communication. The default port that should
-be connected to is 7600.
+be connected to is 7600. The server should accept a command line input for the port with the
+flag `-p` or `--port`.
 
+## Device Status
+
+The exchange should be able to formulate a request for a device's status.
 
 
 
