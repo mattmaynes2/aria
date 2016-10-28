@@ -15,3 +15,7 @@ module.exports.parse = function (buffer) {
         payload: payload
     };
 };
+
+module.exports.serialize = function(packet) {
+
+}
