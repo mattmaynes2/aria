@@ -28,7 +28,7 @@ How are new devices added to the system's network? If there is a special focus o
 then this system should consider the efforts that other systems have taken.
 
 ##### Network
- 
+
 How do these systems setup the network of devices. Do they use a central server, are all devices
 independent? The network configuration of a system will govern its performance, power consumption
 and allowable number of connections. This research will investigate how these systems organize
@@ -136,21 +136,30 @@ Insteon. A closed system such as this is not what we are striving for with this 
 
 ### References
 
-[1] Apiary, "Insteon API · Apiary,". [Online]. Available: http://docs.Insteon.apiary.io/.
+<cite>
+[1] Apiary, "Insteon API · Apiary,". [Online]. Available: <http://docs.Insteon.apiary.io/>.
 Accessed: Oct. 6, 2016.
+</cite>
 
-[2] Insteon®, "Home," in Insteon, Insteon, 2016. [Online]. Available: http://www.Insteon.com/.
+<cite>
+[2] Insteon®, "Home," in Insteon, Insteon, 2016. [Online]. Available: <http://www.Insteon.com/>.
 Accessed: Oct. 6, 2016.
+</cite>
 
+<cite>
 [3] Insteon®, "WHITEPAPER: Compared,". [Online]. Available:
-http://cache.Insteon.com/documentation/Insteon_compared.pdf. Accessed: Oct. 6, 2016.
+<http://cache.Insteon.com/documentation/Insteon_compared.pdf>. Accessed: Oct. 6, 2016.
+</cite>
 
+<cite>
 [4] Insteon®, "WHITEPAPER: The Details,". [Online]. Available:
-http://cache.Insteon.com/documentation/Insteon_details.pdf. Accessed: Oct. 6, 2016.
+<http://cache.Insteon.com/documentation/Insteon_details.pdf>. Accessed: Oct. 6, 2016.
+</cite>
 
+<cite>
 [5] SMARTHOME®, "Insteon home automation,". [Online]. Available:
-http://www.smarthome.com/sc-what-is-Insteon-home-automation. Accessed: Oct. 6, 2016.
-
+<http://www.smarthome.com/sc-what-is-Insteon-home-automation>. Accessed: Oct. 6, 2016.
+</cite>
 
 -----------------------
 
@@ -233,15 +242,21 @@ connecting devices from any manufacturer will likely be useful to us for this pr
 
 ### References
 
+<cite>
 [1] Apiary, "Wink API · Apiary,". [Online]. Available:
-http://docs.winkapiv2.apiary.io/#reference/oauth/obtain-access-token.
+<http://docs.winkapiv2.apiary.io/#reference/oauth/obtain-access-token>.
 Accessed: Oct. 9, 2016.
+</cite>
 
-[2] "Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: http://wiki.winkathome.net/Wink_FAQ.
+<cite>
+[2] "Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: <http://wiki.winkathome.net/Wink_FAQ>.
 Accessed: Oct. 6, 2016.
+</cite>
 
-[3] Wink, "A simpler smart home," Wink, 2016. [Online]. Available: http://www.wink.com/help/faq/.
+<cite>
+[3] Wink, "A simpler smart home," Wink, 2016. [Online]. Available: <http://www.wink.com/help/faq/>.
 Accessed: Oct. 8, 2016.
+</cite>
 
 -----------------------
 
@@ -308,11 +323,15 @@ connection to a cloud service is something that we would like to avoid for our p
 
 ### References
 
+<cite>
 [1] "Samsung SmartThings hub FAQ — SmartThings developer documentation," 2016. [Online].
-Available: http://docs.smartthings.com/en/latest/sept-2015-faq.html. Accessed: Oct. 6, 2016.
+Available: <http://docs.smartthings.com/en/latest/sept-2015-faq.html>. Accessed: Oct. 6, 2016.
+</cite>
 
+<cite>
 [2] SmartThings, "How it works," SmartThings, 2016. [Online].
-Available: https://www.smartthings.com/how-it-works. Accessed: Oct. 10, 2016.
+Available: <https://www.smartthings.com/how-it-works>. Accessed: Oct. 10, 2016.
+</cite>
 
 -----------------------
 
@@ -348,33 +367,40 @@ able to communicate with one another.
 
 #### API
 
-| Feature                                | supported |
-| ---------                              | --------  |
-| List all devices                       |    Y      |
-| Receive update on device state change  |    Y      |
-| Modify device state                    |    Y      |
+| Feature                               | Supported |
+| ---------                             | --------  |
+| List all devices                      | Y         |
+| Receive update on device state change | Y         |
+| Modify device state                   | Y         |
 
 ### Evaluation
 
-There are a few aspecs of the Apple HomeKit that are not ideal for incorperation into 
-our project. First, it is Apple excluse, which goes against the goal of having many
-third party support options. The lack of a central hub also makes it difficult to 
-having support for many different types of devices. The level of communication
-between devices that is offered by the Apple solution is a desirable feature,
-but will be difficult to achieve while maintaining diverse third party support.
-
+There are a few aspects of the Apple HomeKit that are not ideal for incorporation into our project.
+First, it is Apple exclusive, which goes against the goal of having many third party support
+options. The lack of a central hub also makes it difficult to having support for many different
+types of devices. The level of communication between devices that is offered by the Apple solution
+is a desirable feature, but will be difficult to achieve while maintaining diverse third party
+support.
 
 ### References
 
-[1] "Use the home app on your iPhone, iPad, and iPod touch," Apple Support, 2016. [Online]. 
-Available: https://support.apple.com/en-ca/HT204893. Accessed: Oct. 10, 2016.
+<cite>
+[1] "Use the home app on your iPhone, iPad, and iPod touch," Apple Support, 2016. [Online].
+Available: <https://support.apple.com/en-ca/HT204893>. Accessed: Oct. 10, 2016.
+</cite>
 
-[2] Apple, "Creating homes and adding accessories," 2016. [Online]. 
-Available: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/
-HomeKitDeveloperGuide/WritingtotheHomeKitDatabase/WritingtotheHomeKitDatabase.html#//apple_ref/doc/uid/TP40015050-CH4-SW1. Accessed: Oct. 10, 2016.
+<cite>
+[2] Apple, "Creating homes and adding accessories," 2016. [Online]. Available:
+<https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/HomeKitDeveloperGuide/WritingtotheHomeKitDatabase/WritingtotheHomeKitDatabase.html#//apple_ref/doc/uid/TP40015050-CH4-SW1>.
+Accessed: Oct. 10, 2016.
+</cite>
 
-[3] E. Betters, "Apple HomeKit and home app: What are they and how do they work?," Pocket-lint, 2016. [Online]. Available: 
-http://www.pocket-lint.com/news/129922-apple-homekit-and-home-app-what-are-they-and-how-do-they-work. Accessed: Oct. 10, 2016.
+<cite>
+[3] E. Betters, "Apple HomeKit and home app: What are they and how do they work?,"
+Pocket-lint, 2016. [Online]. Available:
+<http://www.pocket-lint.com/news/129922-apple-homekit-and-home-app-what-are-they-and-how-do-they-work>.
+Accessed: Oct. 10, 2016.
+</cite>
 
 -------------
 
@@ -387,9 +413,9 @@ different manufacturers to communicate to each other through the hub. A challeng
 a large number of devices presents is how to discover new devices into a system, which can be delt
 with in several different ways such as manual button pressing or app configuration. 
 
-Looking at these systems also presented several communcation protocols to investigate, including
+Looking at these systems also presented several communication protocols to investigate, including
 Z-wave, Zigbee, Insteon and WiFi. Along side these are devices from many different manufacturers 
-which operate using these communication protocols. Deciding on a communicaiton protocol and 
+which operate using these communication protocols. Deciding on a communication protocol and 
 subsequent device manufactures to support is an important part of our design for our home
 automation system.
 
