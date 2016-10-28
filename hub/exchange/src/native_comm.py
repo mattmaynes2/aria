@@ -16,7 +16,7 @@ class NativeComm (comm.Comm):
             print('Socket opened to port ' + str(self.port))
         except socket.error as msg:
             print('Socket failed to connect to port ' + str(self.port) + ' with: ' + msg);
-        receive()
+        self.receive()
 
     def teardown (self):
         self.socket.close()
@@ -33,12 +33,12 @@ class NativeComm (comm.Comm):
     """
     def send(msg):
         socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-        socket.sendto()
+        socket.sendto(msg.encode(),slef.addressCache[msg.receiver])
 
     """
     listen for messages from devices
     """
-    def receive():
+    def receive(self):
         data,address = self.socket.recvfrom(1024)
         msg = message.Message.decode(data)
         self.addressCache[msg.sender]=address
