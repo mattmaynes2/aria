@@ -7,11 +7,16 @@ class Exchange ():
     def register (self, device_type, comm):
         self.comms[device_type] = comm
         comm.setup(self)
+        comm.start()
 
     def send (self, device, message):
         # TODO Log sending a message here
         if (device.type in self.comms):
             self.comms[device.type](message)
+
+    def teardown (self):
+        for comm in self.comms:
+            self.comms[comm].teardown()
 
     def message (self, msg):
         # TODO Add thread synchronization

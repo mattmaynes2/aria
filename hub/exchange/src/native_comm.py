@@ -6,12 +6,13 @@ class NativeComm (comm.Comm):
     PORT = 7600 # Default system port
 
     def __init__ (self):
-        super.__init__()
+        super().__init__()
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.port = NativeComm.PORT
         self._addresses={}
 
-    def setup (self):
+    def setup (self, listener):
+        self.listener = listener
         try:
             self.socket.bind(('localhost', self.port))
             print('Socket opened to port ' + str(self.port))
@@ -19,6 +20,7 @@ class NativeComm (comm.Comm):
             print('Socket failed to connect to port ' + str(self.port) + ' with: ' + msg);
 
     def teardown (self):
+        super().teardown()
         self.socket.close()
         return True
 
@@ -51,5 +53,5 @@ class NativeComm (comm.Comm):
         msg = message.Message.decode(data)
         self._addresses[msg.sender]=address
         print ('Got Message')
-        # self.listener.message(msg)
+        self.listener.message(msg)
 

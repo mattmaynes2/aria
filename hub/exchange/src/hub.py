@@ -1,7 +1,7 @@
 import exchange
 import cli
 import hub_comm
-
+import native_comm
 
 from hubmode import HubMode
 
@@ -21,10 +21,11 @@ class Hub:
     def start (self):
         # TODO change device type
         self.exchange.register('hub', self.hub_comm)
+        self.exchange.register('native', native_comm.NativeComm())
 
 
     def stop (self):
-        self.exchange.release()
+        self.exchange.teardown()
 
     def command (self, action):
         if action == 'status':

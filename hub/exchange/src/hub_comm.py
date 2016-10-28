@@ -4,6 +4,7 @@ import message
 class HubComm (comm.Comm):
 
     def __init__ (self, hub):
+        super().__init__()
         self.hub = hub
 
     def setup (self, listener):

@@ -15,27 +15,28 @@ class Comm (threading.Thread):
     communicate with devices
 
     """
-    def setup(self) : pass
+    def setup (self) : pass
 
     """
     scan network for any new devices
     """
-    def discover() : pass
+    def discover (self) : pass
 
     """
     send a message to a device
     """
-    def send (message) : pass
+    def send (self, message) : pass
 
     """
     close connections and unbind from port
     """
-    def teardown() : pass
+    def teardown(self) :
+        self.active = False
 
     """
     listen for messages from devices
     """
-    def receive(): pass
+    def receive (self): pass
 
     def run (self):
         while (self.active):
