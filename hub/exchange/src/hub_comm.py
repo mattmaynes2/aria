@@ -9,13 +9,14 @@ class HubComm (comm.Comm):
     def setup (self, listener):
         self.listener = listener
 
-    def send (msg):
-        if (msg.data.action == 'status')
-            listener.message(
+    def send (self, msg):
+        if ('action' in msg.data and msg.data.action == 'status'):
+            self.listener.message(
                 message.Message(
-                data  = self.hub.status(),
-                sender = message.default,
-                receiver = msg.sender
-                )
+                    data  = self.hub.status(),
+                    sender = message.default,
+                    receiver = msg.sender
+                    )
+            )
 
 
