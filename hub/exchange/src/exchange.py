@@ -16,9 +16,3 @@ class Exchange ():
 
 
 
-if (__name__ == '__main__'):
-    exc = Exchange()
-    exc.bind()
-    print('Success!')
-
-
