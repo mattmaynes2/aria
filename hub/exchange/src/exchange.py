@@ -11,7 +11,6 @@ class Exchange ():
     def bind (self):
         try:
             self.socket.bind(('localhost', self.port))
-            print('Socket opened to port ' + str(self.port))
         except socket.error as msg:
             print('Socket failed to connect to port ' + str(self.port) + ' with: ' + msg);
             return False;
