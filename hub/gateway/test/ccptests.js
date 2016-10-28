@@ -12,10 +12,10 @@ describe('Parse packet', function () {
             payload: 0
         }
 
-        const buf = Buffer.from ([1,
-                                0, 0, 0, 4,
-                                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16,
-                                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 16,
+        const buf = Buffer.from ([0x01,
+                                0, 0, 0, 0x04,
+                                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x10,
+                                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0x10,
                                 0, 0, 0, 0 ]);
 
         expect(packets.parse(buf)).to.deep.equal(expectedStructure);
