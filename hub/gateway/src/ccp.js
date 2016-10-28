@@ -1,4 +1,3 @@
-exports.parsePacket = function(buffer)
-{
-
-}
+module.exports.parse = function () {
+    return '';
+};
