@@ -24,7 +24,7 @@ class CLI (threading.Thread):
         elif cmd not in CLI.COMMANDS.keys():
             print('Unknown command ' + cmd + '. See help for details')
         else:
-            self.listener.command(cmd)
+            print(self.listener.command(cmd))
 
     def help (self):
         print('Commands')

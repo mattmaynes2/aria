@@ -28,8 +28,10 @@ class Hub:
             return self.status()
 
     def exit (self):
+        print('Tearing down connections')
         # TODO teardown all connections
         self.stop()
+        print('Complete')
 
     def status (self):
         return {
