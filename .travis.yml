@@ -1,12 +1,12 @@
 sudo: required
 dist: trusty
-language : python3
+language : node_js
 node_js:
     - "6"
 before_install:
-    - "curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -"
-    - "./build/support/pkman install node"
+    - "./build/support/pkman install python3"
     - "node --version"
+    - "python --version"
     - "./build/run enviro"
     - "./build/run deps"
 install : "./build/run build"
