@@ -4,7 +4,7 @@
 --------------
 
 In the context of this project, a smart device is a device that is capable of communicating over
-a wireless computer network, such as WiFi or z-wave. Each device provides a set of inputs and outputs
+a wireless computer network, such as WiFi or Z-Wave. Each device provides a set of inputs and outputs
 which can be controlled and examined using some protocol.
 
 3.2 Relation to System
@@ -110,11 +110,15 @@ All WeMo Devices
 
 ### References
 
+<cite>
 [1] B. International, "WeMo," WeMo, 2014. [Online]. Available:
-http://www.belkin.com/whatiswemo/. Accessed: Oct. 6, 2016.
+<http://www.belkin.com/whatiswemo/>. Accessed: Oct. 6, 2016.
+</cite>
 
+<cite>
 [2] "Ouimeaux 0.8: Python package index,". [Online]. Available:
-https://pypi.python.org/pypi/ouimeaux. Accessed: Oct. 6, 2016.
+<https://pypi.python.org/pypi/ouimeaux>. Accessed: Oct. 6, 2016.
+</cite>
 
 -----------------------
 
@@ -123,17 +127,17 @@ https://pypi.python.org/pypi/ouimeaux. Accessed: Oct. 6, 2016.
 
 ### Description
 
-The Nest thermostat is a smart learning thermostat. Over time  the thermostat learns the 
-homeowner's routine and adjusts the temperature accordingly. The thermostat also turns
-off automatically when it detects that nobody is home, and can be remotely controlled 
-using a smartphone app.
+The Nest thermostat is a smart learning thermostat. Over time  the thermostat learns the
+homeowner's routine and adjusts the temperature accordingly. The thermostat also turns off
+automatically when it detects that nobody is home, and can be remotely controlled using a
+smartphone app.
 
 ### Technical Overview
 
 Nest communicates using WiFi and a custom nest protocol called **Nest Weave**. Nest Weave uses
 WiFi and the Thread protocol.
 
-Nest provides API support through the nest cloud. The API is accessed as a RESTful service or 
+Nest provides API support through the nest cloud. The API is accessed as a RESTful service or
 using Firebase.
 
 ### Evalutaion
@@ -146,9 +150,16 @@ not invest time into integrating with it.
 
 ### References
 
-[1] "Meet the nest learning thermostat," Nest Labs, 2016. [Online]. Available: https://nest.com/ca/thermostat/meet-nest-thermostat/. Accessed: Oct. 24, 2016.
+<cite>
+[1] "Meet the nest learning thermostat," Nest Labs, 2016. [Online]. Available: 
+<https://nest.com/ca/thermostat/meet-nest-thermostat/>. Accessed: Oct. 24, 2016.
+</cite>
 
-[2] [Online]. Available: https://developers.nest.com/documentation/cloud/data-structure-and-access. Accessed: Oct. 24, 2016.
+<cite>
+[2] [Online]. Available:
+<https://developers.nest.com/documentation/cloud/data-structure-and-access>.
+Accessed: Oct. 24, 2016.
+</cite>
 
 -----------------------
 
@@ -165,22 +176,24 @@ features.
 
 ### Communication 
 
-The thermostat communicates can be controlled through the
-touch screen or through z-wave. 
+The thermostat communicates can be controlled through the touch screen or through Z-Wave. 
 
 ### API
 
-There is no API provided by Honeywell. The thermostat 
-is controllable using the z-wave protocol.
+There is no API provided by Honeywell. The thermostat is controllable using the Z-Wave protocol.
 
 ### Evaluation
 
-This is a simple thermostat that will be easy to control using z-wave and as it 
-doesn't have any learning on it, so there won't be any conflicts with our system.
+This is a simple thermostat that will be easy to control using Z-Wave and as it doesn't have any
+learning on it, so there won't be any conflicts with our system.
 
 ### References 
 
-[1]Honeywell. [Online]. Available: http://library.ademconet.com/MWT/fs2/5800ZBRIDGE/ZWSTAT-Dealer-Data-Sheet.pdf. Accessed: Oct. 26, 2016.
+<cite>
+[1] Honeywell. [Online]. Available:
+<http://library.ademconet.com/MWT/fs2/5800ZBRIDGE/ZWSTAT-Dealer-Data-Sheet.pdf>.
+Accessed: Oct. 26, 2016.
+</cite>
 
 -----------------
 
@@ -321,7 +334,7 @@ notable limitation of the LIGHTIFY API is that it is a cloud-only API. This mean
 the LIGHTIFY gateway is strongly tied to a homeowner's LIGHTIFY account; Osram does not 
 document any local-only API for controlling devices using a gateway
 
-Developer information [https://us.lightify-api.org]
+Developer information <https://us.lightify-api.org>
 
 ### Research Attributes
 
@@ -341,8 +354,8 @@ Developer information [https://us.lightify-api.org]
 
 ### Description
 
-Aeotec sells lightbulbs which are compatible with the Z-Wave protocol. Aeotec products are compatible
-with most Z-Wave hubsAeotec does not provide a proprietary API for their products.
+Aeotec sells light bulbswhich are compatible with the Z-Wave protocol. Aeotec products are compatible
+with most Z-Wave hubs. Aeotec does not provide a proprietary API for their products.
 
 ### Available Devices
 
@@ -367,48 +380,56 @@ with most Z-Wave hubsAeotec does not provide a proprietary API for their product
 
 ### Description
 
-Aeon Labs is a company that produces a large varity of Z-Wave devices. They also provide
+Aeon Labs is a company that produces a large variety of Z-Wave devices. They also provide
 the ability to create your own home automation hub.
-
 
 ### Technical Overview
 
-Aeon Labs produce a USB dongle that allows you to turn any computing device into a Z-Wave communication
-hub. This hub allows the user to manually control any Z-Wave device on the Z-Wave network, and provides
-the functionality to add and remove devices to/from the network. To add a Z-Wave device, start by 
-unplugging the dongle from the hub and pushing the button on it. Then walk to the new device and push the 
-button on the device. The dongle must also be unplugged to remove a device from the network. To put it in 
-removal mode, push and hold the button on the dongle. Then go to each device you wish to remove from the
-network and push the button. The dongle can be bought for about $60.
+Aeon Labs produce a USB dongle that allows you to turn any computing device into a Z-Wave
+communication hub. This hub allows the user to manually control any Z-Wave device on the Z-Wave
+network, and provides the functionality to add and remove devices to/from the network. To add a
+Z-Wave device, start by unplugging the dongle from the hub and pushing the button on it. Then
+walk to the new device and push the button on the device. The dongle must also be unplugged to
+remove a device from the network. To put it in removal mode, push and hold the button on the
+dongle. Then go to each device you wish to remove from the network and push the button. The dongle
+can be bought for about $60.
 
-They do not provide their own hub, which is ideal for out project. They simply allow the ability to turn
-a computing device into a custom hub by providing the required RF signal to communicate with Z-Wave devices.
-To begin development for Z-Wave devices, The list of Z-Wave devices from Aeon Labs alone is fairly extensive.
-The list include but is not limited to: door sensors, window sensors, lights, energy meters, range extenders, 
-etc. Most of these devices cost around $60 - $80. 
+They do not provide their own hub, which is ideal for out project. They simply allow the ability
+to turn a computing device into a custom hub by providing the required RF signal to communicate
+with Z-Wave devices. To begin development for Z-Wave devices, The list of Z-Wave devices from
+Aeon Labs alone is fairly extensive. The list include but is not limited to: door sensors, window
+sensors, lights, energy meters, range extenders.
 
-The specification for interacting with Z-Wave devices is public, and available at 
-http://zwavepublic.com/specifications. There is also an open Z-Wave sdk available, to communicate from
+The specification for interacting with Z-Wave devices is public, and available at
+<http://zwavepublic.com/specifications>. There is also an open Z-Wave sdk available, to communicate from
 the controller to devices.
 
 
 ### Evaluation
 
-Aeon Labs is an ideal solution for our project. To start, there is an easy way to set up our own hub, instead
-of being constrained to buying one. This allows us to implement the features we want, and add support for
-protocols we want without restriction. Having access to an sdk is very important to us as well. It lets us
-not be responsible for implementing the Z-Wave stack protocol, while also giving us the freedom to use the
-information recieved by the devices in a unique way. Specifically, this will provide us with data for the
-machine learning algorithm. 
-
+Aeon Labs is an ideal solution for our project. To start, there is an easy way to set up our own
+hub, instead of being constrained to buying one. This allows us to implement the features we want,
+and add support for protocols we want without restriction. Having access to an sdk is very
+important to us as well. It lets us not be responsible for implementing the Z-Wave stack protocol,
+while also giving us the freedom to use the information received by the devices in a unique way.
+Specifically, this will provide us with data for the machine learning algorithm.
 
 ### References
 
-[1]	"Z-Stick 2E manual," Aeotec, Aeon Labs, 2012. [Online]. Available: http://aeotec.com/z-wave-usb-stick/913-z-stick-manual-instructions.html. Accessed: Oct. 13, 2016.
+<cite>
+[1]	"Z-Stick 2E manual," Aeotec, Aeon Labs, 2012. [Online]. Available:
+<http://aeotec.com/Z-Wave-usb-stick/913-z-stick-manual-instructions.html>. Accessed: Oct. 13, 2016.
+</cite>
 
-[2]	"Home automation products," in Aeotec, Aeon Labs, 2006. [Online]. Available: http://aeotec.com/homeautomation. Accessed: Oct. 13, 2016.
+<cite>
+[2]	"Home automation products," in Aeotec, Aeon Labs, 2006. [Online]. Available:
+<http://aeotec.com/homeautomation>. Accessed: Oct. 13, 2016.
+</cite>
 
-[3]	"OpenZWave library," in OpenZWave. [Online]. Available: http://www.openzwave.com/dev/index.html. Accessed: Oct. 13, 2016.
+<cite>
+[3]	"OpenZWave library," in OpenZWave. [Online]. Available:
+<http://www.openzwave.com/dev/index.html>. Accessed: Oct. 13, 2016.
+</cite>
 
 -----------------------
 
@@ -445,12 +466,16 @@ pursued if there was interest.
 
 ### References
 
-[1] "Spruce - how it works,". [Online]. Available: http://spruceirrigation.com/How.
+<cite>
+[1] "Spruce - how it works,". [Online]. Available: <http://spruceirrigation.com/How>.
 Accessed: Oct. 13, 2016.
+</cite>
 
+<cite>
 [2] "Spruce irrigation controller & sensor," SmartThings Support. [Online]. Available:
-https://support.smartthings.com/hc/en-us/articles/208053773-Spruce-Irrigation-Controller-Sensor.
+<https://support.smartthings.com/hc/en-us/articles/208053773-Spruce-Irrigation-Controller-Sensor>.
 Accessed: Oct. 13, 2016.
+</cite>
 
 -----------------------
 
@@ -487,9 +512,10 @@ there we plan on integrating with another smart system
 
 ### References
 
-[1] "PlantLink," PlantLink, 2016. [Online]. Available: https://myplantlink.com/in-action.
+<cite>
+[1] "PlantLink," PlantLink, 2016. [Online]. Available: <https://myplantlink.com/in-action>.
 Accessed: Oct. 13, 2016.
-
+</cite>
 
 -----------------------
 
@@ -497,7 +523,7 @@ Accessed: Oct. 13, 2016.
 3.12 Summary of Evaluation
 --------------------------
 
-Existing devices with an element of machine learning already incorperated in them are not
+Existing devices with an element of machine learning already incorporated in them are not
 a good fit for our system, as they may cause unexpected results when introduced to our
 custom machine learning algorithm. Similarly, devices that do not provide an API are also
 not suitable for use in our system. Without being able to communicate with a device, there
@@ -507,12 +533,14 @@ systems.
 
 Third party Z-Wave devices are suitable for our system because they provide an easy method of
 communication in a way that helps enable the machine learning rather than hinder it. Any device 
-that has no special capibilities other than being Z-Wave ready are ideal, because they allow us
+that has no special capabilities other than being Z-Wave ready are ideal, because they allow us
 to use them with no unexpected behaviours. The Honeywell VisionPro Thermostat and devices from 
 Aeon Labs are examples of this.
 
 ### Resources
 
+<cite>
 [1] R. Crist, "Best smart home devices of 2016," CNET, 2016. [Online]. Available:
-https://www.cnet.com/topics/smart-home/best-smart-home-devices/. Accessed: Oct. 6, 2016.
-66
+<https://www.cnet.com/topics/smart-home/best-smart-home-devices/>.
+Accessed: Oct. 6, 2016. 66
+</cite>
