@@ -14,9 +14,11 @@ class Exchange ():
             self.comms[device.type](message)
 
     def message (self, msg):
+        # TODO Add thread synchronization
         # TODO Log a received message here
         if (msg.target in self.devices):
             self.send(msg)
 
     def discovered (self, device):
+        # TODO Add thread synchronization
         self.devices[device.address] = device
