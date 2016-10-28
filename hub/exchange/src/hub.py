@@ -1,4 +1,3 @@
-import thread
 import exchange
 import cli
 
@@ -16,7 +15,7 @@ class Hub:
 
         self.exchange.port = args.port if args.port else Hub.PORT
 
-        thread.start_new_thread(cli.CLI, (self))
+        cli.CLI(self).start()
 
     def start (self):
         self.exchange.bind()
@@ -25,7 +24,12 @@ class Hub:
         self.exchange.release()
 
     def command (self, action):
-        pass
+        if action == 'status':
+            return self.status()
+
+    def exit (self):
+        # TODO teardown all connections
+        self.stop()
 
     def status (self):
         return {
