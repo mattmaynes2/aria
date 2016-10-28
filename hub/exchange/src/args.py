@@ -13,7 +13,6 @@ def parse ():
         description = DESCRIPTION
     )
     parser.add_argument(
-        '-p', '--port', nargs = '?', type = int,
         help = 'Sets the server port for device communications'
     )
 

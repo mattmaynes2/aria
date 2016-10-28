@@ -6,7 +6,6 @@ import hub_comm
 from hubmode import HubMode
 
 class Hub:
-    PORT = 7600
     VERSION = '0.0.2'
 
     def __init__ (self, args = {}):
@@ -14,9 +13,6 @@ class Hub:
         self.version = Hub.VERSION
         self.name = 'My Hub'
         self.mode = HubMode.Normal
-
-        self.exchange.port = args.port if args.port else Hub.PORT
-
 
         self.hub_comm = hub_comm.HubComm(self)
 
