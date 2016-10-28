@@ -14,5 +14,9 @@ flag `-p` or `--port`.
 
 The exchange should be able to formulate a request for a device's status.
 
+## Report System Status
+
+The system should be able to report on its own status. The hub needs to have a state that can
+be queried. This state should include the system mode as well as any other system details.
 
 
