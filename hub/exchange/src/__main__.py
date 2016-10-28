@@ -1,13 +1,13 @@
-
 import args
-import exchange
 
-if (__name__ == '__main__'):
+from exchange import Exchange
+
+def main ():
     argv = args.parse()
 
     print(argv)
 
-    exchange = exchange.Exchange()
+    exchange = Exchange()
 
     if (argv.port != None):
         exchange.port = argv.port[0]
@@ -15,3 +15,6 @@ if (__name__ == '__main__'):
 
     exchange.bind()
     print('Complete!')
+
+if (__name__ == '__main__'):
+    main()
