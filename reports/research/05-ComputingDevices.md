@@ -31,13 +31,13 @@ and small embedded systems.
 The Uno is a microcontroller that uses the Arduino boot loader software for launching the system
 and executing code. The Uno is fully compatible with the Arduino SDK that provides simple
 access to all pins and controls on the board. The Uno comes with a 8-bit ATmega328P processor
-running at 16 MHz. The system comes with 32 KB of on board flash memory as well as 2 KB of SRAM
-and 1 KB of EEPROM. The system boot loader occupies 0.5 KB of the flash memory capacity.
+running at 16 MHz. The system comes with 32 kB of on board flash memory as well as 2 kB of SRAM
+and 1 kB of EEPROM. The system boot loader occupies 0.5 kB of the flash memory capacity.
 
 The Uno comes with 14 digital pins, 6 of which can be programmed to use pulse width modulation.
 Included in the microcontroller are 6 analog to digital input pins. The board has a operating
 voltage of 5 V and will accept between 7-12 V for input pins. The maximum voltage range of the
-input pins are 6-20V.
+input pins are 6-20 V.
 
 The Uno is a medium sized microcontroller that is 68.6 mm long and 53.4 mm wide. It has a total
 weight of approximately 25 g. The Uno also includes an integrated USB-Mini port used for serial
@@ -53,8 +53,10 @@ quick deployment.
 
 ### References
 
+<cite>
 [1] "ArduinoBoardUno," in Arduino, 2016. [Online]. Available:
-https://www.arduino.cc/en/Main/ArduinoBoardUno. Accessed: Oct. 6, 2016.
+<https://www.arduino.cc/en/Main/ArduinoBoardUno>. Accessed: Oct. 6, 2016.
+</cite>
 
 5.4 Arduino 101
 ----------------
@@ -69,8 +71,8 @@ board.
 
 The Arduino 101 is the most feature rich board that Arduino is offers. It comes with a full
 Real-Time Operating System (RTOS) that is powered by the Intel Curie. The processor is a 32-bit,
-8 MHz or 16 MHz backed by 196 KB of flash memory. The RTOS is a light weight OS that only
-occupies 2 KB of memory to provide managed, concurrent applications.
+8 MHz or 16 MHz backed by 196 kB of flash memory. The RTOS is a light weight OS that only
+occupies 2 kB of memory to provide managed, concurrent applications.
 
 The 101 comes with a number of additional features above other microcontrollers in the Arduino
 family. Beyond the standard USB-Mini serial connection, the 101 offers a 6 axis gyroscope
@@ -89,9 +91,10 @@ and simple circuit design.
 
 ### References
 
+<cite>
 [1] "ArduinoBoard101," in Arduino, 2016. [Online]. Available:
-https://www.arduino.cc/en/Main/ArduinoBoard101. Accessed: Oct. 6, 2016.
-
+<https://www.arduino.cc/en/Main/ArduinoBoard101>. Accessed: Oct. 6, 2016.
+</cite>
 
 5.5 Arduino Pro
 ----------------
@@ -108,7 +111,7 @@ requirements for a wide range of input and output ports.
 The Pro is an embedded system that leverages the Arduino boot loader and a 32-bit ATmega328
 processor. The Pro has two operating speeds; 8 MHz or 16 MHz. This device has an operating
 voltage of 5 V but has a lower power alternative that runs at 3.3 V. The Pro has the same
-limited memory as the Uno with only 32 KB of flash memory, 0.5 KB of which is occupied by
+limited memory as the Uno with only 32 kB of flash memory, 0.5 kB of which is occupied by
 the boot loader.
 
 The Pro offers the same pin configuration as the 101 with 14 digital pins, 4 of which can
@@ -125,9 +128,10 @@ redistributed, the Pro would be useful for building a final product for an unmod
 
 ### References
 
+<cite>
 [1] "ArduinoBoardPro," in Arduino, 2016. [Online]. Available:
-https://www.arduino.cc/en/Main/ArduinoBoardPro. Accessed: Oct. 6, 2016.
-
+<https://www.arduino.cc/en/Main/ArduinoBoardPro>. Accessed: Oct. 6, 2016.
+</cite>
 
 5.6 Arduino Micro
 -----------------
@@ -140,7 +144,7 @@ provides the most external ports of any Arduino making it suitable for large cir
 ### Technical Overview
 
 The Micro provides high performance embedded computing with a 8-bit, 16 MHz ATmega32U4 processor.
-The Micro also comes standard with the Arduino bootloader and a standard 32 KB of flash memory.
+The Micro also comes standard with the Arduino bootloader and a standard 32 kB of flash memory.
 The Micro has a operating voltage of 5 V and comes with a standard DC power input.
 
 The Micro has 20 exposed digital pins, 7 of which can be pulse width modulation. These extra
@@ -162,9 +166,10 @@ fit.
 
 ### References
 
+<cite>
 [1] "ArduinoBoardMicro," in Arduino, 2016. [Online]. Available:
-https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
-
+<https://www.arduino.cc/en/Main/ArduinoBoardMicro>. Accessed: Oct. 6, 2016.
+</cite>
 
 5.7 Comparison of Arduinos
 --------------------------
@@ -176,15 +181,15 @@ https://www.arduino.cc/en/Main/ArduinoBoardMicro. Accessed: Oct. 6, 2016.
 | Operating System           | None        | RTOS           | None           | None          |
 | Processor Size             | 8-bit       | 32-bit         | 32-bit         | 8-bit         |
 | Processor Family           | ATmega      | Intel          | ATmega         | ATmega        |
-| Operating Voltage          | 5V          | 3.3V - 5V      | 3.3V - 5V      | 5V            |
-| Input Voltage              | 7-12V       | 7-12V          | 7-12V          | 7-12V         |
+| Operating Voltage          | 5 V         | 3.3 V - 5 V    | 3.3 V - 5 V    | 5 V           |
+| Input Voltage              | 7 - 12 V    | 7 - 12 V       | 7 - 12 V       | 7-12 V        |
 | Clock Speed                | 16 MHz      | 8 MHz - 16 MHz | 8 MHz - 16 MHz | 16 MHz        |
 | Digital Pins               | 14          | 14             | 14             | 20            |
 | Pulse with Modulation Pins | 6           | 4              | 4              | 7             |
 | Analog Input Pins          | 6           | 6              | 6              | 12            |
 | DC Current per Pin         | 20 mA       | 20 mA          | 40 mA          | 20 mA         |
-| Flash Memory               | 32 KB       | 196 KB         | 32 KB          | 32 KB         |
-| System Size                | 0.5 KB      | 2 KB           | 2 KB           | 4 KB          |
+| Flash Memory               | 32 kB       | 196 kB         | 32 kB          | 32 kB         |
+| System Size                | 0.5 kB      | 2 kB           | 2 kB           | 4 kB          |
 
 ##### Features
 
@@ -238,11 +243,15 @@ useful but likely unnecessary for the smart learning system.
 
 ### Reference
 
+<cite>
 [1] "Raspberry pi Zero," Raspberry Pi. [Online]. Available:
-https://www.raspberrypi.org/products/pi-zero/. Accessed: Oct. 10, 2016.
+<https://www.raspberrypi.org/products/pi-zero/>. Accessed: Oct. 10, 2016.
+</cite>
 
+<cite>
 [2] "Raspberry Pi Zero,". [Online]. Available:
-https://shop.pimoroni.com/products/raspberry-pi-zero. Accessed: Oct. 10, 2016.
+<https://shop.pimoroni.com/products/raspberry-pi-zero>. Accessed: Oct. 10, 2016.
+</cite>
 
 5.9 Raspberry Pi 1 Model A+
 ---------------------------
@@ -268,12 +277,16 @@ adequate computing performance.
 
 ### References
 
+<cite>
 [1] "Raspberry pi 1 model A+," Raspberry Pi. [Online]. Available:
-https://www.raspberrypi.org/products/model-a-plus/. Accessed: Oct. 10, 2016.
+<https://www.raspberrypi.org/products/model-a-plus/>. Accessed: Oct. 10, 2016.
+</cite>
 
+<cite>
 [2] J. Adams, "Raspberry Pi Model B+," Mar. 07, 2014. [Online]. Available:
-https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/Raspberry-Pi-B-Plus-V1.2-Mechanical-Drawing.pdf.
+<https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/Raspberry-Pi-B-Plus-V1.2-Mechanical-Drawing.pdf>.
 Accessed: Oct. 10, 2016.
+</cite>
 
 5.10 Raspberry Pi 2 Model B
 ---------------------------
@@ -285,7 +298,7 @@ design as the Pi 1 with all the same features and more performance.
 
 ### Technical Overview
 
-The Pi 2 is very similar to the Pi 1 but provides a slight faster 32-bit 900MHz Arm processor. The
+The Pi 2 is very similar to the Pi 1 but provides a slight faster 32-bit 900 MHz Arm processor. The
 Pi 2 has significantly more RAM than the Pi 1 with 1GB of DDR2. The Pi 2 comes with a standard
 HDMI video output for monitoring it from a screen. It also is equipped with an Ethernet port and 4
 USB ports. The Pi 2 also provides the same 40 GPIO pin configuration as the Pi 1.
@@ -297,8 +310,10 @@ uses the same amount of power but provides far more computing performance.
 
 ### References
 
+<cite>
 [1] "Raspberry pi 2 model B," Raspberry Pi. [Online]. Available:
-https://www.raspberrypi.org/products/raspberry-pi-2-model-b/. Accessed: Oct. 10, 2016.
+<https://www.raspberrypi.org/products/raspberry-pi-2-model-b/>. Accessed: Oct. 10, 2016.
+</cite>
 
 5.11 Raspberry Pi 3 Model B
 ---------------------------
@@ -312,7 +327,7 @@ smart hub.
 
 ### Technical Overview
 
-The Raspberry Pi 3 offers massive embedded performance with a 1.2GHz 64-bit Quad-core Arm
+The Raspberry Pi 3 offers massive embedded performance with a 1.2 GHz 64-bit Quad-core Arm
 processor. Similar to the Pi 2, the Pi 3 also comes with 1GB of RAM. As with all other Pi models,
 the Pi 3 provides a 40 GPIO pin configuration for external devices.
 
@@ -329,23 +344,33 @@ will make external interfacing simple with minimal investment.
 
 ### References
 
+<cite>
 [1] "Raspberry pi 3 model B," Raspberry Pi. [Online]. Available:
-https://www.raspberrypi.org/products/raspberry-pi-3-model-b/. Accessed: Oct. 10, 2016.
+<https://www.raspberrypi.org/products/raspberry-pi-3-model-b/>. Accessed: Oct. 10, 2016.
+</cite>
 
+<cite>
 [2] "Power supply - raspberry pi documentation,". [Online]. Available:
-https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md.
+<https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md>.
 Accessed: Oct. 10, 2016.
+</cite>
 
+<cite>
 [3] "GPIO - raspberry pi documentation,". [Online]. Available:
-https://www.raspberrypi.org/documentation/hardware/raspberrypi/gpio/README.md.
+<https://www.raspberrypi.org/documentation/hardware/raspberrypi/gpio/README.md>.
 Accessed: Oct. 10, 2016.
+</cite>
 
+<cite>
 [4] "Raspbian - raspberry pi documentation,". [Online]. Available:
-https://www.raspberrypi.org/documentation/raspbian/. Accessed: Oct. 10, 2016.
+<https://www.raspberrypi.org/documentation/raspbian/>. Accessed: Oct. 10, 2016.
+</cite>
 
+<cite>
 [5]	J. Adams, "Raspberry Pi 3 Model B," Jun. 10, 2015. [Online]. Available:
-https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/RPI-3B-V1_2.pdf.
+<https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/RPI-3B-V1_2.pdf>.
 Accessed: Oct. 10, 2016.
+</cite>
 
 5.12 Comparison of Raspberry Pi
 -------------------------------
@@ -357,8 +382,8 @@ Accessed: Oct. 10, 2016.
 | Operating System           | Raspbian          | Raspbian       | Raspbian       | Raspbian       |
 | Processor Size             | 32-bit            | 32-bit         | 32-bit         | 64-bit         |
 | Processor Family           | Broadcom          | Arm            | Arm            | Arm            |
-| Operating Voltage          | 5V                | 5V             | 5V             | 5V             |
-| Input Voltage              | 3.3V              | 3.3V           | 3.3V           | 3.3V           |
+| Operating Voltage          | 5 V               | 5 V            | 5 V            | 5 V            |
+| Input Voltage              | 3.3 V             | 3.3 V          | 3.3 V          | 3.3 V          |
 | Clock Speed                | 1 GHz             | 700 MHz        | 900 MHz        | 1.2 GHz        |
 | Digital Pins               | 40                | 40             | 40             | 40             |
 | Pulse with Modulation Pins | N/A               | N/A            | N/A            | N/A            |
@@ -420,12 +445,16 @@ provide.
 
 ### References
 
-[1] "Bone-original,". [Online]. Available: http://beagleboard.org/bone-original.
+<cite>
+[1] "Bone-original,". [Online]. Available: <http://beagleboard.org/bone-original>.
 Accessed: Oct. 10, 2016.
+</cite>
 
-[1] "BeagleBone Schematic," Jun. 28, 2012. [Online]. Available:
-https://github.com/CircuitCo/BeagleBone-RevA6/blob/master/BEAGLEBONE_REV_A6A.pdf?raw=true.
+<cite>
+[2] "BeagleBone Schematic," Jun. 28, 2012. [Online]. Available:
+<https://github.com/CircuitCo/BeagleBone-RevA6/blob/master/BEAGLEBONE_REV_A6A.pdf?raw=true>.
 Accessed: Oct. 10, 2016.
+</cite>
 
 5.14 BeagleBone Black
 ---------------------
@@ -457,11 +486,15 @@ gain it may not be feasible.
 
 ### References
 
-[1] "BeagleBone Black,". [Online]. Available: http://beagleboard.org/black.
+<cite>
+[1] "BeagleBone Black,". [Online]. Available: <http://beagleboard.org/black>.
 Accessed: Oct. 10, 2016.
+</cite>
 
+<cite>
 [2] "Beagleboard: BeagleBoneBlack,". [Online].
-Available: http://elinux.org/Beagleboard:BeagleBoneBlack. Accessed: Oct. 10, 2016.
+Available: <http://elinux.org/Beagleboard:BeagleBoneBlack>. Accessed: Oct. 10, 2016.
+</cite>
 
 5.15 BeagleBone Green
 ---------------------
@@ -489,8 +522,10 @@ energy than the Black model and is possibly a better candidate for embedded devi
 
 ### References
 
-[1]	"BeagleBone Green,". [Online]. Available: http://beagleboard.org/green.
+<cite>
+[1]	"BeagleBone Green,". [Online]. Available: <http://beagleboard.org/green>.
 Accessed: Oct. 10, 2016.
+</cite>
 
 5.16 Comparison of BeagleBone
 -----------------------------
@@ -502,14 +537,14 @@ Accessed: Oct. 10, 2016.
 | Operating System           | Angstrom   | Debian           | Debian           |
 | Processor Size             | 32-bit     | 32-bit           | 32-bit           |
 | Processor Family           | ARM        | ARM              | ARM              |
-| Operating Voltage          | 5V         | 5V               | 5V               |
-| Input Voltage              | 1.8V       | 1.8V             | 1.8V             |
-| Clock Speed                | 700MHz     | 1GHz             | 1GHz             |
+| Operating Voltage          | 5 V        | 5 V              | 5 V              |
+| Input Voltage              | 1.8 V      | 1.8 V            | 1.8 V            |
+| Clock Speed                | 700 MHz    | 1 GHz            | 1 GHz            |
 | Digital Pins               | 60         | 68               | 65               |
 | Pulse with Modulation Pins | 4          | 4                | 8                |
 | Analog Input Pins          | 4          | 4                | 7                |
-| Flash Memory               | 256MB      | 512MB            | 512 MB           |
-| System Size                | 1.8 GB     | 2.2GB            | 2.2 GB           |
+| Flash Memory               | 256 MB     | 512 MB           | 512 MB           |
+| System Size                | 1.8 GB     | 2.2 GB           | 2.2 GB           |
 
 ##### Features
 
