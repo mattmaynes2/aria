@@ -1,26 +1,22 @@
-import socket
-import message
-
 class Exchange ():
-    PORT = 7600 # Default system port
 
     def __init__ (self):
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.port = Exchange.PORT
+        self.comms = {}
+        self.devices = {}
 
-    def bind (self):
-        try:
-            self.socket.bind(('localhost', self.port))
-        except socket.error as msg:
-            print('Socket failed to connect to port ' + str(self.port) + ' with: ' + msg);
-            return False;
+    def register (self, device_type, comm):
+        self.comms[device_type] = comm
+        comm.setup(self)
 
-        return True
+    def send (self, device, message):
+        # TODO Log sending a message here
+        if (device.type in self.comms):
+            self.comms[device.type](message)
 
-    def release (self):
-        self.socket.close()
-        return True
+    def message (self, msg):
+        # TODO Log a received message here
+        if (msg.target in self.devices):
+            self.send(msg)
 
-    def createMessage(device, payload, destination):
-        return message.Message(payload,device.address,destination)
-
+    def discovered (self, device):
+        self.devices[device.address] = device
