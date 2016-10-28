@@ -25,25 +25,25 @@
             "./support/try shellcheck markdown/mkpdf"
         ]
     },
-    "ctrl-serve" : {
-        "deps"      : ["cd ../ctrl-serve", "./setup.py develop"],
-        "build"     : ["cd ../ctrl-serve", "./setup.py bdist_egg"],
-        "test"      : ["cd ../ctrl-serve","./setup.py test"],
-        "clean"     : ["cd ../ctrl-serve", "./setup.py clean"]
+    "hub.ctrl-serve" : {
+        "deps"      : ["cd ../hub/ctrl-serve", "./setup.py develop"],
+        "build"     : ["cd ../hub/ctrl-serve", "./setup.py bdist_egg"],
+        "test"      : ["cd ../hub/ctrl-serve","./setup.py test"],
+        "clean"     : ["cd ../hub/ctrl-serve", "./setup.py clean"]
     },
-    "remote" : {
+    "hub.remote" : {
         "enviro"    : "./support/pkman install node",
-        "deps"      : ["cd ../remote", "npm install"],
-        "build"     : ["cd ../remote", "npm run build"],
-        "test"      : ["cd ../remote", "npm test"],
-        "clean"     : ["cd ../remote", "rm -rf bin"]
+        "deps"      : ["cd ../hub/remote", "npm install"],
+        "build"     : ["cd ../hub/remote", "npm run build"],
+        "test"      : ["cd ../hub/remote", "npm test"],
+        "clean"     : ["cd ../hub/remote", "rm -rf bin"]
     },
-    "gateway" : {
+    "hub.gateway" : {
         "enviro"    : "./support/pkman install node",
-        "deps"      : ["cd ../gateway", "npm install"],
-        "build"     : ["cd ../gateway", "npm run build"],
-        "test"      : ["cd ../gateway", "npm test"],
-        "clean"     : ["cd ../gateway", "rm -rf bin"]
+        "deps"      : ["cd ../hub/gateway", "npm install"],
+        "build"     : ["cd ../hub/gateway", "npm run build"],
+        "test"      : ["cd ../hub/gateway", "npm test"],
+        "clean"     : ["cd ../hub/gateway", "rm -rf bin"]
     },
     "uml" : {
         "enviro" : [
@@ -67,6 +67,10 @@
     "reports.research" : {
         "build" : "./support/try ./markdown/mkpdf --toc -o Research.pdf -c Cover.html ../reports/research",
         "clean" : "rm -f ../reports/research/*.pdf"
+    },
+    "reports.architecture" : {
+        "build" : "./support/try ./markdown/mkpdf -o Architecture.pdf ../reports/architecture",
+        "clean" : "rm -f ../reports/architecture/*.pdf"
     },
     "reports.scenarios" :{
         "build" : "./support/try ./markdown/mkpdf --toc -o Scenarios.pdf -c Cover.html ../reports/scenarios",
