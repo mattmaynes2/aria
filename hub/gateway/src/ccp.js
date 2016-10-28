@@ -1,0 +1,4 @@
+exports.parsePacket = function(buffer)
+{
+
+}

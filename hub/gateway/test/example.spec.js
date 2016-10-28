@@ -1,6 +1,8 @@
-describe('Example', function () {
+var packets = require('../src/ccp')
 
-    it('Always passes', function () {
-        expect(true).toBeTruthy();
+describe('Parse packet', function () {
+
+    it('Should return an empty string', function () {
+        expect(packets.parse()).toBe('');
     });
 });
