@@ -1,5 +1,6 @@
 import socket
 import message
+
 class Exchange ():
     PORT = 7600 # Default system port
 
@@ -13,6 +14,13 @@ class Exchange ():
             print('Socket opened to port ' + str(self.port))
         except socket.error as msg:
             print('Socket failed to connect to port ' + str(self.port) + ' with: ' + msg);
+            return False;
+
+        return True
+
+    def release (self):
+        self.socket.close()
+        return True
 
     def createMessage(device, payload, destination):
         return message.Message(payload,device.address,destination)
