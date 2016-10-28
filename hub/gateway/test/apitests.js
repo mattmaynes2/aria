@@ -10,13 +10,6 @@ describe('Gateway REST API Logic', function () {
         app.get = sinon.spy()
 
         gateway.gateway(app)
-        assert(app.get.calledWith('/system/state'), "Gateway does not previde /system/state endpoint")
-
-        callback = app[0][1]
-
-        var req = {}
-        var res = {}
-        res.send = sinon.spy()
-        callback(req, res)
+        assert(app.get.calledWith('/system/state'), "Gateway does not provide /system/state endpoint")
     })
 })
