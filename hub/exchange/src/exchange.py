@@ -8,7 +8,6 @@ class Exchange ():
         self.comms[device_type] = comm
         comm.setup(self)
 
-
     def send (self, device, message):
         # TODO Log sending a message here
         if (device.type in self.comms):

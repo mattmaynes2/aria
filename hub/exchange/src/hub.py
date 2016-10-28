@@ -1,5 +1,7 @@
 import exchange
 import cli
+import hub_comm
+
 
 from hubmode import HubMode
 
@@ -15,10 +17,15 @@ class Hub:
 
         self.exchange.port = args.port if args.port else Hub.PORT
 
+
+        self.hub_comm = hub_comm.HubComm(self)
+
         cli.CLI(self).start()
 
     def start (self):
-        self.exchange.bind()
+        # TODO Add hub device type
+        self.exchange.register( self.hub_comm)
+
 
     def stop (self):
         self.exchange.release()
