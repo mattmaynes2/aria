@@ -1,11 +1,20 @@
 # 7. Glossary
 
-{#glossary-iot}**IoT**: Internet of Things. A system composed of everyday objects, such as home appliances
-and vehicles, which feature connectivity to a computer network.
+### IoT {#glossary-iot}
 
-{#glossary-SmartDevice}**Smart Device**: A household device which can communicate using a computer network.
+Internet of Things. A system composed of everyday objects, such as home appliances and vehicles,
+which feature connectivity to a computer network.
 
-{#glossary-IFTTT}**IFTTT**: If this then that. A service that allows the user to make a chain of conditional statements with a trigger.
+### Smart Devices {#glossary-SmartDevice}*
 
-{#glossary-Shield}Shield: A shield is a circuit board which expands the hardware capabilities of a microcontroller by connecting
-directly to I/O pins (without jumper wires)
+A household device which can communicate using a computer network.
+
+### IFTTT {#glossary-IFTTT}
+
+If this then that. A service that allows the user to make a chain of conditional statements
+with a trigger.
+
+### Shield {#glossary-Shield}
+
+A shield is a circuit board which expands the hardware capabilities of a microcontroller by
+connecting directly to I/O pins (without jumper wires)
