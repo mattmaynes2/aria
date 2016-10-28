@@ -1,20 +1,8 @@
 import args
-
-from exchange import Exchange
+import hub
 
 def main ():
-    argv = args.parse()
-
-    print(argv)
-
-    exchange = Exchange()
-
-    if (argv.port != None):
-        exchange.port = argv.port[0]
-
-
-    exchange.bind()
-    print('Complete!')
+    hub.Hub(args.parse()).start()
 
 if (__name__ == '__main__'):
     main()

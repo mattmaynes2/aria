@@ -19,4 +19,7 @@ The exchange should be able to formulate a request for a device's status.
 The system should be able to report on its own status. The hub needs to have a state that can
 be queried. This state should include the system mode as well as any other system details.
 
+## Console Input
 
+The system needs to be interactive so that commands can be entered and the system can be monitored.
+The system should start in interactive mode by default.
