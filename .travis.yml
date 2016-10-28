@@ -6,6 +6,7 @@ node_js:
 before_install:
     - "curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -"
     - "./build/support/pkman install node"
+    - "node --version"
     - "./build/run enviro"
     - "./build/run deps"
 install : "./build/run build"
