@@ -19,8 +19,8 @@ class Hub:
         cli.CLI(self).start()
 
     def start (self):
-        # TODO Add hub device type
-        self.exchange.register( self.hub_comm)
+        # TODO change device type
+        self.exchange.register('hub', self.hub_comm)
 
 
     def stop (self):
