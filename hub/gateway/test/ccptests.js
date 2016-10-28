@@ -1,5 +1,5 @@
 var packets = require('../src/ccp')
-   // buffer = require('buffer').Buffer
+var expect = require('chai').expect
 
 describe('Parse packet', function () {
 
@@ -18,7 +18,7 @@ describe('Parse packet', function () {
                                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 16,
                                 0, 0, 0, 0 ]);
 
-        expect(packets.parse(buf)).toBe(expectedStructure);
+        expect(packets.parse(buf)).to.deep.equal(expectedStructure);
     });
 });
 
