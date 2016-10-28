@@ -10,7 +10,8 @@ class NativeComm (comm.Comm):
         self.port = NativeComm.PORT
         self.addressCache={}
 
-    def setup (self):
+    def setup (self, listener):
+        self.listener=listener
         try:
             self.socket.bind(('localhost', self.port))
             print('Socket opened to port ' + str(self.port))
@@ -31,9 +32,12 @@ class NativeComm (comm.Comm):
     """
     send a message to a device
     """
-    def send(msg):
-        socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-        socket.sendto(msg.encode(),slef.addressCache[msg.receiver])
+    def send(self,msg):
+        sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+        if(msg.receiver in self.addressCache ):
+            sock.sendto(msg.encode(),self.addressCache[msg.receiver])
+        else:
+            raise NameError('Unknown receiver')
 
     """
     listen for messages from devices
@@ -42,5 +46,5 @@ class NativeComm (comm.Comm):
         data,address = self.socket.recvfrom(1024)
         msg = message.Message.decode(data)
         self.addressCache[msg.sender]=address
-        return msg
+        self.listener.message(msg)
 
