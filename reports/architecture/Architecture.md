@@ -148,7 +148,7 @@ to render on various industry standard browsers (Chrome, Firefox, IE, Safari).
 
 
 
-# ER
+## Database Entity-Relationship
 
 ![](./SystemER.png)
 
@@ -164,7 +164,6 @@ The different types of possible devices, (WeMo switch,,Hue lights, etc...)
 ### User
 
 A person that can add and control devices
-
 
 ### User_Devices
 
