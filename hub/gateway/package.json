@@ -19,12 +19,13 @@
   "scripts": {
     "test": "./node_modules/jshint/bin/jshint && ./node_modules/.bin/mocha --reporter spec",
     "build": "./node_modules/webpack/bin/webpack.js --executable && chmod +x ./bin/*",
-    "start": "node ./src/gateway.js"
+    "start": "node ./src/server.js"
   },
   "dependencies": {
     "chai": "^3.5.0",
     "express": "4.14.0",
     "mocha": "^3.1.2",
-    "node-uuid": "^1.4.7"
+    "node-uuid": "^1.4.7",
+    "sinon": "^1.17.6"
   }
 }
