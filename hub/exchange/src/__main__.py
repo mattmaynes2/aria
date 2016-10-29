@@ -1,8 +1,8 @@
-import args
+import sys
 
-from exchange   import Exchange
-from hub        import Hub
-from cli        import CLI
+sys.path.append('../lib')
+
+from hub        import Hub, Exchange, CLI, args
 from device     import Device
 
 from adapter import AriaAdapter, HubAdapter, Message

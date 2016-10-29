@@ -9,7 +9,7 @@ class HubTest (TestCase):
     def test_status (self):
         status = self.hub.status()
         self.assertEqual(status['version']  , self.hub.version)
-        self.assertEqual(status['mode']     , self.hub.mode)
+        self.assertEqual(status['mode']     , str(self.hub.mode))
 
     def test_command (self):
         self.assertEqual(self.hub.command('status'), self.hub.status())

@@ -7,7 +7,6 @@ class AriaAdapterTest (TestCase):
 
     def setUp (self):
         self.adapter = AriaAdapter()
-        self.adapter.setup(self)
 
     def tearDown (self):
         self.adapter.teardown()
@@ -17,6 +16,7 @@ class AriaAdapterTest (TestCase):
         sender  = Device('')
         mock    = Delegate()
 
+        self.adapter.add_delegate(mock)
         message = Message(Message.Request, data, sender.address, Message.default)
         mock.received = lambda msg: self.assertEqual(msg.data, data)
 

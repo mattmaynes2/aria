@@ -1,4 +1,4 @@
-from cli import CLI
+from .cli import CLI
 
 class Exchange ():
 
