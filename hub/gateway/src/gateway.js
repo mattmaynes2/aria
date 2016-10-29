@@ -20,7 +20,6 @@ var Gateway = (function () {
         });
 
         app.use(express.static(this.public));
-
         app.listen(port);
     };
 
