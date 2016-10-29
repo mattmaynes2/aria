@@ -15,23 +15,23 @@ var ExchangeAdapter = (function () {
     }
 
     ExchangeAdapter.prototype.register = function () {
-        send.call(this, 1, {}).then((response) => {
-            console.log('Got a response to discovery request');
-            var parsed = packets.parse(response);
-            if (parsed.type !== 4) {
-                console.log(
-                    'Communication server responded with an unexpected packet type',
-                    parsed);
-            }
-            else {
-                this.registered = true;
-                console.log("here2")
-                console.log("2", this.registered)
-            }
 
-        }, (err) => {
-            console.log('Error in discovery request', err);
-        });
+        return new Promise ((resolve, reject) => {
+            send.call(this, 1, {}).then((response) => {
+                console.log('Got a response to discovery request');
+                var parsed = packets.parse(response);
+                if (parsed.type !== 4) {
+                    reject(Error('Communication server responded with an unexpected packet type'));
+                }
+                else {
+                    this.registered = true;
+                    resolve()
+                }
+
+            }, (err) => {
+                reject(Error('Error in discovery request'));
+            })
+        })
     };
 
     ExchangeAdapter.prototype.send = function (type, payload) {

@@ -7,8 +7,12 @@ var adapter, gateway;
 adapter = new ExchangeAdapter(config.endpoint);
 gateway = new Gateway(adapter);
 
-adapter.register();
+adapter.register().then(()=>{
+        gateway.public = config.public;
+        gateway.start(config.port);
+    }, ()=>{
+        console.log("Failed to register adapter")
+    }
+);
 
-gateway.public = config.public;
-gateway.start(config.port);
 

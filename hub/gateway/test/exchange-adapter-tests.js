@@ -52,11 +52,13 @@ describe('REST API endpoint testing', function(){
 
         fakeSocket.setNextResponse(discoveryAck);
 
-        adapter.registered = true;
+        adapter.register().then(()=>{
 
-        var spy = sinon.spy(fakeSocket, "send")
-        adapter.send(2, payload);
+            var spy = sinon.spy(fakeSocket, "send")
+            adapter.send(2, payload);
 
-        sinon.assert.calledWith(spy, expectedBuffer);
-    });
+            sinon.assert.calledWith(spy, expectedBuffer);
+
+        })
+   });
 });
