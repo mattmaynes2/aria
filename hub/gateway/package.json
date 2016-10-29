@@ -17,7 +17,7 @@
     "webpack-node-externals": "^1.4.3"
   },
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint && ./node_modules/.bin/mocha --reporter spec",
+    "test": "./node_modules/jshint/bin/jshint src && ./node_modules/.bin/mocha --reporter spec",
     "build": "./node_modules/webpack/bin/webpack.js --executable && chmod +x ./bin/*",
     "start": "node ./src/server.js"
   },
