@@ -39,7 +39,8 @@ class AriaAdapter (Adapter):
             raise NameError('Unknown receiver')
 
         sock.sendto(msg.encode(), receiver)
-
+        # TODO might need to listen for response before closing
+        sock.close()
     def receive (self):
         data, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
         msg = Message.decode(data)
