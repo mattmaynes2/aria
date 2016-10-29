@@ -2,6 +2,9 @@ import json
 import struct
 
 class Message:
+    Error               = 1
+    Request             = 2
+    Event               = 3
     OFFSET_TYPE         = 1
     OFFSET_SIZE         = 5
     OFFSET_SENDER       = 21
@@ -9,7 +12,7 @@ class Message:
     encoding            = 'utf-8'
     default             = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 
-    def __init__(self, type_= 0,data = {}, sender = default, receiver = default):
+    def __init__(self, type_= 0, data = {}, sender = default, receiver = default):
         self.type_      = type_
         self.data       = data
         self.sender     = sender

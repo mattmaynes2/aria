@@ -20,6 +20,8 @@ class AriaAdapter (Adapter):
             self.socket.bind((socket.gethostname(), self.port))
         except socket.error as msg:
             print('Socket failed to connect to port ' + str(self.port) + ' with: ' + msg);
+            return False
+        return True
 
     def teardown (self):
         super().teardown()

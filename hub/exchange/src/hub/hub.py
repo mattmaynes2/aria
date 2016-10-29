@@ -1,4 +1,3 @@
-from .cli       import CLI
 from .hub_mode  import HubMode
 
 class Hub:
@@ -9,9 +8,7 @@ class Hub:
         self.devices = []
         self.name    = 'My Hub'
         self.mode    = HubMode.Normal
-        self.exit    = exit
-
-        CLI(self).start()
+        self.exit    = exit if exit else lambda: None
 
     def command (self, action):
         if action == 'status':

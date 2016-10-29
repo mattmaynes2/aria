@@ -43,6 +43,7 @@ class Adapter (Thread):
         """
         self.delegate   = delegate
         self.active     = True
+        return True
 
     def discover (self):
         """Send a discovery message request across the network to find any new devices
@@ -70,6 +71,7 @@ class Adapter (Thread):
             True if successful, False otherwise.
         """
         self.active = False
+        return True
 
     def receive (self):
         """Receives a message from the network, translates it and passes it to the adapter delegate

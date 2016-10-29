@@ -12,5 +12,6 @@ def parse ():
         usage       = '%(prog)s [options]',
         description = DESCRIPTION
     )
+    parser.add_argument('--debug', nargs='?', const=True, help='Display debugging information when running')
 
     return parser.parse_args()
