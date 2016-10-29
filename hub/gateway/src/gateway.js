@@ -1,7 +1,7 @@
-const dgram = require('dgram')
-const packets = require('./ccp')
-const uuid = require('node-uuid')
-const config = require('../config.json')
+var dgram = require('dgram')
+var packets = require('./ccp')
+var uuid = require('node-uuid')
+var config = require('../config.json')
 
 var senderId = new Buffer(16)
 uuid.v4(null, senderId, 16)
@@ -24,6 +24,12 @@ var sendMessageToCommServer = function(type, payload){
 
 
         message = packets.serialize(packet)
+
+        var timeoutCallback = function() {
+            client.close()
+            reject(Error("Response wait period timed out"))
+        }
+
 
         timeout = setTimeout(timeoutCallback, 5000)
 
@@ -60,7 +66,7 @@ var registerWithCommServer = function(){
     })
 }
 
-module.exports.gateway= function(expressApp){
+module.exports.gateway= function(expressApp, transport){
 
     expressApp.get('/system/state', function(req, res) {
         sendMessageToCommServer(2, {'message': 'test'}).then(function(response){
@@ -69,6 +75,11 @@ module.exports.gateway= function(expressApp){
             console.log("Error requesting system state from communication server", err)
         })
     })
+
+    if (transport)
+    {
+        dgram = transport
+    }
 
     registerWithCommServer()
 }
