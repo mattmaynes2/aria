@@ -20,9 +20,12 @@ var sendMessageToCommServer = function(type, payload){
 
         message = packets.serialize(packet)
 
+        timeout = setTimeout(timeoutCallback, 5000)
+
         client.on('message', function(message, remote){
             console.log('Received response from comm server')
             client.close()
+            clearTimeout(timeout)
             resolve(message)
         })
 
@@ -31,10 +34,10 @@ var sendMessageToCommServer = function(type, payload){
             reject(Error("Response wait period timed out"))
         }
 
-        setTimeout(timeoutCallback, 5000)
 
         client.send(message, 0, message.length, 7600, config.communicationServer, function(err, bytes) {
             if (err) {
+                clearTimeout(timeout)
                 reject(Error(err))
             }
             console.log("Sent UDP message")
