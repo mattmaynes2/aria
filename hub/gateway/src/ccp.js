@@ -26,7 +26,6 @@ module.exports.serialize = function(packet) {
     buf.writeUInt8(packet.type, 0)
     buf.writeUInt32BE(payloadSize, 1)
 
-
     return  Buffer.concat ([buf,
                            packet.sender,
                            packet.destination,

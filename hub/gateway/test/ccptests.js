@@ -72,6 +72,7 @@ describe('Packet Parsing and Serialization', function () {
             expect(packets.serialize(packet)).to.deep.equal(expectedBuffer);
         });
     });
+
 });
 
 
