@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PYTHONPATH=$PYTHONPATH:../build/lib
+
+python3  $(find ../build/ -name '__main__.py')
