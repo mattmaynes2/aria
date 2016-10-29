@@ -16,8 +16,8 @@ class AriaAdapter (Adapter):
         self.port       = AriaAdapter.PORT
         self._ip_map    = {}
 
-    def setup (self, delegate):
-        super().setup(delegate)
+    def setup (self ):
+        super().setup()
 
         try:
             self.socket.bind((AriaAdapter.HOST_NAME, self.port))

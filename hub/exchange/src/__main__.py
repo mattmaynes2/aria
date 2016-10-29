@@ -30,7 +30,6 @@ def create_exchange (hub, cli):
     exchange.register('hub'     , HubAdapter(hub))
     exchange.register('aria'    , AriaAdapter())
 
-    exchange.setup()
     return exchange
 
 def exit ():

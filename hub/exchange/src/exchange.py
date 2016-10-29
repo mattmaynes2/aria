@@ -8,11 +8,6 @@ class Exchange ():
         self._adapters  = {}
         self._devices   = {}
 
-    def setup (self):
-        for _, adapter in self._adapters.items():
-            self._cli.log('Setting up adapter: ' + str(adapter), CLI.LEVEL_DEBUG)
-            adapter.setup(self)
-
     def start (self):
         for _, adapter in self._adapters.items():
             self._cli.log('Starting adapter: ' + str(adapter), CLI.LEVEL_DEBUG)
@@ -20,6 +15,7 @@ class Exchange ():
 
     def register (self, device_type, adapter):
         self._cli.log('Registered adapter: ' + str(adapter), CLI.LEVEL_INFO)
+        adapter.delegate = self
         self._adapters[device_type] = adapter
 
     def send (self, device, message):

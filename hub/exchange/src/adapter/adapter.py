@@ -30,9 +30,10 @@ class Adapter (Thread):
     def __init__ (self):
         super().__init__()
         self.active = False
+        self.delegate = None
 
 
-    def setup (self, delegate):
+    def setup (self):
         """Setup the adapter for communication across the network
 
         This method should allocate any physical devices that are required to send messages
@@ -41,7 +42,6 @@ class Adapter (Thread):
         Returns:
             True if successful, False otherwise.
         """
-        self.delegate   = delegate
         self.active     = True
         return True
 
@@ -87,6 +87,7 @@ class Adapter (Thread):
         Returns
             True on normal termination, False otherwise.
         """
+        self.setup()
         while (self.active):
             self.receive()
         return True
