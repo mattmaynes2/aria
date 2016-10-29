@@ -16,7 +16,7 @@ setup(
             'eggsecutable = exchange.__main__:main',
         ]
     },
-    install_requires    = [],
+    install_requires    = ['ouimeaux'],
     test_suite          = 'nose.collector',
     tests_require       = ['nose'],
     zip_safe            = False
