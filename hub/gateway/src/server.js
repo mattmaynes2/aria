@@ -1,8 +1,9 @@
-var express = require('express'),
-    app = express(),
-    config = require('../config.json'),
-    gateway = require('./gateway.js')
+var config          = require('../config.json'),
+    ExchangeAdapter = require('./exchange-adapter'),
+    Gateway         = require('./gateway');
 
-api = gateway.gateway(app)
+var adapter = new ExchangeAdapter(config.endpoint);
 
-app.listen(config.port)
+adapter.register();
+new Gateway(adapter).start(config.port);
+

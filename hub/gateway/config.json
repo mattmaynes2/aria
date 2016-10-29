@@ -1,4 +1,7 @@
 {
-    "port" : "8080",
-    "communicationServer" : "localhost"
+    "port"      : 8080,
+    "exchange"  : {
+        "port"      : "7600",
+        "address"   : "localhost"
+    }
 }
