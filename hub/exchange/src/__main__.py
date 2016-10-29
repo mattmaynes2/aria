@@ -3,8 +3,9 @@ import args
 from exchange   import Exchange
 from hub        import Hub
 from cli        import CLI
+from device     import Device
 
-from adapter import AriaAdapter, HubAdapter
+from adapter import AriaAdapter, HubAdapter, Message
 
 hub         = None
 cli         = None
@@ -17,6 +18,7 @@ def main ():
     hub         = Hub(argv, exit)
     cli         = CLI(hub)
     exchange    = create_exchange(hub, cli)
+    exchange.discovered(Device('hub', '', Message.default))
 
     cli.start()
     exchange.start()

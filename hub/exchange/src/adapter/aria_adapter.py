@@ -3,6 +3,8 @@ import socket
 from .message import Message
 from .adapter import Adapter
 
+from device import Device
+
 class AriaAdapter (Adapter):
     BUFFER_SIZE = 4096
     PORT        = 7600
@@ -17,9 +19,9 @@ class AriaAdapter (Adapter):
         super().setup(delegate)
 
         try:
-            self.socket.bind((socket.gethostname(), self.port))
+            self.socket.bind(('localhost', self.port))
         except socket.error as msg:
-            print('Socket failed to connect to port ' + str(self.port) + ' with: ' + msg);
+            print('Socket failed to connect to port ' + str(self.port) + ' with: ' + str(msg));
             return False
         return True
 
@@ -38,12 +40,21 @@ class AriaAdapter (Adapter):
         else:
             raise NameError('Unknown receiver')
 
+        print('Sending')
         sock.sendto(msg.encode(), receiver)
-        # TODO might need to listen for response before closing
+        print('Sent')
         sock.close()
+
     def receive (self):
+        print('Listening')
         data, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
+        print('Received')
         msg = Message.decode(data)
         self._ip_map[msg.sender] = address
-        self.delegate.received(msg)
+
+        if (msg.type == Message.Discover):
+            self.delegate.discovered(Device('aria', '', msg.sender))
+            self.delegate.received(Message(Message.Ack, '', msg.receiver, msg.sender))
+        else:
+            self.delegate.received(msg)
 

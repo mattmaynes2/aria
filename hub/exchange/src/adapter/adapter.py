@@ -88,8 +88,5 @@ class Adapter (Thread):
             True on normal termination, False otherwise.
         """
         while (self.active):
-            try:
-                self.receive()
-            except:
-                return False
+            self.receive()
         return True

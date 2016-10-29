@@ -26,7 +26,7 @@ class Exchange ():
         # TODO Log sending a message here
         if (device.type in self._adapters):
             self._cli.log('Sending ' + str(message) + ' to device ' + str(device), CLI.LEVEL_INFO)
-            self._adapters[device.type](message)
+            self._adapters[device.type].send(message)
 
     def teardown (self):
         for _, adapter in self._adapters.items():
@@ -35,13 +35,12 @@ class Exchange ():
 
     def received (self, message):
         # TODO Add thread synchronization
-        # TODO Log a received message here
-        if (message in self.devices):
-            self._cli.log('Received ' + str(message), CLI.LEVEL_INFO)
-            self.send(message)
+        self._cli.log('Received ' + str(message) + ' from ' + str(message.sender), CLI.LEVEL_INFO)
+        if (message.receiver in self._devices):
+            self._cli.log('Routing message to ' + str(message.receiver), CLI.LEVEL_DEBUG)
+            self.send(self._devices[message.receiver], message)
 
     def discovered (self, device):
         # TODO Add thread synchronization
-        self._cli.log('Discovered device: ' + str(device), CLI.LEVEL_INFO)
-        self.devices[device.address] = device
-        self._hub.append(device)
+        self._cli.log('Discovered device: ' + str(device.address), CLI.LEVEL_INFO)
+        self._devices[device.address] = device

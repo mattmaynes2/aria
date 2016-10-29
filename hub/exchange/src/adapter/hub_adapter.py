@@ -12,7 +12,7 @@ class HubAdapter (Adapter):
         if ('action' not in message.data):
             return False
 
-        if (message.data.action == 'status'):
+        if (message.data['action'] == 'status'):
 
             self.delegate.received(
                 Message(data = self.hub.status(), sender = Message.default, receiver = message.sender)

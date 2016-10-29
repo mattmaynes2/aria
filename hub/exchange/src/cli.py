@@ -9,7 +9,7 @@ class CLI (Thread):
     LEVEL_NOTIFY    = 'NOTIFY'
     LEVEL_INFO      = 'INFO'
     LEVEL_DEBUG     = 'DEBUG'
-    PROMPT          = '> '
+    PROMPT          = ''
     COMMANDS        = {
         'status'    : 'Returns the system status',
         'help'      : 'Print this message and exit',
@@ -39,7 +39,7 @@ class CLI (Thread):
 
     def log (self, msg, level = LEVEL_INFO):
         if (self.level >= level):
-            print('[' + level + '] ' + msg + '\n' +  CLI.PROMPT)
+            print('[' + level + '] ' + msg + CLI.PROMPT)
 
     def help (self):
         print('Commands')

@@ -17,7 +17,7 @@ class Hub:
     def status (self):
         return {
             'version'   : self.version,
-            'mode'      : self.mode,
+            'mode'      : str(self.mode),
             'devices'   : len(self.devices)
         }
 
