@@ -70,7 +70,8 @@ module.exports.gateway= function(expressApp, transport){
 
     expressApp.get('/system/state', function(req, res) {
         sendMessageToCommServer(2, {'action': 'status'}).then(function(response){
-            res.send(response)
+            var parsed = packets.parse(response)
+            res.send(JSON.stringify(parsed.payload))
         }, function(err){
             console.log("Error requesting system state from communication server", err)
         })
