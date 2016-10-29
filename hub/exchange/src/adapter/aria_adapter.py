@@ -8,6 +8,7 @@ from device import Device
 class AriaAdapter (Adapter):
     BUFFER_SIZE = 4096
     PORT        = 7600
+    HOST_NAME   = 'localhost'
 
     def __init__ (self):
         super().__init__()
@@ -19,7 +20,7 @@ class AriaAdapter (Adapter):
         super().setup(delegate)
 
         try:
-            self.socket.bind(('localhost', self.port))
+            self.socket.bind((AriaAdapter.HOST_NAME, self.port))
         except socket.error as msg:
             print('Socket failed to connect to port ' + str(self.port) + ' with: ' + str(msg));
             return False
@@ -40,16 +41,21 @@ class AriaAdapter (Adapter):
         else:
             raise NameError('Unknown receiver')
 
-        print('Sending')
         sock.sendto(msg.encode(), receiver)
-        print('Sent')
         sock.close()
 
     def receive (self):
+        data = []
         print('Listening')
-        data, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
-        print('Received')
-        msg = Message.decode(data)
+        chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
+        #while chunk:
+        #   data.append(chunk)
+        #   chunk = self.socket.recv(AriaAdapter.BUFFER_SIZE)
+        #payload = ''.join(data)
+        payload = chunk
+
+        print('Received all data')
+        msg = Message.decode(payload)
         self._ip_map[msg.sender] = address
 
         if (msg.type == Message.Discover):

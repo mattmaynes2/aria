@@ -28,6 +28,7 @@ class Message:
 
     @staticmethod
     def decode (msg):
+        msg = msg.encode(Message.encoding) if str == type(msg) else msg
         message             = Message()
         message.type        = struct.unpack('B',msg[0 : Message.OFFSET_TYPE])[0]
         message.length      = struct.unpack('I', msg[Message.OFFSET_TYPE:Message.OFFSET_SIZE])[0]

@@ -17,6 +17,11 @@ var sendMessageToCommServer = function(type, payload){
             destination: new Buffer(16).fill(0),
             payload: payload
         }
+        var timeoutCallback = function() {
+            client.close()
+            reject(Error("Response wait period timed out"))
+        }
+
 
         message = packets.serialize(packet)
 
@@ -28,11 +33,6 @@ var sendMessageToCommServer = function(type, payload){
             clearTimeout(timeout)
             resolve(message)
         })
-
-        var timeoutCallback = function() {
-            client.close()
-            reject(Error("Response wait period timed out"))
-        }
 
 
         client.send(message, 0, message.length, 7600, config.communicationServer, function(err, bytes) {
