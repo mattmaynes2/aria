@@ -11,7 +11,7 @@ class NativeCommTest (TestCase):
         self.comm = native_comm.NativeComm
 
     def test_send(self):
-        self.comm.addressCache[uuid.uuid4().bytes]=('127.0.0.1','5000')
+        self.comm._addresses[uuid.uuid4().bytes]=('127.0.0.1','5000')
         msg = message.Message(1,{'action':'status'},uuid.uuid4().bytes,uuid.uuid4().bytes)
         self.comm.send(msg)
 

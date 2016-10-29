@@ -1,5 +1,4 @@
 class Device:
-
     default = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 
     def __init__ (self, type_, name = '', address = default ):

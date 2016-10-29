@@ -1,0 +1,27 @@
+from .cli       import CLI
+from .hub_mode  import HubMode
+
+class Hub:
+    VERSION = '0.0.2'
+
+    def __init__ (self, args = {}, exit = None):
+        self.version = Hub.VERSION
+        self.devices = []
+        self.name    = 'My Hub'
+        self.mode    = HubMode.Normal
+        self.exit    = exit
+
+        CLI(self).start()
+
+    def command (self, action):
+        if action == 'status':
+            return self.status()
+
+    def status (self):
+        return {
+            'version'   : self.version,
+            'mode'      : self.mode,
+            'devices'   : len(self.devices)
+        }
+
+
