@@ -15,7 +15,7 @@ class Exchange ():
 
     def register (self, device_type, adapter):
         self._cli.log('Registered adapter: ' + str(adapter), CLI.LEVEL_INFO)
-        adapter.delegate = self
+        adapter.add_delegate(self)
         self._adapters[device_type] = adapter
 
     def send (self, device, message):

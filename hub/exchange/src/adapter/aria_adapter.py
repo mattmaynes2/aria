@@ -45,7 +45,6 @@ class AriaAdapter (Adapter):
         sock.close()
 
     def receive (self):
-        data = []
         print('Listening')
         chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
         #while chunk:
@@ -59,8 +58,8 @@ class AriaAdapter (Adapter):
         self._ip_map[msg.sender] = address
 
         if (msg.type == Message.Discover):
-            self.delegate.discovered(Device('aria', '', msg.sender))
-            self.delegate.received(Message(Message.Ack, '', msg.receiver, msg.sender))
+            self.notify('discovered', Device('aria', '', msg.sender))
+            self.notify('received', Message(Message.Ack, '', msg.receiver, msg.sender))
         else:
-            self.delegate.received(msg)
+            self.notify('received', msg)
 

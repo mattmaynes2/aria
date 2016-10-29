@@ -30,8 +30,31 @@ class Adapter (Thread):
     def __init__ (self):
         super().__init__()
         self.active = False
-        self.delegate = None
+        self._delegates = []
 
+    def add_delegate (self, delegate):
+        """Adds a delegate to listen to this adapter's notifications
+
+        Arguments:
+            delegate (Delegate): The delegate to notify
+
+        Returns:
+            True if the delegate was not already added, False otherwise
+        """
+        if delegate in self._delegates:
+            return False
+        self._delegates.append(delegate)
+        return True
+
+    def notify (self, event, data):
+        """Notifies all delegates of the given event with the supplied data
+
+        Arguments:
+            event (str): Name of event to trigger
+            data (obj): Data to pass to delegate
+        """
+        for delegate in self._delegates:
+            getattr(delegate, event)(data)
 
     def setup (self):
         """Setup the adapter for communication across the network
