@@ -5,6 +5,7 @@ var Gateway = (function () {
 
     function Gateway (adapter) {
         this.adapter = adapter;
+        this.public = 'public';
     }
 
     Gateway.prototype.start = function (port) {
@@ -17,6 +18,8 @@ var Gateway = (function () {
                 console.log('Error requesting system state from communication server', err);
             });
         });
+
+        app.use(express.static(this.public));
 
         app.listen(port);
     };

@@ -6,6 +6,7 @@ var ExchangeAdapter = (function () {
     function ExchangeAdapter (endpoint) {
         this.id         = new Buffer(16);
         this.registered = false;
+        this.transport  = dgram;
         this.endpoint   = endpoint || {
             port    : 7600,
             address : 'localhost'
@@ -51,7 +52,7 @@ var ExchangeAdapter = (function () {
                 payload     : payload
             };
 
-            client  = dgram.createSocket('udp4');
+            client  = this.transport.createSocket('udp4');
             message = packets.serialize(packet);
             expiry  = setTimeout(timeout, 5000);
 

@@ -16,6 +16,9 @@
 # Binary files
 *.o
 
+# Logs
+*.log
+
 # Reports
 *.doc*
 *.pdf

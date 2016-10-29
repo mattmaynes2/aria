@@ -2,8 +2,13 @@ var config          = require('../config.json'),
     ExchangeAdapter = require('./exchange-adapter'),
     Gateway         = require('./gateway');
 
-var adapter = new ExchangeAdapter(config.endpoint);
+var adapter, gateway;
+
+adapter = new ExchangeAdapter(config.endpoint);
+gateway = new Gateway(adapter);
 
 adapter.register();
-new Gateway(adapter).start(config.port);
+
+gateway.public = config.public;
+gateway.start(config.port);
 
