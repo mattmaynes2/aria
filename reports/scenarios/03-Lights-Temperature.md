@@ -3,7 +3,7 @@
 3.1 Background
 --------------
 
-Smart home should reduce your energy bills and keep you comfy. During your work week, your home
+A smart home should reduce your energy bills and keep you comfy. During your work week, your home
 is left to cool during the day when no one is home. In the evening, before you arrive, the
 system heats the house to a comfortable temperature. As you arrive home, the lights automatically
 turn on in the rooms that you will enter. Later in the evening, the system cools the house to a
@@ -20,7 +20,7 @@ on until later. In the winter months, the home turns the lights on earlier.
 3.2 System Interaction
 ----------------------
 
-The system will need to interact with a multiple sensors as well as light and temperature
+The system will need to interact with multiple sensors as well as light and temperature
 controllers. The remote interface will need to be able to display the state of all the sensors
 in the system. The remote will also need to offer control of the other devices in the system.
 
