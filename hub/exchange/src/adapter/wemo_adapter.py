@@ -39,3 +39,7 @@ class WemoAdapter (Adapter):
         device=Device(deviceType,sender.name,address)
         self.notify('discovered',device)
 
+    def run(self):
+        self.setup()
+        self.discover()
+        self.env.wait()
