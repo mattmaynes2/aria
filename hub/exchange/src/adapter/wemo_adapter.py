@@ -30,30 +30,33 @@ class WemoAdapter (Adapter):
         return True
 
     def _discovered(self,sender, **kwargs):
-        uid = uuid.uuid4()
+        uid = uuid.uuid4().bytes
 
         self.deviceNames[uid] = sender.name
         self.deviceUids[sender.name]=uid
         print(sender)
         #deviceType = DeviceType(sender.name, False, 'WeMo')
-        hostname=sender.services['basicevent'].hostname.split(':')
-        address= (hostname[0],hostname[1])
-        device=Device('wemo',sender.name,address)
+        #hostname=sender.services['basicevent'].hostname.split(':')
+        #address= (hostname[0],hostname[1])
+        device=Device('wemo',sender.name,uid)
         self.notify('discovered',device)
 
     def send (self, message):
-        deviceName = self.deviceUIds[message.receiver]
+        print('looking for '+str(message.receiver))
+        deviceName = self.deviceNames[message.receiver]
+        print('found device with name '+deviceName)
         device = self.env.get(deviceName)
 
         #1 = ON  0 = OFF
         response = device.get_state()
+        print('got device status '+str(response) )
         if device.get_state == 0:
             response = 'OFF'
         elif device.get_state == 1:
             response == 'ON'
         else:
             response == 'ERROR'
-            self.notify(Message(type = 3, data = { 'status' : response }, sender = message.receiver))
+            self.notify('received',Message(type_ = 3, data = { 'status' : response }, sender = message.receiver, receiver=message.sender))
 
 
 
