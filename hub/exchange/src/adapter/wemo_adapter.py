@@ -1,9 +1,8 @@
 import uuid
 from adapter import Adapter
 from ouimeaux.environment import Environment
-from ouimeaux.signals import discovered, statechange, receiver
-from device import Device
-from device_type import DeviceType
+from ouimeaux.signals import discovered, receiver
+from device import Device, DeviceType
 
 class WemoAdapter (Adapter):
 
