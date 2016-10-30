@@ -1,7 +1,7 @@
 Aria - Autonomous Real-Time Interactive Architecture
 ====================================================
 
-[![Build Status](https://travis-ci.com/mattmaynes2/aria?token=MPuUxtfuLzmhXtay93BR&branch=master)](https://travis-ci.com/mattmaynes2/aria)
+[![Build Status](https://travis-ci.com/mattmaynes2/aria.svg?token=MPuUxtfuLzmhXtay93BR&branch=master)](https://travis-ci.com/mattmaynes2/aria)
 
 ## Overview
 
