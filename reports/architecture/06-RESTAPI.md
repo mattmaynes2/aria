@@ -1,4 +1,4 @@
-# REST API
+# 6. REST API
 
 The HTTP gateway component exposes some REST endpoints. The gateway allows system components
 which can only communicate over HTTP to interact with any device in the system using a 
@@ -35,4 +35,3 @@ Content-Type header should be `application/json`
 The body of the request should contain aa JSON object. The object will be forwarded to the 
 device identified by <id> as a type 3 message.
 
----
