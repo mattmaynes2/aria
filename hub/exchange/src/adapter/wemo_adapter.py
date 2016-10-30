@@ -33,10 +33,10 @@ class WemoAdapter (Adapter):
         self.deviceNames[uid] = sender.name
         self.deviceUids[sender.name]=uid
         print(sender)
-        deviceType = DeviceType(sender.name, False, 'WeMo')
+        #deviceType = DeviceType(sender.name, False, 'WeMo')
         hostname=sender.services['basicevent'].hostname.split(':')
         address= (hostname[0],hostname[1])
-        device=Device(deviceType,sender.name,address)
+        device=Device('wemo',sender.name,address)
         self.notify('discovered',device)
 
     def run(self):
