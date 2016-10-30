@@ -1,15 +1,22 @@
 import uuid
+import logging
+import gevent
 from adapter import Adapter
 from ouimeaux.environment import Environment
-from ouimeaux.signals import discovered, statechange, receiver
+from ouimeaux.signals import devicefound, statechange, receiver
 from device import Device, DeviceType
+
+logging.basicConfig(level=logging.DEBUG)
 
 class WemoAdapter (Adapter):
 
     def __init__(self):
         super().__init__()
         self.env=Environment()
-        self.deviceUIds={}
+        self.deviceUids={}
+        self.deviceNames={}
+        # setup call back when device is discovered
+        devicefound.connect(self._discovered)
 
     def setup(self):
         super().setup()
@@ -17,18 +24,18 @@ class WemoAdapter (Adapter):
         #self.env.wait()
 
     def discover(self):
-        print('discovering')
         self.env.discover()
         return True
 
-    @receiver(discovered)
-    def discovered(self,sender, **kwargs):
+    def _discovered(self,sender, **kwargs):
         uid = uuid.uuid4()
 
         self.deviceNames[uid] = sender.name
         self.deviceUids[sender.name]=uid
-
+        print(sender)
         deviceType = DeviceType(sender.name, False, 'WeMo')
-        device=Device(deviceType,sender.name,kwargs['address'])
+        hostname=sender.services['basicevent'].hostname.split(':')
+        address= (hostname[0],hostname[1])
+        device=Device(deviceType,sender.name,address)
         self.notify('discovered',device)
 
