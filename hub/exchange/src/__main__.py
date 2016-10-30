@@ -18,7 +18,7 @@ def main ():
     hub         = Hub(argv, exit)
     cli         = CLI(hub)
     exchange    = create_exchange(hub, cli)
-    exchange.discovered(Device('hub', '', Message.default))
+    exchange.discovered(Device('hub', '', Message.DEFAULT_ADDRESS))
 
     cli.start()
     exchange.start()
