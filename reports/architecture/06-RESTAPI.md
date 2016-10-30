@@ -1,54 +1,38 @@
 # REST API
 
-`GET /devices/list`
+The HTTP gateway component exposes some REST endpoints. The gateway allows system components
+which can only communicate over HTTP to interact with any device in the system using a 
+datagram protocol (see section 5 - Device Protocol). 
 
-Get a list of devices that have been added to the smart home network.
+REST API Design Goals: 
 
----
-
-`GET /devices/<id>/info`
-
-Get details about a device.
-
----
-
-`GET /devices/<id>/state`
-
-Get information about the current state of a device
-
----
-
-`PUT /devices/</id>/state`
-
-Set the state of a device
-
----
-
-`POST /devices/discover`
-
-Detect new devices in the vicinity of the smart home network
-
----
-
-`GET /devices/new`
-
-Get a list of devices which have been detected since the last call to `/devices/discover`
-
----
-
-`POST /devices/add`
-
-Add a newly detected device to the smart home network
-
----
+- In order to ensure the system is extensible and to ease testing, The REST API should not change
+ when new capabilities are added to the communication hub. The REST API strictly translates 
+ messages from HTTP to the Common Communication Protocol, with no interpretation of the requests
+ and responses. 
 
 `GET /system/state`
 
 Get information about the current state of the automation system
+Returns a JSON object.
 
 ---
 
-`PUT /system/state`
+`POST /request`
 
-Set the state of the automation system
+Send a request to the communication hub 
 
+Content-Type header should be `application/json`
+The body of the request should contain a JSON object. The object will be forwarded to the
+communication hub as the payload of a type 3 message.
+
+---
+
+`POST /devices/<id>/request`
+
+Send a request to a a device in the automation network.
+Content-Type header should be `application/json`
+The body of the request should contain aa JSON object. The object will be forwarded to the 
+device identified by <id> as a type 3 message.
+
+---
