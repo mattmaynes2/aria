@@ -8,6 +8,7 @@ from device import Device, DeviceType
 
 logging.basicConfig(level=logging.DEBUG)
 
+
 class WemoAdapter (Adapter):
 
     def __init__(self):
@@ -38,6 +39,26 @@ class WemoAdapter (Adapter):
         address= (hostname[0],hostname[1])
         device=Device('wemo',sender.name,address)
         self.notify('discovered',device)
+		
+	def send (self, message):
+		deviceName = self.deviceUIds[message.receiver]
+		
+		device = self.env.get(deviceName)
+		
+		#1 = ON  0 = OFF
+		response = device.get_state()
+		if device.get_state == 0:
+			response = OFF
+		elif device.get)state == 1:
+			response == ON
+		else:
+			response == ERROR
+		
+		self.notify(Message(type = 3, data = { 'status' : response }, sender = message.receiver)
+		
+		
+		
+		
 
     def run(self):
         self.setup()
