@@ -1,7 +1,7 @@
 import uuid
 from adapter import Adapter
 from ouimeaux.environment import Environment
-from ouimeaux.signals import discovered, receiver
+from ouimeaux.signals import discovered, statechange, receiver
 from device import Device, DeviceType
 
 class WemoAdapter (Adapter):
@@ -11,13 +11,14 @@ class WemoAdapter (Adapter):
         self.env=Environment()
         self.deviceUIds={}
 
-    def setup(self,delegate):
+    def setup(self):
         super().setup()
         self.env.start()
-        self.env.wait()
+        #self.env.wait()
 
     def discover(self):
-        self.env.discover(2)
+        print('discovering')
+        self.env.discover()
         return True
 
     @receiver(discovered)
