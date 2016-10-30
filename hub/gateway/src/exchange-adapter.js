@@ -19,8 +19,7 @@ var ExchangeAdapter = (function () {
         return new Promise ((resolve, reject) => {
             send.call(this, 1, {}).then((response) => {
                 console.log('Got a response to discovery request');
-                var parsed = packets.parse(response);
-                if (parsed.type !== 4) {
+                if (response.type !== 4) {
                     reject(Error('Communication server responded with an unexpected packet type'));
                 }
                 else {
@@ -60,7 +59,7 @@ var ExchangeAdapter = (function () {
                 console.log('Received response from comm server');
                 client.close();
                 clearTimeout(expiry);
-                resolve(message);
+                resolve(packets.parse(message));
             });
 
 
@@ -88,6 +87,3 @@ var ExchangeAdapter = (function () {
 } ());
 
 module.exports = ExchangeAdapter;
-
-
-
