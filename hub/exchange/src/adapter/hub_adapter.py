@@ -15,7 +15,7 @@ class HubAdapter (Adapter):
         if (message.data['action'] == 'status'):
             self.notify(
                 'received',
-                Message(data = self.hub.status(), sender = Message.default, receiver = message.sender)
+                Message(data = self.hub.status(), sender = Message.DEFAULT_ADDRESS, receiver = message.sender)
             )
 
 
