@@ -289,6 +289,14 @@ are common to all Philips Hue devics.
 | ------             | -------             |
 |                    | button event        |
 
+## References
+<cite>
+[1]	"Philips hue API," 2014. [Online]. Available: http://www.developers.meethue.com/philips-hue-api. Accessed: Oct. 29, 2016.
+</cite>
+
+<cite>
+[2]	P. L. B, "Philips hue,". [Online]. Available: http://www2.meethue.com/en-ca/. Accessed: Oct. 29, 2016.
+</cite>
 
 3.7 Osram LIGHTIFY
 ------------------
@@ -334,8 +342,6 @@ notable limitation of the LIGHTIFY API is that it is a cloud-only API. This mean
 the LIGHTIFY gateway is strongly tied to a homeowner's LIGHTIFY account; Osram does not 
 document any local-only API for controlling devices using a gateway
 
-Developer information <https://us.lightify-api.org>
-
 ### Research Attributes
 
 | Inputs                    | Outputs            | Developer Support    | Protocol | API Restrictions                   |
@@ -346,6 +352,12 @@ Developer information <https://us.lightify-api.org>
 | brightness                | brightness         |                      |          |                                    |
 | saturation                | saturation         |                      |          |                                    |
 | transition time (effects) | transition time    |                      |          |                                    |
+
+### References
+
+<cite>
+[1]	"OSRAM rest API," 2015. [Online]. Available: https://us.lightify-api.org. Accessed: Oct. 29, 2016.
+</cite>
 
 -----------------------
 

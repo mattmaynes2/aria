@@ -29,7 +29,7 @@
     "webpack": "^1.13.2"
   },
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint && ./node_modules/karma/bin/karma start karma.conf.js",
+    "test": "./node_modules/jshint/bin/jshint src && ./node_modules/karma/bin/karma start karma.conf.js",
     "build": "./node_modules/webpack/bin/webpack.js"
   }
 }

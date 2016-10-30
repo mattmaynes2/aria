@@ -410,10 +410,6 @@ phone. The custom alarm clocks investigated have significantly inferior interfac
 alarm sounds, configuring multiple alarms, and setting weekly alarm schedules. Making a custom built
 alarm clock as usable as commercially available clocks would require significant time investment.
 
-<http://www.engineersgarage.com/microcontroller/8051projects/LCD-digital-alarm-clock-AT89C51-circuit>
-<http://www.instructables.com/id/Arduino-alarm-clock/>
-<http://circuitdigest.com/microcontroller-projects/arduino-alarm-clock>
-
 6.7 Coffee Makers
 -----------------
 
@@ -435,8 +431,6 @@ required is low.
 - Safety risks: Coffee machine are normally connected directly into a wall socket. Controlling
  the coffee machine using a voltage relay would therefore involve high voltage levels which are
  unsafe to work with without proper training
-
-<http://www.instructables.com/id/Tweet-a-Pot-Twitter-Enabled-Coffee-Pot/>
 
 In order to interface a microcontroller with more sophisticated coffee machines, some level of
 reverse engineering of the coffee machine's control circuits would be necessaary. This would greatly
@@ -467,3 +461,14 @@ It is feasible for the team to build motion sensor, light sensors, and an alarm 
 acceptable commercial solution is available. We should avoid building dimmer switches, coffee
 makers, and thermostats due to the potential high-voltage work involved and the lack of electronics
 knowledge available.
+
+6.10 References
+---------------
+
+[1]	Anonymous, "User login," 2014. [Online]. Available: http://www.engineersgarage.com/microcontroller/8051projects/LCD-digital-alarm-clock-AT89C51-circuit. Accessed: Oct. 29, 2016.
+
+[2]	Anonymous, "Arduino alarm clock," Instructables.com. [Online]. Available: http://www.instructables.com/id/Arduino-alarm-clock. Accessed: Oct. 29, 2016.
+
+[3] C. D. P. policy, Disclaimer, and C. Us, "Arduino based digital clock with alarm," 2015. [Online]. Available: http://circuitdigest.com/microcontroller-projects/arduino-alarm-clock. Accessed: Oct. 29, 2016.
+
+[4] Anonymous, "Tweet-a-Pot: Twitter enabled coffee pot," Instructables.com, 1932. [Online]. Available: http://www.instructables.com/id/Tweet-a-Pot-Twitter-Enabled-Coffee-Pot. Accessed: Oct. 29, 2016.

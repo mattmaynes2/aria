@@ -25,11 +25,11 @@
             "./support/try shellcheck markdown/mkpdf"
         ]
     },
-    "hub.ctrl-serve" : {
-        "deps"      : ["cd ../hub/ctrl-serve", "./setup.py develop"],
-        "build"     : ["cd ../hub/ctrl-serve", "./setup.py bdist_egg"],
-        "test"      : ["cd ../hub/ctrl-serve","./setup.py test"],
-        "clean"     : ["cd ../hub/ctrl-serve", "./setup.py clean"]
+    "hub.exchange" : {
+        "deps"      : ["cd ../hub/exchange", "./setup.py develop"],
+        "build"     : ["cd ../hub/exchange", "./setup.py bdist_egg"],
+        "test"      : ["cd ../hub/exchange","./setup.py test"],
+        "clean"     : ["cd ../hub/exchange", "./setup.py clean"]
     },
     "hub.remote" : {
         "enviro"    : "./support/pkman install node",
