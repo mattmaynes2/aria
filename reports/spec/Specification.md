@@ -4,9 +4,9 @@
 
 ### 1.1 Introduction
 
-The Learning Home Automation System will allow a homeowner to set up a collection of devices in
-their home which will automatically control their environment and automate common tasks. Task
-automation in the system will not require any user configuration, instead tasks will be automated
+The Autonomous Real-Time Interactive Arcitecture (ARIA) will allow a homeowner to set up a collection
+of devices in their home which will automatically control their environment and automate common tasks.
+Task automation in the system will not require any user configuration, instead tasks will be automated
 based on the user's interaction with devices in the system.
 
 The system will consist of a hub device with a simple interface that a homeowner can connect to their
@@ -16,9 +16,9 @@ used to make more predictive decisions about user behaviour.
 
 ### 1.2 Document Conventions
 
-In the remainder of this document, "the system" refers to the Learning Home Automation System
-described in the introduction. The format of this report was adapted from the format recommended
-in IEEE-830 (Recommended Practice for Software Requirements Specifications).
+In the remainder of this document, "the system" refers to the ARIA system described in the introduction.
+The format of this report was adapted from the format recommended in IEEE-830 (Recommended Practice
+for Software Requirements Specifications).
 
 ### 1.3 Product Scope
 
@@ -31,13 +31,13 @@ during the homeowner's routine use of the devices.
 Activities which are "In Scope":
 
 - Provide a range of devices that can be installed in a home which showcase the learning
-capabilities of the system.
+ capabilities of the system.
 
 - Create a hub device that collects data from installed sensors, and uses this data to infer the
   desired values of actuators.
 
 - Provide a simple interface which allows the homeowner to toggle on/off automated control of
-devices.
+ devices.
 
 - Develop a protocol which allows developers to enable new types of devices for use in the system
 
@@ -49,7 +49,7 @@ Systems are becoming more readily available in the general market place. This sy
 traditional home automation systems by adding true automation in the form of learning. Unlike
 traditional systems, this system observes the homeowner's interactions with devices and
 automatically makes decisions based on historical behaviours. By combining the fields of machine
-learning and home automation, the smart learning system will provide an end user with a simplified
+learning and home automation, the our system will provide an end user with a simplified
 smart home experience.
 
 ### 2.2 Product Functions
@@ -78,7 +78,7 @@ view their recorded interactions.
 ### 2.3 User Classes
 
 While the primary audience of the system is a homeowner, it is also for building owners, nursing
-home residence or anyone who needs building automation. The end user of this product is intended to
+home residence, or anyone who needs building automation. The end user of this product is intended to
 be non-technical users who want simple control and automation of their building. This product will
 also provide utilities for more technically proficient users who wish to create their own devices
 that communicate to the system.
