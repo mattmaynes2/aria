@@ -1,6 +1,10 @@
-# 2. Components
+# 2. System Components
+
+## 2.1 Component Organization
 
 ![](./SystemComponents.png)
+
+## 2.2 Component Descriptions
 
 ### Event Logger
 
@@ -16,7 +20,7 @@ The event interface is the protocol that will be used to send event within the s
 system. This interface will define the structure of data that will be sent from smart devices to
 the communication server as well as any other listening parties. Events that are sent from third
 party devices will use a different protocol to communication to the central hub. This protocol is
-designed for custom built devices. 
+designed for custom built devices.
 
 ### ML Algorithm
 
@@ -25,19 +29,6 @@ making decisions about actions to perform. The implementation of this algorithm 
 as long as it provides the decision interface. The ML algorithm will receive data from the
 event logger using snapshots of data. These data snapshots will reduce the amount of information
 that the ML algorithm needs to process by removing redundant information.
-
-### Decision Interface
-
-The decision interface allows the ML algorithm to enter commands into the communication server
-which will be translated into events for the system. This interface must be provided by the ML
-algorithm and will be consumed by the communication server.
-
-### Snapshot Interface
-
-This interface allows the ML algorithm to receive a subset of the data from the event logger.
-The snapshots remove any duplicate information before sending it to the ML algorithm for
-processing. This reduces the amount of data that needs to be sent as well as the amount of data
-that needs to be processed by the algorithm.
 
 ### Communication Server
 
@@ -53,6 +44,36 @@ are not natively supported.
 The HTTP gateway is responsible for supporting the web client interface. It must serve the web
 client's requests over a REST interface and translate them to the internal event interface used
 by the communication server. The gateway must be able to support multiple web clients.
+
+### Sensor Reader
+
+The Sensor Reader is responsible for listening to a sensor and providing 
+events when sensor data changes. The Sensor Reader will provide the Sensor Interface.
+
+### Device Controller
+
+The Device Controller is responsible for controlling the physical device. It consumes events
+and modifies the output of the device accordingly. The Device Controller provides the Device 
+Control Interface.
+
+### Device Control
+
+This interface allows the device communication to pass events to the Device controller.
+
+## 2.3 Component Interfaces
+
+### Decision Interface
+
+The decision interface allows the ML algorithm to enter commands into the communication server
+which will be translated into events for the system. This interface must be provided by the ML
+algorithm and will be consumed by the communication server.
+
+### Snapshot Interface
+
+This interface allows the ML algorithm to receive a subset of the data from the event logger.
+The snapshots remove any duplicate information before sending it to the ML algorithm for
+processing. This reduces the amount of data that needs to be sent as well as the amount of data
+that needs to be processed by the algorithm.
 
 ### REST Interface
 
@@ -72,21 +93,5 @@ and the Event Interface.
 This interface allows the Device Communication to read events from sensors and 
 pass them on to the communication server. This interface is provided by the
 Sensor Reader and consumed by the Device Communication.
-
-### Sensor Reader
-
-The Sensor Reader is responsible for listening to a sensor and providing 
-events when sensor data changes. The Sensor Reader will provide the Sensor Interface.
-
-### Device Controller
-
-The Device Controller is responsible for controlling the physical device. It consumes events
-and modifies the output of the device accordingly. The Device Controller provides the Device 
-Control Interface.
-
-### Device Control
-
-This interface allows the device communication to pass events to the Device controller.
-
 
 
