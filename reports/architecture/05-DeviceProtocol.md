@@ -10,7 +10,7 @@ and the device handlers. This protocol is called the common communication protoc
 second level of the protocol is device specific and is the responsibility of the device handler.
 This layer of the protocol is termed the device communication protocol (DCP). 
 
-## Common Communication Protocol
+## 5.1 Common Communication Interface
 
 This interface communicates directly to the communication hub. It must know how to convert
 between the CCP and DCP. The following methods must be defined.
@@ -63,7 +63,7 @@ message (device: Device, message: Message)
 ```
 
 
-## Device Communication Protocol
+## 5.2 Device Communication Protocol
 
 Messages are passed using the general message structure and are byte encoded. The payload
 of the message
@@ -75,6 +75,34 @@ of the message
 | 1 byte | 4 bytes | 16 bytes |  16 bytes   | 'size' bytes |
 +--------+---------+----------+-------------+--------------+
 ```
+
+### Message Protocol
+
+Messages have to be sent between all components in the smart home system. The smart home system
+uses UDP to send messages. The following is the encoding structure for all messages
+sent in the system. It is assumed that all data in the payload field is JSON encoded unless the
+message type indicates otherwise.
+
+#### General Message Structure
+
+```
++--------+---------+----------+-------------+--------------+
+|  type  |   size  |  sender  | destination |   payload    |
++--------+---------+----------+-------------+--------------+
+| 1 byte | 4 bytes | 16 bytes |  16 bytes   | 'size' bytes |
++--------+---------+----------+-------------+--------------+
+```
+
+#### Message Types
+
+| Name        | Type  | Value |
+| -----       | ----- | ----- |
+| Error       | ERR   | 0x00  |
+| Discover    | DISC  | 0x01  |
+| Request     | REQ   | 0x02  |
+| Event       | EVT   | 0x03  |
+| Acknowledge | ACK   | 0x04  |
+
 
 ### Device Status
 
@@ -93,8 +121,8 @@ Return the device status and any properties associated with that device
 
 ```json
 {
-    "active" : true|false
-    ...
+    "active" : "true|false"
+    // ...
 }
 ```
 
@@ -129,7 +157,6 @@ Return the device status and any properties associated with that device
 ```json
 {
     "action" : "configure"
-    ...
     // Fields that need to be configured
 }
 ```
@@ -145,7 +172,7 @@ Response is status of update. True indicates success, false indicates failure
 
 ```json
 {
-    "status" : true|false
+    "status" : "true|false",
     "error"  : "error message"
 }
 ```

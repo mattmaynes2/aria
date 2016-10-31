@@ -1,22 +1,24 @@
+# 4. Database
 
-## Database Entity-Relationship
+## 4.1  Database Entity-Relationship
 
 ![](./SystemER.png)
+
+## 4.2 Database Tables
 
 ### Devices
 
 The individual devices connected to the system
 
-### Device_Types 
+### Device Types
 
 The different types of possible devices, (WeMo switch,,Hue lights, etc...)
-
 
 ### User
 
 A person that can add and control devices
 
-### User_Devices
+### User Devices
 
 The devices a user has access to
 

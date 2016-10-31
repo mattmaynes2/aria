@@ -1,5 +1,4 @@
-
-## Deployment
+# 3. Deployment
 
 ![](./SystemDeployment.png)
 
