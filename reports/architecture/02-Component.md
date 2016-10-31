@@ -16,33 +16,7 @@ The event interface is the protocol that will be used to send event within the s
 system. This interface will define the structure of data that will be sent from smart devices to
 the communication server as well as any other listening parties. Events that are sent from third
 party devices will use a different protocol to communication to the central hub. This protocol is
-designed for custom built devices. Events that are sent using this interface will have the
-following message protocol.
-
-#### Message Protocol
-
-Messages have to be sent between all components in the smart home system. The smart home system
-uses UDP to send messages. The following is a proposal for an encoding structure for all messages
-sent in the system. It is assumed that all data in the payload field is JSON encoded unless the
-message type indicates otherwise.
-
-##### General Message Structure
-
-```
-+--------+---------+----------+-------------+--------------+
-|  type  |   size  |  sender  | destination |   payload    |
-+--------+---------+----------+-------------+--------------+
-| 1 byte | 4 bytes | 16 bytes |  16 bytes   | 'size' bytes |
-+--------+---------+----------+-------------+--------------+
-```
-
-##### Message Types
-
-| Name        | Type  | Value       |
-| -----       | ----- | ----------- |
-| Error       | ERR   | 0x01        |
-| Request     | REQ   | 0x02        |
-| Event       | EVT   | 0x03        |
+designed for custom built devices. 
 
 ### ML Algorithm
 

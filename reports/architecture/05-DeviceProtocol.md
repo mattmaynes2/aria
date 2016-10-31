@@ -10,6 +10,35 @@ and the device handlers. This protocol is called the common communication protoc
 second level of the protocol is device specific and is the responsibility of the device handler.
 This layer of the protocol is termed the device communication protocol (DCP). 
 
+
+
+#### Message Protocol
+
+Messages have to be sent between all components in the smart home system. The smart home system
+uses UDP to send messages. The following is the encoding structure for all messages
+sent in the system. It is assumed that all data in the payload field is JSON encoded unless the
+message type indicates otherwise.
+
+##### General Message Structure
+
+```
++--------+---------+----------+-------------+--------------+
+|  type  |   size  |  sender  | destination |   payload    |
++--------+---------+----------+-------------+--------------+
+| 1 byte | 4 bytes | 16 bytes |  16 bytes   | 'size' bytes |
++--------+---------+----------+-------------+--------------+
+```
+
+##### Message Types
+
+| Name        | Type  | Value |
+| -----       | ----- | ----- |
+| Error       | ERR   | 0x00  |
+| Discover    | DISC  | 0x01  |
+| Request     | REQ   | 0x02  |
+| Event       | EVT   | 0x03  |
+| Acknowledge | ACK   | 0x04  |
+
 ## Common Communication Protocol
 
 This interface communicates directly to the communication hub. It must know how to convert
