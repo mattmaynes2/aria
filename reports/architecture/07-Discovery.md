@@ -1,4 +1,4 @@
-# 7. Discovery 
+# 7. Discovery
 
 ## 7.1 Overview
 
@@ -16,7 +16,7 @@ begins the device [driven discovery sequence](#7.3-Device-Driven-Discovery)
 
 ![](./UserDrivenDiscovery.png)
 
-## 7.3 User Driven Discovery
+## 7.3 Device Driven Discovery
 
 Device initiated discovery begins with an initial discovery request sent from the device. The
 hub will receive a request for the discovery with device details. If the device has valid

@@ -172,7 +172,7 @@ Response is status of update. True indicates success, false indicates failure
 
 ```json
 {
-    "status" : "true|false"
+    "status" : "true|false",
     "error"  : "error message"
 }
 ```
