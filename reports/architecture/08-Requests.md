@@ -2,7 +2,8 @@
 
 8.1 Introduction
 ----------------
-
+The purpose of this section is to provide an understanding of the interactions between an end
+user and the system for different types of requests. 
 
 8.2 Web Client
 --------------
@@ -34,7 +35,7 @@ Set the mode of the system. The different modes are: Standy(0x00), Normal(0x01),
 
 ###AddNewDevice
 Add a new device to the system. This allows the end user to connect a new device to be controlled
-by the system and contribute to the machine learning.
+by the system and contribute to the machine learning. 
 
 ###RemoveDevice
 Remove a device from the system. This allows a user to remove a device and its information, no 
