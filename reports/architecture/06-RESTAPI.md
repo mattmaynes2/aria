@@ -4,7 +4,7 @@ The HTTP gateway component exposes some REST endpoints. The gateway allows syste
 which can only communicate over HTTP to interact with any device in the system using a 
 datagram protocol (see section 5 - Device Protocol). 
 
-REST API Design Goals: 
+REST API Design Goals:
 
 - In order to ensure the system is extensible and to ease testing, The REST API should not change
  when new capabilities are added to the communication hub. The REST API strictly translates 
