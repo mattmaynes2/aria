@@ -2,7 +2,7 @@ import sys
 
 sys.path.append('../lib')
 
-from hub        import Hub, Exchange, CLI, args
+from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
 
 from adapter import AriaAdapter, HubAdapter, Message
@@ -15,13 +15,17 @@ def main ():
     global hub, cli, exchange
     argv = args.parse()
 
+    if argv.daemonize:
+        daemon.daemonize()
+
     hub         = Hub(argv, exit)
     cli         = CLI(hub)
     exchange    = create_exchange(hub, cli)
-    exchange.discovered(Device('hub', '', Message.default))
+    exchange.discovered(Device('hub', '', Message.DEFAULT_ADDRESS))
 
     cli.start()
     exchange.start()
+
 
 def create_exchange (hub, cli):
     global exchange

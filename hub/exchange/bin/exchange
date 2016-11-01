@@ -1,5 +1,6 @@
 #!/bin/bash
 
-export PYTHONPATH=$PYTHONPATH:../build/lib
+DIR="$(dirname "$0")"
+export PYTHONPATH=$PYTHONPATH:"$DIR/../build/lib"
 
-python3  $(find ../build/ -name '__main__.py')
+python3  $(find "$DIR/../build/" -name "__main__.py") "${@:1}" #NOQA
