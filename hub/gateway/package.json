@@ -24,7 +24,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
     "build": "./node_modules/webpack/bin/webpack.js --executable && chmod +x ./bin/*",
-    "start": "node ./src/server.js"
+    "start": "./bin/gateway"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
