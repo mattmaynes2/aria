@@ -1,4 +1,4 @@
-## 1. Introduction
+## Introduction
 
 The field of home automation systems is a young and expanding market. In recent years there has
 been a vast expansion into micro-computing and the Internet of Things (IoT). The smart home
@@ -20,9 +20,4 @@ section is to determine what computing device to use as the hub of the system, a
 computing devices would be appropriate choices to use in our own smart devices. Finally, the report
 investigates the feasibility of building several types of smart sensors, controllers, and actuators,
 as opposed to buying them off-the-shelf.
-
-
-# 3 Technical Sections
-
-# 3 Technical Sections
 

@@ -1,14 +1,13 @@
-## 4. Communication Protocols
+## Communication Protocols
 
-4.1 Background
---------------
+### Background
 
 There are many different ways to connect devices across a network. A familiar example is WiFi, but
 other protocols are available that specialize in different aspects of wireless communication.
 The goal of this section is to investigate the strengths and weaknesses of different communication
 protocols, and evaluate them against each other.
 
-#### Selection Criteria
+#### Selection Criteria {-}
 
 The criteria used for evaluating communication protocols are based on the non-functional
 requirements identified for the system. The key requirements pertaining to communication protocols
@@ -16,10 +15,9 @@ are ease of integration with devices, battery life of devices, range, interopera
 transfer rate, number of concurrent connections. Another important aspect of a communication
 protocol that will be evaluated is what frequency it operates on.
 
-4.2 ZigBee
-----------
+### ZigBee
 
-#### Description
+#### Description {-}
 
 The goal of the ZigBee protocol is to provide a means to transfer small amounts of data over a
 limited distance. Relative to WiFi, the decreased in data transmission rates and range of ZigBee
@@ -28,7 +26,7 @@ efficiency. ZigBee shields are available for many popular embedded communication
 them to communicate with ZigBee compatible smart devices. Many companies offer smart devices which
 are compatible with the ZigBee protocol, such as lights and light switches.
 
-#### Technical Overview
+#### Technical Overview {-}
 
 ZigBee uses a mesh networking topology, as opposed to the star topology used by WiFi. A mesh
 topology means that every node in the network is connected. Each node transmits its own
@@ -70,7 +68,7 @@ ZigBee device communication, so devices from different companies cannot be assum
 compatible. The limited interoperability has been somewhat fixed with the introduction of the ZigBee
 Alliance, but could present some legacy issues.
 
-#### References
+#### References {-}
 
 <cite>
 [1] "What Technology?," in SMARTHOME® - Home Automation Superstore, 1995. [Online].  Available:
@@ -105,10 +103,9 @@ and WiFi," 2012. [Online]. Available: <http://www.ipcsit.com/vol30/024-ICNCS2012
 Accessed: Oct. 6, 2016.
 </cite>
 
-4.3 Z-Wave
-----------
+### Z-Wave
 
-#### Description
+#### Description {-}
 
 Z-Wave is a very similar option to ZigBee, except it uses a proprietary radio design. This slightly
 limits the number of devices available for it, as chips are mostly produced by Sigma Designs. The
@@ -120,14 +117,14 @@ Z-Wave goes beyond a network layer protocol and also includes a application-leve
 for controlling Z-Wave compatible devices. Devices that implement the Z-Wave protocol are
 standardized and can be controlled using the Z-Wave protocol messages.
 
-#### Technical Overview
+#### Technical Overview {-}
 
 One area where Z-Wave differs from ZigBee is the frequency range of operation. It operates at 908.42
 MHz instead of at 2.4 GHz, which avoids the issue of conflicting with WiFi signals. In terms of
 device limits, it is very similar, being able to handle between 30 and 40 devices before issues
 start to occur. Z-Wave is similar to ZigBee in terms of device range and power consumption.
 
-#### References
+#### References {-}
 
 <cite>
 [1] "What is Z-Wave," in SMARTHOME® - Home Automation Superstore, 1995. [Online].  Available:
@@ -147,14 +144,13 @@ Oct. 6, 2016.
 </cite>
 
 
-4.4 Insteon
------------
+### Insteon
 
-#### Description
+#### Description {-}
 
 Insteon is substantially different from the two above protocols.
 
-#### Technical Overview
+#### Technical Overview {-}
 
 Insteon uses a similar mesh topology to the above protocols, but it is not limited to radio
 frequencies. It utilizes a dual-mesh system to increase overall stability. The dual-mesh system is a
@@ -183,7 +179,7 @@ modern day smart home communication protocol. That said, there are many legacy a
 place which still use X10 devices. If this were the case, then Insteon would be an ideal choice for
 a communication protocol.
 
-#### References
+#### References {-}
 
 <cite>
 [1] "WHITEPAPER: Compared," in INSTEON. [Online]. Available:
@@ -201,17 +197,16 @@ a communication protocol.
 Accessed: Oct. 8, 2016.
 </cite>
 
-4.5 WiFi
----------
+### WiFi
 
-#### Description
+#### Description {-}
 
 WiFi is by far the most common communication protocol used in a home on a daily basis. Nearly every
 other communication protocol is compatible with WiFi devices, and they tend to be easy to install.
 There are several pros and cons associated with using WiFi for home automation, which are outlined
 below.
 
-#### Technical Overview
+#### Technical Overview {-}
 
 WiFi operates using a star network topology. Every node is connected to a central server node. All
 communications go from the source node, through the central server node, and arrive at the
@@ -239,7 +234,7 @@ Another issue stems directly from the prevalence of WiFi. Having a smart home ne
 network with regular household uses can cause the network as a whole to slow, due to the bandwidth
 being shared across so many devices.
 
-#### References
+#### References {-}
 
 <cite>
 [1] "Introduction to Wi-Fi (802.11 or WiFi)," in CCM Benchmark, CCM, 2016. [Online].  Available:
@@ -253,17 +248,16 @@ House, 2016. [Online]. Available:
 Accessed: Oct. 8, 2016.
 </cite>
 
-4.6 Bluetooth
--------------
+### Bluetooth
 
-#### Description
+#### Description {-}
 
 Bluetooth is the most similar to WiFi of the alternative options. It is fairly common in households,
 and non-technical users are more likely to be familiar with it than other protocols. There are
 two main classifications of Bluetooth when it comes to home automation, both of which will be
 discussed below.
 
-#### Technical Overview
+#### Technical Overview {-}
 
 Bluetooth operates in the 2.4 GHz frequency band, alongside WiFi and ZigBee. Bluetooth also shares
 the star network topology with WiFi, and is ideal for master and slave devices.
@@ -287,7 +281,7 @@ efficient. It accomplishes this by closing inactive connections while no data is
 Once data needs to be transferred, it reestablishes the necessary connection, completes the
 transfer, and closes the connection again.
 
-#### References
+#### References {-}
 
 <cite>
 [1] Jim, "Bluetooth basics," in sparkfun. [Online]. Available: 
@@ -304,10 +298,9 @@ transfer, and closes the connection again.
 <https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336>. Accessed: Oct. 9, 2016.
 </cite>
 
-4.7 Summary of Evaluation
--------------------------
+### Summary of Evaluation
 
-#### Evaluation Criteria
+#### Evaluation Criteria {-}
 
 | Protocol  | Transfer Rate | Battery Life | Interoperability | ## of Connections | Frequency | Range   | Topology |
 | --------- | ------------  | ------------ | ---------------- | ---------------- | --------- | ------- | -------- |
@@ -344,7 +337,7 @@ Overall, using Z-Wave as our primary communication protocol appears to be the be
 for this project. For industry compliance, WiFi will be required as well.
 
 
-#### Z-Wave Implementation Specifics
+#### Z-Wave Implementation Specifics {-}
 
 Any processing unit with USB support can be easily turned into a Z-Wave master, using a Z-Wave
 USB stick. Converting an Arduino into a Z-Wave slave is not simple. There are specialized

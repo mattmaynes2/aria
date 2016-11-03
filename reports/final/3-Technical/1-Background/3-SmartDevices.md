@@ -1,14 +1,12 @@
-## 3. Smart Devices
+## Smart Devices
 
-3.1 Background
---------------
+### Background
 
 In the context of this project, a smart device is a device that is capable of communicating over
 a wireless computer network, such as WiFi or Z-Wave. Each device provides a set of inputs and outputs
 which can be controlled and examined using some protocol.
 
-3.2 Relation to System
-----------------------
+### Relation to System
 
 This section examines several commercial smart device products which are available off-the-shelf.
 The goal of this research is to determine what types of devices are commercially available, and 
@@ -33,15 +31,14 @@ available?
 - What restrictions does the device introduce to the system? For example, do users need to create an
 account with another company in order to use the device with our system?
 
-3.3 WeMo
---------
+### WeMo
 
-#### Description
+#### Description {-}
 
 WeMo is a line of smart devices made by Belkin. WeMo devices can be controlled over a WiFi connection
 using a smartphone app.
 
-#### Available Devices
+#### Available Devices {-}
 
 1. Light switch
  - On/Off
@@ -81,24 +78,22 @@ using a smartphone app.
  - Temperature
  - Power level
 
-#### Technical Overview
+#### Technical Overview {-}
 
-
-##### Communication Protocol
+##### Communication Protocol {-}
 
 WeMo only supports WiFi for communicating with devices. No central hub is required in order to 
 control WeMo devices, each device connects to a WiFi network directly.
 
 WeMo uses Universal Plug And Play (UPnP) protocol for discovery and operating the devices.
 
-
-##### Developing with WeMo
+##### Developing with WeMo {-}
 
 - *ouimeaux* is an Open source python API for controlling WeMo devices.
 - WeMo devices can be controlled using UPnP. This allows us to implement one protocol and comunicate with 
 all WeMo devices as well as any other smart devices from other vendors that use UPnP.
 
-#### Research Criteria
+#### Research Criteria {-}
 
 All WeMo Devices
 
@@ -107,8 +102,7 @@ All WeMo Devices
 | On/Off | On/Off  | ouimeaux library  | WiFi     | Local Only          |
 |        |         |                   | UPnP     | We need to Write it |
 
-
-#### References
+#### References {-}
 
 <cite>
 [1] B. International, "WeMo," WeMo, 2014. [Online]. Available:
@@ -120,19 +114,16 @@ All WeMo Devices
 <https://pypi.python.org/pypi/ouimeaux>. Accessed: Oct. 6, 2016.
 </cite>
 
------------------------
+### Nest Thermostat
 
-3.4 Nest Thermostat 
---------
-
-#### Description
+#### Description {-}
 
 The Nest thermostat is a smart learning thermostat. Over time  the thermostat learns the
 homeowner's routine and adjusts the temperature accordingly. The thermostat also turns off
 automatically when it detects that nobody is home, and can be remotely controlled using a
 smartphone app.
 
-#### Technical Overview
+#### Technical Overview {-}
 
 Nest communicates using WiFi and a custom nest protocol called **Nest Weave**. Nest Weave uses
 WiFi and the Thread protocol.
@@ -140,7 +131,7 @@ WiFi and the Thread protocol.
 Nest provides API support through the nest cloud. The API is accessed as a RESTful service or
 using Firebase.
 
-#### Evalutaion
+#### Evaluation {-}
 
 The nest thermostat already has some machine learning on it. Trying to control it using our
 algorithm could cause unexpected results. They also require the use of a cloud API to control
@@ -148,7 +139,7 @@ the thermostat and we are trying to avoid this and communicate locally with our 
 these resons it seems like the nest thermostat is not a great fit for our system and we should
 not invest time into integrating with it.
 
-#### References
+#### References {-}
 
 <cite>
 [1] "Meet the nest learning thermostat," Nest Labs, 2016. [Online]. Available: 
@@ -161,33 +152,30 @@ not invest time into integrating with it.
 Accessed: Oct. 24, 2016.
 </cite>
 
------------------------
+### Honeywell VisionPro Thermostat
 
-3.5 Honeywell VisionPro Thermostat
------------
-
-#### Description
+#### Description {-}
 
 The Honeywell VisionPro Thermostat is a smart programmable thermostat which can be controlled
 using the Z-Wave protocol. Unlike the Nest thermostat, the VisionPro does not include learning
 features.
 
-#### Technical Overview
+#### Technical Overview {-}
 
-#### Communication 
+#### Communication {-}
 
 The thermostat communicates can be controlled through the touch screen or through Z-Wave. 
 
-#### API
+#### API {-}
 
 There is no API provided by Honeywell. The thermostat is controllable using the Z-Wave protocol.
 
-#### Evaluation
+#### Evaluation {-}
 
 This is a simple thermostat that will be easy to control using Z-Wave and as it doesn't have any
 learning on it, so there won't be any conflicts with our system.
 
-#### References 
+#### References {-}
 
 <cite>
 [1] Honeywell. [Online]. Available:
@@ -195,13 +183,9 @@ learning on it, so there won't be any conflicts with our system.
 Accessed: Oct. 26, 2016.
 </cite>
 
------------------
+### Philips Hue
 
-
-3.6 Philips Hue
----------------
-
-#### Available Devices
+#### Available Devices {-}
 
 1. White Bulbs
  - On/Off 
@@ -247,8 +231,7 @@ Accessed: Oct. 26, 2016.
  - Detects motion in the vicinity of a PIR sensor
  - Includes an integrated daylight sensor
 
-
-#### Developing with Hue
+#### Developing with Hue {-}
 
 - Devices use ZigBee Light Link
 
@@ -260,7 +243,7 @@ Accessed: Oct. 26, 2016.
 - Hue Bridge provides a RESTful API for controlling connected lights. API is only accessible 
   when you're on the same LAN as the bridge.
 
-#### Research Criteria
+#### Research Criteria {-}
 
 Inputs and outputs differ by device type; developer support, communication protocol, and API restrictions
 are common to all Philips Hue devics.
@@ -289,7 +272,8 @@ are common to all Philips Hue devics.
 | ------             | -------             |
 |                    | button event        |
 
-### References
+#### References
+
 <cite>
 [1]	"Philips hue API," 2014. [Online]. Available: http://www.developers.meethue.com/philips-hue-api. Accessed: Oct. 29, 2016.
 </cite>
@@ -298,10 +282,9 @@ are common to all Philips Hue devics.
 [2]	P. L. B, "Philips hue,". [Online]. Available: http://www2.meethue.com/en-ca/. Accessed: Oct. 29, 2016.
 </cite>
 
-3.7 Osram LIGHTIFY
-------------------
+### Osram LIGHTIFY
 
-#### Description
+#### Description {-}
 
 LIGHTIFY is a line of lighting products which are can be controlled using 
 the LIGHTIFY mobile app. LIGHTIFY provides two separate product lines; LIGHTIFY Pro
@@ -312,7 +295,7 @@ The LIGHTIFY system consists of a gateway device which connects to all of the bu
 in the home. Using the LIGHTIFY app, a homeowner can control connected lights from a 
 mobile device.
 
-#### Available Devices
+#### Available Devices {-}
 
 1. Surface Light TW
 - Dimmable
@@ -328,7 +311,7 @@ mobile device.
 - Adjustable colour temperature
 - Dimmable
 
-#### Technical Overview
+#### Technical Overview {-}
 
 LIGHTIFY products use the ZigBee protocol for communication between the gateway and 
 lighting products. The gateway connects to a local Wifi network, allowing the 
@@ -342,7 +325,7 @@ notable limitation of the LIGHTIFY API is that it is a cloud-only API. This mean
 the LIGHTIFY gateway is strongly tied to a homeowner's LIGHTIFY account; Osram does not 
 document any local-only API for controlling devices using a gateway
 
-#### Research Attributes
+#### Research Attributes {-}
 
 | Inputs                    | Outputs            | Developer Support    | Protocol | API Restrictions                   |
 | ------                    | -------            | -----------------    | -------- | ----------------                   |
@@ -353,23 +336,21 @@ document any local-only API for controlling devices using a gateway
 | saturation                | saturation         |                      |          |                                    |
 | transition time (effects) | transition time    |                      |          |                                    |
 
-#### References
+#### References {-}
 
 <cite>
 [1]	"OSRAM rest API," 2015. [Online]. Available: https://us.lightify-api.org. Accessed: Oct. 29, 2016.
 </cite>
 
------------------------
 
-3.8 Aeotec Light Bulbs
-----------------------
+### Aeotec Light Bulbs
 
-#### Description
+#### Description {-}
 
 Aeotec sells light bulbswhich are compatible with the Z-Wave protocol. Aeotec products are compatible
 with most Z-Wave hubs. Aeotec does not provide a proprietary API for their products.
 
-#### Available Devices
+#### Available Devices {-}
 
 1. LED Bulb
 - Dimmable
@@ -379,7 +360,7 @@ with most Z-Wave hubs. Aeotec does not provide a proprietary API for their produ
 - Dimmable
 - Configurable Colour
 
-#### Research Attributes
+#### Research Attributes {-}
 
 | Inputs     | Outputs    | Developer Support   | Protocol | API Restrictions     |
 | ------     | -------    | -----------------   | -------- | ----------------     |
@@ -387,15 +368,14 @@ with most Z-Wave hubs. Aeotec does not provide a proprietary API for their produ
 | colour     | colour     | Z-Wave Developer    |          |                      |
 | brightness | brightness |                     |          |                      |
 
-3.9 Aeon Labs
------------------
+### Aeon Labs
 
-#### Description
+#### Description {-}
 
 Aeon Labs is a company that produces a large variety of Z-Wave devices. They also provide
 the ability to create your own home automation hub.
 
-#### Technical Overview
+#### Technical Overview {-}
 
 Aeon Labs produce a USB dongle that allows you to turn any computing device into a Z-Wave
 communication hub. This hub allows the user to manually control any Z-Wave device on the Z-Wave
@@ -416,8 +396,7 @@ The specification for interacting with Z-Wave devices is public, and available a
 <http://zwavepublic.com/specifications>. There is also an open Z-Wave sdk available, to communicate from
 the controller to devices.
 
-
-#### Evaluation
+#### Evaluation {-}
 
 Aeon Labs is an ideal solution for our project. To start, there is an easy way to set up our own
 hub, instead of being constrained to buying one. This allows us to implement the features we want,
@@ -426,7 +405,7 @@ important to us as well. It lets us not be responsible for implementing the Z-Wa
 while also giving us the freedom to use the information received by the devices in a unique way.
 Specifically, this will provide us with data for the machine learning algorithm.
 
-#### References
+#### References {-}
 
 <cite>
 [1]	"Z-Stick 2E manual," Aeotec, Aeon Labs, 2012. [Online]. Available:
@@ -443,19 +422,17 @@ Specifically, this will provide us with data for the machine learning algorithm.
 <http://www.openzwave.com/dev/index.html>. Accessed: Oct. 13, 2016.
 </cite>
 
------------------------
 
-3.10 Spruce Irrigation
------------------------
+### Spruce Irrigation
 
-#### Description
+#### Description {-}
 
 Spruce irrigation is a home plant watering automation system. The irrigation system can be used
 outdoors for watering gardens, lawns or any other plant life. The Spruce system is ideal for
 scheduling or automating plant watering cycles. The Spruce system also offers automation of water
 based on weather conditions and soil moisture.
 
-#### Technical Overview
+#### Technical Overview {-}
 
 The Spruce irrigation system uses a combination of wireless sensors, smart sprinklers and a central
 hub for controlling the watering levels of its plants. The irrigation system's central hub is
@@ -468,7 +445,7 @@ user interface for scheduling sprinkler times and amounts. The Spruce system is 
 some learning software that uses weather predictions and moisture amount to optimize water use
 for watering plants.
 
-#### Evaluation
+#### Evaluation {-}
 
 The Spruce system provides integration to SmartThings but has no other public APIs. This means
 that it is not accessible other systems for communication. The only option for controlling the
@@ -476,7 +453,7 @@ Spruce system would be to implement the SmartThings protocol or to attach an ada
 existing SmartThings Hub. This is likely onside of the scope of this project but could be
 pursued if there was interest.
 
-#### References
+#### References {-}
 
 <cite>
 [1] "Spruce - how it works,". [Online]. Available: <http://spruceirrigation.com/How>.
@@ -489,19 +466,16 @@ Accessed: Oct. 13, 2016.
 Accessed: Oct. 13, 2016.
 </cite>
 
------------------------
+### OSO PlantLink
 
-3.11 OSO PlantLink
--------------------
-
-#### Description
+#### Description {-}
 
 PlantLink is a indoor or outdoor plant monitoring and irrigation system. PlantLink uses a
 simple monitoring system where sensors are placed it the target plant's soil for monitoring.
 These sensors then report back to a mobile app for monitoring. PlantLink also offers an
 automated valve for controlling water flow of a hose.
 
-#### Technical Overview
+#### Technical Overview {-}
 
 PlantLink sensors are low power, light weight units that can transmit data with a range of
 100-300 ft. The sensor is water resistant and battery powered with an estimated one year battery
@@ -513,8 +487,7 @@ is solar powered and can be controlled from the PlankLink mobile app. The valve 
 communicate directly to senors to automate the watering of plants. In this mode, if a sensor
 reports that the soil is dry then the valve will open up and water the plants.
 
-
-#### Evaluation
+#### Evaluation {-}
 
 PlantLink is compatible with other platforms but does not offer open source access to its APIs.
 PlantLink can communicate with SmartThings, Iris, greenIQ and GRO automation systems. To be
@@ -522,18 +495,14 @@ able to integrate with this system we would need to interface through one of the
 as an intermediary. The PlantLink system may be outside of the scope of this system unless
 there we plan on integrating with another smart system
 
-#### References
+#### References {-}
 
 <cite>
 [1] "PlantLink," PlantLink, 2016. [Online]. Available: <https://myplantlink.com/in-action>.
 Accessed: Oct. 13, 2016.
 </cite>
 
------------------------
-
-
-3.12 Summary of Evaluation
---------------------------
+### Summary of Evaluation
 
 Existing devices with an element of machine learning already incorporated in them are not
 a good fit for our system, as they may cause unexpected results when introduced to our
@@ -549,7 +518,7 @@ that has no special capabilities other than being Z-Wave ready are ideal, becaus
 to use them with no unexpected behaviours. The Honeywell VisionPro Thermostat and devices from 
 Aeon Labs are examples of this.
 
-#### Resources
+#### Resources {-}
 
 <cite>
 [1] R. Crist, "Best smart home devices of 2016," CNET, 2016. [Online]. Available:
