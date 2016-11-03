@@ -1,0 +1,58 @@
+# Build
+
+## Introduction
+
+This document outlines the details about building and deploying the Aria system. It details how
+the system's automated build process executes and the details about the build manifest. This
+document also outlines the major decisions that were made to run the build and the reasons behind
+them.
+
+## Build Process
+
+The build process uses a centralized manifest structure to execute the build. The build system does
+not use a build automation suite but instead integrates a number of different technologies to
+deploy the build. The executing process that runs the build is a simple shell command executor that
+runs over a set of commands from a central manifest.
+
+The Aria system is composed of many subsystems that each require their own build tool chain. Each
+subcomponent has its own set of build commands that are encapsulated within the central manifest.
+For this reason, it was decided that a simple command executor would be more suitable for running
+the main build process then having another architecture to try to execute the commands.
+
+The deployment of the Aria system is not restricted to a single platform but is instead intended to
+operate on many different operating system with many different package managers. To accommodate
+this requirement, a package manager wrapper was built. This wrapper dispatches commands to the
+appropriate system package manager to download any required dependencies for this project. This
+is used in conjunction with the main build system to let the Aria system to be deployable on
+numerous architectures.
+
+### Package Management
+
+Package management 
+
+## Building Aria
+
+The Aria system is built in several stages. These stages are executed in order to setup the target
+system's architecture for running Aria. Each stage is referred to as a directive in the build
+process. To perform a complete build these directives must be executed in order and then must be
+deployed. To see how to run the build command, see [Executing a Build](#Executing-a-Build).
+
+## Executing a Build
+
+To execute a build in the aria system simple run the `./build/run all` command. This will execute
+all of the stages of the Aria build process including the Aria test suite. Once the build has been
+successfully built it can be deployed with the `./build/run deploy` command. This will start
+the Aria system processes in a daemonized state.
+
+To execute a specific directive in the build, simply run the `./build/run` command with one of
+the following directives.
+
+| Directive | Description                                                         |
+| --------- | -----------                                                         |
+| `enviro`  | Setup the target system's environment dependencies                  |
+| `deps`    | Install all of the target specific technologies                     |
+| `build`   | Build all of the targets on the build system                        |
+| `test`    | Executes the automated test suite on the build                      |
+| `deploy`  | Start running the Aria system                                       |
+| `clean`   | Clean all of the build artifacts from the repository                |
+| `all`     | Install all of the dependencies, build the system and run the tests |
