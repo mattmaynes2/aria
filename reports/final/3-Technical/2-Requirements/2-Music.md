@@ -1,15 +1,13 @@
-# 2. Music Automation
+### Music Automation
 
-2.1 Background
----------------
+#### Background {-}
 
 Smart home automation should make your life easy and fun. Imagine a group of people arrive at your
 house for a party. Your home automation system has learned how to set up your environment to give
 you the best experience possible. The lights dim, the temperature goes down, and the music goes up.
 Your home is now ready for your guests!
 
-2.2 System Interaction
-----------------------
+#### System Interaction {-}
 
 The home automation system will be able to interact with a music system. The remote interface will
 allow the user to turn on and off music and control the system volume. The system may also be able
@@ -26,8 +24,7 @@ temperature, lights, and any other devices they wish. This could indicate to the
 when there are many people in the home, all of the trained systems should be activated.
 
 
-2.3 System Requirements
------------------------
+#### System Requirements {-}
 
 To be able to monitor the home, the following sensors may be of interest. These sensors will be
 use to monitor the occupancy of the home as well as determine the noise level of the home to

@@ -1,7 +1,6 @@
-# 3. Efficient Lights and Temperature
+### Efficient Lights and Temperature
 
-3.1 Background
---------------
+#### Background {-}
 
 A smart home should reduce your energy bills and keep you comfy. During your work week, your home
 is left to cool during the day when no one is home. In the evening, before you arrive, the
@@ -17,8 +16,7 @@ In the summer months, when it is more light outside, the system does not turn th
 on until later. In the winter months, the home turns the lights on earlier.
 
 
-3.2 System Interaction
-----------------------
+#### System Interaction {-}
 
 The system will need to interact with multiple sensors as well as light and temperature
 controllers. The remote interface will need to be able to display the state of all the sensors
@@ -34,8 +32,7 @@ be much longer. At different times of day the user will change the temperature. 
 factors changes, the system will make these observations and use them to decide what the should
 be set to.
 
-3.3 System Requirements
------------------------
+#### System Requirements {-}
 
 To enable light and temperature control, sensors will be needed to observe the system. The
 sensors will be needed to observe the ambient light and temperature of the home. There
