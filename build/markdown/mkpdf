@@ -95,6 +95,6 @@ do
 done
 
 # Run Conversion
-
-cd "$TARGET" && concat '*.md' .tmp.markdown && tohtml .tmp.markdown .tmp.html && topdf .tmp.html "$OUTPUT" && rm  .tmp.markdown .tmp.html
+# shellchack disable=SC2181
+cd "$TARGET" && concat $(find . -name '*.md') .tmp.markdown && tohtml .tmp.markdown .tmp.html && topdf .tmp.html "$OUTPUT" && rm  .tmp.markdown .tmp.html
 
