@@ -12,9 +12,11 @@ HELP='
 
   Commands:
     help        Displays this message and exit
+    all         Installs all dependencies, runs a build and tests it
     enviro      Installs environmental dependencies
     deps        Installs project specific dependencies
     build       Builds and package project
+    deploy      Starts running the built project
     clean       Cleans the build resources
     tests       Runs test configurations for project
 '
@@ -33,6 +35,7 @@ function execute () {
     echo "$START"
     node "$EXECUTOR" "$MANIFEST" "$CMD" "$TARGET"
 
+    # shellcheck disable=SC2181
     if [ 0 -ne $? ]; then
         echo "$FAILED"
         kill -INT $$
@@ -51,6 +54,10 @@ function deps () {
 
 function build () {
     execute "build" "Running Build" "Build Complete" "Build Failed" "$1"
+}
+
+function deploy () {
+    execute "deploy" "Deploying System" "System Deployed" "Deployment Failed" "$1"
 }
 
 function clean () {
@@ -84,6 +91,9 @@ case "$1" in
         ;;
     build)
         build "$2"
+        ;;
+    deploy)
+        deploy "$2"
         ;;
     clean)
         clean "$2"

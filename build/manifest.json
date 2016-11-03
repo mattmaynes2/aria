@@ -21,15 +21,24 @@
         ],
         "test" : [
             "npm test",
-            "./support/try shellcheck run support/pkman support/try",
-            "./support/try shellcheck markdown/mkpdf"
+            "./support/try -e shellcheck run support/pkman support/try",
+            "./support/try -e shellcheck markdown/mkpdf"
         ]
     },
     "hub.exchange" : {
         "deps"      : ["cd ../hub/exchange", "./setup.py develop"],
         "build"     : ["cd ../hub/exchange", "./setup.py bdist_egg"],
-        "test"      : ["cd ../hub/exchange","./setup.py test"],
+        "deploy"    : ["cd ../hub/exchange", "./bin/exchange -d"],
+        "test"      : ["cd ../hub/exchange", "./setup.py test", "../../build/support/try -e shellcheck ./bin/exchange"],
         "clean"     : ["cd ../hub/exchange", "./setup.py clean"]
+    },
+    "hub.gateway" : {
+        "enviro"    : "./support/pkman install node",
+        "deps"      : ["cd ../hub/gateway", "npm install"],
+        "build"     : ["cd ../hub/gateway", "npm run build"],
+        "deploy"    : ["cd ../hub/gateway", "npm start"],
+        "test"      : ["cd ../hub/gateway", "npm test"],
+        "clean"     : ["cd ../hub/gateway", "rm -rf bin"]
     },
     "hub.remote" : {
         "enviro"    : "./support/pkman install node",
@@ -37,13 +46,6 @@
         "build"     : ["cd ../hub/remote", "npm run build"],
         "test"      : ["cd ../hub/remote", "npm test"],
         "clean"     : ["cd ../hub/remote", "rm -rf bin"]
-    },
-    "hub.gateway" : {
-        "enviro"    : "./support/pkman install node",
-        "deps"      : ["cd ../hub/gateway", "npm install"],
-        "build"     : ["cd ../hub/gateway", "npm run build"],
-        "test"      : ["cd ../hub/gateway", "npm test"],
-        "clean"     : ["cd ../hub/gateway", "rm -rf bin"]
     },
     "uml" : {
         "enviro" : [
