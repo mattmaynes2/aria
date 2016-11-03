@@ -1,4 +1,4 @@
-## 5. Device Protocol
+### Device Protocol
 
 This is a two level protocol. Messages are sent from the central server to a translation layer
 that converts the message into the device specific format. The intermediate layer will be
@@ -10,12 +10,12 @@ and the device handlers. This protocol is called the common communication protoc
 second level of the protocol is device specific and is the responsibility of the device handler.
 This layer of the protocol is termed the device communication protocol (DCP). 
 
-### 5.1 Common Communication Interface
+#### Common Communication Interface {-}
 
 This interface communicates directly to the communication hub. It must know how to convert
 between the CCP and DCP. The following methods must be defined.
 
-##### Setup
+###### Setup {-}
 
 This method will be required to setup the device handler.
 
@@ -23,13 +23,13 @@ This method will be required to setup the device handler.
 setup (listener: Listener)
 ```
 
-##### Discover
+###### Discover {-}
 
 ```
 discover ()
 ```
 
-##### Send
+###### Send {-}
 
 Send is responsible for the reliable transmission of data between the central hub and the
 desired smart device.
@@ -39,31 +39,31 @@ send (deivce : Device, message :  Message)
 ```
 
 
-##### Teardown
+###### Teardown {-}
 
 ```
 teardown ()
 ```
 
 
-#### Notifications
+##### Notifications {-}
 
 
-##### New Device
+###### New Device {-}
 
 ```
 discovered (device: Device)
 ```
 
 
-##### Message
+###### Message {-}
 
 ```
 message (device: Device, message: Message)
 ```
 
 
-### 5.2 Device Communication Protocol
+#### Device Communication Protocol {-}
 
 Messages are passed using the general message structure and are byte encoded. The payload
 of the message
@@ -76,14 +76,14 @@ of the message
 +--------+---------+----------+-------------+--------------+
 ```
 
-#### Message Protocol
+##### Message Protocol {-}
 
 Messages have to be sent between all components in the smart home system. The smart home system
 uses UDP to send messages. The following is the encoding structure for all messages
 sent in the system. It is assumed that all data in the payload field is JSON encoded unless the
 message type indicates otherwise.
 
-##### General Message Structure
+###### General Message Structure {-}
 
 ```
 +--------+---------+----------+-------------+--------------+
@@ -93,7 +93,7 @@ message type indicates otherwise.
 +--------+---------+----------+-------------+--------------+
 ```
 
-##### Message Types
+###### Message Types {-}
 
 | Name        | Type  | Value |
 | -----       | ----- | ----- |
@@ -104,11 +104,11 @@ message type indicates otherwise.
 | Acknowledge | ACK   | 0x04  |
 
 
-#### Device Status
+##### Device Status {-}
 
 Return the device status and any properties associated with that device
 
-###### Request
+####### Request {-}
 
 ```json
 {
@@ -117,7 +117,7 @@ Return the device status and any properties associated with that device
 }
 ```
 
-###### Response
+####### Response {-}
 
 ```json
 {
@@ -126,9 +126,9 @@ Return the device status and any properties associated with that device
 }
 ```
 
-#### Device Information
+##### Device Information {-}
 
-###### Request
+####### Request {-}
 
 ```json
 {
@@ -138,7 +138,7 @@ Return the device status and any properties associated with that device
 ```
 
 
-###### Response
+####### Response {-}
 
 
 ```json
@@ -150,9 +150,9 @@ Return the device status and any properties associated with that device
 }
 ```
 
-#### Configure Device
+##### Configure Device {-}
 
-###### Request
+####### Request {-}
 
 ```json
 {
@@ -166,7 +166,7 @@ Return the device status and any properties associated with that device
 | Display Name | Name displayed for device |
 
 
-#### Response
+##### Response {-}
 
 Response is status of update. True indicates success, false indicates failure
 

@@ -1,28 +1,28 @@
-## 4. Database
+### Database
 
-### 4.1  Database Entity-Relationship
+#### Database Entity-Relationship {-}
 
-![](./SystemER.png)
+![](../uml/SystemER.png)
 
-### 4.2 Database Tables
+#### Database Tables {-}
 
-#### Devices
+##### Devices {-}
 
 The individual devices connected to the system
 
-#### Device Types
+##### Device Types {-}
 
 The different types of possible devices, (WeMo switch,,Hue lights, etc...)
 
-#### User
+##### User {-}
 
 A person that can add and control devices
 
-#### User Devices
+##### User Devices {-}
 
 The devices a user has access to
 
-#### Event
+##### Event {-}
 
 A snapshot of a device state at a certain time
 

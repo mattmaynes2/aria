@@ -1,4 +1,4 @@
-## 6. REST API
+### 6. REST API
 
 The HTTP gateway component exposes some REST endpoints. The gateway allows system components
 which can only communicate over HTTP to interact with any device in the system using a 

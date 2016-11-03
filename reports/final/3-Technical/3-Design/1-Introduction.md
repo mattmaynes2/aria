@@ -1,13 +1,13 @@
-## 1. Introduction
+### Introduction
 
-### 1.2 Audience
+#### Audience {-}
 
 This document describes the high level architecture of the Aria system. It details the major
 components within the system as well as their deployment artifacts. This document is intended
 for a technical audience to understand the organization, deployment and internals of the
 Aria system.
 
-### 1.3 Background
+#### Background {-}
 
 The automated real-time interactive architecture (ARIA) system provides software for a machine
 learning smart home. The Aria system allows multiple smart devices to connect to a central hub
