@@ -1,8 +1,8 @@
 <p style="page-break-after:always;"></p>
 
-## 1. Introduction
+### Introduction
 
-### 1.1 Introduction
+#### Introduction {-}
 
 The Autonomous Real-Time Interactive Arcitecture (ARIA) will allow a homeowner to set up a collection
 of devices in their home which will automatically control their environment and automate common tasks.
@@ -14,13 +14,13 @@ home network. After connecting the hub, the homeowner can add enabled devices fo
 control by simply connecting them to the network. As new devices are connected, their input will be
 used to make more predictive decisions about user behaviour.
 
-### 1.2 Document Conventions
+#### Document Conventions {-}
 
 In the remainder of this document, "the system" refers to the ARIA system described in the introduction.
 The format of this report was adapted from the format recommended in IEEE-830 (Recommended Practice
 for Software Requirements Specifications).
 
-### 1.3 Product Scope
+#### Product Scope {-}
 
 The purpose of the system is to make home automation as easy as possible to set up. Many existing
 home automation systems require some form of programming from the user, in the form of a schedule or
@@ -41,9 +41,9 @@ Activities which are "In Scope":
 
 - Develop a protocol which allows developers to enable new types of devices for use in the system
 
-## 2. Overall Description
+### Overall Description
 
-### 2.1 Product Perspective
+#### Product Perspective {-}
 
 Systems are becoming more readily available in the general market place. This system builds upon
 traditional home automation systems by adding true automation in the form of learning. Unlike
@@ -52,7 +52,7 @@ automatically makes decisions based on historical behaviours. By combining the f
 learning and home automation, the our system will provide an end user with a simplified
 smart home experience.
 
-### 2.2 Product Functions
+#### Product Functions {-}
 
 To provide simplicity and seamless interaction, the system must be easy to use and highly
 interactive. The system will provide a learning hub that will be the base of computation and
@@ -75,7 +75,7 @@ be used for manually configuring desired behaviours as well as for enabling the 
 system. The interface must allow the user to view the state of all devices in the system as well as
 view their recorded interactions.
 
-### 2.3 User Classes
+#### User Classes {-}
 
 While the primary audience of the system is a homeowner, it is also for building owners, nursing
 home residence, or anyone who needs building automation. The end user of this product is intended to
@@ -83,23 +83,23 @@ be non-technical users who want simple control and automation of their building.
 also provide utilities for more technically proficient users who wish to create their own devices
 that communicate to the system.
 
-#### Base User (Non-Technical Users)
+##### Base User (Non-Technical Users) {-}
 
 - End user of the system that needs simple interface to use system - Will want low maintenance to
 keep system running and expect system to perform correctly
 
-#### Developers (Technical Users)
+##### Developers (Technical Users) {-}
 
 - Will require technical documentation about the system - Will require a development toolkit for
 creating custom devices for the system - May also be a base user
 
-## 3. System Features
+### System Features
 
-![image](./uml/SystemUseCase.png)
+![image](../../uml/SystemUseCase.png)
 
 -----------------------------
 
-#### Install Hub
+#### Install Hub {-}
 
 The user installs the learning hub in their home in order to enable automation of their smart
 devices.
@@ -108,7 +108,7 @@ devices.
 2. User connects hub to a home network using Ethernet
 3. Hub provides confirmation that system is online
 
-#### Add Device
+##### Add Device {-}
 
 Devices can be added to the system simply by powering them on and connecting to the network.
 
@@ -121,7 +121,7 @@ Precondition: A learning hub must be installed in the user's home.
 Postcondition: The device's state will now be used as input in training mode. If the device contains
 an actuator, the actuator will be controlled by the learning hub in playback mode.
 
-#### Enter Training Mode
+##### Enter Training Mode {-}
 
 The user enters training mode in order to indicate to the system that it should begin recording
 changes in the state of connected devices, without attempting to control them. Training mode
@@ -134,7 +134,7 @@ accomplishes the user's goal of configuring the system without manual programmin
 
 Postcondition: The system saves changes in the state of connected devices.
 
-#### Enter Playback Mode
+##### Enter Playback Mode {-}
 
 The user enters playback mode in order to instruct the system to begin controlling connected
 devices.
@@ -146,7 +146,7 @@ devices.
 
 Postcondition: The system maintains control over connected actuators.
 
-#### Enter Standby Mode
+##### Enter Standby Mode {-}
 
 The user enters standby mode in order to instruct the system that control over connected devices
 should be halted, and changes in the state of devices should not be accepted as training data.
@@ -158,7 +158,7 @@ the system to perform an incorrect task.
 
 Postcondition: System does not accept training data, System does not modify the state of devices
 
-#### Remove device
+##### Remove device {-}
 
 Devices will stop recording when removed from the smart learning network. To remove the history of
 the device, the user can delete it using the remote interface.
@@ -166,7 +166,7 @@ the device, the user can delete it using the remote interface.
 1. User disconnects device from the network
 2. If the user wishes to remove the device permanently, include use case Reset Device
 
-#### Reset Device
+##### Reset Device {-}
 
 If the input of a device is causing unexpected or undesired output then it can be reset by the user
 through the remote interface.
@@ -179,23 +179,23 @@ through the remote interface.
 Postcondition: States of the selected devices from before the reset are no longer used to infer
 states in playback mode.
 
-## 4. External Interface Requirements
+### External Interface Requirements
 
-### 4.1 User Interfaces
+#### User Interfaces {-}
 
-#### Remote Interface
+##### Remote Interface {-}
 
 The remote interface will allow the user to control the system and any device that is connected in
 the network. The remote interface will be a web application that is served to the user's computer
 from the learning hub.
 
-##### Accessing the Interface
+###### Accessing the Interface {-}
 
 To load the web application, the user will navigate through a web browser to the address of their
 learning hub. The hub will then provide the remote interface and prompt the user with a login. The
 first time the user opens the hub control page they will be prompted to create an account.
 
-##### Viewing and Controlling Devices
+###### Viewing and Controlling Devices {-}
 
 The primary use of this remote interface will be to observe the state of the system as well as
 control any connected device. The remote interface must provide access to the recent history of all
@@ -205,23 +205,23 @@ the logs and grouping them based on time and device.
 The system must also be able to control the devices that are connected to it. The remote interface
 must provide the appropriate controls for each device that is connected to the system.
 
-##### Controlling the Hub
+###### Controlling the Hub {-}
 
 The interface must graphically provide methods to customize the learning hub's operation. This will
 include properties related to the system such as network connections, login options and any other
 hub specific items.
 
-##### Exiting the Remote
+###### Exiting the Remote {-}
 
 Once the user is finished with the remote interface, they can log out or simply close the web
 application. For security reasons, if a user is inactive in their session for more than a set amount
 of time then they will be logged out automatically.
 
-![](./uml/RemoteUseCase.png)
+![](../../uml/RemoteUseCase.png)
 
-### 4.2 Hardware Interfaces
+#### Hardware Interfaces {-}
 
-#### Learning Hub Interface
+##### Learning Hub Interface {-}
 
 To maximize simplicity, the learning hub interface will have a clean and minimal interface. It will
 provide the user with three control buttons and one reset button. The control buttons will allow the
@@ -237,11 +237,11 @@ standard home wall outlet. The other can be a standard Ethernet port and be used
 network.
 
 
-## 5. Other Nonfunctional Requirements
+### Other Nonfunctional Requirements
 
-### 5.1 Performance Requirements
+#### Performance Requirements {-}
 
-#### Device Communication Range
+##### Device Communication Range {-}
 
 Devices must be able to communicate wirelessly using the network. The range of communication must be
 sufficiently large that devices can be placed anywhere in an average home. The smart home devices
@@ -250,7 +250,7 @@ will need to be capable of receiving and transmitting data using this network wi
 The distance between nodes in our system must be no more than 50 meters. The will allow for any
 protocol to communicate with the necessary nodes.
 
-#### System Responsiveness
+##### System Responsiveness {-}
 
 The system must readily adapt to environmental changes to be effective. When in training mode, the
 system does not make any decisions and therefore has no responsiveness requirement. However, when
@@ -258,23 +258,23 @@ the system enters playback mode it must make decisions as fast as environmental 
 received. This will ensure that the system is as responsive as possible when a user performs an
 action.
 
-### 5.2 Security Requirements
+#### Security Requirements {-}
 
-#### Device Connection Security
+##### Device Connection Security {-}
 
 All commands to devices must be authenticated to ensure that they are from an authorized source.
 This is in order to eliminate the possibility of malicious entities taking control of a home's
 devices.
 
-#### Remote Interface Security
+##### Remote Interface Security {-}
 
 Digital access to the hub's configuration interface must be secured using TLS 1.2 (RFC 5246) and
 HTTP basic authentication as described in RFC 2617. Use of these Internet Official Protocol
 Standards ensures that the system uses widely accepted authentication practices.
 
-### 5.3 Quality Requirements
+#### Quality Requirements {-}
 
-#### Learning Hub Reliability
+##### Learning Hub Reliability {-}
 
 The learning hub is the center of communications and is responsible for interfacing with the system
 user. It must record data on some form of internal storage to log actions that have occurred as
@@ -287,7 +287,7 @@ The learning hub must also be online and available to record system events. If t
 to go into a state faulty state then it should indicate this to the user. The system must provide
 a mechanism for resetting itself if errors are occurring.
 
-#### Device Reliability
+##### Device Reliability {-}
 
 Devices in the system do not need to meet as high of a standard as the learning hub for
 reliability. However, devices should have some indicator when faults occur. Devices may be hard
@@ -297,9 +297,9 @@ indicate whether or not a device has encountered a fault or if it is no longer r
 Restarting a device in the network should then reconnect to the system and retain all of its
 history within the learning hub.
 
-#### Device Interoperability
+##### Device Interoperability {-}
 
-## Appendix A: Glossary
+### Appendix A: Glossary
 
 **Device**: A sensor or an actuator, or a combination of both.
 
