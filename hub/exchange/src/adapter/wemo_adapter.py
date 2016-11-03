@@ -65,4 +65,3 @@ class WemoAdapter (Adapter):
     def run(self):
         self.setup()
         self.discover()
-        self.env.wait()
