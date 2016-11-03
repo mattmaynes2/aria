@@ -6,7 +6,7 @@ var output = {
         filename    : 'gateway'
     },
     config = {
-        entry       : __dirname + '/src/gateway.js',
+        entry       : __dirname + '/src/server.js',
         target      : 'node',
         externals   : [externals()],
         output      : output,
