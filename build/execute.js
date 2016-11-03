@@ -15,8 +15,8 @@ function execute (manifest, directive, targets) {
 
     try {
         child = spawn(fullcmd, [], { shell : true });
-        child.stdout.on('data', (data) => { console.log(data.toString()); });
-        child.stderr.on('data', (data) => { console.error(data.toString()); });
+        child.stdout.on('data', (data) => { process.stdout.write(data); });
+        child.stderr.on('data', (data) => { process.stderr.write(data); });
         child.on('close', (code) => {
             if (code !== 0) {
                 console.error(`Process terminated with code ${code}`);

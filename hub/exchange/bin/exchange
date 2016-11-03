@@ -3,4 +3,5 @@
 DIR="$(dirname "$0")"
 export PYTHONPATH=$PYTHONPATH:"$DIR/../build/lib"
 
-python3  $(find "$DIR/../build/" -name "__main__.py") "${@:1}" #NOQA
+# shellcheck disable=SC2046
+python3  $(find "$DIR/../build/" -name "__main__.py") "${@:1}"

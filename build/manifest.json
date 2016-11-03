@@ -21,15 +21,15 @@
         ],
         "test" : [
             "npm test",
-            "./support/try shellcheck run support/pkman support/try",
-            "./support/try shellcheck markdown/mkpdf"
+            "./support/try -e shellcheck run support/pkman support/try",
+            "./support/try -e shellcheck markdown/mkpdf"
         ]
     },
     "hub.exchange" : {
         "deps"      : ["cd ../hub/exchange", "./setup.py develop"],
         "build"     : ["cd ../hub/exchange", "./setup.py bdist_egg"],
         "deploy"    : ["cd ../hub/exchange", "./bin/exchange -d"],
-        "test"      : ["cd ../hub/exchange","./setup.py test"],
+        "test"      : ["cd ../hub/exchange", "./setup.py test", "../../build/support/try -e shellcheck ./bin/exchange"],
         "clean"     : ["cd ../hub/exchange", "./setup.py clean"]
     },
     "hub.gateway" : {
