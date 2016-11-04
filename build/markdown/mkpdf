@@ -13,12 +13,15 @@ HELP='
     -o, --output <name> Name of output file.
     -s, --style <path>  CSS style file
     --toc               Insert a table of contents
+    --toc-depth <n>     Number of header levels to include in toc
+    --auto-number       Automatically apply header numbers to sections
 '
 
 
 COVER=""
 OUTPUT="Output.pdf"
 TOC=""
+NUM=""
 TOC_DEPTH="2"
 TARGET="./"
 STYLE="$SCRIPT_PATH/./styles/style.css"
@@ -34,12 +37,15 @@ function concat () {
 }
 
 function tohtml () {
-    FLAGS="$TOC --toc-depth $TOC_DEPTH -c $STYLE -t html -f markdown"
+    FLAGS="$TOC $NUM --toc-depth $TOC_DEPTH -c $STYLE -t html -f markdown_phpextra"
 
     if [ -n "$COVER" ]; then
         FLAGS="$FLAGS -B $COVER"
     fi
 
+    # Here the $FLAGS variable needs to be treated as independent items. This requires
+    # the $FLAG variable to be split. This is a shellcheck violation and needs to be
+    # disabled here.
     # shellcheck disable=SC2086
     pandoc $FLAGS "$1" > "$2"
 }
@@ -82,6 +88,9 @@ do
         --toc-depth)
             TOC_DEPTH="${args[0]}"
             args=("${args[@]:1}")
+            ;;
+        --auto-number)
+            NUM="--number-sections"
             ;;
         -* | --*)
             echo "Unknown command $arg - See try --help for details"
