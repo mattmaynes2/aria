@@ -1,7 +1,6 @@
-## 6. Custom-Built Devices
+#### B-5 Custom-Built Devices {-}
 
-6.1 Background
---------------
+#### Background {-}
 
 The purpose of this section is to present our investigation into the process of building various
 types of smart devices which might be of use for home automation. The purpose of this investigation
@@ -17,7 +16,7 @@ over a network.
 
 Evaluation of custom devices will focus on the following characteristics:
 
-##### Expertise required
+##### Expertise required {-}
 
 How difficult is it for a team of software engineering students to build the device?  Some complex
 devices will be impractical for the team to build due to the lack of hardware knowledge.  Factors
@@ -25,33 +24,33 @@ which  will be considered in the evaluation of the devices include the availabil
 development kits. Safety will also be a critical factor (Does the team have the facilities and
 expertise necessary to build the device safely).
 
-##### Level of Effort
+##### Level of Effort {-}
 
 In order to allow the team to focus on the machine learning aspects of the system, devices which can
 be used to demonstrate the system must be available quickly. In order to measure this criteria, the
 amount of effort required to build an LED controlled through a voltage relay will be used as a
 baseline for estimation. The following scale will be used:
 
-####### Low
+###### Low {-}
 
 - Comparable to baseline (less than a day of work)
 
-####### High
+###### High {-}
 
 - High effort (A couple days)
 
-####### Extreme
+###### Extreme {-}
 
 - Extreme effort (many days or weeks)
 
-##### Quality Comparisons
+###### Quality Comparisons {-}
 
 Commercially available devices may offer features which could be useful to demonstrate the system,
 but are difficult to include in a custom-built device. It will be useful to determine whether or not
 the devices described by most custom-build tutorials are fully featured. In some cases, the features
 of a typical custom-built device will be compared against several commercial options.
 
-#### Devices of Interest
+##### Devices of Interest {-}
 
 This section contains a list of device types which were investigated, and a short explanation of why
 the devices could showcase the machine learning capabilities of the system. In general, we believe
@@ -68,7 +67,7 @@ complex than for binary devices due to the increased number of possible states.
 This section investigates some smart devices which are potentially within the team's ability to
 build.
 
-###### Motion Sensors
+###### Motion Sensors {-}
 
 Many actions could be triggered by a person entering or leaving a house or a room. A motion sensor
 could potentially interact with every other device on this list. Due to the wide range of potential
@@ -81,43 +80,42 @@ should be turned on. However, this behaviour would only be desired during certai
 that there are many such scenarios that we haven't thought of which would present challenging cases
 for the machine learning component to handle.
 
-###### Thermostat
+###### Thermostat {-}
 
 The setting of a thermostat may be affected by several different factors, such as temperature, time
 of day, and light levels. Since thermostats are also a non-binary output device, their behaviour
 when controlled by the machine learning algorithms may be more varied than other devices.
 
-###### Light Sensor
+###### Light Sensor {-}
 
 A light sensor provides a non-binary input to the machine learning component. Similar to a motion
 sensor, the level of light in a room may be related to the behaviour of many other devices.
 
-###### Dimmer switch
+###### Dimmer Switch {-}
 
 A variable-voltage switch is an example of a non-binary output device. A variable-voltage switch
 could be used to control the brightness of lights, or the speed of a fan.
 
-###### Coffee Makers
+###### Coffee Makers {-}
 
 The coffee maker could be turned on in response to several different input devices (light sensor,
 motion sensor)
 
-6.2 Motion Sensor
------------------
+#### Motion Sensor {-}
 
-#### Description
+##### Description {-}
 
-#### Technical Overview
+##### Technical Overview {-}
 
 This section considers devices that can be used to alert the system when a person enters or leaves
 an area of the home.
 
-#### Sensor Technologies
+##### Sensor Technologies {-}
 
 This section provides a comparison of several different sensor technologies that are commonly used
 in motion detection.
 
-##### Passive Infrared (PIR)
+###### Passive Infrared (PIR) {-}
 
 A passive infrared sensor detects motion using the infrared radiation (heat) from a warm body. A
 sensor contains two slots, each of which contains a material which is sensitive to infrared
@@ -156,7 +154,7 @@ The following tutorials explain how to interface with PIR modules:
 <https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/>
 
 
-##### Doppler-Effect based sensors
+###### Doppler-Effect based sensors {-}
 
 Several types of motion detectors use the Doppler effect to detect motion. The detector transmits a
 signal of a known frequency. This signal is reflected by any objects in its path and detected when
@@ -165,38 +163,38 @@ reflected off of a moving object the frequency of the reflected wave differs fro
 incident wave due to the Doppler effect. This change in frequency is detected by the sensor and
 registered as motion.
 
-##### Infrared Break-Beam
+###### Infrared Break-Beam {-}
 
 An infrared break-beam sensor consists of two physical modules separated by some distance.  One side
 of the detector transmits a beam of infrared light which is detected by the other side.
 
-####### Expertise Required
+###### Expertise Required {-}
 
 - Little expertise required, circuits are simple
 - Tutorials widely available online
 
-####### Component Availability
+###### Component Availability {-}
 
 - Components widely available
 
-####### Reliability
+###### Reliability {-}
 
 - Sensors generally have a lower range than PIR sensors, availability of detectors with a longer
     range may be lower
 
 - Allows for finer control over the area of detection than a PIR sensor
 
-####### Usability
+###### Usability {-}
 
 - More difficult setup than a PIR sensor, requires the user to precisely aim the transmitted beam.
 
-#### Feature Comparison
+##### Feature Comparison {-}
 
-| Feature    | Custom   | D-Link Wifi Motion Sensor   | Samsung SmarttThings Motion Sensor  | Belkin                        |
-| -------    | -------- | --------------------------- | ----------------------------------- | ----------------------------- |
-| Range      | 7m       | 8m                          | 15m - 40m                           | 3m                            |
-| Interfaces | _        | WiFi                        | ZigBee                              | WiFi                          |
-| Type       | PIR      | PIR                         | PIR                                 | PIR
+| Feature    | Custom | D-Link Wifi Motion Sensor | Samsung SmarttThings Motion Sensor  | Belkin |
+| -------    | ------ | ------------------------- | ----------------------------------- | ------ |
+| Range      | 7m     | 8m                        | 15m - 40m                           | 3m     |
+| Interfaces | _      | WiFi                      | ZigBee                              | WiFi   |
+| Type       | PIR    | PIR                       | PIR                                 | PIR
 |
 
 Note: The custom device can potentially support multiple different communication interfaces
@@ -206,7 +204,7 @@ D-Link: http://ca.dlink.com/products/connected-home/wi-fi-motion-sensor/
 Samsung: https://shop.smartthings.com/#!/products/samsung-smartthings-motion-sensor
 WeMo: http://www.belkin.com/au/p/P-F5Z0340-APL/
 
-#### Evaluation
+##### Evaluation {-}
 
 | Criterion          | Score |
 | ---------          | ----- |
@@ -214,15 +212,13 @@ WeMo: http://www.belkin.com/au/p/P-F5Z0340-APL/
 | Level of Effort    | Low   |
 | Quality Comparison | Equal |
 
------------------------
 
-6.3 Variable-Voltage Switch
----------------------------
+#### Variable-Voltage Switch {-}
 
 The characteristics of variable-voltage switches vary significantly depending on the type of device
 that the switch is expected to control (DC vs AC).
 
-#### Controlling DC power
+##### Controlling DC power {-}
 
 If the type of device being controlled requires DC power input, the amount of power supplied to the
 device can be controlled using pulse-width modulation (PWM). A digital output is used to create a
@@ -236,12 +232,12 @@ Limitations to simple PWM
 - Power available to the device is limited by the power supplied by the controlling device - Limited
 to DC devices
 
-##### Expertise Required
+###### Expertise Required {-}
 
 Minimal expertise is required to use PWM to control a device. The circuits required are as simple as
 the circuits required to power a simple LED.
 
-##### Reliability
+###### Reliability {-}
 
 Simple PWM circuits are limited to controlling devices with low power requirements. While the
 technique is reliable for devices which meet the power requirements, such as LED lamps, the power
@@ -250,9 +246,9 @@ limited. Most devices are intended to be connected to a wall socket, meaning tha
 AC current, which a significantly higher amount of power than is available from a microcontroller
 such as an Arduino.
 
-#### Controlling AC power
+##### Controlling AC power {-}
 
-##### Expertise Required
+###### Expertise Required {-}
 
 - Safety concerns: Controlling devices which expect to receive the voltages available from
  a wall socket means dealing with high voltages. Without any team members trained in using high
@@ -261,7 +257,7 @@ such as an Arduino.
 - Lack of trusted tutorials: For most of the circuits considered during this research, it has
  been possible to find tutorials online from trusted sources, such as the official Arduino website.
 
-##### Level of Effort
+###### Level of Effort {-}
 
 - When it was possible to find a tutorial online for building a circuit to control AC
  voltages, the circuit was found to be much more complex than the simple light switch circuit. Due
@@ -280,7 +276,7 @@ Philips Hue: http://www.developers.meethue.com/documentation/how-hue-works
 Lutron: https://www.lutron.com/technicaldocumentlibrary/040249.pdf
 GE Z-Wave: http://www.zwaveproducts.com/shop/brands/ge/z-wave-plug-in-smart-dimmer-1
 
-#### Evaluation
+##### Evaluation {-}
 
 | Criterion          | Score |
 | ---------          | ----- |
@@ -290,28 +286,27 @@ GE Z-Wave: http://www.zwaveproducts.com/shop/brands/ge/z-wave-plug-in-smart-dimm
 
 Note: There are safety concerns for custom-building this device
 
-6.4 Light Sensor
-----------------
+#### Light Sensor {-}
 
-#### Description
+##### Description {-}
 
 This section investigates devices which can detect the amount of ambient light in an area of the
 house.
 
-##### Photoresistors
+###### Photoresistors {-}
 
 Light sensors generally make use of a component called a photoresistor. The resistance of a
 photoresistor differs depending on the amount of light incident to the component. Phtoresistors are
 also called photocells.
 
-###### Reliability Characteristics
+###### Reliability Characteristics {-}
 
 - Photoresistors are unsuitable for precise lighting measurements because its resistance
  may vary due to temperature as well as light
 
 - Photoresistors may exhibit latency (delay between a change in light and a change in resistance)
 
-##### Photodiode
+###### Photodiode {-}
 
 Photodiodes are components which can be used similarly to photoresistors to detect light.  A
 photodiode allows electrons to pass when there is light shining on it. The current allowed to pass
@@ -321,17 +316,17 @@ Unlike photoresistors, a photodiode is not sensitive to temperature changes and 
 accurate light detection. The circuit required to interface with a photodiode is of similar
 complexity to the circuit required to interface with a photoresistor.
 
-#### Expertise Required
+##### Expertise Required {-}
 
 Minimal expertise is required to build the devices described by most guides and tutorials.  The
 circuit is not significantly more complex than the light switch.
 
-#### Level of effort
+##### Level of Effort {-}
 
 Due to the simplicity of the photoresistor circuit and the wide availability of the required
 components and tutorials, a custom-built light sensor is required requires a low amount of effort.
 
-#### Feature Comparison
+##### Feature Comparison {-}
 
 Many commercially available light sensors are included in combination devices which include several
 different types of sensors. Commercial solutions provide very little data about the range of light
@@ -344,7 +339,7 @@ Everspring Z-Wave illumination sensor:
 http://www.smarthome.com/everspring-st815-z-wave-wireless-illumination-sensor-with-lcd-screen.html
 HomeSeer Z-Wave: http://www.smarthome.com/homeseer-hsm200-z-wave-multi-sensor.html
 
-#### Evaluation
+##### Evaluation {-}
 
 | Criterion          | Score   |
 | ---------          | ------- |
@@ -352,30 +347,28 @@ HomeSeer Z-Wave: http://www.smarthome.com/homeseer-hsm200-z-wave-multi-sensor.ht
 | Level of Effort    | Low     |
 | Quality Comparison | Equal   |
 
-6.5 Thermostat
----------------
+#### Thermostat {-}
 
 This section considers controlling a typical wall-mounted thermostat using a microcontroller such as
 an Arduino.
 
-#### Expertise Required
+##### Expertise Required {-}
 
 Safety: Controlling a wall-mounted thermostat means working with mains voltage levels.  Without
 knowledge in using high voltages, building this device is a significant safety risk
 
-#### Effort Level
+##### Effort Level {-}
 
 Due to the lack of trusted tutorials online, as well as the wealth of features that users are used
 to having in a thermostat, the time investment required to build a fully-featured thermostat is
 extreme.
 
-#### Evaluation
+##### Evaluation {-}
 
 Due to the extreme level of effort required and the safety concerns with building a thermostat, a
 custom-built thermostat is not feasible for this project.
 
-6.6 Alarm Clock
----------------
+#### Alarm Clock {-}
 
 There are a large variety of features available for alarm clocks, this section will focus on a
 simple alarm clock that beeps at a programmed time of day. The clock should have manual (button)
@@ -396,13 +389,13 @@ A typical circuit has the following form:
 
 <http://fritzing.org/media/fritzing-repo/projects/a/arduino-lcd-alarm-clock/images/Untitled.png>
 
-#### Level of Effort
+##### Level of Effort {-}
 
 Due to the need to interface with an LCD display, and because of the large number of components, a
 custom build of an alarm clock is expected to be more complex than the light switch. The level of
 effort is estimated to be high because of this.
 
-#### Feature Comparison
+##### Feature Comparison {-}
 
 Homeowners may be used to alarm clocks with nice interfaces, often in the form of an app on their
 phone. The custom alarm clocks investigated have significantly inferior interfaces, making use of a
@@ -410,23 +403,22 @@ phone. The custom alarm clocks investigated have significantly inferior interfac
 alarm sounds, configuring multiple alarms, and setting weekly alarm schedules. Making a custom built
 alarm clock as usable as commercially available clocks would require significant time investment.
 
-6.7 Coffee Makers
------------------
+#### Coffee Makers {-}
 
-#### Using a relay switch
+##### Using a Relay Switch {-}
 
 A simple way to connect a coffee machine to a microcontroller is by using a voltage relay. A voltage
 relay is an electrically controlled switch for high power devices. A simple coffee machine that only
 needs to be plugged in in order to start brewing could be controlled using a simple voltage relay
 circuit.
 
-#### Level of Effort
+##### Level of Effort {-}
 
 The same circuit which is used in the LED switch could be used to control the coffee machine, since
 both the coffee machine and LED can be connected to the same voltage relay, so the level of effort
 required is low.
 
-#### Required Expertise
+##### Required Expertise {-}
 
 - Safety risks: Coffee machine are normally connected directly into a wall socket. Controlling
  the coffee machine using a voltage relay would therefore involve high voltage levels which are
@@ -437,13 +429,12 @@ reverse engineering of the coffee machine's control circuits would be necessaary
 increase the amount of time necessary to create the device, due to the lack of electronics knowledge
 on the team.
 
-#### Evaluation
+##### Evaluation {-}
 
 Custom builds of both simple and fully-featured coffee makers may be infeasible due safety concerns
 when controlling high voltage devices.
 
-6.8 Summary of Evaluation
--------------------------
+#### Summary of Evaluation {-}
 
 | Device        | Level of Effort | Safety Concerns | Fully-Featured |
 | ------        | --------------- | --------------- | -------------- |
@@ -454,16 +445,14 @@ when controlling high voltage devices.
 | Thermostat    | High            | High Voltage    | No             |
 | Alarm Clock   | Low             | None            | No             |
 
-6.9 Conclusions
----------------
+#### Conclusions {-}
 
 It is feasible for the team to build motion sensor, light sensors, and an alarm clock if no
 acceptable commercial solution is available. We should avoid building dimmer switches, coffee
 makers, and thermostats due to the potential high-voltage work involved and the lack of electronics
 knowledge available.
 
-6.10 References
----------------
+#### References {-}
 
 [1]	Anonymous, "User login," 2014. [Online]. Available: http://www.engineersgarage.com/microcontroller/8051projects/LCD-digital-alarm-clock-AT89C51-circuit. Accessed: Oct. 29, 2016.
 

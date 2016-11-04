@@ -224,7 +224,7 @@ Accessed: Oct. 6, 2016.
 Accessed: Oct. 8, 2016.
 </cite>
 
-### SmartThings
+#### SmartThings {-}
 
 #### Description {-}
 
@@ -296,7 +296,7 @@ Available: <http://docs.smartthings.com/en/latest/sept-2015-faq.html>. Accessed:
 Available: <https://www.smartthings.com/how-it-works>. Accessed: Oct. 10, 2016.
 </cite>
 
-### Apple HomeKit
+### Apple HomeKit {-}
 
 #### Description {-}
 
@@ -362,7 +362,7 @@ Pocket-lint, 2016. [Online]. Available:
 Accessed: Oct. 10, 2016.
 </cite>
 
-### Summary of Evaluation
+#### Summary of Evaluation {-}
 
 A common theme among existing home automation systems is that systems with a large amount of
 third party support rely on a central communication hub. Having a hub allows components from
