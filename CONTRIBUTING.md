@@ -29,7 +29,7 @@ A commit should be addressing one concern or task. Commits should be relatively 
 few files as possible. A commit should be a single unit of work so that cherry picking and
 reverting can be effective.
 
-## Commit Messages
+### Commit Messages
 
 Commit messages should be descriptive and succinct. When development is being done with respect to
 a particular issue logged on Github, the commit message should reference it. If a commit fixes a
