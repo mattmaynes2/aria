@@ -13,12 +13,67 @@ Contributing Guidelines
 - 100 characters line max
 - All public interfaces need automated tests
 
-## Styles
+### Styles
 
 - No if's without brackets
 - Add spaces around operators: do `x + 1` not `x+1`
 - No more than 1 level of ternary operator
 - No more than 1 level of scope reach
+
+
+## Git Commits
+
+### Commit Content
+
+A commit should be addressing one concern or task. Commits should be relatively small and change as
+few files as possible. A commit should be a single unit of work so that cherry picking and
+reverting can be effective.
+
+## Commit Messages
+
+Commit messages should be descriptive and succinct. When development is being done with respect to
+a particular issue logged on Github, the commit message should reference it. If a commit fixes a
+bug then it should indicate it in the Github style commit messages. Commits should follow these 7
+principles in general:
+
+1. Separate subject from body with a blank line.
+2. Limit the subject line to 50 characters.
+3. Capitalize the subject line.
+4. Do not end the subject line with a period.
+5. Use the imperative mood in the subject line.
+6. Wrap the body at 72 characters.
+7. Use the body to explain what and why vs. how.
+
+Please remember that a commit message should be a title to a description of a change. An example of
+a good commit message is the following:
+
+```
+Derezz the master control program
+
+MCP turned out to be evil and had become intent on world domination.
+This commit throws Tron's disc into MCP (causing its deresolution)
+and turns it back into a chess game.
+
+Resolves: #123
+See also: #456, #789
+```
+
+Not all commit messages need a body but if there is something complex being changed then it should
+be explained. An average commit message may be as simple as the following:
+
+```
+Simplify serialize.h's exception handling
+```
+
+For more information on this, please read <http://chris.beams.io/posts/git-commit/>, and remember,
+everything you write matters, everything.
+
+### Online Commits
+
+If you are working on a file online, ensure that you change the default commit message. Every
+commit is valuable and knowing what was changed is very important. The default `Updated MyDoc.md`
+is not useful and should be avoided.
+
 
 ## Report Guidelines
 
