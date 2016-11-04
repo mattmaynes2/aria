@@ -68,6 +68,9 @@
     },
      "reports.final" : {
         "build" : "./support/try ./markdown/mkpdf --auto-number --toc --toc-depth 3 -o Report.pdf ../reports/final",
-        "clean" : "rm -f ../reports/final/*.pdf"
+        "clean" : [
+            "rm -f ../reports/final/*.pdf",
+            "rm -f ../reports/final/uml/*.png"
+        ]
     }
 }
