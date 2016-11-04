@@ -1,4 +1,4 @@
-#### B-3 Communication Protocols {-}
+### B-3 Communication Protocols {-}
 
 #### Background {-}
 

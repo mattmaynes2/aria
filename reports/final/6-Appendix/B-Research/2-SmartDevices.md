@@ -282,9 +282,9 @@ are common to all Philips Hue devics.
 [2]	P. L. B, "Philips hue,". [Online]. Available: http://www2.meethue.com/en-ca/. Accessed: Oct. 29, 2016.
 </cite>
 
-### Osram LIGHTIFY
+#### Osram LIGHTIFY {-}
 
-#### Description {-}
+##### Description {-}
 
 LIGHTIFY is a line of lighting products which are can be controlled using 
 the LIGHTIFY mobile app. LIGHTIFY provides two separate product lines; LIGHTIFY Pro
@@ -295,7 +295,7 @@ The LIGHTIFY system consists of a gateway device which connects to all of the bu
 in the home. Using the LIGHTIFY app, a homeowner can control connected lights from a 
 mobile device.
 
-#### Available Devices {-}
+##### Available Devices {-}
 
 1. Surface Light TW
 - Dimmable
@@ -311,7 +311,7 @@ mobile device.
 - Adjustable colour temperature
 - Dimmable
 
-#### Technical Overview {-}
+##### Technical Overview {-}
 
 LIGHTIFY products use the ZigBee protocol for communication between the gateway and 
 lighting products. The gateway connects to a local Wifi network, allowing the 
@@ -325,7 +325,7 @@ notable limitation of the LIGHTIFY API is that it is a cloud-only API. This mean
 the LIGHTIFY gateway is strongly tied to a homeowner's LIGHTIFY account; Osram does not 
 document any local-only API for controlling devices using a gateway
 
-#### Research Attributes {-}
+##### Research Attributes {-}
 
 | Inputs                    | Outputs            | Developer Support    | Protocol | API Restrictions                   |
 | ------                    | -------            | -----------------    | -------- | ----------------                   |
@@ -336,7 +336,7 @@ document any local-only API for controlling devices using a gateway
 | saturation                | saturation         |                      |          |                                    |
 | transition time (effects) | transition time    |                      |          |                                    |
 
-#### References {-}
+##### References {-}
 
 <cite>
 [1]	"OSRAM rest API," 2015. [Online]. Available: https://us.lightify-api.org. Accessed: Oct. 29, 2016.

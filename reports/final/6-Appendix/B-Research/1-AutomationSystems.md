@@ -49,7 +49,7 @@ interoperability.
 
 #### Insteon {-}
 
-#### Description {-}
+##### Description {-}
 
 Insteon is a home automation system that allows smart devices to connect over a home area network
 with a focus on ease of use. Insteon allows you to monitor and control all of the devices within
@@ -61,9 +61,9 @@ A scene is configured a configuration for a room that the user sets up at a spec
 specific environmental conditions are met. Insteon has all of the devices remember their current
 states and whenever these states are met then it has the devices recreate the saved scene.[^B-1-1]
 
-#### Technical Overview {-}
+##### Technical Overview {-}
 
-##### Supported Communication Protocols {-}
+###### Supported Communication Protocols {-}
 
 Insteon uses a proprietary messaging protocol to send messages between devices and the central hub.
 The Insteon messaging protocol uses message repeating to send messages across a peer-to-peer network
@@ -75,14 +75,14 @@ Insteon also integrates with a number of third party devices and controllers. Th
 devices can be added to the network and be controlled through the Insteon smart hub. The hub's
 devices can also be controlled through the integrations of these third party devices.[^B-1-2]
 
-##### Device Discovery and Setup {-}
+###### Device Discovery and Setup {-}
 
 Adding a new device is done through the Insteon app. A new device is first plugged in and turned on.
 The device then locates the user's mobile app on the network and is ready to be connected.
 Using the app the user selects the new device and enters the device ID. Once the ID is
 entered the device is able to be configured and added to the Insteon network.[^B-1-2]
 
-##### Network {-}
+###### Network {-}
 
 Insteon uses a central hub to communicate between the devices and the users app. The Insteon hub
 is used for all device communications and control. Devices connect and send all event information
@@ -91,7 +91,7 @@ to the central hub.
 Insteon uses a peer-to-peer network to connect the devices.[^B-1-3] All of Insteon's devices can act as a
 controller to send messages, a repeater to forward messages or a responder to receive messages.
 
-##### API {-}
+###### API {-}
 
 Insteon provides a REST API to interact with their devices.
 
@@ -109,7 +109,7 @@ the Insteon website.[^B-1-4]
 In order to use the API an Insteon Hub is required also adding new Insteon devices to a network
 still require configuration through the Insteon App.
 
-#### Third Party Support {-}
+##### Third Party Support {-}
 
 Insteon supports devices from the following manufacturers:
 
@@ -124,7 +124,7 @@ Insteon supports devices from the following manufacturers:
 - MiLocks
 
 
-#### Evaluation {-}
+##### Evaluation {-}
 
 The Insteon system is very reliable and easy to setup however because they use their own
 communication protocol the devices that can be added is limited mostly to those manufactured by
@@ -132,17 +132,17 @@ Insteon. A closed system such as this is not what we are striving for with this 
 
 #### Wink {-}
 
-#### Description {-}
+##### Description {-}
 
 Wink Hub is a hub that specializes in allowing communication between many different smart devices.
 Wink supports control of devices using scheduling and IFTTT.
 
-#### Technical Overview {-}
+##### Technical Overview {-}
 
 Wink is a central hub that supports most of the popular communication protocols for home automation,
 giving users the freedom of connecting and controlling a variety of smart devices in one system.
 
-##### Communication Protocol {-}
+###### Communication Protocol {-}
 
 Wink Hub supports the following communication protocols:
 
@@ -153,7 +153,7 @@ Wink Hub supports the following communication protocols:
 - Lutron's Caseta
 - Kidde
 
-##### Device Discovery and Setup {-}
+###### Device Discovery and Setup {-}
 
 Supporting many different manufacturers means that there are a variety of different ways for
 devices to connect to the Wink Hub. The two most common ways are:
@@ -171,12 +171,12 @@ The new device must be added to the home network using the app provided by the m
 it has been added through the manufacturers app, it will be visible using the Wink app. It can be
 added to the automation system from here using the Wink app.
 
-##### Network {-}
+###### Network {-}
 
 The Wink system uses a central hub to connects different devices. Devices communicate only with the
 central hub.
 
-##### API {-}
+###### API {-}
 
 Wink provides a RESTful service through the Wink hub and a secondary partner PubNub.
 
@@ -186,7 +186,7 @@ Wink provides a RESTful service through the Wink hub and a secondary partner Pub
 | Receive update on device state change | Y         |
 | Modify device state                   | Y         |
 
-##### Third Party Integrations {-}
+###### Third Party Integrations {-}
 
 Wink has support for the following manufacturers:
 
@@ -199,14 +199,14 @@ Wink has support for the following manufacturers:
 | Ecobee    | Emerson     | GoControl           | Hampton Bay | IHome   |
 | Leaksmart | Osram       |                     |             |         |
 
-#### Evaluation {-}
+##### Evaluation {-}
 
 Providing support for the most popular communication protocols allows Wink to connect with almost
 any device a user can purchase, making them an attractive option to consumers. This is a feature
 that we hope to mimic, although not to the full extent of Wink. Specifically, the methods of
 connecting devices from any manufacturer will likely be useful to us for this project.
 
-#### References {-}
+##### References {-}
 
 <cite>
 [1] Apiary, "Wink API · Apiary,". [Online]. Available:
@@ -226,30 +226,30 @@ Accessed: Oct. 8, 2016.
 
 #### SmartThings {-}
 
-#### Description {-}
+##### Description {-}
 
 SmartThings is Samsung's home automation system. Similar to  Wink, they provide their own app
 allowing a user to control devices using scheduling or IFTTT.
 
-#### Technical Overview {-}
+##### Technical Overview {-}
 
-##### Communication Protocols {-}
+###### Communication Protocols {-}
 
 SmartThings supports devices that communicate using the Z-Wave, ZigBee, or WiFi communication
 protocols
 
-##### Device Discovery and Setup {-}
+###### Device Discovery and Setup {-}
 
 Adding a new device is done through the app. A user will click "find device", prompting the hub
 to search for any new Z-Wave, ZigBee, or WiFi devices. When the device is found the user adds 
 it to a room and names the device.
 
-#### Network {-}
+##### Network {-}
 
 SmartThings uses a central Hub to connect all of the smart devices. The SmartThings app talks with
 the SmartThings Cloud which talks to the Hub which then controls the devices.
 
-##### API {-}
+###### API {-}
 
 SmartThings provides a Groovy API to create SmartApps that allow control of devices.
 
@@ -260,11 +260,11 @@ SmartThings provides a Groovy API to create SmartApps that allow control of devi
 | Modify device state                   | Y         |
 
 
-##### Limitations {-}
+###### Limitations {-}
 
 Requires a SmartThings hub and connection to the SmartThings cloud.
 
-#### Third Party Integrations {-}
+##### Third Party Integrations {-}
 
 |            |                     |                |                 |                    |
 | ---        | ---                 | ---            | ---             | ---                |
@@ -277,14 +277,14 @@ Requires a SmartThings hub and connection to the SmartThings cloud.
 | Samsung    | Samsung SmartThings | Schlage        | Sengled         | Skybell            |
 | Spruce     | Yale                | Zen            |                 |                    |
 
-#### Evaluation {-}
+##### Evaluation {-}
 
 The Samsung home automation system provides a reasonable level of support for
 different communication protocols, giving it a healthy amount of third party support.
 This is something that we will be striving for in out project. The dependency on the 
 connection to a cloud service is something that we would like to avoid for our project.
 
-#### References {-}
+##### References {-}
 
 <cite>
 [1] "Samsung SmartThings hub FAQ — SmartThings developer documentation," 2016. [Online].
@@ -296,9 +296,9 @@ Available: <http://docs.smartthings.com/en/latest/sept-2015-faq.html>. Accessed:
 Available: <https://www.smartthings.com/how-it-works>. Accessed: Oct. 10, 2016.
 </cite>
 
-### Apple HomeKit {-}
+#### Apple HomeKit {-}
 
-#### Description {-}
+##### Description {-}
 
 Apple HomeKit allows users to control their smart devices using their iPad or iPhone. Apple HomeKit
 does not require any central hub to control the devices, but does require there to be Apple device
@@ -306,26 +306,26 @@ connected to the network at all times. If a user wants to control devices with a
 at home, the devices must be connected to an Apple product that is connected to the network, such
 as an iPad or Apple TV.
 
-#### Technical Overview {-}
+##### Technical Overview {-}
 
 The smart devices are able to be scheduled and controlled in groups from the app.
 
-##### Communication Protocol {-}
+###### Communication Protocol {-}
 
 Apple HomeKit uses WiFi as the only communication protocol.
 
-##### Device Discovery and Setup {-}
+###### Device Discovery and Setup {-}
 
 Adding new devices is done through the app. Once a device is connected to the network
 it can be added to the home through Apple's app, some devices require some configuration
 in their manufacturers apps.
 
-##### Network {-}
+###### Network {-}
 
 HomeKit uses the homes WiFi network to connect devices and all devices on the network are 
 able to communicate with one another.
 
-##### API {-}
+###### API {-}
 
 | Feature                               | Supported |
 | ---------                             | --------  |
@@ -333,7 +333,7 @@ able to communicate with one another.
 | Receive update on device state change | Y         |
 | Modify device state                   | Y         |
 
-#### Evaluation {-}
+##### Evaluation {-}
 
 There are a few aspects of the Apple HomeKit that are not ideal for incorporation into our project.
 First, it is Apple exclusive, which goes against the goal of having many third party support
@@ -342,7 +342,7 @@ types of devices. The level of communication between devices that is offered by 
 is a desirable feature, but will be difficult to achieve while maintaining diverse third party
 support.
 
-#### References {-}
+##### References {-}
 
 <cite>
 [1] "Use the home app on your iPhone, iPad, and iPod touch," Apple Support, 2016. [Online].
