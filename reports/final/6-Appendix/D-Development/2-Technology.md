@@ -1,11 +1,11 @@
-## Aria Technologies
+### D-2 Technologies {-}
 
 The Aria system is composed of many different technologies that each serve a different, task
 specific purpose. This document outlines the details about the technologies chosen and the
 reasons for them being selected. This document is broken down into the different subsystem
 of the Aria system.
 
-### Exchange Server
+##### Exchange Server {-}
 
 The exchange server is responsible for logging and sending messages throughout the Aria system.
 The exchange server functions as the central communication point for all messages within the
@@ -18,7 +18,7 @@ C it can support any external library implementations. As for the version decisi
 choosing 3 over version 2 allows us to use many of the new features that Python offers. It also
 means that we are not writing Python using a set of deprecated standards.
 
-#### Database
+###### Database {-}
 
 The central exchange server needs to record all events and messages that it receives. This
 database will be accessed by the exchange server and could be integrated into the exchange process.
@@ -27,7 +27,7 @@ server. SQLite provides all of the required features for this operation and prov
 with a relational data store. Using SQLite means that the system will need SQL to read and write
 data from the database.
 
-#### Quality Control
+###### Quality Control {-}
 
 To maintain a desired level of quality in development, tooling will be needed to validate the
 system. Both static and dynamic techniques for quality control will be used to aid in the
@@ -42,20 +42,20 @@ To drive these tests, *nosetools* was used. This tool automatically discovers te
 manages running the test cases in a contained environment. The two tools complement each other
 and create the basis for the exchange unit testing structure.
 
-#### Communication Libraries
+###### Communication Libraries {-}
 
 In order to interface with different communication protocols, the central exchange is required to
 use a number of different third party libraries to communicate. These libraries provide direct
 translation from the exchange's internal message structure to the target devices communication
 protocol.
 
-##### WeMo
+####### WeMo {-}
 
 The first of the these communication libraries is used to interface to WeMo devices and is titled
 *ouimeaux*. This library provides the exchange command with the ability to discover WeMo devices,
 get device states as well as send control commands.
 
-### HTTP Gateway
+##### HTTP Gateway {-}
 
 The HTTP Gateway is responsible for serving static web content as well as enabling communication
 from the web client to the exchange server. This server is a creates a thin wrapper around the
@@ -67,19 +67,19 @@ One of the easiest to use node packages is a web server called *express*. Expres
 that is dynamically configured through code enables rapid development of a web server. This
 technology has been used for the HTTP gateway to simplify the development.
 
-
-#### Deployment
+###### Deployment {-}
 
 In order to compile the server into a single executable, *webpack* was used. 
 
-#### Quality Control
+###### Quality Control {-}
 
 - Mocha
 - JSHint
 
 - NPM
 - Webpack
-### Remote
+
+##### Remote {-}
 
 - Webpack
 - Babel

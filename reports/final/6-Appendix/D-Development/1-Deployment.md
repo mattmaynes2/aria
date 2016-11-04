@@ -1,13 +1,13 @@
-# Build
+### D-1 Deployment {-}
 
-## Introduction
+#### Introduction {-}
 
 This document outlines the details about building and deploying the Aria system. It details how
 the system's automated build process executes and the details about the build manifest. This
 document also outlines the major decisions that were made to run the build and the reasons behind
 them.
 
-## Build Process
+#### Build Process {-}
 
 The build process uses a centralized manifest structure to execute the build. The build system does
 not use a build automation suite but instead integrates a number of different technologies to
@@ -26,7 +26,7 @@ appropriate system package manager to download any required dependencies for thi
 is used in conjunction with the main build system to let the Aria system to be deployable on
 numerous architectures.
 
-### Package Management
+##### Package Management {-}
 
 **TODO**
 
@@ -35,14 +35,14 @@ numerous architectures.
 
 
 
-## Building Aria
+#### Building Aria {-}
 
 The Aria system is built in several stages. These stages are executed in order to setup the target
 system's architecture for running Aria. Each stage is referred to as a directive in the build
 process. To perform a complete build these directives must be executed in order and then must be
 deployed. To see how to run the build command, see [Executing a Build](#Executing-a-Build).
 
-## Executing a Build
+#### Executing a Build {-}
 
 To execute a build in the aria system simple run the `./build/run all` command. This will execute
 all of the stages of the Aria build process including the Aria test suite. Once the build has been
@@ -53,7 +53,7 @@ To execute a specific directive in the build, simply run the `./build/run` comma
 the following directives.
 
 | Directive | Description                                                         |
-| --------- | -----------                                                         |
+| --------- | ------------------------------------------------------------------- |
 | `enviro`  | Setup the target system's environment dependencies                  |
 | `deps`    | Install all of the target specific technologies                     |
 | `build`   | Build all of the targets on the build system                        |
