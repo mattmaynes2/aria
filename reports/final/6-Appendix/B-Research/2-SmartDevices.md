@@ -183,6 +183,22 @@ learning on it, so there won't be any conflicts with our system.
 Accessed: Oct. 26, 2016.
 </cite>
 
+#### Wireless Speakers {-}
+
+##### Available Devices {-}
+
+Speakers that have the capability to provide actions performed to our communication hub are required to automate music in a home. There does not appear to be any Z-Wave ready speakers available currently, and existing WiFi speakers do not provide an API to interact with them. The result of this is that appropriate speakers for use in our system do not currently exist.
+
+##### Developing Wireless Speakers {-}
+
+It could be possible to create our own smart speakers for use in the ARIA system, but it would require a large amount of effort. Development would involve using an arduino or similar microcomputing device to turn a speaker into a device compatible with our system. This implies that the speaker must be able to communicate using our own defined protocol. Implementing this is not a priority for our project, as the value added is limited, but it can be considered in the future if there is necessary need.
+
+#### Smart TV {-}
+
+##### Available Devices {-}  
+
+Similar to the wireless speakers, there are no available TVs that provide the required functionallity to be a useful device in our system. Creating custom TV devices is also non-feasbile,as the level of complexity for interfacing with a TV and the corrosponding cable box exceeds the capibilities of our team members. 
+
 #### Philips Hue {-}
 
 ##### Available Devices {-}
@@ -190,7 +206,6 @@ Accessed: Oct. 26, 2016.
 1. White Bulbs
  - On/Off 
  - Dimming
-
 
 2. White Ambiance Bulbs
  - On/Off
@@ -347,8 +362,7 @@ document any local-only API for controlling devices using a gateway
 
 ##### Description {-}
 
-Aeotec sells light bulbswhich are compatible with the Z-Wave protocol. Aeotec products are compatible
-with most Z-Wave hubs. Aeotec does not provide a proprietary API for their products.
+Aeotec sells light bulbswhich are compatible with the Z-Wave protocol. Aeotec products are compatible with most Z-Wave hubs. Aeotec does not provide a proprietary API for their products.
 
 ##### Available Devices {-}
 
@@ -396,6 +410,25 @@ The specification for interacting with Z-Wave devices is public, and available a
 <http://zwavepublic.com/specifications>. There is also an open Z-Wave sdk available, to communicate from
 the controller to devices.
 
+##### Available Devices of Interest {-}
+
+1. MultiSensor
+- Motion Sensor
+- Temperature Sensor
+- Light Sensor
+- Humidity Sensor
+- Vibration Sensor
+- UV Sensor
+
+The MultiSensor is a Z-Wave device, meaning that it follows the Z-Wave protocol for commands interacting with each individual sensor. As stated above, the speficication for interacting with Z-Wave devices is available at <http://zwavepublic.com/specifications>. 
+
+Individual Z-Wave sensors are also available, and function using the same specifications as the MultiSensor above. AARTech is one alternative which has a selection of individual sensors if the MultiSensor is unnecessary.
+
+2. Door / Window Sensor
+- Detect window/door state
+ The Door/Window sensor is purposed to be able to detect the state of doors or windows. This allows the system to use information about the state of doors and windows to make decisions about what actions to take. 
+
+ 
 ##### Evaluation {-}
 
 Aeon Labs is an ideal solution for our project. To start, there is an easy way to set up our own
