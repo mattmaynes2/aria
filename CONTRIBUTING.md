@@ -74,6 +74,29 @@ If you are working on a file online, ensure that you change the default commit m
 commit is valuable and knowing what was changed is very important. The default `Updated MyDoc.md`
 is not useful and should be avoided.
 
+## Pull Requests
+
+### Descriptions
+
+Pull requests titles should be treated as a commit message and follow the same conventions as above
+
+### Reviews
+
+Pull request reviews should examine style but more importantly they should review the logic applied
+to solve a particular issue. This
+[article](https://github.com/blog/1943-how-to-write-the-perfect-pull-request) offers a good
+explanation of pull request etiquette. The major highlights are the following:
+
+- Familiarize yourself with the context of the issue, and reasons why this Pull Request exists.
+- If you disagree strongly, consider giving it a few minutes before responding; think before you react.
+- Ask, don’t tell. (“What do you think about trying…?” rather than “Don’t do…”)
+- Explain your reasons why code should be changed. (Not in line with the style guide? A personal preference?)
+- Offer ways to simplify or improve code.
+- Avoid using derogatory terms, like “stupid”, when referring to the work someone has produced.
+- Be humble. (“I’m not sure, let’s try…”)
+- Avoid hyperbole. (“NEVER do…”)
+- Aim to develop professional skills, group knowledge and product quality, through group critique.
+- Be aware of negative bias with online communication. (If content is neutral, we assume the tone is negative.) Can you use positive language as opposed to neutral?
 
 ## Report Guidelines
 
