@@ -39,4 +39,37 @@ interaction.
 To be able to actually make the coffee, a smart coffee maker will be needed. This is the only
 smart device that will be required to automate this scenario.
 
+#### Sample Sequence {-}
+
+The house is setup with a motion sensor outside the user's room (MotionRoom), a motion sensor 
+outside the bathroom (MotionBathroom), a motion sensor outside the kitchen (MotionKitchen) 
+and, a smart coffee machine in the kitchen (Coffee). 
+
+The user wakes leaves their room and heads towards the bathroom at 7:00 AM. 
+MotionRoom sends a motion detected message to the hub. The hub logs that MotionRoom detected 
+motion at 7:00:00 AM. MotionBathroom then sends a motion detected message to the hub. The 
+hub then logs that MotionBathroom detected motion at 7:00:25. The user then leaves the bathroom
+and heads back to their room. MotionBathroom sends a motion detected  message to the hub. The
+hub logs MotionBathroom detected motion at 7:15:20 AM. 
+
+##### Logs {-}
+
+The logs for the above scenario would look like the following:
+
+```
+2016-11-4 7:00:00 MotionRoom: Motion Detected
+2016-11-4 7:00:25 MotionBathroom: Motion Detected
+2016-11-4 7:15:00 MotionBathroom: Motion Detected
+2016-11-4 7:15:25 MotionRoom: Motion Detected
+2016-11-4 7:20:00 MotionRoom: Motion Detected
+```
+
+
+Show log and messages
+Show expected inputs
+Show expected outputs
+Show UI graphics
+Show prototypes
+Much more concrete
+
 
