@@ -66,20 +66,11 @@
         "build" : "./support/try ./markdown/mkpdf -o Proposal.pdf ../reports/proposal",
         "clean" : "rm -f ../reports/proposal/*.pdf"
     },
-    "reports.research" : {
-        "build" : "./support/try ./markdown/mkpdf --toc -o Research.pdf -c Cover.html ../reports/research",
-        "clean" : "rm -f ../reports/research/*.pdf"
-    },
-    "reports.architecture" : {
-        "build" : "./support/try ./markdown/mkpdf --toc -o Architecture.pdf -c Cover.html ../reports/architecture",
-        "clean" : "rm -f ../reports/architecture/*.pdf"
-    },
-    "reports.scenarios" :{
-        "build" : "./support/try ./markdown/mkpdf --toc -o Scenarios.pdf -c Cover.html ../reports/scenarios",
-        "clean" : "rm -f ../reports/scenarios/*.pdf"
-    },
-     "reports.spec" : {
-        "build" : "./support/try ./markdown/mkpdf --toc --toc-depth 3 -o Specification.pdf -c Cover.html ../reports/spec",
-        "clean" : "rm -f ../reports/spec/*.pdf"
+     "reports.final" : {
+        "build" : "./support/try ./markdown/mkpdf --auto-number --toc --toc-depth 3 -o Report.pdf ../reports/final",
+        "clean" : [
+            "rm -f ../reports/final/*.pdf",
+            "rm -f ../reports/final/uml/*.png"
+        ]
     }
 }
