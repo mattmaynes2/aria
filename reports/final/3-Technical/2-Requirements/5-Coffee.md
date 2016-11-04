@@ -49,8 +49,15 @@ The user wakes leaves their room and heads towards the bathroom at 7:00 AM.
 MotionRoom sends a motion detected message to the hub. The hub logs that MotionRoom detected 
 motion at 7:00:00 AM. MotionBathroom then sends a motion detected message to the hub. The 
 hub then logs that MotionBathroom detected motion at 7:00:25. The user then leaves the bathroom
-and heads back to their room. MotionBathroom sends a motion detected  message to the hub. The
-hub logs MotionBathroom detected motion at 7:15:20 AM. 
+and heads back to their room. MotionBathroom sends a motion detected message to the hub. The
+hub logs MotionBathroom detected motion at 7:15:00 AM. MotionRoom then sends a motion detected
+message to the hub. The hub logs MotionRoom detected motion at 7:15:25 AM. The user then heads
+from their room to the kitchen. MotionRoom sends a moition detected message to the hub. The hub 
+logs MotionRoom detected motion at 7:20:00 AM. MotionKitchen sends a motion detected message to the
+hub and the hub logs MotionKitchen detected motion at 7:21:00. The user then turns on the 
+coffee maker. Coffee sends a start brewing message to the hub at 7:21:30. When the coffee is done,
+Coffee sends a done message to the hub. The hub logs that Coffee finished at 7:27:30. 
+ 
 
 ##### Logs {-}
 
@@ -62,14 +69,21 @@ The logs for the above scenario would look like the following:
 2016-11-4 7:15:00 MotionBathroom: Motion Detected
 2016-11-4 7:15:25 MotionRoom: Motion Detected
 2016-11-4 7:20:00 MotionRoom: Motion Detected
+2016-11-4 7:21:00 MotionKitchen: Motion Detected
+2016-11-4 7:21:30 Coffee: Starting
+2016-11-4 7:27:30 Coffee: Done
 ```
 
 
-Show log and messages
-Show expected inputs
-Show expected outputs
-Show UI graphics
-Show prototypes
-Much more concrete
+##### Alternate Sequences {-}
+
+There are a few different ways that the coffee maker could be setup to make coffee instead of 
+being turned on manually. It could be scheduled to start at a specific time or it could 
+
+
+
+##### Decisons {-}
+
+The 
 
 
