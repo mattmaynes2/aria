@@ -31,7 +31,7 @@ use to monitor the occupancy of the home as well as determine the noise level of
 appropriately adjust the music.
 
 | Sensor             | Usage                                                    |
-| ------             | -----                                                    |
+| ------------------ | -------------------------------------------------------- |
 | Beam Motion Sensor | 2 Beam sensors in series can be used to detect occupancy |
 | Audio Sensor       | Audio sensor for tuning music volume to the atmosphere   |
 
@@ -40,7 +40,7 @@ table lists example devices to allow this system to perform the tasks outlined i
 scenario.
 
 | Device              | Usage                                               |
-| ------              | -----                                               |
+| ------------------- | --------------------------------------------------- |
 | Speakers            | Controllable speakers for home configuration        |
 | Controllable Lights | Lights that can be controlled by the central system |
 | Thermostat          | Controllable thermostat for changing temperature    |

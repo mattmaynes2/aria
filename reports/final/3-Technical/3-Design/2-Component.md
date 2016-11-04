@@ -2,7 +2,7 @@
 
 #### Component Organization {-}
 
-![](../uml/SystemComponents.png)
+![](./uml/SystemComponents.png)
 
 #### Component Descriptions {-}
 

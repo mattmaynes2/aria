@@ -1,4 +1,4 @@
-### 6. REST API
+### REST API
 
 The HTTP gateway component exposes some REST endpoints. The gateway allows system components
 which can only communicate over HTTP to interact with any device in the system using a 
@@ -16,8 +16,6 @@ REST API Design Goals:
 Get information about the current state of the automation system
 Returns a JSON object.
 
----
-
 `POST /request`
 
 Send a request to the communication hub 
@@ -25,8 +23,6 @@ Send a request to the communication hub
 Content-Type header should be `application/json`
 The body of the request should contain a JSON object. The object will be forwarded to the
 communication hub as the payload of a type 3 message.
-
----
 
 `POST /devices/<id>/request`
 

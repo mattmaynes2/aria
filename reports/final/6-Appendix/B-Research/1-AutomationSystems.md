@@ -1,6 +1,6 @@
-### Automation Systems
+### B-1 Automation Systems {-}
 
-### Background
+#### Background {-}
 
 In this section we are looking at existing systems so that we can better understand what
 technologies currently exist in the market. Having a better grasp of existing technology will help
@@ -47,19 +47,19 @@ of third party integrations then this system should consider them in its design 
 interoperability.
 
 
-### Insteon
+#### Insteon {-}
 
 #### Description {-}
 
 Insteon is a home automation system that allows smart devices to connect over a home area network
 with a focus on ease of use. Insteon allows you to monitor and control all of the devices within
 the system. All devices in connect through a central Insteon smart hub which is then controlled
-by the user through a app on the user's mobile device. Controlling of devices can also be automated
+by the user through a app on the user's mobile device. Controlling of s can also be automated
 using manually configured schedules, IFTTT or through the use of **scenes**.
 
 A scene is configured a configuration for a room that the user sets up at a specific time or when
 specific environmental conditions are met. Insteon has all of the devices remember their current
-states and whenever these states are met then it has the devices recreate the saved scene.
+states and whenever these states are met then it has the devices recreate the saved scene.[^B-1-1]
 
 #### Technical Overview {-}
 
@@ -69,18 +69,18 @@ Insteon uses a proprietary messaging protocol to send messages between devices a
 The Insteon messaging protocol uses message repeating to send messages across a peer-to-peer network
 of devices. This messaging protocol is outlined in a detailed
 [white paper](http://cache.insteon.com/documentation/insteon_details.pdf) that describes the
-network protocol as well as the messaging protocol.
+network protocol as well as the messaging protocol.[^B-1-2]
 
 Insteon also integrates with a number of third party devices and controllers. These third party
 devices can be added to the network and be controlled through the Insteon smart hub. The hub's
-devices can also be controlled through the integrations of these third party devices.
+devices can also be controlled through the integrations of these third party devices.[^B-1-2]
 
 ##### Device Discovery and Setup {-}
 
 Adding a new device is done through the Insteon app. A new device is first plugged in and turned on.
 The device then locates the user's mobile app on the network and is ready to be connected.
 Using the app the user selects the new device and enters the device ID. Once the ID is
-entered the device is able to be configured and added to the Insteon network.
+entered the device is able to be configured and added to the Insteon network.[^B-1-2]
 
 ##### Network {-}
 
@@ -88,23 +88,21 @@ Insteon uses a central hub to communicate between the devices and the users app.
 is used for all device communications and control. Devices connect and send all event information
 to the central hub.
 
-Insteon uses a peer-to-peer network to connect the devices. All of Insteon's devices can act as a
+Insteon uses a peer-to-peer network to connect the devices.[^B-1-3] All of Insteon's devices can act as a
 controller to send messages, a repeater to forward messages or a responder to receive messages.
-
 
 ##### API {-}
 
 Insteon provides a REST API to interact with their devices.
 
 | Feature                               | Supported |
-| ---------                             | --------  |
+| ---------                             | --------- |
 | List all devices                      | Y         |
 | Receive update on device state change | Y         |
 | Modify device state                   | Y         |
 
 In order to use the API approval from Insteon is required. Applying for an API key is done through
-the Insteon website.
-
+the Insteon website.[^B-1-4]
 
 ###### Limitations {-}
 
@@ -132,34 +130,7 @@ The Insteon system is very reliable and easy to setup however because they use t
 communication protocol the devices that can be added is limited mostly to those manufactured by
 Insteon. A closed system such as this is not what we are striving for with this project.
 
-#### References {-}
-
-<cite>
-[1] Apiary, "Insteon API · Apiary,". [Online]. Available: <http://docs.Insteon.apiary.io/>.
-Accessed: Oct. 6, 2016.
-</cite>
-
-<cite>
-[2] Insteon®, "Home," in Insteon, Insteon, 2016. [Online]. Available: <http://www.Insteon.com/>.
-Accessed: Oct. 6, 2016.
-</cite>
-
-<cite>
-[3] Insteon®, "WHITEPAPER: Compared,". [Online]. Available:
-<http://cache.Insteon.com/documentation/Insteon_compared.pdf>. Accessed: Oct. 6, 2016.
-</cite>
-
-<cite>
-[4] Insteon®, "WHITEPAPER: The Details,". [Online]. Available:
-<http://cache.Insteon.com/documentation/Insteon_details.pdf>. Accessed: Oct. 6, 2016.
-</cite>
-
-<cite>
-[5] SMARTHOME®, "Insteon home automation,". [Online]. Available:
-<http://www.smarthome.com/sc-what-is-Insteon-home-automation>. Accessed: Oct. 6, 2016.
-</cite>
-
-### Wink
+#### Wink {-}
 
 #### Description {-}
 

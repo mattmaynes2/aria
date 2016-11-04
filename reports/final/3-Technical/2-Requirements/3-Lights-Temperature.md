@@ -40,7 +40,7 @@ will also need to be sensors to determine the occupancy of the home. The followi
 sensors that will be needed for this scenario.
 
 | Sensor             | Usage                                                    |
-| ------             | -----                                                    |
+| ------------------ | -------------------------------------------------------- |
 | Light Sensor       | Used to determine the amount of light in the home        |
 | Temperature Sensor | Need to observe the temperature of the home              |
 | Motion Sensor      | Will provide information about the occupancy of the home |
@@ -51,6 +51,6 @@ the system, the system's user interface will need to provide control mechanisms 
 The following is a list of the devices that will be needed and how they will be used in the system.
 
 | Device                | Usage                                                    |
-| ------                | -----                                                    |
+| --------------------- | -------------------------------------------------------- |
 | Smart Lights          | Lights that can be controlled through an API             |
 | Thermostat Controller | A device that can control the temperature through an API |

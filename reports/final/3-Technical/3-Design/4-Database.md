@@ -2,7 +2,7 @@
 
 #### Database Entity-Relationship {-}
 
-![](../uml/SystemER.png)
+![](./uml/SystemER.png)
 
 #### Database Tables {-}
 

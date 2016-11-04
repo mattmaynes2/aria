@@ -1,6 +1,6 @@
 ### Deployment
 
-![](../uml/SystemDeployment.png)
+![](./uml/SystemDeployment.png)
 
 ##### Smart Hub {-}
 

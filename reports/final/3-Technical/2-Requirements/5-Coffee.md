@@ -1,6 +1,6 @@
 ### Coffee Automation
 
-#### Background {1}
+#### Background {-}
 
 Routine tasks done on a periodic schedule and can be automated by a smart process. Every morning
 you wake up and make a pot of coffee before you go about your day. Making a pot of coffee is a
@@ -11,7 +11,7 @@ Let's imagine that on the weekend you don't make any morning coffee, the system 
 behaviour and adapt during the days of the week. On a day that you are not at home, the system
 should not make any coffee either.
 
-#### System Interaction {1}
+#### System Interaction {-}
 
 The system will need to be able to interact with a number of sensors to detect the user's
 presence. The system will also need to be able to communicate to a smart coffee maker so that it
@@ -23,7 +23,7 @@ into bed. The user could then get out of bed and go directly to the kitchen and 
 of coffee. The system could observe the user's leaving the bed with motion sensors and track
 that they are making coffee in a smart coffee maker.
 
-####  System Requirements {1}
+####  System Requirements {-}
 
 To track the user's motion in the home, the system will need motion sensors. To be able to
 differentiate between the days of the week and time, the system will also need access to a
@@ -31,7 +31,7 @@ clock and a calendar. The following is a list of sensors that will be required f
 interaction.
 
 | Sensor         | Usage                                                        |
-| ------         | -----                                                        |
+| -------------- | ------------------------------------------------------------ |
 | Motion Sensors | Used to track user movement throughout the home              |
 | Clock          | Used to determine the time of day that the user makes coffee |
 | Calendar       | Used to determine what day of the week the user makes coffee |

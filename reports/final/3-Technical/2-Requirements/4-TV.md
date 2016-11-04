@@ -1,7 +1,6 @@
-# 4. TV Automation
+### TV Automation
 
-4.1 Background
---------------
+#### Background {-}
 
 Automation of a smart home should go beyond simple tasks and make it easy to stay on top of a busy
 schedule. Your favourite TV show is on every week at the same time but your schedule changes from
@@ -10,8 +9,7 @@ each week and that it is a show of interest. If one week you cannot make it to w
 should not be bothered to have to set up the personal recording device, the smart home system
 should record the show for you.
 
-4.2 System Interaction
-----------------------
+#### System Interaction {-}
 
 The automation system will have to interact with a smart TV in order to communicate the channel
 information of the TV. The system will also need to have access to a personal video recording
@@ -23,14 +21,13 @@ by setting the system to record when they are not in the room. If there are moti
 the system could detect the user's presence.
 
 
-4.3 System Requirements
------------------------
+#### System Requirements {-}
 
 To be able to determine if the user is present in the home, the system will need various sensors
 for light and motion. The following is a list of sensors that will be needed for this scenario.
 
 | Sensor        | Usage                                         |
-| ------        | -----                                         |
+| ------------- | --------------------------------------------- |
 | Motion Sensor | Will provide information about home occupancy |
 
 
@@ -39,7 +36,7 @@ device for recording TV shows. The following smart devices will be needed to con
 and record TV shows.
 
 | Device         | Usage                                                                        |
-| ------         | -----                                                                        |
+| -------------- | ---------------------------------------------------------------------------- |
 | Smart TV       | TV that can communication channel information and can be controlled remotely |
 | Video Recorder | Recorder for capturing the user's TV show                                    |
 

@@ -108,7 +108,7 @@ message type indicates otherwise.
 
 Return the device status and any properties associated with that device
 
-####### Request {-}
+###### Request {-}
 
 ```json
 {
@@ -117,7 +117,7 @@ Return the device status and any properties associated with that device
 }
 ```
 
-####### Response {-}
+###### Response {-}
 
 ```json
 {
@@ -128,7 +128,7 @@ Return the device status and any properties associated with that device
 
 ##### Device Information {-}
 
-####### Request {-}
+###### Request {-}
 
 ```json
 {
@@ -138,7 +138,7 @@ Return the device status and any properties associated with that device
 ```
 
 
-####### Response {-}
+###### Response {-}
 
 
 ```json
@@ -152,7 +152,7 @@ Return the device status and any properties associated with that device
 
 ##### Configure Device {-}
 
-####### Request {-}
+###### Request {-}
 
 ```json
 {
@@ -166,7 +166,7 @@ Return the device status and any properties associated with that device
 | Display Name | Name displayed for device |
 
 
-##### Response {-}
+###### Response {-}
 
 Response is status of update. True indicates success, false indicates failure
 

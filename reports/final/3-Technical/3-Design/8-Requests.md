@@ -63,14 +63,14 @@ values depending on the device.
 
 #### Server Request {-}
 
-![](../uml/ServerRequest.png)
+![](./uml/ServerRequest.png)
 
 The Server Request diagram shows the workflow that occurs when an end user wants to retrieve
 information about the state of the communication server through the web client.
 
 #### Device Request {-}
 
-![](../uml/DeviceRequest.png)
+![](./uml/DeviceRequest.png)
 
 The Device Request diagram shows the workflow that occurs when an end user wants to retrieve 
 inform about a specific device in the system through the web client. 

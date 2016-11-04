@@ -1,5 +1,3 @@
-<p style="page-break-after:always;"></p>
-
 ### Introduction
 
 #### Introduction {-}
@@ -95,7 +93,7 @@ creating custom devices for the system - May also be a base user
 
 ### System Features
 
-![image](../../uml/SystemUseCase.png)
+![](./uml/SystemUseCase.png)
 
 -----------------------------
 
@@ -217,7 +215,7 @@ Once the user is finished with the remote interface, they can log out or simply 
 application. For security reasons, if a user is inactive in their session for more than a set amount
 of time then they will be logged out automatically.
 
-![](../../uml/RemoteUseCase.png)
+![](./uml/RemoteUseCase.png)
 
 #### Hardware Interfaces {-}
 
