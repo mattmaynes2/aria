@@ -53,7 +53,10 @@ var ExchangeAdapter = (function () {
 
             client  = this.transport.createSocket('udp4');
             message = packets.serialize(packet);
-            expiry  = setTimeout(timeout, 5000);
+            expiry  = setTimeout(() => {
+                client.close();
+                reject(Error('Response wait period timed out'));
+            }, 5000);
 
             client.on('message', function(message) {
                 console.log('Received response from comm server');
@@ -61,7 +64,6 @@ var ExchangeAdapter = (function () {
                 clearTimeout(expiry);
                 resolve(packets.parse(message));
             });
-
 
             client.send(message, 0, message.length,
                 this.endpoint.port, this.endpoint.address,
@@ -76,12 +78,6 @@ var ExchangeAdapter = (function () {
         });
 
     }
-
-    function timeout (client, reject) {
-        client.close();
-        reject(Error('Response wait period timed out'));
-    }
-
 
     return ExchangeAdapter;
 } ());
