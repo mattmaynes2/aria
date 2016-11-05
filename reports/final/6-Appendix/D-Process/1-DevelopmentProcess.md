@@ -1,65 +1,50 @@
 ### Development Process
 
 #### Introduction {-}
+An important part of any sizeable software project is the selection of a development process.
+A development process imposes a particular structure on the development of a product. The 
+process used for the development of this project was created with the following factors in mind:
 
-##### What is a process? {-}
-- imposition of a structure to development
+- Project lifespan: Work on the project will last at least 8 months; other developers may also
+continue working on the project after the two school terms are complete
 
-##### Why do we need a process? {-}
-- project has a long lifespan (8 months)
-- 4 people working on it, we need to keep everyone synchronized
-- we have some specific deadlines that we need to hit
-- reporting is critical, we need to ensure that our goals are clearly defined, and that work
-toward them is tracked so that it's easier to write about
-- our process should also ensure that code is of the quality expected of a fourth year project
+- Team Size: There are four team members working on the project, the process needs to keep everyone 
+synchronized and organize the assignment of work to team members
 
-##### Considerations in in process creation {-}
-- team size (the team is small, 4 people)
-- lifetime of project (someone should be able to pick it up after we finish)
-- it should be easy to follow, not an obstacle
+- Reporting: The final project report critical to the project's success, the process should make the report easy to write
 
-#### Overall Development {-}
+- Code Quality: The process should ensure that work products are of the quality expected of a fourth year project.
 
-##### Develop product requirements {-}
-- why are we developing the product?
-- what can the product do?
+- Maintainability and Extensibility: The end result of the project should be maintainable and extensible; a developer 
+who is new to the project should have an easy time developing for it.
 
-##### Activities {-}
-- Use case diagrams
-- Scenarios
-- SHOULD WRITE DOWN Create a roadmap (how to get to the vision)
+- Ease of Implementation: The process should not be an obstacle to development
 
-##### Team Workflow {-}
-- Iterative approach
-- Source code management
+Given these goals, the process used for this project incorporates some elements of Extreme Programming and other
+agile methodologies. Use of practices which are widely accepted in industry also ensures that new developers are 
+comfortable working on the project. The process prescribes some practices to be used for: Source code management, 
+Code reviews, Issue Tracking, and Testing.
 
-#### Tools {-}
+##### Source Code Management {-}
 
-##### Source Code management {-}
+The project uses a source code management tool to achieve the following goals:
 
-- We have multiple people working on the same code, we need to maintain a version of the software 
-that is in a consistent state
-- We want to be able to track changes to files so that we can undo them if necessary, and get hints 
- about what changes introduced problems
-- Allows people to work independently on a set of files and merge them together 
+- Allows many team members to work on the same codebase and maintain a consistent master copy of the product
 
-We use git because it provides solutions to all of these issues. While several
-tools can provide the benefits that we need, git is a familiar choice for all 
+- Track changes to files in order to locate changes that may have introduced bugs
+
+- Allows team members to work independently
+
+This project uses git because it provides solutions to all of these issues. git is familiar to all 
 team members, in addition to being a de-facto standard in the open source software community.
-This makes the process easier to follow, and potentially makes it easier for other developers
-to pick up the project when we are done with it
+Using git over other SCM tools makes the process easier to follow, and improvse the experience of any
+new developer that might choose to maintain the project. 
 
-Hosted git server
+The project's git repository is hosted on Github. Github allows the team to access the project anywhere,
+and makes sharing code with new developers very simple. Additionally, Github provides some project management 
+tools that can be used elsewhere in the process, as explained in subsequent sections.
 
-- using a hosted git server allows us to access our code anywhere
-
-- makes sharing with other developers easy
-
-Github is a free hosting service for git repositories. It is well known in the development 
-community, and accomplishes both of the goals stated above. Additionally, it provides some
-project management tools that we can used, as explained in subsequent sections.
-
-##### Branching and Code Reviews
+##### Branching and Code Reviews {-}
 
 We make strategic use of a git feature, branching, in order to ensure that code which makes it into the
 official version of our software is of the quality expected of a fourth year project. A technique we are
@@ -73,15 +58,18 @@ a particular feature is submitted to its own branch; branches are merged to mast
 feature has been completed. A code review is required before any branch may be merged into master. Feature 
 branches helps to ensure that code reviews are short and focused.
 
-An additional benefit of the feature branching strategy is that it encourages frequent integration of 
-the system's components. 
+##### Continuous Integration {-}
 
-##### Continuous Integration
+A practice which complements the branching strategy adopted by this project is Continuous Integration. 
+In combination with test automation, Continuous Integration allows team members to get early 
+feedback about changes they make to the codebase. Proper use of Continuous Integration can ensure
+that the project's master copy remains in a working state at all times. One of the benefits of maintaining
+working sofware at all times is that the project is always demoable.
 
-- we want to find problems as soon as possible
-- we want to get features working quickly
+The continuous integration tool chosen for this project is Travis CI. Travis CI is a free hosted CI system.
+Travis can be easily integrated with Github repositories, making it the obvious choice for this project.
 
-##### Tracking Work {-}
+##### Issue Tracking {-}
 
 It is important for us to keep an organized list of tasks that need to be completed
 for the project, in order for us to gauge the progress of the project and decide 
@@ -93,18 +81,20 @@ Another aspect of tracking work is coordinating people (deciding who is working 
 - Roughly ordered so that people know what to do next
 - Provides a forum for discussion of tasks
 
-##### Tools
 
-##### Github
-
-- provides issue tracking software
-- prioritization of issues using tags
-- organization of issues into milestones
-- assign people to issues
-- a tool which we are already using in our project!
-
+TODO
 ## Testing practices
 
 - TDD
 - How are we doing integration testing?
-- Continuous integration
+
+#### Overall Development {-}
+
+##### Develop product requirements {-}
+- why are we developing the product?
+- what can the product do?
+
+##### Activities {-}
+- Use case diagrams
+- Scenarios
+- SHOULD WRITE DOWN Create a roadmap (how to get to the vision)
