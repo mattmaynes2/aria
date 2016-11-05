@@ -15,8 +15,8 @@ class WemoAdapter (Adapter):
     def __init__(self):
         super().__init__()
         self.env=Environment()
-        self.deviceUids={}
-        self.deviceNames={}
+        self._deviceUids={}
+        self._deviceNames={}
         # setup call back when device is discovered
         devicefound.connect(self._discovered)
 
@@ -32,8 +32,8 @@ class WemoAdapter (Adapter):
     def _discovered(self,sender, **kwargs):
         uid = uuid.uuid4().bytes
 
-        self.deviceNames[uid] = sender.name
-        self.deviceUids[sender.name]=uid
+        self._deviceNames[uid] = sender.name
+        self._deviceUids[sender.name]=uid
         print(sender)
         #deviceType = DeviceType(sender.name, False, 'WeMo')
         #hostname=sender.services['basicevent'].hostname.split(':')
@@ -43,7 +43,7 @@ class WemoAdapter (Adapter):
 
     def send (self, message):
         print('looking for '+str(message.receiver))
-        deviceName = self.deviceNames[message.receiver]
+        deviceName = self._deviceNames[message.receiver]
         print('found device with name '+deviceName)
         device = self.env.get(deviceName)
 
