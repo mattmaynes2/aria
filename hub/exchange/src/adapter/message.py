@@ -50,3 +50,6 @@ class Message:
         message.data        = json.loads(msg[Message.OFFSET_RECEIVER:].decode(Message.ENCODING))
 
         return message
+
+    def __str__(self):
+        return 'Message [ type:'+str(self.type)+', data:'+str(self.data)+', sender:'+str(self.sender)+', reciever: '+str(self.receiver)+']'

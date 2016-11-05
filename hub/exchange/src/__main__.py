@@ -5,7 +5,7 @@ sys.path.append('../lib')
 from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
 
-from adapter import AriaAdapter, HubAdapter, Message
+from adapter import AriaAdapter, HubAdapter, Message, WemoAdapter
 
 hub         = None
 cli         = None
@@ -33,7 +33,7 @@ def create_exchange (hub, cli):
 
     exchange.register('hub'     , HubAdapter(hub))
     exchange.register('aria'    , AriaAdapter())
-
+    exchange.register('wemo'    , WemoAdapter())
     return exchange
 
 def exit ():
