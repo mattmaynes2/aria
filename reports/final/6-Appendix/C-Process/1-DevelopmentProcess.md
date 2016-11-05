@@ -1,4 +1,11 @@
-### Introduction
+### C-1 Development Process {- #C-1-Development-Process}
+
+> Author: Cameron Blanchard
+>
+> Updated: November 5, 2016
+
+#### Introduction {-}
+
 An important part of any sizeable software project is the selection of a development process.
 A development process imposes a particular structure on the development of a product. The 
 process used for the development of this project was created with the following factors in mind:
@@ -33,10 +40,10 @@ The project uses a source code management tool to achieve the following goals:
 
 - Allows team members to work independently
 
-This project uses git because it provides solutions to all of these issues. git is familiar to all 
+This project uses git because it provides solutions to all of these issues. git is familiar to all
 team members, in addition to being a de-facto standard in the open source software community.
 Using git over other SCM tools makes the process easier to follow, and improvse the experience of any
-new developer that might choose to maintain the project. 
+new developer that might choose to maintain the project.
 
 The project's git repository is hosted on Github. Github allows the team to access the project anywhere,
 and makes sharing code with new developers very simple. Additionally, Github provides some project management 
@@ -51,7 +58,7 @@ between team members with different amounts of experience in particular technolo
 
 In order for code reviews to be effective, we believe that the review should be as short as possible,
 and focused on a particular feature. This ensures that reviewers are motivated to provide high quality 
-feedback. In order to encourage this, we have adopted a the "feature branches" branching strategy. Work on
+feedback. In order to encourage this, we have adopted the "feature branches" branching strategy. Work on
 a particular feature is submitted to its own branch; branches are merged to master once work on the 
 feature has been completed. A code review is required before any branch may be merged into master. Feature 
 branches helps to ensure that code reviews are short and focused.
@@ -62,7 +69,7 @@ A practice which complements the branching strategy adopted by this project is c
 In combination with test automation, continuous integration allows team members to get early 
 feedback about changes they make to the codebase. Proper use of  continuous integration can ensure
 that the project's master copy remains in a working state at all times. One of the benefits of maintaining
-working sofware at all times is that the project is always demoable.
+working software at all times is that the project is always demoable.
 
 The continuous integration tool chosen for this project is Travis CI. Travis CI is a free hosted CI system.
 Travis can be easily integrated with Github repositories, making it the obvious choice for this project. 
@@ -88,7 +95,7 @@ A good issue tracking tool:
 Github provides an issue tracking system which can be used to accomplish these goals. The Github issue tracking
 system is not ideal for some tasks, such as prioritization of issues. In the interest of minimizing the number
 of tools required to follow this process, however, Github issue tracking was selected as the team's issue tracking
-tool. 
+tool.
 
 Github issues are organized into groups of tasks which must be completed during each one-week iteration of development.
 Issues are prioritized using labels (minor, major, critical). Issues are assigned to a team member when work begins;
