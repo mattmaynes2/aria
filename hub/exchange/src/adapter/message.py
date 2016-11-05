@@ -37,8 +37,7 @@ class Message:
         return Message      == type(other)      and \
             self.type       == other.type       and \
             self.sender     == other.sender     and \
-            self.receiver   == other.receiver   and \
-            json.dumps(self.data) == json.dumps(other.data)
+            self.receiver   == other.receiver
 
     @staticmethod
     def decode (msg):

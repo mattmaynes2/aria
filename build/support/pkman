@@ -4,7 +4,6 @@ set -e
 
 NAME='pkman'
 VERSION='0.1.0'
-PROGNAME="$0"
 HELP='
   Usage: pkman <cmd> [options...]
     Performs package manager operations on various operating systems using the
@@ -45,6 +44,9 @@ function search () {
             ;;
         yum)
             sudo yum list installed | grep -e "$2"
+            ;;
+        cask)
+            brew cask list | grep -r "$2"
             ;;
         brew)
             brew list | grep -e "$2"

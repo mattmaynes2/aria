@@ -1,39 +1,45 @@
 var fs      = require('fs'),
-    exec    = require('child_process').execSync;
+    spawn   = require('child_process').spawn;
 
 function shellJoin (cmd) {
     return Array.isArray(cmd) ? cmd.join(' && ') : cmd;
 }
 
-function execute (manifest, directive, target) {
-    var cmd         = shellJoin(manifest[target][directive]),
-        fullcmd     = `cd ${__dirname} && ` + cmd;
+function execute (manifest, directive, targets) {
+    var target      = targets[0],
+        cmd         = shellJoin(manifest[target][directive]),
+        fullcmd     = `cd ${__dirname} && ` + cmd,
+        child;
 
     console.log(`Executing '${directive}' on target '${target}'`);
 
     try {
-        exec(fullcmd, (error, stdout, stderr) => {
-            console.log(stdout);
-            console.log(stderr);
+        child = spawn(fullcmd, [], { shell : true });
+        child.stdout.on('data', (data) => { process.stdout.write(data); });
+        child.stderr.on('data', (data) => { process.stderr.write(data); });
+        child.on('close', (code) => {
+            if (code !== 0) {
+                console.error(`Process terminated with code ${code}`);
+                process.exit(1);
+            }
+            else if (targets.length > 1) {
+                execute(manifest, directive, targets.slice(1));
+            }
         });
-
     } catch (e) {
         console.error(`Executing '${directive}' on target '${target}' failed`);
-        console.error(e.stdout.toString('utf-8'));
-        console.error(e.stderr.toString('utf-8'));
+        console.error(e);
         process.exit(1);
     }
 }
 
 
 function run (manifest, directive, target) {
-    Object.keys(manifest).filter((x) => {
+    var targets = Object.keys(manifest).filter((x) => {
         return target ? target === x : true;
-    }).forEach((target) => {
-        if (manifest[target][directive]) {
-            execute(manifest, directive, target);
-        }
-    });
+    }).filter((target) => { return !!manifest[target][directive]; });
+
+    execute(manifest, directive, targets);
 }
 
 var manPath     = process.argv[2],

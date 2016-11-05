@@ -21,15 +21,24 @@
         ],
         "test" : [
             "npm test",
-            "./support/try shellcheck run support/pkman support/try",
-            "./support/try shellcheck markdown/mkpdf"
+            "./support/try -e shellcheck run support/pkman support/try",
+            "./support/try -e shellcheck markdown/mkpdf"
         ]
     },
     "hub.exchange" : {
         "deps"      : ["cd ../hub/exchange", "./setup.py develop"],
         "build"     : ["cd ../hub/exchange", "./setup.py bdist_egg"],
-        "test"      : ["cd ../hub/exchange","./setup.py test"],
+        "deploy"    : ["cd ../hub/exchange", "./bin/exchange -d"],
+        "test"      : ["cd ../hub/exchange", "./setup.py test", "../../build/support/try -e shellcheck ./bin/exchange"],
         "clean"     : ["cd ../hub/exchange", "./setup.py clean"]
+    },
+    "hub.gateway" : {
+        "enviro"    : "./support/pkman install node",
+        "deps"      : ["cd ../hub/gateway", "npm install"],
+        "build"     : ["cd ../hub/gateway", "npm run build"],
+        "deploy"    : ["cd ../hub/gateway", "npm start"],
+        "test"      : ["cd ../hub/gateway", "npm test"],
+        "clean"     : ["cd ../hub/gateway", "rm -rf bin"]
     },
     "hub.remote" : {
         "enviro"    : "./support/pkman install node",
@@ -37,13 +46,6 @@
         "build"     : ["cd ../hub/remote", "npm run build"],
         "test"      : ["cd ../hub/remote", "npm test"],
         "clean"     : ["cd ../hub/remote", "rm -rf bin"]
-    },
-    "hub.gateway" : {
-        "enviro"    : "./support/pkman install node",
-        "deps"      : ["cd ../hub/gateway", "npm install"],
-        "build"     : ["cd ../hub/gateway", "npm run build"],
-        "test"      : ["cd ../hub/gateway", "npm test"],
-        "clean"     : ["cd ../hub/gateway", "rm -rf bin"]
     },
     "uml" : {
         "enviro" : [
@@ -64,20 +66,11 @@
         "build" : "./support/try ./markdown/mkpdf -o Proposal.pdf ../reports/proposal",
         "clean" : "rm -f ../reports/proposal/*.pdf"
     },
-    "reports.research" : {
-        "build" : "./support/try ./markdown/mkpdf --toc -o Research.pdf -c Cover.html ../reports/research",
-        "clean" : "rm -f ../reports/research/*.pdf"
-    },
-    "reports.architecture" : {
-        "build" : "./support/try ./markdown/mkpdf -o Architecture.pdf -c Cover.html ../reports/architecture",
-        "clean" : "rm -f ../reports/architecture/*.pdf"
-    },
-    "reports.scenarios" :{
-        "build" : "./support/try ./markdown/mkpdf --toc -o Scenarios.pdf -c Cover.html ../reports/scenarios",
-        "clean" : "rm -f ../reports/scenarios/*.pdf"
-    },
-     "reports.spec" : {
-        "build" : "./support/try ./markdown/mkpdf --toc --toc-depth 3 -o Specification.pdf -c Cover.html ../reports/spec",
-        "clean" : "rm -f ../reports/spec/*.pdf"
+     "reports.final" : {
+        "build" : "./support/try ./markdown/mkpdf --auto-number --toc --toc-depth 3 -o Report.pdf ../reports/final",
+        "clean" : [
+            "rm -f ../reports/final/*.pdf",
+            "rm -f ../reports/final/uml/*.png"
+        ]
     }
 }
