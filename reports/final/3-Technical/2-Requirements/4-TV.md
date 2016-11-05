@@ -23,8 +23,7 @@ the system could detect the user's presence.
 
 #### System Requirements {-}
 
-To be able to determine if the user is present in the home, the system will need various sensors
-for light and motion. The following is a list of sensors that will be needed for this scenario.
+To be able to determine if the user is present in the home, the system will need sensors for motion. The following is a list of sensors that will be needed for this scenario.
 
 | Sensor        | Usage                                         |
 | ------------- | --------------------------------------------- |
@@ -39,4 +38,8 @@ and record TV shows.
 | -------------- | ---------------------------------------------------------------------------- |
 | Smart TV       | TV that can communication channel information and can be controlled remotely |
 | Video Recorder | Recorder for capturing the user's TV show                                    |
+
+For this scenario to be feasible, there would need to be several motion sensors connected across the house. The input received from these motion sensors (the input being interpreted as binary input for movement or no movement) would be used to determine if people were present at the house. If the motion sensors determine that there are people in the house, then the hub would instruct the Smart TV to turn on to the appropriate channel. Otherwise the hub would instruct the Video Recorder to beign recording the desired show.
+
+Our research has concluded that there are no feasible options for Smart TVs or Video Recorder devices that are Z-Wave compatible, making this scenario an infeasible option for implementation in our project. However, the scenario demonstrates the potential learning capibilities of the system, and could be a stretch goal for future developers. If our system could be expanded to include other communication APIs, such as the Samsung SmartHome, then Smart TV devices would become available and the scenario could be implemented.
 
