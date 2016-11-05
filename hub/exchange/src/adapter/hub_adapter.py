@@ -11,11 +11,9 @@ class HubAdapter (Adapter):
     def send (self, message):
         if ('action' not in message.data):
             return False
-
-        if (message.data['action'] == 'status'):
-            self.notify(
-                'received',
-                Message(data = self.hub.status(), sender = Message.DEFAULT_ADDRESS, receiver = message.sender)
+        self.notify(
+            'received',
+            Message(data = self.hub.command(message.data['action']), sender = Message.DEFAULT_ADDRESS, receiver = message.sender)
             )
 
 
