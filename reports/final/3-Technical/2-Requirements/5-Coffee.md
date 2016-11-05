@@ -146,7 +146,12 @@ MotionRoom and MotionBathroom have been triggered if it is around 7:00 AM.
 ![](./uml/CoffeeSequence.png)
 
 As the system gains more and more information there could be some other patterns that the system 
-notices. For example it could be that on Wednesday mornings 
+notices. For example it could be more accurate to only consider other mornings for the current 
+day of the week when calculating the average time to kitchen. For example Wednesdays the user
+takes less time in the bathroom so there average time to kitchen on Wednesdays is closer to 15 
+minutes. The system should then on Wednesdays start the coffee maker 9 minutes after the user gets
+up. There could also be factors from time of year. The users routine could change depending on the
+month/season these are factors we need to consider while desinging the learning algorithm. 
 
 
 
