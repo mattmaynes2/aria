@@ -21,7 +21,7 @@ var Gateway = (function () {
         });
 
         app.post('/request', (req, res) => {
-            this.adapter.send(3, JSON.stringify(req.body)).then((response) => {
+            this.adapter.send(3, req.body).then((response) => {
                 res.send(JSON.stringify(response));
             }, (err) => {
                 console.log('Error sending request to communication server', err)
