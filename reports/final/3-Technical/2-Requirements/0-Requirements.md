@@ -1,6 +1,6 @@
 ### Introduction
 
-> Author: Cameron Blanchard & Matthew Maynesa <br/>
+> Author: Cameron Blanchard & Matthew Maynes <br/>
 > Editor: Peter Mark <br/>
 > Updated: October 10, 2016 <br/>
 
