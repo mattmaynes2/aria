@@ -78,11 +78,13 @@ The logs for the above scenario would look like the following:
 ##### Alternate Sequences {-}
 
 There are a few different ways that the coffee maker could be setup to make coffee instead of 
-being turned on manually. It could be scheduled to start at a specific time or it could 
+being turned on manually. It could be scheduled to start at a specific time or it could be started
+by the user when they get up through the web UI. The difference in the logs for both these cases
+is simply when the log for the coffee starting and coffee done apear. 
 
 
 
-##### Decisons {-}
+##### Expected Learning {-}
 
 The 
 
