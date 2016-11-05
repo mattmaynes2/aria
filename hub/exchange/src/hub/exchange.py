@@ -38,7 +38,7 @@ class Exchange ():
             self._cli.log('Routing message to ' + str(message.receiver), CLI.LEVEL_DEBUG)
             self.send(self._devices[message.receiver], message)
 
-    def discover():
+    def discoverDevices(self):
         for _, adapter in self._adapters.items():
             adapter.discover()
 
