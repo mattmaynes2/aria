@@ -45,7 +45,7 @@ The house is setup with a motion sensor outside the user's room (MotionRoom), a 
 outside the bathroom (MotionBathroom), a motion sensor outside the kitchen (MotionKitchen) 
 and, a smart coffee machine in the kitchen (Coffee). 
 
-The user wakes leaves their room and heads towards the bathroom at 7:00 AM. 
+The user wakes leaves their room and heads towards the bathroom at 7:00:00 AM. 
 MotionRoom sends a motion detected message to the hub. The hub logs that MotionRoom detected 
 motion at 7:00:00 AM. MotionBathroom then sends a motion detected message to the hub. The 
 hub then logs that MotionBathroom detected motion at 7:00:25. The user then leaves the bathroom
@@ -66,7 +66,7 @@ being turned on manually. It could be scheduled to start at a specific time or i
 by the user when they get up through the web UI. The difference in the logs for both these cases
 is simply when the log for the coffee starting and coffee done apear. 
 
-##### Logs {-}
+##### Expected Inputs {-}
 
 The logs for the above scenario would look like the following:
 
@@ -134,9 +134,9 @@ following:
 2016-11-11 7:22:30 Coffee: Done
 ```
 
-##### Expected Learning {-}
+##### Expected Behaviour {-}
 
-From the logs the Aria system should be able to tell that around 7:00 when the 
+From the logs the Aria system should be able to tell that the user's morning 
 
 
 
