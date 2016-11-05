@@ -1,4 +1,4 @@
-### D-2 Technologies {#D-2-Technologies} {-}
+### D-2 Technologies {- #D-2-Technologies}
 
 The Aria system is composed of many different technologies that each serve a different, task
 specific purpose. This document outlines the details about the technologies chosen and the
