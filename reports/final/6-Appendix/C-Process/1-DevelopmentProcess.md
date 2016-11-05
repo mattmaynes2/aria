@@ -60,7 +60,7 @@ branches helps to ensure that code reviews are short and focused.
 
 A practice which complements the branching strategy adopted by this project is continuous integration. 
 In combination with test automation, continuous integration allows team members to get early 
-feedback about changes they make to the codebase. Proper use of  ontinuous integration can ensure
+feedback about changes they make to the codebase. Proper use of  continuous integration can ensure
 that the project's master copy remains in a working state at all times. One of the benefits of maintaining
 working sofware at all times is that the project is always demoable.
 
