@@ -1,4 +1,5 @@
 from .hub_mode  import HubMode
+import json
 
 class Hub:
     VERSION = '0.0.2'
@@ -13,6 +14,8 @@ class Hub:
     def command (self, action):
         if action == 'status':
             return self.status()
+        if action == 'list_devices':
+            return json.dumps(self.devices)
 
     def status (self):
         return {

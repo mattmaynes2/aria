@@ -32,9 +32,15 @@ class Exchange ():
     def received (self, message):
         # TODO Add thread synchronization
         self._cli.log('Received ' + str(message) + ' from ' + str(message.sender), CLI.LEVEL_INFO)
-        if (message.receiver in self._devices):
+        if( 'action' in message.data and message.data['action'] == 'discover'):
+            self.discoverDevices()
+        elif (message.receiver in self._devices):
             self._cli.log('Routing message to ' + str(message.receiver), CLI.LEVEL_DEBUG)
             self.send(self._devices[message.receiver], message)
+
+    def discover():
+        for _, adapter in self._adapters.items():
+            adapter.discover()
 
     def discovered (self, device):
         # TODO Add thread synchronization
