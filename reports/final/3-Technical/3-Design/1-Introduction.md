@@ -1,5 +1,8 @@
 ### Introduction
 
+> Author: Matthew Maynes <br/>
+> Updated: October 30, 2016 <br/>
+
 #### Audience {-}
 
 This document describes the high level architecture of the Aria system. It details the major

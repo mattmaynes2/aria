@@ -1,5 +1,9 @@
 ### D-1 Deployment {- #D-1-Deployment}
 
+> Author: Matthew Maynes <br/>
+> Editor: Cameron Blanchard <br/>
+> Updated: November 5, 2016 <br/>
+
 #### Introduction {-}
 
 This document outlines the details about building and deploying the Aria system. It details how

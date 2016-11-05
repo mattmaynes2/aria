@@ -1,5 +1,9 @@
 ### TV Automation
 
+> Author: Peter Mark & Matthew Maynes <br/>
+> Editor: Peter Mark <br/>
+> Updated: October 26, 2016 <br/>
+
 #### Background {-}
 
 Automation of a smart home should go beyond simple tasks and make it easy to stay on top of a busy

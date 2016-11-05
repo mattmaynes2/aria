@@ -1,5 +1,9 @@
 ### Efficient Lights and Temperature
 
+> Author: Matthew Maynes <br/>
+> Editor: Peter Mark <br/>
+> Updated: October 30, 2016 <br/>
+
 #### Background {-}
 
 A smart home should reduce your energy bills and keep you comfy. During your work week, your home

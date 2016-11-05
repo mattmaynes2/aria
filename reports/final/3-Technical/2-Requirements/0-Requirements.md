@@ -1,8 +1,12 @@
 ### Introduction
 
+> Author: Cameron Blanchard & Matthew Maynesa <br/>
+> Editor: Peter Mark <br/>
+> Updated: October 10, 2016 <br/>
+
 #### Introduction {-}
 
-The Autonomous Real-Time Interactive Arcitecture (ARIA) will allow a homeowner to set up a collection
+The Autonomous Real-Time Interactive Architecture (ARIA) will allow a homeowner to set up a collection
 of devices in their home which will automatically control their environment and automate common tasks.
 Task automation in the system will not require any user configuration, instead tasks will be automated
 based on the user's interaction with devices in the system.

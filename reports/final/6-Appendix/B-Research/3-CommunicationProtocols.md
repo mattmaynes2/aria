@@ -1,4 +1,8 @@
-### B-3 Communication Protocols {-}
+### B-3 Communication Protocols {- #B-3-Communication-Protocols}
+
+> Author: Peter Mark <br/>
+> Editor: Cameron Blanchard & Matthew Maynes <br/>
+> Updated: October 30, 2016 <br/>
 
 #### Background {-}
 
