@@ -12,6 +12,9 @@ logging.basicConfig(level=logging.DEBUG)
 
 class WemoAdapter (Adapter):
 
+    OFF = 0
+    ON  = 1
+
     def __init__(self):
         super().__init__()
         self.env=Environment()
@@ -23,7 +26,7 @@ class WemoAdapter (Adapter):
     def setup(self):
         super().setup()
         self.env.start()
-        #self.env.wait()
+        
 
     def discover(self):
         self.env.discover()
@@ -47,12 +50,11 @@ class WemoAdapter (Adapter):
         print('found device with name '+deviceName)
         device = self.env.get(deviceName)
 
-        #1 = ON  0 = OFF
         response = device.get_state()
         print('got device status '+str(response) )
-        if device.get_state == 0:
+        if device.get_state == WemoAdapter.OFF:
             response = 'OFF'
-        elif device.get_state == 1:
+        elif device.get_state == WemoAdapter.ON:
             response == 'ON'
         else:
             response == 'ERROR'
@@ -64,4 +66,3 @@ class WemoAdapter (Adapter):
 
     def run(self):
         self.setup()
-        self.discover()
