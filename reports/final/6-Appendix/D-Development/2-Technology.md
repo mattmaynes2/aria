@@ -1,6 +1,6 @@
 ### D-2 Technologies {- #D-2-Technologies}
 
-The Aria system is composed of many different technologies that each serve a different, task
+The Aria system is composed of many different technologies that each serve a task
 specific purpose. This document outlines the details about the technologies chosen and the
 reasons for them being selected. This document is broken down into the different subsystem
 of the Aria system.
@@ -13,10 +13,10 @@ Aria system. This server needs to support the main communication protocols that 
 interfacing with several different protocols, including UDP, UPnP, Z-Wave and others. To
 accommodate this requirement, Python 3 was selected as the primary language.
 
-Python 3 offers support for most of the desired protocols since it can directly interface with
-C it can support any external library implementations. As for the version decision of Python,
-choosing 3 over version 2 allows us to use many of the new features that Python offers. It also
-means that we are not writing Python using a set of deprecated standards.
+Python 3 offers support for most of the desired protocols for this system. It can directly
+interface with C allowing for support of any external library implementations. As for the version
+decision of Python, choosing 3 over version 2 allows us to use many of the new features that
+Python offers. It also means that we are not writing Python using a set of deprecated standards.
 
 ###### Database {-}
 
@@ -58,7 +58,7 @@ get device states as well as send control commands.
 ##### HTTP Gateway {-}
 
 The HTTP Gateway is responsible for serving static web content as well as enabling communication
-from the web client to the exchange server. This server is a creates a thin wrapper around the
+from the web client to the exchange server. The gateway  creates a thin wrapper around the
 internal communication structure of the exchange server and serves it to the web client with a
 RESTful API. To perform these tasks a simple, new web technology, **node.js** was used. Node is an
 JavaScript interpreter that provides a massive set of server development tools and libraries.
@@ -83,15 +83,15 @@ node.js projects and is consistent across various operating systems.
 
 ###### Quality Control {-}
 
-To ensure that the code for the hub gateway was adequate and dependable, multiple testing
-techniques are used. First, the gateway code goes through a static analysis tool called **JSHint**
-that checks for syntax and lexical errors. This phase quickly indicates where issues may lie in
-code before it is even tested.
+To ensure that the code for the hub gateway was adequate and dependable, multiple testing and
+validation techniques are used. First, the gateway code goes through a static analysis tool
+called **JSHint** that checks for syntax and lexical errors. This phase quickly indicates where
+issues may lie in code before it is even tested.
 
 Static testing is quick and often useful but does not test the execution of the gateway. In
 order to dynamically test this gateway, the **Mocha** unit testing framework was added. This
 framework provides a behaviour driven development (BDD) testing language for creating unit tests
-for the gateway. 
+for the gateway.
 
 ##### Web Client {-}
 
@@ -107,7 +107,7 @@ implementation of the JavaScript language. To ensure that the web client will op
 common denominator of browsers, a translation layer was used when building the client. This
 translation tool called **Babel** allows JavaScript to be written using the newest version of the
 EMCAScript specification, `es6`, and still function on browsers that only suppor the older version
-`es5`. It does this by transpilling all of the new JavaScript features into the old version
+`es5`. It does this by transpiling all of the new JavaScript features into the old version
 equivalent ones.
 
 Once the web client has been converted into browser executable code, it is then bundled into a

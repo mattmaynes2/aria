@@ -14,6 +14,10 @@ not use a build automation suite but instead integrates a number of different te
 deploy the build. The executing process that runs the build is a simple shell command executor that
 runs over a set of commands from a central manifest.
 
+The central manifest contains all of the build commands for each sub-project. It is a collection
+of bash commands that are executed in order to build the system. This manifest file is located
+under the build directory and is named `manifest.json`.
+
 The Aria system is composed of many subsystems that each require their own build tool chain. Each
 subcomponent has its own set of build commands that are encapsulated within the central manifest.
 For this reason, it was decided that a simple command executor would be more suitable for running
@@ -32,7 +36,7 @@ Almost every system has a different set of package management tools. Most of the
 support the same features and can access the same packages for their specific system. To enable
 the Aria system to build on independent systems, a package manager wrapper named `pkman` was
 developed. This wrapper offers a standard set of package manager commands to install and uninstall
-packages using the target platform's specific package manager. This tool implores the facade
+packages using the target platform's specific package manager. This tool uses the facade
 design technique and allows the build process to use one generic interface to communicate to
 many different dependency management tools.
 
