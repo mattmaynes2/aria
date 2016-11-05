@@ -1,10 +1,8 @@
 ### Music Automation
 
-> Author: Cameron Blanchard & Matthew Maynes
->
-> Editor: Peter Mark
->
-> Updated: October 30, 2016
+> Author: Cameron Blanchard & Matthew Maynes <br/>
+> Editor: Peter Mark <br/>
+> Updated: October 30, 2016 <br/>
 
 #### Background {-}
 

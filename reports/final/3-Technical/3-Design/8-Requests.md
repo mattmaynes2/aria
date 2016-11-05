@@ -1,10 +1,8 @@
 ### Requests
 
-> Author: Peter Mark
->
-> Editor: Matthew Maynes
->
-> Updated: October 30, 2016
+> Author: Peter Mark <br/>
+> Editor: Matthew Maynes <br/>
+> Updated: October 30, 2016 <br/>
 
 #### Introduction {-}
 

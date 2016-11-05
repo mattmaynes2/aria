@@ -1,10 +1,8 @@
 ### Introduction
 
-> Author: Cameron Blanchard & Matthew Maynes
->
-> Editor: Peter Mark
->
-> Updated: October 10, 2016
+> Author: Cameron Blanchard & Matthew Maynesa <br/>
+> Editor: Peter Mark <br/>
+> Updated: October 10, 2016 <br/>
 
 #### Introduction {-}
 

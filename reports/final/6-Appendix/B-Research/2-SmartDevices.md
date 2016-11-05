@@ -1,8 +1,7 @@
-### B-2 Smart Devices {-}
+### B-2 Smart Devices {- #B-2-Smart-Devices}
 
-> Author: Cameron Blanchard, Jeremy Dunsmore, Peter Mark & Matthew Maynes
->
-> Updated: October 29, 2016
+> Author: Cameron Blanchard, Jeremy Dunsmore, Peter Mark & Matthew Maynes <br/>
+> Updated: October 29, 2016 <br/>
 
 #### Background {-}
 
@@ -16,7 +15,7 @@ This section examines several commercial smart device products which are availab
 The goal of this research is to determine what types of devices are commercially available, and 
 to compare alternative products which have similar functionality. By purchasing off-the-shelf smart
 devices, the development time for the project can be focused on building the machine learning 
-featureswhich differentiate our product from many existing automation systems. An awareness of 
+features, which differentiate our product from many existing automation systems. An awareness of 
 existing smart devices will also allow us to select common technologies to support in the system. 
 Support for commercial smart devices makes our system more appealing to the end user because they
 are not limited to only using devices we create.

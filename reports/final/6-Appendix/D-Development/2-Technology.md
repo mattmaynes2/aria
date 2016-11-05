@@ -1,5 +1,8 @@
 ### D-2 Technologies {- #D-2-Technologies}
 
+> Author: Matthew Maynes <br/>
+> Updated: November 5, 2016 <br/>
+
 The Aria system is composed of many different technologies that each serve a task
 specific purpose. This document outlines the details about the technologies chosen and the
 reasons for them being selected. This document is broken down into the different subsystem

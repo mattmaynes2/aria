@@ -1,8 +1,7 @@
 ### Introduction
 
-> Author: Matthew Maynes
->
-> Updated: October 30, 2016
+> Author: Matthew Maynes <br/>
+> Updated: October 30, 2016 <br/>
 
 #### Audience {-}
 

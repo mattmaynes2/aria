@@ -1,8 +1,7 @@
 ### Database
 
-> Author: Jeremy Dunsmore
->
-> Updated: October 30, 2016
+> Author: Jeremy Dunsmore <br/>
+> Updated: October 30, 2016 <br/>
 
 #### Database Entity-Relationship {-}
 

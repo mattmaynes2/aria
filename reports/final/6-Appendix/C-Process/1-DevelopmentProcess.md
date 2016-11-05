@@ -1,8 +1,7 @@
 ### C-1 Development Process {- #C-1-Development-Process}
 
-> Author: Cameron Blanchard
->
-> Updated: November 5, 2016
+> Author: Cameron Blanchard <br/>
+> Updated: November 5, 2016 <br/>
 
 #### Introduction {-}
 

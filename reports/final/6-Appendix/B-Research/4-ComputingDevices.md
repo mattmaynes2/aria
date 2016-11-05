@@ -1,10 +1,8 @@
-### B-4 Computing Devices {-}
+### B-4 Computing Devices {- #B-4-Computing-Devices}
 
-> Author: Matthew Maynes
->
-> Editor: Cameron Blanchard
->
-> Updated October 30, 2016
+> Author: Matthew Maynes <br/>
+> Editor: Cameron Blanchard <br/>
+> Updated October 30, 2016 <br/>
 
 ##### Background {-}
 
@@ -23,13 +21,13 @@ computing options with a focus on the areas of need within the system.
 
 ##### Arduino Uno {-}
 
-/#### Description
+###### Description
 
 The Arduino Uno is a small starter microcontroller that is intended for hobby projects and
 newcomers to embedded programming. The Uno is intended for rapid prototyping of small circuits
 and small embedded systems.
 
-##### Technical Overview {-}
+###### Technical Overview {-}
 
 The Uno is a microcontroller that uses the Arduino boot loader software for launching the system
 and executing code. The Uno is fully compatible with the Arduino SDK that provides simple
@@ -47,14 +45,14 @@ weight of approximately 25 g. The Uno also includes an integrated USB-Mini port 
 communication and as a power source. The board includes a 5 V DC power input for running the
 board continually.
 
-##### Evaluation {-}
+###### Evaluation {-}
 
 The Arduino Uno offers fast and simple prototyping options for quickly building embedded circuits.
 This board is very useful for rapidly testing but would not be practical in a mass production
 system. For the smart learning system, this board would be optimal for experimentation and
 quick deployment.
 
-##### References {-}
+###### References {-}
 
 <cite>
 [1] "ArduinoBoardUno," in Arduino, 2016. [Online]. Available:

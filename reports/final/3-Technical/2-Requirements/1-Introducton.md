@@ -1,10 +1,8 @@
 ### Introduction
 
-> Author: Cameron Blanchard
->
-> Editor: Matthew Maynes
->
-> Updated: October 10, 2016
+> Author: Cameron Blanchard <br/>
+> Editor: Matthew Maynes <br/>
+> Updated: October 10, 2016 <br/>
 
 In order to better understand the motivations for using the learning home automation system, we have
 created a number of scenarios where we expect the behaviour of homeowners to follow patterns that a

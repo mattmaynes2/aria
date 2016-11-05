@@ -1,10 +1,8 @@
-### B-5 Custom-Built Devices {-}
+### B-5 Custom-Built Devices {- #B-5-Custom-Built-Devices}
 
-> Author: Cameron Blanchard
->
-> Editor: Peter Mark & Matthew Maynes
->
-> Updated: October 30, 2016
+> Author: Cameron Blanchard <br/>
+> Editor: Peter Mark & Matthew Maynes <br/>
+> Updated: October 30, 2016 <br/>
 
 #### Background {-}
 

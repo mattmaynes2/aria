@@ -1,10 +1,8 @@
 ### TV Automation
 
-> Author: Peter Mark & Matthew Maynes
->
-> Editor: Peter Mark
->
-> Updated: October 26, 2016
+> Author: Peter Mark & Matthew Maynes <br/>
+> Editor: Peter Mark <br/>
+> Updated: October 26, 2016 <br/>
 
 #### Background {-}
 
