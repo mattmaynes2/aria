@@ -114,20 +114,20 @@ following:
 2016-11-9 7:16:30 Coffee: Starting
 2016-11-9 7:22:30 Coffee: Done
 
-2016-11-10 7:02:00 MotionRoom: Motion Detected
-2016-11-10 7:02:30 MotionBathroom: Motion Detected
-2016-11-10 7:12:00 MotionBathroom: Motion Detected
-2016-11-10 7:12:25 MotionRoom: Motion Detected
-2016-11-10 7:15:00 Hub: Starting Scheduled Coffee
-2016-11-10 7:15:02 Coffee: Starting
-2016-11-10 7:15:00 MotionRoom: Motion Detected
-2016-11-10 7:16:00 MotionKitchen: Motion Detected
-2016-11-10 7:21:00 Coffee: Done
+2016-11-10 7:00:00 MotionRoom: Motion Detected
+2016-11-10 7:00:30 MotionBathroom: Motion Detected
+2016-11-10 7:12:00 Hub: Starting Scheduled Coffee
+2016-11-10 7:12:02 Coffee: Starting
+2016-11-10 7:16:00 MotionBathroom: Motion Detected
+2016-11-10 7:16:25 MotionRoom: Motion Detected
+2016-11-10 7:18:00 Coffee: Done
+2016-11-10 7:20:00 MotionRoom: Motion Detected
+2016-11-10 7:21:00 MotionKitchen: Motion Detected
 
 2016-11-11 7:02:00 MotionRoom: Motion Detected
 2016-11-11 7:02:30 MotionBathroom: Motion Detected
-2016-11-11 7:12:00 MotionBathroom: Motion Detected
-2016-11-11 7:12:25 MotionRoom: Motion Detected
+2016-11-11 7:20:00 MotionBathroom: Motion Detected
+2016-11-11 7:20:25 MotionRoom: Motion Detected
 2016-11-11 7:15:00 MotionRoom: Motion Detected
 2016-11-11 7:16:00 MotionKitchen: Motion Detected
 2016-11-11 7:16:30 Coffee: Starting
@@ -136,7 +136,17 @@ following:
 
 ##### Expected Behaviour {-}
 
-From the logs the Aria system should be able to tell that the user's morning 
+From the logs the Aria system should be able to tell that the user's morning consists of
+going to the bathroom, going back to their room then going to the kitchen and having coffee. 
+The system can determine that the average time it takes the user for waking up until they get to 
+the kitchen is 19 minutes and a pot of coffee takes 6 minutes to make.Therefore it is expected when 
+the system is in playback mode that it would start the coffee maker 13 minutes after it sees that
+MotionRoom and MotionBathroom have been triggered if it is around 7:00 AM.
+
+![](./uml/CoffeeSequence.png)
+
+As the system gains more and more information there could be some other patterns that the system 
+notices. For example it could be that on Wednesday mornings 
 
 
 
