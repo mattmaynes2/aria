@@ -37,7 +37,7 @@ function concat () {
 }
 
 function tohtml () {
-    FLAGS="$TOC $NUM --toc-depth $TOC_DEPTH -c $STYLE -t html -f markdown_phpextra"
+    FLAGS="$TOC $NUM --toc-depth $TOC_DEPTH -c $STYLE -t html -f markdown_phpextra+backtick_code_blocks"
 
     if [ -n "$COVER" ]; then
         FLAGS="$FLAGS -B $COVER"
