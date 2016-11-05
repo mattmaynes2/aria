@@ -1,11 +1,11 @@
 import uuid
 import logging
-import gevent
 from adapter import Adapter
-from ouimeaux.environment import Environment
-from ouimeaux.signals import devicefound, statechange, receiver
+
 from device import Device, DeviceType
 from adapter import Message
+import threading
+import sys
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -17,19 +17,17 @@ class WemoAdapter (Adapter):
 
     def __init__(self):
         super().__init__()
-        self.env=Environment()
         self._deviceUids={}
         self._deviceNames={}
         # setup call back when device is discovered
-        devicefound.connect(self._discovered)
+        # TODO move to Adapter
+        self.shutdownCondition = threading.Condition()
 
     def setup(self):
         super().setup()
-        self.env.start()
         
 
     def discover(self):
-        self.env.discover()
         return True
 
     def _discovered(self,sender, **kwargs):
@@ -48,7 +46,7 @@ class WemoAdapter (Adapter):
         print('looking for '+str(message.receiver))
         deviceName = self._deviceNames[message.receiver]
         print('found device with name '+deviceName)
-        device = self.env.get(deviceName)
+        
 
         response = device.get_state()
         print('got device status '+str(response) )
@@ -61,8 +59,18 @@ class WemoAdapter (Adapter):
             self.notify('received',Message(type_ = 3, data = { 'status' : response }, sender = message.receiver, receiver=message.sender))
 
 
+    def receive(self,sender,**kwargs):
+        print(sender.name+' has changed states new state is  :'+kwargs['state'])
 
-
+    def subscibe(self, sender, **kwargs):
+        print('subscription received ')
+        print(sender.name)
+        print(kwargs)
 
     def run(self):
         self.setup()
+
+
+    def teardown(self):
+        sys.exit(0)
+        return True
