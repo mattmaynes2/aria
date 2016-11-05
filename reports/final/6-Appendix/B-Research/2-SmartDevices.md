@@ -376,7 +376,7 @@ document any local-only API for controlling devices using a gateway
 
 ##### Description {-}
 
-Aeotec sells light bulbswhich are compatible with the Z-Wave protocol. Aeotec products are 
+Aeotec sells light bulbs which are compatible with the Z-Wave protocol. Aeotec products are 
 compatible with most Z-Wave hubs. Aeotec does not provide a proprietary API for their products.
 
 ##### Available Devices {-}
@@ -476,6 +476,22 @@ Specifically, this will provide us with data for the machine learning algorithm.
 <http://www.openzwave.com/dev/index.html>. Accessed: Oct. 13, 2016.
 </cite>
 
+#### Passive Infrared Sensor {-}
+
+##### Description {-}
+A passive infrared sensor (PIR) is a device that can be used to detect if there are people in a room or 
+not. They are available to buy Z-Wave ready, and can be used as a motion sensor in a home environment.
+
+##### Technical Overview {-}
+A PIR creates a binary output based on if it the sensor is being triggered or not. This makes it 
+useful as a motion detector, as well as being able to detect if people remain present in a room.
+It is also feasible easy to develop our own PIR sensors, which is discussed in the Custom Devices 
+section of the Appendix.
+
+#### Evaluation {-}
+These devices will be useful in our system whenever it is necessary to detect the presence of a 
+person in an area. There is a large selection of PIRs available to buy that are Z-Wave compatible,
+and it is also an option to construct our own. 
 
 #### Spruce Irrigation {-}
 

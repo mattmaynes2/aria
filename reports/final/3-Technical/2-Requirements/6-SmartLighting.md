@@ -1,5 +1,8 @@
 ### Effortless Home Lighting
 
+> Author: Peter Mark <br\>
+> Updated: November 5, 2016 <br\>
+
 #### Background {-}
 
 A learning smart home should reduce the need to manually perform everyday environmental control 
@@ -30,14 +33,14 @@ should be able to to be learned.
 
 #### System Requirements {-}
 
-Two different sensors are needed for this scenario. A door/window sensor would be used to detect
-when someone enters the room and later leaves the room. An ambient light sensor for inside the room
-will also be needed.
+Two different sensors are needed for this scenario. A passive infrared sensor would be used to detect
+when there is someone present in a room. An ambient light sensor for inside the room will also be
+needed.
 
 | Sensor         | Usage                                                    |
 | -------------- | -------------------------------------------------------- |
 | Light          | Used to determine the amount of light in a room          |
-| Window / Door  | Will provide information about the occupancy of a room   |
+| PIR            | Will provide information about the occupancy of a room   |
 
 To enable this scenario, the system will need to be able to change the brightness level of lights.
 The following is a list of the devices that will be needed and how they will be used in the system.
@@ -45,4 +48,4 @@ The following is a list of the devices that will be needed and how they will be 
 | Device                | Usage                                           |
 | --------------------- | ----------------------------------------------- |
 | Smart Lights          | Lights that can be controlled through an API    |
-|
+
