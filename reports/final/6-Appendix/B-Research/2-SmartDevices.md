@@ -3,18 +3,18 @@
 #### Background {-}
 
 In the context of this project, a smart device is a device that is capable of communicating over
-a wireless computer network, such as WiFi or Z-Wave. Each device provides a set of inputs and outputs
-which can be controlled and examined using some protocol.
+a wireless computer network, such as WiFi or Z-Wave. Each device provides a set of inputs and
+outputs which can be controlled and examined using some protocol.
 
 #### Relation to System {-}
 
 This section examines several commercial smart device products which are available off-the-shelf.
 The goal of this research is to determine what types of devices are commercially available, and 
 to compare alternative products which have similar functionality. By purchasing off-the-shelf smart
-devices, the development time for the project can be focused on building the machine learning features
-which differentiate our product from many existing automation systems. An awareness of existing 
-smart devices will also allow us to select common technologies to support in the system. Support for 
-support for commercial smart devices makes our system more appealing to the end user because they
+devices, the development time for the project can be focused on building the machine learning 
+featureswhich differentiate our product from many existing automation systems. An awareness of 
+existing smart devices will also allow us to select common technologies to support in the system. 
+Support for commercial smart devices makes our system more appealing to the end user because they
 are not limited to only using devices we create.
 
 Where possible, research will focus on answering the following questions about a product or
@@ -90,8 +90,8 @@ WeMo uses Universal Plug And Play (UPnP) protocol for discovery and operating th
 ###### Developing with WeMo {-}
 
 - *ouimeaux* is an Open source python API for controlling WeMo devices.
-- WeMo devices can be controlled using UPnP. This allows us to implement one protocol and comunicate with 
-all WeMo devices as well as any other smart devices from other vendors that use UPnP.
+- WeMo devices can be controlled using UPnP. This allows us to implement one protocol and comunicate
+ with all WeMo devices as well as any other smart devices from other vendors that use UPnP.
 
 ##### Research Criteria {-}
 
@@ -187,17 +187,29 @@ Accessed: Oct. 26, 2016.
 
 ##### Available Devices {-}
 
-Speakers that have the capability to provide actions performed to our communication hub are required to automate music in a home. There does not appear to be any Z-Wave ready speakers available currently, and existing WiFi speakers do not provide an API to interact with them. The result of this is that appropriate speakers for use in our system do not currently exist.
+Speakers that have the capability to provide actions performed to our communication hub are required
+to automate music in a home. There does not appear to be any Z-Wave ready speakers available 
+currently, and existing WiFi speakers do not provide an API to interact with them. The result of
+this is that appropriate speakers for use in our system do not currently exist.
 
 ##### Developing Wireless Speakers {-}
 
-It could be possible to create our own smart speakers for use in the ARIA system, but it would require a large amount of effort. Development would involve using an arduino or similar microcomputing device to turn a speaker into a device compatible with our system. This implies that the speaker must be able to communicate using our own defined protocol. Implementing this is not a priority for our project, as the value added is limited, but it can be considered in the future if there is necessary need.
+It could be possible to create our own smart speakers for use in the ARIA system, but it would 
+require a large amount of effort. Development would involve using an Arduino or similar 
+microcomputing device to turn a speaker into a device compatible with our system. This implies that
+the speaker must be able to communicate using our own defined protocol. Implementing this is not a 
+priority for our project, as the value added is limited, but it can be considered in the future if 
+there is necessary need. To include smart speakers in our home automation system we will need to
+explore developing our own custom devices.
 
 #### Smart TV {-}
 
 ##### Available Devices {-}  
 
-Similar to the wireless speakers, there are no available TVs that provide the required functionallity to be a useful device in our system. Creating custom TV devices is also non-feasbile,as the level of complexity for interfacing with a TV and the corrosponding cable box exceeds the capibilities of our team members. 
+Similar to the wireless speakers, there are no available TVs that provide the required functionallity 
+to be a useful device in our system. Creating custom TV devices is also non-feasbile,as the level of 
+complexity for interfacing with a TV and the corrosponding cable box exceeds the capibilities of our
+team members. 
 
 #### Philips Hue {-}
 
@@ -290,11 +302,13 @@ are common to all Philips Hue devics.
 ##### References {-}
 
 <cite>
-[1]	"Philips hue API," 2014. [Online]. Available: http://www.developers.meethue.com/philips-hue-api. Accessed: Oct. 29, 2016.
+[1]	"Philips hue API," 2014. [Online].
+ Available: http://www.developers.meethue.com/philips-hue-api. Accessed: Oct. 29, 2016.
 </cite>
 
 <cite>
-[2]	P. L. B, "Philips hue,". [Online]. Available: http://www2.meethue.com/en-ca/. Accessed: Oct. 29, 2016.
+[2]	P. L. B, "Philips hue,". [Online]. 
+Available: http://www2.meethue.com/en-ca/. Accessed: Oct. 29, 2016.
 </cite>
 
 #### Osram LIGHTIFY {-}
@@ -362,7 +376,8 @@ document any local-only API for controlling devices using a gateway
 
 ##### Description {-}
 
-Aeotec sells light bulbswhich are compatible with the Z-Wave protocol. Aeotec products are compatible with most Z-Wave hubs. Aeotec does not provide a proprietary API for their products.
+Aeotec sells light bulbswhich are compatible with the Z-Wave protocol. Aeotec products are 
+compatible with most Z-Wave hubs. Aeotec does not provide a proprietary API for their products.
 
 ##### Available Devices {-}
 
@@ -407,8 +422,8 @@ Aeon Labs alone is fairly extensive. The list include but is not limited to: doo
 sensors, lights, energy meters, range extenders.
 
 The specification for interacting with Z-Wave devices is public, and available at
-<http://zwavepublic.com/specifications>. There is also an open Z-Wave sdk available, to communicate from
-the controller to devices.
+<http://zwavepublic.com/specifications>. There is also an open Z-Wave sdk available, to communicate
+from the controller to devices.
 
 ##### Available Devices of Interest {-}
 
@@ -420,13 +435,19 @@ the controller to devices.
 - Vibration Sensor
 - UV Sensor
 
-The MultiSensor is a Z-Wave device, meaning that it follows the Z-Wave protocol for commands interacting with each individual sensor. As stated above, the speficication for interacting with Z-Wave devices is available at <http://zwavepublic.com/specifications>. 
+The MultiSensor is a Z-Wave device, meaning that it follows the Z-Wave protocol for commands
+interacting with each individual sensor. As stated above, the speficication for interacting with
+Z-Wave devices is available at <http://zwavepublic.com/specifications>. 
 
-Individual Z-Wave sensors are also available, and function using the same specifications as the MultiSensor above. AARTech is one alternative which has a selection of individual sensors if the MultiSensor is unnecessary.
+Individual Z-Wave sensors are also available, and function using the same specifications as the
+MultiSensor above. AARTech is one alternative which has a selection of individual sensors if the
+MultiSensor is unnecessary.
 
 2. Door / Window Sensor
 - Detect window/door state
- The Door/Window sensor is purposed to be able to detect the state of doors or windows. This allows the system to use information about the state of doors and windows to make decisions about what actions to take. 
+ The Door/Window sensor is purposed to be able to detect the state of doors or windows. This allows
+ the system to use information about the state of doors and windows to make decisions about what
+ actions to take. 
 
  
 ##### Evaluation {-}
