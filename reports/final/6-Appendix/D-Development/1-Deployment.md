@@ -28,19 +28,26 @@ numerous architectures.
 
 ##### Package Management {-}
 
-**TODO**
+Almost every system has a different set of package management tools. Most of these tools all
+support the same features and can access the same packages for their specific system. To enable
+the Aria system to build on independent systems, a package manager wrapper named `pkman` was
+developed. This wrapper offers a standard set of package manager commands to install and uninstall
+packages using the target platform's specific package manager. This tool implores the facade
+design technique and allows the build process to use one generic interface to communicate to
+many different dependency management tools.
 
-- pkman
-
-
-
+Since not all platforms offer the same set of packages, a special mode was added to `pkman` to
+support optional dependencies. Optional dependencies can be added by specifying a `--try` flag
+which indicates that if the package install does not succeed then continue without error. This is
+a major improvement that allows us to support packages that may have different names per platform
+or even some that only exist on specific platforms.
 
 #### Building Aria {-}
 
 The Aria system is built in several stages. These stages are executed in order to setup the target
 system's architecture for running Aria. Each stage is referred to as a directive in the build
 process. To perform a complete build these directives must be executed in order and then must be
-deployed. To see how to run the build command, see [Executing a Build](#Executing-a-Build).
+deployed.
 
 #### Executing a Build {-}
 
