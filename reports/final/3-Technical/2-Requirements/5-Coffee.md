@@ -59,6 +59,13 @@ coffee maker. Coffee sends a start brewing message to the hub at 7:21:30. When t
 Coffee sends a done message to the hub. The hub logs that Coffee finished at 7:27:30. 
  
 
+##### Alternate Sequences {-}
+
+There are a few different ways that the coffee maker could be setup to make coffee instead of 
+being turned on manually. It could be scheduled to start at a specific time or it could be started
+by the user when they get up through the web UI. The difference in the logs for both these cases
+is simply when the log for the coffee starting and coffee done apear. 
+
 ##### Logs {-}
 
 The logs for the above scenario would look like the following:
@@ -74,18 +81,62 @@ The logs for the above scenario would look like the following:
 2016-11-4 7:27:30 Coffee: Done
 ```
 
+This sequence would occur every weekday possibly with the coffee maker being scheduled on one day
+and the user starting the coffee maker from the web UI. A sample 5 days of logs could look like the 
+following:
 
-##### Alternate Sequences {-}
+```
+2016-11-7 7:00:00 MotionRoom: Motion Detected
+2016-11-7 7:00:25 MotionBathroom: Motion Detected
+2016-11-7 7:15:00 MotionBathroom: Motion Detected
+2016-11-7 7:15:25 MotionRoom: Motion Detected
+2016-11-7 7:20:00 MotionRoom: Motion Detected
+2016-11-7 7:21:00 MotionKitchen: Motion Detected
+2016-11-7 7:21:30 Coffee: Starting
+2016-11-7 7:27:30 Coffee: Done
 
-There are a few different ways that the coffee maker could be setup to make coffee instead of 
-being turned on manually. It could be scheduled to start at a specific time or it could be started
-by the user when they get up through the web UI. The difference in the logs for both these cases
-is simply when the log for the coffee starting and coffee done apear. 
+2016-11-8 7:05:00 MotionRoom: Motion Detected
+2016-11-8 7:05:30 MotionBathroom: Motion Detected
+2016-11-8 7:20:00 MotionBathroom: Motion Detected
+2016-11-8 7:20:25 MotionRoom: Motion Detected
+2016-11-8-7:23:00 Web UI: Start Coffee requested
+2016-11-8-7:23:10 Coffee: Starting
+2016-11-7 7:29:30 Coffee: Done
+2016-11-8 7:30:00 MotionRoom: Motion Detected
+2016-11-8 7:31:00 MotionKitchen: Motion Detected
 
+2016-11-9 7:02:00 MotionRoom: Motion Detected
+2016-11-9 7:02:30 MotionBathroom: Motion Detected
+2016-11-9 7:12:00 MotionBathroom: Motion Detected
+2016-11-9 7:12:25 MotionRoom: Motion Detected
+2016-11-9 7:15:00 MotionRoom: Motion Detected
+2016-11-9 7:16:00 MotionKitchen: Motion Detected
+2016-11-9 7:16:30 Coffee: Starting
+2016-11-9 7:22:30 Coffee: Done
 
+2016-11-10 7:02:00 MotionRoom: Motion Detected
+2016-11-10 7:02:30 MotionBathroom: Motion Detected
+2016-11-10 7:12:00 MotionBathroom: Motion Detected
+2016-11-10 7:12:25 MotionRoom: Motion Detected
+2016-11-10 7:15:00 Hub: Starting Scheduled Coffee
+2016-11-10 7:15:02 Coffee: Starting
+2016-11-10 7:15:00 MotionRoom: Motion Detected
+2016-11-10 7:16:00 MotionKitchen: Motion Detected
+2016-11-10 7:21:00 Coffee: Done
+
+2016-11-11 7:02:00 MotionRoom: Motion Detected
+2016-11-11 7:02:30 MotionBathroom: Motion Detected
+2016-11-11 7:12:00 MotionBathroom: Motion Detected
+2016-11-11 7:12:25 MotionRoom: Motion Detected
+2016-11-11 7:15:00 MotionRoom: Motion Detected
+2016-11-11 7:16:00 MotionKitchen: Motion Detected
+2016-11-11 7:16:30 Coffee: Starting
+2016-11-11 7:22:30 Coffee: Done
+```
 
 ##### Expected Learning {-}
 
-The 
+From the logs the Aria system should be able to tell that around 7:00 when the 
+
 
 
