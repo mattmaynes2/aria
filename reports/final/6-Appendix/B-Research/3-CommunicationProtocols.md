@@ -1,5 +1,11 @@
 ### B-3 Communication Protocols {-}
 
+> Author: Peter Mark
+>
+> Editor: Cameron Blanchard & Matthew Maynes
+>
+> Updated: October 30, 2016
+
 #### Background {-}
 
 There are many different ways to connect devices across a network. A familiar example is WiFi, but

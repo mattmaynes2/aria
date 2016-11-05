@@ -1,5 +1,9 @@
 ### B-2 Smart Devices {-}
 
+> Author: Cameron Blanchard, Jeremy Dunsmore, Peter Mark & Matthew Maynes
+>
+> Updated: October 29, 2016
+
 #### Background {-}
 
 In the context of this project, a smart device is a device that is capable of communicating over

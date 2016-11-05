@@ -1,5 +1,11 @@
 ### Requests
 
+> Author: Peter Mark
+>
+> Editor: Matthew Maynes
+>
+> Updated: October 30, 2016
+
 #### Introduction {-}
 
 The purpose of this section is to provide an understanding of the interactions between an end

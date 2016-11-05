@@ -1,5 +1,11 @@
 ### Coffee Automation
 
+> Author: Jeremy Dunsmore & Matthew Maynes
+>
+> Editor: Peter Mark
+>
+> Updated: October 30, 2016
+
 #### Background {-}
 
 Routine tasks done on a periodic schedule and can be automated by a smart process. Every morning

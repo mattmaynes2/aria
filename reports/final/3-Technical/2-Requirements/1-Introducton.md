@@ -1,5 +1,11 @@
 ### Introduction
 
+> Author: Cameron Blanchard
+>
+> Editor: Matthew Maynes
+>
+> Updated: October 10, 2016
+
 In order to better understand the motivations for using the learning home automation system, we have
 created a number of scenarios where we expect the behaviour of homeowners to follow patterns that a
 machine learning algorithm could pick up on. These particular scenarios were chosen because they

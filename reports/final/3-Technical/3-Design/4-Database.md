@@ -1,5 +1,9 @@
 ### Database
 
+> Author: Jeremy Dunsmore
+>
+> Updated: October 30, 2016
+
 #### Database Entity-Relationship {-}
 
 ![](./uml/SystemER.png)

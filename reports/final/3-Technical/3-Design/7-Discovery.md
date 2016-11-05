@@ -1,5 +1,9 @@
 ### Discovery
 
+> Author: Matthew Maynes
+>
+> Updated: October 30, 2016
+
 #### Overview {-}
 
 In order to add a device to the central exchange hub registry, the device must be added through

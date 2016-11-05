@@ -1,5 +1,9 @@
 ### Device Protocol
 
+> Author: Matthew Maynes
+>
+> Updated: October 28, 2016
+
 This is a two level protocol. Messages are sent from the central server to a translation layer
 that converts the message into the device specific format. The intermediate layer will be
 consistent for all devices. The device handlers will need to support the basic API layer

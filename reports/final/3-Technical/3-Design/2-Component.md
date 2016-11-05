@@ -1,5 +1,11 @@
 ### System Components
 
+> Author: Matthew Maynes
+>
+> Editor: Jeremy Dunsmore
+>
+> Updated: October 27, 2016
+
 #### Component Organization {-}
 
 ![](./uml/SystemComponents.png)

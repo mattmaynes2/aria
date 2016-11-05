@@ -1,5 +1,11 @@
 ### B-4 Computing Devices {-}
 
+> Author: Matthew Maynes
+>
+> Editor: Cameron Blanchard
+>
+> Updated October 30, 2016
+
 ##### Background {-}
 
 A computing device is any electronic device that can be used to process data and send it over

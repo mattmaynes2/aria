@@ -1,5 +1,11 @@
 ### B-1 Automation Systems {-}
 
+> Author: Jeremy Dunsmore
+>
+> Editor: Peter Mark & Matthew Maynes
+>
+> Updated: October 27, 2016
+
 #### Background {-}
 
 In this section we are looking at existing systems so that we can better understand what

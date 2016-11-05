@@ -1,5 +1,11 @@
 ### B-5 Custom-Built Devices {-}
 
+> Author: Cameron Blanchard
+>
+> Editor: Peter Mark & Matthew Maynes
+>
+> Updated: October 30, 2016
+
 #### Background {-}
 
 The purpose of this section is to present our investigation into the process of building various

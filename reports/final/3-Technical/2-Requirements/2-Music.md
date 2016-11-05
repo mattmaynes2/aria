@@ -1,5 +1,11 @@
 ### Music Automation
 
+> Author: Cameron Blanchard & Matthew Maynes
+>
+> Editor: Peter Mark
+>
+> Updated: October 30, 2016
+
 #### Background {-}
 
 Smart home automation should make your life easy and fun. Imagine a group of people arrive at your

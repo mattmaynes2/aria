@@ -1,5 +1,9 @@
 ### Deployment
 
+> Author: Matthew Maynes
+>
+> Updated: October 30, 2016
+
 ![](./uml/SystemDeployment.png)
 
 ##### Smart Hub {-}
