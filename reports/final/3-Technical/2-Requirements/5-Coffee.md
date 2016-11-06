@@ -69,22 +69,7 @@ sends a motion detected message to the hub and the hub logs MotionKitchen detect
 7:21:00 AM. The user then turns on the coffee maker. Coffee sends a start brewing message to
 the hub at 7:21:30 AM. When the coffee is done, SmartCoffee sends a done message to the hub.
 The hub logs that SmartCoffee finished at 7:27:30 AM.
-
-###### Operational Sequence {-}
-
-The user wakes leaves their bedroom and heads towards the bathroom at 7:08:00 AM. MotionBedroom
-sends a motion detected message to the hub. The hub logs that MotionBedroom detected motion
-at 7:08:00 AM. MotionBathroom then sends a motion detected message to the hub. The hub then
-logs that MotionBathroom detected motion at 7:00:25 AM.
-
-The user then leaves the bathroom and heads back to their bedroom. MotionBathroom sends a motion
-detected message to the hub. The hub logs MotionBathroom detected motion at 7:26:00 AM.
-MotionBedroom then sends a motion detected message to the hub. The hub logs MotionBedroom detected
-motion at 7:26:25 AM.
-
-While the user is in the bedroom, the hub sends a notification to the SmartCoffee device to
-being brewing at 7:28:00 AM. The user then heads from their bedroom to kitchen and the coffee
-is ready for them at 7:34:30 AM.
+  
 
 ##### Alternate Sequences {-}
 
@@ -95,7 +80,7 @@ is simply when the log for the coffee starting and coffee done appear.
 
 ##### Expected Inputs {-}
 
-The logs for the above scenario would look like the following:
+The logs for the training scenario would look like the following:
 
 ```
 2016-11-04 7:00:00 MotionBedroom: Motion Detected
