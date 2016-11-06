@@ -46,3 +46,5 @@ class Exchange ():
         # TODO Add thread synchronization
         self._cli.log('Discovered device: ' + str(device.address), CLI.LEVEL_INFO)
         self._devices[device.address] = device
+        # add device to hub
+        self._hub.addDevice(device) 
