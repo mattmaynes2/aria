@@ -13,7 +13,8 @@ class HubAdapter (Adapter):
             return False
         self.notify(
             'received',
-            Message(data = self.hub.command(message.data['action']), sender = Message.DEFAULT_ADDRESS, receiver = message.sender)
+            Message(type_= Message.Ack,data = self.hub.command(message.data['action']), 
+            sender = Message.DEFAULT_ADDRESS, receiver = message.sender)
             )
 
 
