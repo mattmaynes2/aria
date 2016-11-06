@@ -75,5 +75,4 @@ class WemoAdapter (Adapter):
 
     def teardown(self):
         self.netdisco.stop()
-        sys.exit(0)
         return True
