@@ -1,7 +1,7 @@
 ### Effortless Home Lighting
 
 > Author: Peter Mark <br>
-> Updated: November 5, 2016 <br\>
+> Updated: November 6, 2016 <br\>
 
 #### Background {-}
 
@@ -59,7 +59,7 @@ The home is setup with a PIR in the home owner's office (PIROffice), a light sen
 
 ###### Training Sequence {-}
 
-The enters their office at 2:30:00 PM on Wednesday afternoon. PIROffice sends a motion detected 
+The user enters their office at 2:30:00 PM on Wednesday afternoon. PIROffice sends a motion detected 
 message to the hub. The hub logs that PIROffice detected motion at 2:30:00 PM. It is a sunny afternoon,
 so the home owner does not turn on the lights. The owner continues working uninterrupted until 
 7:45:00 PM, when the sun begins to set. The hub logs that LightOffice is reading a lower value due to
