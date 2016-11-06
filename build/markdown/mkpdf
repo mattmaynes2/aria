@@ -44,7 +44,6 @@ function tohtml () {
     if [ -n "$COVER" ]; then
         FLAGS="$FLAGS -B $COVER"
     fi
-    echo "$FLAGS"
 
     # Here the $FLAGS variable needs to be treated as independent items. This requires
     # the $FLAG variable to be split. This is a shellcheck violation and needs to be
