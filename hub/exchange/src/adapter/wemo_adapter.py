@@ -8,7 +8,7 @@ import threading
 import sys
 
 logging.basicConfig(level=logging.DEBUG)
-
+log=logging.getLogger(__name__)
 
 class WemoAdapter (Adapter):
 
@@ -36,22 +36,22 @@ class WemoAdapter (Adapter):
     def _discovered(self):
         for devtype in self.netdisco.discover():
             devInfo=self.netdisco.get_info(devtype)
-            print(devInfo)
+            log.debug(devInfo)
             for dev in devInfo:
                 uid = uuid.uuid4().bytes
                 # TODO change to be upnp or devtype
                 device=Device('wemo',dev[0],uid)
-                print('dicovered '+ str(device))
+                log.debug('dicovered '+ str(device))
                 self.notify('discovered',device)
 
     def send (self, message):
-        print('looking for '+str(message.receiver))
+        log.debug('looking for '+str(message.receiver))
         deviceName = self._deviceNames[message.receiver]
-        print('found device with name '+deviceName)
+        log.debug('found device with name '+deviceName)
         
 
         response = device.get_state()
-        print('got device status '+str(response) )
+        log.debug('got device status '+str(response) )
         if device.get_state == WemoAdapter.OFF:
             response = 'OFF'
         elif device.get_state == WemoAdapter.ON:
@@ -62,12 +62,12 @@ class WemoAdapter (Adapter):
 
 
     def receive(self,sender,**kwargs):
-        print(sender.name+' has changed states new state is  :'+kwargs['state'])
+        log.debug(sender.name+' has changed states new state is  :'+kwargs['state'])
 
     def subscibe(self, sender, **kwargs):
-        print('subscription received ')
-        print(sender.name)
-        print(kwargs)
+        log.debug('subscription received ')
+        log.debug(sender.name)
+        log.debug(kwargs)
 
     def run(self):
         self.setup()
