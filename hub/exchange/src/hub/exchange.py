@@ -1,4 +1,5 @@
 from .cli import CLI
+from adapter import Message
 
 class Exchange ():
 
@@ -33,6 +34,10 @@ class Exchange ():
         # TODO Add thread synchronization
         self._cli.log('Received ' + str(message) + ' from ' + str(message.sender), CLI.LEVEL_INFO)
         if( 'action' in message.data and message.data['action'] == 'discover'):
+            self.send(self._devices[message.sender],Message(
+                type_=Message.Ack,
+                data={'success':'True'},
+                receiver=message.sender))
             self.discoverDevices()
         elif (message.receiver in self._devices):
             self._cli.log('Routing message to ' + str(message.receiver), CLI.LEVEL_DEBUG)
