@@ -6,8 +6,8 @@
 
 #### Introduction {-}
 
-An important part of any sizeable software project is the selection of a development process.
-A development process imposes a particular structure on the development of a product. The 
+An important part of any sizeable software project is the selection of an appropriate development 
+process. A development process imposes a particular structure on the development of a product. The 
 process used for the development of this project was created with the following factors in mind:
 
 - Project lifespan: Work on the project will last at least 8 months; other developers may also
@@ -16,8 +16,8 @@ continue working on the project after the two school terms are complete
 - Team Size: There are four team members working on the project, the process needs to keep everyone 
 synchronized and organize the assignment of work to team members
 
-- Reporting: The final project report critical to the project's success, the process should make the
- report easy to write
+- Reporting: The final project report is critical to the project's success, the process should make
+ the report easier to write in a consistent manner
 
 - Code Quality: The process should ensure that work products are of the quality expected of a fourth
  year project.
@@ -30,7 +30,7 @@ extensible; a developer who is new to the project should have an easy time devel
 Given these goals, the process used for this project incorporates some elements of Extreme Programming
 and other Agile methodologies. Use of practices which are widely accepted in industry also ensures 
 that new developers are comfortable working on the project. The process prescribes some practices to
-be used for: Source code management, Code reviews, Issue Tracking, and Testing.
+be used for: Source Code Management, Code Reviews, Issue Tracking, and Testing.
 
 #### Source Code Management {-}
 
@@ -41,23 +41,23 @@ The project uses a source code management tool to achieve the following goals:
 
 - Track changes to files in order to locate changes that may have introduced bugs
 
-- Allows team members to work independently
+- Allows team members to work independently and simultaneously 
 
-This project uses git because it provides solutions to all of these issues. git is familiar to all
+This project uses git because it provides solutions to all of these issues. Git is familiar to all
 team members, in addition to being a de-facto standard in the open source software community.
-Using git over other SCM tools makes the process easier to follow, and improvse the experience of any
+Using git over other SCM tools makes the process easier to follow, and improves the experience of any
 new developer that might choose to maintain the project.
 
 The project's git repository is hosted on Github. Github allows the team to access the project anywhere,
-and makes sharing code with new developers very simple. Additionally, Github provides some project
+and makes sharing code with new developers simple. Additionally, Github provides some project
 management tools that can be used elsewhere in the process, as explained in subsequent sections.
 
 #### Branching and Code Reviews {-}
 
 We make strategic use of a git feature, branching, in order to ensure that code which makes it into the
-official version of our software is of the quality expected of a fourth year project. A technique we are
-using to ensure code quality is peer code review. By frequently reviewing code, we can share knowledge 
-between team members with different amounts of experience in particular technologies. 
+official version of our software is of the quality expected of a fourth year project. A technique we
+are using to ensure code quality is peer code review. By frequently reviewing code, we can share
+knowledge between team members with different amounts of experience in particular technologies. 
 
 In order for code reviews to be effective, we believe that the review should be as short as possible,
 and focused on a particular feature. This ensures that reviewers are motivated to provide high quality 
