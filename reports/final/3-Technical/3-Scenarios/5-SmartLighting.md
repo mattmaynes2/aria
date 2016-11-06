@@ -1,7 +1,7 @@
 ### Effortless Home Lighting
 
-> Author: Peter Mark <br\>
-> Updated: November 5, 2016 <br\>
+> Author: Peter Mark <br/>
+> Updated: November 5, 2016 <br/>
 
 #### Background {-}
 
