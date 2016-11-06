@@ -2,7 +2,7 @@
 
 > Author: Matthew Maynes <br/>
 > Editor: Peter Mark <br/>
-> Updated: November 5, 2016 <br/>
+> Updated: November 6, 2016 <br/>
 
 The Aria system is composed of many different technologies that each serve a task specific purpose.
 This document outlines the details about the technologies chosen and the reasons for them being 

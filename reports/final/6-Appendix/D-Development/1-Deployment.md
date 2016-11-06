@@ -2,7 +2,7 @@
 
 > Author: Matthew Maynes <br/>
 > Editors: Cameron Blanchard, Peter Mark <br/>
-> Updated: November 5, 2016 <br/>
+> Updated: November 6, 2016 <br/>
 
 #### Introduction {-}
 
