@@ -1,4 +1,4 @@
-### D-2 Technologies {- #D-2-Technologies}
+### C-2 Technologies {- #C-2-Technologies}
 
 > Author: Matthew Maynes <br/>
 > Editor: Peter Mark <br/>
