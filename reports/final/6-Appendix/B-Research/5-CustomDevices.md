@@ -107,8 +107,6 @@ motion sensor)
 
 #### Motion Sensor {-}
 
-##### Description {-}
-
 ##### Technical Overview {-}
 
 This section considers devices that can be used to alert the system when a person enters or leaves
