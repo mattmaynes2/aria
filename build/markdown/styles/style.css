@@ -18,6 +18,10 @@ a {
   background: transparent;
 }
 
+ul ul ul {
+    display: none;
+}
+
 a:active,
 a:hover {
   outline: 0;

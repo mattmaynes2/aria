@@ -22,7 +22,6 @@ COVER=""
 OUTPUT="Output.pdf"
 TOC=""
 NUM=""
-TOC_DEPTH="2"
 TARGET="./"
 STYLE="$SCRIPT_PATH/./styles/style.css"
 
@@ -31,13 +30,14 @@ function info () {
 }
 
 function concat () {
+    rm -f "$2"
     for file in $1; do
         (cat "$file"; echo) >> "$2"
     done
 }
 
 function tohtml () {
-    FLAGS="$TOC $NUM --toc-depth $TOC_DEPTH -c $STYLE -t html -f markdown_phpextra+backtick_code_blocks"
+    FLAGS="$NUM -c $STYLE -t html -f markdown_phpextra+backtick_code_blocks"
 
     if [ -n "$COVER" ]; then
         FLAGS="$FLAGS -B $COVER"
@@ -51,7 +51,7 @@ function tohtml () {
 }
 
 function topdf () {
-    wkhtmltopdf -s Letter "$1" "$2"
+    wkhtmltopdf --footer-right '[page]' --footer-font-size 8 --footer-font-name 'Helvetica' -s Letter $TOC "$1" "$2"
 }
 
 IFS=' ' read -r -a args <<< "$@"
@@ -83,13 +83,9 @@ do
             args=("${args[@]:1}")
             ;;
         --toc)
-            TOC="--toc"
+            TOC="toc --toc-text-size-shrink 1"
             ;;
-        --toc-depth)
-            TOC_DEPTH="${args[0]}"
-            args=("${args[@]:1}")
-            ;;
-        --auto-number)
+       --auto-number)
             NUM="--number-sections"
             ;;
         -* | --*)
@@ -104,5 +100,6 @@ do
 done
 
 # Run Conversion
-cd "$TARGET" && concat "$(find . -name '*.md')" .tmp.markdown && tohtml .tmp.markdown .tmp.html && topdf .tmp.html "$OUTPUT" && rm  .tmp.markdown .tmp.html
+cd "$TARGET" && concat "$(find . -name '*.md')" .tmp.markdown && tohtml .tmp.markdown .tmp.html && topdf .tmp.html "$OUTPUT" 
+##&& rm  .tmp.markdown .tmp.html
 
