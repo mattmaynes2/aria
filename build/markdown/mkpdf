@@ -53,7 +53,7 @@ function tohtml () {
 }
 
 function topdf () {
-    wkhtmltopdf --footer-right '[page]' --footer-font-size 8 --footer-font-name 'Helvetica' -s Letter cover "$1" "$2" "$3"
+    wkhtmltopdf --footer-right '[sitepage]' --footer-font-size 8 --footer-font-name 'Helvetica' -s Letter cover "$1" "$2" "$3"
 }
 
 IFS=' ' read -r -a args <<< "$@"
