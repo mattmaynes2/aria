@@ -1,4 +1,4 @@
-### Music Automation {#3-3-1}
+### Music Automation {#section-3-3-1}
 
 #### Background {-}
 

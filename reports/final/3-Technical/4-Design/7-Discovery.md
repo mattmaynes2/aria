@@ -1,4 +1,4 @@
-### Discovery {#3-4-7}
+### Discovery {#section-3-4-7}
 
 #### Overview {-}
 

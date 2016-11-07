@@ -1,4 +1,4 @@
-## Development Process {#2-3}
+## Development Process {#section-2-3}
 
 ### Introduction
 

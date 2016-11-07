@@ -1,4 +1,4 @@
-### Device Protocol {#3-4-5}
+### Device Protocol {#section-3-4-5}
 
 This is a two level protocol. Messages are sent from the central server to a translation layer
 that converts the message into the device specific format. The intermediate layer will be

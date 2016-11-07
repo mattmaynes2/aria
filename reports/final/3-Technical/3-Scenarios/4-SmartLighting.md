@@ -1,4 +1,4 @@
-### Effortless Home Lighting
+### Effortless Home Lighting {#section-3-3-4}
 
 #### Background {-}
 
