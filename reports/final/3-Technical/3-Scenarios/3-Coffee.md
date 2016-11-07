@@ -1,8 +1,4 @@
-### Coffee Automation
-
-> Author: Jeremy Dunsmore & Matthew Maynes <br/>
-> Editor: Peter Mark <br/>
-> Updated: November 5, 2016 <br/>
+### Coffee Automation {#3-3-3}
 
 #### Background {-}
 
@@ -155,7 +151,7 @@ the kitchen is 19 minutes and a pot of coffee takes 6 minutes to make. Therefore
 the system is in playback mode that it would start the coffee maker 13 minutes after it sees that
 MotionBedroom and MotionBathroom have been triggered if it is around 7:00 AM.
 
-![](./uml/CoffeeSequence.png)
+![][scenario-coffee-sequence]
 
 As the system gains more and more information there could be some other patterns that the system
 notices. For example it could be more accurate to only consider other mornings for the current

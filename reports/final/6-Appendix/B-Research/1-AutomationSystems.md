@@ -1,8 +1,4 @@
-### B-1 Automation Systems {- #B-1-Automation-Systems}
-
-> Author: Jeremy Dunsmore <br/>
-> Editor: Peter Mark & Matthew Maynes <br/>
-> Updated: October 27, 2016 <br/>
+### B-1 Automation Systems {- #B-1}
 
 #### Background {-}
 

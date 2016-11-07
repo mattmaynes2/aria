@@ -1,8 +1,5 @@
 ### Effortless Home Lighting
 
-> Author: Peter Mark <br>
-> Updated: November 6, 2016 <br\>
-
 #### Background {-}
 
 A learning smart home should reduce the need to manually perform everyday environmental control 

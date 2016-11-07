@@ -1,7 +1,4 @@
-### B-2 Smart Devices {- #B-2-Smart-Devices}
-
-> Author: Cameron Blanchard, Jeremy Dunsmore, Peter Mark & Matthew Maynes <br/>
-> Updated: October 29, 2016 <br/>
+### B-2 Smart Devices {- #B-2}
 
 #### Background {-}
 

@@ -1,8 +1,4 @@
-### System Components
-
-> Author: Matthew Maynes <br/>
-> Editor: Jeremy Dunsmore <br/>
-> Updated: October 27, 2016 <br/>
+### System Components {#3-4-2}
 
 #### Component Organization {-}
 

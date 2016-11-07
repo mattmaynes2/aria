@@ -1,8 +1,4 @@
-### Music Automation
-
-> Author: Cameron Blanchard & Matthew Maynes <br/>
-> Editor: Peter Mark <br/>
-> Updated: October 30, 2016 <br/>
+### Music Automation {#3-3-1}
 
 #### Background {-}
 
@@ -120,6 +116,7 @@ be logged.
 2017-01-02 01:03:18 DenSpeaker: Volume 0%
 2017-01-02 01:05:00 Thermostat: 20 C
 ...
+```
 
 ##### Expected Behaviour {-}
 

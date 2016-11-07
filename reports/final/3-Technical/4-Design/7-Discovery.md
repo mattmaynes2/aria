@@ -1,7 +1,4 @@
-### Discovery
-
-> Author: Matthew Maynes <br/>
-> Updated: October 30, 2016 <br/>
+### Discovery {#3-4-7}
 
 #### Overview {-}
 

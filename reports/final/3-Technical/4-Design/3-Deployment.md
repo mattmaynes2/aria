@@ -1,7 +1,4 @@
-### Deployment
-
-> Author: Matthew Maynes <br/>
-> Updated: October 30, 2016 <br/>
+### Deployment {#3-4-3}
 
 ![](./uml/SystemDeployment.png)
 

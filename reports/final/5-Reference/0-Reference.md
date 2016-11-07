@@ -1,4 +1,4 @@
-# References {#References}
+# References {#5-0}
 
 [^B-1-1]: Insteon®, "Home," in Insteon, Insteon, 2016. [Online]. Available: <http://www.insteon.com/>. Accessed: Oct. 6, 2016.
 [^B-1-2]: Insteon®, "WHITEPAPER: The Details,". [Online]. Available: <http://cache.insteon.com/documentation/insteon_details.pdf>. Accessed: Oct. 6, 2016.

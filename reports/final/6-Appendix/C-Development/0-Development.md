@@ -1,1 +1,1 @@
-## C Development {- #C-Development}
+## C Development {- #C}

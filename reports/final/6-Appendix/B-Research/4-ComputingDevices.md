@@ -1,8 +1,4 @@
-### B-4 Computing Devices {- #B-4-Computing-Devices}
-
-> Author: Matthew Maynes <br/>
-> Editor: Cameron Blanchard <br/>
-> Updated October 30, 2016 <br/>
+### B-4 Computing Devices {- #B-4}
 
 ##### Background {-}
 
