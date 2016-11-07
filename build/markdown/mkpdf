@@ -108,13 +108,15 @@ done
 # Run Conversion
 cd "$TARGET" || exit 1
 BEFORE="$(find . -name '*.before.md')"
-BODY="$(find . -name '*.md' -not -name '*.before.md')"
+BODY="$(find . -name '*.md' -not -name '*.before.md'|sort)"
 
 concat "$BEFORE" .tmp.before.markdown
 concat "$BODY" .tmp.markdown
 
-tohtml .tmp.before.markdown .tmp.before.html
 tohtml .tmp.markdown .tmp.html
+
+TOC=()
+tohtml .tmp.before.markdown .tmp.before.html
 
 topdf .tmp.before.html .tmp.html "$OUTPUT"
 

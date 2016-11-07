@@ -1,7 +1,4 @@
-### REST API
-
-> Author: Cameron Blanchard <br/>
-> Updated: October 28, 2016 <br/>
+### REST API {#section-3-4-6}
 
 The HTTP gateway component exposes some REST endpoints. The gateway allows system components
 which can only communicate over HTTP to interact with any device in the system using a 

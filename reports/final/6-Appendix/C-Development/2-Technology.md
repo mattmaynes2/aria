@@ -1,8 +1,4 @@
-### C-2 Technologies {- #C-2-Technologies}
-
-> Author: Matthew Maynes <br/>
-> Editor: Peter Mark <br/>
-> Updated: November 6, 2016 <br/>
+### C-2 Technologies {- #C-2}
 
 The Aria system is composed of many different technologies that each serve a task specific purpose.
 This document outlines the details about the technologies chosen and the reasons for them being 

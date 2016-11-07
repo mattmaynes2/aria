@@ -1,8 +1,4 @@
-## Scenarios
-
-> Author: Cameron Blanchard <br/>
-> Editor: Matthew Maynes <br/>
-> Updated: October 10, 2016 <br/>
+## Scenarios {#section-3-3-0}
 
 In order to better understand the motivations for using the learning home automation system, we have
 created a number of scenarios where we expect the behaviour of homeowners to follow patterns that a

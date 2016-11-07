@@ -1,8 +1,4 @@
-## Development Process
-
-> Author: Cameron Blanchard <br/>
-> Editor: Peter Mark <br/>
-> Updated: November 6, 2016 <br/>
+## Development Process {#section-2-3}
 
 ### Introduction
 

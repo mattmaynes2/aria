@@ -1,8 +1,4 @@
-### C-1 Deployment {- #C-1-Deployment}
-
-> Author: Matthew Maynes <br/>
-> Editors: Cameron Blanchard, Peter Mark <br/>
-> Updated: November 6, 2016 <br/>
+### C-1 Deployment {- #C-1}
 
 #### Introduction {-}
 
