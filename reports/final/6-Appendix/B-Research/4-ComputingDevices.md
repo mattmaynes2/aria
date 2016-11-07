@@ -48,13 +48,6 @@ This board is very useful for rapidly testing but would not be practical in a ma
 system. For the smart learning system, this board would be optimal for experimentation and
 quick deployment.
 
-###### References {-}
-
-<cite>
-[1] "ArduinoBoardUno," in Arduino, 2016. [Online]. Available:
-<https://www.arduino.cc/en/Main/ArduinoBoardUno>. Accessed: Oct. 6, 2016.
-</cite>
-
 #### Arduino 101 {-}
 
 ##### Description {-}
@@ -85,13 +78,6 @@ applicable to this project. The 101 also has a much higher price point per unit 
 with no real added value. This makes the Uno a more appealing candidate for rapid prototyping
 and simple circuit design.
 
-##### References {-}
-
-<cite>
-[1] "ArduinoBoard101," in Arduino, 2016. [Online]. Available:
-<https://www.arduino.cc/en/Main/ArduinoBoard101>. Accessed: Oct. 6, 2016.
-</cite>
-
 #### Arduino Pro {-}
 
 ##### Description {-}
@@ -120,13 +106,6 @@ The Pro has many advanced features but offers little in the way of rapid prototy
 intended for a more advanced audience than what is required for this project and is likely not
 a good candidate for practical applications. However, if this system was to be replicated or
 redistributed, the Pro would be useful for building a final product for an unmodifiable system.
-
-##### References {-}
-
-<cite>
-[1] "ArduinoBoardPro," in Arduino, 2016. [Online]. Available:
-<https://www.arduino.cc/en/Main/ArduinoBoardPro>. Accessed: Oct. 6, 2016.
-</cite>
 
 #### Arduino Micro {-}
 
@@ -157,13 +136,6 @@ were valuable resources. If the learning home automation system was to be commer
 produced, this could be a very valuable microcontroller. This microcontroller could be used
 for this system, but would take more effort for prototyping and would likely not be a suitable
 fit.
-
-##### References {-}
-
-<cite>
-[1] "ArduinoBoardMicro," in Arduino, 2016. [Online]. Available:
-<https://www.arduino.cc/en/Main/ArduinoBoardMicro>. Accessed: Oct. 6, 2016.
-</cite>
 
 #### Comparison of Arduinos {-}
 
@@ -231,18 +203,6 @@ a smaller physical footprint and more GPIO pins than the Arduino Uno, it does re
 maintain operation. This extra power consumption does come with more performance which may be
 useful but likely unnecessary for the smart learning system.
 
-##### Reference {-}
-
-<cite>
-[1] "Raspberry pi Zero," Raspberry Pi. [Online]. Available:
-<https://www.raspberrypi.org/products/pi-zero/>. Accessed: Oct. 10, 2016.
-</cite>
-
-<cite>
-[2] "Raspberry Pi Zero,". [Online]. Available:
-<https://shop.pimoroni.com/products/raspberry-pi-zero>. Accessed: Oct. 10, 2016.
-</cite>
-
 #### Raspberry Pi 1 Model A+ {-}
 
 ##### Description {-}
@@ -264,19 +224,6 @@ a standard Ethernet port, and a single USB port for serial communication. The Pi
 The Raspberry Pi 1 is a good candidate for the central hub as it uses low power and provides
 adequate computing performance.
 
-##### References {-}
-
-<cite>
-[1] "Raspberry pi 1 model A+," Raspberry Pi. [Online]. Available:
-<https://www.raspberrypi.org/products/model-a-plus/>. Accessed: Oct. 10, 2016.
-</cite>
-
-<cite>
-[2] J. Adams, "Raspberry Pi Model B+," Mar. 07, 2014. [Online]. Available:
-<https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/Raspberry-Pi-B-Plus-V1.2-Mechanical-Drawing.pdf>.
-Accessed: Oct. 10, 2016.
-</cite>
-
 #### Raspberry Pi 2 Model B {-}
 
 ##### Description {-}
@@ -295,13 +242,6 @@ USB ports. The Pi 2 also provides the same 40 GPIO pin configuration as the Pi 1
 
 The Pi 2 outperforms the Pi 1 in all areas and is likely a better candidate for the smart hub. It
 uses the same amount of power but provides far more computing performance.
-
-##### References {-}
-
-<cite>
-[1] "Raspberry pi 2 model B," Raspberry Pi. [Online]. Available:
-<https://www.raspberrypi.org/products/raspberry-pi-2-model-b/>. Accessed: Oct. 10, 2016.
-</cite>
 
 #### Raspberry Pi 3 Model B {-}
 
@@ -328,36 +268,6 @@ The Raspberry Pi 3 is the most advanced Raspberry Pi board available. Its extra 
 would be a good asset for heavy computation making this an ideal candidate for the central smart
 hub. The Pi 3 comes with many standard features including WiFi and Bluetooth communication which
 will make external interfacing simple with minimal investment.
-
-##### References {-}
-
-<cite>
-[1] "Raspberry pi 3 model B," Raspberry Pi. [Online]. Available:
-<https://www.raspberrypi.org/products/raspberry-pi-3-model-b/>. Accessed: Oct. 10, 2016.
-</cite>
-
-<cite>
-[2] "Power supply - raspberry pi documentation,". [Online]. Available:
-<https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md>.
-Accessed: Oct. 10, 2016.
-</cite>
-
-<cite>
-[3] "GPIO - raspberry pi documentation,". [Online]. Available:
-<https://www.raspberrypi.org/documentation/hardware/raspberrypi/gpio/README.md>.
-Accessed: Oct. 10, 2016.
-</cite>
-
-<cite>
-[4] "Raspbian - raspberry pi documentation,". [Online]. Available:
-<https://www.raspberrypi.org/documentation/raspbian/>. Accessed: Oct. 10, 2016.
-</cite>
-
-<cite>
-[5]	J. Adams, "Raspberry Pi 3 Model B," Jun. 10, 2015. [Online]. Available:
-<https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/RPI-3B-V1_2.pdf>.
-Accessed: Oct. 10, 2016.
-</cite>
 
 #### Comparison of Raspberry Pi {-}
 
@@ -426,19 +336,6 @@ computation performance as the Raspberry Pi 3. The BeagleBone may be suitable fo
 in the system that require more computational power than what a traditional microcontroller can
 provide.
 
-##### References {-}
-
-<cite>
-[1] "Bone-original,". [Online]. Available: <http://beagleboard.org/bone-original>.
-Accessed: Oct. 10, 2016.
-</cite>
-
-<cite>
-[2] "BeagleBone Schematic," Jun. 28, 2012. [Online]. Available:
-<https://github.com/CircuitCo/BeagleBone-RevA6/blob/master/BEAGLEBONE_REV_A6A.pdf?raw=true>.
-Accessed: Oct. 10, 2016.
-</cite>
-
 #### BeagleBone Black {-}
 
 ##### Description {-}
@@ -466,18 +363,6 @@ The BeagleBone Black is does have many powerful features but cannot complete wit
 additional computation but since it requires more power than the standard BeagleBone with minimal
 gain it may not be feasible.
 
-##### References {-}
-
-<cite>
-[1] "BeagleBone Black,". [Online]. Available: <http://beagleboard.org/black>.
-Accessed: Oct. 10, 2016.
-</cite>
-
-<cite>
-[2] "Beagleboard: BeagleBoneBlack,". [Online].
-Available: <http://elinux.org/Beagleboard:BeagleBoneBlack>. Accessed: Oct. 10, 2016.
-</cite>
-
 #### BeagleBone Green {-}
 
 ##### Description {-}
@@ -499,14 +384,6 @@ I2C connection.
 The Green model shares many of the same features as the Black and is therefore not an adequate
 alternative for the Raspberry Pi 3 and the learning hub. However, the Green does require less
 energy than the Black model and is possibly a better candidate for embedded devices.
-
-
-##### References {-}
-
-<cite>
-[1]	"BeagleBone Green,". [Online]. Available: <http://beagleboard.org/green>.
-Accessed: Oct. 10, 2016.
-</cite>
 
 #### Comparison of BeagleBone {-}
 
