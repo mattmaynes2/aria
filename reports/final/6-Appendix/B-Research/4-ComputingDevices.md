@@ -21,7 +21,7 @@ computing options with a focus on the areas of need within the system.
 
 ##### Arduino Uno {-}
 
-###### Description
+###### Description {-}
 
 The Arduino Uno is a small starter microcontroller that is intended for hobby projects and
 newcomers to embedded programming. The Uno is intended for rapid prototyping of small circuits
