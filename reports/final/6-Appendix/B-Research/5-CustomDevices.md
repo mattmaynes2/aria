@@ -201,11 +201,6 @@ of the detector transmits a beam of infrared light which is detected by the othe
 
 Note: The custom device can potentially support multiple different communication interfaces
 
-Custom device: https://www.adafruit.com/product/189
-D-Link: http://ca.dlink.com/products/connected-home/wi-fi-motion-sensor/
-Samsung: https://shop.smartthings.com/#!/products/samsung-smartthings-motion-sensor
-WeMo: http://www.belkin.com/au/p/P-F5Z0340-APL/
-
 ##### Evaluation {-}
 
 | Criterion          | Score |
@@ -226,8 +221,6 @@ If the type of device being controlled requires DC power input, the amount of po
 device can be controlled using pulse-width modulation (PWM). A digital output is used to create a
 square wave. By varying the frequency of the square wave, it is possible to simulate the application
 of a steady voltage between the pin's high and low voltages.
-
-<https://www.arduino.cc/en/Tutorial/PWM>
 
 Limitations to simple PWM
 
@@ -266,17 +259,10 @@ such as an Arduino.
  to the amount of time required to fully understand these circuits, it is estimated that effort
  required is high.
 
-<http://playground.arduino.cc/Main/ACPhaseControl>
-
-
 | Feature            | Custom     | GE Z-Wave Plugin-in Smart Dimmer | Philips Hue Dimmer Switch | Lutron Caseta Wireless Plugin-In Lamp Dimmer |
 | -------            | ------     | -------------------------------- | ------------------------- | -------------------------------------------- |
 | Compatible Devices | AC devices | AC devices                       | Philips Hue Products      | AC Devices                                   |
 | Interfaces         | _          | Z-Wave                           | ZigBee                    | Lutron Integration Protocol                  |
-
-Philips Hue: http://www.developers.meethue.com/documentation/how-hue-works
-Lutron: https://www.lutron.com/technicaldocumentlibrary/040249.pdf
-GE Z-Wave: http://www.zwaveproducts.com/shop/brands/ge/z-wave-plug-in-smart-dimmer-1
 
 ##### Evaluation {-}
 
@@ -337,10 +323,6 @@ on combination of the particular photocell chosen. Assuming that both a custom d
 commercial devices are able to differentiate between daytime and evening levels of light, additional
 features available from commercial devices are generally related to other types of sensors
 
-Everspring Z-Wave illumination sensor:
-http://www.smarthome.com/everspring-st815-z-wave-wireless-illumination-sensor-with-lcd-screen.html
-HomeSeer Z-Wave: http://www.smarthome.com/homeseer-hsm200-z-wave-multi-sensor.html
-
 ##### Evaluation {-}
 
 | Criterion          | Score   |
@@ -386,10 +368,6 @@ The basic alarm clock circuit generally requires the following components:
 - Microcontroller
 - Piezo Buzzer or Speaker
 - Varying numbers of push buttons for manual configuration
-
-A typical circuit has the following form:
-
-<http://fritzing.org/media/fritzing-repo/projects/a/arduino-lcd-alarm-clock/images/Untitled.png>
 
 ##### Level of Effort {-}
 
@@ -453,13 +431,3 @@ It is feasible for the team to build motion sensor, light sensors, and an alarm 
 acceptable commercial solution is available. We should avoid building dimmer switches, coffee
 makers, and thermostats due to the potential high-voltage work involved and the lack of electronics
 knowledge available.
-
-#### References {-}
-
-[1]	Anonymous, "User login," 2014. [Online]. Available: http://www.engineersgarage.com/microcontroller/8051projects/LCD-digital-alarm-clock-AT89C51-circuit. Accessed: Oct. 29, 2016.
-
-[2]	Anonymous, "Arduino alarm clock," Instructables.com. [Online]. Available: http://www.instructables.com/id/Arduino-alarm-clock. Accessed: Oct. 29, 2016.
-
-[3] C. D. P. policy, Disclaimer, and C. Us, "Arduino based digital clock with alarm," 2015. [Online]. Available: http://circuitdigest.com/microcontroller-projects/arduino-alarm-clock. Accessed: Oct. 29, 2016.
-
-[4] Anonymous, "Tweet-a-Pot: Twitter enabled coffee pot," Instructables.com, 1932. [Online]. Available: http://www.instructables.com/id/Tweet-a-Pot-Twitter-Enabled-Coffee-Pot. Accessed: Oct. 29, 2016.
