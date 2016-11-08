@@ -63,3 +63,4 @@ class AriaAdapter (Adapter):
         else:
             self.notify('received', msg)
 
+        return True

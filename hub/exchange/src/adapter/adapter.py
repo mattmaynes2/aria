@@ -97,7 +97,12 @@ class Adapter (Thread):
         return True
 
     def receive (self):
-        """Receives a message from the network, translates it and passes it to the adapter delegate
+        """Receives a message from the network, translates it and passes it to the adapter
+        delegate
+
+        Note: If no return value is specified then the adapter is assumed to be inactive and the
+        thread will terminate. A 'None' return value is assumed to indicate that this method is
+        not used by the adapter.
 
         Returns
             True if successful, False otherwise.
@@ -112,5 +117,8 @@ class Adapter (Thread):
         """
         self.setup()
         while (self.active):
-            self.receive()
+            if (None == self.receive()):
+                self.active = False
+                return False
+
         return True

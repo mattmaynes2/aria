@@ -26,7 +26,7 @@ class WemoAdapter (Adapter):
 
     def setup(self):
         super().setup()
-        
+
 
     def discover(self):
         self.netdisco.scan()
@@ -48,7 +48,7 @@ class WemoAdapter (Adapter):
         log.debug('looking for '+str(message.receiver))
         deviceName = self._deviceNames[message.receiver]
         log.debug('found device with name '+deviceName)
-        
+
 
         response = device.get_state()
         log.debug('got device status '+str(response) )
@@ -63,6 +63,7 @@ class WemoAdapter (Adapter):
 
     def receive(self,sender,**kwargs):
         log.debug(sender.name+' has changed states new state is  :'+kwargs['state'])
+        return True
 
     def subscibe(self, sender, **kwargs):
         log.debug('subscription received ')
