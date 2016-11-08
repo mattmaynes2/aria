@@ -1,7 +1,8 @@
 var ExchangeAdapter = (function () {
     var dgram   = require('dgram'),
         uuid    = require('node-uuid'),
-        packets = require('./ccp');
+        packets = require('./ccp'),
+        logger = require('winston');
 
     function ExchangeAdapter (endpoint) {
         this.id         = new Buffer(16);
@@ -18,7 +19,7 @@ var ExchangeAdapter = (function () {
 
         return new Promise ((resolve, reject) => {
             send.call(this, 1, {}).then((response) => {
-                console.log('Got a response to discovery request');
+                logger.debug('Got a response to discovery request');
                 if (response.type !== 4) {
                     reject(Error('Communication server responded with an unexpected packet type'));
                 }
@@ -59,7 +60,7 @@ var ExchangeAdapter = (function () {
             }, 5000);
 
             client.on('message', function(message) {
-                console.log('Received response from comm server');
+                logger.debug('Received response from comm server');
                 client.close();
                 clearTimeout(expiry);
                 resolve(packets.parse(message));
@@ -72,7 +73,7 @@ var ExchangeAdapter = (function () {
                         clearTimeout(expiry);
                         reject(Error(err));
                     }
-                    console.log('Sent UDP message');
+                    logger.debug('Sent UDP message');
                 }
             );
         });

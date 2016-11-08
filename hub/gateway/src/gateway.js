@@ -1,6 +1,7 @@
 var Gateway = (function () {
     var express = require('express'),
-        bodyParser = require('body-parser');
+        bodyParser = require('body-parser'),
+        logger = require('winston');
 
 
     function Gateway (adapter) {
@@ -16,7 +17,7 @@ var Gateway = (function () {
             this.adapter.send(2, {'action': 'status'}).then((response) => {
                 res.send(JSON.stringify(response));
             }, (err) =>{
-                console.log('Error requesting system state from communication server', err);
+                logger.error('Error requesting system state from communication server', err);
             });
         });
 
@@ -24,8 +25,8 @@ var Gateway = (function () {
             this.adapter.send(3, req.body).then((response) => {
                 res.send(JSON.stringify(response));
             }, (err) => {
-                console.log('Error sending request to communication server', err)
-            });
+                logger.error('Error sending request to communication server', err);
+             });
         });
 
         app.use(express.static(this.public));
