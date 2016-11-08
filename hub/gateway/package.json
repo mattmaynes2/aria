@@ -23,11 +23,13 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
     "build": "./node_modules/webpack/bin/webpack.js --executable && chmod +x ./bin/*",
-    "start": "node ./src/server.js"
+    "start": "forever start ./src/server.js",
+    "stop" : "forever stop ./src/server.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "4.14.0",
+    "forever": "^0.15.3",
     "node-uuid": "^1.4.7",
     "winston": "^2.3.0"
   }
