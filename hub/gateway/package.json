@@ -21,7 +21,7 @@
     "sinon": "^1.17.6"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec",
+    "test": "./node_modules/.bin/mocha --reporter spec && jshint src test",
     "build": "./node_modules/webpack/bin/webpack.js --executable && chmod +x ./bin/*",
     "start": "forever start ./bin/gateway",
     "stop" : "forever stop ./bin/gateway"
