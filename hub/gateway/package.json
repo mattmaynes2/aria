@@ -21,10 +21,10 @@
     "sinon": "^1.17.6"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec && jshint src test",
-    "build": "./node_modules/webpack/bin/webpack.js --executable && chmod +x ./bin/*",
-    "start": "forever start ./bin/gateway",
-    "stop" : "forever stop ./bin/gateway"
+    "test": "./node_modules/.bin/mocha --reporter spec && ./node_modules/.bin/jshint src test",
+    "build": "./node_modules/.bin/webpack.js --executable && chmod +x ./bin/*",
+    "start": "./node_modules/.bin/forever start ./bin/gateway",
+    "stop" : "./node_modules/.bin/forever stop ./bin/gateway"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
