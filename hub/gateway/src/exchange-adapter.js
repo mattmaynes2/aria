@@ -25,13 +25,13 @@ var ExchangeAdapter = (function () {
                 }
                 else {
                     this.registered = true;
-                    resolve()
+                    resolve();
                 }
 
-            }, (err) => {
+            }, () => {
                 reject(Error('Error in discovery request'));
-            })
-        })
+            });
+        });
     };
 
     ExchangeAdapter.prototype.send = function (type, payload) {
