@@ -1,22 +1,17 @@
-var $           = require('jquery'),
-    Class       = require('../core/class'),
-    Component   = require('../core/component');
+import $            from 'jquery';
+import Component    from '../core/component';
+import './widget.css';
 
-require('./widget.css');
-
-var Widget = (function () {
-
-    function Widget () {
-        Component.call(this);
+class Widget extends Component {
+    constructor () {
+        super();
         this._state = {
             title   : 'Widget',
             body    : ''
         };
     }
 
-    Class.inherit(Component, Widget);
-
-    Widget.prototype.render = function () {
+    render () {
         if (this._$el.hasClass('widget-panel')) {
             return this;
         }
@@ -29,9 +24,9 @@ var Widget = (function () {
             .append($('<div>').addClass('widget-footer'));
 
         return this;
-    };
+    }
 
-    return Widget;
-} ());
+}
 
-module.exports = Widget;
+export default Widget;
+

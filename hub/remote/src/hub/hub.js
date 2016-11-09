@@ -1,18 +1,16 @@
-var $           = require('jquery'),
-    Class       = require('../core/class'),
-    Widget      = require('./widget');
+import $        from 'jquery';
+import Widget   from './widget';
 
-var Hub = (function () {
+class Hub extends Widget {
 
-    function Hub () {
-        Widget.call(this);
+    constructor () {
+        super();
         this._state.title = 'Hub';
     }
 
-    Class.inherit(Widget, Hub);
+    render () {
+        super.render();
 
-    Hub.prototype.render = function () {
-        Widget.prototype.render.call(this);
         if (!this._$stateButton) {
             this._$stateButton = $('<button>').text('Refresh Status')
                 .click(fetchStatus.bind(this));
@@ -20,22 +18,22 @@ var Hub = (function () {
         }
 
         return this;
-    };
-
-    function fetchStatus () {
-        $.ajax({
-            url     : '/request',
-            type    : 'POST',
-            data    : '{"action" : "status"}',
-            headers : {
-                'Content-Type' : 'application/json'
-            }
-        }).done((res) => {
-            this._$el.find('.widget-body').empty().text(res);
-        });
     }
 
-    return Hub;
-} ());
+}
 
-module.exports = Hub;
+function fetchStatus () {
+    $.ajax({
+        url     : '/request',
+        type    : 'POST',
+        data    : '{"action" : "status"}',
+        headers : {
+            'Content-Type' : 'application/json'
+        }
+    }).done((res) => {
+        this._$el.find('.widget-body').empty().text(res);
+    });
+}
+
+
+export default Hub;

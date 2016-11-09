@@ -1,24 +1,14 @@
-var Class       = require('../core/class'),
-    Component   = require('../core/component');
+import Component from '../core/component';
+import './menu.css';
 
-require('./menu.css');
-
-var Menu = (function () {
-
-    function Menu () {
-        Component.call(this);
+class Menu extends Component {
+    constructor () {
+        super();
     }
-
-    Class.inherit(Component, Menu);
-
-    Menu.prototype.render = function () {
+    render () {
         this._$el.addClass('nav-menu');
         return this;
-    };
+    }
+}
 
-
-    return Menu;
-
-} ());
-
-module.exports = Menu;
+export default Menu;

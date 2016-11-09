@@ -1,7 +1,7 @@
-var $       = require('jquery'),
-    Home    = require('./home');
+import $ from 'jquery';
+import Home from './home';
+import './index.css';
 
-require('./index.css');
 
 $(document).ready(() => {
     new Home().render();

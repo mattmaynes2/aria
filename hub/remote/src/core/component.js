@@ -1,42 +1,36 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
-var Component = (function () {
-
-    function Component () {
-        this._state = {};
+class Component {
+    constructor (state) {
+        this._state = state || {};
         this._$el = $('<div>');
     }
-
-    Component.prototype.update = function (s) {
-        this.state(s);
+    update (state) {
+        this.state(state);
         return this;
-    };
-
-    Component.prototype.render = function () { return this; };
-
-
-    Component.prototype.remove = function () {
+    }
+    render () {
+        return this;
+    }
+    remove () {
         this._$el.remove();
         return this;
-    };
-
-    Component.prototype.$el = function (e) {
+    }
+    $el (el) {
         if (arguments.length === 0) {
             return this._$el;
         }
-        this._$el = e;
+        this._$el = el;
         return this;
-    };
-
-    Component.prototype.state = function (s) {
+    }
+    state (state) {
         if (arguments.length === 0) {
             return this._state;
         }
-        this._state = s;
+        this._state = state;
         return this;
-    };
+    }
+}
 
-    return Component;
-} ());
+export default Component;
 
-module.exports = Component;
