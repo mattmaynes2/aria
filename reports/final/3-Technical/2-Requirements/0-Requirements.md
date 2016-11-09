@@ -1,8 +1,10 @@
+## Requirements {#section-3-2}
+
 ### Introduction
 
 #### Introduction {-}
 
-The Autonomous Real-Time Interactive Arcitecture (ARIA) will allow a homeowner to set up a collection
+The Autonomous Real-Time Interactive Architecture (ARIA) will allow a homeowner to set up a collection
 of devices in their home which will automatically control their environment and automate common tasks.
 Task automation in the system will not require any user configuration, instead tasks will be automated
 based on the user's interaction with devices in the system.
@@ -93,9 +95,7 @@ creating custom devices for the system - May also be a base user
 
 ### System Features
 
-![](./uml/SystemUseCase.png)
-
------------------------------
+![][system-use-case]
 
 #### Install Hub {-}
 
@@ -215,7 +215,7 @@ Once the user is finished with the remote interface, they can log out or simply 
 application. For security reasons, if a user is inactive in their session for more than a set amount
 of time then they will be logged out automatically.
 
-![](./uml/RemoteUseCase.png)
+![][remote-use-case]
 
 #### Hardware Interfaces {-}
 
@@ -233,7 +233,6 @@ standby. If there is an error in the device, the LED can be used to indicate the
 There will also be two external ports on the device. One will be used to power the device from a
 standard home wall outlet. The other can be a standard Ethernet port and be used to connect to the
 network.
-
 
 ### Other Nonfunctional Requirements
 

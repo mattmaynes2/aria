@@ -20,24 +20,26 @@ HELP='
 
 COVER=""
 OUTPUT="Output.pdf"
-TOC=""
+TOC=()
+TOC_DEPTH="3"
 NUM=""
-TOC_DEPTH="2"
 TARGET="./"
 STYLE="$SCRIPT_PATH/./styles/style.css"
+HTML_TEMPLATE="$SCRIPT_PATH/./templates/default.html"
 
 function info () {
     echo -e "$NAME $VERSION $HELP"
 }
 
 function concat () {
+    rm -f "$2"
     for file in $1; do
         (cat "$file"; echo) >> "$2"
     done
 }
 
 function tohtml () {
-    FLAGS="$TOC $NUM --toc-depth $TOC_DEPTH -c $STYLE -t html -f markdown_phpextra"
+    FLAGS="-s --toc-depth $TOC_DEPTH $NUM -c $STYLE -t html -f markdown_phpextra+backtick_code_blocks"
 
     if [ -n "$COVER" ]; then
         FLAGS="$FLAGS -B $COVER"
@@ -47,11 +49,11 @@ function tohtml () {
     # the $FLAG variable to be split. This is a shellcheck violation and needs to be
     # disabled here.
     # shellcheck disable=SC2086
-    pandoc $FLAGS "$1" > "$2"
+    pandoc --template="$HTML_TEMPLATE" "${TOC[@]}" $FLAGS $VARIABLE "$1" > "$2"
 }
 
 function topdf () {
-    wkhtmltopdf -s Letter "$1" "$2"
+    wkhtmltopdf --footer-right '[sitepage]' --footer-font-size 8 --footer-font-name 'Helvetica' -s Letter cover "$1" "$2" "$3"
 }
 
 IFS=' ' read -r -a args <<< "$@"
@@ -83,13 +85,13 @@ do
             args=("${args[@]:1}")
             ;;
         --toc)
-            TOC="--toc"
+            TOC=(--toc -V toctitle:'Table of Contents')
             ;;
         --toc-depth)
             TOC_DEPTH="${args[0]}"
             args=("${args[@]:1}")
             ;;
-        --auto-number)
+       --auto-number)
             NUM="--number-sections"
             ;;
         -* | --*)
@@ -104,5 +106,20 @@ do
 done
 
 # Run Conversion
-cd "$TARGET" && concat "$(find . -name '*.md')" .tmp.markdown && tohtml .tmp.markdown .tmp.html && topdf .tmp.html "$OUTPUT" && rm  .tmp.markdown .tmp.html
+cd "$TARGET" || exit 1
+BEFORE="$(find . -name '*.before.md')"
+BODY="$(find . -name '*.md' -not -name '*.before.md'|sort)"
+
+concat "$BEFORE" .tmp.before.markdown
+concat "$BODY" .tmp.markdown
+
+tohtml .tmp.markdown .tmp.html
+
+TOC=()
+tohtml .tmp.before.markdown .tmp.before.html
+
+topdf .tmp.before.html .tmp.html "$OUTPUT"
+
+rm .tmp*
+
 

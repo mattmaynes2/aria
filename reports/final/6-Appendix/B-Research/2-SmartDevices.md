@@ -1,4 +1,4 @@
-### B-2 Smart Devices {-}
+### B-2 Smart Devices {- #B-2}
 
 #### Background {-}
 
@@ -12,7 +12,7 @@ This section examines several commercial smart device products which are availab
 The goal of this research is to determine what types of devices are commercially available, and 
 to compare alternative products which have similar functionality. By purchasing off-the-shelf smart
 devices, the development time for the project can be focused on building the machine learning 
-featureswhich differentiate our product from many existing automation systems. An awareness of 
+features, which differentiate our product from many existing automation systems. An awareness of 
 existing smart devices will also allow us to select common technologies to support in the system. 
 Support for commercial smart devices makes our system more appealing to the end user because they
 are not limited to only using devices we create.
@@ -102,17 +102,6 @@ All WeMo Devices
 | On/Off | On/Off  | ouimeaux library  | WiFi     | Local Only          |
 |        |         |                   | UPnP     | We need to Write it |
 
-##### References {-}
-
-<cite>
-[1] B. International, "WeMo," WeMo, 2014. [Online]. Available:
-<http://www.belkin.com/whatiswemo/>. Accessed: Oct. 6, 2016.
-</cite>
-
-<cite>
-[2] "Ouimeaux 0.8: Python package index,". [Online]. Available:
-<https://pypi.python.org/pypi/ouimeaux>. Accessed: Oct. 6, 2016.
-</cite>
 
 #### Nest Thermostat {-}
 
@@ -139,18 +128,6 @@ the thermostat and we are trying to avoid this and communicate locally with our 
 these resons it seems like the nest thermostat is not a great fit for our system and we should
 not invest time into integrating with it.
 
-##### References {-}
-
-<cite>
-[1] "Meet the nest learning thermostat," Nest Labs, 2016. [Online]. Available: 
-<https://nest.com/ca/thermostat/meet-nest-thermostat/>. Accessed: Oct. 24, 2016.
-</cite>
-
-<cite>
-[2] [Online]. Available:
-<https://developers.nest.com/documentation/cloud/data-structure-and-access>.
-Accessed: Oct. 24, 2016.
-</cite>
 
 #### Honeywell VisionPro Thermostat {-}
 
@@ -175,13 +152,6 @@ There is no API provided by Honeywell. The thermostat is controllable using the 
 This is a simple thermostat that will be easy to control using Z-Wave and as it doesn't have any
 learning on it, so there won't be any conflicts with our system.
 
-##### References {-}
-
-<cite>
-[1] Honeywell. [Online]. Available:
-<http://library.ademconet.com/MWT/fs2/5800ZBRIDGE/ZWSTAT-Dealer-Data-Sheet.pdf>.
-Accessed: Oct. 26, 2016.
-</cite>
 
 #### Wireless Speakers {-}
 
@@ -299,17 +269,6 @@ are common to all Philips Hue devics.
 | ------             | -------             |
 |                    | button event        |
 
-##### References {-}
-
-<cite>
-[1]	"Philips hue API," 2014. [Online].
- Available: http://www.developers.meethue.com/philips-hue-api. Accessed: Oct. 29, 2016.
-</cite>
-
-<cite>
-[2]	P. L. B, "Philips hue,". [Online]. 
-Available: http://www2.meethue.com/en-ca/. Accessed: Oct. 29, 2016.
-</cite>
 
 #### Osram LIGHTIFY {-}
 
@@ -365,18 +324,13 @@ document any local-only API for controlling devices using a gateway
 | saturation                | saturation         |                      |          |                                    |
 | transition time (effects) | transition time    |                      |          |                                    |
 
-##### References {-}
-
-<cite>
-[1]	"OSRAM rest API," 2015. [Online]. Available: https://us.lightify-api.org. Accessed: Oct. 29, 2016.
-</cite>
 
 
 #### Aeotec Light Bulbs {-}
 
 ##### Description {-}
 
-Aeotec sells light bulbswhich are compatible with the Z-Wave protocol. Aeotec products are 
+Aeotec sells light bulbs which are compatible with the Z-Wave protocol. Aeotec products are 
 compatible with most Z-Wave hubs. Aeotec does not provide a proprietary API for their products.
 
 ##### Available Devices {-}
@@ -459,23 +413,23 @@ important to us as well. It lets us not be responsible for implementing the Z-Wa
 while also giving us the freedom to use the information received by the devices in a unique way.
 Specifically, this will provide us with data for the machine learning algorithm.
 
-##### References {-}
 
-<cite>
-[1]	"Z-Stick 2E manual," Aeotec, Aeon Labs, 2012. [Online]. Available:
-<http://aeotec.com/Z-Wave-usb-stick/913-z-stick-manual-instructions.html>. Accessed: Oct. 13, 2016.
-</cite>
+#### Passive Infrared Sensor {-}
 
-<cite>
-[2]	"Home automation products," in Aeotec, Aeon Labs, 2006. [Online]. Available:
-<http://aeotec.com/homeautomation>. Accessed: Oct. 13, 2016.
-</cite>
+##### Description {-}
+A passive infrared sensor (PIR) is a device that can be used to detect if there are people in a room or 
+not. They are available to buy Z-Wave ready, and can be used as a motion sensor in a home environment.
 
-<cite>
-[3]	"OpenZWave library," in OpenZWave. [Online]. Available:
-<http://www.openzwave.com/dev/index.html>. Accessed: Oct. 13, 2016.
-</cite>
+##### Technical Overview {-}
+A PIR creates a binary output based on if it the sensor is being triggered or not. This makes it 
+useful as a motion detector, as well as being able to detect if people remain present in a room.
+It is also feasible easy to develop our own PIR sensors, which is discussed in the Custom Devices 
+section of the Appendix.
 
+#### Evaluation {-}
+These devices will be useful in our system whenever it is necessary to detect the presence of a 
+person in an area. There is a large selection of PIRs available to buy that are Z-Wave compatible,
+and it is also an option to construct our own. 
 
 #### Spruce Irrigation {-}
 
@@ -507,18 +461,6 @@ Spruce system would be to implement the SmartThings protocol or to attach an ada
 existing SmartThings Hub. This is likely onside of the scope of this project but could be
 pursued if there was interest.
 
-##### References {-}
-
-<cite>
-[1] "Spruce - how it works,". [Online]. Available: <http://spruceirrigation.com/How>.
-Accessed: Oct. 13, 2016.
-</cite>
-
-<cite>
-[2] "Spruce irrigation controller & sensor," SmartThings Support. [Online]. Available:
-<https://support.smartthings.com/hc/en-us/articles/208053773-Spruce-Irrigation-Controller-Sensor>.
-Accessed: Oct. 13, 2016.
-</cite>
 
 #### OSO PlantLink {-}
 
@@ -549,12 +491,7 @@ able to integrate with this system we would need to interface through one of the
 as an intermediary. The PlantLink system may be outside of the scope of this system unless
 there we plan on integrating with another smart system
 
-##### References {-}
 
-<cite>
-[1] "PlantLink," PlantLink, 2016. [Online]. Available: <https://myplantlink.com/in-action>.
-Accessed: Oct. 13, 2016.
-</cite>
 
 #### Summary of Evaluation {-}
 
@@ -572,10 +509,4 @@ that has no special capabilities other than being Z-Wave ready are ideal, becaus
 to use them with no unexpected behaviours. The Honeywell VisionPro Thermostat and devices from 
 Aeon Labs are examples of this.
 
-##### Resources {-}
 
-<cite>
-[1] R. Crist, "Best smart home devices of 2016," CNET, 2016. [Online]. Available:
-<https://www.cnet.com/topics/smart-home/best-smart-home-devices/>.
-Accessed: Oct. 6, 2016. 66
-</cite>

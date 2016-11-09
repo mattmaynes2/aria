@@ -128,7 +128,7 @@ the major section is ignored.
 Appendix headers should be directly linkable and identified by the appendix section and subsection
 number. Adding a direct link can be done by placing `{#A-1}` on the header line. For example, the
 header in section ### B-1 Automation Systems would be followed by `{#B-1}`. The final result would
-appear as: `### B-1 Automation Systems {#B-1} {-}.`
+appear as: `### B-1 Automation Systems {- #B-1}.`
 
 ### Tables Headers
 

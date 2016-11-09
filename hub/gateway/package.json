@@ -23,8 +23,8 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
     "build": "./node_modules/webpack/bin/webpack.js --executable && chmod +x ./bin/*",
-    "start": "forever start ./src/server.js",
-    "stop" : "forever stop ./src/server.js"
+    "start": "forever start ./bin/gateway",
+    "stop" : "forever stop ./bin/gateway"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
