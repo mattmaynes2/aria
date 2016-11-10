@@ -10,5 +10,14 @@ class Device:
             raise TypeError("address needs to be of type bytes")
 
     def __str__(self):
-        return 'Device [type: '+str(self.type)+', name: '+self.name+', address: '
-        +str(uuid.UUID(bytes=self.address))+']'
+        return 'Device [type: '+str(self.type)+', name: '+self.name+', address: '+str(uuid.UUID(bytes=self.address))+']'
+    
+    @staticmethod
+    def encode(obj):
+        if( isinstance(obj,Device)):
+            return obj.__dict__
+        if( isinstance(obj,bytes)):
+            return str(uuid.UUID(bytes=obj))
+        if( isinstance(obj,uuid.UUID)):
+            return str(obj)
+        raise TypeError("Unserializable object {} of type {}".format(obj, type(obj)))

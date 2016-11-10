@@ -20,8 +20,9 @@ class Hub:
         if action == 'status':
             return self.status()
         if action == 'list_devices':
-            log.debug('sending device list '+json.dumps(self._devices,default=encode_device))
-            return json.dumps(self._devices,default=encode_device, sort_keys=True)
+            data=json.dumps(self._devices,default=Device.encode, sort_keys=True)
+            log.debug('sending device list '+ data)
+            return data
 
     def status (self):
         return {
@@ -34,12 +35,4 @@ class Hub:
         log.debug('adding device '+str(device))
         self._devices.append(device)
 
-def encode_device(obj):
-    if( isinstance(obj,Device)):
-        return obj.__dict__
-    if( isinstance(obj,bytes)):
-        return str(uuid.UUID(bytes=obj))
-    if( isinstance(obj,uuid.UUID)):
-        return str(obj)
-    raise TypeError("Unserializable object {} of type {}".format(obj, type(obj)))
 
