@@ -1,5 +1,6 @@
 import json
 import logging
+import uuid
 from .hub_mode  import HubMode
 from device import Device
 
@@ -20,7 +21,7 @@ class Hub:
             return self.status()
         if action == 'list_devices':
             log.debug('sending device list '+json.dumps(self._devices,default=encode_device))
-            return json.dumps(self._devices,default=encode_device)
+            return json.dumps(self._devices,default=encode_device, sort_keys=True)
 
     def status (self):
         return {
@@ -37,6 +38,8 @@ def encode_device(obj):
     if( isinstance(obj,Device)):
         return obj.__dict__
     if( isinstance(obj,bytes)):
+        return str(uuid.UUID(bytes=obj))
+    if( isinstance(obj,uuid.UUID)):
         return str(obj)
     raise TypeError("Unserializable object {} of type {}".format(obj, type(obj)))
 
