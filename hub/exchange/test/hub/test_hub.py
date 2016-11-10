@@ -21,5 +21,5 @@ class HubTest (TestCase):
         id=uuid.uuid4()        
         dev=Device(type_='wemo', name= 'Switch', address=id)
         self.hub.addDevice(dev)
-        expected='{ ["address":"'+id+',"name":"Switch", "type":"wemo"]}'
+        expected='[{"address": "'+str(id)+'", "name": "Switch", "type": "wemo"}]'
         self.assertEqual(self.hub.command('list_devices'), expected)
