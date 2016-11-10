@@ -1,7 +1,12 @@
 from unittest   import TestCase
+from unittest import mock
+from unittest.mock import Mock
+from unittest.mock import patch
 
 from device     import Device
 from adapter    import AriaAdapter, Message, Delegate
+
+# Dependencies to mock: Thread, Socket
 
 class AriaAdapterTest (TestCase):
 
@@ -11,15 +16,16 @@ class AriaAdapterTest (TestCase):
     def tearDown (self):
         self.adapter.teardown()
 
-    def test_send (self):
+    ## Mocks socket functions: socket, socket.sendto, socket.close
+    @mock.patch('socket.socket')
+    def test_send (self, mock_sockets):
         data    = { 'action' : 'status' }
-        sender  = Device('')
-        mock    = Delegate()
+        sender = Device('');
+        mockSocket = Mock()
+        mock_sockets.return_value = mockSocket
 
-        self.adapter.add_delegate(mock)
         message = Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS)
-        mock.received = lambda msg: self.assertEqual(msg.data, data)
-
         self.adapter.send(message, ('localhost', self.adapter.port))
-        self.adapter.start()
-        self.adapter.teardown()
+        mockSocket.sendto.assert_called_with(message.encode(), ('localhost', self.adapter.port))
+        mockSocket.close.assert_called_with()
+

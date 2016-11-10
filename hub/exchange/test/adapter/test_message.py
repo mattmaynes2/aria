@@ -24,8 +24,9 @@ class MessageTest (TestCase):
         length      = struct.pack('I', len(payload))
         sender      = Message.DEFAULT_ADDRESS
         receiver    = Message.DEFAULT_ADDRESS
-
+        
         expected = type_ + length + sender + receiver + payload
+        print("EXPETED")
         self.assertEqual(m.encode(), expected)
 
     def test_decode (self):
