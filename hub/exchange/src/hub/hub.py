@@ -38,7 +38,7 @@ def encode_device(obj):
     if( isinstance(obj,Device)):
         return obj.__dict__
     if( isinstance(obj,bytes)):
-        return str(obj)
+        return str(uuid.UUID(bytes=obj))
     if( isinstance(obj,uuid.UUID)):
         return str(obj)
     raise TypeError("Unserializable object {} of type {}".format(obj, type(obj)))
