@@ -20,9 +20,7 @@ class Hub:
         if action == 'status':
             return self.status()
         if action == 'list_devices':
-            data=json.dumps(self._devices,default=Device.encode, sort_keys=True)
-            log.debug('sending device list '+ data)
-            return data
+            return self.getDevicesJson()
 
     def status (self):
         return {
@@ -35,4 +33,8 @@ class Hub:
         log.debug('adding device '+str(device))
         self._devices.append(device)
 
+    def getDevicesJson(self):
+        data=json.dumps(self._devices,default=Device.encode, sort_keys=True)
+        log.debug('sending device list '+ data)
+        return data
 
