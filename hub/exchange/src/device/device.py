@@ -6,7 +6,7 @@ class Device:
         self.type    = type_
         self.name    = name
         self.address = address if address else uuid.uuid4().bytes
-        if( not isinstance(address,bytes)):
+        if( not isinstance(self.address,bytes)):
             raise TypeError("address needs to be of type bytes")
 
     def __str__(self):
