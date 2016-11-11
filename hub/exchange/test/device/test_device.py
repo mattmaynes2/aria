@@ -15,4 +15,4 @@ class DeviceTest(TestCase):
     
     def test_encode(self):
         expected='{"address": "'+str(self.id)+'", "name": "Switch", "type": "wemo"}'
-        self.assertEqual(self.dev.toJson(), expected)
+        self.assertEqual(self.dev.to_json(), expected)
