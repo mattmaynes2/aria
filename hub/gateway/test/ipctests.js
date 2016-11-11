@@ -1,4 +1,4 @@
-var packets = require('../src/ccp');
+var packets = require('../src/ipc');
 var expect  = require('chai').expect;
 var uuid    = require('node-uuid');
 
