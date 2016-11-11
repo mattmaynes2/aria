@@ -17,7 +17,7 @@ class Device:
 
     
     def toJson(self):
-        return json.dumps(self,default=json_encode,sort_keys=True)
+        return json.dumps(self,default=Device.json_encode,sort_keys=True)
     
     @staticmethod
     def json_encode(obj):

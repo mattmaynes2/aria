@@ -34,7 +34,7 @@ class Hub:
         self._devices.append(device)
 
     def getDevicesJson(self):
-        data=json.dumps(self._devices,default=Device.encode, sort_keys=True)
+        data=json.dumps(self._devices,default=Device.json_encode, sort_keys=True)
         log.debug('sending device list '+ data)
         return data
 
