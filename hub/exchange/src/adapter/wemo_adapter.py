@@ -1,9 +1,11 @@
 import uuid
 import logging
 from adapter import Adapter
-from netdisco.discovery import NetworkDiscovery
+from netdisco.ssdp import scan,ST_ROOTDEVICE
 from device import Device, DeviceType
 from adapter import Message
+from pywemo.discovery import device_from_description
+from pywemo.subscribe import SubscriptionRegistry
 import threading
 import sys
 
@@ -12,68 +14,83 @@ log=logging.getLogger(__name__)
 
 class WemoAdapter (Adapter):
 
-    OFF = 0
-    ON  = 1
-
     def __init__(self):
         super().__init__()
         self._deviceUids={}
-        self._deviceNames={}
-        self.netdisco=NetworkDiscovery()
+        self._deviceMac={}
+        self._registry=SubscriptionRegistry()
         # setup call back when device is discovered
         # TODO move to Adapter
         self.shutdownCondition = threading.Condition()
 
     def setup(self):
         super().setup()
+        self._registry.start()
 
 
     def discover(self):
-        self.netdisco.scan()
-        self._discovered()
+        self._discovered(scan(ST_ROOTDEVICE))
         return True
 
-    def _discovered(self):
-        for devtype in self.netdisco.discover():
-            devInfo=self.netdisco.get_info(devtype)
-            log.debug(devInfo)
-            for dev in devInfo:
+    def _discovered(self,devices):
+        for discovered in devices:
+            dev=device_from_description(discovered.location,None)
+            # add new device if we haven't discovered it before
+            deviceMac = dev.basicevent.GetMacAddr()['MacAddr']
+            if( not deviceMac in self._deviceMac):
+                self._registry.register(dev)
                 uid = uuid.uuid4().bytes
-                # TODO change to be upnp or devtype
-                device=Device('wemo',dev[0],uid)
+                # need to track associate mac with uid and uid with device 
+                self._deviceMac[deviceMac]=uid
+                self._deviceUids[uid]=dev
+                # TODO change to be upnp or devicetype
+                device=Device('wemo',dev.name,uid)
+                self._registry.on(dev,None,self.subscribe)
                 log.debug('dicovered '+ str(device))
                 self.notify('discovered',device)
 
     def send (self, message):
         log.debug('looking for '+str(message.receiver))
-        deviceName = self._deviceNames[message.receiver]
-        log.debug('found device with name '+deviceName)
+        device = self._deviceUids[message.receiver]
+        log.debug('found device with name '+device.name)
+        # TODO need to add mapping for label:value pairs
+        if(message.type == Message.Request):
+            return self.handleRequest(message,device)
+        log.warn("Don't know what to do with "+message)
+        return False
 
+    def handleRequest(self,message,device):
+        if('action' in message.data):
+            action=message.data['action']
+            # TODO need a list of possible actions
+            if('state' == action and 'value' in message.data):
+                device.set_state(message.data['value'])
+                return True
+            elif('status' == action):
+                self.notify('received',Message(
+                    type_ = Message.Ack, 
+                    data = { 'state' : device.get_state() }, 
+                    sender = message.receiver))
+                return True
+        log.warn("Don't know what to do with "+message.data)
+        return False
 
-        response = device.get_state()
-        log.debug('got device status '+str(response) )
-        if device.get_state == WemoAdapter.OFF:
-            response = 'OFF'
-        elif device.get_state == WemoAdapter.ON:
-            response == 'ON'
-        else:
-            response == 'ERROR'
-            self.notify('received',Message(type_ = 3, data = { 'status' : response }, sender = message.receiver, receiver=message.sender))
-
-
-    def receive(self,sender,**kwargs):
-        log.debug(sender.name+' has changed states new state is  :'+kwargs['state'])
-        return True
-
-    def subscibe(self, sender, **kwargs):
-        log.debug('subscription received ')
-        log.debug(sender.name)
-        log.debug(kwargs)
-
+    def receive (self):
+        return None
     def run(self):
         self.setup()
 
 
     def teardown(self):
-        self.netdisco.stop()
+        self._registry.stop()
         return True
+
+    def subscribe(self,device,value):
+        log.debug('got device status '+str(value) )
+        mac=device.basicevent.GetMacAddr()['MacAddr']
+        uid=self._deviceMac[mac]
+        self.notify('received',Message(
+            type_ = Message.Event, 
+            data = { 'state' : value }, 
+            sender = uid)
+            )
