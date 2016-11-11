@@ -6,6 +6,14 @@ int udp_bind (int addr, int port) {
 	int sock = 0;
 	sockaddr_in address;
 	socklen_t len;
+	unsigned long aucDHCP       = 14400;
+  	unsigned long aucARP        = 3600;
+  	unsigned long aucKeepalive  = 30;
+  	unsigned long aucInactivity = 0;
+
+	if (netapp_timeout_values(&aucDHCP, &aucARP, &aucKeepalive, &aucInactivity) != 0)  {
+		log_warn("Error setting the socket timeout limit. Socket will use default timeout of 60 seconds");
+	}
 
 	log_debug("Creating datagram socket");
 	sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
@@ -19,6 +27,10 @@ int udp_bind (int addr, int port) {
 	address.sin_port = htons(port);
 	address.sin_addr.s_addr = 0;  // 0 => auto use own ip address
 	len = sizeof(address);
+	
+
+  	
+	
 	if (bind(sock, (sockaddr*) &address, sizeof(address)) < 0) {
 		log_debug("bind() call failed");
 		return -1;
@@ -26,6 +38,7 @@ int udp_bind (int addr, int port) {
     log_debug("Bound socket to port %d", port);
 	return sock;
 }
+
 
 int udp_has_data (int sock) {
 	timeval timeout;
