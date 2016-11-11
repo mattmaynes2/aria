@@ -9,7 +9,6 @@ from pywemo.subscribe import SubscriptionRegistry
 import threading
 import sys
 
-logging.basicConfig(level=logging.DEBUG)
 log=logging.getLogger(__name__)
 
 class WemoAdapter (Adapter):
@@ -46,7 +45,7 @@ class WemoAdapter (Adapter):
                 # TODO change to be upnp or devicetype
                 device=Device('wemo',dev.name,uid)
                 self._registry.on(dev,None,self.subscribe)
-                log.debug('dicovered '+ str(device))
+                log.debug('discovered '+ str(device))
                 self.notify('discovered',device)
 
     def send (self, message):
