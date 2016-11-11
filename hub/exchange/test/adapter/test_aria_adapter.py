@@ -60,8 +60,8 @@ class AriaAdapterTest (TestCase):
         mockSocket.recvfrom.return_value = (responseData, responseHost)
 
         adapter.receive()
-        mockDelegate.discovered.assert_called()
-        mockDelegate.received.assert_called()
+        mockDelegate.discovered.assert_called_with(mock.ANY)
+        mockDelegate.received.assert_called_with(mock.ANY)
 
     @mock.patch('socket.socket')
     def test_setup(self, mock_sockets):
@@ -77,4 +77,4 @@ class AriaAdapterTest (TestCase):
         mock_sockets.return_value = mockSocket
         adapter = AriaAdapter()
         adapter.teardown()
-        mockSocket.close.assert_called()
+        mockSocket.close.assert_called_with()
