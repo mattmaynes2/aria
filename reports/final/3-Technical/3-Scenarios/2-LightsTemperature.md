@@ -143,8 +143,6 @@ LightBedroom to turn off at 7:40:00 AM and LightKitchen to turn on at 7:38:20 AM
 The user makes and eats breakfast and leaves at 7:48:00 AM. All motion sensors stop logging
 motion. The hub turns off LightKitchen and sets the SmartThermostat to 20°C at 7:50:00 AM.
 
-![][scenario-light-temperature-sequence]
-
 The system will continue to pick up patterns as it learns. The system may begin to relate days
 of the week to certain events and rely less on the motion sensors. If the user was to consistently
 wake up at 7:00 AM and turn the lights on every Monday then the system may always turn the lights
