@@ -1,5 +1,9 @@
 from .cli import CLI
 from adapter import Message
+import logging
+from uuid import UUID
+
+log =logging.getLogger(__name__)
 
 class Exchange ():
 
@@ -11,28 +15,28 @@ class Exchange ():
 
     def start (self):
         for _, adapter in self._adapters.items():
-            self._cli.log('Starting adapter: ' + str(adapter), CLI.LEVEL_DEBUG)
+            log.debug('Starting adapter: ' + str(adapter))
             adapter.start()
 
     def register (self, device_type, adapter):
-        self._cli.log('Registered adapter: ' + str(adapter), CLI.LEVEL_INFO)
+        log.info('Registered adapter: ' + str(adapter))
         adapter.add_delegate(self)
         self._adapters[device_type] = adapter
 
     def send (self, device, message):
         # TODO Log sending a message here
         if (device.type in self._adapters):
-            self._cli.log('Sending ' + str(message) + ' to device ' + str(device), CLI.LEVEL_INFO)
+            log.info('Sending ' + str(message) + ' to device ' + str(device))
             self._adapters[device.type].send(message)
 
     def teardown (self):
         for _, adapter in self._adapters.items():
-            self._cli.log('Tearing down adapter: ' + str(adapter), CLI.LEVEL_DEBUG)
+            log.debug('Tearing down adapter: ' + str(adapter))
             adapter.teardown()
 
     def received (self, message):
         # TODO Add thread synchronization
-        self._cli.log('Received ' + str(message) + ' from ' + str(message.sender), CLI.LEVEL_INFO)
+        log.info('Received ' + str(message))
         if( 'action' in message.data and message.data['action'] == 'discover'):
             self.send(self._devices[message.sender],Message(
                 type_=Message.Ack,
@@ -40,7 +44,7 @@ class Exchange ():
                 receiver=message.sender))
             self.discoverDevices()
         elif (message.receiver in self._devices):
-            self._cli.log('Routing message to ' + str(message.receiver), CLI.LEVEL_DEBUG)
+            log.debug('Routing message to ' + str(UUID(bytes=message.receiver)))
             self.send(self._devices[message.receiver], message)
 
     def discoverDevices(self):
@@ -49,7 +53,7 @@ class Exchange ():
 
     def discovered (self, device):
         # TODO Add thread synchronization
-        self._cli.log('Discovered device: ' + str(device.address), CLI.LEVEL_INFO)
+        log.info('Discovered device: ' + str(device))
         self._devices[device.address] = device
         # add device to hub
         self._hub.addDevice(device) 
