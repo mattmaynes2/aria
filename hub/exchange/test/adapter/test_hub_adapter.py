@@ -17,16 +17,23 @@ class HubAdapterTest (TestCase):
         sender = Device('')
         mockDelegate = Mock()
 
-        callBackMsg = None
-        def callBack(msg):
-            callBackMsg = True
-        mockDelegate.received.side_effect = callBack
-
         adapter.add_delegate(mockDelegate)
         mockHub.command.return_value = "testValue"
 
         message = Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS)
 
         adapter.send(message)
-        mockHub.command.assert_called_with(mock.ANY)
-        mockDelegate.received.assert_called_with(mock.ANY)
+        self.assertEqual(True, mockDelegate.received.called)
+
+    def test_send_with_action(self):
+        mockHub = Mock()
+        adapter = HubAdapter(mockHub)
+        data    = { }
+        sender = Device('')
+        mockDelegate = Mock()
+
+        adapter.add_delegate(mockDelegate)
+        message = Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS)
+
+        adapter.send(message)
+        self.assertEqual(False, mockDelegate.received.called)

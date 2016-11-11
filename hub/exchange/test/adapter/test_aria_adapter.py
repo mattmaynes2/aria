@@ -60,9 +60,9 @@ class AriaAdapterTest (TestCase):
         mockSocket.recvfrom.return_value = (responseData, responseHost)
 
         adapter.receive()
-        mockDelegate.discovered.assert_called_with(mock.ANY)
-        mockDelegate.received.assert_called_with(mock.ANY)
-
+        self.assertEqual(True, mockDelegate.discovered.called)
+        self.assertEqual(True, mockDelegate.received.called)
+        
     @mock.patch('socket.socket')
     def test_setup(self, mock_sockets):
         mockSocket = Mock()
