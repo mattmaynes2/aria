@@ -1,5 +1,6 @@
 import json
 import struct
+from uuid import UUID
 
 class Message:
     Error               = 0
@@ -52,4 +53,5 @@ class Message:
         return message
 
     def __str__(self):
-        return 'Message [ type:'+str(self.type)+', data:'+str(self.data)+', sender:'+str(self.sender)+', reciever: '+str(self.receiver)+']'
+        return 'Message [ type:'+str(self.type)+', data:'+str(self.data)+', sender:'+\
+        str(UUID(bytes=self.sender))+ ', reciever: '+str(UUID(bytes=self.receiver))+']'

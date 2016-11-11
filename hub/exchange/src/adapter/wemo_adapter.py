@@ -34,20 +34,24 @@ class WemoAdapter (Adapter):
     def _discovered(self,devices):
         for discovered in devices:
             dev=device_from_description(discovered.location,None)
-            # add new device if we haven't discovered it before
-            deviceMac = dev.basicevent.GetMacAddr()['MacAddr']
-            if( not deviceMac in self._deviceMac):
-                self._registry.register(dev)
-                uid = uuid.uuid4().bytes
-                # need to track associate mac with uid and uid with device 
-                self._deviceMac[deviceMac]=uid
-                self._deviceUids[uid]=dev
-                # TODO change to be upnp or devicetype
-                device=Device('wemo',dev.name,uid)
-                self._registry.on(dev,None,self.subscribe)
-                log.debug('discovered '+ str(device))
-                self.notify('discovered',device)
+            if(dev):
+                self.processWeMo(dev)
 
+    def processWeMo(self,dev):
+        # add new device if we haven't discovered it before
+        deviceMac = dev.basicevent.GetMacAddr()['MacAddr']
+        if( not deviceMac in self._deviceMac):
+            self._registry.register(dev)
+            uid = uuid.uuid4().bytes
+            # need to track associate mac with uid and uid with device 
+            self._deviceMac[deviceMac]=uid
+            self._deviceUids[uid]=dev
+            # TODO change to be upnp or devicetype
+            device=Device('wemo',dev.name,uid)
+            self._registry.on(dev,None,self.subscribe)
+            log.debug('discovered '+ str(device))
+            self.notify('discovered',device) 
+            
     def send (self, message):
         log.debug('looking for '+str(message.receiver))
         device = self._deviceUids[message.receiver]
