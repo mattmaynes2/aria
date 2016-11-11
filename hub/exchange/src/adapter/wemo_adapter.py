@@ -29,8 +29,7 @@ class WemoAdapter (Adapter):
 
 
     def discover(self):
-        devices=scan(ST_ROOTDEVICE)
-        self._discovered(devices)
+        self._discovered(scan(ST_ROOTDEVICE))
         return True
 
     def _discovered(self,devices):
@@ -56,15 +55,28 @@ class WemoAdapter (Adapter):
         log.debug('found device with name '+device.name)
         # TODO need to add mapping for label:value pairs
         if(message.type == Message.Request):
-            if('action' in message.data):
-                action=message.data['action']
-                # TODO need a list of possible actions
-                if('state' == action and 'value' in message.data):
-                    device.set_state(message.data['value'])
-                    return True
+            return self.handleRequest(message,device)
         log.warn("Don't know what to do with "+message)
         return False
 
+    def handleRequest(self,message,device):
+        if('action' in message.data):
+            action=message.data['action']
+            # TODO need a list of possible actions
+            if('state' == action and 'value' in message.data):
+                device.set_state(message.data['value'])
+                return True
+            elif('status' == action):
+                self.notify('received',Message(
+                    type_ = Message.Ack, 
+                    data = { 'state' : device.get_state() }, 
+                    sender = message.receiver))
+                return True
+        log.warn("Don't know what to do with "+message.data)
+        return False
+
+    def receive (self):
+        return None
     def run(self):
         self.setup()
 
@@ -78,7 +90,7 @@ class WemoAdapter (Adapter):
         mac=device.basicevent.GetMacAddr()['MacAddr']
         uid=self._deviceMac[mac]
         self.notify('received',Message(
-            type_ = 3, 
+            type_ = Message.Event, 
             data = { 'state' : value }, 
             sender = uid)
             )
