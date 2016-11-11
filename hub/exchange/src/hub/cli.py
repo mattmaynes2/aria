@@ -2,7 +2,6 @@ import logging
 from threading import Thread
 
 logger=logging.getLogger(__name__)
-formatter=logging.Formatter('%(asctime)s %(threadName)s %(name)-12s %(levelname)-8s %(message)s')
 
 class CLI (Thread):
     LEVEL_EMERGENCY = logging.FATAL
@@ -18,24 +17,10 @@ class CLI (Thread):
         'exit'      : 'exit the main server'
     }
 
-    def __init__ (self, listener, level = LEVEL_WARN, filename=None):
+    def __init__ (self, listener):
         super().__init__()
-        logger.setLevel(level)
-        ch = logging.StreamHandler()
-        print('setting level to '+str(level))
-        ch.setLevel(level)
-        ch.setFormatter(formatter)
-        # add to root logger
-        logging.getLogger('').addHandler(ch)
         self.listener = listener
         self.running  = True
-        
-        if(filename):
-            fh=logging.FileHandler(filename)
-            # log everything to file
-            fh.setLevel(logging.DEBUG)
-            fh.setFormatter(formatter)
-            logging.getLogger('').addHandler(fh)
 
     def command (self):
         cmd = input(CLI.PROMPT)
