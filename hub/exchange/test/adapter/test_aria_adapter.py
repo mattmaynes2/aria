@@ -44,6 +44,26 @@ class AriaAdapterTest (TestCase):
         mockDelegate.received.assert_called_with(Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS))
 
     @mock.patch('socket.socket')
+    def test_receive_discover(self, mock_sockets):
+        mockSocket = Mock()
+        mock_sockets.return_value = mockSocket
+        mockDelegate = Mock()
+
+        adapter = AriaAdapter()
+
+        adapter.add_delegate(mockDelegate)
+
+        data    = {}
+        sender = Device(''); 
+        responseData = Message(Message.Discover, data, sender.address, Message.DEFAULT_ADDRESS).encode()
+        responseHost = ("127.0.0.1", "7000")
+        mockSocket.recvfrom.return_value = (responseData, responseHost)
+
+        adapter.receive()
+        mockDelegate.discovered.assert_called()
+        mockDelegate.received.assert_called()
+
+    @mock.patch('socket.socket')
     def test_setup(self, mock_sockets):
         mockSocket = Mock()
         mock_sockets.return_value = mockSocket
