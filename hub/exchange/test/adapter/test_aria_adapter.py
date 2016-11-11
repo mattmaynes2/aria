@@ -1,25 +1,84 @@
 from unittest   import TestCase
+from unittest import mock
+from unittest.mock import Mock
+from unittest.mock import patch
 
 from device     import Device
 from adapter    import AriaAdapter, Message, Delegate
 
+# Dependencies to mock: Thread, Socket
+
 class AriaAdapterTest (TestCase):
 
-    def setUp (self):
-        self.adapter = AriaAdapter()
-
-    def tearDown (self):
-        self.adapter.teardown()
-
-    def test_send (self):
+    ## Mocks socket functions: socket, socket.sendto, socket.close
+    @mock.patch('socket.socket')
+    def test_send (self, mock_sockets):
+        adapter = AriaAdapter()
         data    = { 'action' : 'status' }
-        sender  = Device('')
-        mock    = Delegate()
+        sender = Device('');
+        mockSocket = Mock()
+        mock_sockets.return_value = mockSocket
 
-        self.adapter.add_delegate(mock)
         message = Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS)
-        mock.received = lambda msg: self.assertEqual(msg.data, data)
+        adapter.send(message, ('localhost', adapter.port))
+        mockSocket.sendto.assert_called_with(message.encode(), ('localhost', adapter.port))
+        mockSocket.close.assert_called_with()
 
-        self.adapter.send(message, ('localhost', self.adapter.port))
-        self.adapter.start()
-        self.adapter.teardown()
+    @mock.patch('socket.socket')
+    def test_receive_request(self, mock_sockets):
+        mockSocket = Mock()
+        mock_sockets.return_value = mockSocket
+        mockDelegate = Mock()
+
+        adapter = AriaAdapter()
+
+        adapter.add_delegate(mockDelegate)
+
+        data    = {}
+        sender = Device('');
+        responseData = Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS).encode()
+        responseHost = ("127.0.0.1", "7000")
+        mockSocket.recvfrom.return_value = (responseData, responseHost)
+
+        adapter.receive()
+        mockDelegate.received.assert_called_with(Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS))
+
+    @mock.patch('socket.socket')
+    def test_receive_discover(self, mock_sockets):
+        mockSocket = Mock()
+        mock_sockets.return_value = mockSocket
+        mockDelegate = Mock()
+
+        adapter = AriaAdapter()
+
+        adapter.add_delegate(mockDelegate)
+
+        data    = {}
+        sender = Device('');
+        responseData = Message(Message.Discover, data, sender.address, Message.DEFAULT_ADDRESS).encode()
+        responseHost = ("127.0.0.1", "7000")
+        mockSocket.recvfrom.return_value = (responseData, responseHost)
+
+        adapter.receive()
+        discoveredDevice = mockDelegate.discovered.call_args
+        discoveredMessage = mockDelegate.received.call_args
+        self.assertEqual("aria", discoveredDevice[0][0].type)
+        self.assertEqual(Message.Ack, discoveredMessage[0][0].type)
+        self.assertEqual(Message.DEFAULT_ADDRESS, discoveredMessage[0][0].sender)
+        self.assertEqual(sender.address, discoveredMessage[0][0].receiver)
+
+    @mock.patch('socket.socket')
+    def test_setup(self, mock_sockets):
+        mockSocket = Mock()
+        mock_sockets.return_value = mockSocket
+        adapter = AriaAdapter()
+        adapter.setup()
+        mockSocket.bind.assert_called_with(("localhost", 7600))
+
+    @mock.patch('socket.socket')
+    def test_teardown(self, mock_sockets):
+        mockSocket = Mock()
+        mock_sockets.return_value = mockSocket
+        adapter = AriaAdapter()
+        adapter.teardown()
+        mockSocket.close.assert_called_with()
