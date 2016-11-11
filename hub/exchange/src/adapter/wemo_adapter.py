@@ -1,9 +1,10 @@
 import uuid
 import logging
 from adapter import Adapter
-from netdisco.discovery import NetworkDiscovery
+from netdisco.ssdpd import scan,RT_ROOTDEVICE
 from device import Device, DeviceType
 from adapter import Message
+from pywemo.discovey import device_from_description
 import threading
 import sys
 
@@ -19,7 +20,6 @@ class WemoAdapter (Adapter):
         super().__init__()
         self._deviceUids={}
         self._deviceNames={}
-        self.netdisco=NetworkDiscovery()
         # setup call back when device is discovered
         # TODO move to Adapter
         self.shutdownCondition = threading.Condition()
@@ -29,20 +29,18 @@ class WemoAdapter (Adapter):
 
 
     def discover(self):
-        self.netdisco.scan()
-        self._discovered()
+        devices=scan(RT_ROOTDEVICE)
+        self._discovered(devices)
         return True
 
-    def _discovered(self):
-        for devtype in self.netdisco.discover():
-            devInfo=self.netdisco.get_info(devtype)
-            log.debug(devInfo)
-            for dev in devInfo:
-                uid = uuid.uuid4().bytes
-                # TODO change to be upnp or devtype
-                device=Device('wemo',dev[0],uid)
-                log.debug('dicovered '+ str(device))
-                self.notify('discovered',device)
+    def _discovered(self,devices):
+        for discovered in devices:
+            dev=device_from_description(discovered.location,None)
+            uid = uuid.uuid4().bytes
+            # TODO change to be upnp or devtype
+            device=Device('wemo',dev.name,uid)
+            log.debug('dicovered '+ str(device))
+            self.notify('discovered',device)
 
     def send (self, message):
         log.debug('looking for '+str(message.receiver))
