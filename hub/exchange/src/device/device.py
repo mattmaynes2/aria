@@ -1,4 +1,5 @@
 import uuid
+import json
 
 class Device:
 
@@ -12,8 +13,14 @@ class Device:
     def __str__(self):
         return 'Device [type: '+str(self.type)+', name: '+self.name+', address: '+str(uuid.UUID(bytes=self.address))+']'
     
+
+
+    
+    def toJson(self):
+        return json.dumps(self,default=json_encode,sort_keys=True)
+    
     @staticmethod
-    def encode(obj):
+    def json_encode(obj):
         if( isinstance(obj,Device)):
             return obj.__dict__
         if( isinstance(obj,bytes)):
