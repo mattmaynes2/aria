@@ -14,5 +14,4 @@ def parse ():
     )
     parser.add_argument('--debug', nargs='?', const=True, help='Display debugging information when running')
     parser.add_argument('-d', '--daemonize', nargs='?', const=True, help='Fork this process into the background')
-
     return parser.parse_args()

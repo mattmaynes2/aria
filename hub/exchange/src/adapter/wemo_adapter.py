@@ -9,7 +9,6 @@ from pywemo.subscribe import SubscriptionRegistry
 import threading
 import sys
 
-logging.basicConfig(level=logging.DEBUG)
 log=logging.getLogger(__name__)
 
 class WemoAdapter (Adapter):
