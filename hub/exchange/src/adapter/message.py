@@ -1,6 +1,5 @@
 import json
 import struct
-from enum import Enum
 
 class Message:
     Error               = 0
