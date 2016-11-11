@@ -1,7 +1,7 @@
 var ExchangeAdapter = (function () {
     var dgram   = require('dgram'),
         uuid    = require('node-uuid'),
-        packets = require('./ccp'),
+        packets = require('./ipc'),
         logger = require('winston');
 
     function ExchangeAdapter (endpoint) {
