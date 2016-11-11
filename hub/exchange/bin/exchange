@@ -17,7 +17,7 @@ if [[ $action == "stop" ]]
     if [ -f "daemon.pid" ]
     then
         pid=$(cat daemon.pid) &> /dev/null
-        kill $pid &> /dev/null
+        kill "$pid" &> /dev/null
     else
         echo "Process is not running"
     fi
