@@ -1,12 +1,12 @@
-var expect = require('chai').expect
-var sinon = require('sinon')
-var proxyquire = require('proxyquire')
+var sinon = require('sinon');
+var proxyquire = require('proxyquire');
 
 describe('Tests the REST endpoints exposed by the gateway', () => {
 
     var Gateway;
     var express;
     var fakeApp;
+    var adapter;
 
     beforeEach(()=>{
         express = sinon.stub();
@@ -42,16 +42,16 @@ describe('Tests the REST endpoints exposed by the gateway', () => {
         sinon.assert.called(registerRequest);
         var endpointCallback = registerRequest.firstCall.args[1];
 
-        var ret = {state:"some message"};
+        var ret = {state:'some message'};
 
-        var fakePromise = sinon.stub()
+        var fakePromise = sinon.stub();
         fakePromise.then = sinon.stub();
         fakePromise.then.yields(ret);
 
         adapter.send.returns(fakePromise);
         endpointCallback(req, res);
 
-        sinon.assert.calledWith(res.send, JSON.stringify(ret))
+        sinon.assert.calledWith(res.send, JSON.stringify(ret));
     });
 
-})
+});

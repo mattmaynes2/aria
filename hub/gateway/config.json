@@ -4,5 +4,6 @@
     "exchange"  : {
         "port"      : "7600",
         "address"   : "localhost"
-    }
+    },
+    "logfile" : "debug.log"
 }

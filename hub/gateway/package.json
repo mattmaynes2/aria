@@ -19,16 +19,18 @@
     "mocha": "^3.1.2",
     "proxyquire": "^1.7.10",
     "sinon": "^1.17.6"
-
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec",
-    "build": "./node_modules/webpack/bin/webpack.js --executable && chmod +x ./bin/*",
-    "start": "./bin/gateway"
+    "test": "./node_modules/.bin/mocha --reporter spec && ./node_modules/.bin/jshint src test",
+    "build": "./node_modules/.bin/webpack --executable && chmod +x ./bin/*",
+    "start": "./node_modules/.bin/forever start ./bin/gateway",
+    "stop" : "./node_modules/.bin/forever stop ./bin/gateway"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "4.14.0",
-    "node-uuid": "^1.4.7"
+    "forever": "^0.15.3",
+    "node-uuid": "^1.4.7",
+    "winston": "^2.3.0"
   }
 }

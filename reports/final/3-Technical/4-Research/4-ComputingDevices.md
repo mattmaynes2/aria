@@ -1,4 +1,4 @@
-### B-4 Computing Devices {- #B-4}
+### Computing Devices
 
 ##### Background {-}
 

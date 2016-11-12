@@ -38,6 +38,14 @@ function concat () {
     done
 }
 
+function linkify() {
+    LINECOUNT=0
+    while IFS='' read -r line || [[ -n "$line"    ]]; do
+        echo "$line" | sed "/^#\{1,3\}\s.*$/s/$/ \{- #section-$LINECOUNT\}/" >> "$2"
+        ((LINECOUNT++))
+    done < "$1"
+}
+
 function tohtml () {
     FLAGS="-s --toc-depth $TOC_DEPTH $NUM -c $STYLE -t html -f markdown_phpextra+backtick_code_blocks"
 
@@ -113,12 +121,15 @@ BODY="$(find . -name '*.md' -not -name '*.before.md'|sort)"
 concat "$BEFORE" .tmp.before.markdown
 concat "$BODY" .tmp.markdown
 
-tohtml .tmp.markdown .tmp.html
+linkify .tmp.markdown .tmp.linked
+
+tohtml .tmp.linked .tmp.html
 
 TOC=()
 tohtml .tmp.before.markdown .tmp.before.html
 
 topdf .tmp.before.html .tmp.html "$OUTPUT"
+
 
 rm .tmp*
 

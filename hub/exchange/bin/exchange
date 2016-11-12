@@ -1,7 +1,24 @@
 #!/bin/bash
 
 DIR="$(dirname "$0")"
+action=${1,,}
+
 export PYTHONPATH=$PYTHONPATH:"$DIR/../build/lib"
 
-# shellcheck disable=SC2046
-python3  $(find "$DIR/../build/" -name "__main__.py") "${@:1}"
+if [[ $action == "start" ]]
+    then
+        # shellcheck disable=SC2046
+        python3  $(find "$DIR/../build/" -name "__main__.py") "-d ${@:2}"
+fi
+
+if [[ $action == "stop" ]]
+    then
+
+    if [ -f "daemon.pid" ]
+    then
+        pid=$(cat daemon.pid) &> /dev/null
+        kill "$pid" &> /dev/null
+    else
+        echo "Process is not running"
+    fi
+fi

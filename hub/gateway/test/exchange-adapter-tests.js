@@ -1,6 +1,5 @@
-var ExchangeAdapter = require('../src/exchange-adapter')
-var expect = require('chai').expect
-var sinon = require('sinon')
+var ExchangeAdapter = require('../src/exchange-adapter');
+var sinon = require('sinon');
 
 function FakeSocket(){
 
@@ -8,17 +7,17 @@ function FakeSocket(){
 
 FakeSocket.prototype.setNextResponse = function(response){
     this.nextResponse = response;
-}
+};
 
 FakeSocket.prototype.on = function(action, callback)
 {
     this.messageCallback = callback;
-}
+};
 
 FakeSocket.prototype.send = function()
 {
     this.messageCallback(this.nextResponse);
-}
+};
 
 FakeSocket.prototype.close = function(){};
 
@@ -31,14 +30,14 @@ describe('REST API endpoint testing', function(){
         sinon.stub(adapter.transport, 'createSocket', () => { return fakeSocket; });
 
         var payload = {
-            "action" : "status"
+            action  : 'status'
         };
 
         var sizeBuf = new Buffer(4);
         sizeBuf.fill(0);
         sizeBuf.writeUInt32BE(JSON.stringify(payload).length);
 
-        expectedBuffer = Buffer.concat([Buffer.from([0x02]),
+        var expectedBuffer = Buffer.concat([Buffer.from([0x02]),
                                         sizeBuf,
                                         adapter.id,
                                         new Buffer(16).fill(0),
@@ -53,10 +52,10 @@ describe('REST API endpoint testing', function(){
         fakeSocket.setNextResponse(discoveryAck);
 
         adapter.register().then(()=>{
-            var spy = sinon.spy(fakeSocket, "send")
+            var spy = sinon.spy(fakeSocket, 'send');
             adapter.send(2, payload).then(()=>{
                 sinon.assert.calledWith(spy, expectedBuffer);
-            })
-        })
+            });
+        });
    });
 });

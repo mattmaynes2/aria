@@ -1,7 +1,8 @@
 var ExchangeAdapter = (function () {
     var dgram   = require('dgram'),
         uuid    = require('node-uuid'),
-        packets = require('./ccp');
+        packets = require('./ipc'),
+        logger = require('winston');
 
     function ExchangeAdapter (endpoint) {
         this.id         = new Buffer(16);
@@ -18,19 +19,19 @@ var ExchangeAdapter = (function () {
 
         return new Promise ((resolve, reject) => {
             send.call(this, 1, {}).then((response) => {
-                console.log('Got a response to discovery request');
+                logger.debug('Got a response to discovery request');
                 if (response.type !== 4) {
                     reject(Error('Communication server responded with an unexpected packet type'));
                 }
                 else {
                     this.registered = true;
-                    resolve()
+                    resolve();
                 }
 
-            }, (err) => {
+            }, () => {
                 reject(Error('Error in discovery request'));
-            })
-        })
+            });
+        });
     };
 
     ExchangeAdapter.prototype.send = function (type, payload) {
@@ -53,15 +54,17 @@ var ExchangeAdapter = (function () {
 
             client  = this.transport.createSocket('udp4');
             message = packets.serialize(packet);
-            expiry  = setTimeout(timeout, 5000);
+            expiry  = setTimeout(() => {
+                client.close();
+                reject(Error('Response wait period timed out'));
+            }, 5000);
 
             client.on('message', function(message) {
-                console.log('Received response from comm server');
+                logger.debug('Received response from comm server');
                 client.close();
                 clearTimeout(expiry);
                 resolve(packets.parse(message));
             });
-
 
             client.send(message, 0, message.length,
                 this.endpoint.port, this.endpoint.address,
@@ -70,18 +73,12 @@ var ExchangeAdapter = (function () {
                         clearTimeout(expiry);
                         reject(Error(err));
                     }
-                    console.log('Sent UDP message');
+                    logger.debug('Sent UDP message');
                 }
             );
         });
 
     }
-
-    function timeout (client, reject) {
-        client.close();
-        reject(Error('Response wait period timed out'));
-    }
-
 
     return ExchangeAdapter;
 } ());

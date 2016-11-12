@@ -1,11 +1,8 @@
-var $ = require('jquery');
+import $ from 'jquery';
+import Home from './home';
+import './index.css';
+
 
 $(document).ready(() => {
-    $('body').append(
-        $('<button>').text('Status').click(() => {
-            $.ajax('/system/state').done((res) => {
-                $('body').append(res);
-            });
-        })
-    );
+    new Home().render();
 });
