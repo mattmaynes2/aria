@@ -1,1 +1,1 @@
-## B Research {- #B-Research}
+## Research
