@@ -294,9 +294,6 @@ indicate whether or not a device has encountered a fault or if it is no longer r
 Restarting a device in the network should then reconnect to the system and retain all of its
 history within the learning hub.
 
-##### Device Interoperability {-}
 
-### Appendix A: Glossary
 
-**Device**: A sensor or an actuator, or a combination of both.
 
