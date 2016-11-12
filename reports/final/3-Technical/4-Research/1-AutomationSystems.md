@@ -1,4 +1,4 @@
-### B-1 Automation Systems {- #B-1}
+###  Automation Systems 
 
 #### Background {-}
 

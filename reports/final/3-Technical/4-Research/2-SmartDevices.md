@@ -1,4 +1,4 @@
-### B-2 Smart Devices {- #B-2}
+### Smart Devices 
 
 #### Background {-}
 

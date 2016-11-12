@@ -1,1 +1,0 @@
-## B Research {- #B-Research}
