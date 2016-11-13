@@ -1,11 +1,14 @@
 import socket
 import os
 import select
+import logging
 
 from .message import Message
 from .adapter import Adapter
 
 from device import Device
+
+log = logging.getLogger(__name__)
 
 class AriaAdapter (Adapter):
     BUFFER_SIZE = 4096
@@ -17,7 +20,10 @@ class AriaAdapter (Adapter):
         self.socket     = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.port       = AriaAdapter.PORT
         self._ip_map    = {}
-        self.self_rd, self.self_wd = os.pipe()
+        try:
+            self.self_rd, self.self_wd = os.pipe()
+        except OSError:
+            log.warn("Unable to open self pipe, the server may not shut down properly")
 
     def setup (self ):
         super().setup()
@@ -31,8 +37,12 @@ class AriaAdapter (Adapter):
 
     def teardown (self):
         super().teardown()
-        os.write(self.self_wd, bytes('x', 'utf-8'))
-        self.socket.close()
+        try:
+            os.write(self.self_wd, bytes('x', 'utf-8'))
+            self.socket.close()
+        except OSError:
+            log.warn("Failed to write to self pipe, the server may not shut down properly")
+
         return True
 
     def send (self, msg, address = None):
@@ -70,7 +80,11 @@ class AriaAdapter (Adapter):
             else:
                 self.notify('received', msg)
         else:
-            os.close(self.self_rd)
-            os.close(self.self_wd)
+            try:
+                os.close(self.self_rd)
+                os.close(self.self_wd)
+            except OSError:
+                log.warn("Failed to close self-pipe")
+
 
         return True
