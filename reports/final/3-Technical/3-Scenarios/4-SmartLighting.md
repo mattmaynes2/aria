@@ -134,10 +134,9 @@ office when occupied is 10. The system should automatically adjust the brightnes
 Lights to achieve this level of brightness while the home owner is in the office. Upon the owner
 leaving the office, the system should recognize that the lights must be turned off. 
 
+##### Sensor and Device Corrolation {-}
 
-#### Sensor and Device Corrolation {-}
-
-The above graphs depict the relationships between the light sensor, the motion senson, and the smart
+The graphs below depict the relationships between the light sensor, the motion senson, and the smart
 light brightness level in multiple different scenarios. The goal of these graphs is to illistrate 
 how the machine learning can interpret the sensor data to achieve the required functionallity. The
 first relationship the machine learning need to recognize is the corrolation between the PIR 
@@ -172,4 +171,11 @@ computer typing, it will be easier to determine that they are still in the room.
 only able to notice large movement, this has the potential to lead to an inconvienience to the user
 in the form of the lights turning off while they are still present in the room. They would need to
 make a big enough motion to trigger the motion sensor, thereby turning on the lights and resetting
-the TSLM variable.   
+the TSLM variable. 
+
+##### Graphs {-}
+
+![](./3-Technical/3-Scenarios/Images/NoActivity.png)
+
+![](./3-Technical/3-Scenarios/Images/OfficeActivity.png)
+  
