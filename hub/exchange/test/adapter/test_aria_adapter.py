@@ -25,9 +25,12 @@ class AriaAdapterTest (TestCase):
         mockSocket.close.assert_called_with()
 
     @mock.patch('socket.socket')
-    def test_receive_request(self, mock_sockets):
+    @mock.patch('select.select')
+    def test_receive_request(self, mock_select, mock_sockets):
         mockSocket = Mock()
         mock_sockets.return_value = mockSocket
+        mockSocket.fileno.return_value = 1
+        mock_select.return_value = ([1],[],[])
         mockDelegate = Mock()
 
         adapter = AriaAdapter()
@@ -44,9 +47,12 @@ class AriaAdapterTest (TestCase):
         mockDelegate.received.assert_called_with(Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS))
 
     @mock.patch('socket.socket')
-    def test_receive_discover(self, mock_sockets):
+    @mock.patch('select.select')
+    def test_receive_discover(self, mock_select, mock_sockets):
         mockSocket = Mock()
         mock_sockets.return_value = mockSocket
+        mockSocket.fileno.return_value = 1
+        mock_select.return_value = ([1],[],[])
         mockDelegate = Mock()
 
         adapter = AriaAdapter()
