@@ -146,4 +146,30 @@ by the LightOffice sensor is allowed to decrease to 0 without the lights being t
 
 Now that the system understands the relationship between no motion being detected and lights staying
 off, it needs to determine when it is appropriate to turn lights on when motion is detected. This is
-the relationship between the LightOffice sensor and the SmartLights brightness level.  
+the relationship between the LightOffice sensor and the SmartLights brightness level. The first time
+the SmartLights are turned on by the homeowner is when the level of light detected by the LightOffice
+sensor falls below a certain level. The lights are turned on enough to maintain the level of 
+brightness observed before it started decreasing. As the light levels continue to drop, the 
+SmartLights brightness continues to rise in compensation. The threshhold use to determine when the 
+lights turn on is something that will be determined by how dark the homeowner allows the room to get
+before turning on the lights when training. The falling-rising pattern of the light level concludes
+when the SmartLights are at maximum brightness. 
+
+The final decision the system has to make is when it is appropriate to turn off the office lights.
+In the training scenario, the home owner turns the light off when leaving the room. The motion sensor
+stops being triggered around the same time that motion is no longer being detected. This has the 
+potential to raise issues for the learning. For example, if the home owner is stationary for a short
+period of time in the room, the lights should not turn off. As well, if a new person enters the room
+and then leaves shortly after, the lights should not turn off. This is why the "Time Since Last
+Motion" (TSLM) variable is present. It is simply a timer that resets any time the motion sensor detects 
+motion. Having this variable allows the absence of motion to be a value that is submitted to the
+machine learning algorithm. When the system is performing this scenario, the lights will likely
+remain on for a period of time after the homeowner leaves the room until the TSLM variable reaches
+a certain threshold. This threshhold will be dependent on the sensitivity of the motion sensor. The
+more sensative the sensor is to motion, the smaller the threshold will be. The reason for this is
+that if the sensor can detect motion such as the homeowners head moving while they are sitting at a
+computer typing, it will be easier to determine that they are still in the room. If the sensor is 
+only able to notice large movement, this has the potential to lead to an inconvienience to the user
+in the form of the lights turning off while they are still present in the room. They would need to
+make a big enough motion to trigger the motion sensor, thereby turning on the lights and resetting
+the TSLM variable.   
