@@ -81,14 +81,15 @@ way as the primary training sequence.
 ##### Expected Inputs {-}
 
 The logs for the training scenario would look like the following:
-
+PIROffice = 0 when there is no motion detected, 1 when it is detecting motion
 ```
 Initial Sensor States
-2016-11-06 14:30:02 LightOffice: 10
-2016-11-06 14:30:02 SmartLights: 0
+LightOffice: 10
+SmartLights: 0
+PIROffice: 0
 ```
 ```
-2016-11-06 14:30:00 PIROffice: Motion Detected
+2016-11-06 14:30:00 PIROffice: 1
 2016-11-06 19:39:00 LightOffice: 9
 2016-11-06 19:42:00 LightOffice: 8
 2016-11-06 19:45:00 LightOffice: 7
@@ -104,7 +105,7 @@ Initial Sensor States
 2016-11-06 20:05:00 LightOffice: 7
 2016-11-06 20:05:10 SmartLights: 10
 2016-11-06 20:05:12 LightOffice: 10
-2016-11-06 21:00:00 PIROffice: MotionDetected
+2016-11-06 21:00:00 PIROffice: 1
 2016-11-06 21:00:07 SmartLights: 0
 2016-11-06 21:00:08 LightOffice: 0
 ```
@@ -113,14 +114,15 @@ The alternate sequence could look like this:
 
 ```
 Initial Sensor States
-2016-11-06 14:30:02 LightOffice: 0
-2016-11-06 14:30:02 SmartLights: 0
+LightOffice: 0
+SmartLights: 0
+PIROffice: 0
 ```
 ```
-2016-11-06 14:30:00 PIROffice: Motion Detected
+2016-11-06 14:30:00 PIROffice: 1
 2016-11-06 14:30:03 SmartLights: 10
 2016-11-06 14:30:06 LightOffice: 10
-2016-11-06 21:00:00 PIROffice: MotionDetected
+2016-11-06 21:00:00 PIROffice: 1
 2016-11-06 21:00:07 SmartLights: 0
 2016-11-06 21:00:08 LightOffice: 0
 ```
@@ -131,3 +133,17 @@ From the logs the Aria system should be able to tell that the desired light leve
 office when occupied is 10. The system should automatically adjust the brightness level of the Smart
 Lights to achieve this level of brightness while the home owner is in the office. Upon the owner
 leaving the office, the system should recognize that the lights must be turned off. 
+
+
+#### Sensor and Device Corrolation {-}
+
+The above graphs depict the relationships between the light sensor, the motion senson, and the smart
+light brightness level in multiple different scenarios. The goal of these graphs is to illistrate 
+how the machine learning can interpret the sensor data to achieve the required functionallity. The
+first relationship the machine learning need to recognize is the corrolation between the PIR 
+detecting motion and the lights being turned on. When no motion is detected, the light level detected
+by the LightOffice sensor is allowed to decrease to 0 without the lights being turned on.
+
+Now that the system understands the relationship between no motion being detected and lights staying
+off, it needs to determine when it is appropriate to turn lights on when motion is detected. This is
+the relationship between the LightOffice sensor and the SmartLights brightness level.  
