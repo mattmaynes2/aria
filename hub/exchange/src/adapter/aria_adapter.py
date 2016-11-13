@@ -39,7 +39,6 @@ class AriaAdapter (Adapter):
         super().teardown()
         try:
             os.write(self.self_wd, bytes('x', 'utf-8'))
-            self.socket.close()
         except OSError:
             log.warn("Failed to write to self pipe, the server may not shut down properly")
 
@@ -59,8 +58,8 @@ class AriaAdapter (Adapter):
         sock.close()
 
     def receive (self):
-        print('Listening')
-       
+        log.info('Aria adapter is listening')
+
         readables, writeables, exceptions = select.select([self.self_rd, self.socket.fileno()], [], [])
         if (self.socket.fileno() in readables):
             chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
@@ -70,7 +69,7 @@ class AriaAdapter (Adapter):
             #payload = ''.join(data)
             payload = chunk
 
-            print('Received all data')
+            log.debug('Aria adapter received data on UDP socket')
             msg = Message.decode(payload)
             self._ip_map[msg.sender] = address
 
@@ -83,6 +82,7 @@ class AriaAdapter (Adapter):
             try:
                 os.close(self.self_rd)
                 os.close(self.self_wd)
+                self.socket.close()
             except OSError:
                 log.warn("Failed to close self-pipe")
 
