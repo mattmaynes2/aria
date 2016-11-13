@@ -1,9 +1,14 @@
 import socket
+import os
+import select
+import logging
 
 from .message import Message
 from .adapter import Adapter
 
 from device import Device
+
+log = logging.getLogger(__name__)
 
 class AriaAdapter (Adapter):
     BUFFER_SIZE = 4096
@@ -15,6 +20,10 @@ class AriaAdapter (Adapter):
         self.socket     = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.port       = AriaAdapter.PORT
         self._ip_map    = {}
+        try:
+            self.self_rd, self.self_wd = os.pipe()
+        except OSError:
+            log.warn("Unable to open self pipe, the server may not shut down properly")
 
     def setup (self ):
         super().setup()
@@ -28,7 +37,11 @@ class AriaAdapter (Adapter):
 
     def teardown (self):
         super().teardown()
-        self.socket.close()
+        try:
+            os.write(self.self_wd, bytes('x', 'utf-8'))
+        except OSError:
+            log.warn("Failed to write to self pipe, the server may not shut down properly")
+
         return True
 
     def send (self, msg, address = None):
@@ -45,22 +58,33 @@ class AriaAdapter (Adapter):
         sock.close()
 
     def receive (self):
-        print('Listening')
-        chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
-        #while chunk:
-        #   data.append(chunk)
-        #   chunk = self.socket.recv(AriaAdapter.BUFFER_SIZE)
-        #payload = ''.join(data)
-        payload = chunk
+        log.info('Aria adapter is listening')
 
-        print('Received all data')
-        msg = Message.decode(payload)
-        self._ip_map[msg.sender] = address
+        readables, writeables, exceptions = select.select([self.self_rd, self.socket.fileno()], [], [])
+        if (self.socket.fileno() in readables):
+            chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
+            #while chunk:
+            #   data.append(chunk)
+            #   chunk = self.socket.recv(AriaAdapter.BUFFER_SIZE)
+            #payload = ''.join(data)
+            payload = chunk
 
-        if (msg.type == Message.Discover):
-            self.notify('discovered', Device('aria', '', msg.sender))
-            self.notify('received', Message(Message.Ack, '', msg.receiver, msg.sender))
+            log.debug('Aria adapter received data on UDP socket')
+            msg = Message.decode(payload)
+            self._ip_map[msg.sender] = address
+
+            if (msg.type == Message.Discover):
+                self.notify('discovered', Device('aria', '', msg.sender))
+                self.notify('received', Message(Message.Ack, '', msg.receiver, msg.sender))
+            else:
+                self.notify('received', msg)
         else:
-            self.notify('received', msg)
+            try:
+                os.close(self.self_rd)
+                os.close(self.self_wd)
+                self.socket.close()
+            except OSError:
+                log.warn("Failed to close self-pipe")
+
 
         return True
