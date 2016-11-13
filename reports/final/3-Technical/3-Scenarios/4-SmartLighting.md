@@ -139,7 +139,7 @@ leaving the office, the system should recognize that the lights must be turned o
 The graphs below depict the relationships between the light sensor, the motion sensor, and the smart
 light brightness level in multiple different scenarios. The goal of these graphs is to illustrate
 how the machine learning can interpret the sensor data to achieve the required functionality. The
-first relationship the machine learning need to recognize is the correlation between the PIR
+first relationship that the machine learning will need to recognize is the correlation between the PIR
 detecting motion and the lights being turned on. When no motion is detected, the light level detected
 by the LightOffice sensor is allowed to decrease to 0 without the lights being turned on.
 
