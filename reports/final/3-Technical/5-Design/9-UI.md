@@ -1,10 +1,10 @@
-### Remote User Interface
+### Remote User Interface {#section-3-5-9}
 
-#### Home Page
+#### Home Page {-}
 
 ![](./images/UI-Homepage.png)
 
 
-#### Devices
+#### Devices {-}
 
 ![](./images/UI-Devices.png)
