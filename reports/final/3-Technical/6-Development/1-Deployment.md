@@ -1,8 +1,8 @@
-### C-1 Deployment {- #C-1}
+### Deployment 
 
 #### Introduction {-}
 
-This document outlines the details about building and deploying the Aria system. It details how
+This section outlines the details about building and deploying the Aria system. It details how
 the system's automated build process executes and the build manifest. This document also outlines the
 major decisions that were made to run the build and the reasoning behind them.
 
