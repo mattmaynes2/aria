@@ -23,6 +23,6 @@ The required components to build these devices are listed below.
 | ------------------- | ----- | -------- |
 | Z-Wave usb stick    | $65   | 1        |
 | Raspberry pi        | $40   | 2        |
-| Arduino uno         | $     | 1        |
+| Arduino uno         | $30   | 1        |
 | Arduino wifi shield | $35   | 1        |
-| Photo Resistor      | $     | 1        |
+| Photo Resistor      | $5    | 1        |
