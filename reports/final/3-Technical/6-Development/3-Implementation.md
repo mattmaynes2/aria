@@ -6,7 +6,7 @@ While trying to integrate with a WeMo switch we first looked at the python `ouim
 This library looked very promising as it had discovery and created python objects for each
 device that would notify using `pysignals` if the state of the device changed. The issue with this 
 library is that at the time of writing this report there is a bug with processing signals that
-exists when trying to run with python version3.4 or higher. As we are using python 3.5 for
+exists when trying to run with python version 3.4 or higher. As we are using python 3.5 for
 our hub this meant that this library was therefore incompatible. 
 
 We then looked at the `netdisco` library that provides discovery for UPnP devices. Using this 
