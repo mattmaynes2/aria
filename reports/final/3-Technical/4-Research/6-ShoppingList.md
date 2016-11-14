@@ -1,7 +1,7 @@
-### Shopping List
+### Shopping List {#section-3-4-6}
 
 After all of the research that we have done in the previous sections we have decided that we 
-will  be purchasing the folllowing device to work with our scenarios.
+will  be purchasing the following device to work with our scenarios.
 
 | Device                  | Protocol | Price | Quantity |
 | ----------------------- | -------- | ----- | -------- |
@@ -14,8 +14,8 @@ will  be purchasing the folllowing device to work with our scenarios.
 After the research we have decided to build the following devices:
 
 - Hub
-- light sensor
-- smart speaker system
+- Light sensor
+- Smart speaker system
 
 The required components to build these devices are listed below.
 

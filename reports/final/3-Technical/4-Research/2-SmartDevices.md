@@ -1,4 +1,4 @@
-### Smart Devices 
+### Smart Devices {#section-3-4-2}
 
 #### Background {-}
 
