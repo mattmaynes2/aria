@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MANIFEST="$(dirname "$0")/manifest.json"
-EXECUTOR="$(dirname "$0")/execute.js"
+EXECUTOR="$(dirname "$0")/execute/execute.js"
 
 NAME='run'
 VERSION='0.1.0'
