@@ -9,8 +9,14 @@ class HubAdapter (Adapter):
         self.hub = hub
 
     def send (self, message):
-        if ('action' not in message.data):
+
+        if (message.type == Message.Event):
+            self.hub.processEvent(message)
+            return True
+
+        elif ('action' not in message.data):
             return False
+
         self.notify(
             'received',
             Message(type_= Message.Ack,data = self.hub.command(message.data['action']), 
