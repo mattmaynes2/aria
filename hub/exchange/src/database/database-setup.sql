@@ -25,11 +25,9 @@ CREATE TABLE IF NOT EXISTS "Event" (
 );
 
 CREATE TABLE IF NOT EXISTS "Device" (
-	"id" PRIMARY KEY,
-	"type" INTEGER,
+	"type" TEXT,
 	"name" TEXT,
-	"address" TEXT,
-	FOREIGN KEY("type") REFERENCES "event"("id")
+	"address" TEXT PRIMARY KEY
 );
 
 CREATE TABLE IF NOT EXISTS "Device_Type" (
