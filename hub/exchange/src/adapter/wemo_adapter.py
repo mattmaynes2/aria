@@ -71,7 +71,7 @@ class WemoAdapter (Adapter):
                 return True
             elif('status' == action):
                 self.notify('received',Message(
-                    type_ = Message.Ack, 
+                    type_ = Message.Response, 
                     data = { 'state' : device.get_state() }, 
                     sender = message.receiver))
                 return True
