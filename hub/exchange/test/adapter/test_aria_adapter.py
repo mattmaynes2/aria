@@ -25,9 +25,12 @@ class AriaAdapterTest (TestCase):
         mockSocket.close.assert_called_with()
 
     @mock.patch('socket.socket')
-    def test_receive_request(self, mock_sockets):
+    @mock.patch('select.select')
+    def test_receive_request(self, mock_select, mock_sockets):
         mockSocket = Mock()
         mock_sockets.return_value = mockSocket
+        mockSocket.fileno.return_value = 1
+        mock_select.return_value = ([1],[],[])
         mockDelegate = Mock()
 
         adapter = AriaAdapter()
@@ -44,9 +47,12 @@ class AriaAdapterTest (TestCase):
         mockDelegate.received.assert_called_with(Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS))
 
     @mock.patch('socket.socket')
-    def test_receive_discover(self, mock_sockets):
+    @mock.patch('select.select')
+    def test_receive_discover(self, mock_select, mock_sockets):
         mockSocket = Mock()
         mock_sockets.return_value = mockSocket
+        mockSocket.fileno.return_value = 1
+        mock_select.return_value = ([1],[],[])
         mockDelegate = Mock()
 
         adapter = AriaAdapter()
@@ -76,9 +82,11 @@ class AriaAdapterTest (TestCase):
         mockSocket.bind.assert_called_with(("localhost", 7600))
 
     @mock.patch('socket.socket')
-    def test_teardown(self, mock_sockets):
-        mockSocket = Mock()
-        mock_sockets.return_value = mockSocket
+    @mock.patch('os.write')
+    @mock.patch('os.pipe')
+    def test_teardown(self, os_pipe, os_write, mock_sockets):
+        os_pipe.return_value = (1,2)
         adapter = AriaAdapter()
         adapter.teardown()
-        mockSocket.close.assert_called_with()
+        os_write.assert_called_with(2, bytes('x', 'utf-8'))
+
