@@ -1,8 +1,8 @@
-var Gateway = (function () {
-    var express = require('express'),
-        bodyParser = require('body-parser'),
-        logger = require('winston');
+let express    = require('express'),
+    bodyParser = require('body-parser'),
+    logger     = require('winston');
 
+let Gateway = (function () {
 
     function Gateway (adapter) {
         this.adapter = adapter;
@@ -21,8 +21,12 @@ var Gateway = (function () {
             });
         });
 
+        app.get('/self/id', (req, res) => {
+            res.send(JSON.stringify({ id : this.adapter.id() }));
+        });
+
         app.post('/request', (req, res) => {
-            this.adapter.send(3, req.body).then((response) => {
+            this.adapter.send(2, req.body).then((response) => {
                 res.send(JSON.stringify(response));
             }, (err) => {
                 logger.error('Error sending request to communication server', err);

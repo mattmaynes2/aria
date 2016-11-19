@@ -1,4 +1,4 @@
-var CCP = (function () {
+let CCP = (function () {
 
     function parse (buffer) {
         var type        = buffer.readUIntBE(0, 1),

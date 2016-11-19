@@ -1,11 +1,11 @@
-var fs              = require('fs'),
+let fs              = require('fs'),
+    logger          = require('winston'),
+    program         = require('commander'),
+    TestAdapter     = require('./test-adapter'),
     ExchangeAdapter = require('./exchange-adapter'),
-    Gateway         = require('./gateway'),
-    logger          = require('winston');
+    Gateway         = require('./gateway');
 
-var adapter, gateway, config, dirname;
-
-var DEFAULT_CONFIG = {
+let DEFAULT_CONFIG = {
     port        : 8080,
     public      : '../remote/',
     exchange    : {
@@ -15,28 +15,57 @@ var DEFAULT_CONFIG = {
     logfile     : 'gateway.log'
 };
 
+var adapter, gateway, config, dirname;
+
+program
+    .version('0.1.0')
+    .arguments('[options ...]')
+    .option('-c, --config', 'Path to configuration file [config.json]')
+    .option('-l, --log-level [level]', 'Level of message logging to use')
+    .option('-p, --port [port]', 'Port for gateway to serve client on')
+    .option('-t, --test', 'Run the gateway with integration testing adapter');
+
+program.parse(process.argv);
 
 try {
-    dirname = /\/$/g.test(__dirname) ? process.cwd() + '/bin' : __dirname;
+    dirname = program.config || /\/$/g.test(__dirname) ? process.cwd() + '/bin' : __dirname;
     config = JSON.parse(fs.readFileSync(dirname + '/../config.json'));
 } catch (e) {
     console.log('Failed to load config file. Using defaults');
     config = DEFAULT_CONFIG;
 }
 
-// TODO add command line flag to switch to logging to stdout
-logger.add(logger.transports.File, { filename: config.logfile, level: 'debug' });
+logger.configure({
+    transports : [
+        new (logger.transports.File) ({
+            levels   : logger.config.syslog.levels,
+            filename : config.logfile,
+            level    : 'debug'
+        }),
+        new (logger.transports.Console) ({
+            levels      : logger.config.syslog.levels,
+            level       : program.logLevel || 'error',
+            colorize    : true
+        })
+    ]
+});
 
-adapter = new ExchangeAdapter(config.endpoint);
+if (program.test) {
+    adapter = new TestAdapter();
+}
+else {
+    adapter = new ExchangeAdapter(config.endpoint);
+}
 gateway = new Gateway(adapter);
 
 adapter.register().then(() => {
-        gateway.public = config.public;
-        gateway.start(config.port);
-        logger.info('Server running on port ', config.port);
-    }, () => {
-        logger.warn('Failed to register adapter');
-    }
-);
+    var port = program.port || config.port;
+
+    gateway.public = config.public;
+    gateway.start(port);
+    logger.info('Server running on port ', port);
+}, () => {
+    logger.warn('Failed to register adapter');
+});
 
 
