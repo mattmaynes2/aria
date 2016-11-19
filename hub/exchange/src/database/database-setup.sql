@@ -14,20 +14,30 @@ CREATE TABLE IF NOT EXISTS "UserDevices" (
 	FOREIGN KEY("deviceid") REFERENCES "Device"("id")
 );
 
+CREATE TABLE IF NOT EXISTS "Request" (
+	"id" PRIMARY KEY,
+	"timestamp" DATETIME DEFAULT current_timestamp,
+	"sender" TEXT,
+	"receiver" TEXT,
+	"action" TEXT,
+	"value" TEXT
+);
+
 CREATE TABLE IF NOT EXISTS "Event" (
 	"id" PRIMARY KEY,
-	"type" INTEGER,
-	"sender" INTEGER,
-	"receiver" INTEGER,
 	"timestamp" DATETIME DEFAULT current_timestamp,
-	"key" TEXT,
+	"request_id" TEXT,
+	"sender" TEXT,	
+	"attribute" TEXT,
 	"value" TEXT
 );
 
 CREATE TABLE IF NOT EXISTS "Device" (
-	"type" TEXT,
+	"id" PRIMARY KEY,
+	"type" INTEGER,
 	"name" TEXT,
-	"address" TEXT PRIMARY KEY
+	"address" TEXT,
+	FOREIGN KEY("type") REFERENCES "event"("id")
 );
 
 CREATE TABLE IF NOT EXISTS "Device_Type" (
