@@ -1,6 +1,6 @@
 import sqlite3
 import logging
-
+import os.path
 log=logging.getLogger(__name__)
 
 class Database:
@@ -11,7 +11,11 @@ class Database:
         self.connect()
 
     def connect (self, timeout=5):
-        self.connection = sqlite3.connect(self.name, timeout)
+        if(not os.path.isfile(self.name)):
+            self.connection = sqlite3.connect(self.name, timeout)
+            self.createDB()
+        else:
+            self.connection = sqlite3.connect(self.name, timeout)
 
     def execute (self, sql):
         try:
@@ -21,6 +25,11 @@ class Database:
 
     def shutdown (self):
         self.connection.close()
+
+    def createDB(self):
+        with open('database//database-setup.sql') as f:
+            sql = f.read()
+            self.connection.executescript(sql)
 
 
 
