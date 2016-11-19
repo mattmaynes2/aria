@@ -20,10 +20,16 @@ class DatabaseTranslator(Delegate):
         log.info('Received ' + str(message))
         if (message.type not in ignore):
             for key in message.data:
-                self.database.execute("INSERT into event (type, sender, receiver, key, value) VALUES("\
+                self.database.execute("INSERT into Dvent (type, sender, receiver, key, value) VALUES("\
                 + message.type + ", " + str(UUID(bytes = message.sender)) + ", " \
                 + str(UUID(bytes = message.receiver)) + ", " + key + ", " + message.data[key] + \
                 ");")
+
+    def discovered (self, device):
+        log.info('Received ' + str(device))
+        self.database.execute("INSERT into Device (type, name, address) VALUES (" + device.type + \
+        ", " + device.name + ", " + device.address + ");")
+
                 
                 
 
