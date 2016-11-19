@@ -28,19 +28,30 @@ installing dependencies, building and testing the project, and deployment. Below
 information to the `run` script.
 
 ```
-  Usage: run cmd [target]
-    Performs the given build command. If a target is specified then run the
-    command on just the given target.
+  Usage: run [options] [command] <cmd> [option] [target]
+
 
   Commands:
-    help        Displays this message and exit
-    all         Installs all dependencies, runs a build and tests it
-    enviro      Installs environmental dependencies
-    deps        Installs project specific dependencies
-    build       Builds and package project
-    deploy      Starts running the built project
-    clean       Cleans the build resources
-    tests       Runs test configurations for project
+
+    all [target]     Install dependencies, runs a build and tests it
+    enviro [target]  Install environment dependencies
+    deps [target]    Install project dependencies
+    build [target]   Compile project and run build
+    test [target]    Run tests on built projects
+    deploy [target]  Starts running the built project
+    clean [target]   Cleans the build resources
+
+  Options:
+
+    -h, --help        output usage information
+    -V, --version     output the version number
+    -a, --stay-alive  Continue to run the directive even if an error occurs
+    -m, --manifest    Execute build with specific manifest
+    -q, --quiet       Do not display output from commands being executed
+    -S, --silent      Do not display any output
+    -r, --root        Root directory where target should be executed from
+    -s, --stats       Display build statistics at end of execution
+    -v, --verbose     Display verbose messages
 ```
 
 To build the entire project, simply run `./build/run all`. Finally, to deploy the system after it

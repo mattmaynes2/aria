@@ -1,14 +1,14 @@
 #!/bin/bash
 
 DIR="$(dirname "$0")"
-action=${1,,}
+action="${1,,}"
 
 export PYTHONPATH=$PYTHONPATH:"$DIR/../build/lib"
 
 if [[ $action == "start" ]]
     then
         # shellcheck disable=SC2046
-        python3  $(find "$DIR/../build/" -name "__main__.py") -d "${@:2}"
+        python3 $(find "$DIR/../build/" -name "__main__.py") -d "${@:2}"
 fi
 
 if [[ $action == "stop" ]]
