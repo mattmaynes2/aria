@@ -2,16 +2,18 @@ from .cli import CLI
 from adapter import Message
 import logging
 from uuid import UUID
+from database import DatabaseTranslator
 
 log =logging.getLogger(__name__)
 
 class Exchange ():
 
-    def __init__ (self, hub, cli):
+    def __init__ (self, hub, cli, database):
         self._hub       = hub
         self._cli       = cli
         self._adapters  = {}
         self._devices   = {}
+        self._database  = DatabaseTranslator(database)
 
     def start (self):
         for _, adapter in self._adapters.items():
@@ -21,6 +23,7 @@ class Exchange ():
     def register (self, device_type, adapter):
         log.info('Registered adapter: ' + str(adapter))
         adapter.add_delegate(self)
+        adapter.add_delegate(self._database)
         self._adapters[device_type] = adapter
 
     def send (self, device, message):
