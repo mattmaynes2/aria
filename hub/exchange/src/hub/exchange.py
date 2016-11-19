@@ -35,7 +35,9 @@ class Exchange ():
     def teardown (self):
         for _, adapter in self._adapters.items():
             log.debug('Tearing down adapter: ' + str(adapter))
-            adapter.teardown()
+            adapter.teardown() 
+            adapter.join()
+            log.debug('Adapter teardown complete')  
 
     def received (self, message):
         # TODO Add thread synchronization

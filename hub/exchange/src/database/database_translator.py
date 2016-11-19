@@ -18,12 +18,12 @@ class DatabaseTranslator(Delegate):
 
     def received (self, message):
         log.info('Received ' + str(message))
-        if (message.type not in ignore):
+        if (message.type not in self.ignore):
             for key in message.data:
                 self.database.execute("INSERT into event (type, sender, receiver, key, value) VALUES("\
-                + message.type + ", " + str(UUID(bytes = message.sender)) + ", " \
-                + str(UUID(bytes = message.receiver)) + ", " + key + ", " + message.data[key] + \
-                ");")
+                + str(message.type) + ", '" + str(UUID(bytes = message.sender)) + "', '" \
+                + str(UUID(bytes = message.receiver)) + "', '" + str(key) + "', '" + str(message.data[key]) + \
+                "');")
                 
                 
 
