@@ -8,12 +8,12 @@ log =logging.getLogger(__name__)
 
 class Exchange ():
 
-    def __init__ (self, hub, cli):
+    def __init__ (self, hub, cli, database):
         self._hub       = hub
         self._cli       = cli
         self._adapters  = {}
         self._devices   = {}
-        self._database  = DatabaseTranslator()
+        self._database  = DatabaseTranslator(database)
 
     def start (self):
         for _, adapter in self._adapters.items():

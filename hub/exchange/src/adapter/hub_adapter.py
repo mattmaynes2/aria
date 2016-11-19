@@ -10,11 +10,7 @@ class HubAdapter (Adapter):
 
     def send (self, message):
 
-        if (message.type == Message.Event):
-            self.hub.processEvent(message)
-            return True
-
-        elif ('action' not in message.data):
+        if ('action' not in message.data):
             return False
 
         self.notify(

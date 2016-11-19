@@ -19,8 +19,9 @@ CREATE TABLE IF NOT EXISTS "Event" (
 	"type" INTEGER,
 	"sender" INTEGER,
 	"receiver" INTEGER,
-	"timestamp" TEXT,
-	"payload" TEXT
+	"timestamp" DATETIME DEFAULT current_timestamp,
+	"key" TEXT,
+	"value" TEXT
 );
 
 CREATE TABLE IF NOT EXISTS "Device" (

@@ -16,7 +16,6 @@ class Hub:
         self.name    = 'My Hub'
         self.mode    = HubMode.Normal
         self.exit    = exit if exit else lambda: None
-        self.dbTranslator = DatabaseTranslator()
 
     def command (self, action):
         if action == 'status':
@@ -40,6 +39,4 @@ class Hub:
         log.debug('sending device list '+ data)
         return data
 
-    def processEvent (self, message):
-        self.dbTranslator.processEvent(message)
 
