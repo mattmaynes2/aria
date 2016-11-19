@@ -1,22 +1,21 @@
 let columnify   = require('./columnify'),
-    Command     = require('./command'),
     Child       = require('./child');
 
 
 let Executor = (function () {
 
-    function Executor (command, options) {
-        this.command = command || new Command();
-        this.options = options || {};
+    function Executor (commands, options) {
+        this.commands   = commands || [];
+        this.options    = options || {};
     }
 
     Executor.prototype.run = function () {
-        let children = this.command.map((cmd) => {
+        let children = this.commands.map((cmd) => {
             return new Child(cmd, this.options);
         });
         exec(this.options, children).then(() => {
             if (this.options.stats) {
-                console.log(columnify(this.command.map((cmd) => {
+                console.log(columnify(this.commands.map((cmd) => {
                     return cmd.stat.data();
                 })));
             }

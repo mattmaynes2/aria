@@ -5,21 +5,25 @@ let Command     = require('./execute/command'),
     program     = require('commander'),
     fs          = require('fs');
 
-let ALL         = ['enviro', 'deps', 'build', 'test'],
-    DIRECTIVES  = [
-        { cmd : 'enviro'    , info : 'Install environment dependencies' },
-        { cmd : 'deps'      , info : 'Install project dependencies'     },
-        { cmd : 'build'     , info : 'Compile project and run build'    },
-        { cmd : 'test'      , info : 'Run tests on built projects'      },
-        { cmd : 'deploy'    , info : 'Starts running the built project' },
-        { cmd : 'clean'     , info : 'Cleans the build resources'       }
+let DIRECTIVES  = [
+        { cmd : 'all'       , info : 'Install dependencies, runs a build and tests it'  },
+        { cmd : 'enviro'    , info : 'Install environment dependencies'                 },
+        { cmd : 'deps'      , info : 'Install project dependencies'                     },
+        { cmd : 'build'     , info : 'Compile project and run build'                    },
+        { cmd : 'test'      , info : 'Run tests on built projects'                      },
+        { cmd : 'deploy'    , info : 'Starts running the built project'                 },
+        { cmd : 'clean'     , info : 'Cleans the build resources'                       }
     ];
 
-var manifest = `${__dirname}/manifest.json`, command, root = __dirname, config;
+var manifest = `${__dirname}/manifest.json`, config, directive, target, commands, root;
 
-function makeCommand (directive, target) {
-    command = new Command(directive, target);
-    command.root = root;
+function setCommand (_directive, _target) {
+    directive   = _directive;
+    target      = _target;
+}
+
+function commandNames () {
+    return DIRECTIVES.map((dir) => { return dir.cmd; });
 }
 
 program
@@ -28,36 +32,27 @@ program
     .option('-a, --stay-alive'  , 'Continue to run the directive even if an error occurs')
     .option('-m, --manifest'    , 'Execute build with specific manifest')
     .option('-q, --quiet'       , 'Do not display output from commands being executed')
+    .option('-S, --silent'      , 'Do not display any output')
     .option('-r, --root'        , 'Root directory where target should be executed from')
     .option('-s, --stats'       , 'Display build statistics at end of execution')
     .option('-v, --verbose'     , 'Display verbose messages');
-
-
-program
-    .command('all [target]')
-    .description('Install all dependencies, runs a build and tests it')
-    .action((target) => {
-        command = new Command().children(ALL.map((directive) => {
-            var cmd = new Command(directive, target);
-            cmd.root = root;
-            return cmd;
-        }));
-        command.root = root;
-    });
 
 
 DIRECTIVES.forEach((directive) => {
     program
         .command(`${directive.cmd} [target]`)
         .description(directive.info)
-        .action(makeCommand.bind(null, directive.cmd));
+        .action(setCommand.bind(null, directive.cmd));
 });
 
 program.parse(process.argv);
 
-if (typeof command === 'undefined') {
+if (typeof directive === 'undefined') {
     console.log('[WARN] No command specified - Assuming "build"');
-    makeCommand('build');
+    directive = 'build';
+} else if (commandNames().indexOf(directive) < 0) {
+    console.error(`Error: Unknown command specified ${directive} - See --help for details`);
+    process.exit(1);
 }
 
 try {
@@ -69,8 +64,13 @@ catch (e) {
     process.exit(1);
 }
 
-command = Command.populate(config, command);
-new Executor(command, program).run();
+
+root = program.root || __dirname;
+commands = Command.parse(config, directive, target).map((cmd) => {
+    return cmd.root(root);
+});
+program.quiet = program.quiet || program.silent;
+new Executor(commands, program).run();
 
 
 

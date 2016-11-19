@@ -3,21 +3,14 @@ let ProcStat = require('./procstat');
 let Command = (function () {
 
     function Command (directive, target) {
-        this._children   = [];
         this._script     = '';
+        this._root       = __dirname;
         this.directive  = directive || '';
         this.target     = target    || '';
-        this.stat       = new ProcStat();
-        this.root       = __dirname;
+        this.stat       = new ProcStat(target);
     }
 
-    Command.prototype.addChild = function (cmd) {
-        if (!(cmd instanceof Command)) {
-            throw new TypeError('Invalid command type');
-        }
-        this._children.push(cmd);
-        return this;
-    };
+    Command.ALL = ['enviro', 'deps', 'build', 'test'];
 
     Command.prototype.children = function (children) {
         if (arguments.length === 0) {
@@ -27,43 +20,50 @@ let Command = (function () {
         return this;
     };
 
-    Command.prototype.script = function () {
-        return `cd ${this.root} && ` + shellJoin(this.flatten().map((cmd) => {
-            return cmd._script;
-        }));
+    Command.prototype.script = function (script) {
+        if (arguments.length === 0) {
+            return `cd ${this._root} && ` + shellJoin(this._script);
+        }
+        this._script = script || '';
+        return this;
     };
 
-    Command.prototype.map = function (iterator) {
-        return this.flatten().map(iterator);
-    };
-
-    Command.prototype.flatten = function () {
-        return [this].concat(this._children.map((child) => { return child.flatten(); }));
+    Command.prototype.root = function (root) {
+        if (arguments.length === 0) { return this._root; }
+        this._root = root;
+        return this;
     };
 
     Command.prototype.toString = function () {
-        return `${this.directive} ${this.target} ` + this.script();
+        return `[${this.directive}] <${this.target}> ` + this.script();
     };
 
-    Command.populate = function (manifest, command) {
-        var target;
+    Command.parse = function (manifest, directive, target) {
+        var matches, exp;
 
-        if (command.target) {
-            if (!(command.target in manifest)) {
-                throw new Error(`Target ${command.target} not found in manifest`);
+        if (target) {
+            exp = new RegExp(target);
+            matches = Object.keys(manifest).filter((target) => { return exp.test(target); });
+
+            if (matches.length === 0) {
+                throw new Error(`Target ${target} not found in manifest`);
             }
-            command._script = manifest[command.target][command.directive] || '';
-        } else {
-            for (target in manifest) {
-                command.addChild(
-                    Command.populate(
-                        manifest,
-                        new Command(command.directive, target)
-                    )
-                );
-            }
+
+            return matches.map((target) => {
+                return new Command(directive, target).script(manifest[target][directive]);
+            });
         }
-        return command;
+        else if (directive === 'all') {
+            return [].concat.apply([], Command.ALL.map((directive) => {
+                return Command.parse(manifest, directive, target);
+            }));
+        }
+
+        return Object.keys(manifest).filter((target) => {
+            return !!manifest[target][directive];
+        }).map((target) => {
+            return new Command(directive, target).script(manifest[target][directive]);
+        });
     };
 
     function shellJoin (cmd) {

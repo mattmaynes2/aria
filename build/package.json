@@ -4,7 +4,7 @@
   "description": "Build configuration for smart-learning platform",
   "main": "execute.js",
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint execute"
+      "test": "./node_modules/jshint/bin/jshint run execute"
   },
   "license": "MIT",
   "devDependencies": {

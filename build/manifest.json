@@ -21,7 +21,7 @@
         ],
         "test" : [
             "npm test",
-            "./support/try -e shellcheck run support/pkman support/try",
+            "./support/try -e shellcheck support/pkman support/try",
             "./support/try -e shellcheck markdown/mkpdf"
         ]
     },
