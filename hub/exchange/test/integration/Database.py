@@ -30,6 +30,7 @@ class TestDatabaseIntegration(TestCase):
         sensorStateChangeMessage.type = Message.Event
         sensorStateChangeMessage.data = {"state" : "1"}
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
+        self.exchange.teardown() #Tear down exchange to ensure database is written to
         results = self.db.query("SELECT count(*) FROM Event")
         self.assertEqual(results.fetchone()[0], 1)
 

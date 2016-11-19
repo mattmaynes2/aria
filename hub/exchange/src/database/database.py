@@ -1,6 +1,9 @@
 import sqlite3
 import logging
 import os.path
+import pkgutil
+import sys
+
 log=logging.getLogger(__name__)
 
 class Database:
@@ -31,10 +34,10 @@ class Database:
         log.info("Closed connection to " + self.name)
 
     def createDB(self):
-        with open('database//database-setup.sql') as f:
-            sql = f.read()
-            self.connection.executescript(sql)
-            self.connection.commit()
+        sql = pkgutil.get_data('database','database-setup.sql')
+        sql = sql.decode('utf-8')
+        self.connection.executescript(sql)
+        self.connection.commit()
 
 
 
