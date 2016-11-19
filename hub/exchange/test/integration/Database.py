@@ -25,7 +25,6 @@ class TestDatabaseIntegration(TestCase):
     def tearDown(self):
         self.exchange.teardown()
 
-    @unittest.skip("Incomplete test")
     def test_sensor_state_should_be_logged_to_database(self):
         sensorStateChangeMessage = Message()
         sensorStateChangeMessage.type = Message.Event
