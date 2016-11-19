@@ -7,10 +7,18 @@ from adapter import Adapter
 from database import Database
 import queue
 import sqlite3
+import os
 
 class TestDatabaseIntegration(TestCase):
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(self):
+
+        try:
+            os.remove("aria.db")
+        except OSError:
+            pass
+
         self.hub         = Hub()
         self.cli         = CLI(self.hub)
         self.database    = Database()
@@ -25,12 +33,12 @@ class TestDatabaseIntegration(TestCase):
     def tearDown(self):
         self.exchange.teardown()
 
-    @unittest.skip("Incomplete test")
     def test_sensor_state_should_be_logged_to_database(self):
         sensorStateChangeMessage = Message()
         sensorStateChangeMessage.type = Message.Event
         sensorStateChangeMessage.data = {"state" : "1"}
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
+        self.exchange.teardown() #Tear down exchange to ensure database is written to
         results = self.db.query("SELECT count(*) FROM Event")
         self.assertEqual(results.fetchone()[0], 1)
 
