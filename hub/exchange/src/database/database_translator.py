@@ -24,6 +24,12 @@ class DatabaseTranslator(Delegate):
                 + str(message.type) + ", '" + str(UUID(bytes = message.sender)) + "', '" \
                 + str(UUID(bytes = message.receiver)) + "', '" + str(key) + "', '" + str(message.data[key]) + \
                 "');")
+
+    def discovered (self, device):
+        log.info('Received ' + str(device))
+        self.database.execute("INSERT into Device (type, name, address) VALUES (" + device.type + \
+        ", " + device.name + ", " + device.address + ");")
+
                 
                 
 
