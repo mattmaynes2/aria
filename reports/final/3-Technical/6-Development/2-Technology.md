@@ -1,8 +1,8 @@
-### C-2 Technologies {- #C-2}
+### Technologies {#section-3-6-2}
 
 The Aria system is composed of many different technologies that each serve a task specific purpose.
-This document outlines the details about the technologies chosen and the reasons for them being 
-selected. This document is broken down into the different subsystems of the Aria system.
+This section outlines the details about the technologies chosen and the reasons for them being 
+selected. This section is broken down into the different subsystems of the Aria system.
 
 ##### Exchange Server {-}
 
