@@ -16,6 +16,7 @@ class Database:
             self.createDB()
         else:
             self.connection = sqlite3.connect(self.name, timeout)
+        log.info("Opened connection to " + self.name)
 
     def execute (self, sql):
         try:
@@ -25,6 +26,7 @@ class Database:
 
     def shutdown (self):
         self.connection.close()
+        log.info("Closed connection to " + self.name)
 
     def createDB(self):
         with open('database//database-setup.sql') as f:
