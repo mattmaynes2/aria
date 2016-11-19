@@ -7,6 +7,7 @@ before_install:
     - "./build/support/pkman install python3"
     - "node --version"
     - "python --version"
+    - "cd ./build && npm install"
     - "./build/run enviro"
     - "./build/run deps"
     - "sudo wget http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb"
