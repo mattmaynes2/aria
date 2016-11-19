@@ -7,10 +7,18 @@ from adapter import Adapter
 from database import Database
 import queue
 import sqlite3
+import os
 
 class TestDatabaseIntegration(TestCase):
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(self):
+
+        try:
+            os.remove("aria.db")
+        except OSError:
+            pass
+
         self.hub         = Hub()
         self.cli         = CLI(self.hub)
         self.database    = Database()
