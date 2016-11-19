@@ -5,6 +5,7 @@ from device     import Device
 from adapter import Message
 from adapter import Adapter
 import queue
+import sqlite3
 
 class TestDatabaseIntegration(TestCase):
 
@@ -15,17 +16,29 @@ class TestDatabaseIntegration(TestCase):
         self.testAdapter = StubDeviceAdapter()
         self.exchange.register('stub', self.testAdapter)
         self.exchange.discovered(Device('hub', '', Message.DEFAULT_ADDRESS))
-
         self.exchange.start()
+
+        self.db = Database()
 
     def tearDown(self):
         self.exchange.teardown()
 
-    @unittest.skip("test is not complete")
+    @unittest.skip("Incomplete test")
     def test_sensor_state_should_be_logged_to_database(self):
         sensorStateChangeMessage = Message()
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.assertEqual(True, False)
+
+class Database:
+
+    def __init__(self):
+        self.conn = sqlite3.connect("aria.db")
+        self.cursor = self.conn.cursor()
+
+    def query(self, sql):
+        return self.cursor.execute(sql)
+
+
 
 class StubDeviceAdapter(Adapter):
 
