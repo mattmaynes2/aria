@@ -28,7 +28,7 @@
     "hub.exchange" : {
         "deps"      : ["cd ../hub/exchange", "./setup.py develop"],
         "build"     : ["cd ../hub/exchange", "./setup.py bdist_egg"],
-        "deploy"    : ["cd ../hub/exchange", "./bin/exchange -d"],
+        "deploy"    : ["cd ../hub/exchange", "./bin/exchange -d start"],
         "test"      : ["cd ../hub/exchange", "./setup.py test", "../../build/support/try -e shellcheck ./bin/exchange"],
         "clean"     : ["cd ../hub/exchange", "./setup.py clean"]
     },
