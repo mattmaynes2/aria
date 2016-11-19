@@ -21,6 +21,7 @@ class Database:
         try:
             log.debug("Running SQL statement: " + sql)
             self.connection.execute(sql)
+            self.connection.commit()
         except Exception as e:
             log.error("Could not execute command " + sql + " " + str(e))
 
@@ -31,6 +32,7 @@ class Database:
         with open('database//database-setup.sql') as f:
             sql = f.read()
             self.connection.executescript(sql)
+            self.connection.commit()
 
 
 

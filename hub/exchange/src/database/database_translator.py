@@ -17,8 +17,8 @@ class DatabaseTranslator(Delegate):
         log.info("Received " + str(message))
 
     def received (self, message):
-        log.info('Received ' + str(message))
         if (message.type not in self.ignore):
+            log.info('Received ' + str(message))
             for key in message.data:
                 self.database.execute("INSERT into event (type, sender, receiver, key, value) VALUES("\
                 + str(message.type) + ", '" + str(UUID(bytes = message.sender)) + "', '" \
