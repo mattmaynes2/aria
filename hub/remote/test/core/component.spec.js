@@ -1,4 +1,4 @@
-import Component from '../../src/core/component';
+import Component from '../../public/core/component';
 
 describe('Component', function () {
     var component;

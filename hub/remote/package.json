@@ -34,7 +34,7 @@
     "webpack": "^1.13.2"
   },
   "scripts": {
-    "test": "./node_modules/.bin/jshint src test && ./node_modules/.bin/karma start karma.conf.js",
+    "test": "./node_modules/.bin/jshint --exclude 'stats.bundle.js' public test && ./node_modules/.bin/karma start karma.conf.js",
     "build": "./node_modules/.bin/webpack"
   }
 }

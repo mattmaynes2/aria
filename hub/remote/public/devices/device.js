@@ -1,4 +1,3 @@
-import $        from 'jquery';
 import uuid     from 'react-native-uuid';
 import Widget   from './widget';
 
@@ -17,7 +16,7 @@ class Device extends Widget {
         super.render();
     }
 }
-
+/*
 function fetchDevices () {
     $.ajax({
         url     : '/request',
@@ -31,6 +30,6 @@ function fetchDevices () {
         this._$el.find('.widget-body').empty().text(res);
     });
 }
-
+*/
 export default Device;
 
