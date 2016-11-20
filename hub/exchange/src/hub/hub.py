@@ -53,9 +53,6 @@ class Hub(Device):
         log.debug('sending device list '+ data)
         return data
 
-<<<<<<< HEAD
-=======
     def setMode(self,mode):
         self.mode=HubMode(mode)
->>>>>>> origin/sprint-3
 
