@@ -14,31 +14,29 @@ class DatabaseTranslator(Delegate):
 
     def received (self, message):
         if (message.type == Message.Request):
-            log.info("Received ")
+            log.info("Received " + str(message))
             return _request(message)
         elif (message.type == Message.Event):
             _event(message)
             
     def discovered (self, device):
         log.info('Received ' + str(device))
-        self.database.execute("INSERT into Device (type, name, address) VALUES ('" + str(device.type) + \
-        "', '" + device.name + "', '" + str(UUID(bytes =device.address)) + "');")
+        self.database.execute("INSERT into Device (address, name, version, type) VALUES (?, ?, ?, ?);", 
+        str(device.address), str(device.name), str(device.type), str(device.device_type))  
 
-    def _request(self, message):           
-            self.database.execute("INSERT into Request (sender, receiver, action, value) VALUES('"\
-            + str(UUID(bytes = message.sender)) + "', '" \
-            + str(UUID(bytes = message.receiver)) + "', '" + str(key) + "', '" + str(message.data[key]) + \
-            "');")
-            #return self.connection.last_insert_rowid()
-            results = self.database.execute("SELECT last_insert_rowid()")
-            return results.get_points()
+    def _request(self, message):
+        self.databse.execute("INSERT into Request (source, receiver, action, value) VALUES (?, ?, ?);" \
+        str(UUID(bytes = message.sender)), str(UUID(bytes = message.receiver)), str(key), \
+        str(message.data[key]))  
+        results = self.database.execute("SELECT last_insert_rowid()")
+        return results.get_points()
 
     def _event(self, event):
         id = message.data["requestId"] if "requestId" in message.data else None
-        self.database.execute("INSERT into Event (request_id, sender, attribute, value) VALUES("\
-            + id + ", '" + str(UUID(bytes = message.sender)) + "', '" \
-            + str(UUID(bytes = message.receiver)) + "', '" + str(key) + "', '" + str(message.data[key]) + \
-            "');")
+        self.database.execute("INSERT into Event (request_id, source, attribute, value) VALUES( \
+        ?, ?, ?, ?;", id, str(UUID(bytes = message.sender)), str(UUID(bytes = message.receiver)), \
+        str(key), str(message.data[key])
+
 
                 
                 
