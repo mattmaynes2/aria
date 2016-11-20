@@ -32,38 +32,58 @@ CREATE TABLE IF NOT EXISTS "Event" (
 	"value" TEXT
 );
 
-/*
-id        --  auto incrementing integer key
-protocol  --  specifies what adapter will be needed (Z-Wave, WeMo, etc)
-type      --  0 = sensor   1 = device
-name      --  user specified name of the device
-address   --  UUID of the device or sensor 
-*/
-CREATE TABLE IF NOT EXISTS "Device" (
-	"id" PRIMARY KEY,
-	"protocol" INTEGER,
-	"type" INTEGER,
-	"name" TEXT,
-	"address" TEXT,
-	FOREIGN KEY("type") REFERENCES "event"("id")
-);
-
-/*
-This is all getting changed most likely 
-
-
+/* 
 id        --  auto incrementing integer key
 name      --  user specified name of the device
 protocol  --  specifies what adapter will be needed (Z-Wave, WeMo, etc)
-input     --  something 
+isSensor      --  0 = device 1 = sensor
 maker     --  device company (Samsung, Aeon Labd, etc)
-version   --  firmware version of device
 */
 CREATE TABLE IF NOT EXISTS "Device_Type" (
 	"id" PRIMARY KEY,
 	"name" TEXT,
 	"protocol" INTEGER,
-	"input" INTEGER,
+	"is_sensor" INTEGER,
 	"maker" TEXT,
-	"version" TEXT
+	"attributes"
 );
+
+/*
+address   --  UUID of the device or sensor
+name      --  user specified name of the device
+version   --  firmware version of device 
+type      --  
+*/
+CREATE TABLE IF NOT EXISTS "Device" (
+	"address" PRIMARY KEY TEXT,
+	"name" TEXT,
+	"version" TEXT,
+	"type" TEXT
+	FOREIGN KEY("type") REFERENCES "Device_Type"("id")
+);
+
+/*
+id         --  auto incrementing integer key
+name       --  name of the attribute
+data_type  --  the type of data returned when an attribute is performed
+*/
+CREATE TABLE IF NOT EXISTS "Attributes" (
+	"id" PRIMARY KEY,
+	"name" TEXT,
+	"data_type" TEXT,
+	
+)
+
+/*
+device_type_id  --  an id linking to an id in the Device table
+attribute_id    --  an id linking to an id in the Attributes table 
+*/
+CREATE TABLE IF NOT EXISTS "Device_Type_Attributes" (
+	"device_type_id" INTEGER,
+	"attribute_id" INTEGER
+	FOREIGN KEY("device_type_id") REFERENCES "Device_Type"("id")
+	FOREIGN KEY("attribute_id") REFERENCES "Atributes"("id")
+)
+
+
+
