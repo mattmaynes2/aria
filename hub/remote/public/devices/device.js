@@ -1,19 +1,20 @@
-import $ from 'jquery';
-import Widget from './widget';
+import $        from 'jquery';
+import uuid     from 'react-native-uuid';
+import Widget   from './widget';
+
 
 class Device extends Widget {
     constructor () {
         super();
-        this._state.title = 'Device';
+        this._state = {
+            id      : uuid.unparse(new Array(16).fill(0)),
+            title   : 'Device',
+            name    : '',
+            address : uuid.unparse(new Array(16).fill(0))
+        };
     }
     render () {
         super.render();
-        if (!this._$deviceButton) {
-            this._$deviceButton = $('<button>').text('List Devices')
-                .click(fetchDevices.bind(this));
-            this._$el.find('.widget-footer').append(this._$deviceButton);
-        }
-        return this;
     }
 }
 
@@ -26,6 +27,7 @@ function fetchDevices () {
             'Content-Type' : 'application/json'
         }
     }).done((res) => {
+
         this._$el.find('.widget-body').empty().text(res);
     });
 }

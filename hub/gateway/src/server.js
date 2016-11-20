@@ -7,7 +7,7 @@ let fs              = require('fs'),
 
 let DEFAULT_CONFIG = {
     port        : 8080,
-    public      : '../remote/',
+    public      : '../remote/public/',
     exchange    : {
         port      : '7600',
         address   : 'localhost'
