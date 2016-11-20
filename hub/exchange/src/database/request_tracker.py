@@ -1,5 +1,8 @@
+import logging
 from adapter import Message
 from database import DatabaseTranslator 
+
+log= logging.getLogger(__name__)
 
 class RequestTracker(DatabaseTranslator):
 
@@ -21,9 +24,12 @@ class RequestTracker(DatabaseTranslator):
             if(reqid):
                 self.sendEvent(reqid,message)
             else:
-                msg=self.createRequest(message)
-                reqid=self.databaseTranslator.received(msg)
-
+                try:
+                    msg=self.createRequest(message)
+                    reqid=self.databaseTranslator.received(msg)
+                    self.sendEvent(reqid,message)
+                except:
+                    log.warn('Invalid Event message '+message)
         else:
             self.databaseTranslator.received(message)
         
@@ -33,10 +39,9 @@ class RequestTracker(DatabaseTranslator):
             self.databaseTranslator.received(message)
         
         def createRequest(self,message):
-            # Event messages have the form {attribute:value}
-            # Requests have the form {'action':attribute, 'value':value }
-            keys=list(message.data.keys())
-            data={'action':keys[0],'value':message.data[keys[0]]}
+            # Event messages have the form {'response':<Atribute>, 'value':<value>}
+            # Requests have the form {'set':<attribute>, 'value':<value> }
+            data={'set':message.data['response'],'value':message.data['value']}
             return Message(type_=Message.Request,data=data,receiver=message.sender)
 
             
