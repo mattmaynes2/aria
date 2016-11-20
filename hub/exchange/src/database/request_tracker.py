@@ -1,4 +1,5 @@
 from adapter import Message
+from database import DatabaseTranslator 
 
 class RequestTracker(DatabaseTranslator):
 
