@@ -1,6 +1,6 @@
 import uuid
 import json
-from device import Attribute
+from device import Attribute, DeviceType
 class Device:
 
     def __init__ (self, device_type, name = '', address = None,version=''):
