@@ -39,23 +39,3 @@ class DatabaseTranslator(Delegate):
             + id + ", '" + str(UUID(bytes = message.sender)) + "', '" \
             + str(UUID(bytes = message.receiver)) + "', '" + str(key) + "', '" + str(message.data[key]) + \
             "');")
-
-                
-                
-
-
-    
-        
-        
-    
-    
-
-    
-
-    
-    
-
-
-
-
-
