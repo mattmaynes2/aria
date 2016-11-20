@@ -39,14 +39,14 @@ describe('REST API endpoint testing', function(){
 
         var expectedBuffer = Buffer.concat([Buffer.from([0x02]),
                                         sizeBuf,
-                                        adapter.id,
+                                        adapter._id,
                                         new Buffer(16).fill(0),
                                         Buffer.from(JSON.stringify(payload))]);
 
         var discoveryAck = Buffer.concat([Buffer.from([0x04]),
                                             sizeBuf,
                                             new Buffer(16).fill(0),
-                                            adapter.id,
+                                            adapter._id,
                                             Buffer.from(JSON.stringify(payload))]);
 
         fakeSocket.setNextResponse(discoveryAck);
