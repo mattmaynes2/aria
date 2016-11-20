@@ -1,4 +1,4 @@
-import Component    from './component';
+import Component from '../component';
 import './widget-panel.css';
 
 class WidgetPanel extends Component {

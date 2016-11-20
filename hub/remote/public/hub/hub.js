@@ -1,5 +1,6 @@
 import $        from 'jquery';
-import Widget   from '../core/widget';
+import Button   from '../core/button';
+import Widget   from '../core/widget/widget';
 import './hub.css';
 
 class Hub extends Widget {
@@ -34,6 +35,7 @@ class Hub extends Widget {
     render () {
         super.render();
 
+        this._logButton = new Button('View Logs').render();
         this._$el
             .height(200)
             .find('.widget-body').addClass('hub-body')
@@ -44,6 +46,10 @@ class Hub extends Widget {
                     .append($('<li>').text(`Mode    : ${this._state.mode}`))
                     .append($('<li>').text(`Devices : ${this._state.devices}`))
             );
+
+        this._$el
+            .find('.widget-footer')
+            .append(this._logButton.$el().addClass('hub-log-button'));
 
         return this;
     }

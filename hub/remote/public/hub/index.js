@@ -1,6 +1,6 @@
 import $           from 'jquery';
 import Menu        from '../nav/menu';
-import WidgetPanel from '../core/widget-panel';
+import WidgetPanel from '../core/widget/widget-panel';
 import Hub         from './hub';
 
 import './index.css';

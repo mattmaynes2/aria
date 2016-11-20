@@ -1,5 +1,5 @@
 import $            from 'jquery';
-import Component    from '../core/component';
+import Component    from '../component';
 import './widget.css';
 
 class Widget extends Component {
