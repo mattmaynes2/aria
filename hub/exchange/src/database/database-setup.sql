@@ -33,11 +33,11 @@ CREATE TABLE IF NOT EXISTS "Event" (
 );
 
 /* 
-id        --  auto incrementing integer key
-name      --  user specified name of the device
-protocol  --  specifies what adapter will be needed (Z-Wave, WeMo, etc)
-isSensor      --  0 = device 1 = sensor
-maker     --  device company (Samsung, Aeon Labd, etc)
+id          --  auto incrementing integer key
+name        --  user specified name of the device
+protocol    --  specifies what adapter will be needed (Z-Wave, WeMo, etc)
+isSensor    --  0 = device 1 = sensor
+maker       --  device company (Samsung, Aeon Labd, etc)
 */
 CREATE TABLE IF NOT EXISTS "Device_Type" (
 	"id" PRIMARY KEY,
@@ -45,7 +45,6 @@ CREATE TABLE IF NOT EXISTS "Device_Type" (
 	"protocol" INTEGER,
 	"is_sensor" INTEGER,
 	"maker" TEXT,
-	"attributes"
 );
 
 /*
@@ -71,7 +70,6 @@ CREATE TABLE IF NOT EXISTS "Attributes" (
 	"id" PRIMARY KEY,
 	"name" TEXT,
 	"data_type" TEXT,
-	
 )
 
 /*
