@@ -26,7 +26,7 @@ class DatabaseTranslator(Delegate):
 
     def _request(self, message):           
             self.database.execute("INSERT into Request (sender, receiver, action, value) VALUES('"\
-            str(UUID(bytes = message.sender)) + "', '" \
+            + str(UUID(bytes = message.sender)) + "', '" \
             + str(UUID(bytes = message.receiver)) + "', '" + str(key) + "', '" + str(message.data[key]) + \
             "');")
             #return self.connection.last_insert_rowid()
@@ -36,7 +36,7 @@ class DatabaseTranslator(Delegate):
     def _event(self, event):
         id = message.data["requestId"] if "requestId" in message.data else None
         self.database.execute("INSERT into Event (request_id, sender, attribute, value) VALUES("\
-            id + ", '" + str(UUID(bytes = message.sender)) + "', '" \
+            + id + ", '" + str(UUID(bytes = message.sender)) + "', '" \
             + str(UUID(bytes = message.receiver)) + "', '" + str(key) + "', '" + str(message.data[key]) + \
             "');")
 
