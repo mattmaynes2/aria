@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS "Request" (
 CREATE TABLE IF NOT EXISTS "Event" (
 	"id" PRIMARY KEY,
 	"timestamp" DATETIME DEFAULT current_timestamp,
-	"request_id" TEXT,
+	"request_id" INTEGER,
 	"sender" TEXT,	
 	"attribute" TEXT,
 	"value" TEXT
