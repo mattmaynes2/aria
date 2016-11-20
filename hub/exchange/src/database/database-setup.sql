@@ -65,11 +65,17 @@ CREATE TABLE IF NOT EXISTS "Device" (
 id         --  auto incrementing integer key
 name       --  name of the attribute
 data_type  --  the type of data returned when an attribute is performed
+max        --  maximum value of an Integer value
+min        --  minimum value of an Integer value
+setp       --  the increment or decrement value
 */
 CREATE TABLE IF NOT EXISTS "Attributes" (
 	"id" PRIMARY KEY,
 	"name" TEXT,
 	"data_type" TEXT,
+	"max" INTEGER,
+	"min" INTEGER,
+	"step" REAL
 )
 
 /*
