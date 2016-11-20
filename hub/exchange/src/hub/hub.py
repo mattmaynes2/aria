@@ -3,6 +3,7 @@ import logging
 import uuid
 from .hub_mode  import HubMode
 from device import Device
+from database import DatabaseTranslator
 
 log=logging.getLogger(__name__)
 
@@ -29,12 +30,13 @@ class Hub:
             'devices'   : len(self._devices)
         }
     
-    def addDevice(self,device):
+    def addDevice (self,device):
         log.debug('adding device '+str(device))
         self._devices.append(device)
 
-    def getDevicesJson(self):
+    def getDevicesJson (self):
         data=json.dumps(self._devices,default=Device.json_encode, sort_keys=True)
         log.debug('sending device list '+ data)
         return data
+
 
