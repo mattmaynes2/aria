@@ -21,7 +21,7 @@ class DatabaseTranslator(Delegate):
             
     def discovered (self, device):
         log.info('Received ' + str(device))
-        self.database.execute("INSERT into Device (address, name, version, type) VALUES (?, ?, ?, ?);", 
+        self.database.execute("INSERT into Device (address, name, version, type) VALUES (?, ?, ?, ?);", \ 
         str(device.address), str(device.name), str(device.type), str(device.device_type))  
 
     def _request(self, message):
@@ -34,7 +34,7 @@ class DatabaseTranslator(Delegate):
     def _event(self, event):
         id = message.data["requestId"] if "requestId" in message.data else None
         self.database.execute("INSERT into Event (request_id, source, attribute, value) VALUES( \
-        ?, ?, ?, ?;", id, str(UUID(bytes = message.sender)), str(UUID(bytes = message.receiver)), \
+        ?, ?, ?, ?);", id, str(UUID(bytes = message.sender)), str(UUID(bytes = message.receiver)), \
         str(key), str(message.data[key])
 
 
