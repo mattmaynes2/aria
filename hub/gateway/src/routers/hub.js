@@ -12,9 +12,9 @@ let HubRouter = (function () {
 
         app.get('/state', (req, res) => {
             this._adapter
-                .send(IPC.Request, { action : 'status' })
+                .send(IPC.Request, { get : 'status' })
                 .then((reply) => {
-                    res.json(reply.payload);
+                    res.json(reply.payload.value);
                 })
                 .catch(onError.bind(this, res));
         });
@@ -22,17 +22,17 @@ let HubRouter = (function () {
         app.route('/mode')
             .get((req, res) => {
                 this._adapter
-                    .send(IPC.Request, { action : 'status' })
+                    .send(IPC.Request, { get : 'mode' })
                     .then((reply) => {
-                        res.json({ mode : reply.payload.mode });
+                        res.json({ mode : reply.payload.value });
                     })
                     .catch(onError.bind(this, res));
             })
             .post((req, res) => {
                 this._adapter
-                    .send(IPC.Request, { action : 'set_mode', mode : req.body.mode})
+                    .send(IPC.Request, { set : 'mode', value : req.body.mode})
                     .then((reply) => {
-                        res.json({ mode : reply.payload.mode });
+                        res.json({ mode : reply.payload.value});
                     })
                     .catch(onError.bind(this, res));
             });

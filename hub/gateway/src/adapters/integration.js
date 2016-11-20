@@ -24,7 +24,7 @@ let IntegrateAdatper = (function () {
         this._state = {
             hub : {
                 version : '1.0.0',
-                mode    : 'Normal',
+                mode    : 1,
                 devices : []
             }
         };
@@ -61,7 +61,9 @@ let IntegrateAdatper = (function () {
             try {
                 switch (type) {
                     case IPC.Request:
-                        response = request.call(this, payload);
+                        response = payload.get ?
+                            requestGet.call(this, payload) :
+                            requestSet.call(this, payload);
                         break;
                     case IPC.Event:
                         response = event.call(this, payload);
@@ -78,44 +80,54 @@ let IntegrateAdatper = (function () {
         });
     };
 
-
-    function request (payload) {
-        switch (payload.action) {
-            case 'status':
-                return hubState.call(this);
-            case 'set_mode':
-                if (!payload.mode) { throw new Error('No mode provided'); }
-                this._state.hub.mode = payload.mode;
-                return hubState.call(this);
-            case 'list_devices':
-               return {
-                    type        : IPC.Request,
-                    sender      : HUB_ID,
-                    destination : this._id,
-                    payload     : this._state.hub.devices
-                };
-            default:
-                return {};
-        }
-    }
-
-    function event () {
-        return {};
-    }
-
-    function hubState () {
+    function wrap (res, value) {
         return {
             type        : IPC.Request,
             sender      : HUB_ID,
             destination : this._id,
             payload     : {
-                version     : this._state.hub.version,
-                mode        : this._state.hub.mode,
-                devices     : this._state.hub.devices.length
+                response    : res,
+                value       : value
             }
         };
     }
 
+
+    function requestGet (payload) {
+        switch (payload.get) {
+            case 'status':
+                return wrap(payload.get, {
+                    version     : this._state.hub.version,
+                    mode        : this._state.hub.mode,
+                    devices     : this._state.hub.devices.length
+                });
+            case 'mode':
+                return wrap(payload.get, this._state.hub.mode);
+            case 'devices':
+                return wrap(payload.geta, this._state.hub.devices);
+            default:
+                throw new Error('Unknown request');
+        }
+    }
+
+    function requestSet (payload) {
+        switch (payload.set) {
+            case 'mode':
+                this._state.hub.mode = payload.value;
+                break;
+            default:
+                throw new Error ('Unknown request');
+        }
+        payload.get = payload.set;
+        return requestGet.call(this, payload);
+    }
+
+
+
+
+    function event () {
+        return {};
+    }
     return IntegrateAdatper;
 } ());
 
