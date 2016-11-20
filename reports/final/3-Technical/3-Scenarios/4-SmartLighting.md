@@ -89,25 +89,25 @@ SmartLights: 0
 PIROffice: 0
 ```
 ```
-2016-11-06 14:30:00 PIROffice: 1
-2016-11-06 19:39:00 LightOffice: 9
-2016-11-06 19:42:00 LightOffice: 8
-2016-11-06 19:45:00 LightOffice: 7
-2016-11-06 19:45:10 SmartLights: 3
-2016-11-06 19:45:12 LightOffice: 10
-2016-11-06 19:48:00 LightOffice: 9
-2016-11-06 19:51:00 LightOffice: 8
-2016-11-06 19:55:00 LightOffice: 7
-2016-11-06 19:55:10 SmartLights: 6
-2016-11-06 19:55:12 LightOffice: 10
-2016-11-06 19:58:00 LightOffice: 9
-2016-11-06 20:01:00 LightOffice: 8
-2016-11-06 20:05:00 LightOffice: 7
-2016-11-06 20:05:10 SmartLights: 10
-2016-11-06 20:05:12 LightOffice: 10
-2016-11-06 21:00:00 PIROffice: 1
-2016-11-06 21:00:07 SmartLights: 0
-2016-11-06 21:00:08 LightOffice: 0
+2016-11-06 14:30:00 [Sensor Update] PIROffice: 1
+2016-11-06 19:39:00 [Sensor Update] LightOffice: 9
+2016-11-06 19:42:00 [Sensor Update] LightOffice: 8
+2016-11-06 19:45:00 [Sensor Update] LightOffice: 7
+2016-11-06 19:45:10 [User Action]   SmartLights: 3
+2016-11-06 19:45:12 [Sensor Update] LightOffice: 10
+2016-11-06 19:48:00 [Sensor Update] LightOffice: 9
+2016-11-06 19:51:00 [Sensor Update] LightOffice: 8
+2016-11-06 19:55:00 [Sensor Update] LightOffice: 7
+2016-11-06 19:55:10 [User Action]   SmartLights: 6
+2016-11-06 19:55:12 [Sensor Update] LightOffice: 10
+2016-11-06 19:58:00 [Sensor Update] LightOffice: 9
+2016-11-06 20:01:00 [Sensor Update] LightOffice: 8
+2016-11-06 20:05:00 [Sensor Update] LightOffice: 7
+2016-11-06 20:05:10 [User Action]   SmartLights: 10
+2016-11-06 20:05:12 [Sensor Update] LightOffice: 10
+2016-11-06 21:00:00 [Sensor Update] PIROffice: 1
+2016-11-06 21:00:07 [User Action]   SmartLights: 0
+2016-11-06 21:00:08 [Sensor Update] LightOffice: 0
 ```
 
 The alternate sequence could look like this:
@@ -119,12 +119,12 @@ SmartLights: 0
 PIROffice: 0
 ```
 ```
-2016-11-06 14:30:00 PIROffice: 1
-2016-11-06 14:30:03 SmartLights: 10
-2016-11-06 14:30:06 LightOffice: 10
-2016-11-06 21:00:00 PIROffice: 1
-2016-11-06 21:00:07 SmartLights: 0
-2016-11-06 21:00:08 LightOffice: 0
+2016-11-06 14:30:00 [Sensor Update] PIROffice: 1
+2016-11-06 14:30:03 [User Action]   SmartLights: 10
+2016-11-06 14:30:06 [Sensor Update] LightOffice: 10
+2016-11-06 21:00:00 [Sensor Update] PIROffice: 1
+2016-11-06 21:00:07 [User Action]   SmartLights: 0
+2016-11-06 21:00:08 [Sensor Update] LightOffice: 0
 ```
 
 ##### Expected Behaviour {-}
