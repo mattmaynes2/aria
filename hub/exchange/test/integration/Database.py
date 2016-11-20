@@ -5,14 +5,15 @@ from device     import Device
 from adapter import Message
 from adapter import Adapter
 from database import Database
+from database import RequestTracker
 import queue
 import sqlite3
 import os
+import uuid
 
 class TestDatabaseIntegration(TestCase):
 
-    @classmethod
-    def setUpClass(self):
+    def setUp(self):
 
         try:
             os.remove("aria.db")
@@ -41,6 +42,29 @@ class TestDatabaseIntegration(TestCase):
         self.exchange.teardown() #Tear down exchange to ensure database is written to
         results = self.db.query("SELECT count(*) FROM Event")
         self.assertEqual(results.fetchone()[0], 1)
+
+    def test_events_should_be_linked_to_requests(self):
+
+        myUuid = uuid.uuid4().bytes
+        requestMessage = Message()
+        requestMessage.type = Message.Request
+        requestMessage.data = {"action" : "brightness", "value" : 100}
+        requestMessage.receiver = myUuid
+        self.testAdapter.enqueueMessage(requestMessage)
+        
+        eventMessage = Message()
+        eventMessage.data = { "brightness" : 100 }
+        eventMessage.type = Message.Event 
+        eventMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(eventMessage)    
+        self.exchange.teardown()
+
+        results = self.db.query("SELECT count(*) = 1 FROM \
+                                Event e INNER JOIN Request r ON e.request_id = r.id\
+                                WHERE e.attribute = 'brightness' AND e.value = 100")
+
+        firstResult = results.fetchone()
+        self.assertEqual(firstResult[0], 1)
 
 class TestDatabase:
 
