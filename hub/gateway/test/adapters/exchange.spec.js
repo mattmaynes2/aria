@@ -1,4 +1,4 @@
-var ExchangeAdapter = require('../src/exchange-adapter');
+var ExchangeAdapter = require('../../src/adapters/exchange');
 var sinon = require('sinon');
 
 function FakeSocket(){
