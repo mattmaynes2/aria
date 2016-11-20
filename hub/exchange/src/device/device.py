@@ -12,7 +12,7 @@ class Device:
             raise TypeError("address needs to be of type bytes")
 
     def __str__(self):
-        return 'Device [name: '+self.name+', DeviceType: '+str(self.device_type)+', address: '\
+        return 'Device [name: '+self.name+', DeviceType: <'+self.device_type.name+'>, address: '\
         +str(uuid.UUID(bytes=self.address))+', version:'+self.version+']'
     
 
