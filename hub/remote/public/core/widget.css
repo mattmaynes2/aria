@@ -1,0 +1,27 @@
+
+.widget-frame {
+    width               : 75%;
+    max-width           : 800px;
+    min-width           : 200px;
+    margin              : 0 auto;
+    margin-top          : 10px;
+    background-color    : #FFFFFF;
+    border              : 1px solid rgba(220, 220, 220, 0.5);
+    border-radius       : 2px;
+    font-family         : "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.widget-header {
+    color               : #333333;
+    background-color    : #F5F5F5;
+    border-color        : #DDDDDD;
+    width               : 100%;
+    text-align          : left;
+    border-radius       : 0;
+    font-size           : 16pt;
+    color               : rgba(0, 0, 0, 0.5);
+}
+
+.widget-body {
+    border-top-color: #DDDDDD;
+}

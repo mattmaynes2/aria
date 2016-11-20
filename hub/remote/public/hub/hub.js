@@ -1,39 +1,53 @@
 import $        from 'jquery';
-import Widget   from './widget';
+import Widget   from '../core/widget';
+import './hub.css';
 
 class Hub extends Widget {
 
     constructor () {
         super();
-        this._state.title = 'Hub';
+        this._state = {
+            title   : 'Smart Hub',
+            version : '',
+            mode    : 'Normal',
+            devices : 0
+        };
     }
 
+    update () {
+         $.ajax({
+            url     : '/request',
+            type    : 'POST',
+            data    : '{"action" : "status"}',
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        }).done((res) => {
+            let content = JSON.parse(res).payload;
+            this._state.mode    = content.mode;
+            this._state.devices = content.devices;
+            this._state.version = content.version;
+            this.render();
+        });
+        return this;
+    }
     render () {
         super.render();
 
-        if (!this._$stateButton) {
-            this._$stateButton = $('<button>').text('Refresh Status')
-                .click(fetchStatus.bind(this));
-            this._$el.find('.widget-footer').append(this._$stateButton);
-        }
+        this._$el
+            .height(200)
+            .find('.widget-body').addClass('hub-body')
+            .append($('<div>').addClass('hub-icon'))
+            .append(
+                $('<ul>').addClass('hub-data')
+                    .append($('<li>').text(`Version : ${this._state.version}`))
+                    .append($('<li>').text(`Mode    : ${this._state.mode}`))
+                    .append($('<li>').text(`Devices : ${this._state.devices}`))
+            );
 
         return this;
     }
 
 }
-
-function fetchStatus () {
-    $.ajax({
-        url     : '/request',
-        type    : 'POST',
-        data    : '{"action" : "status"}',
-        headers : {
-            'Content-Type' : 'application/json'
-        }
-    }).done((res) => {
-        this._$el.find('.widget-body').empty().text(res);
-    });
-}
-
 
 export default Hub;

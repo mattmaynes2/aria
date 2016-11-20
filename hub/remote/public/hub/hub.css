@@ -1,0 +1,14 @@
+.hub-body {
+    display : flex;
+}
+
+.hub-icon {
+    width   : 100px;
+    height  : 100px;
+    background-image    : url('../assets/hub/hub-icon.png');
+    background-size     : contain;
+}
+
+.hub-data {
+
+}
