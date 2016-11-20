@@ -4,8 +4,19 @@
     position      : absolute;
     top           : 0;
     overflow      : hidden;
+    display       : flex;
     background    : #F8F8F8;
     border-bottom : 1px solid #E7E7E7;
+}
+
+.nav-title {
+    position    : relative;
+    width       : 100px;
+    left        : 15px;
+    padding-top : 10px;
+    opacity     : 0.5;
+    font-family : "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size   : 18pt;
 }
 
 .nav-menu-group {
