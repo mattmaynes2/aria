@@ -11,19 +11,6 @@ class HubAdapter (Adapter):
         self.hub = hub
 
     def send (self, message):
-<<<<<<< HEAD
-
-        if ('action' not in message.data):
-            return False
-
-        self.notify(
-            'received',
-            Message(type_= Message.Ack,data = self.hub.command(message.data['action']), 
-            sender = Message.DEFAULT_ADDRESS, receiver = message.sender)
-            )
-        return True
-
-=======
         if ('get' in message.data):
             attribute=message.data['get']
             value=self.hub.getCommand(attribute)
@@ -40,7 +27,6 @@ class HubAdapter (Adapter):
                 log.exception("Invalid set message "+ str(message))
                 self.notifyFailure(message.sender)
         return False
->>>>>>> origin/sprint-3
 
     def notifyResponse(self,attribute,responseValue,receiver):
         self.notify(
