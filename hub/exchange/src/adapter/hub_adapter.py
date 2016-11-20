@@ -14,7 +14,7 @@ class HubAdapter (Adapter):
         if ('get' in message.data):
             attribute=message.data['get']
             value=self.hub.getCommand(attribute)
-            elf.notifyResponse(attribute,value,message.sender)
+            self.notifyResponse(attribute,value,message.sender)
             return True
         elif('set' in message.data and 'value' in message.data):
             attribute= message.data['set']
