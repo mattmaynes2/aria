@@ -1,5 +1,4 @@
 import $        from 'jquery';
-import Button   from '../core/button';
 import Widget   from '../core/widget/widget';
 import './hub.css';
 
@@ -17,9 +16,8 @@ class Hub extends Widget {
 
     update () {
          $.ajax({
-            url     : '/request',
-            type    : 'POST',
-            data    : '{"action" : "status"}',
+            url     : '/hub/state',
+            type    : 'GET',
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -35,7 +33,6 @@ class Hub extends Widget {
     render () {
         super.render();
 
-        this._logButton = new Button('View Logs').render();
         this._$el
             .height(200)
             .find('.widget-body').addClass('hub-body')

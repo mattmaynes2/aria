@@ -1,7 +1,7 @@
 let dgram   = require('dgram'),
     uuid    = require('node-uuid'),
     logger  = require('winston'),
-    packets = require('./ipc');
+    IPC     = require('../ipc');
 
 let ExchangeAdapter = (function () {
 
@@ -57,7 +57,7 @@ let ExchangeAdapter = (function () {
             };
 
             client  = this.transport.createSocket('udp4');
-            message = packets.serialize(packet);
+            message = IPC.serialize(packet);
             expiry  = setTimeout(() => {
                 client.close();
                 reject(Error('Response wait period timed out'));
@@ -67,7 +67,7 @@ let ExchangeAdapter = (function () {
                 logger.debug('Received response from comm server');
                 client.close();
                 clearTimeout(expiry);
-                resolve(packets.parse(message));
+                resolve(IPC.parse(message));
             });
 
             client.send(message, 0, message.length,

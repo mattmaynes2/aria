@@ -1,8 +1,8 @@
 let fs              = require('fs'),
     logger          = require('winston'),
     program         = require('commander'),
-    TestAdapter     = require('./test-adapter'),
-    ExchangeAdapter = require('./exchange-adapter'),
+    TestAdapter     = require('./adapters/integration'),
+    ExchangeAdapter = require('./adapters/exchange'),
     Gateway         = require('./gateway');
 
 let DEFAULT_CONFIG = {
