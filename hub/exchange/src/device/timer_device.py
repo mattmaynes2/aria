@@ -1,7 +1,8 @@
 import datetime
-from threading import Thread
+import uuid
+import threading
 
-class TimerDevice(Thread):
+class TimerDevice():
     """
     TimerDevice calls a function at a certain configurable frequency
     TimerDevice(period, callback)
@@ -11,10 +12,17 @@ class TimerDevice(Thread):
 
     def __init__(self, period):
         super().__init__()
+        self.uuid = uuid.uuid4().bytes
         self.period = period
         self.eventListeners = []
         self.lastTime = datetime.datetime.now()
     
+    """
+    Get this device's UUID
+    """
+    def get_uuid(self):
+        return self.uuid
+
     """
     Register a callback to be called when the timer fires
     callback should take one datetime argument
@@ -27,7 +35,13 @@ class TimerDevice(Thread):
         if time >= (self.lastTime + self.period):
             self.lastTime = time
             for listener in self.eventListeners:
-                listener(time)
+                listener(self.uuid, {"value" : time})
+        self.timer = threading.Timer(self.period.total_seconds(), self.tick)
+        self.timer.start()
 
-    def run():
-        
+    def stop(self):
+        self.timer.cancel()
+        self.timer.join()
+
+    def start(self):
+        self.tick()

@@ -23,4 +23,5 @@ class TestSoftwareAdapterIntegrations (TestCase):
 
         timer.start()
         time.sleep(7)
-        self.assertEqual(mockDelegate.call_count, 3)
+        timer.stop()
+        self.assertEqual(mockDelegate.received.call_count, 3)

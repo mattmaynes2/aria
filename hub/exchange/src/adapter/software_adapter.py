@@ -20,4 +20,4 @@ class SoftwareAdapter(Adapter):
 
     def add_device(self, device):
         device.registerEventCallback(self.event)
-        
+
