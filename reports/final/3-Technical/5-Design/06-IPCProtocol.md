@@ -151,7 +151,7 @@ Return the system status and any properties associated with the system
 {
     "response":"status",
     "value": {
-                <String>:<value>, 
+                <attribute_name>:<value>, 
                 ...
              }
 }
