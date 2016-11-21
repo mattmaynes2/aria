@@ -6,6 +6,7 @@
     display       : flex;
     background    : #F8F8F8;
     border-bottom : 1px solid #E7E7E7;
+    user-select   : none;
 }
 
 .nav-title {
