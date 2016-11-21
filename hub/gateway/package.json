@@ -24,10 +24,11 @@
     "test": "./node_modules/.bin/mocha --reporter spec && ./node_modules/.bin/jshint src test",
     "build": "./node_modules/.bin/webpack --executable && chmod +x ./bin/*",
     "start": "./node_modules/.bin/forever start ./bin/gateway",
-    "stop" : "./node_modules/.bin/forever stop ./bin/gateway"
+    "stop": "./node_modules/.bin/forever stop ./bin/gateway"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "commander": "^2.9.0",
     "express": "4.14.0",
     "forever": "^0.15.3",
     "node-uuid": "^1.4.7",

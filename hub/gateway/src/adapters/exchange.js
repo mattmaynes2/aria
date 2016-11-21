@@ -1,22 +1,22 @@
-var ExchangeAdapter = (function () {
-    var dgram   = require('dgram'),
-        uuid    = require('node-uuid'),
-        packets = require('./ipc'),
-        logger = require('winston');
+let dgram   = require('dgram'),
+    uuid    = require('node-uuid'),
+    logger  = require('winston'),
+    IPC     = require('../ipc');
+
+let ExchangeAdapter = (function () {
 
     function ExchangeAdapter (endpoint) {
-        this.id         = new Buffer(16);
+        this._id         = new Buffer(16);
         this.registered = false;
         this.transport  = dgram;
         this.endpoint   = endpoint || {
             port    : 7600,
             address : 'localhost'
         };
-        uuid.v4(null, this.id, 16);
+        uuid.v4(null, this._id);
     }
 
     ExchangeAdapter.prototype.register = function () {
-
         return new Promise ((resolve, reject) => {
             send.call(this, 1, {}).then((response) => {
                 logger.debug('Got a response to discovery request');
@@ -34,6 +34,10 @@ var ExchangeAdapter = (function () {
         });
     };
 
+    ExchangeAdapter.prototype.id = function () {
+        return uuid.unparse(this._id);
+    };
+
     ExchangeAdapter.prototype.send = function (type, payload) {
         if (!this.registered) {
             throw new Error('Exchange adapter is not yet registered');
@@ -47,13 +51,13 @@ var ExchangeAdapter = (function () {
 
             packet = {
                 type        : type,
-                sender      : this.id,
+                sender      : this._id,
                 destination : new Buffer(16).fill(0),
                 payload     : payload
             };
 
             client  = this.transport.createSocket('udp4');
-            message = packets.serialize(packet);
+            message = IPC.serialize(packet);
             expiry  = setTimeout(() => {
                 client.close();
                 reject(Error('Response wait period timed out'));
@@ -63,7 +67,7 @@ var ExchangeAdapter = (function () {
                 logger.debug('Received response from comm server');
                 client.close();
                 clearTimeout(expiry);
-                resolve(packets.parse(message));
+                resolve(IPC.parse(message));
             });
 
             client.send(message, 0, message.length,

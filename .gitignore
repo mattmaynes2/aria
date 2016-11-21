@@ -40,6 +40,9 @@ __pycache__
 *.egg-info
 *.pyc
 
+# JavaScript
+*bundle.js
+
 # Resources
 node_modules
 framework
