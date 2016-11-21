@@ -38,7 +38,7 @@ event table as they are assumed to have no impact on the state of any devices in
 
 There are two different messages that can be used to request a list of events from the hub. In this
 context events refer to rows from both the event and the request tables. The two types of requests
-are *event window* and *device events*.
+are **event window** and **device events**.
 
 ##### Event Window {-}
 
