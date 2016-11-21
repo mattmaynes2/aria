@@ -1,7 +1,7 @@
 from device import DataType
 class Attribute:
     
-    def __init__(name, dataType, min_=None, max_=None, step= None):
+    def __init__(self,name, dataType, min_=None, max_=None, step= None):
         self.name=name
         if isinstance(dataType, DataType):
             self.dataType = dataType

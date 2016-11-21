@@ -8,7 +8,7 @@ class Device:
         self.address = address if address else uuid.uuid4().bytes
         self.version =version
         if isinstance(device_type, DeviceType):
-            self.type = device_type
+            self.device_type = device_type
         else:
             raise TypeError('type must be a DeviceType')
 
@@ -17,7 +17,7 @@ class Device:
 
     def __str__(self):
         return 'Device [name: '+self.name+', DeviceType: <'+self.device_type.name+'>, address: '\
-        +str(uuid.UUID(bytes=self.address))+', version:'+self.version+']'
+        +str(uuid.UUID(bytes=self.address))+', version: '+self.version+']'
     
 
 
