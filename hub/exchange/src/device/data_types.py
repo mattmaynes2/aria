@@ -8,3 +8,5 @@ class DataType(Enum):
     Enum='enum'
     Time='time'
     Date='date'
+    String='string'
+    List='list'
