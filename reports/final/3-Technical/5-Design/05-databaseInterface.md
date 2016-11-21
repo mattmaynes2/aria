@@ -1,5 +1,37 @@
 ### Database Interface Specification
 
+#### Storing Events {-}
+
+Events messages have the format
+
+```
+{ 
+    "response" : <attribute>, 
+    "value" : <value>
+}
+```
+
+attribute: a field in a device
+value: value of the attribute
+
+All events are stored in the event table. Any event from a non sensor device is related to a user
+action/request. If there was no request message sent to a non sensor device and an event is received
+a request message is created for that event as this was a physical user action. Requests are stored
+in the request table
+
+The request message has the form
+
+```
+{
+    "set" : <attribute>
+    "value" : <value> 
+}
+```
+
+attribute: a field in a device
+value: value of to set the attribute to
+
+
 #### Query Messages {-}
 
 There are two different messages that can be used to request a list of events from the hub. In this
