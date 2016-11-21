@@ -2,7 +2,7 @@ let uuid    = require('node-uuid'),
     logger  = require('winston'),
     IPC     = require('../ipc');
 
-let IntegrateAdatper = (function () {
+let IntegrateAdapter = (function () {
 
     let DEVICE_TYPES = ['zwave', 'wemo', 'arduino'],
         DEVICE_NAMES = [
@@ -137,4 +137,4 @@ let IntegrateAdatper = (function () {
     return IntegrateAdatper;
 } ());
 
-module.exports = IntegrateAdatper;
+module.exports = IntegrateAdapter;
