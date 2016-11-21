@@ -31,6 +31,8 @@ The request message has the form
 attribute: a field in a device
 value: value of to set the attribute to
 
+All messages that have the destination as the hub ie address all 0's will not be stored in the 
+event table as they are assumed to have no impact on the state of any devices in the system
 
 #### Query Messages {-}
 
