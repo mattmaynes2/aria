@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS "Device_Type" (
 	"name" TEXT,
 	"protocol" INTEGER,
 	"is_sensor" INTEGER,
-	"maker" TEXT,
+	"maker" TEXT
 );
 
 /*
@@ -54,10 +54,10 @@ version   --  firmware version of device
 type      --  
 */
 CREATE TABLE IF NOT EXISTS "Device" (
-	"address" PRIMARY KEY TEXT,
+	"address" TEXT PRIMARY KEY ,
 	"name" TEXT,
 	"version" TEXT,
-	"type" TEXT
+	"type" TEXT,
 	FOREIGN KEY("type") REFERENCES "Device_Type"("id")
 );
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS "Attributes" (
 	"max" INTEGER,
 	"min" INTEGER,
 	"step" REAL
-)
+);
 
 /*
 device_type_id  --  an id linking to an id in the Device table
@@ -84,10 +84,10 @@ attribute_id    --  an id linking to an id in the Attributes table
 */
 CREATE TABLE IF NOT EXISTS "Device_Type_Attributes" (
 	"device_type_id" INTEGER,
-	"attribute_id" INTEGER
-	FOREIGN KEY("device_type_id") REFERENCES "Device_Type"("id")
+	"attribute_id" INTEGER,
+	FOREIGN KEY("device_type_id") REFERENCES "Device_Type"("id"),
 	FOREIGN KEY("attribute_id") REFERENCES "Atributes"("id")
-)
+);
 
 
 
