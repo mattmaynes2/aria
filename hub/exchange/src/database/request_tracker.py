@@ -4,6 +4,7 @@ from database import DatabaseTranslator
 
 log= logging.getLogger(__name__)
 
+
 class RequestTracker(DatabaseTranslator):
 
     def __init__(self,databaseTranslator):

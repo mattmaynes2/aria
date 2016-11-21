@@ -11,7 +11,7 @@ log=logging.getLogger(__name__)
 
 class Hub(Device):
     VERSION = '0.0.2'
-    
+
     def __init__ (self, args = {}, exit = None):
         methods=[Attribute('name',DataType.String), Attribute('devices',DataType.List),\
          Attribute('mode',DataType.String)]
@@ -46,7 +46,7 @@ class Hub(Device):
             'mode'      : self.mode.value,
             'devices'   : len(self._devices)
         }
-    
+
     def addDevice (self,device):
         log.debug('adding device '+str(device))
         self._devices.append(device)

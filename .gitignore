@@ -43,6 +43,9 @@ __pycache__
 # Database
 *.db
 
+# JavaScript
+*bundle.js
+
 # Resources
 node_modules
 framework

@@ -20,7 +20,7 @@ def main ():
     argv = args.parse()
     if argv.daemonize:
         daemon.daemonize()
-    
+
     hub         = Hub(argv, exit)
     cli         = CLI(hub)
     database    = Database()

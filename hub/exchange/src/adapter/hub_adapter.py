@@ -32,13 +32,13 @@ class HubAdapter (Adapter):
         self.notify(
         'received',
         Message(type_= Message.Ack,data = {'response':attribute,\
-        'value':responseValue}, 
+        'value':responseValue},
         sender = self.hub.address, receiver = receiver)
         )
-     
+
     def notifyFailure(self,receiver):
         self.notify(
         'received',
-        Message(type_= Message.Error,data = {'response':'Invalid Message'}, 
+        Message(type_= Message.Error,data = {'response':'Invalid Message'},
         sender = self.hub.address, receiver = receiver)
         )
