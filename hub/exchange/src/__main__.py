@@ -20,12 +20,11 @@ def main ():
     argv = args.parse()
     if argv.daemonize:
         daemon.daemonize()
-    
+
     hub         = Hub(argv, exit)
     cli         = CLI(hub)
-    database    = Database()
-    exchange    = create_exchange(hub, cli, database)
-    exchange.discovered(Device('hub', '', Message.DEFAULT_ADDRESS))
+    exchange    = create_exchange(hub, cli)
+    exchange.discovered(hub)
 
     cli.start()
     exchange.start()
