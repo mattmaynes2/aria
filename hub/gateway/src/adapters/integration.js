@@ -107,7 +107,7 @@ let IntegrateAdatper = (function () {
             case 'name':
                 return wrap(payload.get, this._state.hub.name);
             case 'devices':
-                return wrap(payload.geta, this._state.hub.devices);
+                return wrap(payload.get, this._state.hub.devices);
             default:
                 throw new Error('Unknown request');
         }

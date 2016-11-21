@@ -11,9 +11,9 @@ let DeviceRouter = (function () {
 
         app.get('/list', (req, res) => {
             this._adapter
-                .send(IPC.Request, { action : 'list_devices' })
+                .send(IPC.Request, { get : 'devices' })
                 .then((reply) => {
-                    res.json({ devices : reply.payload.devices });
+                    res.json({ devices : reply.payload.value });
                 })
                 .catch(onError.bind(this, res));
         });
