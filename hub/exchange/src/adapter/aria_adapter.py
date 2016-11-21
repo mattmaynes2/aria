@@ -6,7 +6,7 @@ import logging
 from .message import Message
 from .adapter import Adapter
 
-from device import Device
+from device import Device, DeviceType
 
 log = logging.getLogger(__name__)
 
@@ -74,7 +74,8 @@ class AriaAdapter (Adapter):
             self._ip_map[msg.sender] = address
 
             if (msg.type == Message.Discover):
-                self.notify('discovered', Device('aria', '', msg.sender))
+                # TODO need to find way to discover attributes of devices
+                self.notify('discovered', Device(DeviceType('Default Aria Device','aria'), '', msg.sender))
                 self.notify('received', Message(Message.Ack, '', msg.receiver, msg.sender))
             else:
                 self.notify('received', msg)

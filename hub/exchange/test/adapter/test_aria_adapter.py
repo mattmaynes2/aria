@@ -1,3 +1,4 @@
+import uuid
 from unittest   import TestCase
 from unittest import mock
 from unittest.mock import Mock
@@ -15,11 +16,11 @@ class AriaAdapterTest (TestCase):
     def test_send (self, mock_sockets):
         adapter = AriaAdapter()
         data    = { 'action' : 'status' }
-        sender = Device('');
+        id=uuid.uuid4().bytes
         mockSocket = Mock()
         mock_sockets.return_value = mockSocket
 
-        message = Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS)
+        message = Message(Message.Request, data, id, Message.DEFAULT_ADDRESS)
         adapter.send(message, ('localhost', adapter.port))
         mockSocket.sendto.assert_called_with(message.encode(), ('localhost', adapter.port))
         mockSocket.close.assert_called_with()
@@ -32,19 +33,19 @@ class AriaAdapterTest (TestCase):
         mockSocket.fileno.return_value = 1
         mock_select.return_value = ([1],[],[])
         mockDelegate = Mock()
-
+        id=uuid.uuid4().bytes
         adapter = AriaAdapter()
 
         adapter.add_delegate(mockDelegate)
 
         data    = {}
-        sender = Device('');
-        responseData = Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS).encode()
+        
+        responseData = Message(Message.Request, data, id, Message.DEFAULT_ADDRESS).encode()
         responseHost = ("127.0.0.1", "7000")
         mockSocket.recvfrom.return_value = (responseData, responseHost)
 
         adapter.receive()
-        mockDelegate.received.assert_called_with(Message(Message.Request, data, sender.address, Message.DEFAULT_ADDRESS))
+        mockDelegate.received.assert_called_with(Message(Message.Request, data, id, Message.DEFAULT_ADDRESS))
 
     @mock.patch('socket.socket')
     @mock.patch('select.select')
@@ -60,18 +61,18 @@ class AriaAdapterTest (TestCase):
         adapter.add_delegate(mockDelegate)
 
         data    = {}
-        sender = Device('');
-        responseData = Message(Message.Discover, data, sender.address, Message.DEFAULT_ADDRESS).encode()
+        id=uuid.uuid4().bytes
+        responseData = Message(Message.Discover, data, id, Message.DEFAULT_ADDRESS).encode()
         responseHost = ("127.0.0.1", "7000")
         mockSocket.recvfrom.return_value = (responseData, responseHost)
 
         adapter.receive()
         discoveredDevice = mockDelegate.discovered.call_args
         discoveredMessage = mockDelegate.received.call_args
-        self.assertEqual("aria", discoveredDevice[0][0].type)
+        self.assertEqual("aria", discoveredDevice[0][0].deviceType.protocol)
         self.assertEqual(Message.Ack, discoveredMessage[0][0].type)
         self.assertEqual(Message.DEFAULT_ADDRESS, discoveredMessage[0][0].sender)
-        self.assertEqual(sender.address, discoveredMessage[0][0].receiver)
+        self.assertEqual(id, discoveredMessage[0][0].receiver)
 
     @mock.patch('socket.socket')
     def test_setup(self, mock_sockets):
