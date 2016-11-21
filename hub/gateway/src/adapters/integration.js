@@ -25,6 +25,7 @@ let IntegrateAdatper = (function () {
             hub : {
                 version : '1.0.0',
                 mode    : 1,
+                name    : 'Smart Hub',
                 devices : []
             }
         };
@@ -92,17 +93,19 @@ let IntegrateAdatper = (function () {
         };
     }
 
-
     function requestGet (payload) {
         switch (payload.get) {
             case 'status':
                 return wrap(payload.get, {
                     version     : this._state.hub.version,
                     mode        : this._state.hub.mode,
+                    name        : this._state.hub.name,
                     devices     : this._state.hub.devices.length
                 });
             case 'mode':
                 return wrap(payload.get, this._state.hub.mode);
+            case 'name':
+                return wrap(payload.get, this._state.hub.name);
             case 'devices':
                 return wrap(payload.geta, this._state.hub.devices);
             default:
@@ -113,7 +116,12 @@ let IntegrateAdatper = (function () {
     function requestSet (payload) {
         switch (payload.set) {
             case 'mode':
-                this._state.hub.mode = payload.value;
+                logger.debug(`Setting hub mode to ${payload.value}`);
+                this._state.hub.mode = payload.value || 0;
+                break;
+            case 'name':
+                logger.debug(`Setting hub name to ${payload.value}`);
+                this._state.hub.name = payload.value;
                 break;
             default:
                 throw new Error ('Unknown request');
@@ -121,8 +129,6 @@ let IntegrateAdatper = (function () {
         payload.get = payload.set;
         return requestGet.call(this, payload);
     }
-
-
 
 
     function event () {

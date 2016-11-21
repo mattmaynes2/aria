@@ -32,7 +32,7 @@ let HubRouter = (function () {
                 this._adapter
                     .send(IPC.Request, { set : 'mode', value : req.body.mode})
                     .then((reply) => {
-                        res.json({ mode : reply.payload.value});
+                        res.json({ mode : reply.payload.value });
                     })
                     .catch(onError.bind(this, res));
             });
