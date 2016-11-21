@@ -28,9 +28,9 @@ class Exchange ():
 
     def send (self, device, message):
         # TODO Log sending a message here
-        if (device.type in self._adapters):
+        if (device.deviceType.protocol in self._adapters):
             log.info('Sending ' + str(message) + ' to device ' + str(device))
-            self._adapters[device.type].send(message)
+            self._adapters[device.deviceType.protocol].send(message)
 
     def teardown (self):
         for _, adapter in self._adapters.items():
