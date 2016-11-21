@@ -1,4 +1,4 @@
-var CCP = (function () {
+let IPC = (function () {
 
     function parse (buffer) {
         var type        = buffer.readUIntBE(0, 1),
@@ -31,10 +31,15 @@ var CCP = (function () {
     }
 
     return {
+        Error       : 0,
+        Discover    : 1,
+        Request     : 2,
+        Event       : 3,
+        Ack         : 4,
         parse       : parse,
         serialize   : serialize
     };
 
 } ());
 
-module.exports = CCP;
+module.exports = IPC;

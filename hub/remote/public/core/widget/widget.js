@@ -1,5 +1,5 @@
 import $            from 'jquery';
-import Component    from '../core/component';
+import Component    from '../component';
 import './widget.css';
 
 class Widget extends Component {
@@ -12,13 +12,9 @@ class Widget extends Component {
     }
 
     render () {
-        if (this._$el.hasClass('widget-panel')) {
-            return this;
-        }
-
-
         this._$el
-            .addClass('widget-panel')
+            .empty()
+            .addClass('widget-frame')
             .append($('<div>').addClass('widget-header').text(this._state.title))
             .append($('<div>').addClass('widget-body').text(this._state.body))
             .append($('<div>').addClass('widget-footer'));

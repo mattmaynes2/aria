@@ -21,8 +21,8 @@ module.exports = function(config) {
         exclude: [],
 
         preprocessors: {
-            'src/**/*.js'   : ['webpack'],
-            'test/**/*.js'  : ['webpack']
+            'public/**/*.js'    : ['webpack'],
+            'test/**/*.js'      : ['webpack']
         },
         webpack : webpack,
         webpackMiddleware: {

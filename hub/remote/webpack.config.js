@@ -1,10 +1,4 @@
-module.exports = {
-    entry   :  __dirname + '/src/index.js',
-    output  : {
-        path        : __dirname + '/bin',
-        filename    : 'app.bundle.js',
-    },
-    module  : {
+let loaders = {
         loaders : [
             {
                 test    : /\.js$/,
@@ -24,5 +18,23 @@ module.exports = {
                 loader  : 'file-loader'
             }
         ]
-    }
-};
+    };
+
+function page (name) {
+    name = name || '';
+    return {
+        entry   :  __dirname + `/public/${name}/index.js`,
+        output  : {
+            path        : __dirname + `/public/${name}`,
+            filename    : name ? `${name}.bundle.js` : 'bundle.js',
+        },
+        module : loaders
+    };
+}
+
+module.exports = [
+    page('hub'),
+    page('devices'),
+    page('stats'),
+    page('schedule')
+];

@@ -1,0 +1,17 @@
+.button {
+    color           : rgba(0, 0, 0, 0.8);
+    border          : 1px solid rgba(220, 220, 220, 0.5);
+    padding         : 2px 10px;
+    box-shadow      : 0 1px 1px rgba(0, 0, 0, 0.1);
+    cursor          : pointer;
+    user-select     : none;
+}
+
+.button:hover {
+    background-color : rgba(0, 0, 0, 0.05);
+}
+
+.button:active {
+    background-color : rgba(0, 0, 0, 0.1);
+}
+
