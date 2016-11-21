@@ -8,6 +8,7 @@ class Message:
     Request             = 2
     Event               = 3
     Ack                 = 4
+    Response            = 5
     OFFSET_TYPE         = 1
     OFFSET_SIZE         = 5
     OFFSET_SENDER       = 21

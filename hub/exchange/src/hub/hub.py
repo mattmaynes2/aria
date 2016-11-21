@@ -9,7 +9,7 @@ log=logging.getLogger(__name__)
 
 class Hub(Device):
     VERSION = '0.0.2'
-    
+
     def __init__ (self, args = {}, exit = None):
         super().__init__('hub','Smart Hub',Message.DEFAULT_ADDRESS )
         self.version = Hub.VERSION
@@ -41,12 +41,12 @@ class Hub(Device):
             'mode'      : self.mode.value,
             'devices'   : len(self._devices)
         }
-    
-    def addDevice(self,device):
+
+    def addDevice (self,device):
         log.debug('adding device '+str(device))
         self._devices.append(device)
 
-    def getDevicesJson(self):
+    def getDevicesJson (self):
         data=json.dumps(self._devices,default=Device.json_encode, sort_keys=True)
         log.debug('sending device list '+ data)
         return data
