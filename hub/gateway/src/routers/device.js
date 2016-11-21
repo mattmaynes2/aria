@@ -17,6 +17,19 @@ let DeviceRouter = (function () {
                 })
                 .catch(onError.bind(this, res));
         });
+        app.get('/:id/events', (req, res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    get     : 'deviceEvents',
+                    start   : req.body.start,
+                    count   : req.body.count,
+                    id      : req.params.id
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this, res));
+        });
 
         return app;
     };
