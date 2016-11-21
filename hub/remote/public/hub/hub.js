@@ -1,6 +1,7 @@
 import $            from 'jquery';
 import Widget       from '../core/widget/widget';
 import StateButton  from '../core/control/state-button';
+import Service      from '../core/service/service';
 import './hub.css';
 
 class Hub extends Widget {
@@ -24,25 +25,16 @@ class Hub extends Widget {
         };
         this._stateButton = new StateButton(Hub.modes);
         this._stateButton.change((button) => {
-            $.ajax({
-                url         : '/hub/mode',
-                type        : 'POST',
-                contentType : 'application/json',
-                data        : JSON.stringify({ mode : Hub.mode(button.val())}),
-                dataType    : 'json'
-            }).done((res) => {
-                this._state.mode = res.mode;
-                this.render();
-            });
+            Service.set('/hub/mode', { mode : Hub.mode(button.val()) })
+                .then((res) => {
+                    this._state.mode = res.mode;
+                    this.render();
+                });
         });
     }
 
     update () {
-         $.ajax({
-            url     : '/hub/state',
-            type    : 'GET',
-            contentType : 'application/json'
-        }).done((res) => {
+        Service.get('/hub/state').then((res) => {
             this._state.mode    = res.mode;
             this._state.devices = res.devices;
             this._state.version = res.version;
