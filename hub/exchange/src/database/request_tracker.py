@@ -23,11 +23,13 @@ class RequestTracker(DatabaseTranslator):
         if(not device):
             log.warn('Unknown sender')
             return False
-        if(Message.Request == message.type):
+        # ignore requests to hub they don't need to be logged
+        if(Message.Request == message.type and message.receiver != self.hub.address):
             self.requests[message.receiver]=self.databaseTranslator.received(message)
         elif(Message.Event == message.type or Message.Response == message.type):
             reqid=self.requests.pop(message.receiver,None)
-            if(reqid):
+            # don't create a request for a non controllable device
+            if(reqid or not device.deviceType.isControllable):
                 self.sendEvent(reqid,message)
             else:
                 try:
@@ -41,7 +43,8 @@ class RequestTracker(DatabaseTranslator):
         
         
         def sendEvent(self,reqid,message):
-            message.data['requestId']= reqid
+            if(reqid):
+                message.data['requestId']= reqid
             self.databaseTranslator.received(message)
         
         def createRequest(self,message):
