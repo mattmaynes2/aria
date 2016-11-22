@@ -60,4 +60,4 @@ class Hub(Device):
         self.mode=HubMode(mode)
 
     def getDevice(self,address):
-        return self._devices[address]
+        return self._devices.get(address)
