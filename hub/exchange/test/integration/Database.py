@@ -53,7 +53,7 @@ class TestDatabaseIntegration(TestCase):
         self.exchange.teardown()
         if (self.testAdapter.exceptionTrace):
            raise Exception(self.testAdapter.exceptionTrace)
-
+        
     def test_sensor_event_message_should_be_logged_to_database(self):
         myUuid = self.devices[0].address
  
@@ -64,8 +64,11 @@ class TestDatabaseIntegration(TestCase):
 
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.exchange.teardown()
-        results = self.db.query("SELECT count(*) FROM Event")
-        self.assertEqual(results.fetchone()[0], 1)
+        results = self.db.query("SELECT * FROM Event").fetchone()
+        self.assertEqual(results["request_id"], 0)
+        self.assertEqual(results["source"], str(myUuid))
+        self.assertEqual(results["attribute"], "state")
+        self.assertEqual(results["value"], "1")
 
     def test_requests_to_hub_should_not_be_logged_to_database(self):
         sensorStateChangeMessage = Message()
@@ -76,8 +79,8 @@ class TestDatabaseIntegration(TestCase):
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.exchange.teardown()
  
-        results = self.db.query("SELECT count(*) FROM Event")
-        self.assertEqual(results.fetchone()[0], 0)
+        results = self.db.query("SELECT count(*) as count FROM Event")
+        self.assertEqual(results.fetchone()["count"], 0)
 
     def test_events_should_be_linked_to_requests(self):
 
@@ -96,12 +99,12 @@ class TestDatabaseIntegration(TestCase):
         self.testAdapter.enqueueMessage(eventMessage)    
         self.exchange.teardown()
 
-        results = self.db.query("SELECT count(*) = 1 FROM \
+        results = self.db.query("SELECT count(*) as count FROM \
                                 Event e INNER JOIN Request r ON e.request_id = r.id\
                                 WHERE e.attribute = 'brightness' AND e.value = 100")
 
         firstResult = results.fetchone()
-        self.assertEqual(firstResult[0], 1)
+        self.assertEqual(firstResult['count'], 1)
 
     def test_request_event_window_returns_events(self):
         # Put twenty events in the database
@@ -156,12 +159,17 @@ class TestDatabaseIntegration(TestCase):
         for device in response.data["value"]["records"]:
             self.assertNotEquals(device["device"], str(self.devices[0].address))
 
-    
-
 class TestDatabase:
 
     def __init__(self):
         self.conn = sqlite3.connect("aria.db")
+
+        def dict_factory(cursor, row):
+            d = {}
+            for idx, col in enumerate(cursor.description):
+                d[col[0]] = row[idx]
+            return d
+        self.conn.row_factory = dict_factory
         self.cursor = self.conn.cursor()
 
     def query(self, sql):
