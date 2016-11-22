@@ -17,7 +17,7 @@ let DeviceRouter = (function () {
                 })
                 .catch(onError.bind(this, res));
         });
-        app.get('/:id/events', (req, res) => {
+        app.post('/:id/events', (req, res) => {
             this._adapter
                 .send(IPC.Request, {
                     get     : 'deviceEvents',

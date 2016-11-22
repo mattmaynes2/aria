@@ -38,7 +38,7 @@ let HubRouter = (function () {
             });
 
         app.route('/events')
-            .get((req, res) => {
+            .post((req, res) => {
                 this._adapter
                     .send(IPC.Request, {
                         get     : 'eventWindow',
