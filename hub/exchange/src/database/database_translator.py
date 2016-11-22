@@ -13,11 +13,9 @@ class DatabaseTranslator(Delegate):
 
     def received (self, message):
         if (message.type == Message.Request):
-            print("Received in Request" + str(message))
             log.info("Received " + str(message))
             return self._request(message)
         elif (message.type == Message.Event or message.type == Message.Response):
-            print("Received in Event" + str(message))
             self._event(message)
             
     def discovered (self, device):
@@ -40,11 +38,10 @@ class DatabaseTranslator(Delegate):
         if "requestId" in event.data:
             id_ = event.data["requestId"]
         else:
-            id_ = "-1"
+            id_ = "0"
         print("ID is: " + id_)
         values = (id_, self._getStr(event.sender), str(event.data['response'])\
         , str(event.data['value']))
-        print("VALUES ARE: " + values)
         self.database.execute(sql, values)
 
     def _getDeviceInfo(self, device):
