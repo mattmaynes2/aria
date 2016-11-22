@@ -90,7 +90,7 @@ different attributes that the device has.
 ```
 {
     "attributes":[<Attribute>],
-    "isSensor": <boolean>, 
+    "isControllable": <boolean>, 
     "maker": <string>, 
     "name": <string>, 
     "protocol": <string>
@@ -100,8 +100,8 @@ name: the name of the type of device (WeMo Switch)
 
 protocol: specifies what adapter will be needed (Z-Wave, WeMo, etc)
 
-isSensor:  boolean value which specifies whether the device is to be interpreted as a sensor or 
-a output device
+isControllable:  boolean value which specifies whether the device is to be interpreted as a sensor 
+or an output device
 
 maker:  device manufacturer name (Samsung, Aeon Labs, etc)
 
