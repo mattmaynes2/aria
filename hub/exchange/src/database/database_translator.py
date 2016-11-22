@@ -24,7 +24,6 @@ class DatabaseTranslator(Delegate):
         self.database.execute(sql, (str(device.address), str(device.version), str(device.name)))  
 
     def _request(self, message):
-        print("IN REQUEST")
         sql = "INSERT INTO Request (source, receiver, attribute, value) VALUES (?, ?, ?, ?)"
         values =  (self._getStr(message.sender), self._getStr(message.receiver)\
         , str(message.data['set']), str(message.data['value']))        
@@ -33,13 +32,11 @@ class DatabaseTranslator(Delegate):
         return self.database.getLastInsertId()
 
     def _event(self, event):
-        print(event)
         sql = "INSERT INTO Event (request_id, source, attribute, value) VALUES (?, ?, ?, ?)"
         if "requestId" in event.data:
             id_ = event.data["requestId"]
         else:
             id_ = "0"
-        print("ID is: " + id_)
         values = (id_, self._getStr(event.sender), str(event.data['response'])\
         , str(event.data['value']))
         self.database.execute(sql, values)
