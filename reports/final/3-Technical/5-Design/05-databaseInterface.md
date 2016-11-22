@@ -70,12 +70,12 @@ ignore: A list of device UUID strings that should be ignored when getting events
     "value": {
                 "total": <int>,
                 "records":  [
-                                "timestamp": <Time String 'yyyy-MM-dd HH:mm:ss.SSS'>
-                                "device": <String>
-                                "source": <String>
-                                "attribute": <String>
+                                "timestamp": <Time string 'yyyy-MM-dd HH:mm:ss.SSS'>
+                                "device": <string>
+                                "source": <string>
+                                "attribute": <string>
                                 "value": <?>
-                                "datatype":<String>
+                                "datatype":<string>
                                 "index": <int>
                             ]
              }
@@ -107,7 +107,7 @@ return a list of events for a specific device
 ```
 {
     "get": "deviceEvents",
-    "id": <String>, 
+    "id": <string>, 
     "start": <int>, 
     "count": <int>
 }
@@ -116,6 +116,7 @@ return a list of events for a specific device
 return n events for a device starting at an index
 
 id: device uuid string
+
 start: is the index to start at 0 is the most recent message 
 count: number of records to return
 
