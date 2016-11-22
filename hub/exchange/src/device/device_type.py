@@ -1,13 +1,13 @@
 class DeviceType:
 
-    def __init__(self, name, protocol, maker = '', isSensor= False ,attributes = []):
+    def __init__(self, name, protocol, maker = '', isControllable= False ,attributes = []):
         self.name       = name
         self.protocol   = protocol
         self.maker      = maker
-        self.isSensor     =isSensor 
+        self.isControllable = isControllable 
         self.attributes = attributes
     
     def __str__(self):
         return "DeviceType[name: "+self.name+", protocol: "+self.protocol+", maker: "+self.maker\
-        +", sensor: "+str(self.isSensor)+ ", Attributes: "+str(self.attributes)+"]"
+        +", isControllable: "+str(self.isControllable)+ ", Attributes: "+str(self.attributes)+"]"
         
