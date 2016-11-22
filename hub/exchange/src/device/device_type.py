@@ -9,5 +9,5 @@ class DeviceType:
     
     def __str__(self):
         return "DeviceType[name: "+self.name+", protocol: "+self.protocol+", maker: "+self.maker\
-        +", sensor: "+self.isSensor+ ", Attributes: "+str(self.attributes)+"]"
+        +", sensor: "+str(self.isSensor)+ ", Attributes: "+str(self.attributes)+"]"
         

@@ -4,7 +4,6 @@ from unittest import mock
 from unittest.mock import Mock
 from unittest.mock import patch
 
-from device     import Device
 from adapter    import AriaAdapter, Message, Delegate
 
 # Dependencies to mock: Thread, Socket

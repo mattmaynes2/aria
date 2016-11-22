@@ -5,6 +5,7 @@ from uuid import UUID
 from database import DatabaseTranslator
 from threading import Lock
 from sync import synchronized
+from database import DatabaseTranslator,RequestTracker
 
 log =logging.getLogger(__name__)
 
@@ -17,14 +18,14 @@ class Exchange ():
         self._cli       = cli
         self._adapters  = {}
         self._devices   = {}
-        self._database  = DatabaseTranslator(database)
+        self._database  = RequestTracker(DatabaseTranslator(database),hub)
 
     @synchronized(lock)
     def start (self):
         for _, adapter in self._adapters.items():
             log.debug('Starting adapter: ' + str(adapter))
             adapter.start()
- 
+
     @synchronized(lock)
     def register (self, device_type, adapter):
         log.info('Registered adapter: ' + str(adapter))
@@ -43,7 +44,7 @@ class Exchange ():
     def teardown (self):
         for _, adapter in self._adapters.items():
             log.debug('Tearing down adapter: ' + str(adapter))
-            adapter.teardown() 
+            adapter.teardown()
 
     def received (self, message):
         log.info('Received ' + str(message))
@@ -67,4 +68,4 @@ class Exchange ():
         log.info('Discovered device: ' + str(device))
         self._devices[device.address] = device
         # add device to hub
-        self._hub.addDevice(device) 
+        self._hub.addDevice(device)

@@ -3,7 +3,6 @@ import logging
 import uuid
 from .hub_mode  import HubMode
 from device import Device, DeviceType, Attribute, DataType
-from database import DatabaseTranslator
 from adapter import Message
 
 
@@ -13,12 +12,13 @@ class Hub(Device):
     VERSION = '0.0.2'
 
     def __init__ (self, args = {}, exit = None):
+        # setup device attributes and DeviceType
         methods=[Attribute('name',DataType.String), Attribute('devices',DataType.List),\
          Attribute('mode',DataType.String)]
         devType=DeviceType('Hub','hub',attributes=methods)
         super().__init__(devType,'Smart Hub',Message.DEFAULT_ADDRESS )
         self.version = Hub.VERSION
-        self._devices = []
+        self._devices = {}
         self.mode    = HubMode.Normal
         self.exit    = exit if exit else lambda: None
 
@@ -49,13 +49,15 @@ class Hub(Device):
 
     def addDevice (self,device):
         log.debug('adding device '+str(device))
-        self._devices.append(device)
+        self._devices[device.address]=device
 
     def getDevicesJson (self):
-        data=json.dumps(self._devices,default=Device.json_encode, sort_keys=True)
+        data=json.dumps(lsit(self._devices.values),default=Device.json_encode, sort_keys=True)
         log.debug('sending device list '+ data)
         return data
 
     def setMode(self,mode):
         self.mode=HubMode(mode)
 
+    def getDevice(self,address):
+        return self._devices[address]
