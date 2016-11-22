@@ -49,17 +49,13 @@ CREATE TABLE IF NOT EXISTS "Device_Type" (
 
 /*
 address   --  UUID of device or sensor
-maker     --  manufacturer of device
-protocol  --  communication protocol used by device
 version   --  firmware version of device 
-name      --  user specified name of device
+type      --  user specified name of device
 */
 CREATE TABLE IF NOT EXISTS "Device" (
 	"address" TEXT PRIMARY KEY ,
-	"maker" TEXT,
-	"protocol" TEXT,
 	"version" TEXT,
-	"name" TEXT
+	"type" INTEGER,
 	FOREIGN KEY("type") REFERENCES "Device_Type"("id")
 );
 
@@ -69,7 +65,7 @@ name       --  name of the attribute
 data_type  --  the type of data returned when an attribute is performed
 max        --  maximum value of an Integer value
 min        --  minimum value of an Integer value
-setp       --  the increment or decrement value
+step       --  the increment or decrement value
 */
 CREATE TABLE IF NOT EXISTS "Attributes" (
 	"id" PRIMARY KEY,

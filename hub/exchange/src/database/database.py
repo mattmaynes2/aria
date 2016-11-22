@@ -20,17 +20,19 @@ class Database:
         else:
             self.connection = sqlite3.connect(self.name, timeout,check_same_thread=False)
             log.info("Opened connection to " + self.name)
+        self.cur = self.connection.cursor()
 
-    def execute (self, sql):
+    def execute (self, sql, values=None):
         try:
             log.debug("Running SQL statement: " + sql)
-            self.connection.execute(sql)
+            results = self.cur.execute(sql, values)
             self.connection.commit()
+            return results
         except Exception as e:
             log.error("Could not execute command " + sql + " " + str(e))
 
     def shutdown (self):
-        self.connection.close()
+        self.cur.close()
         log.info("Closed connection to " + self.name)
 
     def createDB(self):
@@ -38,6 +40,9 @@ class Database:
         sql = sql.decode('utf-8')
         self.connection.executescript(sql)
         self.connection.commit()
+
+    def getLastInsertId(self):
+        return self.cur.lastrowid
 
 
 
