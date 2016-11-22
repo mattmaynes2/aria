@@ -40,11 +40,11 @@ class Exchange ():
             log.info('Sending ' + str(message) + ' to device ' + str(device))
             self._adapters[device.deviceType.protocol].send(message)
 
-    @synchronized(lock)
     def teardown (self):
         for _, adapter in self._adapters.items():
             log.debug('Tearing down adapter: ' + str(adapter))
             adapter.teardown()
+            adapter.join()
 
     def received (self, message):
         log.info('Received ' + str(message))
