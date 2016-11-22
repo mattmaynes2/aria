@@ -6,20 +6,18 @@ let IntegrateAdapter = (function () {
 
     let DEVICE_TYPES = ['zwave', 'wemo', 'arduino'],
         DEVICE_NAMES = [
-            'light',
-            'switch',
-            'light sensor',
-            'temperature sensor',
-            'music player',
-            'coffee maker',
-            'thermostat'
+            'Light',
+            'Switch',
+            'Light Sensor',
+            'Temperature Sensor',
+            'Music Player',
+            'Coffee Maker',
+            'Thermostat'
         ],
         DEVICE_ATTRIBUTES = [
-            'Change State',
-            'Turn On',
-            'Turn Off',
-            'Value Up',
-            'Value Down'
+            'State',
+            'Brightness',
+            'Hue'
         ],
         DATATYPES = [
             'binary',
@@ -159,7 +157,7 @@ let IntegrateAdapter = (function () {
         var i, events = [], devices = this._state.hub.devices, device,
             start   = payload.start,
             count   = payload.count,
-            id      = payload.id,
+            id      = payload.id || '',
             index   = devices.map((dev) => { return dev.id; }).indexOf(id);
 
         for (i = 0; i < count; i++) {

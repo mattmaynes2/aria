@@ -17,7 +17,6 @@
     color               : #333333;
     background-color    : #F5F5F5;
     border-color        : #DDDDDD;
-    width               : 100%;
     text-align          : left;
     border-radius       : 0;
     font-size           : 16pt;
@@ -27,8 +26,9 @@
 }
 
 .widget-body {
-    border-top-color : #DDDDDD;
-    flex-grow        : 1;
+    border-top-color    : #DDDDDD;
+    flex-grow           : 1;
+    overflow            : scroll;
 }
 
 .widget-footer {

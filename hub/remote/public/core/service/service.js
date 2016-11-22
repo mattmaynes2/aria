@@ -1,6 +1,6 @@
 class Service {
-    static get (endpoint) {
-        return Service.send('GET', endpoint, '');
+    static get (endpoint, data) {
+        return Service.send(data ? 'POST' : 'GET', endpoint, data || '');
     }
 
     static set (endpoint, data) {
