@@ -113,7 +113,7 @@ be controlled
 ```
 {
     "address":<string>, 
-    "devicetype": <DeviceType> ,
+    "deviceType": <DeviceType> ,
     "name": <string>, 
     "version": <string>
 }
@@ -121,7 +121,7 @@ be controlled
 
 address: a unique UUID String used to identify a device
 
-devicetype: the DeviceType related to the device
+deviceType: the DeviceType related to the device
 
 name: a user specified name for the device
 
