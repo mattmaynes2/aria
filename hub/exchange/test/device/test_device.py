@@ -20,6 +20,6 @@ class DeviceTest(TestCase):
     def test_encode(self):
         expected='{"address": "'+str(self.id)+'", "deviceType": {"attributes":'\
         +' [{"dataType": "binary", "max": null, "min": null, "name": "state", "step": null}],'\
-        +' "isControllable": false, "maker": "WeMo", "name": "WeMo Switch", "protocol": "wemo"},'\
+        +' "isControllable": true, "maker": "WeMo", "name": "WeMo Switch", "protocol": "wemo"},'\
         +' "name": "Lamp Switch", "version": "0.1.0"}'
         self.assertEqual(self.dev.to_json(), expected)

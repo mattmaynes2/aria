@@ -1,6 +1,6 @@
 class DeviceType:
 
-    def __init__(self, name, protocol, maker = '', isControllable= False ,attributes = []):
+    def __init__(self, name, protocol, maker = '', isControllable= True ,attributes = []):
         self.name       = name
         self.protocol   = protocol
         self.maker      = maker
