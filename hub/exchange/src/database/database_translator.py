@@ -13,9 +13,11 @@ class DatabaseTranslator(Delegate):
 
     def received (self, message):
         if (message.type == Message.Request):
+            print("Received in Request" + str(message))
             log.info("Received " + str(message))
             return self._request(message)
-        elif (message.type == Message.Event):
+        elif (message.type == Message.Event or message.type == Message.Response):
+            print("Received in Event" + str(message))
             self._event(message)
             
     def discovered (self, device):
@@ -24,17 +26,26 @@ class DatabaseTranslator(Delegate):
         self.database.execute(sql, (str(device.address), str(device.version), str(device.name)))  
 
     def _request(self, message):
+        print("IN REQUEST")
         sql = "INSERT INTO Request (source, receiver, attribute, value) VALUES (?, ?, ?, ?)"
-        values =  (self._getStr(message.sender), self._getStr(message.receiver), str(message.data['set']), str(message.data['value']))        
+        values =  (self._getStr(message.sender), self._getStr(message.receiver)\
+        , str(message.data['set']), str(message.data['value']))        
         self.database.execute(sql, values)
         results = self.database.execute
         return self.database.getLastInsertId()
 
     def _event(self, event):
+        print(event)
         sql = "INSERT INTO Event (request_id, source, attribute, value) VALUES (?, ?, ?, ?)"
-        id = message.data["requestId"] if "requestId" in message.data else None
-        self.database.execute(sql, (id, self._getStr(message.sender), self._getStr(message.receiver)\
-        , str(message.data['response']), str(message.data['value'])))
+        if "requestId" in event.data:
+            id_ = event.data["requestId"]
+        else:
+            id_ = "-1"
+        print("ID is: " + id_)
+        values = (id_, self._getStr(event.sender), str(event.data['response'])\
+        , str(event.data['value']))
+        print("VALUES ARE: " + values)
+        self.database.execute(sql, values)
 
     def _getDeviceInfo(self, device):
         sql = "SELECT * FROM Device WHERE address = ?"
