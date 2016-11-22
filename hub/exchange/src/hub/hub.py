@@ -52,7 +52,7 @@ class Hub(Device):
         self._devices[device.address]=device
 
     def getDevicesJson (self):
-        data=json.dumps(lsit(self._devices.values),default=Device.json_encode, sort_keys=True)
+        data=json.dumps(list(self._devices.values),default=Device.json_encode, sort_keys=True)
         log.debug('sending device list '+ data)
         return data
 
