@@ -100,7 +100,7 @@ name: the name of the type of device (WeMo Switch)
 
 protocol: specifies what adapter will be needed (Z-Wave, WeMo, etc)
 
-isSensor:  boolean value which specifies wether the device is to be interpreted as a sensor or 
+isSensor:  boolean value which specifies whether the device is to be interpreted as a sensor or 
 a output device
 
 maker:  device manufacturer name (Samsung, Aeon Labs, etc)
@@ -255,7 +255,7 @@ address: is a string representation of the device uuid
 ```json
 {
     "set" : <attribute_name>,
-    "value>" : <value>
+    "value" : <value>
 }
 ```
 
@@ -272,7 +272,7 @@ value: the value to set the attribute to
 }
 ```
 
-value: the new value that the device has fot the specified attribute
+value: the new value that the device has for the specified attribute
 
 ##### Query Device {-}
 
