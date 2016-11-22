@@ -3,7 +3,7 @@ id        --  auto incrementing integer key
 timestamp --  date and time of the request
 source    --  UUID of the sending device
 receiver  --  UUID of the receiving device
-action    --  what attribute is being changed
+attribute --  what attribute is being changed
 value     --  what to change a device value to 
 */
 CREATE TABLE IF NOT EXISTS "Request" (
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS "Request" (
 	"timestamp" DATETIME DEFAULT current_timestamp,
 	"source" TEXT,
 	"receiver" TEXT,
-	"action" TEXT,
+	"attribute" TEXT,
 	"value" TEXT
 );
 
@@ -48,16 +48,18 @@ CREATE TABLE IF NOT EXISTS "Device_Type" (
 );
 
 /*
-address   --  UUID of the device or sensor
-name      --  user specified name of the device
+address   --  UUID of device or sensor
+maker     --  manufacturer of device
+protocol  --  communication protocol used by device
 version   --  firmware version of device 
-type      --  
+name      --  user specified name of device
 */
 CREATE TABLE IF NOT EXISTS "Device" (
 	"address" TEXT PRIMARY KEY ,
-	"name" TEXT,
+	"maker" TEXT,
+	"protocol" TEXT,
 	"version" TEXT,
-	"type" TEXT,
+	"name" TEXT
 	FOREIGN KEY("type") REFERENCES "Device_Type"("id")
 );
 

@@ -41,7 +41,7 @@ class RequestTracker(DatabaseTranslator):
         else:
             self.dbTranslator.received(message)
         
-        
+            
     def sendEvent(self,reqid,message):
         if(reqid):
             message.data['requestId']= reqid

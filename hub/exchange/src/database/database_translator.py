@@ -13,26 +13,37 @@ class DatabaseTranslator(Delegate):
        self.database = database 
 
     def received (self, message):
-        if (message.type == Message.Request):
+        if (message.type_ == Message.Request):
             log.info("Received " + str(message))
             return _request(message)
-        elif (message.type == Message.Event):
+        elif (message.type_ == Message.Event):
             _event(message)
             
     def discovered (self, device):
         log.info('Received ' + str(device))
-        self.database.execute("INSERT into Device (address, name, version, type) VALUES (?, ?, ?, ?);", \
-        str(device.address), str(device.name), str(device.version), str(device.deviceType))  
+        sql = "INSERT INTO Device (address, version, name) VALUES (?, ?, ?);"
+        self.database.execute(sql, str(device.address), str(device.version), str(device.name))  
 
     def _request(self, message):
-        self.databse.execute("INSERT into Request (source, receiver, action, value) VALUES (?, ?, ?);" \
-        , str(UUID(bytes = message.sender)), str(UUID(bytes = message.receiver)), str(key), \
-        str(message.data[key]))  
+        sql = "INSERT INTO Request (source, receiver, attribute, value) VALUES (?, ?, ?);"
+        self.databse.execute(sql, _getStr(message.sender), _getStr(message.receiver)\
+        , str(message.data['set']), str(message.data['value']))  
         results = self.database.execute("SELECT last_insert_rowid()")
         return results.get_points()
 
     def _event(self, event):
+        sql = "INSERT INTO Event (request_id, source, attribute, value) VALUES(?, ?, ?, ?);"
         id = message.data["requestId"] if "requestId" in message.data else None
-        self.database.execute("INSERT into Event (request_id, source, attribute, value) VALUES( \
-        ?, ?, ?, ?);", id, str(UUID(bytes = message.sender)), str(UUID(bytes = message.receiver)), \
-        str(key), str(message.data[key]))
+        self.database.execute(sql, id, _getStr(message.sender), _getStr(message.receiver)\
+        , str(message.data['response']), str(message.data['value']))
+
+    def _getDeviceInfo(self, device):
+        sql = "SELECT * FROM Device WHERE address = ?"
+        return self.database.execute(sql, device)
+
+    def _setDeviceName(self, name, device):
+        sql = "UPDATE Device SET ? WHERE address = ?"
+        self.database.execute(sql, name, device)
+
+    def _getStr(self, bytes_):
+        return str(UUID(bytes = bytes_))
