@@ -16,7 +16,7 @@ import json
 import logging
 import traceback
 import threading
-from sync import synchronized
+from uuid import UUID
 
 logging.disable(logging.WARNING)
 
@@ -66,7 +66,7 @@ class TestDatabaseIntegration(TestCase):
         self.exchange.teardown()
         results = self.db.query("SELECT * FROM Event").fetchone()
         self.assertEqual(results["request_id"], 0)
-        self.assertEqual(results["source"], str(myUuid))
+        self.assertEqual(results["source"], str(UUID(bytes=myUuid)))
         self.assertEqual(results["attribute"], "state")
         self.assertEqual(results["value"], "1")
 
@@ -182,12 +182,11 @@ class TestDatabase:
 
 class StubDeviceAdapter(Adapter):
 
-    q = queue.Queue()
-    receivedMessages = []
-    exceptionTrace = None
-
     def __init__(self):
         super().__init__()
+        self.q = queue.Queue()
+        self.receivedMessages = []
+        self.exceptionTrace = None
 
     def enqueueMessage(self, m):
         """
