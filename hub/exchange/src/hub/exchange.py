@@ -2,7 +2,7 @@ from .cli import CLI
 from adapter import Message
 import logging
 from uuid import UUID
-from database import DatabaseTranslator
+from database import DatabaseTranslator,RequestTracker
 
 log =logging.getLogger(__name__)
 
@@ -13,7 +13,7 @@ class Exchange ():
         self._cli       = cli
         self._adapters  = {}
         self._devices   = {}
-        self._database  = DatabaseTranslator(database)
+        self._database  = RequestTracker(DatabaseTranslator(database),hub)
 
     def start (self):
         for _, adapter in self._adapters.items():

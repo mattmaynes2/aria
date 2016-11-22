@@ -22,7 +22,7 @@ class DatabaseTranslator(Delegate):
     def discovered (self, device):
         log.info('Received ' + str(device))
         self.database.execute("INSERT into Device (address, name, version, type) VALUES (?, ?, ?, ?);", \
-        str(device.address), str(device.name), str(device.type), str(device.device_type))  
+        str(device.address), str(device.name), str(device.version), str(device.deviceType))  
 
     def _request(self, message):
         self.databse.execute("INSERT into Request (source, receiver, action, value) VALUES (?, ?, ?);" \

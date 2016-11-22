@@ -12,5 +12,5 @@ class Attribute:
         self.step=step
 
     def __str__(self):
-        return "Attribute [name: "+self.name+", dataType: "+self.dataType+", min "+self.min\
-        +", max: "+self.max+", step: "+self.step+"]" 
+        return "Attribute [name: "+self.name+", dataType: "+str(self.dataType.value)+", min "+str(self.min)\
+        +", max: "+str(self.max)+", step: "+str(self.step)+"]" 

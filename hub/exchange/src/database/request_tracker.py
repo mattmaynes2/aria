@@ -7,9 +7,10 @@ log= logging.getLogger(__name__)
 
 class RequestTracker(DatabaseTranslator):
 
-    def __init__(self,databaseTranslator):
+    def __init__(self,databaseTranslator,hub):
         self.dbTranslator=databaseTranslator
         self.requests={}
+        self.hub=hub
 
     def received(self,message):
         """
@@ -18,6 +19,10 @@ class RequestTracker(DatabaseTranslator):
             for a device then this was a manual user action, a request is created for this 
             action.
         """
+        device= self.hub.getDevice(message.sender)
+        if(not device):
+            log.warn('Unknown sender')
+            return False
         if(Message.Request == message.type):
             self.requests[message.receiver]=self.databaseTranslator.received(message)
         elif(Message.Event == message.type or Message.Response == message.type):
