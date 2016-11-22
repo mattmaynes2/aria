@@ -31,8 +31,9 @@ The request message has the form
 attribute: a field in a device
 value: value of to set the attribute to
 
-All messages that have the destination as the hub i.e. address is all 0's will not be stored in the 
-event table as they are assumed to have no impact on the state of any devices in the system
+All request messages that have the destination as the hub i.e. address is all 0's will not be 
+stored in the event table as they are assumed to have no impact on the state of any devices in 
+the system
 
 #### Query Messages {-}
 
@@ -50,7 +51,8 @@ return a list of events from the hub for all devices
 {
     "get":"eventWindow", 
     "start": <int>, 
-    "count":<int>
+    "count":<int>,
+    "ignore":[<string>]
 }
 ```
 
@@ -58,6 +60,7 @@ return a list of events from the hub for all devices
 start: is the index to start at 0 is the most recent message 
 
 count: number of records to return
+ignore: A list of device UUID strings that should be ignored when getting events
 
 ###### Response {-}
 
