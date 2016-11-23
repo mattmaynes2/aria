@@ -2,7 +2,6 @@ import sqlite3
 import logging
 import os.path
 import pkgutil
-import sys
 
 log=logging.getLogger(__name__)
 
