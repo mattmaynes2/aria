@@ -37,6 +37,20 @@ let HubRouter = (function () {
                     .catch(onError.bind(this, res));
             });
 
+        app.route('/events')
+            .post((req, res) => {
+                this._adapter
+                    .send(IPC.Request, {
+                        get     : 'eventWindow',
+                        start   : req.body.start,
+                        count   : req.body.count
+                    })
+                    .then((reply) => {
+                        res.json(reply.payload.value);
+                    })
+                    .catch(onError.bind(this, res));
+            });
+
         return app;
     };
 

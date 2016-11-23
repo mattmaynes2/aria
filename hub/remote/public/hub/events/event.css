@@ -1,0 +1,19 @@
+.event-frame {
+    display     : flex;
+    height      : 100px;
+    padding     : 4px 2px;
+    border      : 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.event-icon {
+
+}
+
+.event-body {
+    display         : flex;
+    flex-direction  : row;
+}
+
+.event-info {
+    margin: 0 2px;
+}

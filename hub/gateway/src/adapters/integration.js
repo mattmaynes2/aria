@@ -6,13 +6,28 @@ let IntegrateAdapter = (function () {
 
     let DEVICE_TYPES = ['zwave', 'wemo', 'arduino'],
         DEVICE_NAMES = [
-            'light',
-            'switch',
-            'light sensor',
-            'temperature sensor',
-            'music player',
-            'coffee maker',
-            'thermostat'
+            'Light',
+            'Switch',
+            'Light Sensor',
+            'Temperature Sensor',
+            'Music Player',
+            'Coffee Maker',
+            'Thermostat'
+        ],
+        DEVICE_ATTRIBUTES = [
+            'State',
+            'Brightness',
+            'Hue'
+        ],
+        DATATYPES = [
+            'binary',
+            'int',
+            'float',
+            'color',
+            'enum',
+            'time',
+            'date',
+            'string'
         ],
         HUB_ID = new Buffer(16).fill(0);
 
@@ -108,6 +123,10 @@ let IntegrateAdapter = (function () {
                 return wrap(payload.get, this._state.hub.name);
             case 'devices':
                 return wrap(payload.get, this._state.hub.devices);
+            case 'eventWindow':
+                return wrap(payload.get, { total : 1500, records : makeEvents.call(this, payload)});
+            case 'deviceEvents':
+                return wrap(payload.get, { total : 100, records : makeEvents.call(this, payload)});
             default:
                 throw new Error('Unknown request');
         }
@@ -130,9 +149,35 @@ let IntegrateAdapter = (function () {
         return requestGet.call(this, payload);
     }
 
-
     function event () {
         return {};
+    }
+
+    function makeEvents (payload) {
+        var i, events = [], devices = this._state.hub.devices, device,
+            start   = payload.start,
+            count   = payload.count,
+            id      = payload.id || '',
+            index   = devices.map((dev) => { return dev.id; }).indexOf(id);
+
+        for (i = 0; i < count; i++) {
+            device  = index >= 0 ? devices[index] : random(devices);
+            events.push({
+                index       : start + i,
+                timestamp   : new Date().toJSON(),
+                source      : device.id,
+                device      : device.name,
+                attribute   : random(DEVICE_ATTRIBUTES),
+                datatype    : random(DATATYPES),
+                value       : Math.floor(Math.random() * 100)
+            });
+        }
+
+        return events;
+    }
+
+    function random (arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
     }
     return IntegrateAdatper;
 } ());
