@@ -16,6 +16,8 @@ Change Log
 - Added remote interface
     - Skeleton of event feed
     - Addition of device controls
+- Added adapter for software devices
+    - Added software timer device
 
 ## v0.2.0
 
