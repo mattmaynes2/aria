@@ -84,83 +84,83 @@ class TestDatabaseIntegration(TestCase):
         self.assertEqual(results.fetchone()["count"], 0)
 
 
-    # def test_events_should_be_linked_to_requests(self):
+    def test_events_should_be_linked_to_requests(self):
 
-    #     myUuid = self.devices[0].address
-    #     requestMessage = Message()
-    #     requestMessage.type = Message.Request
-    #     requestMessage.data = {"set" : "brightness", "value" : 100}
-    #     requestMessage.receiver = myUuid
-    #     self.testAdapter.enqueueMessage(requestMessage)
+        myUuid = self.devices[0].address
+        requestMessage = Message()
+        requestMessage.type = Message.Request
+        requestMessage.data = {"set" : "brightness", "value" : 100}
+        requestMessage.receiver = myUuid
+        self.testAdapter.enqueueMessage(requestMessage)
         
-    #     eventMessage = Message()
-    #     eventMessage.data = { "response" : "brightness", "value" : 100 }
-    #     eventMessage.type = Message.Event 
-    #     eventMessage.sender = myUuid
-    #     eventMessage.receiver = bytes([0 for i in range(0,16)])
-    #     self.testAdapter.enqueueMessage(eventMessage)    
-    #     self.exchange.teardown()
+        eventMessage = Message()
+        eventMessage.data = { "response" : "brightness", "value" : 100 }
+        eventMessage.type = Message.Event 
+        eventMessage.sender = myUuid
+        eventMessage.receiver = bytes([0 for i in range(0,16)])
+        self.testAdapter.enqueueMessage(eventMessage)    
+        self.exchange.teardown()
 
-    #     results = self.db.query("SELECT count(*) as count FROM \
-    #                             Event e INNER JOIN Request r ON e.request_id = r.id\
-    #                             WHERE e.attribute = 'brightness' AND e.value = 100")
+        results = self.db.query("SELECT count(*) as count FROM \
+                                Event e INNER JOIN Request r ON e.request_id = r.id\
+                                WHERE e.attribute = 'brightness' AND e.value = 100")
 
-    #     firstResult = results.fetchone()
-    #     self.assertEqual(firstResult['count'], 1)
+        firstResult = results.fetchone()
+        self.assertEqual(firstResult['count'], 1)
 
-    # def test_request_event_window_returns_events(self):
-    #     # Put twenty events in the database
-    #     for device in self.devices:
-    #         sensorStateChangeMessage = Message()
-    #         sensorStateChangeMessage.type = Message.Event
-    #         sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
-    #         sensorStateChangeMessage.sender = device.address
-    #         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
+    def test_request_event_window_returns_events(self):
+        # Put twenty events in the database
+        for device in self.devices:
+            sensorStateChangeMessage = Message()
+            sensorStateChangeMessage.type = Message.Event
+            sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
+            sensorStateChangeMessage.sender = device.address
+            self.testAdapter.enqueueMessage(sensorStateChangeMessage)
 
-    #     # Give some time to write to database
-    #     time.sleep(0.5)
+        # Give some time to write to database
+        time.sleep(0.5)
 
-    #     # Request the last 10 events that occurred
-    #     sensorEventWindowRequest = Message()
-    #     sensorEventWindowRequest.type = Message.Request
-    #     sensorEventWindowRequest.data = {"get": "eventWindow", "start": 0, "count": 10}
+        # Request the last 10 events that occurred
+        sensorEventWindowRequest = Message()
+        sensorEventWindowRequest.type = Message.Request
+        sensorEventWindowRequest.data = {"get": "eventWindow", "start": 0, "count": 10}
 
-    #     # Give some time for the hub to respond to the request
-    #     time.sleep(0.5)
+        # Give some time for the hub to respond to the request
+        time.sleep(0.5)
 
-    #     response = self.testAdapter.receivedMessages[0]
+        response = self.testAdapter.receivedMessages[0]
 
  
-    #     self.assertEqual(response.data["response"], "eventWindow")
-    #     self.assertEqual(response.data["value"]["total"], 10)
-    #     self.assertEqual(len(response["value"]["records"]), 10)        
+        self.assertEqual(response.data["response"], "eventWindow")
+        self.assertEqual(response.data["value"]["total"], 10)
+        self.assertEqual(len(response["value"]["records"]), 10)        
 
-    # def test_request_event_window_ignores_specified_devices(self):
-    #     # Send a bunch of events from random devices
-    #     for device in self.devices:
-    #         sensorStateChangeMessage = Message()
-    #         sensorStateChangeMessage.type = Message.Event
-    #         sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
-    #         sensorStateChangeMessage.sender = device.address
-    #         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
+    def test_request_event_window_ignores_specified_devices(self):
+        # Send a bunch of events from random devices
+        for device in self.devices:
+            sensorStateChangeMessage = Message()
+            sensorStateChangeMessage.type = Message.Event
+            sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
+            sensorStateChangeMessage.sender = device.address
+            self.testAdapter.enqueueMessage(sensorStateChangeMessage)
 
-    #     # Give some time to write to database
-    #     time.sleep(0.5)
+        # Give some time to write to database
+        time.sleep(0.5)
 
-    #     # Request the last 10 events that occurred
-    #     sensorEventWindowRequest = Message()
-    #     sensorEventWindowRequest.type = Message.Request
-    #     sensorEventWindowRequest.data = {"get": "eventWindow", "start": 0, "count": 10, "ignore" : [str(self.devices[0].address)]}
+        # Request the last 10 events that occurred
+        sensorEventWindowRequest = Message()
+        sensorEventWindowRequest.type = Message.Request
+        sensorEventWindowRequest.data = {"get": "eventWindow", "start": 0, "count": 10, "ignore" : [str(self.devices[0].address)]}
 
-    #     # Give some time for the hub to respond to the request
-    #     time.sleep(0.5)
+        # Give some time for the hub to respond to the request
+        time.sleep(0.5)
 
-    #     response = self.testAdapter.receivedMessages[0]
-    #     self.assertEqual(response.data["response"], "eventWindow")
-    #     self.assertEqual(response.data["value"]["total"], 5)
-    #     self.assertEqual(len(response["value"]["records"]), 5)
-    #     for device in response.data["value"]["records"]:
-    #         self.assertNotEquals(device["device"], str(self.devices[0].address))
+        response = self.testAdapter.receivedMessages[0]
+        self.assertEqual(response.data["response"], "eventWindow")
+        self.assertEqual(response.data["value"]["total"], 5)
+        self.assertEqual(len(response["value"]["records"]), 5)
+        for device in response.data["value"]["records"]:
+            self.assertNotEquals(device["device"], str(self.devices[0].address))
 
 class TestDatabase:
 
