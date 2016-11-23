@@ -33,13 +33,13 @@ class TestDatabaseIntegration(TestCase):
     def setUp(self):
 
         try:
-            os.remove("aria.db")
-        except OSError:
+            os.remove(self._testMethodName + ".db")
+        except OSError as e:
             pass
 
         self.hub         = Hub()
         self.cli         = CLI(self.hub)
-        self.database    = Database()
+        self.database    = Database(self._testMethodName + ".db")
         self.exchange    = Exchange(self.hub, self.cli, self.database)
         self.testAdapter = StubDeviceAdapter()
         self.exchange.register('stub', self.testAdapter)
@@ -47,7 +47,7 @@ class TestDatabaseIntegration(TestCase):
         self.registerFakeDevices()
         self.exchange.start()
 
-        self.db = TestDatabase()
+        self.db = TestDatabase(self._testMethodName + ".db")
 
     def tearDown(self):
         self.exchange.teardown()
@@ -164,8 +164,8 @@ class TestDatabaseIntegration(TestCase):
 
 class TestDatabase:
 
-    def __init__(self):
-        self.conn = sqlite3.connect("aria.db")
+    def __init__(self, db_name):
+        self.conn = sqlite3.connect(db_name)
 
         def dict_factory(cursor, row):
             d = {}
