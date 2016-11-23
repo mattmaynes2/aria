@@ -6,10 +6,12 @@ sys.path.append('../lib')
 from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
 from adapter import AriaAdapter, HubAdapter, Message, WemoAdapter
+from database import Database
 
 hub         = None
 cli         = None
 exchange    = None
+database    = None
 
 logging.config.fileConfig('log.config',disable_existing_loggers=False)
 
@@ -18,19 +20,19 @@ def main ():
     argv = args.parse()
     if argv.daemonize:
         daemon.daemonize()
-    
+
     hub         = Hub(argv, exit)
     cli         = CLI(hub)
     exchange    = create_exchange(hub, cli)
-    exchange.discovered(Device('hub', '', Message.DEFAULT_ADDRESS))
+    exchange.discovered(hub)
 
     cli.start()
     exchange.start()
 
 
-def create_exchange (hub, cli):
+def create_exchange (hub, cli, database):
     global exchange
-    exchange = Exchange(hub, cli)
+    exchange = Exchange(hub, cli, database)
 
     exchange.register('hub'     , HubAdapter(hub))
     exchange.register('aria'    , AriaAdapter())

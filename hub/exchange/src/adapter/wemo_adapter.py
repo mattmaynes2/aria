@@ -71,11 +71,11 @@ class WemoAdapter (Adapter):
                 return True
             elif('status' == action):
                 self.notify('received',Message(
-                    type_ = Message.Ack, 
+                    type_ = Message.Response, 
                     data = { 'state' : device.get_state() }, 
                     sender = message.receiver))
                 return True
-        log.warn("Don't know what to do with "+message.data)
+        log.warn("Don't know what to do with "+str(message.data))
         return False
 
     def receive (self):

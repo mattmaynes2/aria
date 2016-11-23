@@ -40,6 +40,12 @@ __pycache__
 *.egg-info
 *.pyc
 
+# Database
+*.db
+
+# JavaScript
+*bundle.js
+
 # Resources
 node_modules
 framework
