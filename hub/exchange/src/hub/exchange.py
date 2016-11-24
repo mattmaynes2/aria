@@ -47,11 +47,11 @@ class Exchange (Delegate):
     def received (self, message):
         log.info('Received ' + str(message))
         if( 'action' in message.data and message.data['action'] == 'discover'):
-            self.discoverDevices()
             self.send(self._devices[message.sender],Message(
                 type_=Message.Ack,
                 data={'success':'True'},
                 receiver=message.sender))
+            self.discoverDevices()
         elif (message.receiver in self._devices):
             log.debug('Routing message to ' + str(UUID(bytes=message.receiver)))
             self.send(self._devices[message.receiver], message)
@@ -77,6 +77,6 @@ class Exchange (Delegate):
         """
         for delegate in self._delegates:
             getattr(delegate, event)(data)
-        
+
     def addDelegate(self,delegate):
         self._delegates.append(delegate)

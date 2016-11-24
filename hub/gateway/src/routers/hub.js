@@ -1,4 +1,5 @@
 let router  = require('express').Router,
+    logger  = require('winston'),
     IPC     = require('../ipc');
 
 let HubRouter = (function () {
@@ -14,6 +15,7 @@ let HubRouter = (function () {
             this._adapter
                 .send(IPC.Request, { get : 'status' })
                 .then((reply) => {
+                    logger.debug('Response to state request ' + JSON.stringify(reply.payload.value));
                     res.json(reply.payload.value);
                 })
                 .catch(onError.bind(this, res));
@@ -23,7 +25,7 @@ let HubRouter = (function () {
             this._adapter
                 .send(IPC.Request, { action : 'discover' })
                 .then(() => {
-                    res.send();
+                    res.json({});
                 })
                 .catch(onError.bind(this, res));
         });
@@ -55,7 +57,8 @@ let HubRouter = (function () {
                         count   : req.body.count
                     })
                     .then((reply) => {
-                        res.json(reply.payload.value);
+                        logger.debug('Response to event request ' + JSON.stringify(reply.payload.value));
+                        res.json({ records : [] }); //reply.payload.value);
                     })
                     .catch(onError.bind(this, res));
             });
@@ -64,7 +67,7 @@ let HubRouter = (function () {
     };
 
     function onError (res, err) {
-        res.status(500).json({ error : err });
+        res.status(500).json({ error : err || '' });
     }
 
     return HubRouter;

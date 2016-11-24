@@ -100,7 +100,7 @@ let ExchangeAdapter = (function () {
                 reject(Error('Response wait period timed out'));
             }, 5000);
 
-            client.on('message', function(message) {
+            client.on('message', function (message) {
                 logger.debug('Received response from comm server');
                 client.close();
                 clearTimeout(expiry);
