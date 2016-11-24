@@ -22,9 +22,9 @@ def main ():
     if argv.daemonize:
         daemon.daemonize()
 
-    hub         = Hub(argv, exit)
-    cli         = CLI(hub)
     database    = Database()
+    hub         = Hub(database,argv, exit)
+    cli         = CLI(hub)
     exchange    = create_exchange(hub, cli, database)
     exchange.discovered(hub)
 
