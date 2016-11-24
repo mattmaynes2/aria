@@ -76,4 +76,4 @@ class Hub(Device):
         self.mode=HubMode(mode)
 
     def getDevice(self,address):
-        return self._devices.get(address)
+        return self if address == self.address else self._devices.get(address)
