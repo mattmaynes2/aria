@@ -40,8 +40,9 @@ class Hub extends Widget {
             });
         };
         Service.socket.on('device.discovered', (msg) => {
-            console.log(msg);
-            Notify.success('Device has been discovered');
+            Notify.success('New device ' + (msg.name ? '\'' + msg.nam + '\'' : '') + ' discovered');
+            this._state.devices++;
+            this.render();
         });
    }
 
