@@ -22,6 +22,8 @@ class AriaAdapter (Adapter):
         self._ip_map    = {}
         self._push_back_ports= {}
         self.name = 'aria'
+        self.pushBackAddress = None
+
         try:
             self.self_rd, self.self_wd = os.pipe()
         except OSError:
@@ -72,10 +74,11 @@ class AriaAdapter (Adapter):
             self._ip_map[msg.sender] = address
 
             if (msg.type == Message.Discover):
+                device=self.buildDevice(msg.data,msg.sender) 
                 # add the port to push back messages to
                 if('port' in msg.data):
-                    self._push_back_ports[msg.sender]=msg.data['port']
-                device=self.buildDevice(msg.data,msg.sender)    
+                    self.pushBackAddress=(address[0],msg.data['port'])
+                   
                 self.notify('discovered', device)
                 self.notify('received', Message(Message.Ack, '', msg.receiver, msg.sender))
             else:
@@ -96,11 +99,17 @@ class AriaAdapter (Adapter):
         return Device(DeviceType(name,self.name),name,deviceAddress)
     
     def pushBack(self,message):
-        if(message.receiver in self._push_back_ports):
-            port=self._push_back_ports[message.receiver]
-            log.debug('Pushing '+str(message)+' to '+ str(UUID(bytes=message.receiver))+'on port '+port)
-            address =(self._ip_map[message.receiver](0), port)
-            self.send(message,address)
+        if(self.pushBackAddress):
+            log.debug('Pushing '+str(message)+' to '+ pushBackAddress)
+            self.send(message,self.pushBackAddress)
+        else:
+            log.warn("I don't Have an address to push messages to")
+
+
+    def discovered(self, device):
+        data={'event':'device.discovered', 'data':device.to_json()}
+        msg = Message(Message.Event,data)
+        self.adapter.pushBack(msg)
 
 
         
