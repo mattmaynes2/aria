@@ -40,7 +40,7 @@ def create_exchange (hub, cli, database):
     # setup adapters
     exchange.register('hub'     , HubAdapter(hub))
     exchange.register('aria'    , ariaAdapter)
-    #exchange.register('wemo'    , WemoAdapter())
+    exchange.register('wemo'    , WemoAdapter())
 
     # setup delegates
     exchange.addDelegate(ariaAdapter)
