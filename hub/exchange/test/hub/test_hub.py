@@ -2,12 +2,13 @@ import uuid
 from unittest import TestCase
 from hub import Hub,HubMode
 from device import Device, DeviceType, Attribute, DataType
+from database import Database
 
 
 class HubTest (TestCase):
 
     def setUp (self):
-        self.hub = Hub()
+        self.hub = Hub(Database())
 
     def test_status (self):
         status = self.hub.status()

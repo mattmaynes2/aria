@@ -5,11 +5,11 @@ class Retriever:
 
     GET_ALL_EVENT_WINDOW    = "SELECT * FROM \
                                     (SELECT * FROM Event WHERE id <= ? ORDER BY id DESC)\
-                               WHERE id NOT LIKE ALL(ARRAY[?]) LIMIT ? ORDER BY id DESC"
+                               WHERE id NOT IN(?) LIMIT ? ORDER BY id DESC"
 
     GET_DEVICE_EVENT_WINDOW = "SELECT * FROM\
                                     (SELECT * Event WHERE id <= ? ORDER BY id DESC)\
-                               WHERE id LIKE ? LIMIT ? ORDER BY id DESC"
+                               WHERE id == ? LIMIT ? ORDER BY id DESC"
 
     GET_LAST_EVENT_ID       = "SELECT * FROM Event LIMIT 1 ORDER BY id DESC"
 
@@ -43,13 +43,14 @@ class Retriever:
     # @return        List of count number of event objects for the specified device id
     ###
     def getDeviceEvents(self, id_, start, count):
-        sql = 
         lastEventId = self.database.execute(Retriever.GET_LAST_EVENT_ID)
         print("EVENT ID: " + str(lastEventId))
         values = (int(lastEventId) - start, id_, count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         print("Results: " + str(results))
         return results
+
+
 
 
 
