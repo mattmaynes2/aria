@@ -36,4 +36,6 @@ class Device:
             return str(uuid.UUID(bytes=obj))
         if( isinstance(obj,uuid.UUID)):
             return str(obj)
+        if(callable(obj)):
+            return
         raise TypeError("Unserializable object {} of type {}".format(obj, type(obj)))

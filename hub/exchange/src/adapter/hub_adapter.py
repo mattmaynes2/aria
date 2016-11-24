@@ -1,5 +1,5 @@
 import logging
-from .message import Message
+from ipc import Message
 from .adapter import Adapter
 
 log = logging.getLogger(__name__)

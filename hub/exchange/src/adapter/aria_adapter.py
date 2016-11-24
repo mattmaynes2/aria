@@ -3,10 +3,10 @@ import os
 import select
 import logging
 
-from .message import Message
+from ipc import Message
 from .adapter import Adapter
-
 from device import Device, DeviceType
+from hub import Hub
 
 log = logging.getLogger(__name__)
 
@@ -20,6 +20,10 @@ class AriaAdapter (Adapter):
         self.socket     = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.port       = AriaAdapter.PORT
         self._ip_map    = {}
+        self._push_back_ports= {}
+        self.name = 'aria'
+        self.pushBackAddress = None
+
         try:
             self.self_rd, self.self_wd = os.pipe()
         except OSError:
@@ -63,10 +67,6 @@ class AriaAdapter (Adapter):
         readables, writeables, exceptions = select.select([self.self_rd, self.socket.fileno()], [], [])
         if (self.socket.fileno() in readables):
             chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
-            #while chunk:
-            #   data.append(chunk)
-            #   chunk = self.socket.recv(AriaAdapter.BUFFER_SIZE)
-            #payload = ''.join(data)
             payload = chunk
 
             log.debug('Aria adapter received data on UDP socket')
@@ -74,8 +74,12 @@ class AriaAdapter (Adapter):
             self._ip_map[msg.sender] = address
 
             if (msg.type == Message.Discover):
-                # TODO need to find way to discover attributes of devices
-                self.notify('discovered', Device(DeviceType('Default Aria Device','aria'), '', msg.sender))
+                device=self.buildDevice(msg.data,msg.sender) 
+                # add the port to push back messages to
+                if('port' in msg.data):
+                    self.pushBackAddress=(address[0],msg.data['port'])
+                   
+                self.notify('discovered', device)
                 self.notify('received', Message(Message.Ack, '', msg.receiver, msg.sender))
             else:
                 self.notify('received', msg)
@@ -86,6 +90,33 @@ class AriaAdapter (Adapter):
                 self.socket.close()
             except OSError:
                 log.warn("Failed to close self-pipe")
-
-
         return True
+    
+    def buildDevice(self,deviceData,deviceAddress):
+        name='Default Aria Device'
+        if('name' in deviceData):
+            name=deviceData['name']
+        return Device(DeviceType(name,self.name),name,deviceAddress)
+    
+    def pushBack(self,message):
+        if(self.pushBackAddress):
+            log.debug('Pushing '+str(message)+' to '+ pushBackAddress)
+            self.send(message,self.pushBackAddress)
+        else:
+            log.warn("I don't Have an address to push messages to")
+
+
+    def discovered(self, device):
+        # ignore discovery of the hub
+        if(device.address == Hub.ADDRESS):
+            return
+        try:
+            data={'event':'device.discovered', 'data':device.to_json()}
+            msg = Message(Message.Event,data)
+            self.adapter.pushBack(msg)
+        except:
+            log.exception('Error pushing back discover message')
+
+
+        
+

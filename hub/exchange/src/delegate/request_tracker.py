@@ -1,5 +1,5 @@
 import logging
-from adapter import Message
+from ipc import Message
 from database import DatabaseTranslator 
 
 log= logging.getLogger(__name__)

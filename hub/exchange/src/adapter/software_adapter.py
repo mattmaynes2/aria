@@ -1,4 +1,4 @@
-from .message import Message
+from ipc import Message
 from .adapter import Adapter
 
 class SoftwareAdapter(Adapter):

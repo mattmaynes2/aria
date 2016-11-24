@@ -3,20 +3,23 @@ import logging
 import uuid
 from .hub_mode  import HubMode
 from device import Device, DeviceType, Attribute, DataType
-from adapter import Message
+from ipc import Message
+
 
 
 log=logging.getLogger(__name__)
 
 class Hub(Device):
     VERSION = '0.0.2'
+    ADDRESS= Message.DEFAULT_ADDRESS
 
+    
     def __init__ (self, args = {}, exit = None):
         # setup device attributes and DeviceType
         methods=[Attribute('name',DataType.String), Attribute('devices',DataType.List),\
          Attribute('mode',DataType.String)]
         devType=DeviceType('Hub','hub',attributes=methods)
-        super().__init__(devType,'Smart Hub',Message.DEFAULT_ADDRESS )
+        super().__init__(devType,'Smart Hub',Hub.ADDRESS )
         self.version = Hub.VERSION
         self._devices = {}
         self.mode    = HubMode.Normal
