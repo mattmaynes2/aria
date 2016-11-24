@@ -28,12 +28,13 @@
 .widget-body {
     border-top-color    : #DDDDDD;
     flex-grow           : 1;
-    overflow            : scroll;
 }
 
 .widget-footer {
-    bottom        : 0;
-    flex-shrink   : 0;
-    padding       : 0 10px;
-    margin-bottom : 10px;
+    bottom          : 0;
+    flex-shrink     : 0;
+    padding         : 0 10px;
+    margin-bottom   : 10px;
+    display         : flex;
+    flex-direction  : row;
 }

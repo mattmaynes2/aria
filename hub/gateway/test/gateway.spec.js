@@ -37,7 +37,7 @@ describe('Tests the REST endpoints exposed by the gateway', () => {
         var res = sinon.stub();
         res.send = sinon.stub();
 
-        gateway.start();
+        gateway.start(800);
 
         sinon.assert.called(registerRequest);
         var endpointCallback = registerRequest.firstCall.args[1];
