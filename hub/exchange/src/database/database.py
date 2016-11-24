@@ -19,19 +19,27 @@ class Database:
         else:
             self.connection = sqlite3.connect(self.name, timeout,check_same_thread=False)
             log.info("Opened connection to " + self.name)
-        self.cur = self.connection.cursor()
+
+        def dict_factory(cursor, row):
+            #returns results as dictionary instead of tuple
+            d = {}
+            for idx, col in enumerate(cursor.description):
+                d[col[0]] = row[idx]
+            return d
+        self.connection.row_factory = dict_factory
+        self.cursor = self.connection.cursor()
 
     def execute (self, sql, values=None):
         try:
             log.debug("Running SQL statement: " + sql)
-            results = self.cur.execute(sql, values)
+            results = self.cursor.execute(sql, values)
             self.connection.commit()
             return results
         except Exception as e:
             log.error("Could not execute command " + sql + " " + str(e))
 
     def shutdown (self):
-        self.cur.close()
+        self.cursor.close()
         log.info("Closed connection to " + self.name)
 
     def createDB(self):
@@ -41,7 +49,7 @@ class Database:
         self.connection.commit()
 
     def getLastInsertId(self):
-        return self.cur.lastrowid
+        return self.cursor.lastrowid
 
 
 

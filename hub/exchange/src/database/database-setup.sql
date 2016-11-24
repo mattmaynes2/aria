@@ -71,10 +71,24 @@ CREATE TABLE IF NOT EXISTS "Attributes" (
 	"id" PRIMARY KEY,
 	"name" TEXT,
 	"data_type" TEXT,
+);
+
+/*
+id         --  auto incrementing integer key
+name       --  name of the attribute
+data_type  --  the type of data returned when an attribute is performed
+max        --  maximum value of an Integer value
+min        --  minimum value of an Integer value
+step       --  the increment or decrement value
+*/
+CREATE TABLE IF NOT EXISTS "Parameter" {
+	"attribute_id" INTEGER,
+	"data_type" TEXT,
 	"max" INTEGER,
 	"min" INTEGER,
-	"step" REAL
-);
+	"step" INTEGER,
+	FOREIGN KEY ("attribute_id") REFERENCES "Attributes"("id")
+}
 
 /*
 device_type_id  --  an id linking to an id in the Device table

@@ -1,5 +1,6 @@
 import sqlite3
 import logging
+import sqlalchemy
 
 class Retriever:
 
@@ -16,7 +17,15 @@ class Retriever:
     # @return        List of count number of event objects across all devices
     ###
     def getEventWindow(self, start, count, ignore):
-        pass
+        sql = "SELECT * FROM \
+                    (SELECT * FROM Event WHERE id <= ? ORDER BY id DESC)\
+               WHERE id NOT LIKE ALL(ARRAY[?]) LIMIT ? ORDER BY id DESC"
+        lastEventId = self.database.execute("SELECT * FROM Event LIMIT 1 ORDER BY id DESC")
+        print("EVENT ID: " + str(lastEventId))
+        values = (int(lastEventId) - start, ignore, count)
+        results = self.database.execute(sql, values)
+        print("Results: " + str(results))
+        return results
 
     ###
     # Get a list of count events for a specific device
@@ -27,7 +36,17 @@ class Retriever:
     #
     # @return        List of count number of event objects for the specified device id
     ###
-    def getDeviceEvents(self, id, start, count):
-        pass
+    def getDeviceEvents(self, id_, start, count):
+        sql = "SELECT * FROM\
+                    (SELECT * Event WHERE id <= ? ORDER BY id DESC)\
+                WHERE id LIKE ? LIMIT ? ORDER BY id DESC"
+        lastEventId = self.database.execute("SELECT * FROM Event LIMIT 1 ORDER BY id DESC")
+        print("EVENT ID: " + str(lastEventId))
+        values = (int(lastEventId) - start, id_, count)
+        results = self.database.execute(sql, values)
+        print("Results: " + str(results))
+        return results
+
+
 
     
