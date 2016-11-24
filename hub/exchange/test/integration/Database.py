@@ -3,7 +3,7 @@ import unittest
 from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
 from device     import DeviceType
-from adapter import Message
+from ipc import Message
 from adapter import Adapter
 from database import Database
 from database import RequestTracker

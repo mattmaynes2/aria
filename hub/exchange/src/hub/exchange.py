@@ -1,15 +1,17 @@
 from .cli import CLI
-from adapter import Message
+from ipc import Message
+from delegate import Delegate
 import logging
 from uuid import UUID
-from database import DatabaseTranslator,RequestTracker
+from database import DatabaseTranslator
+from delegate import RequestTracker
 from threading import Lock
 from sync import synchronized
 log =logging.getLogger(__name__)
 
 lock = Lock()
 
-class Exchange ():
+class Exchange (Delegate):
 
     def __init__ (self, hub, cli, database):
         self._hub       = hub
@@ -17,6 +19,7 @@ class Exchange ():
         self._adapters  = {}
         self._devices   = {}
         self._database  = RequestTracker(DatabaseTranslator(database),hub)
+        self._delegates=[]
 
     @synchronized(lock)
     def start (self):
@@ -47,11 +50,11 @@ class Exchange ():
     def received (self, message):
         log.info('Received ' + str(message))
         if( 'action' in message.data and message.data['action'] == 'discover'):
+            self.discoverDevices()
             self.send(self._devices[message.sender],Message(
                 type_=Message.Ack,
                 data={'success':'True'},
                 receiver=message.sender))
-            self.discoverDevices()
         elif (message.receiver in self._devices):
             log.debug('Routing message to ' + str(UUID(bytes=message.receiver)))
             self.send(self._devices[message.receiver], message)
@@ -67,3 +70,17 @@ class Exchange ():
         self._devices[device.address] = device
         # add device to hub
         self._hub.addDevice(device)
+        self.notify('discovered',device)
+
+    def notify (self, event, data):
+        """Notifies all delegates of the given event with the supplied data
+
+        Arguments:
+            event (str): Name of event to trigger
+            data (obj): Data to pass to delegate
+        """
+        for delegate in self._delegates:
+            getattr(delegate, event)(data)
+        
+    def addDelegate(self,delegate):
+        self._delegates.append(delegate)

@@ -5,7 +5,7 @@ from unittest.mock import Mock,patch
 from device import Device, DeviceType,Attribute,DataType
 from hub import Hub
 from database import RequestTracker
-from adapter import Message
+from ipc import Message
 
 
 class RequestTrackerTest(TestCase):

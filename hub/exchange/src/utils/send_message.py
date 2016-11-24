@@ -1,5 +1,5 @@
 import socket
-from adapter import Message
+from ipc import Message
 import uuid
 sock= socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 uid=uuid.uuid4().bytes
