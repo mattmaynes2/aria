@@ -1,4 +1,15 @@
+import io from 'socket.io-client';
+
+var socket;
+
 class Service {
+    static get socket () {
+        if (!socket) {
+            socket = io();
+        }
+        return socket;
+    }
+
     static get (endpoint, data) {
         return Service.send(data ? 'POST' : 'GET', endpoint, data || '');
     }
@@ -6,6 +17,7 @@ class Service {
     static set (endpoint, data) {
         return Service.send('POST', endpoint, data);
     }
+
     static send (method, endpoint, data) {
         return new Promise((resolve, reject) => {
             var xhr = new XMLHttpRequest();

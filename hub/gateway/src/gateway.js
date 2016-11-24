@@ -1,5 +1,5 @@
 let express         = require('express'),
-    socketio        = require('socket.io'),
+    io              = require('socket.io'),
     http            = require('http'),
     bodyParser      = require('body-parser'),
     logger          = require('winston'),
@@ -25,7 +25,7 @@ let Gateway = (function () {
 
 
     Gateway.prototype.start = function (port) {
-        var app = express(), io = socketio(http.Server(app));
+        var app = express(), server = http.createServer(app), websock = io(server);
 
         app.use(bodyParser.json());
         app.use((req, res, next) => {
@@ -39,14 +39,16 @@ let Gateway = (function () {
         app.use('/hub'      , this._routers.hub.router());
         app.use('/device'   , this._routers.device.router());
 
-        io.on('connection', (socket) => {
-            var emitters = DeviceRouter.SocketEvents.map((event) => {
-                this._adapter.subscribe(event, (data) => {
+        websock.on('connection', (socket) => {
+            var emitters = Gateway.SocketEvents.map((event) => {
+                return this._adapter.subscribe(event, (data) => {
+                    logger.debug(`Received socket event ${event} - forwarding to clients`);
                     socket.emit(event, data);
                 });
             });
 
             socket.on('disconnect', () => {
+                logger.debug('Websocket disconnected');
                 emitters.map((emitter) => { this._adapter.unsubscribe(emitter); });
             });
         });
@@ -60,7 +62,8 @@ let Gateway = (function () {
         });
 
         app.use(express.static(this.public));
-        app.listen(port);
+        server.listen(port);
+        return this;
     };
 
     return Gateway;

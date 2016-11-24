@@ -31,6 +31,7 @@ class Hub extends Widget {
                     this.render();
                 });
         });
+        Service.socket.on('test', (x) => {console.log(x);});
     }
 
     update () {
