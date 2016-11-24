@@ -1,17 +1,24 @@
 import uuid
 import json
-
+from device import Attribute, DeviceType
+from enum import Enum
 class Device:
 
-    def __init__ (self, type_, name = '', address = None):
-        self.type    = type_
+    def __init__ (self, deviceType, name = '', address = None,version=''):
         self.name    = name
         self.address = address if address else uuid.uuid4().bytes
-        if( not isinstance(self.address,bytes)):
+        self.version =version
+        if isinstance(deviceType, DeviceType):
+            self.deviceType = deviceType
+        else:
+            raise TypeError('type must be a DeviceType')
+
+        if (not isinstance(self.address,bytes)):
             raise TypeError("address needs to be of type bytes")
 
     def __str__(self):
-        return 'Device [type: '+str(self.type)+', name: '+self.name+', address: '+str(uuid.UUID(bytes=self.address))+']'
+        return 'Device [name: '+self.name+', DeviceType: <'+self.deviceType.name+'>, address: '\
+        +str(uuid.UUID(bytes=self.address))+', version: '+self.version+']'
     
 
 
@@ -21,8 +28,10 @@ class Device:
     
     @staticmethod
     def json_encode(obj):
-        if( isinstance(obj,Device)):
+        if( isinstance(obj,(Device,DeviceType,Attribute))):
             return obj.__dict__
+        if(isinstance(obj,Enum)):
+            return str(obj.value)
         if( isinstance(obj,bytes)):
             return str(uuid.UUID(bytes=obj))
         if( isinstance(obj,uuid.UUID)):

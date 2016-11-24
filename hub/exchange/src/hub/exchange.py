@@ -2,10 +2,9 @@ from .cli import CLI
 from adapter import Message
 import logging
 from uuid import UUID
-from database import DatabaseTranslator
+from database import DatabaseTranslator,RequestTracker
 from threading import Lock
 from sync import synchronized
-
 log =logging.getLogger(__name__)
 
 lock = Lock()
@@ -17,14 +16,14 @@ class Exchange ():
         self._cli       = cli
         self._adapters  = {}
         self._devices   = {}
-        self._database  = DatabaseTranslator(database)
+        self._database  = RequestTracker(DatabaseTranslator(database),hub)
 
     @synchronized(lock)
     def start (self):
         for _, adapter in self._adapters.items():
             log.debug('Starting adapter: ' + str(adapter))
             adapter.start()
- 
+
     @synchronized(lock)
     def register (self, device_type, adapter):
         log.info('Registered adapter: ' + str(adapter))
@@ -35,15 +34,15 @@ class Exchange ():
     @synchronized(lock)
     def send (self, device, message):
         # TODO Log sending a message here
-        if (device.type in self._adapters):
+        if (device.deviceType.protocol in self._adapters):
             log.info('Sending ' + str(message) + ' to device ' + str(device))
-            self._adapters[device.type].send(message)
+            self._adapters[device.deviceType.protocol].send(message)
 
-    @synchronized(lock)
     def teardown (self):
         for _, adapter in self._adapters.items():
             log.debug('Tearing down adapter: ' + str(adapter))
-            adapter.teardown() 
+            adapter.teardown()
+            adapter.join()
 
     def received (self, message):
         log.info('Received ' + str(message))
@@ -67,4 +66,4 @@ class Exchange ():
         log.info('Discovered device: ' + str(device))
         self._devices[device.address] = device
         # add device to hub
-        self._hub.addDevice(device) 
+        self._hub.addDevice(device)

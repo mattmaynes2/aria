@@ -23,7 +23,8 @@ def main ():
 
     hub         = Hub(argv, exit)
     cli         = CLI(hub)
-    exchange    = create_exchange(hub, cli)
+    database    = Database()
+    exchange    = create_exchange(hub, cli, database)
     exchange.discovered(hub)
 
     cli.start()

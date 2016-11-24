@@ -1,11 +1,16 @@
+import logging
 from adapter import Message
-from database import DatabaseTranslator
+from database import DatabaseTranslator 
+
+log= logging.getLogger(__name__)
+
 
 class RequestTracker(DatabaseTranslator):
 
-    def __init__(self,databaseTranslator):
+    def __init__(self,databaseTranslator,hub):
         self.dbTranslator=databaseTranslator
         self.requests={}
+        self.hub=hub
 
     def received(self,message):
         """
@@ -14,29 +19,38 @@ class RequestTracker(DatabaseTranslator):
             for a device then this was a manual user action, a request is created for this 
             action.
         """
-        if(Message.Request == message.type):
-            self.requests[message.receiver]=self.databaseTranslator.received(message)
+        device= self.hub if message.sender == self.hub.address else self.hub.getDevice(message.sender)
+        if(not device):
+            log.warning('Unknown sender')
+            return False
+        # ignore requests to hub they don't need to be logged
+        if(Message.Request == message.type and message.receiver != self.hub.address):
+            self.requests[message.receiver]=self.dbTranslator.received(message)
         elif(Message.Event == message.type or Message.Response == message.type):
             reqid=self.requests.pop(message.receiver,None)
-            if(reqid):
+            # don't create a request for a non controllable device
+            if(reqid or not device.deviceType.isControllable):
                 self.sendEvent(reqid,message)
             else:
-                msg=self.createRequest(message)
-                reqid=self.databaseTranslator.received(msg)
-
+                try:
+                    msg=self.createRequest(message)
+                    reqid=self.received(msg)
+                    self.sendEvent(reqid,message)
+                except Exception as e:
+                    log.warning ('Invalid Event message '+str(message)+ str(e),exc_info=True)
         else:
-            self.databaseTranslator.received(message)
+            self.dbTranslator.received(message)
         
-        
-        def sendEvent(self,reqid,message):
+            
+    def sendEvent(self,reqid,message):
+        if(reqid):
             message.data['requestId']= reqid
-            self.databaseTranslator.received(message)
+        self.dbTranslator.received(message)
         
-        def createRequest(self,message):
-            # Event messages have the form {attribute:value}
-            # Requests have the form {'action':attribute, 'value':value }
-            keys=list(message.data.keys())
-            data={'action':keys[0],'value':message.data[keys[0]]}
-            return Message(type_=Message.Request,data=data,receiver=message.sender)
+    def createRequest(self,message):
+        # Event messages have the form {'response':<Atribute>, 'value':<value>}
+        # Requests have the form {'set':<attribute>, 'value':<value> }
+        data={'set':message.data['response'],'value':message.data['value']}
+        return Message(type_=Message.Request,data=data,receiver=message.sender)
 
             
