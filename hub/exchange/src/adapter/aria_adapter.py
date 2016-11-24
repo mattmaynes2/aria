@@ -68,7 +68,6 @@ class AriaAdapter (Adapter):
         if (self.socket.fileno() in readables):
             chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
             payload = chunk
-
             log.debug('Aria adapter received data on UDP socket')
             msg = Message.decode(payload)
             self._ip_map[msg.sender] = address
