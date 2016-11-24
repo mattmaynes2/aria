@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python333
 
 import sys
 from setuptools import setup, find_packages
