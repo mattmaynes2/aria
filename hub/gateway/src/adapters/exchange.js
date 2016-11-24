@@ -1,11 +1,12 @@
 let dgram   = require('dgram'),
     uuid    = require('node-uuid'),
     logger  = require('winston'),
-    IPC     = require('../ipc');
+    IPC     = require('../ipc'),
+    observable = require('../../lib/observable');
 
 let ExchangeAdapter = (function () {
 
-    function ExchangeAdapter (endpoint) {
+    function ExchangeAdapter (endpoint, pushPort) {
         this._id         = new Buffer(16);
         this.registered = false;
         this.transport  = dgram;
@@ -14,11 +15,14 @@ let ExchangeAdapter = (function () {
             address : 'localhost'
         };
         uuid.v4(null, this._id);
+        this.pushPort = pushPort;
+        observable.create(this);
     }
 
     ExchangeAdapter.prototype.register = function () {
         return new Promise ((resolve, reject) => {
-            send.call(this, 1, {}).then((response) => {
+            send.call(this, 1, { 'port' : this.pushPort, 'name' : 'HttpGateway'}).then(
+                (response) => {
                 logger.debug('Got a response to discovery request');
                 if (response.type !== 4) {
                     reject(Error('Communication server responded with an unexpected packet type'));
@@ -43,6 +47,40 @@ let ExchangeAdapter = (function () {
             throw new Error('Exchange adapter is not yet registered');
         }
         return send.call(this, type, payload);
+    };
+
+    ExchangeAdapter.prototype.listenForPush = function()
+    {
+        var server = dgram.createSocket('udp4');
+
+        server.on('listening', function() {
+            var address = server.address();
+            logger.info('UDP Push server listening on address ', address.address, ' : ', 
+                        address.port);
+        });
+
+        server.on('message', (message, remote) => {
+            logger.info('Got a push message from ', remote.address, ' : ', remote.port);
+            logger.debug('Raw message is: 0x' + message.toString('hex'));
+            try {
+                var parsed = IPC.parse(message);
+                logger.debug('Message payload: ', parsed.payload);
+                this.signal(observable.NEXT, parsed.payload.event, parsed.payload.data);
+            } catch (err) {
+                logger.error('Error parsing push message from exchange');
+                this.signal(observable.ERROR, 'error',  err);
+            }
+        });
+
+        server.on('close', () => {
+            this.signal(observable.COMPLETE, 'complete');
+        });
+
+        server.on('error', (err) => {
+            this.signal(observable.ERROR, 'error', err);
+        });
+
+        server.bind(this.pushPort);
     };
 
     function send (type, payload) {

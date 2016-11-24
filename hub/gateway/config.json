@@ -1,6 +1,7 @@
 {
     "port"      : 8080,
     "public"    : "../remote/public/",
+    "pushPort" : 60000,
     "exchange"  : {
         "port"      : "7600",
         "address"   : "localhost"
