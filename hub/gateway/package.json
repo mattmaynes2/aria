@@ -32,6 +32,7 @@
     "express": "4.14.0",
     "forever": "^0.15.3",
     "node-uuid": "^1.4.7",
+    "socket.io": "^1.6.0",
     "winston": "^2.3.0"
   }
 }
