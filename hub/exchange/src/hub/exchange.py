@@ -80,3 +80,6 @@ class Exchange (Delegate):
         """
         for delegate in self._delegates:
             getattr(delegate, event)(data)
+        
+    def addDelegate(delegate):
+        self._delegates.append(delegate)

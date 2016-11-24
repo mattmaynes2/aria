@@ -34,10 +34,16 @@ def main ():
 def create_exchange (hub, cli, database):
     global exchange
     exchange = Exchange(hub, cli, database)
-
+    ariaAdapter=AriaAdapter()
+    
+    # setup adapters
     exchange.register('hub'     , HubAdapter(hub))
-    exchange.register('aria'    , AriaAdapter())
+    exchange.register('aria'    , ariaAdapter)
     exchange.register('wemo'    , WemoAdapter())
+
+    # setup delegates
+    exchange.addDelegate(ariaAdapter)
+
     return exchange
 
 def exit ():
