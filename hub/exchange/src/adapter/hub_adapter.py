@@ -20,7 +20,6 @@ class HubAdapter (Adapter):
                 return True
             except Exception as e:
                  log.exception("Invalid get message "+ str(message))
-                 self.notifyFailure(message.sender)
         elif('set' in message.data and 'value' in message.data):
             attribute= message.data['set']
             value=message.data['value']
@@ -30,8 +29,7 @@ class HubAdapter (Adapter):
                 return True
             except Exception as e:
                 log.exception("Invalid set message "+ str(message))
-                self.notifyFailure(message.sender)
-        return False
+        return self.notifyFailure(message.sender)
 
     def notifyResponse(self,attribute,responseValue,receiver):
         self.notify(
