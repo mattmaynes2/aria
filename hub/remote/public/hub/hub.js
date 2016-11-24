@@ -39,6 +39,10 @@ class Hub extends Widget {
                 Notify.info('Starting device discovery');
             });
         };
+        Service.socket.on('device.discovered', (msg) => {
+            console.log(msg);
+            Notify.success('Device has been discovered');
+        });
    }
 
     update () {

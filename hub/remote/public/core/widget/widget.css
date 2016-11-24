@@ -28,7 +28,6 @@
 .widget-body {
     border-top-color    : #DDDDDD;
     flex-grow           : 1;
-    overflow            : scroll;
 }
 
 .widget-footer {
