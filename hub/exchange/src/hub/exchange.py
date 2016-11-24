@@ -22,19 +22,16 @@ class Exchange (Delegate):
         self._delegates=[]
         self.addDelegate(self._database)
 
-    @synchronized(lock)
     def start (self):
         for _, adapter in self._adapters.items():
             log.debug('Starting adapter: ' + str(adapter))
             adapter.start()
 
-    @synchronized(lock)
     def register (self, device_type, adapter):
         log.info('Registered adapter: ' + str(adapter))
         adapter.add_delegate(self)
         self._adapters[device_type] = adapter
 
-    @synchronized(lock)
     def send (self, device, message):
         # TODO Log sending a message here
         if (device.deviceType.protocol in self._adapters):
@@ -50,11 +47,11 @@ class Exchange (Delegate):
     def received (self, message):
         log.info('Received ' + str(message))
         if( 'action' in message.data and message.data['action'] == 'discover'):
-            self.discoverDevices()
             self.send(self._devices[message.sender],Message(
                 type_=Message.Ack,
                 data={'success':'True'},
                 receiver=message.sender))
+            self.discoverDevices()
         elif (message.receiver in self._devices):
             log.debug('Routing message to ' + str(UUID(bytes=message.receiver)))
             self.send(self._devices[message.receiver], message)
@@ -64,7 +61,6 @@ class Exchange (Delegate):
         for _, adapter in self._adapters.items():
             adapter.discover()
 
-    @synchronized(lock)
     def discovered (self, device):
         log.info('Discovered device: ' + str(device))
         self._devices[device.address] = device
@@ -81,6 +77,6 @@ class Exchange (Delegate):
         """
         for delegate in self._delegates:
             getattr(delegate, event)(data)
-        
+
     def addDelegate(self,delegate):
         self._delegates.append(delegate)

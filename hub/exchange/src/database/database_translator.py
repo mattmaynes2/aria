@@ -14,7 +14,7 @@ class DatabaseTranslator(Delegate):
     EVENT           = "INSERT INTO Event (request_id, source, attribute, value) VALUES (?, ?, ?, ?)"
 
     def __init__ (self, database):
-       self.database = database 
+       self.database = database
 
     def received (self, message):
         if (message.type == Message.Request):
@@ -22,23 +22,23 @@ class DatabaseTranslator(Delegate):
             return self._request(message)
         elif (message.type == Message.Event or message.type == Message.Response):
             self._event(message)
-            
+
     def discovered (self, device):
         log.info('Received ' + str(device))
         if device.address and device.version and device.name:
             self.database.execute(DatabaseTranslator.DISCOVER, str(device.address)\
-            , str(device.version), str(device.name)) 
+            , str(device.version), str(device.name))
         else:
-            log.warning("Device discoverd with null address, version, or name")       
+            log.warning("Device discoverd with null address, version, or name")
 
     def _request(self, message):
         values =  (self._getStr(message.sender), self._getStr(message.receiver)\
-        , str(message.data['set']), str(message.data['value']))        
+        , str(message.data['set']), str(message.data['value']))
         self.database.execute(DatabaseTranslator.REQUEST, values)
         results = self.database.execute
         return self.database.getLastInsertId()
 
-    def _event(self, event): 
+    def _event(self, event):
         if "requestId" in event.data:
             id_ = event.data["requestId"]
         else:

@@ -68,42 +68,42 @@ class AriaAdapter (Adapter):
         if (self.socket.fileno() in readables):
             chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
             payload = chunk
-
             log.debug('Aria adapter received data on UDP socket')
             msg = Message.decode(payload)
             self._ip_map[msg.sender] = address
 
             if (msg.type == Message.Discover):
-                device=self.buildDevice(msg.data,msg.sender) 
+                device=self.buildDevice(msg.data,msg.sender)
                 # add the port to push back messages to
                 if('port' in msg.data):
                     self.pushBackAddress=(address[0],msg.data['port'])
-                   
+
                 self.notify('discovered', device)
                 self.notify('received', Message(Message.Ack, '', msg.receiver, msg.sender))
             else:
                 self.notify('received', msg)
         else:
             try:
+                log.debug('Closing Aria socket')
                 os.close(self.self_rd)
                 os.close(self.self_wd)
                 self.socket.close()
             except OSError:
                 log.warn("Failed to close self-pipe")
         return True
-    
+
     def buildDevice(self,deviceData,deviceAddress):
         name='Default Aria Device'
         if('name' in deviceData):
             name=deviceData['name']
         return Device(DeviceType(name,self.name),name,deviceAddress)
-    
+
     def pushBack(self,message):
         if(self.pushBackAddress):
-            log.debug('Pushing '+str(message)+' to '+ pushBackAddress)
+            log.debug('Pushing '+str(message)+' to '+ str(self.pushBackAddress))
             self.send(message,self.pushBackAddress)
         else:
-            log.warn("I don't Have an address to push messages to")
+            log.warn('No push back address')
 
 
     def discovered(self, device):
@@ -113,10 +113,10 @@ class AriaAdapter (Adapter):
         try:
             data={'event':'device.discovered', 'data':device.to_json()}
             msg = Message(Message.Event,data)
-            self.adapter.pushBack(msg)
+            self.pushBack(msg)
         except:
             log.exception('Error pushing back discover message')
 
 
-        
+
 

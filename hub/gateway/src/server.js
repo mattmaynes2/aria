@@ -58,7 +58,7 @@ else {
     adapter = new ExchangeAdapter(config.endpoint, config.pushPort);
 }
 
-adapter.listenForPush();
+adapter.listen();
 
 gateway = new Gateway(adapter);
 
