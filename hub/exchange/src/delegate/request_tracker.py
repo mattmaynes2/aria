@@ -8,6 +8,7 @@ log= logging.getLogger(__name__)
 class RequestTracker(DatabaseTranslator):
 
     def __init__(self,databaseTranslator,hub):
+        super().__init__(databaseTranslator.database)
         self.dbTranslator=databaseTranslator
         self.requests={}
         self.hub=hub
