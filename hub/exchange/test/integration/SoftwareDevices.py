@@ -4,7 +4,8 @@ from unittest.mock import Mock
 from unittest.mock import patch
 
 from device     import Device
-from adapter    import Message, Delegate
+from delegate    import  Delegate
+from ipc import Message
 from adapter.software_adapter import SoftwareAdapter
 from device.timer_device import TimerDevice
 import uuid
