@@ -3,6 +3,7 @@ import Widget       from '../core/widget/widget';
 import Button       from '../core/control/button';
 import StateButton  from '../core/control/state-button';
 import Service      from '../core/service/service';
+import Notify       from '../core/notify/notify';
 import './hub.css';
 
 class Hub extends Widget {
@@ -34,7 +35,9 @@ class Hub extends Widget {
         });
         this._discoverButton = new Button('Discover');
         this._discoverHandler = () => {
-            Service.get('/hub/discover').then();
+            Service.get('/hub/discover').then(() => {
+                Notify.info('Starting device discovery');
+            });
         };
    }
 
