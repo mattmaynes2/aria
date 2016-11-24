@@ -1,6 +1,7 @@
-let uuid    = require('node-uuid'),
-    logger  = require('winston'),
-    IPC     = require('../ipc');
+let uuid        = require('node-uuid'),
+    logger      = require('winston'),
+    observable  = require('../../lib/observable'),
+    IPC         = require('../ipc');
 
 let IntegrateAdapter = (function () {
 
@@ -57,6 +58,7 @@ let IntegrateAdapter = (function () {
         }
 
         uuid.v4(null, this._id);
+        observable.create(this);
     }
 
     IntegrateAdatper.prototype.register = function () {
