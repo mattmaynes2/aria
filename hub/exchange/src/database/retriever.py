@@ -16,6 +16,7 @@ class Retriever:
     # @return        List of count number of event objects across all devices
     ###
     def getEventWindow(self, start, count, ignore):
+        pass
 
     ###
     # Get a list of count events for a specific device
@@ -27,5 +28,6 @@ class Retriever:
     # @return        List of count number of event objects for the specified device id
     ###
     def getDeviceEvents(self, id, start, count):
+        pass
 
     
