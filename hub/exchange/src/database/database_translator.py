@@ -2,7 +2,8 @@ import logging
 import sqlite3
 from uuid import UUID
 
-from adapter import Delegate, Message
+from ipc import  Message
+from delegate import Delegate
 
 log=logging.getLogger(__name__)
 

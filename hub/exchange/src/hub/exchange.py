@@ -1,9 +1,10 @@
 from .cli import CLI
-from adapter import Message
+from ipc import Message
 from delegate import Delegate
 import logging
 from uuid import UUID
-from database import DatabaseTranslator,RequestTracker
+from database import DatabaseTranslator
+from delegate import RequestTracker
 from threading import Lock
 from sync import synchronized
 log =logging.getLogger(__name__)
@@ -50,7 +51,7 @@ class Exchange (Delegate):
         log.info('Received ' + str(message))
         if( 'action' in message.data and message.data['action'] == 'discover'):
             self.discoverDevices()
-             self.send(self._devices[message.sender],Message(
+            self.send(self._devices[message.sender],Message(
                 type_=Message.Ack,
                 data={'success':'True'},
                 receiver=message.sender))
@@ -81,5 +82,5 @@ class Exchange (Delegate):
         for delegate in self._delegates:
             getattr(delegate, event)(data)
         
-    def addDelegate(delegate):
+    def addDelegate(self,delegate):
         self._delegates.append(delegate)

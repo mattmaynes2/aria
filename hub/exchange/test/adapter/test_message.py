@@ -2,7 +2,7 @@ import json
 import struct
 
 from unittest import TestCase
-from adapter import Message
+from ipc import Message
 
 class MessageTest (TestCase):
 

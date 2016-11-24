@@ -5,8 +5,9 @@ sys.path.append('../lib')
 
 from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
-from adapter import AriaAdapter, HubAdapter, Message, WemoAdapter
+from adapter import AriaAdapter, HubAdapter, WemoAdapter
 from database import Database
+from ipc import Message
 
 hub         = None
 cli         = None

@@ -3,10 +3,10 @@ import os
 import select
 import logging
 
-from .message import Message
+from ipc import Message
 from .adapter import Adapter
-
 from device import Device, DeviceType
+from hub import Hub
 
 log = logging.getLogger(__name__)
 
@@ -107,9 +107,15 @@ class AriaAdapter (Adapter):
 
 
     def discovered(self, device):
-        data={'event':'device.discovered', 'data':device.to_json()}
-        msg = Message(Message.Event,data)
-        self.adapter.pushBack(msg)
+        # ignore discovery of the hub
+        if(device.address == Hub.ADDRESS):
+            return
+        try:
+            data={'event':'device.discovered', 'data':device.to_json()}
+            msg = Message(Message.Event,data)
+            self.adapter.pushBack(msg)
+        except:
+            log.exception('Error pushing back discover message')
 
 
         

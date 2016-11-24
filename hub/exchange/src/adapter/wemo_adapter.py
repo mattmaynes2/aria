@@ -3,7 +3,7 @@ import logging
 from adapter import Adapter
 from netdisco.ssdp import scan,ST_ROOTDEVICE
 from device import Device, DeviceType
-from adapter import Message
+from ipc import Message
 from pywemo.discovery import device_from_description
 from pywemo.subscribe import SubscriptionRegistry
 import threading
