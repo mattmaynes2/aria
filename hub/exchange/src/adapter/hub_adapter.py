@@ -1,5 +1,5 @@
 import logging
-from .message import Message
+from ipc import Message
 from .adapter import Adapter
 
 log = logging.getLogger(__name__)
@@ -13,9 +13,14 @@ class HubAdapter (Adapter):
     def send (self, message):
         if ('get' in message.data):
             attribute=message.data['get']
-            value=self.hub.getCommand(attribute)
-            self.notifyResponse(attribute,value,message.sender)
-            return True
+            params=message.data
+            try:
+                value=self.hub.getCommand(attribute,params)
+                self.notifyResponse(attribute,value,message.sender)
+                return True
+            except Exception as e:
+                 log.exception("Invalid get message "+ str(message))
+                 self.notifyFailure(message.sender)
         elif('set' in message.data and 'value' in message.data):
             attribute= message.data['set']
             value=message.data['value']

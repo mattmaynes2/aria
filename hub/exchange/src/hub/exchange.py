@@ -1,15 +1,17 @@
 from .cli import CLI
-from adapter import Message
+from ipc import Message
+from delegate import Delegate
 import logging
 from uuid import UUID
-from database import DatabaseTranslator,RequestTracker
+from database import DatabaseTranslator
+from delegate import RequestTracker
 from threading import Lock
 from sync import synchronized
 log =logging.getLogger(__name__)
 
 lock = Lock()
 
-class Exchange ():
+class Exchange (Delegate):
 
     def __init__ (self, hub, cli, database):
         self._hub       = hub
@@ -17,21 +19,19 @@ class Exchange ():
         self._adapters  = {}
         self._devices   = {}
         self._database  = RequestTracker(DatabaseTranslator(database),hub)
+        self._delegates=[]
 
-    @synchronized(lock)
     def start (self):
         for _, adapter in self._adapters.items():
             log.debug('Starting adapter: ' + str(adapter))
             adapter.start()
 
-    @synchronized(lock)
     def register (self, device_type, adapter):
         log.info('Registered adapter: ' + str(adapter))
         adapter.add_delegate(self)
         adapter.add_delegate(self._database)
         self._adapters[device_type] = adapter
 
-    @synchronized(lock)
     def send (self, device, message):
         # TODO Log sending a message here
         if (device.deviceType.protocol in self._adapters):
@@ -61,9 +61,22 @@ class Exchange ():
         for _, adapter in self._adapters.items():
             adapter.discover()
 
-    @synchronized(lock)
     def discovered (self, device):
         log.info('Discovered device: ' + str(device))
         self._devices[device.address] = device
         # add device to hub
         self._hub.addDevice(device)
+        self.notify('discovered',device)
+
+    def notify (self, event, data):
+        """Notifies all delegates of the given event with the supplied data
+
+        Arguments:
+            event (str): Name of event to trigger
+            data (obj): Data to pass to delegate
+        """
+        for delegate in self._delegates:
+            getattr(delegate, event)(data)
+
+    def addDelegate(self,delegate):
+        self._delegates.append(delegate)

@@ -4,7 +4,9 @@ from unittest   import TestCase
 from unittest import mock
 from unittest.mock import Mock
 from unittest.mock import patch
-from adapter    import HubAdapter, Message, Delegate
+from adapter    import HubAdapter
+from delegate import Delegate
+from ipc import Message
 
 # Dependencies to mock: Thread, Socket
 

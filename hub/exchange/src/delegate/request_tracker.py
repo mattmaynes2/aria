@@ -1,5 +1,5 @@
 import logging
-from adapter import Message
+from ipc import Message
 from database import DatabaseTranslator 
 
 log= logging.getLogger(__name__)
@@ -19,9 +19,9 @@ class RequestTracker(DatabaseTranslator):
             for a device then this was a manual user action, a request is created for this 
             action.
         """
-        device= self.hub if message.sender == self.hub.address else self.hub.getDevice(message.sender)
+        device= self.hub.getDevice(message.sender)
         if(not device):
-            log.warning('Unknown sender')
+            log.warning('Unknown sender ')
             return False
         # ignore requests to hub they don't need to be logged
         if(Message.Request == message.type and message.receiver != self.hub.address):
@@ -38,8 +38,6 @@ class RequestTracker(DatabaseTranslator):
                     self.sendEvent(reqid,message)
                 except Exception as e:
                     log.warning ('Invalid Event message '+str(message)+ str(e),exc_info=True)
-        else:
-            self.dbTranslator.received(message)
         
             
     def sendEvent(self,reqid,message):

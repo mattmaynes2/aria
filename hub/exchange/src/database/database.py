@@ -6,8 +6,8 @@ import pkgutil
 log=logging.getLogger(__name__)
 
 class Database:
-    
-    
+
+
     def __init__ (self, db_name = "aria.db"):
         self.name = db_name
         self.connect()
@@ -42,7 +42,7 @@ class Database:
         self.cursor.close()
         log.info("Closed connection to " + self.name)
 
-    def createDB(self):
+    def createDB (self):
         sql = pkgutil.get_data('database','database-setup.sql')
         sql = sql.decode('utf-8')
         self.connection.executescript(sql)

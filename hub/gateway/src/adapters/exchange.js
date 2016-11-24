@@ -49,13 +49,12 @@ let ExchangeAdapter = (function () {
         return send.call(this, type, payload);
     };
 
-    ExchangeAdapter.prototype.listenForPush = function()
-    {
+    ExchangeAdapter.prototype.listen = function () {
         var server = dgram.createSocket('udp4');
 
         server.on('listening', function() {
             var address = server.address();
-            logger.info('UDP Push server listening on address ', address.address, ' : ', 
+            logger.info('UDP Push server listening on address ', address.address, ' : ',
                         address.port);
         });
 
@@ -101,7 +100,7 @@ let ExchangeAdapter = (function () {
                 reject(Error('Response wait period timed out'));
             }, 5000);
 
-            client.on('message', function(message) {
+            client.on('message', function (message) {
                 logger.debug('Received response from comm server');
                 client.close();
                 clearTimeout(expiry);

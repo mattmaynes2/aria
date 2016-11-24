@@ -19,6 +19,15 @@ let HubRouter = (function () {
                 .catch(onError.bind(this, res));
         });
 
+        app.get('/discover', (req, res) => {
+            this._adapter
+                .send(IPC.Request, { action : 'discover' })
+                .then(() => {
+                    res.json({});
+                })
+                .catch(onError.bind(this, res));
+        });
+
         app.route('/mode')
             .get((req, res) => {
                 this._adapter
@@ -46,7 +55,7 @@ let HubRouter = (function () {
                         count   : req.body.count
                     })
                     .then((reply) => {
-                        res.json(reply.payload.value);
+                        res.json(reply.payload.value || { records : [] });
                     })
                     .catch(onError.bind(this, res));
             });
@@ -55,7 +64,7 @@ let HubRouter = (function () {
     };
 
     function onError (res, err) {
-        res.status(500).json({ error : err });
+        res.status(500).json({ error : err || '' });
     }
 
     return HubRouter;
