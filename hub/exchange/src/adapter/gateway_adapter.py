@@ -20,6 +20,7 @@ class AriaAdapter (Adapter):
         self.socket     = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.port       = AriaAdapter.PORT
         self._ip_map    = {}
+        self.name='aria'
         try:
             self.self_rd, self.self_wd = os.pipe()
         except OSError:
@@ -63,10 +64,6 @@ class AriaAdapter (Adapter):
         readables, writeables, exceptions = select.select([self.self_rd, self.socket.fileno()], [], [])
         if (self.socket.fileno() in readables):
             chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
-            #while chunk:
-            #   data.append(chunk)
-            #   chunk = self.socket.recv(AriaAdapter.BUFFER_SIZE)
-            #payload = ''.join(data)
             payload = chunk
 
             log.debug('Aria adapter received data on UDP socket')
@@ -74,8 +71,11 @@ class AriaAdapter (Adapter):
             self._ip_map[msg.sender] = address
 
             if (msg.type == Message.Discover):
-                # TODO need to find way to discover attributes of devices
-                self.notify('discovered', Device(DeviceType('Default Aria Device','aria'), '', msg.sender))
+                # add the port to push back messages to
+                if('port' in msg.data):
+                    self._push_back_port[msg.sender]=msg.data['port']
+                device=self.buildDevice(msg.data,msg.sender)    
+                self.notify('discovered', device)
                 self.notify('received', Message(Message.Ack, '', msg.receiver, msg.sender))
             else:
                 self.notify('received', msg)
@@ -86,6 +86,13 @@ class AriaAdapter (Adapter):
                 self.socket.close()
             except OSError:
                 log.warn("Failed to close self-pipe")
-
-
         return True
+    
+    def buildDevice(self,deviceData,deviceAddress):
+        name='Default Aria Device'
+        if('name' in deviceData):
+            name=deviceData['name']
+        return Device(DeviceType(name,self.name))
+
+        
+
