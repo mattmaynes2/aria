@@ -1,5 +1,6 @@
 import $            from 'jquery';
 import Widget       from '../core/widget/widget';
+import Button       from '../core/control/button';
 import StateButton  from '../core/control/state-button';
 import Service      from '../core/service/service';
 import './hub.css';
@@ -31,7 +32,11 @@ class Hub extends Widget {
                     this.render();
                 });
         });
-    }
+        this._discoverButton = new Button('Discover');
+        this._discoverHandler = () => {
+            Service.get('/hub/discover').then();
+        };
+   }
 
     update () {
         Service.get('/hub/state').then((res) => {
@@ -45,10 +50,10 @@ class Hub extends Widget {
 
     render () {
         super.render();
-
         this._stateButton
             .val(Hub.mode(this._state.mode))
             .render();
+
 
         this._$el
             .height(200)
@@ -63,7 +68,9 @@ class Hub extends Widget {
 
         this._$el
             .find('.widget-footer')
+            .append(this._discoverButton.render().$el().addClass('hub-discover-button'))
             .append(this._stateButton.$el().addClass('hub-mode-toggle'));
+        this._discoverButton.click(this._discoverHandler);
 
         return this;
     }
