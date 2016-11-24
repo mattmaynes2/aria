@@ -20,8 +20,7 @@ class Hub(Device):
         methods=[Attribute('name',DataType.String), Attribute('devices',DataType.List),\
          Attribute('mode',DataType.String)]
         devType=DeviceType('Hub','hub',attributes=methods)
-        super().__init__(devType,'Smart Hub',Hub.ADDRESS )
-        self.version = Hub.VERSION
+        super().__init__(devType,'Smart Hub',Hub.ADDRESS, version= Hub.VERSION)
         self._devices = {}
         self.mode    = HubMode.Normal
         self.exit    = exit if exit else lambda: None
