@@ -4,8 +4,9 @@ from unittest.mock import Mock
 from unittest.mock import patch
 
 from device     import Device
-from adapter    import Message, Delegate
+from delegate    import  Delegate
 from adapter.software_adapter import SoftwareAdapter
+from ipc import Message
 import uuid
 
 class SoftwareAdapterTest (TestCase):
