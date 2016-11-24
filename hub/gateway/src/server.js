@@ -8,6 +8,7 @@ let fs              = require('fs'),
 let DEFAULT_CONFIG = {
     port        : 8080,
     public      : '../remote/public/',
+    pushPort   : 60000,
     exchange    : {
         port      : '7600',
         address   : 'localhost'
@@ -54,8 +55,11 @@ if (program.test) {
     adapter = new TestAdapter();
 }
 else {
-    adapter = new ExchangeAdapter(config.endpoint);
+    adapter = new ExchangeAdapter(config.endpoint, config.pushPort);
 }
+
+adapter.listenForPush();
+
 gateway = new Gateway(adapter);
 
 adapter.register().then(() => {
