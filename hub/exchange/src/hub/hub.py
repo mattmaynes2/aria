@@ -13,6 +13,7 @@ log=logging.getLogger(__name__)
 class Hub(Device):
     VERSION = '0.0.2'
     ADDRESS= Message.DEFAULT_ADDRESS
+    GATEWAY_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
 
     
     def __init__ (self, database, args = {}, exit = None):
@@ -64,7 +65,10 @@ class Hub(Device):
 
 
     def addDevice (self,device):
+       # don't add the hub or gateway to devices
         if(device == self):
+            return
+        elif (device.address == Hub.GATEWAY_ADDRESS):
             return
         log.debug('adding device '+str(device))
         self._devices[device.address]=device
