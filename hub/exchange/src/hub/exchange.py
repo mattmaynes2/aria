@@ -20,6 +20,7 @@ class Exchange (Delegate):
         self._devices   = {}
         self._database  = RequestTracker(DatabaseTranslator(database),hub)
         self._delegates=[]
+        self.addDelegate(self._database)
 
     @synchronized(lock)
     def start (self):
@@ -31,7 +32,6 @@ class Exchange (Delegate):
     def register (self, device_type, adapter):
         log.info('Registered adapter: ' + str(adapter))
         adapter.add_delegate(self)
-        adapter.add_delegate(self._database)
         self._adapters[device_type] = adapter
 
     @synchronized(lock)
@@ -40,7 +40,7 @@ class Exchange (Delegate):
         if (device.deviceType.protocol in self._adapters):
             log.info('Sending ' + str(message) + ' to device ' + str(device))
             self._adapters[device.deviceType.protocol].send(message)
-
+            self.notify('received',message)
     def teardown (self):
         for _, adapter in self._adapters.items():
             log.debug('Tearing down adapter: ' + str(adapter))
