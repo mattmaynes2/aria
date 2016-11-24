@@ -4,7 +4,7 @@ import uuid
 from .hub_mode  import HubMode
 from device import Device, DeviceType, Attribute, DataType
 from ipc import Message
-from database import Retreiver
+from database import Retriever
 
 
 
@@ -61,7 +61,7 @@ class Hub(Device):
         count=params['count']
         ignore=params.get('ignore')
         results = self.retriever.getEventWindow(start,count,ignore)
-        
+
 
     def addDevice (self,device):
         log.debug('adding device '+str(device))
