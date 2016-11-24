@@ -64,6 +64,8 @@ class Hub(Device):
 
 
     def addDevice (self,device):
+        if(device == self):
+            return
         log.debug('adding device '+str(device))
         self._devices[device.address]=device
 
