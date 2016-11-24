@@ -55,4 +55,4 @@ class Message:
 
     def __str__(self):
         return 'Message [ type:'+str(self.type)+', data:'+str(self.data)+', sender:'+\
-        str(UUID(bytes=self.sender))+ ', reciever: '+str(UUID(bytes=self.receiver))+']'
+        str(UUID(bytes=self.sender))+ ', receiver: '+str(UUID(bytes=self.receiver))+']'

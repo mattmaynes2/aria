@@ -32,7 +32,7 @@ let IntegrateAdapter = (function () {
         ],
         HUB_ID = new Buffer(16).fill(0);
 
-    function IntegrateAdatper () {
+    function IntegrateAdapter () {
         var i, n;
         logger.debug('Gateway entering testing mode');
 
@@ -61,16 +61,17 @@ let IntegrateAdapter = (function () {
         observable.create(this);
     }
 
-    IntegrateAdatper.prototype.register = function () {
+    IntegrateAdapter.prototype.register = function () {
         logger.debug('Received request to register server');
         return Promise.resolve();
     };
 
-    IntegrateAdatper.prototype.id = function () {
+    IntegrateAdapter.prototype.listen = function () {};
+    IntegrateAdapter.prototype.id = function () {
         return uuid.unparse(this._id);
     };
 
-    IntegrateAdatper.prototype.send = function (type, payload) {
+    IntegrateAdapter.prototype.send = function (type, payload) {
         logger.debug(`Sending test message of type ${type} with payload ` +
             JSON.stringify(payload));
 
@@ -79,9 +80,14 @@ let IntegrateAdapter = (function () {
             try {
                 switch (type) {
                     case IPC.Request:
-                        response = payload.get ?
-                            requestGet.call(this, payload) :
-                            requestSet.call(this, payload);
+                        if (payload.action) {
+                            response = requestAction.call(this, payload);
+                        }
+                        else {
+                            response = payload.get ?
+                                requestGet.call(this, payload) :
+                                requestSet.call(this, payload);
+                        }
                         break;
                     case IPC.Event:
                         response = event.call(this, payload);
@@ -108,6 +114,17 @@ let IntegrateAdapter = (function () {
                 value       : value
             }
         };
+    }
+
+    function requestAction (payload) {
+        switch(payload.action) {
+            case 'discover':
+                logger.debug('Received request to launch discovery');
+                return wrap(payload.action, {});
+            default:
+                throw new Error('Unknown request');
+
+        }
     }
 
     function requestGet (payload) {
@@ -181,7 +198,7 @@ let IntegrateAdapter = (function () {
     function random (arr) {
         return arr[Math.floor(Math.random() * arr.length)];
     }
-    return IntegrateAdatper;
+    return IntegrateAdapter;
 } ());
 
 module.exports = IntegrateAdapter;
