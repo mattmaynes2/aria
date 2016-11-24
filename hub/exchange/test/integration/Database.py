@@ -6,7 +6,7 @@ from device     import DeviceType
 from ipc import Message
 from adapter import Adapter
 from database import Database
-from database import RequestTracker
+from delegate import RequestTracker
 import queue
 import sqlite3
 import os
@@ -37,9 +37,9 @@ class TestDatabaseIntegration(TestCase):
         except OSError as e:
             pass
 
-        self.hub         = Hub()
-        self.cli         = CLI(self.hub)
         self.database    = Database(self._testMethodName + ".db")
+        self.hub         = Hub(self.database)
+        self.cli         = CLI(self.hub)
         self.exchange    = Exchange(self.hub, self.cli, self.database)
         self.testAdapter = StubDeviceAdapter()
         self.exchange.register('stub', self.testAdapter)
