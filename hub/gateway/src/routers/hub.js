@@ -19,6 +19,15 @@ let HubRouter = (function () {
                 .catch(onError.bind(this, res));
         });
 
+        app.get('/discover', (req, res) => {
+            this._adapter
+                .send(IPC.Request, { action : 'discover' })
+                .then(() => {
+                    res.send();
+                })
+                .catch(onError.bind(this, res));
+        });
+
         app.route('/mode')
             .get((req, res) => {
                 this._adapter

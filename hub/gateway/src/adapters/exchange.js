@@ -49,13 +49,12 @@ let ExchangeAdapter = (function () {
         return send.call(this, type, payload);
     };
 
-    ExchangeAdapter.prototype.listenForPush = function()
-    {
+    ExchangeAdapter.prototype.listen = function () {
         var server = dgram.createSocket('udp4');
 
         server.on('listening', function() {
             var address = server.address();
-            logger.info('UDP Push server listening on address ', address.address, ' : ', 
+            logger.info('UDP Push server listening on address ', address.address, ' : ',
                         address.port);
         });
 
