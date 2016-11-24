@@ -20,7 +20,8 @@ class AriaAdapter (Adapter):
         self.socket     = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.port       = AriaAdapter.PORT
         self._ip_map    = {}
-        self.name='aria'
+        self._push_back_ports= {}
+        self.name = 'aria'
         try:
             self.self_rd, self.self_wd = os.pipe()
         except OSError:
@@ -73,7 +74,7 @@ class AriaAdapter (Adapter):
             if (msg.type == Message.Discover):
                 # add the port to push back messages to
                 if('port' in msg.data):
-                    self._push_back_port[msg.sender]=msg.data['port']
+                    self._push_back_ports[msg.sender]=msg.data['port']
                 device=self.buildDevice(msg.data,msg.sender)    
                 self.notify('discovered', device)
                 self.notify('received', Message(Message.Ack, '', msg.receiver, msg.sender))
@@ -92,7 +93,15 @@ class AriaAdapter (Adapter):
         name='Default Aria Device'
         if('name' in deviceData):
             name=deviceData['name']
-        return Device(DeviceType(name,self.name))
+        return Device(DeviceType(name,self.name),name,deviceAddress)
+    
+    def pushBack(self,message):
+        if(message.receiver in self._push_back_ports):
+            port=self._push_back_ports[message.receiver]
+            log.debug('Pushing '+str(message)+' to '+ str(UUID(bytes=message.receiver))+'on port '+port)
+            address =(self._ip_map[message.receiver](0), port)
+            self.send(message,address)
+
 
         
 
