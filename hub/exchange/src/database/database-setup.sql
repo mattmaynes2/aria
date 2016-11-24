@@ -67,7 +67,7 @@ data_type  --  the type of data returned when an attribute is performed
 CREATE TABLE IF NOT EXISTS "Attributes" (
 	"id" PRIMARY KEY,
 	"name" TEXT,
-	"data_type" TEXT,
+	"data_type" TEXT
 );
 
 /*
@@ -77,14 +77,14 @@ max          --  maximum value of an Integer value
 min          --  minimum value of an Integer value
 step         --  the increment or decrement value
 */
-CREATE TABLE IF NOT EXISTS "Parameter" {
+CREATE TABLE IF NOT EXISTS "Parameter" (
 	"attribute_id" INTEGER,
 	"data_type" TEXT,
 	"max" INTEGER,
 	"min" INTEGER,
 	"step" INTEGER,
 	FOREIGN KEY ("attribute_id") REFERENCES "Attributes"("id")
-}
+);
 
 /*
 device_type_id  --  an id linking to an id in the Device table
