@@ -43,13 +43,14 @@ class Retriever:
     # @return        List of count number of event objects for the specified device id
     ###
     def getDeviceEvents(self, id_, start, count):
-        sql = 
         lastEventId = self.database.execute(Retriever.GET_LAST_EVENT_ID)
         print("EVENT ID: " + str(lastEventId))
         values = (int(lastEventId) - start, id_, count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         print("Results: " + str(results))
         return results
+
+
 
 
 

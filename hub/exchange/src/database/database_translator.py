@@ -27,7 +27,7 @@ class DatabaseTranslator(Delegate):
         log.info('Received ' + str(device))
         if device.address and device.version and device.name:
             self.database.execute(DatabaseTranslator.DISCOVER, str(device.address)\
-            str(device.version), str(device.name)) 
+            , str(device.version), str(device.name)) 
         else:
             log.warning("Device discoverd with null address, version, or name")       
 
