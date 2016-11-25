@@ -27,6 +27,7 @@ class RequestTracker(DatabaseTranslator):
         # ignore requests to hub they don't need to be logged
         if(Message.Request == message.type and message.receiver != self.hub.address):
             self.requests[message.receiver]=self.dbTranslator.received(message)
+            return self.requests[message.receiver]
         elif(Message.Event == message.type or Message.Response == message.type):
             reqid=self.requests.pop(message.sender,None)
             # don't create a request for a non controllable device
@@ -35,7 +36,7 @@ class RequestTracker(DatabaseTranslator):
             else:
                 try:
                     msg=self.createRequest(message)
-                    reqid=self.dbTranslator.received(msg)
+                    reqid=self.received(msg)
                     self.sendEvent(reqid,message)
                 except Exception as e:
                     log.error ('Invalid Event message '+str(message)+ str(e),exc_info=True)
