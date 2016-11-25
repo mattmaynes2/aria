@@ -24,7 +24,7 @@ class HubTest (TestCase):
         attributes=[Attribute('state',DataType.Binary)]), name= 'Lamp Switch', address= id.bytes,\
          version='0.1.0')
         self.hub.addDevice(dev)
-        expected='['+dev.to_json()+']'
+        expected=[dev]
         self.assertEqual(self.hub.getCommand('devices'), expected)
     
     def test_set_name(self):

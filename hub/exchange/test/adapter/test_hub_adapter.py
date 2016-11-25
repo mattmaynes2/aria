@@ -37,4 +37,4 @@ class HubAdapterTest (TestCase):
         message = Message(Message.Request, data, id, Message.DEFAULT_ADDRESS)
 
         adapter.send(message)
-        self.assertEqual(False, mockDelegate.received.called)
+        self.assertEqual(True, mockDelegate.received.called)
