@@ -5,7 +5,13 @@ let uuid        = require('node-uuid'),
 
 let IntegrateAdapter = (function () {
 
-    let DEVICE_TYPES = ['zwave', 'wemo', 'arduino'],
+    let DEVICE_TYPES = [
+        'Z-Wave',
+        'SmartThings',
+        'UPnP',
+        'ZigBee',
+        'WiFi'
+        ],
         DEVICE_NAMES = [
             'Light',
             'Switch',
@@ -20,7 +26,16 @@ let IntegrateAdapter = (function () {
             'Brightness',
             'Hue'
         ],
-        DATATYPES = [
+        DEVICE_MAKERS = [
+            'WeMo',
+            'Phillips',
+            'Aeon Labs',
+            'Honeywell',
+            'Nest',
+            'Google',
+            'Apple'
+        ],
+        DATA_TYPES = [
             'binary',
             'int',
             'float',
@@ -192,11 +207,36 @@ let IntegrateAdapter = (function () {
         return events;
     }
 
-    function makeDevice () {
+    function makeParamter () {
         return {
-            type    : DEVICE_TYPES[Math.floor(Math.random() * DEVICE_TYPES.length)],
-            name    : DEVICE_NAMES[Math.floor(Math.random() * DEVICE_NAMES.length)],
-            address : uuid.v4()
+                name        : '',
+                dataType    : random(DATA_TYPES),
+                min         : random(10),
+                max         : 10 + random(10),
+                step        : random(1)
+        };
+    }
+
+    function makeAttribute () {
+        return {
+            name            : '',
+            isControllable  : true,
+            paramters       : [makeParamter()]
+        };
+    }
+
+    function makeDevice () {
+        var maker = random(DEVICE_MAKERS), protocol = random(DEVICE_TYPES);
+        return {
+            version     : '' + randomInt(10) + '.' + randomInt(10) + '.' + randomInt(10),
+            name        : random(DEVICE_NAMES),
+            address     : uuid.v4(),
+            deviceType  : {
+                name        : maker + ' ' + protocol,
+                maker       : maker,
+                protocol    : name,
+                attrbutes   : new Array.length(randomInt(5)).fill(0).map(makeAttribute())
+            }
         };
     }
 
@@ -207,7 +247,7 @@ let IntegrateAdapter = (function () {
             source      : device.id,
             device      : device.name,
             attribute   : random(DEVICE_ATTRIBUTES),
-            datatype    : random(DATATYPES),
+            datatype    : random(DATA_TYPES),
             value       : Math.floor(Math.random() * 100)
         };
     }
@@ -225,6 +265,10 @@ let IntegrateAdapter = (function () {
 
     function random (arr) {
         return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function randomInt (max) {
+        return Math.floor(Math.random() * max);
     }
     return IntegrateAdapter;
 } ());
