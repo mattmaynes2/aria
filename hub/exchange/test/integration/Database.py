@@ -207,7 +207,6 @@ class StubDeviceAdapter(Adapter):
             message = self.q.get()
             if (message == None):
                 return None
-            log.error('Notifying')
             self.q.task_done()
             return True
         except:
