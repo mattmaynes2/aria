@@ -23,7 +23,7 @@ class Notify {
         toastr.info(text);
     }
     static warn (text) {
-        toastr.warn(text);
+        toastr.warning(text);
     }
     static success (text) {
         toastr.success(text);
