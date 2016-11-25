@@ -28,17 +28,17 @@ class RequestTracker(DatabaseTranslator):
         if(Message.Request == message.type and message.receiver != self.hub.address):
             self.requests[message.receiver]=self.dbTranslator.received(message)
         elif(Message.Event == message.type or Message.Response == message.type):
-            reqid=self.requests.pop(message.receiver,None)
+            reqid=self.requests.pop(message.sender,None)
             # don't create a request for a non controllable device
             if(reqid or not device.deviceType.isControllable):
                 self.sendEvent(reqid,message)
             else:
                 try:
                     msg=self.createRequest(message)
-                    reqid=self.received(msg)
+                    reqid=self.dbTranslator.received(msg)
                     self.sendEvent(reqid,message)
                 except Exception as e:
-                    log.warning ('Invalid Event message '+str(message)+ str(e),exc_info=True)
+                    log.error ('Invalid Event message '+str(message)+ str(e),exc_info=True)
         
             
     def sendEvent(self,reqid,message):

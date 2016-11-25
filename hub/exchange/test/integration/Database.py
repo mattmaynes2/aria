@@ -65,9 +65,10 @@ class TestDatabaseIntegration(TestCase):
         sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
 
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
+        time.sleep(2)
         self.exchange.teardown()
         results = self.db.query("SELECT * FROM Event").fetchone()
-        self.assertEqual(results["request_id"], 0)
+        self.assertEqual(results["request_id"], 1)
         self.assertEqual(results["source"], str(UUID(bytes=myUuid)))
         self.assertEqual(results["attribute"], "state")
         self.assertEqual(results["value"], "1")
@@ -99,8 +100,9 @@ class TestDatabaseIntegration(TestCase):
         eventMessage.data = { "response" : "brightness", "value" : 100 }
         eventMessage.type = Message.Event 
         eventMessage.sender = myUuid
-        eventMessage.receiver = bytes([0 for i in range(0,16)])
+        eventMessage.receiver = Message.DEFAULT_ADDRESS
         self.testAdapter.enqueueMessage(eventMessage)    
+        time.sleep(5)
         self.exchange.teardown()
 
         results = self.db.query("SELECT count(*) as count FROM \
