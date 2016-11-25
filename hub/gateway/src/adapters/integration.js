@@ -235,8 +235,8 @@ let IntegrateAdapter = (function () {
             deviceType  : {
                 name        : maker + ' ' + protocol,
                 maker       : maker,
-                protocol    : name,
-                attrbutes   : new Array.length(randomInt(5)).fill(0).map(makeAttribute())
+                protocol    : protocol,
+                attrbutes   : Array.apply(null, Array(random(5))).map(makeAttribute)
             }
         };
     }
@@ -244,13 +244,20 @@ let IntegrateAdapter = (function () {
     function makeEvent (device, start, i) {
         return {
             index       : start + i,
-            timestamp   : new Date().toJSON(),
+            timestamp   : generateTime(),
             source      : device.id,
             device      : device.name,
             attribute   : random(DEVICE_ATTRIBUTES),
             dataType    : random(DATA_TYPES),
             value       : Math.floor(Math.random() * 100)
         };
+    }
+
+    function generateTime () {
+        var now = new Date();
+        return '' + now.getUTCFullYear() + '-' + now.getUTCMonth() + '-' + now.getUTCDay() +
+            ' ' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() +
+            '.' + now.getUTCMilliseconds();
     }
 
     function spawnEvent () {
