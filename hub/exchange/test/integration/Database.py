@@ -65,7 +65,6 @@ class TestDatabaseIntegration(TestCase):
         sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
 
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
-        time.sleep(2)
         self.exchange.teardown()
         results = self.db.query("SELECT * FROM Event").fetchone()
         self.assertEqual(results["request_id"], 1)
@@ -102,7 +101,7 @@ class TestDatabaseIntegration(TestCase):
         eventMessage.sender = myUuid
         eventMessage.receiver = Message.DEFAULT_ADDRESS
         self.testAdapter.enqueueMessage(eventMessage)    
-        time.sleep(5)
+        time.sleep(1)
         self.exchange.teardown()
 
         results = self.db.query("SELECT count(*) as count FROM \
