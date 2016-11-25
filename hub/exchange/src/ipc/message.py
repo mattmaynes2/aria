@@ -1,6 +1,8 @@
 import json
 import struct
+from enum import Enum
 from uuid import UUID
+from device import Device,DeviceType,Attribute
 
 class Message:
     Error               = 0
@@ -29,7 +31,7 @@ class Message:
         self.receiver   = receiver
 
     def encode(self):
-        data    = json.dumps(self.data).encode(Message.ENCODING)
+        data    = json.dumps(self.data,default=Message.json_encode,sort_keys=True).encode(Message.ENCODING)
         type_   = struct.pack('B', self.type)
         length  = struct.pack('I', len(data))
 
@@ -56,3 +58,17 @@ class Message:
     def __str__(self):
         return 'Message [ type:'+str(self.type)+', data:'+str(self.data)+', sender:'+\
         str(UUID(bytes=self.sender))+ ', receiver: '+str(UUID(bytes=self.receiver))+']'
+    
+    @staticmethod
+    def json_encode(obj):
+        if( isinstance(obj,(Device,DeviceType,Attribute))):
+            return obj.__dict__
+        if(isinstance(obj,Enum)):
+            return str(obj.value)
+        if( isinstance(obj,bytes)):
+            return str(UUID(bytes=obj))
+        if( isinstance(obj,UUID)):
+            return str(obj)
+        if(callable(obj)):
+            return
+        raise TypeError("Unserializable object {} of type {}".format(obj, type(obj)))

@@ -20,22 +20,4 @@ class Device:
         return 'Device [name: '+self.name+', DeviceType: <'+self.deviceType.name+'>, address: '\
         +str(uuid.UUID(bytes=self.address))+', version: '+self.version+']'
     
-
-
     
-    def to_json(self):
-        return json.dumps(self,default=Device.json_encode,sort_keys=True)
-    
-    @staticmethod
-    def json_encode(obj):
-        if( isinstance(obj,(Device,DeviceType,Attribute))):
-            return obj.__dict__
-        if(isinstance(obj,Enum)):
-            return str(obj.value)
-        if( isinstance(obj,bytes)):
-            return str(uuid.UUID(bytes=obj))
-        if( isinstance(obj,uuid.UUID)):
-            return str(obj)
-        if(callable(obj)):
-            return
-        raise TypeError("Unserializable object {} of type {}".format(obj, type(obj)))
