@@ -134,9 +134,12 @@ let IntegrateAdapter = (function () {
                 logger.debug('Received request to launch discovery');
                 setTimeout(() => {
                     var i, dev;
-                    for (i = 0; i < random(5); i++) {
+                    for (i = 0; i < randomInt(5); i++) {
                         dev = makeDevice();
-                        this.signal(observable.NEXT, 'device.discovered', dev);
+                        setTimeout(
+                            this.signal.bind(this, observable.NEXT, 'device.discovered', dev),
+                            (1 + i) * randomInt(1000)
+                        );
                         this._state.hub.devices.push(dev);
                     }
                 }, 500);
@@ -197,11 +200,14 @@ let IntegrateAdapter = (function () {
             start   = payload.start,
             count   = payload.count,
             id      = payload.id || '',
+            last    = 0, offset = 0,
             index   = devices.map((dev) => { return dev.id; }).indexOf(id);
 
         for (i = 0; i < count; i++) {
             device  = index >= 0 ? devices[index] : random(devices);
-            events.push(makeEvent(device, start, i));
+            offset = last + randomInt(20000000);
+            events.push(makeEvent(device, start, i, offset));
+            last = offset;
         }
 
         return events;
@@ -241,10 +247,10 @@ let IntegrateAdapter = (function () {
         };
     }
 
-    function makeEvent (device, start, i) {
+    function makeEvent (device, start, i, offset) {
         return {
             index       : start + i,
-            timestamp   : generateTime(),
+            timestamp   : generateTime(offset),
             source      : device.id,
             device      : device.name,
             attribute   : random(DEVICE_ATTRIBUTES),
@@ -253,9 +259,14 @@ let IntegrateAdapter = (function () {
         };
     }
 
-    function generateTime () {
+    function generateTime (offset) {
         var now = new Date();
-        return '' + now.getUTCFullYear() + '-' + now.getUTCMonth() + '-' + now.getUTCDay() +
+
+        if (offset) {
+            now = new Date(now.getTime() - offset);
+        }
+
+        return '' + now.getUTCFullYear() + '-' + (1 + now.getUTCMonth()) + '-' + now.getUTCDate() +
             ' ' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() +
             '.' + now.getUTCMilliseconds();
     }
