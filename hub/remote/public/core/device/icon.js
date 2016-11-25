@@ -8,8 +8,6 @@ class DeviceIcon extends Component {
 
     render () {
         this._$el.css({
-                height  : 150,
-                width   : 150,
                 backgroundImage : 'url(' + guessIcon(this._state) + ')',
                 backgroundSize  : 'contain'
             });

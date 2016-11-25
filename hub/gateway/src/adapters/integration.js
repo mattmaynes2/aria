@@ -255,6 +255,7 @@ let IntegrateAdapter = (function () {
             timestamp   : generateTime(offset),
             source      : device.id,
             device      : device.name,
+            deviceType  : device.deviceType.name,
             attribute   : random(DEVICE_ATTRIBUTES),
             dataType    : random(DATA_TYPES),
             value       : Math.floor(Math.random() * 100)

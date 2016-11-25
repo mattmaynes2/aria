@@ -1,5 +1,6 @@
-import $         from 'jquery';
-import Component from '../component';
+import $            from 'jquery';
+import Component    from '../component';
+import DeviceIcon   from '../device/icon';
 
 import './event.css';
 
@@ -11,6 +12,7 @@ class Event extends Component {
             timestamp   : '',
             source      : '',
             device      : '',
+            deviceType  : '',
             attribute   : '',
             datatype    : '',
             value       : ''
@@ -19,9 +21,9 @@ class Event extends Component {
         if (event) {
             this._state.timestamp = new Date(event.timestamp + ' UTC');
         }
+        this._icon = new DeviceIcon(this._state.deviceType);
     }
     render () {
-        this._$icon = $('<div>').addClass('event-icon');
         this._$body = $('<div>')
             .addClass('event-body')
             .append([
@@ -34,7 +36,7 @@ class Event extends Component {
         this._$el
             .empty()
             .addClass('event-frame')
-            .append([this._$icon, this._$body, this._$time]);
+            .append([this._icon.render().$el().addClass('event-icon'), this._$body, this._$time]);
 
         updateTime.call(this);
         return this;

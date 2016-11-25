@@ -2,6 +2,8 @@ import uuid         from 'react-native-uuid';
 import Widget       from '../core/widget/widget';
 import DeviceIcon   from '../core/device/icon';
 
+import './device.css';
+
 class Device extends Widget {
     constructor (state) {
         super();
@@ -26,7 +28,7 @@ class Device extends Widget {
         this._$el
             .height(200)
             .find('.widget-body').addClass('device-body')
-            .append(this._icon.render().$el());
+            .append(this._icon.render().$el().addClass('device-icon'));
 
         return this;
     }
