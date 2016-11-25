@@ -233,13 +233,15 @@ let IntegrateAdapter = (function () {
     }
 
     function makeDevice () {
-        var maker = random(DEVICE_MAKERS), protocol = random(DEVICE_TYPES);
+        var maker   = random(DEVICE_MAKERS), protocol = random(DEVICE_TYPES),
+            name    = random(DEVICE_NAMES);
+
         return {
             version     : '' + randomInt(10) + '.' + randomInt(10) + '.' + randomInt(10),
-            name        : random(DEVICE_NAMES),
+            name        : name,
             address     : uuid.v4(),
             deviceType  : {
-                name        : maker + ' ' + protocol,
+                name        : maker + ' ' + protocol + ' ' + name,
                 maker       : maker,
                 protocol    : protocol,
                 attrbutes   : Array.apply(null, Array(random(5))).map(makeAttribute)
