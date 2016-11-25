@@ -1,5 +1,5 @@
-import Service  from '../../core/service/service';
-import Widget   from '../../core/widget/widget';
+import Service  from '../service/service';
+import Widget   from '../widget/widget';
 import Event    from './event';
 
 import './event-feed.css';
@@ -8,8 +8,8 @@ class EventFeed extends Widget {
     constructor () {
         super();
         this._state = {
-            title   : 'Event Feed',
-            events  : []
+            title       : 'Event Feed',
+            events      : []
         };
         Service.socket.on('device.event', (e) => {
             var event = new Event(e);
