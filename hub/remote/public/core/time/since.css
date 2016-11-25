@@ -1,0 +1,13 @@
+
+.time-since {
+    position            : absolute;
+    font-size           : 10pt;
+    padding             : 2px 8px;
+    top                 : 10px;
+    right               : 10px;
+    color               : rgba(0, 0, 0, 0.5);
+    background-color    : rgba(0, 0, 0, 0.1);
+    border-radius       : 6px;
+    user-select         : none;
+    cursor              : default;
+}
