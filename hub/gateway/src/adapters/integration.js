@@ -134,7 +134,7 @@ let IntegrateAdapter = (function () {
                 logger.debug('Received request to launch discovery');
                 setTimeout(() => {
                     var i, dev;
-                    for (i = 0; i < randomInt(5); i++) {
+                    for (i = 0; i < 1 + randomInt(5); i++) {
                         dev = makeDevice();
                         setTimeout(
                             this.signal.bind(this, observable.NEXT, 'device.discovered', dev),
@@ -258,9 +258,8 @@ let IntegrateAdapter = (function () {
             source      : device.id,
             device      : device.name,
             deviceType  : device.deviceType.name,
-            attribute   : random(DEVICE_ATTRIBUTES),
+            attribute   : makeAttribute(),
             dataType    : random(DATA_TYPES),
-            value       : Math.floor(Math.random() * 100)
         };
     }
 
@@ -291,7 +290,7 @@ let IntegrateAdapter = (function () {
                 makeEvent(random(this._state.hub.devices), 0, 0)
             );
             spawnEvent.call(this);
-        }, 5000);
+        }, randomInt(5000));
     }
 
     function toHex (arr) {
