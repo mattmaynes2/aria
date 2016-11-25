@@ -12,7 +12,9 @@ CREATE TABLE IF NOT EXISTS "Request" (
 	"source" TEXT,
 	"receiver" TEXT,
 	"attribute" TEXT,
-	"value" TEXT
+	"value" TEXT,
+	FOREIGN Key ("source") REFERENCES Device("address"),
+	FOREIGN Key ("receiver") REFERENCES Device("address")
 );
 
 /*
@@ -30,7 +32,8 @@ CREATE TABLE IF NOT EXISTS "Event" (
 	"source" TEXT,	
 	"attribute" TEXT,
 	"value" TEXT,
-	FOREIGN Key ("request_id") REFERENCES Request("id")
+	FOREIGN Key ("request_id") REFERENCES Request("id"),
+	FOREIGN Key ("source") REFERENCES Device("address")
 );
 
 /* 

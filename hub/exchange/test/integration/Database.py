@@ -127,9 +127,10 @@ class TestDatabaseIntegration(TestCase):
         sensorEventWindowRequest = Message()
         sensorEventWindowRequest.type = Message.Request
         sensorEventWindowRequest.data = {"get": "eventWindow", "start": 0, "count": 10}
+        self.testAdapter.enqueueMessage(sensorEventWindowRequest)
 
         # Give some time for the hub to respond to the request
-        time.sleep(0.5)
+        time.sleep(1)
 
         response = self.testAdapter.receivedMessages[0]
 
@@ -176,6 +177,7 @@ class TestDatabase:
                 d[col[0]] = row[idx]
             return d
         self.conn.row_factory = dict_factory
+        self.conn.execute('pragma foreign_keys')
         self.cursor = self.conn.cursor()
 
     def query(self, sql):

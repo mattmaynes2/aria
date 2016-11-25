@@ -51,6 +51,6 @@ class RequestTracker(DatabaseTranslator):
         # Event messages have the form {'response':<Atribute>, 'value':<value>}
         # Requests have the form {'set':<attribute>, 'value':<value> }
         data={'set':message.data['response'],'value':message.data['value']}
-        return Message(type_=Message.Request,data=data,receiver=message.sender)
+        return Message(type_=Message.Request,data=data,receiver=message.sender,sender=message.sender)
 
             
