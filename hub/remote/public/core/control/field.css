@@ -1,0 +1,26 @@
+
+.field-body {
+    position        : relative;
+    display         : flex;
+    flex-direction  : row;
+}
+
+.field-label {
+    user-select     : none;
+    margin-right    : 10px;
+    color           : rgba(0, 0, 0, 0.5);
+}
+
+.field-value {
+    color   : rgba(0, 0, 0, 0.8);
+}
+
+.field-editable {
+    cursor : pointer;
+
+}
+
+.field-editable:hover {
+    background-color : rgba(0, 0, 255, 0.1);
+}
+
