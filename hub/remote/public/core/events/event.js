@@ -19,7 +19,7 @@ class Event extends Component {
         };
 
         if (event) {
-            this._state.timestamp = new Date(event.timestamp + ' UTC');
+            this._state.timestamp = new Date(parseInt(event.timestamp));
         }
         this._icon = new DeviceIcon(this._state.deviceType);
     }
