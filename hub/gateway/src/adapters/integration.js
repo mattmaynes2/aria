@@ -248,7 +248,7 @@ let IntegrateAdapter = (function () {
             source      : device.id,
             device      : device.name,
             attribute   : random(DEVICE_ATTRIBUTES),
-            datatype    : random(DATA_TYPES),
+            dataType    : random(DATA_TYPES),
             value       : Math.floor(Math.random() * 100)
         };
     }
