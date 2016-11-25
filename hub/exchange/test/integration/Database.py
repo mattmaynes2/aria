@@ -17,9 +17,10 @@ import logging
 import traceback
 import threading
 from uuid import UUID
+from adapter import HubAdapter
 
 logging.disable(logging.WARNING)
-
+log=logging.getLogger(__name__)
 class TestDatabaseIntegration(TestCase):
 
     @classmethod
@@ -43,6 +44,7 @@ class TestDatabaseIntegration(TestCase):
         self.exchange    = Exchange(self.hub, self.cli, self.database)
         self.testAdapter = StubDeviceAdapter()
         self.exchange.register('stub', self.testAdapter)
+        self.exchange.register('hub',HubAdapter(self.hub))
         self.exchange.discovered(self.hub)
         self.registerFakeDevices()
         self.exchange.start()
@@ -75,7 +77,7 @@ class TestDatabaseIntegration(TestCase):
         sensorStateChangeMessage.type = Message.Request
         sensorStateChangeMessage.sender = self.devices[0].address
 
-        sensorStateChangeMessage.data = {"set" : "mode", "value" : "2"}
+        sensorStateChangeMessage.data = {"set" : "mode", "value" : 2}
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.exchange.teardown()
  
@@ -205,7 +207,7 @@ class StubDeviceAdapter(Adapter):
             message = self.q.get()
             if (message == None):
                 return None
-
+            log.error('Notifying')
             self.notify('received', message)
             self.q.task_done()
             return True

@@ -7,7 +7,7 @@ attribute --  what attribute is being changed
 value     --  what to change a device value to 
 */
 CREATE TABLE IF NOT EXISTS "Request" (
-	"id" PRIMARY KEY,
+	"id" Integer PRIMARY KEY,
 	"timestamp" DATETIME DEFAULT current_timestamp,
 	"source" TEXT,
 	"receiver" TEXT,
@@ -24,12 +24,13 @@ attribute   --  what is being changed (ex brightness, hue, etc)
 value       --  what to set the attribute to 
 */
 CREATE TABLE IF NOT EXISTS "Event" (
-	"id" PRIMARY KEY,
+	"id" Integer PRIMARY KEY,
 	"timestamp" DATETIME DEFAULT current_timestamp,
 	"request_id" INTEGER,
 	"source" TEXT,	
 	"attribute" TEXT,
-	"value" TEXT
+	"value" TEXT,
+	FOREIGN Key ("request_id") REFERENCES Request("id")
 );
 
 /* 
@@ -40,7 +41,7 @@ is_input    --  0 = not  1 = yes
 maker       --  device company (Samsung, Aeon Labd, etc)
 */
 CREATE TABLE IF NOT EXISTS "Device_Type" (
-	"id" PRIMARY KEY,
+	"id" Integer PRIMARY KEY,
 	"name" TEXT,
 	"protocol" INTEGER,
 	"is_input" INTEGER,
@@ -56,6 +57,7 @@ CREATE TABLE IF NOT EXISTS "Device" (
 	"address" TEXT PRIMARY KEY ,
 	"version" TEXT,
 	"type" INTEGER,
+	"name" Text,
 	FOREIGN KEY("type") REFERENCES "Device_Type"("id")
 );
 
@@ -65,7 +67,7 @@ name       --  name of the attribute
 data_type  --  the type of data returned when an attribute is performed
 */
 CREATE TABLE IF NOT EXISTS "Attributes" (
-	"id" PRIMARY KEY,
+	"id" Integer PRIMARY KEY,
 	"name" TEXT,
 	"data_type" TEXT
 );
