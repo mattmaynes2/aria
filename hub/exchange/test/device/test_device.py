@@ -2,6 +2,7 @@ import uuid
 import json
 from unittest import TestCase
 from device import Device, DeviceType,Attribute,DataType
+from ipc import Message
 
 
 class DeviceTest(TestCase):
@@ -22,4 +23,4 @@ class DeviceTest(TestCase):
         +' [{"dataType": "binary", "max": null, "min": null, "name": "state", "step": null}],'\
         +' "isControllable": true, "maker": "WeMo", "name": "WeMo Switch", "protocol": "wemo"},'\
         +' "name": "Lamp Switch", "version": "0.1.0"}'
-        self.assertEqual(self.dev.to_json(), expected)
+        self.assertEqual(json.dumps(self.dev,default=Message.json_encode,sort_keys=True), expected)

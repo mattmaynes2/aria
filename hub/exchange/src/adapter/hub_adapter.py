@@ -29,7 +29,7 @@ class HubAdapter (Adapter):
                 return True
             except Exception as e:
                 log.exception("Invalid set message "+ str(message))
-        return self.notifyFailure(message.sender)
+        self.notifyFailure(message.sender)
 
     def notifyResponse(self,attribute,responseValue,receiver):
         self.notify(

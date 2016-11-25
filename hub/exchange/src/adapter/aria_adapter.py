@@ -111,7 +111,7 @@ class AriaAdapter (Adapter):
         if(device.address == Hub.ADDRESS):
             return
         try:
-            data={'event':'device.discovered', 'data':device.to_json()}
+            data={'event':'device.discovered', 'data':device}
             msg = Message(Message.Event,data)
             self.pushBack(msg)
         except:

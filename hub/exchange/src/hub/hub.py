@@ -20,8 +20,7 @@ class Hub(Device):
         methods=[Attribute('name',DataType.String), Attribute('devices',DataType.List),\
          Attribute('mode',DataType.String)]
         devType=DeviceType('Hub','hub',attributes=methods)
-        super().__init__(devType,'Smart Hub',Hub.ADDRESS )
-        self.version = Hub.VERSION
+        super().__init__(devType,'Smart Hub',Hub.ADDRESS, version= Hub.VERSION)
         self._devices = {}
         self.mode    = HubMode.Normal
         self.exit    = exit if exit else lambda: None
@@ -77,8 +76,8 @@ class Hub(Device):
         self._devices[device.address]=device
 
     def getDevicesJson (self):
-        data=json.dumps(list(self._devices.values()),default=Device.json_encode, sort_keys=True)
-        log.debug('sending device list '+ data)
+        data=list(self._devices.values())
+        log.debug('sending device list '+ str(data))
         return data
 
     def setMode(self,mode):
