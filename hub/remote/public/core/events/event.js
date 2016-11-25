@@ -1,6 +1,9 @@
-import $            from 'jquery';
-import Component    from '../component';
-import DeviceIcon   from '../device/icon';
+import $                from 'jquery';
+import Component        from '../component';
+import DeviceIcon       from '../device/icon';
+import DeviceAttribute  from '../device/attribute';
+import Since            from '../time/since';
+import Field            from '../control/field';
 
 import './event.css';
 
@@ -13,72 +16,32 @@ class Event extends Component {
             source      : '',
             device      : '',
             deviceType  : '',
-            attribute   : '',
-            datatype    : '',
-            value       : ''
+            attribute   : {},
         };
 
-        if (event) {
-            this._state.timestamp = new Date(parseInt(event.timestamp));
-        }
-        this._icon = new DeviceIcon(this._state.deviceType);
+        this._time      = new Since(this._state.timestamp);
+        this._icon      = new DeviceIcon(this._state.deviceType);
+        this._device    = new Field({ label : this._state.device });
+        this._attribute = new DeviceAttribute(this._state.attribute);
     }
     render () {
         this._$body = $('<div>')
             .addClass('event-body')
             .append([
-                $('<div>').addClass('event-info').text(this._state.device),
-                $('<div>').addClass('event-info').text(this._state.attribute),
-                $('<div>').addClass('event-info').text(this._state.value)
+                this._device.render().$el(),
+                this._attribute.render().$el()
             ]);
 
-        this._$time = $('<div>').addClass('event-time');
         this._$el
             .empty()
             .addClass('event-frame')
-            .append([this._icon.render().$el().addClass('event-icon'), this._$body, this._$time]);
+            .append([
+                this._icon.render().$el().addClass('event-icon'),
+                this._$body,
+                this._time.render().$el()
+            ]);
 
-        updateTime.call(this);
         return this;
     }
 }
-
-let TimeInterval = {
-    DECA    : 10,
-    MINUTE  : 60,
-    HOUR    : 3600,
-    DAY     : 86400
-};
-
-function updateTime () {
-    if (!this._state.timestamp) {return false;}
-
-    let delta = secondsSince(this._state.timestamp);
-    this._$time.attr('title', this._state.timestamp.toLocaleString());
-
-    if (delta < TimeInterval.DECA) {
-        this._$time.text('now');
-        setTimeout(updateTime.bind(this), TimeInterval.DECA * 1000);
-    }
-    else if (delta < TimeInterval.MINUTE) {
-        this._$time.text('' + Math.floor(delta) + 's');
-        setTimeout(updateTime.bind(this), TimeInterval.DECA * 1000);
-    }
-    else if (delta < TimeInterval.HOUR) {
-        this._$time.text('' + Math.floor(delta / TimeInterval.MINUTE) + 'm');
-        setTimeout(updateTime.bind(this), TimeInterval.MINUTE * 1000);
-    }
-    else if (delta < TimeInterval.DAY) {
-        this._$time.text('' + Math.floor(delta / TimeInterval.HOUR) + 'h');
-        setTimeout(updateTime.bind(this), TimeInterval.HOUR * 1000);
-    }
-    else {
-        this._$time.text(this._state.timestamp.toDateString());
-    }
-}
-
-function secondsSince (timestamp) {
-    return (Date.now() - timestamp.getTime()) / 1000;
-}
-
 export default Event;

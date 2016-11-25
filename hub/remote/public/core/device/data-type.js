@@ -20,7 +20,7 @@ class DataType extends Component {
             case 'color':
                 this._$el
                     .css('background-color', '#' + this._state.value)
-                    .css('color', brightness(this._state.value) > 40 ?
+                    .css('color', brightness(this._state.value) > 100 ?
                         'black' : 'white'
                     )
                     .text('#' + this._state.value.toUpperCase());
