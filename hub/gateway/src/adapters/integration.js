@@ -61,7 +61,7 @@ let IntegrateAdapter = (function () {
             }
         };
 
-        n = Math.ceil(Math.random() * 10);
+        n = randomInt(10);
         logger.debug(`Seeding hub with ${n} devices`);
 
         for (i = 0; i < n; i++) {
@@ -213,10 +213,12 @@ let IntegrateAdapter = (function () {
         return events;
     }
 
-    function makeParamter () {
+    function makeParameter () {
+        var dataType = random(DATA_TYPES);
         return {
-                name        : '',
-                dataType    : random(DATA_TYPES),
+                name        : random(DEVICE_ATTRIBUTES),
+                value       : generateValue(dataType),
+                dataType    : dataType,
                 min         : random(10),
                 max         : 10 + random(10),
                 step        : random(3)
@@ -225,10 +227,10 @@ let IntegrateAdapter = (function () {
 
     function makeAttribute () {
         return {
-            name            : '',
+            name            : random(DEVICE_ATTRIBUTES),
             isControllable  : true,
             dataType        : random(DATA_TYPES),
-            paramters       : [makeParamter()]
+            parameters      : [makeParameter()]
         };
     }
 
@@ -244,7 +246,7 @@ let IntegrateAdapter = (function () {
                 name        : maker + ' ' + protocol + ' ' + name,
                 maker       : maker,
                 protocol    : protocol,
-                attrbutes   : Array.apply(null, Array(random(5))).map(makeAttribute)
+                attributes  : Array.apply(null, Array(random(5))).map(makeAttribute)
             }
         };
     }
@@ -269,9 +271,16 @@ let IntegrateAdapter = (function () {
             now = new Date(now.getTime() - offset);
         }
 
-        return '' + now.getUTCFullYear() + '-' + (1 + now.getUTCMonth()) + '-' + now.getUTCDate() +
-            ' ' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() +
-            '.' + now.getUTCMilliseconds();
+        return now.getTime();
+    }
+
+    function generateValue (type) {
+        switch (type) {
+            case 'color':
+                return toHex([randomInt(256), randomInt(256), randomInt(256)]);
+            default:
+                return randomInt(100);
+        }
     }
 
     function spawnEvent () {
@@ -283,6 +292,12 @@ let IntegrateAdapter = (function () {
             );
             spawnEvent.call(this);
         }, 5000);
+    }
+
+    function toHex (arr) {
+        return arr.map((byte) => {
+            return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+        }).join('');
     }
 
     function random (arr) {
