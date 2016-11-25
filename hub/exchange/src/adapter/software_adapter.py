@@ -9,6 +9,7 @@ class SoftwareAdapter(Adapter):
 
     def __init__(self):
         super().__init__()
+        self.devices = {}
 
     def event(self, deviceUuid, deviceData): 
         message = Message()
@@ -20,4 +21,12 @@ class SoftwareAdapter(Adapter):
 
     def add_device(self, device):
         device.registerEventCallback(self.event)
+
+    def send(self, message):
+        if (message.sender in self.devices):
+            raise KeyError("No software device exists at address: " + message.receiver)
+        
+        self.devices[message.sender].send(message)
+            
+
 
