@@ -134,7 +134,7 @@ let IntegrateAdapter = (function () {
                 logger.debug('Received request to launch discovery');
                 setTimeout(() => {
                     var i, dev;
-                    for (i = 0; i < Math.floor(Math.random() * 5); i++) {
+                    for (i = 0; i < random(5); i++) {
                         dev = makeDevice();
                         this.signal(observable.NEXT, 'device.discovered', dev);
                         this._state.hub.devices.push(dev);
@@ -213,7 +213,7 @@ let IntegrateAdapter = (function () {
                 dataType    : random(DATA_TYPES),
                 min         : random(10),
                 max         : 10 + random(10),
-                step        : random(1)
+                step        : random(3)
         };
     }
 
@@ -221,6 +221,7 @@ let IntegrateAdapter = (function () {
         return {
             name            : '',
             isControllable  : true,
+            dataType        : random(DATA_TYPES),
             paramters       : [makeParamter()]
         };
     }
