@@ -1,8 +1,8 @@
 import $            from 'jquery';
 import Menu         from '../nav/menu';
 import WidgetPanel  from '../core/widget/widget-panel';
+import EventFeed    from '../core/events/event-feed';
 import Hub          from './hub';
-import EventFeed    from './events/event-feed';
 
 import './index.css';
 

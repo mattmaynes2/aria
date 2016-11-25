@@ -1,4 +1,5 @@
-import io from 'socket.io-client';
+import io       from 'socket.io-client';
+import Notify   from '../notify/notify';
 
 var socket;
 
@@ -6,6 +7,13 @@ class Service {
     static get socket () {
         if (!socket) {
             socket = io();
+            socket.on('reconnect', () => {
+                Notify.success('Aria has successfully reconnected');
+            });
+            socket.on('disconnect', () => {
+                Notify.error('Aria has been disconnected');
+            });
+
         }
         return socket;
     }

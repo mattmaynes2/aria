@@ -1,0 +1,11 @@
+
+.device-attribute {
+    position        : relative;
+    display         : flex;
+    flex-direction  : row;
+}
+
+.device-attribute-name {
+    margin-right    : 10px;
+    user-select     : none;
+}
