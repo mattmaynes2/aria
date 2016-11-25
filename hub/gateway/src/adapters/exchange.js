@@ -7,16 +7,16 @@ let dgram   = require('dgram'),
 let ExchangeAdapter = (function () {
 
     function ExchangeAdapter (endpoint, pushPort) {
-        this._id         = new Buffer(16);
+        this._id        = new Buffer(16);
         this.registered = false;
         this.transport  = dgram;
         this.endpoint   = endpoint || {
             port    : 7600,
             address : 'localhost'
         };
-        uuid.v4(null, this._id);
         this.pushPort = pushPort;
         observable.create(this);
+        uuid.parse('00000000-0000-0000-0000-000000000001', this._id);
     }
 
     ExchangeAdapter.prototype.register = function () {
