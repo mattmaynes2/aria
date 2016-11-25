@@ -5,7 +5,13 @@ let uuid        = require('node-uuid'),
 
 let IntegrateAdapter = (function () {
 
-    let DEVICE_TYPES = ['zwave', 'wemo', 'arduino'],
+    let DEVICE_TYPES = [
+        'Z-Wave',
+        'SmartThings',
+        'UPnP',
+        'ZigBee',
+        'WiFi'
+        ],
         DEVICE_NAMES = [
             'Light',
             'Switch',
@@ -20,7 +26,16 @@ let IntegrateAdapter = (function () {
             'Brightness',
             'Hue'
         ],
-        DATATYPES = [
+        DEVICE_MAKERS = [
+            'WeMo',
+            'Phillips',
+            'Aeon Labs',
+            'Honeywell',
+            'Nest',
+            'Google',
+            'Apple'
+        ],
+        DATA_TYPES = [
             'binary',
             'int',
             'float',
@@ -50,15 +65,12 @@ let IntegrateAdapter = (function () {
         logger.debug(`Seeding hub with ${n} devices`);
 
         for (i = 0; i < n; i++) {
-            this._state.hub.devices.push({
-                type    : DEVICE_TYPES[Math.floor(Math.random() * DEVICE_TYPES.length)],
-                name    : DEVICE_NAMES[Math.floor(Math.random() * DEVICE_NAMES.length)],
-                address : uuid.v4()
-            });
+            this._state.hub.devices.push(makeDevice());
         }
 
         uuid.v4(null, this._id);
         observable.create(this);
+        spawnEvent.call(this);
     }
 
     IntegrateAdapter.prototype.register = function () {
@@ -120,6 +132,14 @@ let IntegrateAdapter = (function () {
         switch(payload.action) {
             case 'discover':
                 logger.debug('Received request to launch discovery');
+                setTimeout(() => {
+                    var i, dev;
+                    for (i = 0; i < random(5); i++) {
+                        dev = makeDevice();
+                        this.signal(observable.NEXT, 'device.discovered', dev);
+                        this._state.hub.devices.push(dev);
+                    }
+                }, 500);
                 return wrap(payload.action, {});
             default:
                 throw new Error('Unknown request');
@@ -181,22 +201,75 @@ let IntegrateAdapter = (function () {
 
         for (i = 0; i < count; i++) {
             device  = index >= 0 ? devices[index] : random(devices);
-            events.push({
-                index       : start + i,
-                timestamp   : new Date().toJSON(),
-                source      : device.id,
-                device      : device.name,
-                attribute   : random(DEVICE_ATTRIBUTES),
-                datatype    : random(DATATYPES),
-                value       : Math.floor(Math.random() * 100)
-            });
+            events.push(makeEvent(device, start, i));
         }
 
         return events;
     }
 
+    function makeParamter () {
+        return {
+                name        : '',
+                dataType    : random(DATA_TYPES),
+                min         : random(10),
+                max         : 10 + random(10),
+                step        : random(3)
+        };
+    }
+
+    function makeAttribute () {
+        return {
+            name            : '',
+            isControllable  : true,
+            dataType        : random(DATA_TYPES),
+            paramters       : [makeParamter()]
+        };
+    }
+
+    function makeDevice () {
+        var maker = random(DEVICE_MAKERS), protocol = random(DEVICE_TYPES);
+        return {
+            version     : '' + randomInt(10) + '.' + randomInt(10) + '.' + randomInt(10),
+            name        : random(DEVICE_NAMES),
+            address     : uuid.v4(),
+            deviceType  : {
+                name        : maker + ' ' + protocol,
+                maker       : maker,
+                protocol    : name,
+                attrbutes   : new Array.length(randomInt(5)).fill(0).map(makeAttribute())
+            }
+        };
+    }
+
+    function makeEvent (device, start, i) {
+        return {
+            index       : start + i,
+            timestamp   : new Date().toJSON(),
+            source      : device.id,
+            device      : device.name,
+            attribute   : random(DEVICE_ATTRIBUTES),
+            dataType    : random(DATA_TYPES),
+            value       : Math.floor(Math.random() * 100)
+        };
+    }
+
+    function spawnEvent () {
+        setTimeout(() => {
+            this.signal(
+                observable.NEXT,
+                'device.event',
+                makeEvent(random(this._state.hub.devices), 0, 0)
+            );
+            spawnEvent.call(this);
+        }, 5000);
+    }
+
     function random (arr) {
         return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function randomInt (max) {
+        return Math.floor(Math.random() * max);
     }
     return IntegrateAdapter;
 } ());
