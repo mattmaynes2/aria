@@ -116,6 +116,10 @@ class AriaAdapter (Adapter):
             self.pushBack(msg)
         except:
             log.exception('Error pushing back discover message')
+    
+    def received(self,message):
+        log.debug('pushing back event '+str(message))
+        self.pushBack(message)
 
 
 
