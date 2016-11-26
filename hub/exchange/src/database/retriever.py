@@ -1,17 +1,15 @@
 import sqlite3
 import logging
 
+log = logging.getLogger(__name__)
+
 class Retriever:
 
-    GET_ALL_EVENT_WINDOW    = "SELECT * FROM \
-                                    (SELECT * FROM Event WHERE id <= ? ORDER BY id DESC)\
-                               WHERE id NOT IN(?) LIMIT ? ORDER BY id DESC"
+    GET_ALL_EVENT_WINDOW    = "SELECT * FROM Event WHERE source NOT IN (?) ORDER BY id DESC LIMIT ?,?"
 
-    GET_DEVICE_EVENT_WINDOW = "SELECT * FROM\
-                                    (SELECT * Event WHERE id <= ? ORDER BY id DESC)\
-                               WHERE id == ? LIMIT ? ORDER BY id DESC"
+    GET_DEVICE_EVENT_WINDOW = "SELECT * FROM Event where source = ? LIMIT  ?,?" 
 
-    GET_LAST_EVENT_ID       = "SELECT * FROM Event LIMIT 1 ORDER BY id DESC"
+    GET_LAST_EVENT_ID       = "SELECT * FROM Event ORDER BY id DESC LIMIT 1 "
 
     def __init__(self, database):
         self.database = database
@@ -26,11 +24,8 @@ class Retriever:
     # @return        List of count number of event objects across all devices
     ###
     def getEventWindow(self, start, count, ignore):
-        lastEventId = self.database.execute(Retriever.GET_LAST_EVENT_ID)
-        print("EVENT ID: " + str(lastEventId))
-        values = (int(lastEventId) - start, ignore, count)
+        values = (ignore, start, count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
-        print("Results: " + str(results))
         return results
 
     ###
@@ -45,9 +40,8 @@ class Retriever:
     def getDeviceEvents(self, id_, start, count):
         lastEventId = self.database.execute(Retriever.GET_LAST_EVENT_ID)
         print("EVENT ID: " + str(lastEventId))
-        values = (int(lastEventId) - start, id_, count)
+        values = (id_, start,count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
-        print("Results: " + str(results))
         return results
 
 

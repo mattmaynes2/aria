@@ -1,8 +1,7 @@
 from unittest import TestCase
 import unittest
 from hub        import Hub, Exchange, CLI, args, daemon
-from device     import Device
-from device     import DeviceType
+from device     import Device,DeviceType, Attribute, DataType 
 from ipc import Message
 from adapter import Adapter
 from database import Database
@@ -25,7 +24,7 @@ class TestDatabaseIntegration(TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.devices = [Device(DeviceType("testname", "stub", "nobody")) for i in range(0,20)]
+        self.devices = [Device(DeviceType("testname", "stub", "nobody", attributes=[Attribute('state',DataType.Binary)])) for i in range(0,20)]
 
     def registerFakeDevices(self):
         for device in self.devices:
@@ -127,14 +126,14 @@ class TestDatabaseIntegration(TestCase):
         sensorEventWindowRequest = Message()
         sensorEventWindowRequest.type = Message.Request
         sensorEventWindowRequest.data = {"get": "eventWindow", "start": 0, "count": 10}
+        sensorEventWindowRequest.sender = self.devices[0].address
         self.testAdapter.enqueueMessage(sensorEventWindowRequest)
 
         # Give some time for the hub to respond to the request
-        time.sleep(1)
-
+        time.sleep(10)
+        
         response = self.testAdapter.receivedMessages[0]
-
- 
+        
         self.assertEqual(response.data["response"], "eventWindow")
         self.assertEqual(response.data["value"]["total"], 10)
         self.assertEqual(len(response["value"]["records"]), 10)        
@@ -154,17 +153,18 @@ class TestDatabaseIntegration(TestCase):
         # Request the last 10 events that occurred
         sensorEventWindowRequest = Message()
         sensorEventWindowRequest.type = Message.Request
-        sensorEventWindowRequest.data = {"get": "eventWindow", "start": 0, "count": 10, "ignore" : [str(self.devices[0].address)]}
-
+        sensorEventWindowRequest.data = {"get": "eventWindow", "start": 0, "count": 20, "ignore" : [str(UUID(bytes=self.devices[0].address))]}
+        sensorEventWindowRequest.sender = self.devices[0].address
+        self.testAdapter.enqueueMessage(sensorEventWindowRequest)
         # Give some time for the hub to respond to the request
-        time.sleep(0.5)
+        time.sleep(10)
 
         response = self.testAdapter.receivedMessages[0]
         self.assertEqual(response.data["response"], "eventWindow")
-        self.assertEqual(response.data["value"]["total"], 5)
-        self.assertEqual(len(response["value"]["records"]), 5)
+        self.assertEqual(response.data["value"]["total"], 19)
+        self.assertEqual(len(response.data["value"]["records"]), 19)
         for device in response.data["value"]["records"]:
-            self.assertNotEquals(device["device"], str(self.devices[0].address))
+            self.assertNotEqual(device["source"], str(self.devices[0].address))
 
 class TestDatabase:
 
@@ -208,9 +208,8 @@ class StubDeviceAdapter(Adapter):
             Pops the next message of the queue and notifies subscribers
             """
             message = self.q.get()
-            if (message == None):
-                return None
-            self.notify('received', message)
+            if (message != None):
+                self.notify('received', message)
             self.q.task_done()
             return True
         except:
@@ -218,5 +217,6 @@ class StubDeviceAdapter(Adapter):
         return True
 
     def teardown(self):
+        self.q.join()
         super().teardown()
         self.q.put(None)

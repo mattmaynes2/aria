@@ -19,5 +19,8 @@ class Device:
     def __str__(self):
         return 'Device [name: '+self.name+', DeviceType: <'+self.deviceType.name+'>, address: '\
         +str(uuid.UUID(bytes=self.address))+', version: '+self.version+']'
+
+    def getAttribute(self, attributeName):
+        return self.deviceType.getAttribute(attributeName)
     
     

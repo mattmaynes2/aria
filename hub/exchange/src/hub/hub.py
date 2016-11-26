@@ -59,16 +59,25 @@ class Hub(Device):
         start=params['start']
         count=params['count']
         ignore=params.get('ignore')
+        if(ignore):
+            ignore =",".join(ignore)
         results = self.retriever.getEventWindow(start,count,ignore)
-        print(str(results))
+        self.formatEvents(results)
+        return {'total':len(results),'records':results}
 
-    def getEventWindow(self,params):
+    def getDeviceWindow(self,params):
         id_=params['id']
         start=params['start']
         count=params['count']
-        ignore=params.get('ignore')
         results = self.retriever.getEventWindow(id_,start,count)
-        print(str(results))
+        return{'total':len(results),'records':results}
+    
+    def formatEvents(self,events):
+        for event in events:
+            device=self.getDevice(uuid.UUID(event['source']).bytes)
+            attribute=device.getAttribute(event['attribute'])
+            if(attribute):
+                event['dataType']=attribute.dataType
 
 
 

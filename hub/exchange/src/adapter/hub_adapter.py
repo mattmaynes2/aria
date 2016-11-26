@@ -29,6 +29,14 @@ class HubAdapter (Adapter):
                 return True
             except Exception as e:
                 log.exception("Invalid set message "+ str(message))
+                log.error('really what the fuck')
+        elif(message.type == Message.Error):
+            log.warning('Recieved error '+str(message))
+            return False
+        elif(message.type == Message.Event):
+            # TODO Where do event messages actually go?
+            return
+        log.error('about to fail message is '+str(message))
         self.notifyFailure(message.sender)
 
     def notifyResponse(self,attribute,responseValue,receiver):
@@ -40,6 +48,7 @@ class HubAdapter (Adapter):
         )
 
     def notifyFailure(self,receiver):
+        log.error('How in the fuck did I get here')
         self.notify(
         'received',
         Message(type_= Message.Error,data = {'response':'Invalid Message'},
