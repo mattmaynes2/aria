@@ -14,16 +14,6 @@ The events recorded will be used to make decisions about actions to carry out. T
 will consume the event interface that is provided by the communication server and will simply
 observe all data.
 
-##### Event Interface {-}
-
-The hub must receive messages from several different devices; each device may provide a different
-interface for communication. In order for system components to process such messages, it is 
-necessary to define a common interface for communicating with devices. Some examples of messages 
-that must travel through the system  are event messages from devices to signal a change in state, or
-a request from the REST API to change the state of a device. The Event Interface defines methods 
-that a device or component must provide, and the data structures used to send and receive messages, 
-regardless of the communication protocol that is used internally.
-
 ##### ML Algorithm {-}
 
 This component is responsible for observing events from devices, extracting features from the 
@@ -64,6 +54,16 @@ Control Interface.
 This interface allows the device communication to pass events to the Device controller.
 
 #### Component Interfaces {-}
+
+##### Event Interface {-}
+
+The hub must receive messages from several different devices; each device may provide a different
+interface for communication. In order for system components to process such messages, it is 
+necessary to define a common interface for communicating with devices. Some examples of messages 
+that must travel through the system  are event messages from devices to signal a change in state, or
+a request from the REST API to change the state of a device. The Event Interface defines methods 
+that a device or component must provide, and the data structures used to send and receive messages, 
+regardless of the communication protocol that is used internally.
 
 ##### Decision Interface {-}
 
