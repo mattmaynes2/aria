@@ -5,8 +5,7 @@ from .hub_mode  import HubMode
 from device import Device, DeviceType, Attribute, DataType
 from ipc import Message
 from database import Retriever
-from .software_device_factory import SoftwareDeviceFactory
-
+from device import SoftwareDeviceFactory
 
 log=logging.getLogger(__name__)
 
@@ -49,6 +48,9 @@ class Hub(Device):
         if attribute == 'mode':
             self.setMode(value)
             return self.mode.value
+        if attribute == 'softwareDevices':
+            device = SoftwareDeviceFactory.create(value)
+            return 'true'
 
     def status (self):
         return {
@@ -71,8 +73,6 @@ class Hub(Device):
         ignore=params.get('ignore')
         results = self.retriever.getEventWindow(id_,start,count)
         print(str(results))
-
-
 
     def addDevice (self,device):
        # don't add the hub or gateway to devices

@@ -49,7 +49,15 @@ let HubRouter = (function () {
         app.route('/softwareDevices')
             .get((req, res) => {
                 this._adapter
-                    .send(IPC.Request, { get : 'availableSoftwareDevices' })
+                    .send(IPC.Request, { get : 'softwareDevices' })
+                    .then((reply) => {
+                        res.json({ devices : reply.payload.value });
+                    })
+                    .catch(onError.bind(this, res));
+            })
+            .post((req, res) => {
+                this._adapter
+                    .send(IPC.Request, { set : 'softwareDevices', value : { 'name' : 'timer' }})
                     .then((reply) => {
                         res.json({ mode : reply.payload.value });
                     })

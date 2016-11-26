@@ -5,3 +5,4 @@ from .attribute     import Attribute    # NOQA
 from .device_type   import DeviceType   # NOQA
 from .device        import Device       # NOQA
 from .timer_device  import TimerDevice  # NOQA
+from .software_device_factory import SoftwareDeviceFactory  #NOQA

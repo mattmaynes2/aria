@@ -5,4 +5,3 @@ from .exchange  import Exchange # NOQA
 
 from .hub       import Hub      # NOQA
 from .hub_mode  import HubMode  # NOQA
-from .software_device_factory import SoftwareDeviceFactory

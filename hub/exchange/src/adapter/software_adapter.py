@@ -2,11 +2,11 @@ from ipc import Message
 from .adapter import Adapter
 
 class SoftwareAdapter(Adapter):
+
     """
     SoftwareAdapter allows the exchange to receive messages 
     from a software device (within the same process)
     """
-
     def __init__(self):
         super().__init__()
         self.devices = {}
@@ -21,6 +21,7 @@ class SoftwareAdapter(Adapter):
 
     def add_device(self, device):
         device.registerEventCallback(self.event)
+        self.notify('discovered', device)
 
     def send(self, message):
         if (message.sender in self.devices):

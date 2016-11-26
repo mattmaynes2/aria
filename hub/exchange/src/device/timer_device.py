@@ -13,11 +13,10 @@ class TimerDevice(Observable):
     """
 
     def __init__(self, period):
-        myType = getDeviceType
+        myType = self.getDeviceType()
         super().__init__(myType)
         self.uuid = uuid.uuid4().bytes
         self.period = period
-        self.lastTime = datetime.datetime.now()
     
     @staticmethod
     def getDeviceType():
@@ -29,13 +28,17 @@ class TimerDevice(Observable):
     def get_uuid(self):
         return self.uuid
 
-    def tick(self):
+    def tick(self, lastTime):
         time = datetime.datetime.now()
-        if time >= (self.lastTime + self.period):
-            self.lastTime = time
+        if time >= (lastTime + self.period):
+            latestTime = time
             for listener in self.eventListeners:
                 listener(self.uuid, {"value" : time})
-        self.timer = threading.Timer(self.period.total_seconds(), self.tick)
+
+        def next():
+            self.tick(latestTime)
+
+        self.timer = threading.Timer(self.period.total_seconds(), next)
         self.timer.start()
 
     def stop(self):
@@ -43,4 +46,4 @@ class TimerDevice(Observable):
         self.timer.join()
 
     def start(self):
-        self.tick()
+        self.tick(datetime.datetime.now())
