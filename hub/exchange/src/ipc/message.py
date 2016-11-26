@@ -3,6 +3,7 @@ import struct
 from enum import Enum
 from uuid import UUID
 from device import Device,DeviceType,Attribute
+from threading import Timer
 
 class Message:
     Error               = 0
@@ -68,6 +69,8 @@ class Message:
         if( isinstance(obj,bytes)):
             return str(UUID(bytes=obj))
         if( isinstance(obj,UUID)):
+            return str(obj)
+        if( isinstance(obj, Timer)):
             return str(obj)
         if(callable(obj)):
             return

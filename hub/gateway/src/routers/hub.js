@@ -57,7 +57,7 @@ let HubRouter = (function () {
             })
             .post((req, res) => {
                 this._adapter
-                    .send(IPC.Request, { set : 'softwareDevices', value : { 'name' : 'timer' }})
+                    .send(IPC.Request, { set : 'softwareDevices', value : req.body})
                     .then((reply) => {
                         res.json({ mode : reply.payload.value });
                     })

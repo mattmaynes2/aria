@@ -9,7 +9,7 @@ from delegate    import  Delegate
 from ipc import Message
 from adapter.software_adapter import SoftwareAdapter
 from device.timer_device import TimerDevice
-from hub import SoftwareDeviceFactory
+from device import SoftwareDeviceFactory
 
 import uuid
 import time
@@ -17,7 +17,6 @@ from datetime import timedelta
 
 class TestSoftwareDevices (TestCase):
 
-    @unittest.skip("Slow test")    
     def test_timer_should_fire_events(self):
         timer = TimerDevice(timedelta(seconds=2))
         adapter = SoftwareAdapter()

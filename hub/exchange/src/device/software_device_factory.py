@@ -1,4 +1,7 @@
 from device import TimerDevice
+import logging
+
+logger = logging.getLogger(__name__)
 
 class SoftwareDeviceFactory:
 
@@ -25,6 +28,7 @@ class SoftwareDeviceFactory:
     @classmethod
     def create(cls, deviceArgs):
         if deviceArgs['name'] == 'timer':
-            device = TimerDevice(3)
-            cls.registerFunction.add_device(device)
+            device = TimerDevice(**deviceArgs['config'])
+            cls.registerFunction(device)
+            device.start()
             return device

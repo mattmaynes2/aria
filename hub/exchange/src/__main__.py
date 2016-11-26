@@ -44,7 +44,7 @@ def create_exchange (hub, cli, database):
     exchange.register('wemo'    , WemoAdapter())
 
     softwareAdapter = SoftwareAdapter()
-    SoftwareDeviceFactory.setDeviceListener(softwareAdapter)
+    SoftwareDeviceFactory.setDeviceListener(softwareAdapter.add_device)
     exchange.register('software', softwareAdapter)
     
     # setup delegates

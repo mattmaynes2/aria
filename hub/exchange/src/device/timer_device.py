@@ -1,8 +1,13 @@
 import datetime
 import uuid
 import threading
+import logging
 from .device_type import DeviceType
 from .observable import Observable
+from .attribute import Attribute
+from .data_types import DataType
+
+logger = logging.getLogger(__name__)
 
 class TimerDevice(Observable):
     """
@@ -20,7 +25,10 @@ class TimerDevice(Observable):
     
     @staticmethod
     def getDeviceType():
-        return DeviceType("timer", "software", "cameron")
+        attributes = []
+        attributes.append(Attribute("time", DataType.String))
+        attributes.append(Attribute("period", DataType.Int))
+        return DeviceType("timer", "software", "cameron", attributes)
 
     """
     Get this device's UUID
@@ -29,16 +37,20 @@ class TimerDevice(Observable):
         return self.uuid
 
     def tick(self, lastTime):
+        logger.info("TICK")
         time = datetime.datetime.now()
-        if time >= (lastTime + self.period):
+        period = datetime.timedelta(seconds = self.period)
+        if time >= (lastTime + period):
             latestTime = time
-            for listener in self.eventListeners:
-                listener(self.uuid, {"value" : time})
+            #for listener in self.eventListeners:
+             #   listener(self.uuid, {"value" : time})
+        else:
+            latestTime = lastTime
 
         def next():
             self.tick(latestTime)
 
-        self.timer = threading.Timer(self.period.total_seconds(), next)
+        self.timer = threading.Timer(period.total_seconds(), next)
         self.timer.start()
 
     def stop(self):
