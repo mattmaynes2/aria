@@ -18,18 +18,18 @@ class DatabaseTranslator(Delegate):
 
     def received (self, message):
         if (message.type == Message.Request):
-            log.info("Received " + str(message))
+            log.debug("Received " + str(message))
             return self._request(message)
         elif (message.type == Message.Event or message.type == Message.Response):
             self._event(message)
 
     def discovered (self, device):
-        log.info('Received ' + str(device))
-        if device.address and device.version and device.name:
-            self.database.execute(DatabaseTranslator.DISCOVER, str(device.address)\
-            , str(device.version), str(device.name))
+        log.debug('Received ' + str(device))
+        if device.address :
+            self.database.execute(DatabaseTranslator.DISCOVER, (self._getStr(device.address)\
+            , str(device.version), str(device.name)))
         else:
-            log.warning("Device discoverd with null address, version, or name")
+            log.warning("Device discoverd with null address")
 
     def _request(self, message):
         values =  (self._getStr(message.sender), self._getStr(message.receiver)\

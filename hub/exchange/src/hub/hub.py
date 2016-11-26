@@ -25,7 +25,7 @@ class Hub(Device):
         self._devices = {}
         self.mode    = HubMode.Normal
         self.exit    = exit if exit else lambda: None
-        self.retreiver=Retriever(database)
+        self.retriever=Retriever(database)
 
     def getCommand (self, attribute,params=None):
         if attribute == 'status':
@@ -59,8 +59,27 @@ class Hub(Device):
     def getEventWindow(self,params):
         start=params['start']
         count=params['count']
-        ignore=params.get('ignore')
+        ignore=params.get('ignore','')
+        if(ignore):
+            ignore =",".join(ignore)
         results = self.retriever.getEventWindow(start,count,ignore)
+        self.formatEvents(results)
+        return {'total':len(results),'records':results}
+
+    def getDeviceWindow(self,params):
+        id_=params['id']
+        start=params['start']
+        count=params['count']
+        results = self.retriever.getEventWindow(id_,start,count)
+        return{'total':len(results),'records':results}
+    
+    def formatEvents(self,events):
+        for event in events:
+            device=self.getDevice(uuid.UUID(event['source']).bytes)
+            attribute=device.getAttribute(event['attribute'])
+            if(attribute):
+                event['dataType']=attribute.dataType
+
 
 
     def addDevice (self,device):

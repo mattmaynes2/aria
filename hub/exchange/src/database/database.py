@@ -19,6 +19,8 @@ class Database:
         else:
             self.connection = sqlite3.connect(self.name, timeout,check_same_thread=False)
             log.info("Opened connection to " + self.name)
+        # turn foreign keys on
+        self.connection.execute('pragma foreign_keys=ON')
 
         def dict_factory(cursor, row):
             #returns results as dictionary instead of tuple
@@ -34,7 +36,7 @@ class Database:
             log.debug("Running SQL statement: " + sql)
             results = self.cursor.execute(sql, values)
             self.connection.commit()
-            return results
+            return self.cursor.fetchall()
         except Exception as e:
             log.error("Could not execute command " + sql + " " + str(e))
 

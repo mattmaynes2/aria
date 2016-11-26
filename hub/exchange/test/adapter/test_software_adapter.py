@@ -18,7 +18,6 @@ class SoftwareAdapterTest (TestCase):
         uid = uuid.uuid4().bytes
         adapter.event(uid, {"value" : 12})
         message = mockDelegate.received.call_args[0][0]
-        print(message)
         self.assertEqual(message.type, Message.Event)
         self.assertEqual(message.sender, uid)
         self.assertEqual(message.received, Message.DEFAULT_ADDRESS)
