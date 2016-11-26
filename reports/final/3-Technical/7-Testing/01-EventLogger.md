@@ -21,14 +21,15 @@ the unit under test.
 The *unittest* framework makes use of Python's `decorator` construct to provide an easy way to 
 isolate components for testing. Dependencies such as threading, database, and network libraries 
 can be replaced with a mock obejcts automatically by declaring a test case with the
-`@unittest.patch(<dependency-name>)` decorator.  
+`@unittest.patch(<dependency-name>)` decorator. These mock objects are used as stubs to provide 
+control the behaviour of the dependencies of a module. For example, mock objects are used to 
+return test data when a module attempts to read data from a network socket.
          
 ### Integration Testing
 
-Various interactions between each of the components are triggered by the receipt of messages from
+Interactions between each of the components are triggered by the receipt of messages from
 smart devices, as well as requests to the REST API.
 
-Each component is driven by the receipt of event messages from devices.
  In order to perform such testing, we need to be
 able to generate events from fake devices, and observe that the event logging component is 
 behaving properly. 
