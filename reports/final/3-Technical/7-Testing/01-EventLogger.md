@@ -2,23 +2,26 @@
 
 #### Context
 
-The DeviceCommunication, CommunicationServer, and EventLogger components are written in Python. 
-Events from devices that are connected to the system are first received by the DeviceCommunication
-component, which forwards messages to the CommunicationServer component. The CommunicationServer
-component routes messages to the appropriate component, which may be another device, the 
-HTTPGateway, or the EventLogger. This section describes the methods used test the integration of 
-these three components. 
+The DeviceCommunication, CommunicationServer, and EventLogger components form the core of the 
+system's hub. Each of these components is written in Python, and work together to react to 
+events from devices. and to fulfill requests from the HTTP Server.
+
+Events from connected devices are first received by the DeviceCommunication
+component, which forwards messages to the CommunicationServer component. CommunicationServer routes 
+messages to the appropriate component, which may be another device HTTPGateway, or EventLogger. 
+This section describes the unit testing of each component, as well the method used to test that 
+the components perform correctly together.
 
 ### Unit Testing
 
-The Python modules that make up each component are unit tested using Python's *unittest* framework. 
+The modules that make up each component are unit tested using Python's *unittest* framework. 
 The unit tests are used for regression testing, and are written by the same person who implemented
 the unit under test. 
 
 The *unittest* framework makes use of Python's `decorator` construct to provide an easy way to 
 isolate components for testing. Dependencies such as threading, database, and network libraries 
 can be replaced with a mock obejcts automatically by declaring a test case with the
-`@unittest.patch(<dependency-name>)` decorator. 
+`@unittest.patch(<dependency-name>)` decorator.  
          
 ### Integration Testing
 
