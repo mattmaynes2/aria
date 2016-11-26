@@ -2,9 +2,9 @@ import datetime
 import uuid
 import threading
 from .device_type import DeviceType
-from .observable_device import ObservableDevice
+from .observable import Observable
 
-class TimerDevice(ObservableDevice):
+class TimerDevice(Observable):
     """
     TimerDevice calls a function at a certain configurable frequency
     TimerDevice(period, callback)
@@ -13,18 +13,21 @@ class TimerDevice(ObservableDevice):
     """
 
     def __init__(self, period):
-        myType = DeviceType("timer", "software", "cameron")
+        myType = getDeviceType
         super().__init__(myType)
         self.uuid = uuid.uuid4().bytes
         self.period = period
         self.lastTime = datetime.datetime.now()
     
+    @staticmethod
+    def getDeviceType():
+        return DeviceType("timer", "software", "cameron")
+
     """
     Get this device's UUID
     """
     def get_uuid(self):
         return self.uuid
-
 
     def tick(self):
         time = datetime.datetime.now()

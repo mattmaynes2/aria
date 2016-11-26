@@ -1,6 +1,6 @@
-from .device import Device
+from device import Device 
 
-class ObservableDevice(Device):
+class Observable(Device):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -15,4 +15,4 @@ class ObservableDevice(Device):
 
     def notify(self, data):
         for listener in self.eventListeners:
-            listener(self.uuid, data)
+            listener(self.address, data)

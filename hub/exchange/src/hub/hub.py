@@ -5,7 +5,7 @@ from .hub_mode  import HubMode
 from device import Device, DeviceType, Attribute, DataType
 from ipc import Message
 from database import Retriever
-
+from .software_device_factory import SoftwareDeviceFactory
 
 
 log=logging.getLogger(__name__)
@@ -13,8 +13,7 @@ log=logging.getLogger(__name__)
 class Hub(Device):
     VERSION = '0.0.2'
     ADDRESS= Message.DEFAULT_ADDRESS
-    GATEWAY_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
-
+    GATEWAY_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01' 
     
     def __init__ (self, database, args = {}, exit = None):
         # setup device attributes and DeviceType
@@ -40,6 +39,8 @@ class Hub(Device):
             return self.getEventWindow(params)
         if attribute == 'deviceEvents':
             return self.getDeviceEvents(params)
+        if attribute == 'softwareDevices' :
+            return SoftwareDeviceFactory.getAvailableDevices()
 
     def setCommand (self, attribute,value):
         if attribute == 'name':

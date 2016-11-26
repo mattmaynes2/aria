@@ -4,5 +4,4 @@ from .data_types    import DataType     # NOQA
 from .attribute     import Attribute    # NOQA
 from .device_type   import DeviceType   # NOQA
 from .device        import Device       # NOQA
-from .observable_device import ObservableDevice # NOQA
-from .software_device_controller import SoftwareDeviceController # NOQA
+from .timer_device  import TimerDevice  # NOQA

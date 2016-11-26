@@ -46,6 +46,16 @@ let HubRouter = (function () {
                     .catch(onError.bind(this, res));
             });
 
+        app.route('/softwareDevices')
+            .get((req, res) => {
+                this._adapter
+                    .send(IPC.Request, { get : 'availableSoftwareDevices' })
+                    .then((reply) => {
+                        res.json({ mode : reply.payload.value });
+                    })
+                    .catch(onError.bind(this, res));
+            });
+
         app.route('/events')
             .post((req, res) => {
                 this._adapter
