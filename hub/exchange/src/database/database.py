@@ -36,7 +36,7 @@ class Database:
             log.debug("Running SQL statement: " + sql)
             results = self.cursor.execute(sql, values)
             self.connection.commit()
-            return results
+            return self.cursor.fetchall()
         except Exception as e:
             log.error("Could not execute command " + sql + " " + str(e))
 

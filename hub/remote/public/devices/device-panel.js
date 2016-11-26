@@ -1,6 +1,6 @@
 import WidgetPanel  from '../core/widget/widget-panel';
 import Service      from '../core/service/service';
-import Device       from './device';
+import Device       from '../core/device/device';
 
 class DevicePanel extends WidgetPanel {
     constructor () {

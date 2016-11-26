@@ -61,7 +61,7 @@ let IntegrateAdapter = (function () {
             }
         };
 
-        n = Math.ceil(Math.random() * 10);
+        n = randomInt(10);
         logger.debug(`Seeding hub with ${n} devices`);
 
         for (i = 0; i < n; i++) {
@@ -134,9 +134,12 @@ let IntegrateAdapter = (function () {
                 logger.debug('Received request to launch discovery');
                 setTimeout(() => {
                     var i, dev;
-                    for (i = 0; i < random(5); i++) {
+                    for (i = 0; i < 1 + randomInt(5); i++) {
                         dev = makeDevice();
-                        this.signal(observable.NEXT, 'device.discovered', dev);
+                        setTimeout(
+                            this.signal.bind(this, observable.NEXT, 'device.discovered', dev),
+                            (1 + i) * randomInt(1000)
+                        );
                         this._state.hub.devices.push(dev);
                     }
                 }, 500);
@@ -197,20 +200,25 @@ let IntegrateAdapter = (function () {
             start   = payload.start,
             count   = payload.count,
             id      = payload.id || '',
+            last    = 0, offset = 0,
             index   = devices.map((dev) => { return dev.id; }).indexOf(id);
 
         for (i = 0; i < count; i++) {
             device  = index >= 0 ? devices[index] : random(devices);
-            events.push(makeEvent(device, start, i));
+            offset = last + randomInt(20000000);
+            events.push(makeEvent(device, start, i, offset));
+            last = offset;
         }
 
         return events;
     }
 
-    function makeParamter () {
+    function makeParameter () {
+        var dataType = random(DATA_TYPES);
         return {
-                name        : '',
-                dataType    : random(DATA_TYPES),
+                name        : random(DEVICE_ATTRIBUTES),
+                value       : generateValue(dataType),
+                dataType    : dataType,
                 min         : random(10),
                 max         : 10 + random(10),
                 step        : random(3)
@@ -219,38 +227,59 @@ let IntegrateAdapter = (function () {
 
     function makeAttribute () {
         return {
-            name            : '',
+            name            : random(DEVICE_ATTRIBUTES),
             isControllable  : true,
             dataType        : random(DATA_TYPES),
-            paramters       : [makeParamter()]
+            parameters      : [makeParameter()]
         };
     }
 
     function makeDevice () {
-        var maker = random(DEVICE_MAKERS), protocol = random(DEVICE_TYPES);
+        var maker   = random(DEVICE_MAKERS), protocol = random(DEVICE_TYPES),
+            name    = random(DEVICE_NAMES);
+
         return {
             version     : '' + randomInt(10) + '.' + randomInt(10) + '.' + randomInt(10),
-            name        : random(DEVICE_NAMES),
+            name        : name,
             address     : uuid.v4(),
             deviceType  : {
-                name        : maker + ' ' + protocol,
+                name        : maker + ' ' + protocol + ' ' + name,
                 maker       : maker,
-                protocol    : name,
-                attrbutes   : new Array.length(randomInt(5)).fill(0).map(makeAttribute())
+                protocol    : protocol,
+                attributes  : Array.apply(null, Array(random(5))).map(makeAttribute)
             }
         };
     }
 
-    function makeEvent (device, start, i) {
+    function makeEvent (device, start, i, offset) {
         return {
             index       : start + i,
-            timestamp   : new Date().toJSON(),
+            timestamp   : generateTime(offset),
             source      : device.id,
             device      : device.name,
-            attribute   : random(DEVICE_ATTRIBUTES),
+            deviceType  : device.deviceType.name,
+            attribute   : makeAttribute(),
             dataType    : random(DATA_TYPES),
-            value       : Math.floor(Math.random() * 100)
         };
+    }
+
+    function generateTime (offset) {
+        var now = new Date();
+
+        if (offset) {
+            now = new Date(now.getTime() - offset);
+        }
+
+        return now.getTime();
+    }
+
+    function generateValue (type) {
+        switch (type) {
+            case 'color':
+                return toHex([randomInt(256), randomInt(256), randomInt(256)]);
+            default:
+                return randomInt(100);
+        }
     }
 
     function spawnEvent () {
@@ -261,7 +290,13 @@ let IntegrateAdapter = (function () {
                 makeEvent(random(this._state.hub.devices), 0, 0)
             );
             spawnEvent.call(this);
-        }, 5000);
+        }, randomInt(5000));
+    }
+
+    function toHex (arr) {
+        return arr.map((byte) => {
+            return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+        }).join('');
     }
 
     function random (arr) {
