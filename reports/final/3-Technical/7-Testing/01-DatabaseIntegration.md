@@ -1,3 +1,0 @@
-### Database Integration Testing
-
-#### Goal
