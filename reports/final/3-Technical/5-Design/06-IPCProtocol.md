@@ -58,17 +58,29 @@ values of this enum are:
 - 'string'
 - 'list'
 
+##### Attribute Parameter {-}
+
+Represents a parameter to an attribute of a device
+
+```
+{
+    "name"      : <string>,
+    "dataType"  : <DataType>,
+    "max"       : <int>,
+    "min"       : <int>,
+    "step"      : <float>
+}
+```
+
 ##### Attribute {-}
 
 Attributes represent the different attributes of a device that can be viewed and/or changed
 
 ```
 {
-    "dataType": <DataType>,
-    "max": <int>, 
-    "min": <int>,
-    "name": <string>,
-    "step": <float>
+    "name"              : <string>,
+    "isControllable"    : <boolean>,
+    "parameters"        : [<AttributeParameter>]
 }
 ```
 dataType: a DataType from the above section
@@ -90,7 +102,6 @@ different attributes that the device has.
 ```
 {
     "attributes":[<Attribute>],
-    "isControllable": <boolean>, 
     "maker": <string>, 
     "name": <string>, 
     "protocol": <string>
@@ -112,10 +123,10 @@ be controlled
 
 ```
 {
-    "address":<string>, 
-    "deviceType": <DeviceType> ,
-    "name": <string>, 
-    "version": <string>
+    "address"    : <string>,
+    "deviceType" : <DeviceType>,
+    "name"       : <string>,
+    "version"    : <string>
 }
 ```
 

@@ -1,0 +1,14 @@
+.device-body {
+    display : flex;
+}
+
+.device-icon {
+    width   : 150px;
+    height  : 150px;
+    margin  : auto 0;
+}
+
+.device-info {
+    margin-top : 10px;
+    width      : 50%;
+}

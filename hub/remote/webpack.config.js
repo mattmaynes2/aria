@@ -28,7 +28,8 @@ function page (name) {
             path        : __dirname + `/public/${name}`,
             filename    : name ? `${name}.bundle.js` : 'bundle.js',
         },
-        module : loaders
+        module : loaders,
+        devtool: '#inline-source-map'
     };
 }
 

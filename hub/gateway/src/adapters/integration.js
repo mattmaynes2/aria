@@ -1,10 +1,17 @@
-let uuid    = require('node-uuid'),
-    logger  = require('winston'),
-    IPC     = require('../ipc');
+let uuid        = require('node-uuid'),
+    logger      = require('winston'),
+    observable  = require('../../lib/observable'),
+    IPC         = require('../ipc');
 
 let IntegrateAdapter = (function () {
 
-    let DEVICE_TYPES = ['zwave', 'wemo', 'arduino'],
+    let DEVICE_TYPES = [
+        'Z-Wave',
+        'SmartThings',
+        'UPnP',
+        'ZigBee',
+        'WiFi'
+        ],
         DEVICE_NAMES = [
             'Light',
             'Switch',
@@ -19,7 +26,16 @@ let IntegrateAdapter = (function () {
             'Brightness',
             'Hue'
         ],
-        DATATYPES = [
+        DEVICE_MAKERS = [
+            'WeMo',
+            'Phillips',
+            'Aeon Labs',
+            'Honeywell',
+            'Nest',
+            'Google',
+            'Apple'
+        ],
+        DATA_TYPES = [
             'binary',
             'int',
             'float',
@@ -31,7 +47,7 @@ let IntegrateAdapter = (function () {
         ],
         HUB_ID = new Buffer(16).fill(0);
 
-    function IntegrateAdatper () {
+    function IntegrateAdapter () {
         var i, n;
         logger.debug('Gateway entering testing mode');
 
@@ -45,30 +61,29 @@ let IntegrateAdapter = (function () {
             }
         };
 
-        n = Math.ceil(Math.random() * 10);
+        n = randomInt(10);
         logger.debug(`Seeding hub with ${n} devices`);
 
         for (i = 0; i < n; i++) {
-            this._state.hub.devices.push({
-                type    : DEVICE_TYPES[Math.floor(Math.random() * DEVICE_TYPES.length)],
-                name    : DEVICE_NAMES[Math.floor(Math.random() * DEVICE_NAMES.length)],
-                address : uuid.v4()
-            });
+            this._state.hub.devices.push(makeDevice());
         }
 
         uuid.v4(null, this._id);
+        observable.create(this);
+        spawnEvent.call(this);
     }
 
-    IntegrateAdatper.prototype.register = function () {
+    IntegrateAdapter.prototype.register = function () {
         logger.debug('Received request to register server');
         return Promise.resolve();
     };
 
-    IntegrateAdatper.prototype.id = function () {
+    IntegrateAdapter.prototype.listen = function () {};
+    IntegrateAdapter.prototype.id = function () {
         return uuid.unparse(this._id);
     };
 
-    IntegrateAdatper.prototype.send = function (type, payload) {
+    IntegrateAdapter.prototype.send = function (type, payload) {
         logger.debug(`Sending test message of type ${type} with payload ` +
             JSON.stringify(payload));
 
@@ -77,9 +92,14 @@ let IntegrateAdapter = (function () {
             try {
                 switch (type) {
                     case IPC.Request:
-                        response = payload.get ?
-                            requestGet.call(this, payload) :
-                            requestSet.call(this, payload);
+                        if (payload.action) {
+                            response = requestAction.call(this, payload);
+                        }
+                        else {
+                            response = payload.get ?
+                                requestGet.call(this, payload) :
+                                requestSet.call(this, payload);
+                        }
                         break;
                     case IPC.Event:
                         response = event.call(this, payload);
@@ -106,6 +126,28 @@ let IntegrateAdapter = (function () {
                 value       : value
             }
         };
+    }
+
+    function requestAction (payload) {
+        switch(payload.action) {
+            case 'discover':
+                logger.debug('Received request to launch discovery');
+                setTimeout(() => {
+                    var i, dev;
+                    for (i = 0; i < 1 + randomInt(5); i++) {
+                        dev = makeDevice();
+                        setTimeout(
+                            this.signal.bind(this, observable.NEXT, 'device.discovered', dev),
+                            (1 + i) * randomInt(1000)
+                        );
+                        this._state.hub.devices.push(dev);
+                    }
+                }, 500);
+                return wrap(payload.action, {});
+            default:
+                throw new Error('Unknown request');
+
+        }
     }
 
     function requestGet (payload) {
@@ -158,28 +200,113 @@ let IntegrateAdapter = (function () {
             start   = payload.start,
             count   = payload.count,
             id      = payload.id || '',
+            last    = 0, offset = 0,
             index   = devices.map((dev) => { return dev.id; }).indexOf(id);
 
         for (i = 0; i < count; i++) {
             device  = index >= 0 ? devices[index] : random(devices);
-            events.push({
-                index       : start + i,
-                timestamp   : new Date().toJSON(),
-                source      : device.id,
-                device      : device.name,
-                attribute   : random(DEVICE_ATTRIBUTES),
-                datatype    : random(DATATYPES),
-                value       : Math.floor(Math.random() * 100)
-            });
+            offset = last + randomInt(20000000);
+            events.push(makeEvent(device, start, i, offset));
+            last = offset;
         }
 
         return events;
     }
 
+    function makeParameter () {
+        var dataType = random(DATA_TYPES);
+        return {
+                name        : random(DEVICE_ATTRIBUTES),
+                value       : generateValue(dataType),
+                dataType    : dataType,
+                min         : random(10),
+                max         : 10 + random(10),
+                step        : random(3)
+        };
+    }
+
+    function makeAttribute () {
+        return {
+            name            : random(DEVICE_ATTRIBUTES),
+            isControllable  : true,
+            dataType        : random(DATA_TYPES),
+            parameters      : [makeParameter()]
+        };
+    }
+
+    function makeDevice () {
+        var maker   = random(DEVICE_MAKERS), protocol = random(DEVICE_TYPES),
+            name    = random(DEVICE_NAMES);
+
+        return {
+            version     : '' + randomInt(10) + '.' + randomInt(10) + '.' + randomInt(10),
+            name        : name,
+            address     : uuid.v4(),
+            deviceType  : {
+                name        : maker + ' ' + protocol + ' ' + name,
+                maker       : maker,
+                protocol    : protocol,
+                attributes  : Array.apply(null, Array(random(5))).map(makeAttribute)
+            }
+        };
+    }
+
+    function makeEvent (device, start, i, offset) {
+        return {
+            index       : start + i,
+            timestamp   : generateTime(offset),
+            source      : device.id,
+            device      : device.name,
+            deviceType  : device.deviceType.name,
+            attribute   : makeAttribute(),
+            dataType    : random(DATA_TYPES),
+        };
+    }
+
+    function generateTime (offset) {
+        var now = new Date();
+
+        if (offset) {
+            now = new Date(now.getTime() - offset);
+        }
+
+        return now.getTime();
+    }
+
+    function generateValue (type) {
+        switch (type) {
+            case 'color':
+                return toHex([randomInt(256), randomInt(256), randomInt(256)]);
+            default:
+                return randomInt(100);
+        }
+    }
+
+    function spawnEvent () {
+        setTimeout(() => {
+            this.signal(
+                observable.NEXT,
+                'device.event',
+                makeEvent(random(this._state.hub.devices), 0, 0)
+            );
+            spawnEvent.call(this);
+        }, randomInt(5000));
+    }
+
+    function toHex (arr) {
+        return arr.map((byte) => {
+            return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+        }).join('');
+    }
+
     function random (arr) {
         return arr[Math.floor(Math.random() * arr.length)];
     }
-    return IntegrateAdatper;
+
+    function randomInt (max) {
+        return Math.floor(Math.random() * max);
+    }
+    return IntegrateAdapter;
 } ());
 
 module.exports = IntegrateAdapter;

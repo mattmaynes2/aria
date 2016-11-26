@@ -1,5 +1,5 @@
-import Service  from '../../core/service/service';
-import Widget   from '../../core/widget/widget';
+import Service  from '../service/service';
+import Widget   from '../widget/widget';
 import Event    from './event';
 
 import './event-feed.css';
@@ -8,9 +8,16 @@ class EventFeed extends Widget {
     constructor () {
         super();
         this._state = {
-            title   : 'Event Feed',
-            events  : []
+            title       : 'Event Feed',
+            events      : []
         };
+        Service.socket.on('device.event', (e) => {
+            var event = new Event(e);
+            this._state.events = this._state.events.splice(0, 0, event).slice(0, 10);
+            this._$el.find('.widget-body')
+                .prepend(event.render().$el())
+                .children().slice(10).remove();
+        });
     }
     update () {
         Service.get('/hub/events', { start : 0, count : 10 })
@@ -32,8 +39,6 @@ class EventFeed extends Widget {
             }));
         return this;
     }
-
-
 }
 
 export default EventFeed;

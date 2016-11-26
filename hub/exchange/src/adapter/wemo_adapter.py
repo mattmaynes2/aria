@@ -3,7 +3,7 @@ import logging
 from adapter import Adapter
 from netdisco.ssdp import scan,ST_ROOTDEVICE
 from device import Device, DeviceType
-from adapter import Message
+from ipc import Message
 from pywemo.discovery import device_from_description
 from pywemo.subscribe import SubscriptionRegistry
 import threading
@@ -63,16 +63,16 @@ class WemoAdapter (Adapter):
         return False
 
     def handleRequest(self,message,device):
-        if('action' in message.data):
-            action=message.data['action']
+        if('set' in message.data):
+            attribute=message.data['set']
             # TODO need a list of possible actions
-            if('state' == action and 'value' in message.data):
+            if('state' == attribute and 'value' in message.data):
                 device.set_state(message.data['value'])
                 return True
-            elif('status' == action):
+        elif('get' in message.data):
                 self.notify('received',Message(
                     type_ = Message.Response, 
-                    data = { 'state' : device.get_state() }, 
+                    data = { 'response':'state' , 'value':device.get_state()}, 
                     sender = message.receiver))
                 return True
         log.warn("Don't know what to do with "+str(message.data))
@@ -94,6 +94,6 @@ class WemoAdapter (Adapter):
         uid=self._deviceMac[mac]
         self.notify('received',Message(
             type_ = Message.Event, 
-            data = { 'state' : value }, 
+            data = { 'response':'state' , 'value':value }, 
             sender = uid)
             )

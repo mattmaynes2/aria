@@ -1,5 +1,7 @@
 var ExchangeAdapter = require('../../src/adapters/exchange');
+//var IPC = require('../../src/ipc')
 var sinon = require('sinon');
+//var assert = require('assert');
 
 function FakeSocket(){
 
@@ -21,7 +23,7 @@ FakeSocket.prototype.send = function()
 
 FakeSocket.prototype.close = function(){};
 
-describe('REST API endpoint testing', function(){
+describe('Exchange Adapter Testing', function(){
 
     it('Should send messages over UDP to the exchange server', function(){
         var adapter = new ExchangeAdapter();
@@ -58,4 +60,21 @@ describe('REST API endpoint testing', function(){
             });
         });
    });
+
+//    it ('Should listen for push messages from the exchange server',function() {
+//        var adapter = new ExchangeAdapter(null, 60000)
+//        var fakeSocket = new FakeSocket();
+//        sinon.stub(adapter.transport, 'createSocket', () => { return fakeSocket; });
+
+//        // The name HttpGateway is apparently very important, don't change it unless you know why
+//        var expectedPayload = { "port" : 60000, "name" : "HttpGateway"}; 
+//        var spy = sinon.spy(fakeSocket, 'send');
+//        adapter.register().then(() => {
+//            var args = spy.args[0];
+//            message = IPC.parse(args[0])
+//            assert(message.payload.port === 60000);
+//            assert(message.payload.name === 'HttpGateway');
+//        })
+
+//    });
 });

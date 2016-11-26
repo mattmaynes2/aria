@@ -4,8 +4,9 @@ from unittest.mock import Mock
 from unittest.mock import patch
 
 from device     import Device
-from adapter    import Message, Delegate
+from delegate    import  Delegate
 from adapter.software_adapter import SoftwareAdapter
+from ipc import Message
 import uuid
 
 class SoftwareAdapterTest (TestCase):
@@ -17,7 +18,6 @@ class SoftwareAdapterTest (TestCase):
         uid = uuid.uuid4().bytes
         adapter.event(uid, {"value" : 12})
         message = mockDelegate.received.call_args[0][0]
-        print(message)
         self.assertEqual(message.type, Message.Event)
         self.assertEqual(message.sender, uid)
         self.assertEqual(message.received, Message.DEFAULT_ADDRESS)

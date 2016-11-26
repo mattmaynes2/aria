@@ -5,8 +5,9 @@ sys.path.append('../lib')
 
 from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
-from adapter import AriaAdapter, HubAdapter, Message, WemoAdapter
+from adapter import AriaAdapter, HubAdapter, WemoAdapter
 from database import Database
+from ipc import Message
 
 hub         = None
 cli         = None
@@ -21,9 +22,10 @@ def main ():
     if argv.daemonize:
         daemon.daemonize()
 
-    hub         = Hub(argv, exit)
+    database    = Database()
+    hub         = Hub(database,argv, exit)
     cli         = CLI(hub)
-    exchange    = create_exchange(hub, cli)
+    exchange    = create_exchange(hub, cli, database)
     exchange.discovered(hub)
 
     cli.start()
@@ -33,10 +35,16 @@ def main ():
 def create_exchange (hub, cli, database):
     global exchange
     exchange = Exchange(hub, cli, database)
-
+    ariaAdapter=AriaAdapter()
+    
+    # setup adapters
     exchange.register('hub'     , HubAdapter(hub))
-    exchange.register('aria'    , AriaAdapter())
+    exchange.register('aria'    , ariaAdapter)
     exchange.register('wemo'    , WemoAdapter())
+
+    # setup delegates
+    exchange.addDelegate(ariaAdapter)
+
     return exchange
 
 def exit ():

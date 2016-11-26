@@ -1,41 +1,51 @@
-import sqlite3
 import logging
-
-from adapter import Delegate
-from adapter import Message
+import sqlite3
 from uuid import UUID
+
+from ipc import  Message
+from delegate import Delegate
 
 log=logging.getLogger(__name__)
 
 class DatabaseTranslator(Delegate):
 
+    DISCOVER        = "INSERT INTO Device (address, version, name) VALUES (?, ?, ?)"
+    REQUEST         = "INSERT INTO Request (source, receiver, attribute, value) VALUES (?, ?, ?, ?)"
+    EVENT           = "INSERT INTO Event (request_id, source, attribute, value) VALUES (?, ?, ?, ?)"
+
     def __init__ (self, database):
-       self.database = database 
+       self.database = database
 
     def received (self, message):
         if (message.type == Message.Request):
-            log.info("Received ")
-            return _request(message)
-        elif (message.type == Message.Event):
-            _event(message)
-            
-    def discovered (self, device):
-        log.info('Received ' + str(device))
-        self.database.execute("INSERT into Device (type, name, address) VALUES ('" + str(device.type) + \
-        "', '" + device.name + "', '" + str(UUID(bytes =device.address)) + "');")
+            log.debug("Received " + str(message))
+            return self._request(message)
+        elif (message.type == Message.Event or message.type == Message.Response):
+            self._event(message)
 
-    def _request(self, message):           
-            self.database.execute("INSERT into Request (sender, receiver, action, value) VALUES('"\
-            + str(UUID(bytes = message.sender)) + "', '" \
-            + str(UUID(bytes = message.receiver)) + "', '" + str(key) + "', '" + str(message.data[key]) + \
-            "');")
-            #return self.connection.last_insert_rowid()
-            results = self.database.execute("SELECT last_insert_rowid()")
-            return results.get_points()
+    def discovered (self, device):
+        log.debug('Received ' + str(device))
+        if device.address :
+            self.database.execute(DatabaseTranslator.DISCOVER, (self._getStr(device.address)\
+            , str(device.version), str(device.name)))
+        else:
+            log.warning("Device discoverd with null address")
+
+    def _request(self, message):
+        values =  (self._getStr(message.sender), self._getStr(message.receiver)\
+        , str(message.data['set']), str(message.data['value']))
+        self.database.execute(DatabaseTranslator.REQUEST, values)
+        results = self.database.execute
+        return self.database.getLastInsertId()
 
     def _event(self, event):
-        id = message.data["requestId"] if "requestId" in message.data else None
-        self.database.execute("INSERT into Event (request_id, sender, attribute, value) VALUES("\
-            + id + ", '" + str(UUID(bytes = message.sender)) + "', '" \
-            + str(UUID(bytes = message.receiver)) + "', '" + str(key) + "', '" + str(message.data[key]) + \
-            "');")
+        if "requestId" in event.data:
+            id_ = event.data["requestId"]
+        else:
+            id_ = "0"
+        values = (id_, self._getStr(event.sender), str(event.data['response'])\
+        , str(event.data['value']))
+        self.database.execute(DatabaseTranslator.EVENT, values)
+
+    def _getStr(self, bytes_):
+        return str(UUID(bytes = bytes_))

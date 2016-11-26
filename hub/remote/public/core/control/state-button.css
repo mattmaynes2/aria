@@ -19,4 +19,8 @@
     padding : 4px 12px;
 }
 
+.state-button-item:hover:not(.state-button-selected) {
+    background-color : rgba(0, 0, 0, 0.05);
+}
+
 

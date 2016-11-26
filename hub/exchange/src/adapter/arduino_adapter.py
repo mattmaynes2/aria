@@ -4,7 +4,7 @@ import uuid
 
 from device import Device
 
-from .message import Message
+from ipc import Message
 from .adapter import Adapter
 
 logging.basicConfig(level=logging.DEBUG)
