@@ -136,7 +136,7 @@ class TestDatabaseIntegration(TestCase):
         
         self.assertEqual(response.data["response"], "eventWindow")
         self.assertEqual(response.data["value"]["total"], 10)
-        self.assertEqual(len(response["value"]["records"]), 10)        
+        self.assertEqual(len(response.data["value"]["records"]), 10)        
 
     def test_request_event_window_ignores_specified_devices(self):
         # Send a bunch of events from random devices

@@ -58,7 +58,7 @@ class Hub(Device):
     def getEventWindow(self,params):
         start=params['start']
         count=params['count']
-        ignore=params.get('ignore')
+        ignore=params.get('ignore','')
         if(ignore):
             ignore =",".join(ignore)
         results = self.retriever.getEventWindow(start,count,ignore)
