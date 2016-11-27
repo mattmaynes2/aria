@@ -52,7 +52,7 @@ function linkify() {
 }
 
 function tohtml () {
-    FLAGS="-s --toc-depth $TOC_DEPTH $NUM -c $STYLE -t html -f markdown_phpextra+backtick_code_blocks"
+    FLAGS="-s --toc-depth $TOC_DEPTH $NUM -c $STYLE -t html -f markdown_phpextra+backtick_code_blocks+grid_tables "
 
     if [ -n "$COVER" ]; then
         FLAGS="$FLAGS -B $COVER"
