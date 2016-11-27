@@ -14,21 +14,14 @@ The events recorded will be used to make decisions about actions to carry out. T
 will consume the event interface that is provided by the communication server and will simply
 observe all data.
 
-##### Event Interface {-}
-
-The event interface is the protocol that will be used to send event within the smart learning
-system. This interface will define the structure of data that will be sent from smart devices to
-the communication server as well as any other listening parties. Events that are sent from third
-party devices will use a different protocol to communication to the central hub. This protocol is
-designed for custom built devices.
-
 ##### ML Algorithm {-}
 
-This algorithm is responsible for reading events, generating a model of interactions and then
-making decisions about actions to perform. The implementation of this algorithm can be customized
-as long as it provides the decision interface. The ML algorithm will receive data from the
-event logger using snapshots of data. These data snapshots will reduce the amount of information
-that the ML algorithm needs to process by removing redundant information.
+This component is responsible for observing events from devices, extracting features from the 
+data, generating a model of interactions and then making decisions about actions to perform. 
+The implementation of this algorithm can be customized as long as it provides the decision 
+interface. The ML algorithm will receive data from the event logger using snapshots of data.
+These data snapshots will reduce the amount of information that the ML algorithm needs to process 
+by removing redundant information.
 
 ##### Communication Server {-}
 
@@ -61,6 +54,16 @@ Control Interface.
 This interface allows the device communication to pass events to the Device controller.
 
 #### Component Interfaces {-}
+
+##### Event Interface {-}
+
+The hub must receive messages from several different devices; each device may provide a different
+interface for communication. In order for system components to process such messages, it is 
+necessary to define a common interface for communicating with devices. Some examples of messages 
+that must travel through the system  are event messages from devices to signal a change in state, or
+a request from the REST API to change the state of a device. The Event Interface defines methods 
+that a device or component must provide, and the data structures used to send and receive messages, 
+regardless of the communication protocol that is used internally.
 
 ##### Decision Interface {-}
 

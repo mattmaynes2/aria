@@ -1,4 +1,4 @@
-### IPC Protocol {#section-3-5-5}
+### IPC Protocol {#design-api-ipc}
 
 This section defines a basic protocol for interprocess communication (IPC) between the 
 HTTP gateway and the central server.
