@@ -1,6 +1,6 @@
 ### Hub Implementation {#section-3-6-3}
 
-![](./uml/EchangeClassDiagram)
+![](./uml/ExchangeClassDiagram.png)
 
 #### Adapters {-}
 
