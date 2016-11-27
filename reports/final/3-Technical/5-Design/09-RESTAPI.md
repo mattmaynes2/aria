@@ -1,4 +1,9 @@
-### Gateway REST API {#section-rest-api}
+### Gateway REST API {#gw-rest-api}
+
+The gateway interface provides a public interface for controlling the Aria system using HTTP.
+The gateway uses a REST protocol for requesting or controlling static data about the system.
+For dynamic data, the gateway uses websocket messages. Below is the public REST API for the
+gateway. To see the available events over websockets [see gateway websocket events](#gw-ws).
 
 ##### Discovery {-}
 
@@ -8,7 +13,7 @@
 |       		| This method initiates the discovery sequence for all adapters in the central 	|
 |       		| hub. The return from this call will indicate if the process has started but	|
 |       		| not if any devices have yet been discovered. All device discoveries will be	|
-| 				| returned over websocket messages [See device discovered](#gw-ws-discovered)	|
+| 				| returned over websocket messages ([see device discovered](#gw-ws-discovered))	|
 | 				| for more details. 															|
 +---------------+-------------------------------------------------------------------------------+
 | URL         	| `/hub/discover` 																|
