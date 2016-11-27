@@ -52,7 +52,6 @@ class AriaAdapter (Adapter):
                 self.shutdown_socket.close()
             else:
                 os.write(self.self_wd, bytes('x', 'utf-8'))
-                os.write(self.shutdown_socket.fileno(), bytes('x', 'utf-8'))
             
         except OSError:
             log.warn("Failed to write to self pipe, the server may not shut down properly")
@@ -106,7 +105,7 @@ class AriaAdapter (Adapter):
                 else:
                     os.close(self.self_rd)
                     os.close(self.self_wd)
-                    
+
                 self.socket.close()
             except OSError:
                 log.warn("Failed to close self-pipe")
