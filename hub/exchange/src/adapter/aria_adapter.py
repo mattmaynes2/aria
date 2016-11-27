@@ -25,7 +25,7 @@ class AriaAdapter (Adapter):
         self.pushBackAddress = None
 
         try:
-            self.self_rd, self.self_wd = os.pipe()
+            self.shutdown_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         except OSError:
             log.warn("Unable to open self pipe, the server may not shut down properly")
 
@@ -35,14 +35,14 @@ class AriaAdapter (Adapter):
         try:
             self.socket.bind((AriaAdapter.HOST_NAME, self.port))
         except socket.error as msg:
-            print('Socket failed to connect to port ' + str(self.port) + ' with: ' + str(msg));
+            print('Socket failed to connect to port ' + str(self.port) + ' with: ' + str(msg))
             return False
         return True
 
     def teardown (self):
         super().teardown()
         try:
-            os.write(self.self_wd, bytes('x', 'utf-8'))
+            self.shutdown_socket.close()
         except OSError:
             log.warn("Failed to write to self pipe, the server may not shut down properly")
 
@@ -64,7 +64,8 @@ class AriaAdapter (Adapter):
     def receive (self):
         log.info('Aria adapter is listening')
 
-        readables, writeables, exceptions = select.select([self.self_rd, self.socket.fileno()], [], [])
+        readables, writeables, exceptions = select.select([self.shutdown_socket.fileno(), self.socket.fileno()], [], [])
+
         if (self.socket.fileno() in readables):
             chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
             payload = chunk
@@ -85,8 +86,6 @@ class AriaAdapter (Adapter):
         else:
             try:
                 log.debug('Closing Aria socket')
-                os.close(self.self_rd)
-                os.close(self.self_wd)
                 self.socket.close()
             except OSError:
                 log.warn("Failed to close self-pipe")
