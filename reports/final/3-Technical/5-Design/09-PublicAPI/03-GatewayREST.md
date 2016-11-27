@@ -1,10 +1,14 @@
 ### Gateway REST API {#design-api-gw-rest}
 
+##### General {-}
+
 The gateway interface provides a public interface for controlling the Aria system using HTTP.
 The gateway uses a REST protocol for requesting or controlling static data about the system.
 For dynamic data, the gateway uses websocket messages. Below is the public REST API for the
 gateway. To see the available events over websockets
 [see gateway websocket events](#design-api-gw-ws).
+
+#### Endpoint Documentation
 
 ##### Discovery {-}
 
@@ -31,7 +35,7 @@ gateway. To see the available events over websockets
 +---------------+-------------------------------------------------------------------------------+
 | Error			|  **Example:** 	<br/>														|
 | Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Invalid Credentials" }` <br/>						|
+| 				|  **Content:**  `{ error : "Unable to initiate discovery" }` <br/>				|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| `curl -X GET http://localhost:8080/hub/discover`								|
 +---------------+-------------------------------------------------------------------------------+
@@ -64,8 +68,8 @@ gateway. To see the available events over websockets
 | 				|		}																		|
 +---------------+-------------------------------------------------------------------------------+
 | Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Invalid Credentials" }` <br/>						|
+| Response		|  **Code:** `400 Bad Request` <br/>											|
+| 				|  **Content:**  `{ error : "Invalid Request" }` <br/>							|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| `curl -X GET http://localhost:8080/hub/state`		 							|
 +---------------+-------------------------------------------------------------------------------+
@@ -90,8 +94,8 @@ gateway. To see the available events over websockets
 | 				| **Content:** `{ "mode" : 1 }` <br/>											|
 +---------------+-------------------------------------------------------------------------------+
 | Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Failed request" }` <br/>							|
+| Response		|  **Code:** `400 Bad Request` <br/>											|
+| 				|  **Content:**  `{ error : "Invalid request" }` <br/>							|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| `curl -X GET http://localhost:8080/hub/mode`		 							|
 +---------------+-------------------------------------------------------------------------------+
@@ -118,7 +122,7 @@ gateway. To see the available events over websockets
 | 				| **Content:** `{ "mode" : 2 }` <br/>											|
 +---------------+-------------------------------------------------------------------------------+
 | Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
+| Response		|  **Code:** `400 Bad Request` <br/>											|
 | 				|  **Content:**  `{ error : "Invalid mode" }` <br/>								|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| **Example:** Set the mode to *Normal*											|
@@ -319,7 +323,7 @@ gateway. To see the available events over websockets
 |				|		}																		|
 +---------------+-------------------------------------------------------------------------------+
 | Error			|  **Example:** <br/>															|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
+| Response		|  **Code:** `400 Bad Request` <br/>											|
 | 				|  **Content:**  `{ error : "Unknown device" }` <br/>							|
 | 				| OR <br/>																		|
 |				| **Example:** <br/>															|
