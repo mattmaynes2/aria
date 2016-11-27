@@ -6,8 +6,11 @@ from .device_type import DeviceType
 from .observable import Observable
 from .attribute import Attribute
 from .data_types import DataType
+import sched, time
 
 logger = logging.getLogger(__name__)
+
+import sched, time
 
 class TimerDevice(Observable):
     """
@@ -22,7 +25,14 @@ class TimerDevice(Observable):
         super().__init__(myType)
         self.uuid = uuid.uuid4().bytes
         self.period = period
-    
+        self.runLock = threading.Lock()
+        self.stopCondition = threading.Condition(self.runLock)
+        self.running = False
+
+        def tickClosure():
+            self.tick(datetime.datetime.now())
+        self.timerThread = threading.Thread(target=tickClosure)
+
     @staticmethod
     def getDeviceType():
         attributes = []
@@ -40,22 +50,27 @@ class TimerDevice(Observable):
         logger.info("TICK")
         time = datetime.datetime.now()
         period = datetime.timedelta(seconds = self.period)
+        
+        with self.stopCondition:
+            self.stopCondition.wait(self.period)
+
+        if not self.running:
+            return
+
         if time >= (lastTime + period):
             latestTime = time
-            #for listener in self.eventListeners:
-             #   listener(self.uuid, {"value" : time})
+            for listener in self.eventListeners:
+               listener(self.uuid, {"value" : str(time)})
         else:
             latestTime = lastTime
-
-        def next():
-            self.tick(latestTime)
-
-        self.timer = threading.Timer(period.total_seconds(), next)
-        self.timer.start()
+        self.tick(latestTime)
 
     def stop(self):
-        self.timer.cancel()
-        self.timer.join()
+        with self.runLock:
+            self.running = False
+        self.stopCondition.notify()
 
     def start(self):
-        self.tick(datetime.datetime.now())
+        with self.runLock:
+            self.running = True
+        self.timerThread.start()

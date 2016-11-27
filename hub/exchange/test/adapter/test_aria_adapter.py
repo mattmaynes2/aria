@@ -7,6 +7,7 @@ from unittest.mock import patch
 from adapter    import AriaAdapter
 from delegate import Delegate
 from ipc import Message
+import sys
 
 # Dependencies to mock: Thread, Socket
 
@@ -90,5 +91,6 @@ class AriaAdapterTest (TestCase):
         os_pipe.return_value = (1,2)
         adapter = AriaAdapter()
         adapter.teardown()
-        os_write.assert_called_with(2, bytes('x', 'utf-8'))
+        if not sys.platform.startswith('win32') :
+            os_write.assert_called_with(2, bytes('x', 'utf-8'))
 

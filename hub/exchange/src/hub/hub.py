@@ -49,6 +49,7 @@ class Hub(Device):
             self.setMode(value)
             return self.mode.value
         if attribute == 'softwareDevices':
+            print("VALUE " + str(value))
             device = SoftwareDeviceFactory.create(value)
             return 'true'
 
