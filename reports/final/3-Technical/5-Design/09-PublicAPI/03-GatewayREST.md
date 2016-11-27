@@ -1,9 +1,10 @@
-### Gateway REST API {#gw-rest-api}
+### Gateway REST API {#design-api-gw-rest}
 
 The gateway interface provides a public interface for controlling the Aria system using HTTP.
 The gateway uses a REST protocol for requesting or controlling static data about the system.
 For dynamic data, the gateway uses websocket messages. Below is the public REST API for the
-gateway. To see the available events over websockets [see gateway websocket events](#gw-ws).
+gateway. To see the available events over websockets
+[see gateway websocket events](#design-api-gw-ws).
 
 ##### Discovery {-}
 
