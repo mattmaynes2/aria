@@ -2,6 +2,7 @@ import socket
 import os
 import select
 import logging
+import sys
 
 from ipc import Message
 from .adapter import Adapter
@@ -25,7 +26,12 @@ class AriaAdapter (Adapter):
         self.pushBackAddress = None
 
         try:
-            self.shutdown_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+            if sys.platform.startswith('win32') :
+                self.shutdown_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            else:
+                self.self_rd, self.self_wd = os.pipe()
+
         except OSError:
             log.warn("Unable to open self pipe, the server may not shut down properly")
 
@@ -42,7 +48,12 @@ class AriaAdapter (Adapter):
     def teardown (self):
         super().teardown()
         try:
-            self.shutdown_socket.close()
+            if sys.platform.startswith('win32') :
+                self.shutdown_socket.close()
+            else:
+                os.write(self.self_wd, bytes('x', 'utf-8'))
+                os.write(self.shutdown_socket.fileno(), bytes('x', 'utf-8'))
+            
         except OSError:
             log.warn("Failed to write to self pipe, the server may not shut down properly")
 
@@ -64,7 +75,10 @@ class AriaAdapter (Adapter):
     def receive (self):
         log.info('Aria adapter is listening')
 
-        readables, writeables, exceptions = select.select([self.shutdown_socket.fileno(), self.socket.fileno()], [], [])
+        if sys.platform.startswith('win32') :
+            readables, writeables, exceptions = select.select([self.shutdown_socket.fileno(), self.socket.fileno()], [], [])
+        else:
+            readables, writeables, exceptions = select.select([self.self_rd, self.socket.fileno()], [], [])
 
         if (self.socket.fileno() in readables):
             chunk, address = self.socket.recvfrom(AriaAdapter.BUFFER_SIZE)
@@ -86,6 +100,13 @@ class AriaAdapter (Adapter):
         else:
             try:
                 log.debug('Closing Aria socket')
+
+                if sys.platform.startswith('win32') :
+                    self.shutdown_socket.close()
+                else:
+                    os.close(self.self_rd)
+                    os.close(self.self_wd)
+                    
                 self.socket.close()
             except OSError:
                 log.warn("Failed to close self-pipe")
