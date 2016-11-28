@@ -22,5 +22,3 @@ class Device:
 
     def getAttribute(self, attributeName):
         return self.deviceType.getAttribute(attributeName)
-    
-    
