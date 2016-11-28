@@ -13,7 +13,7 @@
 | [Music Scenario](#section-3-3-1)          | Cameron & Matthew | Peter             | November 6, 2016  |
 | [Temperature Scenario](#section-3-3-2)    | Matthew           | Peter             | November 6, 2016  |
 | [Coffee Scenario](#section-3-3-3)         | Jeremy & Matthew  | Peter             | November 5, 2016  |
-| [Lighting Scenario](#section-3-3-4)       | Peter Mark        | Matthew           | November 13, 2016 |
+| [Lighting Scenario](#section-3-3-4)       | Peter            | Matthew           | November 13, 2016 |
 | [Automation Systems](#section-3-4-1)      | Jeremy            | Peter & Matthew   | October 27, 2016  |
 | [Smart Devices](#section-3-4-2)           | All               |                   | October 29, 2016  |
 | [Communication Protocols](#section-3-4-3) | Peter             | Cameron & Matthew | October 30, 2016  |
@@ -32,7 +32,7 @@
 | [Deployment](#section-3-6-1)              | Matthew           | Cameron & Peter   | November 6, 2016  |
 | [Technology](#section-3-6-2)              | Matthew           | Peter             | November 6, 2016  |
 | [Implementation](#section-3-6-3)          | Jeremy            |                   | November 13, 2016 |
-
-
+| [Database Design]                         | Peter             |                   | November 27, 2016 |
+| [Database Interface]                      | Peter             |                   | November 27, 2016 |
 
 
