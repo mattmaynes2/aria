@@ -93,8 +93,8 @@ Attributes represent the different attributes of a device that can be viewed and
 ```
 
 - **name**: Name of the attribute
-- **isControllable**: boolean value which specifies whether the device is to be interpreted as a sensor 
-    or an output device
+- **isControllable**: boolean value which specifies whether the device is to be interpreted as a 
+	sensor or an output device
 
 
 ##### Device Type {-}
@@ -281,10 +281,10 @@ the central server.
 |				|			{																	|
 |				|				"devices": [													|
 |				|					{															|
-|				|						"version"		: "1.2.1",								|
-|				|						"name"			: "Light Sensor",						|
-|				|						"address"		: "3c2538dd-64ed-4a0c-9ed3-14b2219feb11", |
-|				|						"deviceType"	: {										|
+|				|						"version"	  : "1.2.1",								|
+|				|						"name"		  : "Light Sensor",							|
+|				|						"address"	  : "3c2538dd-64ed-4a0c-9ed3-14b2219feb11", |
+|				|						"deviceType"  : {										|
 |				|							"name"			: "WeMo UPnP Light Sensor",			|
 |				|							"maker"			: "WeMo",							|
 |				|							"protocol"		: "UPnP",							|
@@ -345,7 +345,7 @@ the central server.
 |				| - **PAYLOAD**: The body of the message 										|
 |				|																				|
 |				|			{																	|
-|				|    			"get" : "state"													|
+|				|    			"get" : "status"												|
 |				|			}																	|
 +---------------+-------------------------------------------------------------------------------+
 | Success		| Below is an example of a successful response.									|
@@ -418,7 +418,7 @@ the central server.
 |				| - **PAYLOAD**: The body of the message 										|
 |				|																				|
 |				|			{																	|
-|				|    			"set" 	: "my custom attribute"									|
+|				|    			"set" 	: "attribute name"	    								|
 |				| 				"value"	: [														|
 |				|					{															|
 |				|						"name" 	: "parameter 1",								|
@@ -430,7 +430,7 @@ the central server.
 +---------------+-------------------------------------------------------------------------------+
 | Success		| Below is an example of a successful response.									|
 | Response		|																				|
-|				|		04 XX XX XX XX ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ 			|
+|				|		03 XX XX XX XX ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ 			|
 |				|		YY YY YY YY YY YY YY YY YY YY YY YY YY YY YY YY PAYLOAD					|
 |				|																				|
 |				| - **XX**: Indicates the bytes of the PAYLOAD length							|
@@ -439,8 +439,22 @@ the central server.
 |				| -	**PAYLOAD**: If the device has been updated									|
 |				|																				|			
 |				|			{																	|
-|				|				"response" 	: "my custom attribute",							|
-|				| 				"success" 	: true												|
+|				|				"response" 	: "attribute name",		        					|
+|				| 				"value" 	: {													|
+|				|					"device"		: "Temperature Sensor",						|
+|				|					"deviceType"	: "ZigBee Temperature Sensor",				|
+|				|					"attribute"		: {											|
+|				|						"name" 			: "State",								|
+|				|						"parameters"	: [										|
+|				|							{													|
+|				|								"name"		: "State",							|
+|				|								"value"		: 30,								|
+|				|								"dataType"	: "float"							|
+|				|							}													|
+|				|							... 												|
+|				|						]														|
+|				|					}															|
+| 				|				}																|
 |				|			}																	|
 +---------------+-------------------------------------------------------------------------------+
 | Error			| Errors are returned as an error packet of type `0x00`. 						|
