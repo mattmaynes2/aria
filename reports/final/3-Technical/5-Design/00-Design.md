@@ -1,1 +1,1 @@
-## Design (#section-design)
+## Design {#section-design}
