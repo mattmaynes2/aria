@@ -92,7 +92,7 @@ order to dynamically test this gateway, the **Mocha** unit testing framework was
 framework provides a behaviour driven development (BDD) testing language for creating unit tests
 for the gateway.
 
-##### Web Client {-}
+##### Web Client {- #section-dev-tech-client}
 
 The web client is the front end facing user interface that controls the Aria system. The client is
 responsible for providing observability of the system as well as controllability of the hub and
