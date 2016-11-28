@@ -21,10 +21,10 @@
 | [Custom Devices](#section-3-4-5)          | Cameron           | Peter & Matthew   | October 30, 2016  |
 | [Shopping List](#section-4-5-6)           | Jeremy            |                   | November 13, 2016 |
 | [Design Introduction](#section-3-5-1)     | Matthew           |                   | October 30, 2016  |
-| [Component Design](#section-3-5-2)        | Matthew           | Jeremy            | October 27, 2016  |
+| [Component Design](#section-3-5-2)        | Matthew           | Jeremy & Cameron  | November 27, 2016 |
 | [Deployment Design](#section-3-5-3)       | Matthew           |                   | October 30, 2016  |
 | [Database Design](#section-3-5-4)         | Jeremy            |                   | October 30, 2016  |
-| [IPC Protocol](#section-3-5-5)            | Matthew           |                   | November 12, 2016 |
+| [IPC Protocol](#section-3-5-5)            | Matthew & Cameron |                   | November 12, 2016 |
 | [REST API Design](#section-3-5-6)         | Cameron           |                   | October 30, 2016  |
 | [Device Discovery](#section-3-5-7)        | Matthew           |                   | October 30, 2016  |
 | [Device Requests](#section-3-5-8)         | Peter             | Matthew           | October 30, 2016  |
@@ -32,6 +32,7 @@
 | [Deployment](#section-3-6-1)              | Matthew           | Cameron & Peter   | November 6, 2016  |
 | [Technology](#section-3-6-2)              | Matthew           | Peter             | November 6, 2016  |
 | [Implementation](#section-3-6-3)          | Jeremy            |                   | November 13, 2016 |
+| [Testing](#section-testing)   | Cameron           |                   | November 27, 2016 |
 
 
 
