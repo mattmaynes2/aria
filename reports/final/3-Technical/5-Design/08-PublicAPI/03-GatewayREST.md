@@ -1,4 +1,4 @@
-### Gateway REST API {#design-api-gw-rest}
+### Gateway REST API {#section-design-api-rest}
 
 ##### General {-}
 

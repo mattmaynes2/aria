@@ -1,4 +1,4 @@
-### Gateway Implementation
+### Gateway Implementation {#section-dev-gateway}
 
 ![](./uml/GatewayClassDiagram.png)
 
@@ -24,7 +24,7 @@ adapter object for the gateway class and binds itself to a port for serving data
 
 #### Gateway {-}
 
-The gateway class provides REST interface for communicating to the system over HTTP. The gateway
+The gateway class provides a REST interface for communicating to the system over HTTP. The gateway
 delegates the endpoints of the REST API to various routers. Internally, this is done using the
 strategy pattern. As a request enters the system, it is routed to the appropriate handler based
 on its URL.
@@ -38,9 +38,9 @@ retrieving event logs from the hub's database.
 #### DeviceRouter {-}
 
 The device router handles all individual device requests. It is responsible for updating
-individual device state as well as querying all device data.
+individual device states as well as querying all device data.
 
 #### IPC {-}
 
 The IPC class is responsible for communicating to the exchange server. It serializes and
-deserializes messages using the defined IPC protocol ([see IPC](#design-api-ipc)).
+deserializes messages using the defined IPC protocol ([see IPC](#section-design-api-ipc)).

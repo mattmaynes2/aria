@@ -1,4 +1,4 @@
-## Requirements {#section-3-2}
+## Requirements {#section-reqs}
 
 ### Introduction
 

@@ -1,4 +1,4 @@
-## Development Process {#section-2-3}
+## Development Process {#section-dev-process}
 
 ### Introduction
 
@@ -68,11 +68,11 @@ A practice which complements the branching strategy adopted by this project is c
 In combination with test automation, continuous integration allows team members to get early 
 feedback about changes they make to the codebase. Proper use of  continuous integration can ensure
 that the project's master copy remains in a working state at all times. One of the benefits of
-maintaining working software at all times is that the project is always demoable.
+maintaining working software at all times is that the project is always demo-able.
 
 The continuous integration tool chosen for this project is Travis CI. Travis CI is a free hosted CI 
 system. Travis can be easily integrated with Github repositories, making it the obvious choice for 
-this project. 
+this project.
 
 Github rules were created to ensure that any code which is merged into the master branch does not 
 break existing work. Merges to master are blocked until Travis has successfully run unit tests on the
@@ -100,9 +100,9 @@ of minimizing the number of tools required to follow this process, however, Gith
 selected as the team's issue tracking tool.
 
 Github issues are organized into groups of tasks which must be completed during each one-week iteration
-of development. Issues are prioritized using labels (minor, major, critical). Issues are assigned to
-a team member when work begins; when work on an issue is completed the issue is closed using a commit
-message.
+of development. Issues are prioritized using labels (minor, major, critical, blocker). Issues are
+assigned to a team member when work begins; when work on an issue is completed the issue is closed
+using a commit message.
 
 ### Testing practices
 

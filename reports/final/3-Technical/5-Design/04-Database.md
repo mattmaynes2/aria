@@ -1,4 +1,4 @@
-### Database {#section-3-5-4}
+### Database {#section-design-db}
 
 #### Database Entity-Relationship {-}
 

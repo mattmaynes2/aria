@@ -1,4 +1,4 @@
-### Efficient Lights and Temperature {#section-3-3-2}
+### Efficient Lights and Temperature {#section-sc-temp}
 
 #### Background {-}
 

@@ -1,6 +1,6 @@
-### Testing DeviceCommunication, CommunicationServer, and EventLogger
+### Hub Testing
 
-#### Context
+#### Context {-}
 
 The DeviceCommunication, CommunicationServer, and EventLogger components form the core of the 
 system's hub. Each of these components is written in Python, and work together to react to 
@@ -12,7 +12,7 @@ appropriate component, which may be another device HTTPGateway or EventLogger. T
 describes the unit testing of each component, as well the method used to test that the components 
 perform correctly together.
 
-### Unit Testing
+#### Unit Testing {-}
 
 The modules that make up each component are unit tested using Python's *unittest* framework. 
 The unit tests are used for regression testing, and are written by the same person who implemented
@@ -25,7 +25,7 @@ can be replaced with a mock obejcts automatically by declaring a test case with 
 control the behaviour of the dependencies of a module. For example, mock objects are used to 
 return test data when a module attempts to read data from a network socket.
          
-### Integration Testing
+#### Integration Testing {-}
 
 Interactions between each of the components are triggered by the receipt of messages from
 smart devices, as well as requests to the REST API. In order to make tests repeatable and to

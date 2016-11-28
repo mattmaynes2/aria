@@ -1,4 +1,4 @@
-### Hub Implementation {#section-3-6-3}
+### Hub Implementation {#section-dev-hub}
 
 ![](./uml/ExchangeClassDiagram.png)
 

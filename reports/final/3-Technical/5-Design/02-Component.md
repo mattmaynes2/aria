@@ -1,4 +1,4 @@
-### System Components {#section-3-5-2}
+### System Components {#section-design-components}
 
 #### Component Organization {-}
 

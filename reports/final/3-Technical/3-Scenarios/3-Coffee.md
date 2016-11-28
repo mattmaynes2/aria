@@ -1,4 +1,4 @@
-### Coffee Automation {#section-3-3-3}
+### Coffee Automation {#section-sc-coffee}
 
 #### Background {-}
 
