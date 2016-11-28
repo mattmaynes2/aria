@@ -31,7 +31,7 @@ let DeviceRouter = (function () {
             .post((req, res) => {
                 this._adapter
                     .send(IPC.Request, { set : 'softwareDevices', value : req.body})
-                    .then((reply) => {
+                    .then(() => {
                         res.json({ });
                     })
                     .catch(onError.bind(this, res));
