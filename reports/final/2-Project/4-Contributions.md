@@ -32,7 +32,7 @@
 | [Deployment](#section-3-6-1)              | Matthew           | Cameron & Peter   | November 6, 2016  |
 | [Technology](#section-3-6-2)              | Matthew           | Peter             | November 6, 2016  |
 | [Implementation](#section-3-6-3)          | Jeremy            |                   | November 13, 2016 |
-| [Testing](#section-testing)   | Cameron           |                   | November 27, 2016 |
+| [Testing](#section-testing)               | Cameron           |                   | November 27, 2016 |
 
 
 
