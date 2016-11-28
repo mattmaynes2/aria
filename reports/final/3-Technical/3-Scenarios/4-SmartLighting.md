@@ -179,3 +179,39 @@ turning on the lights and resetting the TSLM variable.
 
 ![](./images/Scenario-OfficeActivity.png)
 
+##### Feature Extraction {-}
+
+- Time Since Last Motion
+
+The length of time since motion had been last detected my the PIR. If no motion is detected for a 
+long period of time, then the learning could interpret it as there being no occupancy in the room. 
+This could be determined by using a counter on an interval. Whenever a message is received, this
+counter would be reset. If the counter reaches a certain amount of time then a message is logged 
+saying no motion is detected. This feature alone is not sufficient to determine if there is a person
+in the room, as they could remain still for a long amount of time. Knowing the occupancy of the room
+would solve this issue. 
+
+- Occupancy of the Room
+
+Having a system know the occupancy of a room is not a trivial task, and is one that this scenario is
+not currently equipped to be able to do. A possible solution would be to have a double break beam
+on a doorway. While not perfect, this would provide a reasonably accurate count of people entering
+and leaving a room. The occupancy of a room can be extracted from this data. 
+
+- Light Level Trend
+
+Light sensors are generally noisy and will provide many samples over a short period of time. In
+order to have a more accurate representation of the state of the light in the room, the sensor
+reading's could be averaged to get a general state. This average value can then be compared to
+previous averages of the lights value to get the trend of the light in the room. This can be
+used to indicate if the light in the room is increasing or decreasing.
+
+- Time of Day
+
+The time of day will be relevant when determining the light information as it can help indicate
+the daylight available. It is likely that at the same time each day, the lights will be in the
+same state as the day before. Using the time of day can provide a good indication of the
+light levels that will be desired in the room.
+
+ 
+

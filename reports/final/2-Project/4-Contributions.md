@@ -13,7 +13,7 @@
 | [Music Scenario](#section-sc-music)                | Cameron & Matthew | Peter             | November 6, 2016  |
 | [Temperature Scenario](#section-sc-temp)           | Matthew           | Peter             | November 6, 2016  |
 | [Coffee Scenario](#section-sc-coffee)              | Jeremy & Matthew  | Peter             | November 5, 2016  |
-| [Lighting Scenario](#section-sc-light)             | Peter             | Matthew           | November 13, 2016 |
+| [Lighting Scenario](#section-sc-light)             | Peter             | Matthew           | November 28, 2016 |
 | [Automation Systems](#section-rs-sys)              | Jeremy            | Peter & Matthew   | October 27, 2016  |
 | [Smart Devices](#section-rs-dev)                   | All               |                   | October 29, 2016  |
 | [Communication Protocols](#section-rs-comm)        | Peter             | Cameron & Matthew | October 30, 2016  |
