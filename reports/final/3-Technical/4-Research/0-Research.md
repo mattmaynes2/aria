@@ -1,1 +1,1 @@
-## Research (#section-rs)
+## Research {#section-rs}
