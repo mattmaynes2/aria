@@ -35,14 +35,7 @@ are available for a device of that type.
 
 Specific manufacturer information for different types of possible devices (WeMo switch, Hue lights,
 etc...). This table also holds what communication protocol is needed to communicate with a device 
-type and if it is an input or not. Each device type is linked to the possible attributes it has 
-through the Device&#95;Type&#95;Attributes table.  
-
-
-##### Device&#95;Type&#95;Attributes {-}
-
-The combination of Device_Type and Attributes, used to determine which device types have which 
-attributes. 
+type and if it is an input or not.  
 
 ##### Attributes {-}
 
