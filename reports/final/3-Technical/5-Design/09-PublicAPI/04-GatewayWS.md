@@ -68,21 +68,21 @@ the system. Currently there is no plan for adding push back over the sockets for
 |				|																				|
 |				| **Example**:																	|
 |				|																				|
-|				|																				|
 |				|			{																	|
-|				|					"timestamp" 	: 1480256989762,							|
-|				|					"device"		: "Light Sensor",							|
-|				|					"deviceType"	: "Aeon Labs UPnP Light Sensor",			|
-|				|					"attribute"		: {											|
-|				|						"name"			: "State",								|
-|				|						"parameters"	: [										|
-|				|							{													|
-|				|								"name"		: "State",							|
-|				|								"value"		: 69,								|
-|				|								"dataType"	: "time",							|
-|				|							}													|
-|				|							...													|
-|				|						]														|
-|				|					}															|
+|				|				"timestamp" 	: 1480256989762,								|
+|				|				"device"		: "Light Sensor",								|
+|				|				"deviceType"	: "Aeon Labs UPnP Light Sensor",				|
+|				|				"attribute"		: {												|
+|				|					"name"			: "State",									|
+|				|					"parameters"	: [											|
+|				|						{														|
+|				|							"name"		: "State",								|
+|				|							"value"		: 69,									|
+|				|							"dataType"	: "time",								|
+|				|						}														|
+|				|						...														|
+|				|					]															|
 |				|				}																|
+|				|			}																	|
 +---------------+-------------------------------------------------------------------------------+
+

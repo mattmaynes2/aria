@@ -19,7 +19,7 @@ gateway. To see the available events over websockets
 |       		| hub. The return from this call will indicate if the process has started but	|
 |       		| not if any devices have yet been discovered. All device discoveries will be	|
 | 				| returned over websocket messages 												|
-|				| ([see device discovered](#design-api-gw-ws-discovered)) for more details. 	|													|
+|				| ([see device discovered](#design-api-gw-ws-discovered)) for more details. 	|
 +---------------+-------------------------------------------------------------------------------+
 | URL         	| `/hub/discover` 																|
 +---------------+-------------------------------------------------------------------------------+
