@@ -3,6 +3,7 @@ import struct
 from enum import Enum
 from uuid import UUID
 from device import Device,DeviceType,Attribute
+import threading
 
 class Message:
     Error               = 0
@@ -61,6 +62,7 @@ class Message:
     
     @staticmethod
     def json_encode(obj):
+        print(type(obj))
         if( isinstance(obj,(Device,DeviceType,Attribute))):
             return obj.__dict__
         if(isinstance(obj,Enum)):
@@ -68,6 +70,12 @@ class Message:
         if( isinstance(obj,bytes)):
             return str(UUID(bytes=obj))
         if( isinstance(obj,UUID)):
+            return str(obj)
+        if (isinstance(obj, type(threading.Lock()))):
+            return str(obj)
+        if (isinstance(obj, threading.Condition)):
+            return str(obj)
+        if (isinstance(obj, threading.Thread)):
             return str(obj)
         if(callable(obj)):
             return

@@ -37,5 +37,6 @@
 | [Gateway Implementation](#section-dev-gateway)     | Matthew           |                   | November 27, 2016 |
 | [Remote Implementation](#section-dev-remote)       | Matthew           |                   | November 28, 2016 |
 | [Testing](#section-testing)                        | Cameron           |                   | November 27, 2016 |
-
+| [Hub Testing](#section-test-hub)                   | Cameron           | Peter             | November 27, 2016 |
+| [Remote Testing](#section-test-remote)             | Matthew           |                   | November 28, 2016 |
 

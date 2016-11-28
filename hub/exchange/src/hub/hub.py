@@ -5,16 +5,14 @@ from .hub_mode  import HubMode
 from device import Device, DeviceType, Attribute, DataType
 from ipc import Message
 from database import Retriever
-
-
+from device import SoftwareDeviceFactory
 
 log=logging.getLogger(__name__)
 
 class Hub(Device):
     VERSION = '0.0.2'
     ADDRESS= Message.DEFAULT_ADDRESS
-    GATEWAY_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
-
+    GATEWAY_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01' 
     
     def __init__ (self, database, args = {}, exit = None):
         # setup device attributes and DeviceType
@@ -40,6 +38,8 @@ class Hub(Device):
             return self.getEventWindow(params)
         if attribute == 'deviceEvents':
             return self.getDeviceEvents(params)
+        if attribute == 'softwareDevices' :
+            return SoftwareDeviceFactory.getAvailableDevices()
 
     def setCommand (self, attribute,value):
         if attribute == 'name':
@@ -48,6 +48,10 @@ class Hub(Device):
         if attribute == 'mode':
             self.setMode(value)
             return self.mode.value
+        if attribute == 'softwareDevices':
+            print("VALUE " + str(value))
+            device = SoftwareDeviceFactory.create(value)
+            return 'true'
 
     def status (self):
         return {
@@ -79,8 +83,6 @@ class Hub(Device):
             attribute=device.getAttribute(event['attribute'])
             if(attribute):
                 event['dataType']=attribute.dataType
-
-
 
     def addDevice (self,device):
        # don't add the hub or gateway to devices
