@@ -8,7 +8,7 @@ For dynamic data, the gateway uses websocket messages. Below is the public REST 
 gateway. To see the available events over websockets
 [see gateway websocket events](#design-api-gw-ws).
 
-#### Endpoint Documentation
+#### Endpoint Documentation {-}
 
 ##### Discovery {-}
 
