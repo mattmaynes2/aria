@@ -31,7 +31,7 @@ events as seen below.
 
 ##### Device Page {-}
 
-![](./image/Remote-Devices.png)
+![](./images/Remote-Devices.png)
 
 This page is responsible for providing the user with state information and controls for the
 devices within the system. Each device's current state is displayed to the user in the device
