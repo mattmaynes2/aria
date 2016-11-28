@@ -35,6 +35,7 @@
 | [Technology](#section-dev-tech)                    | Matthew           | Peter             | November 6, 2016  |
 | [Hub Implementation](#section-dev-hub)             | Jeremy            |                   | November 27, 2016 |
 | [Gateway Implementation](#section-dev-gateway)     | Matthew           |                   | November 27, 2016 |
+| [Remote Implementation](#section-dev-remote)       | Matthew           |                   | November 28, 2016 |
 | [Testing](#section-testing)                        | Cameron           |                   | November 27, 2016 |
 
 
