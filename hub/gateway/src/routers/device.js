@@ -32,7 +32,7 @@ let DeviceRouter = (function () {
                 this._adapter
                     .send(IPC.Request, { set : 'softwareDevices', value : req.body})
                     .then((reply) => {
-                        res.json({ mode : reply.payload.value });
+                        res.json({ });
                     })
                     .catch(onError.bind(this, res));
             });
