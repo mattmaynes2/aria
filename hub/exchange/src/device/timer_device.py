@@ -46,11 +46,11 @@ class TimerDevice(Observable):
     def get_uuid(self):
         return self.uuid
 
-    def tick(self, lastTime):
-        logger.info("TICK")
+    def tickOnce(self, lastTime):
+        logger.info("TICK " + str(lastTime))
         time = datetime.datetime.now()
         period = datetime.timedelta(seconds = self.period)
-        
+
         with self.stopCondition:
             self.stopCondition.wait(self.period)
 
@@ -63,12 +63,18 @@ class TimerDevice(Observable):
                listener(self.uuid, {"value" : str(time)})
         else:
             latestTime = lastTime
-        self.tick(latestTime)
+        return latestTime
+
+    def tick(self, lastTime):
+        latestTime = self.tickOnce(lastTime)
+        if self.running:
+            self.tick(latestTime)
 
     def stop(self):
         with self.runLock:
             self.running = False
-        self.stopCondition.notify()
+            self.stopCondition.notify()
+        self.timerThread.join()
 
     def start(self):
         with self.runLock:

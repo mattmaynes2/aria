@@ -1,12 +1,14 @@
 import unittest
 from unittest   import TestCase
+from unittest.mock import patch
 from unittest.mock   import Mock
 from device import SoftwareDeviceFactory
 from device import TimerDevice
 
 class SoftwareDeviceFactoryTest(TestCase):
 
-    def test_create_timer_device(self):
+    @patch("device.timer_device.threading")
+    def test_create_timer_device(self, mockThreading):
         SoftwareDeviceFactory.setDeviceListener(Mock())
         deviceConfig = {"name": "timer", "config" : {"period" : 1}}
 
