@@ -47,9 +47,9 @@ attributes.
 ##### Attributes {-}
 
 An attribute is a field of a device that provides information about the current device state. A 
-controllable attribute is one such as the colour of a smart lightbulb, where as a non-controllable 
+controllable attribute is one such as the colour of a smart light bulb, where as a non-controllable 
 attribute would be one such as reading from a sensor. Attributes can have multiple parameters 
-associated to them. Take a smart lightbulb for example; the attribute would be the colour of the 
+associated to them. Take a smart light bulb for example; the attribute would be the colour of the 
 bulb, and the parameters could involve different possible colours such as red, blue, and blue.
 
 ##### Parameters {-}
