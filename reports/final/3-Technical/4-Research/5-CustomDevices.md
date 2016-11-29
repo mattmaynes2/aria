@@ -1,4 +1,4 @@
-### Custom-Built Devices {#section-3-4-5}
+### Custom-Built Devices {#section-rs-custom}
 
 #### Background {-}
 

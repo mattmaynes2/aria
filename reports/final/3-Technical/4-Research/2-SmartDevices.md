@@ -1,4 +1,4 @@
-### Smart Devices {#section-3-4-2}
+### Smart Devices {#section-rs-dev}
 
 #### Background {-}
 

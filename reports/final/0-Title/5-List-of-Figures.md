@@ -1,11 +1,11 @@
 ## List of Figures {-}
 
-| Figure 	                                                                    | Author(s)                      | Editor(s)                      |
-| ----------------------------------------------------------------------------- | ------------------------------ | ------------------------------ |
-| [System Use Case](#figure-system-use-case)                                    | Cameron Blanchard              | Matthew Maynes                 |
-| [Remote Use Case](#figure-remote-use-case)                                    | Matthew Maynes                 | Cameron Blanchard              |
-| [Light and Temperature Scenario Sequence](#figure-light-temperature-sequence) | Matthew Maynes                 |                                |
-| [Coffee Scenario Sequence](#figure-scenario-coffee-sequence)                  | Jeremy Dunsmore                |                                |
+| Figure                                                                        | Author(s)            | Editor(s)            |
+| ----------------------------------------------------------------------------- | -------------------- | -------------------- |
+| [System Use Case](#figure-system-use-case)                                    | Cameron              | Matthew              |
+| [Remote Use Case](#figure-remote-use-case)                                    | Matthew              | Cameron              |
+| [Light and Temperature Scenario Sequence](#figure-light-temperature-sequence) | Matthew              |                      |
+| [Coffee Scenario Sequence](#figure-scenario-coffee-sequence)                  | Jeremy               |                      |
 
 
 

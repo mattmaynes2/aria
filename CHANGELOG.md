@@ -1,6 +1,23 @@
 Change Log
 ==========
 
+## v0.4.0
+
+- End-to-end Push Events
+    - Gateway provides callback port for exchange data pushing
+    - Gateway can now communicate over websockets
+    - Client can receive messages using a websocket
+- Exchange Database
+    - Added event logging and retrieval
+    - Stores discovered devices
+- Web Client
+   - Dynamic event feed
+   - Device information
+   - Added device discovery
+- Software Devices
+    - Added configurable software timer
+    - Added interface for adding custom devices
+
 ## v0.3.0
 
 - Build system re-write

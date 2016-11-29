@@ -1,4 +1,4 @@
-### Communication Protocols {#section-3-4-3}
+### Communication Protocols {#section-rs-comm}
 
 #### Background {-}
 

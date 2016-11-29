@@ -45,7 +45,7 @@ let HubRouter = (function () {
                     })
                     .catch(onError.bind(this, res));
             });
-
+            
         app.route('/events')
             .post((req, res) => {
                 this._adapter

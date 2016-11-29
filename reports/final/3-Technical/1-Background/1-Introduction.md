@@ -1,4 +1,4 @@
-### Introduction {#section-3-1-1}
+### Introduction {#section-back-intro}
 
 The field of home automation systems is a young and expanding market. In recent years there has
 been a vast expansion into micro-computing and the Internet of Things (IoT). The smart home

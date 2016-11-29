@@ -5,9 +5,10 @@ sys.path.append('../lib')
 
 from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
-from adapter import AriaAdapter, HubAdapter, WemoAdapter
+from adapter import AriaAdapter, HubAdapter, WemoAdapter, SoftwareAdapter
 from database import Database
 from ipc import Message
+from device     import SoftwareDeviceFactory
 
 hub         = None
 cli         = None
@@ -42,6 +43,10 @@ def create_exchange (hub, cli, database):
     exchange.register('aria'    , ariaAdapter)
     exchange.register('wemo'    , WemoAdapter())
 
+    softwareAdapter = SoftwareAdapter()
+    SoftwareDeviceFactory.setDeviceListener(softwareAdapter.add_device)
+    exchange.register('software', softwareAdapter)
+    
     # setup delegates
     exchange.addDelegate(ariaAdapter)
 

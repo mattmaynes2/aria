@@ -1,4 +1,4 @@
-### Computing Devices {#section-3-4-4}
+### Computing Devices {#section-rs-compute}
 
 ##### Background {-}
 
