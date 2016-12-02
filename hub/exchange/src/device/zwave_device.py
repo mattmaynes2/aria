@@ -12,7 +12,8 @@ class ZWaveDevice(Device):
     'List':DataType.List}
 
     def __init__ (self, node):
-        super().__init__(ZWaveDevice.getDeviceType(node), name = node.name,uuid.uuid4(),    str(node.version))
+        super().__init__(ZWaveDevice.getDeviceType(node), name = node.name,address=uuid.uuid4(),\
+        version=str(node.version))
         self._node = node
     
     @staticmethod
