@@ -14,6 +14,6 @@ class Parameter():
             raise TypeError('Invalid DataType {}'.format(dataType))
         
     def __str__(self):
-       return  "Parameter: [name: "+self.name+", DataType: "+str(self.dataType.value)+\
-       ", value: "+self.value+", min "+str(self.min)+", max: "+str(self.max)+", step: "\
-       +str(self.step)+", isControllable: "+self.isControllable+"]"
+       return  "Parameter: [name: "+str(self.name)+", DataType: "+str(self.dataType.value)+\
+       ", value: "+str(self.value)+", min "+str(self.min)+", max: "+str(self.max)+", step: "\
+       +str(self.step)+", isControllable: "+str(self.isControllable)+"]"
