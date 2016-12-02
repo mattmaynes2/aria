@@ -1,0 +1,30 @@
+
+.slider-container {
+    position    : relative;
+    width       : 120px;
+}
+
+.slider-body {
+    position            : absolute;
+    margin              : 4px 0;
+    height              : 12px;
+    width               : 100%;
+    border              : 1px solid rgba(0, 0, 0, 0.3);
+    border-radius       : 4px;
+}
+
+.slider-target {
+    position            : absolute;
+    top                 : 0;
+    left                : 0;
+    width               : 20px;
+    height              : 20px;
+    border-radius       : 10px;
+    border              : 1px solid rgba(0, 0, 0, 0.8);
+    cursor              : pointer;
+    background-color    : #FFFFFF;
+}
+
+.slider-target-active {
+    background-color : #DDDDDD;
+}

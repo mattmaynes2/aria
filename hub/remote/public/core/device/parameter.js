@@ -1,5 +1,6 @@
 import Component    from '../component';
 import StateButton  from '../control/state-button';
+import Slider       from '../control/slider';
 import DataType     from './data-type';
 
 class DeviceParameter extends Component {
@@ -27,6 +28,18 @@ class DeviceParameter extends Component {
                 this._target = new StateButton(option, ['On', 'Off']);
                 this._target.change((v) => {
                     this._state = valueOf(this._props.dataType, v);
+                    this._changed();
+                });
+                break;
+            case DataType.Integer:
+                this._target = new Slider(option, {
+                    max     : this._props.max,
+                    min     : this._props.min,
+                    step    : this._props.step,
+                    round   : true
+                });
+                this._target.change((v) => {
+                    this._state = v;
                     this._changed();
                 });
                 break;
