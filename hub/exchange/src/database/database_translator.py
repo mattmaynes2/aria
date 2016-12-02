@@ -9,9 +9,17 @@ log=logging.getLogger(__name__)
 
 class DatabaseTranslator(Delegate):
 
-    DISCOVER        = "INSERT INTO Device (address, version, name) VALUES (?, ?, ?)"
-    REQUEST         = "INSERT INTO Request (source, receiver, attribute, value) VALUES (?, ?, ?, ?)"
-    EVENT           = "INSERT INTO Event (request_id, source, attribute, value) VALUES (?, ?, ?, ?)"
+    DISCOVER          = "INSERT INTO Device (address, version, name) VALUES (?, ?, ?)"
+    REQUEST           = "INSERT INTO Request (source, receiver, change, value) VALUES (?, ?, ?, ?)"
+    EVENT             = "INSERT INTO Event (request_id, source, change, value) VALUES (?, ?, ?, ?)"
+    PARAMETER_CHANGE  = "INSERT INTO Parameter_Change (parameter, value) VALUES (?, ?)"
+    PARAMETER         = "INSERT INTO Parameter (attribute, data_type, max, min, step) VALUES \
+                         ?, ?, ?, ?, ?)"
+    DEVICE_TYPE       = "INSERT INTO DEVICE_TYPE (protocol, maker) VALUES (?, ?)"
+
+    GET_PARAMETER     = "SELECT id FROM Parameter WHERE name=? and attribute = ?""
+    GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE id=?"
+    GET_ATTRIBUTES    = "SELECT id FROM Attribute WHERE device_type = ?"
 
     def __init__ (self, database):
        self.database = database
@@ -32,6 +40,9 @@ class DatabaseTranslator(Delegate):
             log.warning("Device discoverd with null address")
 
     def _request(self, message):
+        if "change" in message.data:
+            change_value_ = str(message.data["value"])
+            if "parameter" in message.data["change"]
         values =  (self._getStr(message.sender), self._getStr(message.receiver)\
         , str(message.data['set']), str(message.data['value']))
         self.database.execute(DatabaseTranslator.REQUEST, values)
@@ -47,5 +58,14 @@ class DatabaseTranslator(Delegate):
         , str(event.data['value']))
         self.database.execute(DatabaseTranslator.EVENT, values)
 
+    def _getParameter(self, name, attribute):
+        return self.database.execute(DatabaseTranslator.PARAMETER, (name, attribute))
+
+    def _getDeviceType(self, UUID):
+        return self.database.execute(DatabaseTranslator.GET_DEVICE_TYPE, UUID)
+
     def _getStr(self, bytes_):
         return str(UUID(bytes = bytes_))
+
+    def _setParameterChange(self, parameter, value):
+        self.database.execute(DatabaseTranslator.PARAMETER_CHANGE(parameter, value))
