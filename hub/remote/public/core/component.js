@@ -4,7 +4,7 @@ class Component {
     constructor (state, props) {
         this._state = state || {};
         this._props = props || {};
-        this._listeners = {
+        this._observers = {
             change  : [],
             click   : [],
         };
@@ -18,6 +18,7 @@ class Component {
         return this;
     }
     remove () {
+        this._clickObserver = null;
         this._$el.remove();
         return this;
     }
@@ -43,15 +44,30 @@ class Component {
         return this;
     }
     change (observer) {
-        this._listeners.change.push(observer);
+        if (this._observers.change.indexOf(observer) === -1) {
+            this._observers.change.push(observer);
+        }
         return this;
     }
     click (observer) {
-        this._listeners.click.push(observer);
+        if (!this._clickObserver) {
+            this._clickObserver = this._clicked.bind(this);
+        } else {
+            this._$el.off(this._clickObserver);
+        }
+        this._$el.click(this._clickObserver);
+
+        if (this._observers.click.indexOf(observer) === -1) {
+            this._observers.click.push(observer);
+        }
         return this;
     }
-    _changed (custom) { notify.call(this, this._listeners.change, custom); }
-    _clicked (custom) { notify.call(this, this._listeners.click, custom);  }
+    _changed (custom) {
+        notify.call(this, this._observers.change, custom);
+    }
+    _clicked (custom) {
+        notify.call(this, this._observers.click, custom);
+    }
 }
 
 function notify (V, e) {
