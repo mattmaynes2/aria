@@ -12,7 +12,7 @@ from openzwave.option import ZWaveOption
 from pydispatch import dispatcher
 from .adapter import Adapter
 from device   import ZWaveDevice
-
+from uuid import UUID
 
 class ZWaveAdapter(Adapter):
     
@@ -55,4 +55,5 @@ class ZWaveAdapter(Adapter):
 
     def buildDevice(self,node):
         device= ZWaveDevice(node)
-        node.location=device.address
+        node.location=str(UUID(bytes=device.address))
+        return device

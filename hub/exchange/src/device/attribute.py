@@ -1,7 +1,7 @@
 from device import DataType
 class Attribute:
     
-    def __init__(self,name, dataType, parameters=[]):
+    def __init__(self,name, parameters=[]):
         self.name=name
         self.parameters=parameters
 
