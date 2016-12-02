@@ -30,7 +30,7 @@ class ZWaveAdapter(Adapter):
         self._devices={}
         self._setupCallbacks()
 
-    def _deviceDiscoveredCallback(*args, **kwargs):
+    def _deviceDiscoveredCallback(self,*args, **kwargs):
         """
         This is a callback for the OpenZWave SIGNAL_NODE_QUERIES_COMPLETE notification
         """
