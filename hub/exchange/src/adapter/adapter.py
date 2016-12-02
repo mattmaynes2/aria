@@ -107,7 +107,7 @@ class Adapter (Thread):
         Returns
             True if successful, False otherwise.
         """
-        pass
+        return None
 
     def run (self):
         """Runs the adapter in a loop while it is active
