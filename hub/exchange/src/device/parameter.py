@@ -2,6 +2,7 @@ from .data_types import DataType
 class Parameter():
 
     def __init__(self,name,dataType,max_=None,min_=None,step=None,value=None, isControllable=True):
+        self.name=name
         self.min = min_
         self.max= max_
         self.step=step
