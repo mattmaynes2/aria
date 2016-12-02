@@ -23,20 +23,20 @@ class ZWaveAdapter():
         self.network = ZWaveNetwork(self.defaultOptions, autostart=False)
         self._setupCallbacks()
 
-    """
-    This is a callback for the OpenZWave SIGNAL_NODE_QUERIES_COMPLETE notification
-    """
     def _deviceDiscoveredCallback(*args, **kwargs):
+        """
+        This is a callback for the OpenZWave SIGNAL_NODE_QUERIES_COMPLETE notification
+        """
         print("Args to discovered callback " + str(args))
         print("KWArgs to discovered callback " + str(kwargs))
         node = kwargs["node"]
         print(str(node.values_to_dict()))
         #print(str(node.to_dict()))
 	
-    """
-    This method registers the class to receive notifications from OpenZWave 
-    """
     def _setupCallbacks(self):
+        """
+        This method registers the class to receive notifications from OpenZWave 
+        """
         dispatcher.connect(self._deviceDiscoveredCallback, ZWaveNetwork.SIGNAL_NODE_QUERIES_COMPLETE)
 
     def start(self):
