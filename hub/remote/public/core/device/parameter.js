@@ -32,11 +32,13 @@ class DeviceParameter extends Component {
                 });
                 break;
             case DataType.Integer:
+                /* falls through */
+            case DataType.Float:
                 this._target = new Slider(option, {
                     max     : this._props.max,
                     min     : this._props.min,
                     step    : this._props.step,
-                    round   : true
+                    round   : this._props.dataType === DataType.Integer
                 });
                 this._target.change((v) => {
                     this._state = v;

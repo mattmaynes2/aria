@@ -26,7 +26,7 @@ class Slider extends Component {
             })
             .mousemove((e) => {
                 if (this._dragging) {
-                    setValue.call(this, 0, this._max, this._offset + e.clientX - this._start);
+                    updateValue.call(this, 0, this._max, this._offset + e.clientX - this._start);
                 }
             });
 
@@ -44,30 +44,46 @@ class Slider extends Component {
             .mousedown((e) => {
                 this._dragging  = true;
                 this._start     = e.clientX;
-                this._max       = this._$el.width() - this._$target.width();
+                this._max = this._$el.width() - this._$target.width();
                 this._offset    = bound(0, this._max,
                     this._start - this._$el.offset().left - (this._$target.width() / 2)
                 );
                 this._$target.addClass('slider-target-active');
-                setValue.call(this, 0, this._max, this._offset);
+                updateValue.call(this, 0, this._max, this._offset);
                 e.preventDefault();
                 e.stopPropagation();
             });
+
+        setValue.call(this, 0, 110, this._state);
         return this;
     }
 }
 
-function setValue (lower, upper, value) {
-    var x   = bound(lower, upper, value),
-        p   = bound(0, 1, value / (upper - lower)),
-        s   = this._props.step,
-        c   = p * (this._props.max - this._props.min),
-        m   = c % s,
-        v   = m > (s / 2) ? c + s - m : c - m;
-
+function updateValue (lower, upper, value) {
+    var x = bound(lower, upper, value),
+        v = stepValue(
+            mapDomain(lower, upper, this._props.min, this._props.max, value),
+            this._props.step
+        );
 
     this._$target.css('left', x);
     this._state = this._props.round ? Math.round(v) : v;
+}
+
+function setValue (lower, upper, value) {
+    var x = mapDomain(this._props.min, this._props.max, lower, upper, value);
+
+    this._$target.css('left', x);
+    this._state = value;
+}
+
+function mapDomain (omin, omax, nmin, nmax, val) {
+    return (nmax - nmin) * bound(0, 1, val / (omax - omin));
+}
+
+function stepValue (val, step) {
+    var m = val % step;
+    return m > (step / 2) ? val + step - m : val - m;
 }
 
 function bound (lower, upper, val) {
