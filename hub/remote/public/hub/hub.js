@@ -25,9 +25,9 @@ class Hub extends Widget {
             mode    : 0,
             devices : 0
         };
-        this._stateButton = new StateButton(Hub.modes);
-        this._stateButton.change((button) => {
-            Service.set('/hub/mode', { mode : Hub.mode(button.val()) })
+        this._stateButton = new StateButton(0, Hub.modes);
+        this._stateButton.change((state) => {
+            Service.set('/hub/mode', { mode : Hub.mode(state) })
                 .then((res) => {
                     this._state.mode = res.mode;
                     this.render();
@@ -62,7 +62,7 @@ class Hub extends Widget {
     render () {
         super.render();
         this._stateButton
-            .val(Hub.mode(this._state.mode))
+            .state(Hub.mode(this._state.mode))
             .render();
 
 
