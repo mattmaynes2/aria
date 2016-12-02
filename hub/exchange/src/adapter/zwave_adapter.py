@@ -10,8 +10,9 @@ from openzwave.controller import ZWaveController
 from openzwave.network import ZWaveNetwork
 from openzwave.option import ZWaveOption
 from pydispatch import dispatcher
-from device     import ZWaveDevice
 from .adapter import Adapter
+from device   import ZWaveDevice
+
 
 class ZWaveAdapter(Adapter):
     

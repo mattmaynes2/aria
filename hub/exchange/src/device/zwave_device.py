@@ -1,6 +1,8 @@
 from .device import Device
 from .parameter import Parameter
 from .data_types import DataType
+from .attribute import Attribute
+
 import uuid
 
 class ZWaveDevice(Device):
@@ -10,7 +12,7 @@ class ZWaveDevice(Device):
     'List':DataType.List}
 
     def __init__ (self, node):
-        super().__init__(ZWaveDevice.getDeviceType(node), name = node.name,uuid.uuid4(),str(node.version))
+        super().__init__(ZWaveDevice.getDeviceType(node), name = node.name,uuid.uuid4(),    str(node.version))
         self._node = node
     
     @staticmethod
