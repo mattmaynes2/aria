@@ -13,10 +13,13 @@ from pydispatch import dispatcher
 from .adapter import Adapter
 from device   import ZWaveDevice
 from uuid import UUID
+from ipc import Message
+
+logging.disable(logging.INFO)
 
 class ZWaveAdapter(Adapter):
-    
- 
+
+
     def __init__(self,controller='/dev/ttyACM0',\
     configPath='/home/pi/python-openzwave/openzwave/config',
     userPath ='.'):
@@ -30,25 +33,42 @@ class ZWaveAdapter(Adapter):
         self._devices={}
         self._setupCallbacks()
 
+    def _nodeEventCallback(self, *args, **kwargs):
+        node = kwargs['node']
+
+        try:
+            #Ignore value changes from devices that aren't fully discovered yet
+            if node.location in self._devices:
+                device = self._devices[node.location]
+                event = Message(type_ = Message.Event, \
+                                data = device.processEvent(kwargs['value']), \
+                                sender = device.address, \
+                                receiver = Message.DEFAULT_ADDRESS)
+                self.notify('received', event)
+
+        except Exception as e:
+            print("Error in node event callback: " + str(e))
+
     def _deviceDiscoveredCallback(self,*args, **kwargs):
         """
         This is a callback for the OpenZWave SIGNAL_NODE_QUERIES_COMPLETE notification
         """
         node = kwargs["node"]
         device=self.buildDevice(node)
-        self._devices[device.address]=device
+        self._devices[node.location]=device
         self.notify('discovered',device)
-	
+
     def _setupCallbacks(self):
         """
-        This method registers the class to receive notifications from OpenZWave 
+        This method registers the class to receive notifications from OpenZWave
         """
         dispatcher.connect(self._deviceDiscoveredCallback, ZWaveNetwork.SIGNAL_NODE_QUERIES_COMPLETE)
+        dispatcher.connect(self._nodeEventCallback, ZWaveNetwork.SIGNAL_VALUE_CHANGED)
 
     def setup(self):
         super().setup()
-        self.network.start()        
-        
+        self.network.start()
+
     def teardown(self):
         self.network.stop()
         super().teardown()
