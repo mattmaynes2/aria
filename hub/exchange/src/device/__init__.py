@@ -6,3 +6,4 @@ from .device_type   import DeviceType   # NOQA
 from .device        import Device       # NOQA
 from .timer_device  import TimerDevice  # NOQA
 from .software_device_factory import SoftwareDeviceFactory  #NOQA
+from .zwave_device import ZWaveDevice # NOQA

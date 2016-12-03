@@ -10,3 +10,4 @@ class DataType(Enum):
     Date='date'
     String='string'
     List='list'
+    Byte='byte'

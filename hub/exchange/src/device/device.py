@@ -1,6 +1,7 @@
 import uuid
 import json
-from device import Attribute, DeviceType
+from .attribute import Attribute
+from .device_type import DeviceType
 from enum import Enum
 class Device:
 
