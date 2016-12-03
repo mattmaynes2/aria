@@ -16,10 +16,11 @@ class DatabaseTranslator(Delegate):
     PARAMETER         = "INSERT INTO Parameter (attribute, data_type, max, min, step) VALUES \
                          ?, ?, ?, ?, ?)"
     DEVICE_TYPE       = "INSERT INTO DEVICE_TYPE (protocol, maker) VALUES (?, ?)"
-
-    GET_PARAMETER     = "SELECT id FROM Parameter WHERE name=? and attribute = ?""
+    GET_PARAMETER     = "SELECT Attribute.id FROM Attribute INNER JOIN Parameter ON Attribute.id = \
+                         Parameter.attribute_id WHERE Parameter.name = ? AND Attribute.device_type=?"
     GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE id=?"
-    GET_ATTRIBUTES    = "SELECT id FROM Attribute WHERE device_type = ?"
+
+    GET_LAST_PARAMETER_ID       = "SELECT * FROM Event ORDER BY id DESC LIMIT 1"
 
     def __init__ (self, database):
        self.database = database
@@ -42,7 +43,10 @@ class DatabaseTranslator(Delegate):
     def _request(self, message):
         if "change" in message.data:
             change_value_ = str(message.data["value"])
-            if "parameter" in message.data["change"]
+            if "parameter" in message.data["change"]:
+                change_parameter = str(message.data["change"]["parameter"]["name"])
+                _getParameterID(_getStr, change_parameter)
+        
         values =  (self._getStr(message.sender), self._getStr(message.receiver)\
         , str(message.data['set']), str(message.data['value']))
         self.database.execute(DatabaseTranslator.REQUEST, values)
@@ -58,7 +62,10 @@ class DatabaseTranslator(Delegate):
         , str(event.data['value']))
         self.database.execute(DatabaseTranslator.EVENT, values)
 
-    def _getParameter(self, name, attribute):
+    def _getParameterID(self, UUID, paramName):
+        typeResults = _getDeviceType(UUID)
+        type_ = typeResults["type"]
+        paramResults = self.database.execute(DatabaseTranslator.PARAMETER, (name, attribute))
         return self.database.execute(DatabaseTranslator.PARAMETER, (name, attribute))
 
     def _getDeviceType(self, UUID):
@@ -69,3 +76,7 @@ class DatabaseTranslator(Delegate):
 
     def _setParameterChange(self, parameter, value):
         self.database.execute(DatabaseTranslator.PARAMETER_CHANGE(parameter, value))
+        return 
+
+    def _getAttributes(self, deviceType):
+        return self.database.execute(DatabaseTranslator.GET_ATTRIBUTES, deviceType)
