@@ -8,12 +8,21 @@ class Parameter():
         self.step=step
         self.value=value
         self.isControllable=isControllable
-        if isinstance(dataType, DataType):
-            self.dataType = dataType
-        else:
-            raise TypeError('Invalid DataType {}'.format(dataType))
+        self._dataType=dataType
+       
         
     def __str__(self):
        return  "Parameter: [name: "+str(self.name)+", DataType: "+str(self.dataType.value)+\
        ", value: "+str(self.value)+", min "+str(self.min)+", max: "+str(self.max)+", step: "\
        +str(self.step)+", isControllable: "+str(self.isControllable)+"]"
+
+    @property
+    def dataType(self):
+        return self._dataType
+
+    @dataType.setter
+    def dataType(self,value):
+         if isinstance(dataType, DataType):
+            self._dataType = dataType
+        else:
+            raise TypeError('Invalid DataType {}'.format(dataType))
