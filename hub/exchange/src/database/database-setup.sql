@@ -3,17 +3,14 @@ id        --  auto incrementing integer key
 timestamp --  date and time of the request
 source    --  UUID of the sending device
 receiver  --  UUID of the receiving device
-change    --  id of the parameter changed in the Parameter_Change table
 */
 CREATE TABLE IF NOT EXISTS "Request" (
 	"id" Integer PRIMARY KEY,
 	"timestamp" DATETIME DEFAULT current_timestamp,
 	"source" TEXT,
 	"receiver" TEXT,
-	"change" INTEGER,
 	FOREIGN Key ("source") REFERENCES Device("address"),
 	FOREIGN Key ("receiver") REFERENCES Device("address"),
-	FOREIGN Key ("change") REFERENCES Parameter_Change("id")
 );
 
 /*
@@ -21,29 +18,33 @@ id          --  auto incrementing integer key
 timestamp   --  date and time of the request
 request_id  --  id of request in Request table which caused the event, 0 if not caused by request
 source      --  UUID of the sending device
-change      --  id of the parameter changed in the Parameter_Change table
 */
 CREATE TABLE IF NOT EXISTS "Event" (
 	"id" INTEGER PRIMARY KEY,
 	"timestamp" DATETIME DEFAULT current_timestamp,
 	"request_id" INTEGER,
-	"source" TEXT,
-	"change" INTEGER,	
+	"source" TEXT,	
 	FOREIGN KEY ("request_id") REFERENCES Request("id"),
 	FOREIGN KEY ("source") REFERENCES Device("address"),
-	FOREIGN KEY ("change") REFERENCES Parameter_Change("id")
 );
 
 /*
 id         --  auto incrementing integer key
 parameter  --  parameter that is being changed 
 value      --  value the parameter is being changed to
+request_id --  id of request in Request table which requested the parameter change
+event_id   --  id of event in Event table which cause the parameter change
 */
 CREATE TABLE IF NOT EXISTS "Parameter_Change" (
 	"id" INTEGER PRIMARY KEY,
 	"parameter" INTEGER,
 	"value" TEXT,
-	FOREIGN KEY ("parameter") REFERENCES Parameter("id")
+	"request_id" INTEGER,
+	"event_id" INTEGER,
+	FOREIGN KEY ("parameter") REFERENCES Parameter("id"),
+	FOREIGN KEY ("request_id") REFERENCES Request("id"),
+	FOREIGN KEY ("event_id") REFERENCES Event("id"),
+
 );
 
 /* 
