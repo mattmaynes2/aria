@@ -40,7 +40,6 @@ CREATE TABLE IF NOT EXISTS "Parameter_Change" (
 	"value" TEXT,
 	"event_id" INTEGER,
 	FOREIGN KEY ("parameter") REFERENCES Parameter("id"),
-	FOREIGN KEY ("request_id") REFERENCES Request("id"),
 	FOREIGN KEY ("event_id") REFERENCES Event("id")
 );
 
