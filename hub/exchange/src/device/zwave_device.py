@@ -16,7 +16,7 @@ class ZWaveDevice(Device):
         super().__init__(ZWaveDevice.getDeviceType(node), name = node.name,address=uuid.uuid4().bytes,\
         version=str(node.version))
         self._node = node
-    
+
     @staticmethod
     def getDeviceType(node):
         attributes = []
@@ -31,15 +31,14 @@ class ZWaveDevice(Device):
 
     def processEvent(self, val):
         parameters = []
-        parameterName = val.label
         parameterChange = {
-            'name' : parameterName,
+            'name' : val.label,
             'value' : val.data
-        } 
+        }
         parameters.append(parameterChange)
         data = {
             'attribute' : val.label,
             'changes' : parameters
 	}
         return data
-        
+
