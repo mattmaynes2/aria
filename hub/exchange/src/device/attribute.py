@@ -5,7 +5,7 @@ class Attribute:
     
     def __init__(self,name, parameters=[], isControllable=True):
         self.name=name
-        self._parameters=parameters
+        self.parameters=parameters
         self.isControllable=isControllable
 
     def __str__(self):
