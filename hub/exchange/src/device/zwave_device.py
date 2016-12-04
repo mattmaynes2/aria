@@ -36,7 +36,11 @@ class ZWaveDevice(Device):
         Returns the value of an attribute
         attribute is the name of the attribute (String)
         """
-        return self._valueMap[attribute].data
+        parameters = {
+            "name" : attribute,
+            "value" : self._valueMap[attribute].data
+        }
+        return parameters
 
     def processEvent(self, val):
         parameters = []
