@@ -2,7 +2,7 @@ import json
 import struct
 from enum import Enum
 from uuid import UUID
-from device import Device,DeviceType,Attribute
+from device import Device,DeviceType,Attribute, Parameter
 import threading
 
 class Message:
@@ -63,8 +63,8 @@ class Message:
     @staticmethod
     def json_encode(obj):
         print(type(obj))
-        if( isinstance(obj,(Device,DeviceType,Attribute))):
-            return obj.__dict__
+        if( isinstance(obj,(Device,DeviceType,Attribute,Parameter))):
+            return {key.lstrip('_'): value for key, value in obj.__dict__.items()}
         if(isinstance(obj,Enum)):
             return str(obj.value)
         if( isinstance(obj,bytes)):
