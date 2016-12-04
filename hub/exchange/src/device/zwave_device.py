@@ -22,8 +22,8 @@ class ZWaveDevice(Device):
         attributes = []
         for key,val in node.get_values(genre='User').items():
             parameter= Parameter(val.label, ZWaveDevice.dataMappings[val.type],max_=val.max, \
-            min_=val.min, isControllable=not val.is_read_only,value=val.data)
-            attribute=Attribute(val.label,parameters=[parameter])
+            min_=val.min, value=val.data)
+            attribute=Attribute(val.label,parameters=[parameter],isControllable=not val.is_read_only)
             attributes.append(attribute)
             self._valueMap[val.label] = val
 
