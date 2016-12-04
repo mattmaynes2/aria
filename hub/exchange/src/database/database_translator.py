@@ -80,7 +80,7 @@ class DatabaseTranslator(Delegate):
     def _getStr(self, bytes_):
         return str(UUID(bytes = bytes_))
 
-    def _setParameterChange(self, parameter, value, event=None, request=None):
+    def _setParameterChange(self, parameter, value, event=None):
         values = (parameter, value, event, request)
         self.database.execute(DatabaseTranslator.PARAMETER_CHANGE, values)
         return self.database.execute(GET_LAST_PARAMETER_ID)

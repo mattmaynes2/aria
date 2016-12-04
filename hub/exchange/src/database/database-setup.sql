@@ -32,14 +32,12 @@ CREATE TABLE IF NOT EXISTS "Event" (
 id         --  auto incrementing integer key
 parameter  --  parameter that is being changed 
 value      --  value the parameter is being changed to
-request_id --  id of request in Request table which requested the parameter change
 event_id   --  id of event in Event table which cause the parameter change
 */
 CREATE TABLE IF NOT EXISTS "Parameter_Change" (
 	"id" INTEGER PRIMARY KEY,
 	"parameter" INTEGER,
 	"value" TEXT,
-	"request_id" INTEGER,
 	"event_id" INTEGER,
 	FOREIGN KEY ("parameter") REFERENCES Parameter("id"),
 	FOREIGN KEY ("request_id") REFERENCES Request("id"),
