@@ -20,6 +20,19 @@ taken by the user. By having the system learn the habits of the user dynamically
 configuration is essentially eliminated, leading to an ease of installation that does not currently
 exist.
 
+## Required libraries
+
+Installing openzwave python library
+
+```
+$ sudo apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git
+$ git clone https://github.com/OpenZWave/python-openzwave.git
+$ cd python-openzwave
+$ git checkout python3
+$ PYTHON_EXEC=$(which python3) make build
+$ sudo PYTHON_EXEC=$(which python3) make install
+```
+
 ## Project Deployment
 
 To build the Aria system, a set of automated build scripts are provided in the `./build` folder.

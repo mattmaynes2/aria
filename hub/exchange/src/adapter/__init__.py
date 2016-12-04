@@ -4,4 +4,3 @@ from .aria_adapter      import AriaAdapter      # NOQA
 from .wemo_adapter      import WemoAdapter      # NOQA
 from .arduino_adapter   import ArduinoAdapter   # NOQA
 from .software_adapter  import SoftwareAdapter  # NOQA
-from .zwave_adapter     import ZWaveAdapter     # NOQA

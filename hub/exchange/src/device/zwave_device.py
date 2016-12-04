@@ -13,21 +13,34 @@ class ZWaveDevice(Device):
     'List':DataType.List}
 
     def __init__ (self, node):
-        super().__init__(ZWaveDevice.getDeviceType(node), name = node.name,address=uuid.uuid4().bytes,\
+        self._valueMap = {}
+        super().__init__(self._getDeviceType(node), name = node.name,address=uuid.uuid4().bytes,\
         version=str(node.version))
         self._node = node
 
-    @staticmethod
-    def getDeviceType(node):
+    def _getDeviceType(self, node):
         attributes = []
         for key,val in node.get_values(genre='User').items():
             parameter= Parameter(val.label, ZWaveDevice.dataMappings[val.type],max_=val.max, \
-            min_=val.min, isControllable=not val.is_read_only,value=val.data)
-            attribute=Attribute(val.label,parameters=[parameter])
+            min_=val.min, value=val.data)
+            attribute=Attribute(val.label,parameters=[parameter],isControllable=not val.is_read_only)
             attributes.append(attribute)
+            self._valueMap[val.label] = val
 
         return DeviceType(node.product_name, ZWaveDevice.PROTOCOL, node.manufacturer_name,\
         attributes=attributes)
+
+
+    def getValue(self, attribute):
+        """
+        Returns the value of an attribute
+        attribute is the name of the attribute (String)
+        """
+        parameters = {
+            "name" : attribute,
+            "value" : self._valueMap[attribute].data
+        }
+        return parameters
 
     def processEvent(self, val):
         parameters = []
