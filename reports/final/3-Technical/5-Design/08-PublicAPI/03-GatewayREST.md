@@ -200,9 +200,7 @@ gateway. To see the available events over websockets
 | 				| 			--data '{ "start" : 10, "count" : 10 }'	 							|
 +---------------+-------------------------------------------------------------------------------+
 
-
-##### Device List
-
+##### Device List {-}
 
 +---------------+-------------------------------------------------------------------------------+
 | Title     	| **Get Devices**                                        						|
@@ -264,7 +262,7 @@ gateway. To see the available events over websockets
 | Sample Call	| `curl -X GET http://localhost:8080/device/list`		 						|
 +---------------+-------------------------------------------------------------------------------+
 
-##### Device Events
+##### Device Events {-}
 
 +---------------+-------------------------------------------------------------------------------+
 | Title     	| **Get Device Event Log**	                                      				|
