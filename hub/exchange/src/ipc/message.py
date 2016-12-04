@@ -62,7 +62,6 @@ class Message:
     
     @staticmethod
     def json_encode(obj):
-        print(type(obj))
         if( isinstance(obj,(Device,DeviceType,Attribute,Parameter))):
             return {key.lstrip('_'): value for key, value in obj.__dict__.items()}
         if(isinstance(obj,Enum)):
