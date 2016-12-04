@@ -1,6 +1,7 @@
 import logging
 from ipc import Message
 from database import DatabaseTranslator 
+from uuid import UUID
 
 log= logging.getLogger(__name__)
 
@@ -22,7 +23,7 @@ class RequestTracker(DatabaseTranslator):
         """
         device= self.hub.getDevice(message.sender)
         if(not device):
-            log.warning('Unknown sender ')
+            log.warning('Unknown sender '+str(UUID(bytes=message.sender)))
             return False
         # ignore requests to hub they don't need to be logged
         if(Message.Request == message.type and message.receiver != self.hub.address):
@@ -31,7 +32,11 @@ class RequestTracker(DatabaseTranslator):
         elif(Message.Event == message.type or Message.Response == message.type):
             reqid=self.requests.pop(message.sender,None)
             # don't create a request for a non controllable device
-            if(reqid or not device.deviceType.isControllable):
+            attribute=device.getAttribute(message.data.get('attribute'))
+            if(not attribute):
+                log.warning("{} dosen't have attribute {}".format(device.name,message.data.get('attribute')))
+                return False
+            if(reqid or not attribute.isControllable):
                 self.sendEvent(reqid,message)
             else:
                 try:
@@ -48,9 +53,7 @@ class RequestTracker(DatabaseTranslator):
         self.dbTranslator.received(message)
         
     def createRequest(self,message):
-        # Event messages have the form {'response':<Atribute>, 'value':<value>}
-        # Requests have the form {'set':<attribute>, 'value':<value> }
-        data={'set':message.data['response'],'value':message.data['value']}
+        data={'set':message.data['attribute'],'value': message.data['change']}
         return Message(type_=Message.Request,data=data,receiver=message.sender,sender=message.sender)
 
             
