@@ -51,8 +51,9 @@ has a unique set of behaviours and should be used appropriately. Each data type 
 three control parameters. The range of a data type can be controlled with a maximum (`max`) and
 minimum value (`min`). Some data types that do have a range of values should only increment in a
 specific sequence which can be controlled by the `step` parameter. The step of a value is the
-distance between two allowed values in a continuous range. It is a requirements that the step
-value is always a positive value and that the maximum value is greater than the minimum.
+distance between two allowed values in a continuous range. It is a requirement that the step
+value is always a positive value and that the maximum value is greater than or equal to
+the minimum.
 
 It should be noted that not all data types use these parameters. Some data types have pre-determined
 ranges or step values which are described for each data type below.
