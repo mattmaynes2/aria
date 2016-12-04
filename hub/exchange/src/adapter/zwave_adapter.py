@@ -15,7 +15,7 @@ from device   import ZWaveDevice
 from uuid import UUID
 from ipc import Message
 
-logging.disable(logging.INFO)
+logger = logging.getLogger(__name__)
 
 class ZWaveAdapter(Adapter):
 
@@ -44,6 +44,7 @@ class ZWaveAdapter(Adapter):
                                 data = device.processEvent(kwargs['value']), \
                                 sender = device.address, \
                                 receiver = Message.DEFAULT_ADDRESS)
+                logger.info("Received a ZWave event")
                 self.notify('received', event)
 
         except Exception as e:
@@ -56,6 +57,7 @@ class ZWaveAdapter(Adapter):
         node = kwargs["node"]
         device=self.buildDevice(node)
         self._devices[node.location]=device
+        logger.info("Discovered a ZWave device: " + device.name + " " + node.location)
         self.notify('discovered',device)
 
     def _setupCallbacks(self):
