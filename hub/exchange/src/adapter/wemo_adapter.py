@@ -72,7 +72,7 @@ class WemoAdapter (Adapter):
         elif('get' in message.data):
                 self.notify('received',Message(
                     type_ = Message.Response, 
-                    data = { 'response':'state' , 'value':device.get_state()}, 
+                    data = {'attribute':'state', 'changes':[{ 'name':'state' ,'value':device.get_state() }]}, 
                     sender = message.receiver))
                 return True
         log.warn("Don't know what to do with "+str(message.data))
@@ -94,6 +94,6 @@ class WemoAdapter (Adapter):
         uid=self._deviceMac[mac]
         self.notify('received',Message(
             type_ = Message.Event, 
-            data = { 'response':'state' , 'value':value }, 
+            data = {'attribute':'state', 'changes':[{ 'name':'state' , 'value':value }]}, 
             sender = uid)
             )
