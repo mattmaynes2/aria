@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS "Request" (
 	"source" TEXT,
 	"receiver" TEXT,
 	FOREIGN Key ("source") REFERENCES Device("address"),
-	FOREIGN Key ("receiver") REFERENCES Device("address"),
+	FOREIGN Key ("receiver") REFERENCES Device("address")
 );
 
 /*
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS "Event" (
 	"request_id" INTEGER,
 	"source" TEXT,	
 	FOREIGN KEY ("request_id") REFERENCES Request("id"),
-	FOREIGN KEY ("source") REFERENCES Device("address"),
+	FOREIGN KEY ("source") REFERENCES Device("address")
 );
 
 /*
@@ -43,8 +43,7 @@ CREATE TABLE IF NOT EXISTS "Parameter_Change" (
 	"event_id" INTEGER,
 	FOREIGN KEY ("parameter") REFERENCES Parameter("id"),
 	FOREIGN KEY ("request_id") REFERENCES Request("id"),
-	FOREIGN KEY ("event_id") REFERENCES Event("id"),
-
+	FOREIGN KEY ("event_id") REFERENCES Event("id")
 );
 
 /* 
