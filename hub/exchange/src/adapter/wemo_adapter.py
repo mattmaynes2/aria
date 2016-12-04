@@ -72,7 +72,7 @@ class WemoAdapter (Adapter):
         elif('get' in message.data):
                 self.notify('received',Message(
                     type_ = Message.Response, 
-                    data = {'attribute':'state', 'changes':[{ 'name':'state' ,'value':device.get_state() }]}, 
+                    data = {'response':'state', 'value':[{ 'name':'state' ,'value':device.get_state()}]}, 
                     sender = message.receiver))
                 return True
         log.warn("Don't know what to do with "+str(message.data))
