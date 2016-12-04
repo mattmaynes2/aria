@@ -20,10 +20,13 @@ logger = logging.getLogger(__name__)
 
 class ZWaveAdapter(Adapter):
 
-
     def __init__(self,controller='/dev/zstick',\
     configPath='/home/pi/python-openzwave/openzwave/config',
     userPath ='.'):
+        """
+        controller: The device path to the zstick. Defaults to /dev/zstick
+        configPath: Path to the OpenZWave config directory
+        """
         super().__init__()
 
         # Set up condition variable allowing us to check if the network is ready or not
@@ -45,7 +48,7 @@ class ZWaveAdapter(Adapter):
         logger.info("ZWave network is ready")
         with self._ready_condition:
             self._ready = True
-            self._ready_condition.notifyAll() 
+            self._ready_condition.notifyAll()
 
     def _nodeEventCallback(self, *args, **kwargs):
         node = kwargs['node']
@@ -81,15 +84,15 @@ class ZWaveAdapter(Adapter):
         dispatcher.connect(self._deviceDiscoveredCallback, ZWaveNetwork.SIGNAL_NODE_QUERIES_COMPLETE)
         dispatcher.connect(self._nodeEventCallback, ZWaveNetwork.SIGNAL_VALUE_CHANGED)
         dispatcher.connect(self._networkReadyCallback, ZWaveNetwork.SIGNAL_NETWORK_READY)
- 
+
     def send(self, message):
         logger.debug("ZWave adapter attempting to send message: " + str(message))
         if(message.type == Message.Request):
-            receiverString = str(UUID(bytes=message.receiver)) 
-            device = self._devices[receiverString] 
+            receiverString = str(UUID(bytes=message.receiver))
+            device = self._devices[receiverString]
             self._handleRequest(message, device)
         else:
-            log.warning("Unsure how to handle request")
+            log.warning("Invalid message type sent to ZWaveAdapter: " + str(message.type))
 
     def _handleRequest(self, message, device):
         if "get" in message.data:
@@ -97,15 +100,15 @@ class ZWaveAdapter(Adapter):
             self.notify("received", Message(
                 type_ = Message.Response,
                 data = {"response" : attributeName,
-                        "value" : device.getValue(attributeName) 
+                        "value" : device.getValue(attributeName)
                         },
                 sender = message.receiver,
                 receiver = message.sender))
             return True
         return False
-  
+
     def discover(self):
-        self.network.heal()    
+        self.network.heal()
 
     def setup(self):
         super().setup()

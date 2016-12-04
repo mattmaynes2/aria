@@ -17,7 +17,7 @@ class ZWaveDevice(Device):
         super().__init__(self._getDeviceType(node), name = node.name,address=uuid.uuid4().bytes,\
         version=str(node.version))
         self._node = node
-    
+
     def _getDeviceType(self, node):
         attributes = []
         for key,val in node.get_values(genre='User').items():
@@ -25,7 +25,7 @@ class ZWaveDevice(Device):
             min_=val.min, isControllable=not val.is_read_only,value=val.data)
             attribute=Attribute(val.label,parameters=[parameter])
             attributes.append(attribute)
-            self._valueMap[val.label] = val 
+            self._valueMap[val.label] = val
 
         return DeviceType(node.product_name, ZWaveDevice.PROTOCOL, node.manufacturer_name,\
         attributes=attributes)
@@ -33,22 +33,21 @@ class ZWaveDevice(Device):
 
     def getValue(self, attribute):
         """
-        Returns the value of and attribute
+        Returns the value of an attribute
         attribute is the name of the attribute (String)
         """
-        print(str(self._node.values))
-        return self._valueMap[attribute].data 
-    
+        return self._valueMap[attribute].data
+
     def processEvent(self, val):
         parameters = []
         parameterChange = {
             'name' : val.label,
             'value' : val.data
-        } 
+        }
         parameters.append(parameterChange)
         data = {
             'attribute' : val.label,
             'changes' : parameters
 	}
         return data
-        
+
