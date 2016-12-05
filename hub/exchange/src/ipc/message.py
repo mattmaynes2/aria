@@ -78,6 +78,6 @@ class Message:
             return str(obj)
         if (isinstance(obj, threading.Thread)):
             return str(obj)
-        if(callable(obj) or isinstance(obj,ZWaveNodei, ZWaveValue)):
+        if(callable(obj) or isinstance(obj,ZWaveNode, ZWaveValue)):
             return
         raise TypeError("Unserializable object {} of type {}".format(obj, type(obj)))
