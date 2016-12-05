@@ -79,7 +79,7 @@ class DatabaseTranslator(Delegate):
     
         for parameter in changes:
             parameterID = self._getParameterID(attributeID[0]["id"], parameter["name"])
-            self._setParameterChange(parameterID, event.data["value"], eventID)             
+            self._setParameterChange(parameterID, parameter["value"], eventID)             
 
     def _getParameterID(self, attributeID, paramName):       
         paramResults = self.database.execute(DatabaseTranslator.GET_PARAMETER, (attributeID, paramName))
