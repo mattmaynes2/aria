@@ -72,7 +72,7 @@ class DatabaseTranslator(Delegate):
         self.database.execute(DatabaseTranslator.EVENT, values)
         eventID = self.database.getLastInsertId()
 
-        attributeName = str(message.data["attribute"])
+        attributeName = str(event.data["attribute"])
         changes = event.data["changes"]
         attributeID = self._getAttributeID(self._getStr(event.sender), attributeName)
         parameterID = self._getParameterID(attributeID, parameter["name"])
