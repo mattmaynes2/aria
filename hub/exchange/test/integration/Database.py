@@ -1,7 +1,7 @@
 from unittest import TestCase
 import unittest
 from hub        import Hub, Exchange, CLI, args, daemon
-from device     import Device,DeviceType, Attribute, DataType 
+from device     import Device,DeviceType, Attribute, DataType, Parameter 
 from ipc import Message
 from adapter import Adapter
 from database import Database
@@ -24,7 +24,8 @@ class TestDatabaseIntegration(TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.devices = [Device(DeviceType("testname", "stub", "nobody", attributes=[Attribute('state',DataType.Binary)])) for i in range(0,20)]
+        self.devices = [Device(DeviceType("testname", "stub", "nobody", \
+        attributes=[Attribute('state',[Parameter('state',DataType.Binary)])])) for i in range(0,20)]
 
     def registerFakeDevices(self):
         for device in self.devices:

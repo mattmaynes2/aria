@@ -1,8 +1,13 @@
 import $ from 'jquery';
 
 class Component {
-    constructor (state) {
+    constructor (state, props) {
         this._state = state || {};
+        this._props = props || {};
+        this._observers = {
+            change  : [],
+            click   : [],
+        };
         this._$el = $('<div>');
     }
     update (state) {
@@ -13,6 +18,7 @@ class Component {
         return this;
     }
     remove () {
+        this._clickObserver = null;
         this._$el.remove();
         return this;
     }
@@ -30,6 +36,42 @@ class Component {
         this._state = state;
         return this;
     }
+    props (props) {
+        if (arguments.length === 0) {
+            return this._props;
+        }
+        this._props = props;
+        return this;
+    }
+    change (observer) {
+        if (this._observers.change.indexOf(observer) === -1) {
+            this._observers.change.push(observer);
+        }
+        return this;
+    }
+    click (observer) {
+        if (!this._clickObserver) {
+            this._clickObserver = this._clicked.bind(this);
+        } else {
+            this._$el.off(this._clickObserver);
+        }
+        this._$el.click(this._clickObserver);
+
+        if (this._observers.click.indexOf(observer) === -1) {
+            this._observers.click.push(observer);
+        }
+        return this;
+    }
+    _changed (custom) {
+        notify.call(this, this._observers.change, custom);
+    }
+    _clicked (custom) {
+        notify.call(this, this._observers.click, custom);
+    }
+}
+
+function notify (V, e) {
+    V.forEach((v) => { v(this._state, this, e); });
 }
 
 export default Component;

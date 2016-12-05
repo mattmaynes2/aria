@@ -10,9 +10,6 @@ class Button extends Component {
         this._$el.addClass('button').text(this._state);
         return this;
     }
-    click (click) {
-        this._$el.click(click);
-    }
 }
 
 export default Button;
