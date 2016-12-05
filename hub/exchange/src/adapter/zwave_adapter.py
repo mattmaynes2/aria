@@ -65,7 +65,7 @@ class ZWaveAdapter(Adapter):
                 self.notify('received', event)
 
         except Exception as e:
-            print("Error in node event callback: " + str(e))
+            logger.exception("Error in node event callback: " + str(e))
 
     def _deviceDiscoveredCallback(self,*args, **kwargs):
         """
