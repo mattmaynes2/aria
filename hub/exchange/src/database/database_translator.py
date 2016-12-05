@@ -83,13 +83,13 @@ class DatabaseTranslator(Delegate):
         paramResults = self.database.execute(DatabaseTranslator.PARAMETER, (name, attribute))
         return paramResults["id"]
 
-    def _getAttributeID(self, UUID, attributeName):
-        typeResults = self._getDeviceType(UUID)
+    def _getAttributeID(self, address, attributeName):
+        typeResults = self._getDeviceType(address)
         type_ = str(typeResults["type"])
         return self.database.execute(DatabaseTranslator.GET_ATTRIBUTE, (type_, attributeName))
 
-    def _getDeviceType(self, UUID):
-        return self.database.execute(DatabaseTranslator.GET_DEVICE_TYPE, UUID)
+    def _getDeviceType(self, address):
+        return self.database.execute(DatabaseTranslator.GET_DEVICE_TYPE, address)
 
     def _getStr(self, bytes_):
         return str(UUID(bytes = bytes_))
