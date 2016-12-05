@@ -76,7 +76,7 @@ class DatabaseTranslator(Delegate):
         changes = event.data["changes"]
         attributeID = self._getAttributeID(self._getStr(event.sender), attributeName)
     
-        for parameter in change:
+        for parameter in changes:
             parameterID = self._getParameterID(attributeID, parameter.name)
             self._setParameterChange(parameterID, event.data["value"], eventID)             
 
