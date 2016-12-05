@@ -89,6 +89,8 @@ class DatabaseTranslator(Delegate):
         return self.database.execute(DatabaseTranslator.GET_ATTRIBUTE, (type_, attributeName))
 
     def _getDeviceType(self, address):
+        print("Type: " + type(address))
+        print("Address: " + str(address))
         return self.database.execute(DatabaseTranslator.GET_DEVICE_TYPE, address)
 
     def _getStr(self, bytes_):
