@@ -49,7 +49,7 @@ class DatabaseTranslator(Delegate):
             for attribute in device.deviceType.attributes:
                 self._setAttribute(attribute, deviceType)
                 attributeId = self.database.getLastInsertId()
-                for parameter in device.deviceType.attributes.parameters:
+                for parameter in attribute.parameters:
                     self._setParameter(attributeId, parameter)
 
         else:
