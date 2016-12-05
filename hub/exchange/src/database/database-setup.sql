@@ -57,13 +57,13 @@ CREATE TABLE IF NOT EXISTS "Device_Type" (
 );
 
 /*
-id        --  UUID of device or sensor
+address        --  UUID of device or sensor
 version   --  firmware version of device 
 type      --  type of the device
 name      --  user specified name of device
 */
 CREATE TABLE IF NOT EXISTS "Device" (
-	"id" TEXT PRIMARY KEY ,
+	"address" TEXT PRIMARY KEY ,
 	"version" TEXT,
 	"type" INTEGER,
 	"name" TEXT,
