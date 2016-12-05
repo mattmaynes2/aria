@@ -47,10 +47,10 @@ class DatabaseTranslator(Delegate):
             self.database.execute(DatabaseTranslator.DEVICE_TYPE, typeValues)
             deviceType = self.database.getLastInsertId()
             for attribute in device.deviceType.attributes:
-                _setAttribute(deviceType, attribute)
+                self._setAttribute(attribute, deviceType)
                 attributeId = self.database.getLastInsertId()
                 for parameter in device.deviceType.attributes.parameters:
-                    _setParameter(attributeId, parameter)
+                    self._setParameter(attributeId, parameter)
 
         else:
             log.warning("Device discoverd with null address")
@@ -74,8 +74,8 @@ class DatabaseTranslator(Delegate):
 
         attributeName = str(message.data["attribute"])
         changes = event.data["changes"]
-        attributeID = _getAttributeID(self._getStr(event.sender), attributeName)
-        parameterID = _getParameterID(attributeID, parameter["name"])
+        attributeID = self._getAttributeID(self._getStr(event.sender), attributeName)
+        parameterID = self._getParameterID(attributeID, parameter["name"])
         for parameter in change:
             _setParameterChange(parameterID, parameter["value"], eventID)             
 
@@ -84,7 +84,7 @@ class DatabaseTranslator(Delegate):
         return paramResults["id"]
 
     def _getAttributeID(self, UUID, attributeName):
-        typeResults = _getDeviceType(UUID)
+        typeResults = self._getDeviceType(UUID)
         type_ = str(typeResults["type"])
         return self.database.execute(DatabaseTranslator.GET_ATTRIBUTE, (type_, attributeName))
 
