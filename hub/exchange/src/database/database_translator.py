@@ -15,9 +15,9 @@ class DatabaseTranslator(Delegate):
     PARAMETER_CHANGE  = "INSERT INTO Parameter_Change (parameter, value, request_id, event_id) VALUES \
                         (?, ?, ?, ?)"
 
-    GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute = ? and name = ?"
+    GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute_id = ? and name = ?"
     GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE address = ?"
-    GET_ATTRIBUTE     = "SELECT id FROM Attribute WHERE device_type = ? AND name = ?"
+    GET_ATTRIBUTE     = "SELECT id FROM Attributes WHERE device_type = ? AND name = ?"
 
     SET_DEVICE_TYPE   = "INSERT INTO DEVICE_TYPE (name, protocol, maker) VALUES (?, ?, ?)"
     SET_ATTRIBUTE     = "INSERT INTO Attributes (name, device_type, controllable) VALUES (?, ?, ?)"
