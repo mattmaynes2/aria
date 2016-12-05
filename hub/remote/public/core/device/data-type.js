@@ -3,30 +3,37 @@ import Component from '../component';
 import './data-type.css';
 
 class DataType extends Component {
-    constructor (state) {
+    static get Binary   () { return 'binary';   }
+    static get Color    () { return 'color';    }
+    static get Date     () { return 'date';     }
+    static get Enum     () { return 'enum';     }
+    static get Float    () { return 'float';    }
+    static get List     () { return 'list';     }
+    static get Integer  () { return 'int';      }
+    static get String   () { return 'string';   }
+    static get Time     () { return 'time';     }
+
+    constructor (state, props) {
         super();
-        state = state || {};
-        this._state = {
-            dataType    : state.dataType    || '',
-            value       : state.value       || ''
-        };
+        this._state = state || '';
+        this._props = props || '';
     }
     render () {
         this._$el.addClass('device-data-type');
-        switch (this._state.dataType) {
-            case 'binary':
-                this._$el.text(this._state.value ? 'On' : 'Off');
+        switch (this.props) {
+            case DataType.Binary:
+                this._$el.text(this._state ? 'On' : 'Off');
                 break;
-            case 'color':
+            case DataType.Color:
                 this._$el
-                    .css('background-color', '#' + this._state.value)
-                    .css('color', brightness(this._state.value) > 100 ?
+                    .css('background-color', '#' + this._state)
+                    .css('color', brightness(this._state) > 100 ?
                         'black' : 'white'
                     )
-                    .text('#' + this._state.value.toUpperCase());
+                    .text('#' + this._state.toUpperCase());
                 break;
             default:
-                this._$el.text(this._state.value);
+                this._$el.text(this._state);
                 break;
         }
         return this;

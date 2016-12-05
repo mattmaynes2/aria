@@ -2,10 +2,11 @@ import uuid
 import json
 from unittest import TestCase
 from unittest.mock import Mock,patch
-from device import Device, DeviceType,Attribute,DataType
+from device import Device, DeviceType,Attribute,DataType, Parameter
 from hub import Hub
-from database import RequestTracker
+from delegate import RequestTracker
 from ipc import Message
+from database import Database
 
 
 class RequestTrackerTest(TestCase):
@@ -13,9 +14,10 @@ class RequestTrackerTest(TestCase):
     def setUp(self):
         self.id=uuid.uuid4().bytes        
         self.dev=Device(DeviceType('WeMo Switch','wemo', maker='WeMo', \
-        attributes=[Attribute('state',DataType.Binary)]), name= 'Lamp Switch', address=self.id,\
-         version='0.1.0')
-        self.hub=Hub()
+        attributes=[Attribute('state',[Parameter('state',DataType.Binary)]),\
+        Attribute('noControl',[Parameter('noControl',DataType.Binary, value=1)],isControllable=False)])\
+        , name= 'Lamp Switch', address=self.id,version='0.1.0')
+        self.hub=Hub(Database())
 
 
     @patch('database.DatabaseTranslator')       
@@ -55,10 +57,31 @@ class RequestTrackerTest(TestCase):
 
         self.hub.addDevice(self.dev)
         tracker=RequestTracker(MockTranslator, self.hub)
-        tracker.received(Message(Message.Event, data={'response':'state', 'value':0},\
+        tracker.received(Message(Message.Event, data={'attribute':'state', 'change':\
+        [{'name':'state', 'value':0}]},\
             sender=self.id,receiver=uuid.uuid4().bytes))
         
         self.assertEqual(tracker.requests.get(self.dev.address),10)
+
+
+    @patch('database.DatabaseTranslator')
+    def test_no_request(self,MockTranslator):
+
+        def receive(message):
+            if (message.type == Message.Request):
+                return 10
+            elif (message.type == Message.Event):
+                self.assertFalse('requestId' in message.data)
+                
+        MockTranslator.received=receive
+
+        self.hub.addDevice(self.dev)
+        tracker=RequestTracker(MockTranslator, self.hub)
+        ret=tracker.received(Message(Message.Event, data={'attribute':'noControl', 'change':\
+        [{'name':'noControl', 'value':0}]},\
+            sender=self.id,receiver=uuid.uuid4().bytes))
+        self.assertIsNone(ret)
+        self.assertEqual(tracker.requests.get(self.dev.address),None)
 
          
 
