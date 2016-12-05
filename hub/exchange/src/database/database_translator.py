@@ -77,7 +77,7 @@ class DatabaseTranslator(Delegate):
         attributeID = self._getAttributeID(self._getStr(event.sender), attributeName)
         parameterID = self._getParameterID(attributeID, parameter["name"])
         for parameter in change:
-            _setParameterChange(parameterID, parameter["value"], eventID)             
+            self._setParameterChange(parameterID, parameter["value"], eventID)             
 
     def _getParameterID(self, attributeID, paramName):       
         paramResults = self.database.execute(DatabaseTranslator.PARAMETER, (name, attribute))
@@ -97,13 +97,13 @@ class DatabaseTranslator(Delegate):
     def _setParameterChange(self, parameter, value, event=None):
         values = (parameter, value, event, request)
         self.database.execute(DatabaseTranslator.PARAMETER_CHANGE, values)
-        return self.database.execute(GET_LAST_PARAMETER_ID)
+        return self.database.execute(DatabaseTranslator.GET_LAST_PARAMETER_ID)
 
     def _setAttribute(self, attribute, type_):
         values = (str(attribute.name), type_, str(attribute.isControllable))
-        self.database.execute(SET_ATTRIBUTE, values)
+        self.database.execute(DatabaseTranslator.SET_ATTRIBUTE, values)
 
     def _setParameter(self, attributeId, parameter):
         values = (str(parameter.name), attributeId, str(parameter.dataType), str(parameter.max)\
         , str(parameter.min), str(parameter.step))
-        self.database.execute(SET_PARAMETER, values)
+        self.database.execute(DatabaseTranslator.SET_PARAMETER, values)
