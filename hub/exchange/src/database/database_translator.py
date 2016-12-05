@@ -12,10 +12,10 @@ class DatabaseTranslator(Delegate):
     DISCOVER          = "INSERT INTO Device (address, version, name) VALUES (?, ?, ?)"
     REQUEST           = "INSERT INTO Request (source, receiver) VALUES (?, ?)"
     EVENT             = "INSERT INTO Event (request_id, source) VALUES (?, ?)"
-    PARAMETER_CHANGE  = "INSERT INTO Parameter_Change (parameter, value, request_id, event_id) VALUES \
-                        (?, ?, ?, ?)"
+    PARAMETER_CHANGE  = "INSERT INTO Parameter_Change (parameter, value, event_id) VALUES \
+                        (?, ?, ?)"
 
-    GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute_id = ? and name = ?"
+    GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute_id = ? AND name = ?"
     GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE address = ?"
     GET_ATTRIBUTE     = "SELECT id FROM Attributes WHERE device_type = ? AND name = ?"
 
@@ -76,7 +76,7 @@ class DatabaseTranslator(Delegate):
         attributeID = self._getAttributeID(self._getStr(event.sender), attributeName)
     
         for parameter in changes:
-            parameterID = self._getParameterID(attributeID, parameter["name"])
+            parameterID = self._getParameterID(attributeID[0]["id"], parameter["name"])
             self._setParameterChange(parameterID, event.data["value"], eventID)             
 
     def _getParameterID(self, attributeID, paramName):       
