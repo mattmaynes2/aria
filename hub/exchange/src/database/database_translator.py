@@ -9,7 +9,7 @@ log=logging.getLogger(__name__)
 
 class DatabaseTranslator(Delegate):
 
-    DISCOVER          = "INSERT INTO Device (address, version, name) VALUES (?, ?, ?)"
+    DISCOVER          = "INSERT INTO Device (address, version, type, name) VALUES (?, ?, ?, ?)"
     REQUEST           = "INSERT INTO Request (source, receiver) VALUES (?, ?)"
     EVENT             = "INSERT INTO Event (request_id, source) VALUES (?, ?)"
     PARAMETER_CHANGE  = "INSERT INTO Parameter_Change (parameter, value, event_id) VALUES \
@@ -39,12 +39,14 @@ class DatabaseTranslator(Delegate):
     def discovered (self, device):
         log.debug('Received ' + str(device))
         if device.address :
-            self.database.execute(DatabaseTranslator.DISCOVER, (self._getStr(device.address)\
-            , str(device.version), str(device.name)))
             typeValues = (str(device.deviceType.name), str(device.deviceType.protocol)\
             , str(device.deviceType.maker))
             self.database.execute(DatabaseTranslator.SET_DEVICE_TYPE, typeValues)
+
             deviceType = self.database.getLastInsertId()
+
+            self.database.execute(DatabaseTranslator.DISCOVER, (self._getStr(device.address)\
+            , str(device.version), deviceType, str(device.name)))           
             for attribute in device.deviceType.attributes:
                 self._setAttribute(attribute, deviceType)
                 attributeId = self.database.getLastInsertId()
