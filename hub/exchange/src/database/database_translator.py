@@ -16,12 +16,16 @@ class DatabaseTranslator(Delegate):
                         (?, ?, ?, ?)"
     PARAMETER         = "INSERT INTO Parameter (attribute, data_type, max, min, step) VALUES \
                          (?, ?, ?, ?, ?)"
-    DEVICE_TYPE       = "INSERT INTO DEVICE_TYPE (protocol, maker) VALUES (?, ?)"
+    DEVICE_TYPE       = "INSERT INTO DEVICE_TYPE (name, protocol, maker) VALUES (?, ?, ?)"
     GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute = ? and name = ?"
     GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE id = ?"
     GET_ATTRIBUTE     = "SELECT id FROM Attribute WHERE device_type = ? AND name = ?"
 
-    GET_LAST_PARAMETER_ID       = "SELECT * FROM Parameter_Change ORDER BY id DESC LIMIT 1"
+    SET_ATTRIBUTE     = "INSERT INTO Attributes (name, device_type, controllable) VALUES (?, ?, ?)"
+    SET_PARAMETER     = "INSERT INTO Parameter (name, attribute_id, data_type, max, min, step) \
+                         VALUES (?, ?, ?, ?, ?, ?)"
+
+    GET_LAST_PARAMETER_ID = "SELECT * FROM Parameter_Change ORDER BY id DESC LIMIT 1"
 
     def __init__ (self, database):
        self.database = database
@@ -38,6 +42,16 @@ class DatabaseTranslator(Delegate):
         if device.address :
             self.database.execute(DatabaseTranslator.DISCOVER, (self._getStr(device.address)\
             , str(device.version), str(device.name)))
+            typeValues = (str(device.deviceType.name), str(device.deviceType.protocol)\
+            , str(device.deviceType.maker))
+            self.database.execute(DatabaseTranslator.DEVICE_TYPE, typeValues)
+            deviceType = self.database.getLastInsertId()
+            for attribute in device.deviceType.attributes:
+                _setAttribute(deviceType, attribute)
+                attributeId = self.database.getLastInsertId()
+                for parameter in device.deviceType.attributes.parameters:
+                    _setParameter(attributeId, parameter)
+
         else:
             log.warning("Device discoverd with null address")
 
@@ -59,7 +73,7 @@ class DatabaseTranslator(Delegate):
         eventID = self.database.getLastInsertId()
 
         attributeName = str(message.data["attribute"])
-        changes = message.data["changes"]
+        changes = event.data["changes"]
         attributeID = _getAttributeID(self._getStr(event.sender), attributeName)
         parameterID = _getParameterID(attributeID, parameter["name"])
         for parameter in change:
@@ -84,3 +98,12 @@ class DatabaseTranslator(Delegate):
         values = (parameter, value, event, request)
         self.database.execute(DatabaseTranslator.PARAMETER_CHANGE, values)
         return self.database.execute(GET_LAST_PARAMETER_ID)
+
+    def _setAttribute(self, attribute, type_):
+        values = (str(attribute.name), type_, str(attribute.isControllable))
+        self.database.execute(SET_ATTRIBUTE, values)
+
+    def _setParameter(self, attributeId, parameter):
+        values = (str(parameter.name), attributeId, str(parameter.dataType), str(parameter.max)\
+        , str(parameter.min), str(parameter.step))
+        self.database.execute(SET_PARAMETER, values)
