@@ -14,8 +14,7 @@ class DatabaseTranslator(Delegate):
     EVENT             = "INSERT INTO Event (request_id, source) VALUES (?, ?)"
     PARAMETER_CHANGE  = "INSERT INTO Parameter_Change (parameter, value, request_id, event_id) VALUES \
                         (?, ?, ?, ?)"
-    PARAMETER         = "INSERT INTO Parameter (attribute, data_type, max, min, step) VALUES \
-                         (?, ?, ?, ?, ?)"
+
     GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute = ? and name = ?"
     GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE address = ?"
     GET_ATTRIBUTE     = "SELECT id FROM Attribute WHERE device_type = ? AND name = ?"
@@ -81,7 +80,7 @@ class DatabaseTranslator(Delegate):
             self._setParameterChange(parameterID, event.data["value"], eventID)             
 
     def _getParameterID(self, attributeID, paramName):       
-        paramResults = self.database.execute(DatabaseTranslator.PARAMETER, (paramName, attributeID))
+        paramResults = self.database.execute(DatabaseTranslator.GET_PARAMETER, (attributeID, paramName))
         return paramResults[0]["id"]
 
     def _getAttributeID(self, address, attributeName):
