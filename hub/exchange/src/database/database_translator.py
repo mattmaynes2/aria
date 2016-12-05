@@ -16,11 +16,11 @@ class DatabaseTranslator(Delegate):
                         (?, ?, ?, ?)"
     PARAMETER         = "INSERT INTO Parameter (attribute, data_type, max, min, step) VALUES \
                          (?, ?, ?, ?, ?)"
-    DEVICE_TYPE       = "INSERT INTO DEVICE_TYPE (name, protocol, maker) VALUES (?, ?, ?)"
     GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute = ? and name = ?"
-    GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE id = ?"
+    GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE address = ?"
     GET_ATTRIBUTE     = "SELECT id FROM Attribute WHERE device_type = ? AND name = ?"
 
+    SET_DEVICE_TYPE   = "INSERT INTO DEVICE_TYPE (name, protocol, maker) VALUES (?, ?, ?)"
     SET_ATTRIBUTE     = "INSERT INTO Attributes (name, device_type, controllable) VALUES (?, ?, ?)"
     SET_PARAMETER     = "INSERT INTO Parameter (name, attribute_id, data_type, max, min, step) \
                          VALUES (?, ?, ?, ?, ?, ?)"
@@ -44,7 +44,7 @@ class DatabaseTranslator(Delegate):
             , str(device.version), str(device.name)))
             typeValues = (str(device.deviceType.name), str(device.deviceType.protocol)\
             , str(device.deviceType.maker))
-            self.database.execute(DatabaseTranslator.DEVICE_TYPE, typeValues)
+            self.database.execute(DatabaseTranslator.SET_DEVICE_TYPE, typeValues)
             deviceType = self.database.getLastInsertId()
             for attribute in device.deviceType.attributes:
                 self._setAttribute(attribute, deviceType)
