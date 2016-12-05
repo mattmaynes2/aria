@@ -99,7 +99,7 @@ class DatabaseTranslator(Delegate):
     def _setParameterChange(self, parameter, value, event=None):
         values = (parameter, value, event)
         self.database.execute(DatabaseTranslator.PARAMETER_CHANGE, values)
-        return self.database.execute(DatabaseTranslator.GET_LAST_PARAMETER_ID)
+        return self.database.getLastInsertId()
 
     def _setAttribute(self, attribute, type_):
         values = (str(attribute.name), type_, str(attribute.isControllable))
