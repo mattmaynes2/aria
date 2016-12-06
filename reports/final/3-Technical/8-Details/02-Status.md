@@ -1,9 +1,9 @@
 ### Project Status {#section-details-status}
 
-The project planning and development has been an intertwined process that has changed the
-direction of the project on a week to week basis. Every week the team selects a set of tasks
-to focus on in order to achieve the next major milestone. This process has been iterative and
-is allowing for incremental development of the system.
+The project planning and development has been an intertwined process that has resulted in a
+more focused direction of the project on a week to week basis. Every week the team selects a
+set of tasks to focus on in order to achieve the next major milestone. This process has been
+iterative and is allowing for incremental development of the system.
 
 #### Current Status {-}
 
