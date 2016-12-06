@@ -50,6 +50,7 @@ class ZWaveDevice(Device):
         }
         parameters.append(parameterChange)
         data = {
+            'event' : 'device.event',
             'attribute' : val.label,
             'changes' : parameters
 	}
