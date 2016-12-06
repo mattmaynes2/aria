@@ -64,7 +64,7 @@ let ExchangeAdapter = (function () {
             try {
                 var parsed = IPC.parse(message);
                 logger.debug('Message payload: ', parsed.payload);
-                this.signal(observable.NEXT, parsed.payload.event, parsed.payload.data);
+                this.signal(observable.NEXT, parsed.payload.event, parsed.payload);
             } catch (err) {
                 logger.error('Error parsing push message from exchange');
                 this.signal(observable.ERROR, 'error',  err);
