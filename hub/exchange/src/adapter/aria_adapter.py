@@ -52,7 +52,7 @@ class AriaAdapter (Adapter):
                 self.shutdown_socket.close()
             else:
                 os.write(self.self_wd, bytes('x', 'utf-8'))
-            
+
         except OSError:
             log.warn("Failed to write to self pipe, the server may not shut down properly")
 
@@ -130,15 +130,16 @@ class AriaAdapter (Adapter):
         if(device.address == Hub.ADDRESS):
             return
         try:
-            data={'event':'device.discovered', 'data':device}
-            msg = Message(Message.Event,data)
+            payload={'event':'device.discovered', 'data':device}
+            msg = Message(Message.Event,data=payload)
             self.pushBack(msg)
         except:
             log.exception('Error pushing back discover message')
-    
+
     def received(self,message):
-        log.debug('pushing back event '+str(message))
-        self.pushBack(message)
+        if(message.type == Message.Event):
+            log.debug('pushing back event '+str(message))
+            self.pushBack(message)
 
 
 
