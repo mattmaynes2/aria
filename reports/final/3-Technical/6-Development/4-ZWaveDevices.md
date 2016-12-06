@@ -1,17 +1,17 @@
-## Communication with Z-Wave Devices
+### Communication with Z-Wave Devices {#section-zwave-implementation}
 
 The system uses the Aeotec Z-Stick Series 2 from Aeon Labs to communicate with
 Z-Wave devices from the system's hub. The Z-Stick is attached to a USB port in the
 system hub device (Raspberry Pi).
 
-### Controlling the Z-Stick
+#### Controlling the Z-Stick {-}
 
 When connected to a USB port, the Z-Stick exposes a proprietary serial API, which
 can be used by controller software to manage a network of Z-Wave devices. This document
 describes how the hub software uses the Z-Stick to communicate with devices in 
 the home's network.
 
-### Z-Stick API
+#### Z-Stick API {-}
 
 There are several challenges to overcome in order to write Z-Wave controller software that
 uses the Z-Stick.
@@ -25,7 +25,7 @@ In order to avoid the difficulties of using the Z-Stick API directly, we chose t
 a Z-Wave controller library which provides a higher level of abstraction away from the 
 Z-Stick API.
 
-### Library Alternatives
+#### Library Alternatives {-}
 
 Comparison Criteria
 
@@ -38,7 +38,7 @@ in the project
 
 - Is documentation and tutorial material readily accessible?
 
-#### Sigma Designs Developer Kit (ZWare)
+##### Sigma Designs Developer Kit (ZWare) {-}
 
 Sigma Designs is the primary company involved in development of the Z-Wave protocol. Sigma Designs
 provides an developer kit, targeted at companies that are attempting to build custom Z-Wave devices.
@@ -54,7 +54,7 @@ The developer kit provides access to the following software resources:
 - Z-Ware C API
 - Sample applications
 
-#### OpenZWave
+##### OpenZWave {-}
 
 OpenZWave is a free open-source library for communicating with ZWave devices using compatible
 ZWave controller devices. The Aeotec Z-Stick is fully compatible with OpenZWave. OpenZWave is a 
@@ -65,7 +65,7 @@ used by several existing home automation products to communicate with devices, w
 Github and an active community of developers [67]. Additionally, OpenZWave is a member of the ZWave 
 Alliance, the consortium of companies that certifies ZWave devices [68]. 
 
-### Comparison
+#### Comparison {-}
 
 | Library       | Python Binding  | Maturity     | Availability      |
 | ------------- | --------------- | ------------ | ------------      |

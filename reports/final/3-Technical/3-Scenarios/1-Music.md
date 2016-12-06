@@ -130,4 +130,5 @@ A group of the partygoers decide to move down to the basement for their game. Wh
 detected in the basement, the system turns on the lightstrips to a dim red colour and turns the 
 basement sound system on.
 
-After everyone leaves for the night, 
+After everyone leaves for the night, BasementLightStrips, BasementSpeaker, and DenSpeakers turn off.
+Thermostat is re-adjusted to the temperature before the party began.
