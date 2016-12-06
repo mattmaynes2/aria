@@ -32,7 +32,7 @@ class ZWaveAdapter(Adapter):
         # Set up condition variable allowing us to check if the network is ready or not
         self._ready = False
         self._lock = threading.Lock()
-        self._ready_condition = threading.Condition(self._lock)
+        #self._ready_condition = threading.Condition(self._lock)
 
         # Pass some default options to OpenZWave
         self.defaultOptions= ZWaveOption(controller,config_path=configPath,user_path=userPath)
@@ -46,9 +46,9 @@ class ZWaveAdapter(Adapter):
 
     def _networkReadyCallback(self, *args, **kwargs):
         logger.info("ZWave network is ready")
-        with self._ready_condition:
-            self._ready = True
-            self._ready_condition.notifyAll()
+        #with self._ready_condition:
+         #   self._ready = True
+          #  self._ready_condition.notifyAll()
 
     def _nodeEventCallback(self, *args, **kwargs):
         node = kwargs['node']
