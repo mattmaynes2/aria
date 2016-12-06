@@ -3,6 +3,7 @@ from .parameter import Parameter
 from .data_types import DataType
 from .attribute import Attribute
 from .device_type import DeviceType
+import time
 
 import uuid
 
@@ -46,13 +47,19 @@ class ZWaveDevice(Device):
         parameters = []
         parameterChange = {
             'name' : val.label,
-            'value' : val.data
+            'value' : val.data,
+            'dataType' : ZWaveDevice.dataMappings[val.type]
         }
         parameters.append(parameterChange)
         data = {
             'event' : 'device.event',
-            'attribute' : val.label,
-            'changes' : parameters
+            'timestamp' : int(time.time()),
+            'device' : self._node.name,
+            'deviceType' : self._node.product_name,
+            'attribute' : {
+                'name' : val.label,
+                'parameters' : parameters
+            }
 	}
         return data
 
