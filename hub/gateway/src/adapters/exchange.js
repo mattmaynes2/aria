@@ -66,7 +66,7 @@ let ExchangeAdapter = (function () {
                 logger.debug('Push message payload: ', parsed.payload);
                 this.signal(observable.NEXT, parsed.payload.event, parsed.payload.data);
             } catch (err) {
-                logger.error('Error parsing push message from exchange');
+                logger.error('Error parsing push message from exchange. Stack:', err.stack);
                 this.signal(observable.ERROR, 'error',  err);
             }
         });
