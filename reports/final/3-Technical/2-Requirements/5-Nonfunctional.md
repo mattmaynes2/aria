@@ -13,7 +13,7 @@ protocol to communicate with the necessary nodes.
 
 ##### System Responsiveness {-}
 
-The system must readily adapt to environmental changes to be effective. When in training mode, the
+The system must readily adapt to environmental changes to be effective. When in learning mode, the
 system does not make any decisions and therefore has no responsiveness requirement. However, when
 the system enters playback mode it must make decisions as fast as environmental changes are
 received. This will ensure that the system is as responsive as possible when a user performs an

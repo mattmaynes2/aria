@@ -28,7 +28,7 @@ the system will use this information to predict future actions.
 To be able to monitor and control the system, the learning hub must be controllable using a
 graphical interface. This interface will be provided in the form of a web interface and allow the
 user to view the state of the system and manually control any connected device. This interface can
-be used for manually configuring desired behaviours as well as for enabling the training mode of the
+be used for manually configuring desired behaviours as well as for enabling the learning mode of the
 system. The interface must allow the user to view the state of all devices in the system as well as
 view their recorded interactions.
 
