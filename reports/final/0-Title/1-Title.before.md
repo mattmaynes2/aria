@@ -34,12 +34,7 @@
 	<br/>
 	<br/>
 	<br/>
-	<p id="date-now"></p>
+	<p>December 9, 2016</p>
 </div>
 
-<script>
-var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var date = new Date();
-document.getElementById('date-now').textContent = MONTHS[date.getMonth()] + ' ' date.getDay() + ', ' + date.getFullYear();
-</script>
 <p style="page-break-after:always;"></p>
