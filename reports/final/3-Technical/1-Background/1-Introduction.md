@@ -5,7 +5,7 @@ been a vast expansion into micro-computing and the Internet of Things (IoT). The
 automation system is yet another project in this growing field. This section describes the 
 technical details of the project including its research, design and implementation
 
-First the requirements for the project are outline with technical details and requirements
+First the requirements for the project are outlined with technical details and requirements
 for the system. To better understand the features that are currently available, how they work,
 and where they can be improved, the report goes into research of existing system. Most of these systems
 perform some of the same functionality we are looking to implement, so they are not being considered
