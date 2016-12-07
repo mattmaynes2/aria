@@ -19,7 +19,7 @@ can currently perform the following tasks:
 
 The user is able to add devices to the system by connecting them to the network and following
 the discovery sequence. Discovery is different for different devices and protocols. The system
-is able to automatically discover WiFi devices using UPnP discovery.
+is able to automatically discover Z-Wave devices using the OpenZWave library.
 
 ##### Device displayed in user interface {-}
 
