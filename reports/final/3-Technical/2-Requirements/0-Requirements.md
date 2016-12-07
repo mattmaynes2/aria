@@ -1,6 +1,6 @@
 ## Requirements {#section-reqs}
 
-### Introduction
+### Overview
 
 #### Introduction {-}
 
@@ -14,13 +14,7 @@ home network. After connecting the hub, the homeowner can add enabled devices fo
 control by simply connecting them to the network. As new devices are connected, their input will be
 used to make more predictive decisions about user behaviour.
 
-#### Document Conventions {-}
-
-In the remainder of this document, "the system" refers to the ARIA system described in the introduction.
-The format of this report was adapted from the format recommended in IEEE-830 (Recommended Practice
-for Software Requirements Specifications).
-
-#### Product Scope {-}
+#### Project Scope {-}
 
 The purpose of the system is to make home automation as easy as possible to set up. Many existing
 home automation systems require some form of programming from the user, in the form of a schedule or
