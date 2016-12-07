@@ -12,7 +12,7 @@ discovery sequence in both scenarios.
 User initiated discovery begins with the user requesting the server to send a discovery request.
 The message then propagates through the system to the communication server which sends a broadcast
 discovery message to find new devices. If a device receives a request to be discovered then it
-begins the device [driven discovery sequence](#7.3-Device-Driven-Discovery)
+begins the device driven discovery sequence
 
 ![](./uml/UserDrivenDiscovery.png)
 

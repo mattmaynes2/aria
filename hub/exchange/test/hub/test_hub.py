@@ -1,7 +1,7 @@
 import uuid
 from unittest import TestCase
 from hub import Hub,HubMode
-from device import Device, DeviceType, Attribute, DataType
+from device import Device, DeviceType, Attribute, DataType, Parameter
 from database import Database
 
 
@@ -21,8 +21,8 @@ class HubTest (TestCase):
     def test_get_device(self):
         id=uuid.uuid4()        
         dev=Device(DeviceType('WeMo Switch','wemo', maker='WeMo', \
-        attributes=[Attribute('state',DataType.Binary)]), name= 'Lamp Switch', address= id.bytes,\
-         version='0.1.0')
+        attributes=[Attribute('state',parameters=[Parameter('state',DataType.Binary)])]), \
+        name = 'Lamp Switch', address= id.bytes,version='0.1.0')
         self.hub.addDevice(dev)
         expected=[dev]
         self.assertEqual(self.hub.getCommand('devices'), expected)

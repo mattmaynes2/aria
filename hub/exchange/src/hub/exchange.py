@@ -56,8 +56,6 @@ class Exchange (Delegate):
             log.debug('Routing message to ' + str(UUID(bytes=message.receiver)))
             self.send(self._devices[message.receiver], message)
             log.debug('Done routing message')
-        else:
-            log.error('FUCK this message '+str(message))
 
     def discoverDevices(self):
         for _, adapter in self._adapters.items():

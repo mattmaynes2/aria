@@ -6,7 +6,7 @@ The gateway interface provides a public interface for controlling the Aria syste
 The gateway uses a REST protocol for requesting or controlling static data about the system.
 For dynamic data, the gateway uses websocket messages. Below is the public REST API for the
 gateway. To see the available events over websockets
-[see gateway websocket events](#design-api-gw-ws).
+[see gateway websocket events](#section-design-api-ws).
 
 #### Endpoint Documentation {-}
 
@@ -19,7 +19,7 @@ gateway. To see the available events over websockets
 |       		| hub. The return from this call will indicate if the process has started but	|
 |       		| not if any devices have yet been discovered. All device discoveries will be	|
 | 				| returned over websocket messages 												|
-|				| ([see device discovered](#design-api-gw-ws-discovered)) for more details. 	|
+|				| ([see device discovered](#section-design-api-ws-discovered)) for more details.|
 +---------------+-------------------------------------------------------------------------------+
 | URL         	| `/hub/discover` 																|
 +---------------+-------------------------------------------------------------------------------+
@@ -200,9 +200,7 @@ gateway. To see the available events over websockets
 | 				| 			--data '{ "start" : 10, "count" : 10 }'	 							|
 +---------------+-------------------------------------------------------------------------------+
 
-
-##### Device List
-
+##### Device List {-}
 
 +---------------+-------------------------------------------------------------------------------+
 | Title     	| **Get Devices**                                        						|
@@ -264,7 +262,7 @@ gateway. To see the available events over websockets
 | Sample Call	| `curl -X GET http://localhost:8080/device/list`		 						|
 +---------------+-------------------------------------------------------------------------------+
 
-##### Device Events
+##### Device Events {-}
 
 +---------------+-------------------------------------------------------------------------------+
 | Title     	| **Get Device Event Log**	                                      				|

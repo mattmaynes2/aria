@@ -2,8 +2,8 @@
 
 #### Audience {-}
 
-This document describes the high level architecture of the Aria system. It details the major
-components within the system as well as their deployment artifacts. This document is intended
+This section describes the high level architecture of the Aria system. It details the major
+components within the system as well as their deployment artifacts. This section is intended
 for a technical audience to understand the organization, deployment and internals of the
 Aria system.
 

@@ -23,7 +23,7 @@ interface. The ML algorithm will receive data from the event logger using snapsh
 These data snapshots will reduce the amount of information that the ML algorithm needs to process 
 by removing redundant information.
 
-##### Communication Server {-}
+##### Exchange Server {-}
 
 The communication server is responsible for routing all messages through the smart home system.
 The server has a cache of all connected devices and must store any related settings for each.

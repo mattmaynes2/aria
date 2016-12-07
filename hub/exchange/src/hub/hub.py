@@ -2,7 +2,7 @@ import json
 import logging
 import uuid
 from .hub_mode  import HubMode
-from device import Device, DeviceType, Attribute, DataType
+from device import Device, DeviceType, Attribute, DataType, Parameter
 from ipc import Message
 from database import Retriever
 from device import SoftwareDeviceFactory
@@ -16,8 +16,9 @@ class Hub(Device):
     
     def __init__ (self, database, args = {}, exit = None):
         # setup device attributes and DeviceType
-        methods=[Attribute('name',DataType.String), Attribute('devices',DataType.List),\
-         Attribute('mode',DataType.String)]
+        methods=[Attribute('name',[Parameter('name',DataType.String)]), \
+        Attribute('devices',[Parameter('devices',DataType.List)]),\
+        Attribute('mode',[Parameter('mode',DataType.String)])]
         devType=DeviceType('Hub','hub',attributes=methods)
         super().__init__(devType,'Smart Hub',Hub.ADDRESS, version= Hub.VERSION)
         self._devices = {}

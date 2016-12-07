@@ -89,6 +89,7 @@ Attributes represent the different attributes of a device that can be viewed and
 
 Data type is an enum that is used to represent the data types of device attributes. The possible 
 values of this enum are:
+
 - 'binary' 
 - 'int'
 - 'float' 
@@ -103,6 +104,7 @@ values of this enum are:
 
 The CLI provides a command line interface for the user to issue command directly to the hub. 
 Current commands are:
+
 - help
 - exit
 
@@ -121,6 +123,7 @@ adapters and receives all the messages that are passed through the system.
 
 HubMode is an enum that contains the fdifferent modes of operation of the hub. 
 The following are the possible values:
+
 - StandBy
 - Normal
 - Learning
