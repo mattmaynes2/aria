@@ -21,30 +21,30 @@ Precondition: A learning hub must be installed in the user's home.
 2. Device discovers network
 3. Hub discovers device and provides confirmation
 
-Postcondition: The device's state will now be used as input in training mode. If the device contains
-an actuator, the actuator will be controlled by the learning hub in playback mode.
+Postcondition: The device's state will now be used as input in learning mode. If the device contains
+an actuator, the actuator will be controlled by the learning hub in normal mode.
 
-##### Enter Training Mode {-}
+##### Enter Learning Mode {-}
 
-The user enters training mode in order to indicate to the system that it should begin recording
-changes in the state of connected devices, without attempting to control them. Training mode
+The user enters learning mode in order to indicate to the system that it should begin recording
+changes in the state of connected devices, without attempting to control them. Learning mode
 accomplishes the user's goal of configuring the system without manual programming.
 
-1. User selects enter training mode
-2. While the system is in training mode, the system will record the user's interactions with
+1. User selects enter learning mode
+2. While the system is in learning mode, the system will record the user's interactions with
    connected devices.
-3. When the user selects playback mode or standby mode, the system exits training mode.
+3. When the user selects normal mode or standby mode, the system exits learning mode.
 
 Postcondition: The system saves changes in the state of connected devices.
 
-##### Enter Playback Mode {-}
+##### Enter Normal Mode {-}
 
-The user enters playback mode in order to instruct the system to begin controlling connected
+The user enters normal mode in order to instruct the system to begin controlling connected
 devices.
 
-1. User selects enter playback mode
-2. System exits the currently active mode 
-3. System begins controlling connected actuators, using the data collected during training mode
+1. User selects enter normal mode
+2. System exits the currently active mode
+3. System begins controlling connected actuators, using the data collected during learning mode
    to infer the desired state of the system.
 
 Postcondition: The system maintains control over connected actuators.
@@ -52,14 +52,14 @@ Postcondition: The system maintains control over connected actuators.
 ##### Enter Standby Mode {-}
 
 The user enters standby mode in order to instruct the system that control over connected devices
-should be halted, and changes in the state of devices should not be accepted as training data.
-Standby mode allows a user to control their devices under exceptional circumstances without training
+should be halted, and changes in the state of devices should not be accepted as learning data.
+Standby mode allows a user to control their devices under exceptional circumstances without learning
 the system to perform an incorrect task.
 
 1. User enters standby mode
 2. System exits the active mode
 
-Postcondition: System does not accept training data, System does not modify the state of devices
+Postcondition: System does not accept learning data, System does not modify the state of devices
 
 ##### Remove device {-}
 
@@ -80,6 +80,6 @@ through the remote interface.
 4. System erases the saved historical states of the device
 
 Postcondition: States of the selected devices from before the reset are no longer used to infer
-states in playback mode.
+states in normal mode.
 
 
