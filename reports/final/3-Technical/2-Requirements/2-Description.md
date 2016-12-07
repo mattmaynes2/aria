@@ -42,12 +42,13 @@ that communicate to the system.
 
 ##### Base User (Non-Technical Users) {-}
 
-- End user of the system that needs simple interface to use system - Will want low maintenance to
-keep system running and expect system to perform correctly
+- End user of the system that needs simple interface to use system
+- Will want low maintenance to keep system running and expect system to perform correctly
 
 ##### Developers (Technical Users) {-}
 
-- Will require technical documentation about the system - Will require a development toolkit for
-creating custom devices for the system - May also be a base user
+- Will require technical documentation about the system
+- Will require an API to communicate to custom devices for the system
+- May also be a base user
 
 
