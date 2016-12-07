@@ -64,8 +64,8 @@ that the project's master copy remains in a working state at all times. One of t
 maintaining working software at all times is that the project is always demo-able.
 
 The continuous integration tool chosen for this project is Travis CI. Travis CI is a free hosted CI 
-system. Travis can be easily integrated with Github repositories, making it the obvious choice for 
-this project.
+system. Travis can be easily integrated with Github repositories, and provides quick and reliable
+feedback about the build state of the system.
 
 Github rules were created to ensure that any code which is merged into the master branch does not 
 break existing work. Merges to master are blocked until Travis has successfully run unit tests on the
@@ -105,3 +105,5 @@ behaviour-driven development (BDD) in order to ensure that development remains f
 which are relevant to the end user. Any change to the code should be accompanied by an automated test
 or set of tests which exercises **end user functionality**. That is, automated tests should function
 as an executable specification of requirements for the unit under test.
+
+
