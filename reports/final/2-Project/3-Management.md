@@ -7,20 +7,15 @@ process. A development process imposes a particular structure on the development
 process used for the development of this project was created with the following factors in mind:
 
 - Project lifespan: Work on the project will last at least 8 months; other developers may also
-continue working on the project after the two school terms are complete
-
+    continue working on the project after the two school terms are complete
 - Team Size: There are four team members working on the project, the process needs to keep everyone 
-synchronized and organize the assignment of work to team members
-
+    synchronized and organize the assignment of work to team members
 - Reporting: The final project report is critical to the project's success, the process should make
- the report easier to write in a consistent manner
-
+    the report easier to write in a consistent manner
 - Code Quality: The process should ensure that work products are of the quality expected of a fourth
- year project.
-
-- Maintainability and Extensibility: The end result of the project should be maintainable and 
-extensible; a developer who is new to the project should have an easy time developing for it.
-
+    year project.
+- Maintainability and Extensibility: The end result of the project should be maintainable and
+    extensible; a developer who is new to the project should have an easy time developing for it.
 - Ease of Implementation: The process should not be an obstacle to development
 
 Given these goals, the process used for this project incorporates some elements of Extreme Programming
@@ -33,11 +28,9 @@ be used for: Source Code Management, Code Reviews, Issue Tracking, and Testing.
 The project uses a source code management tool to achieve the following goals:
 
 - Allows many team members to work on the same codebase and maintain a consistent master copy of the
- product
-
+    project
 - Track changes to files in order to locate changes that may have introduced bugs
-
-- Allows team members to work independently and simultaneously 
+- Allows team members to work independently and simultaneously
 
 This project uses git because it provides solutions to all of these issues. Git is familiar to all
 team members, in addition to being a de-facto standard in the open source software community.
