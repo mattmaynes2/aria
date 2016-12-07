@@ -24,7 +24,7 @@ can be replaced with a mock obejcts automatically by declaring a test case with 
 `@unittest.patch(<dependency-name>)` decorator. These mock objects are used as stubs to provide 
 control the behaviour of the dependencies of a module. For example, mock objects are used to 
 return test data when a module attempts to read data from a network socket.
-         
+
 #### Integration Testing {-}
 
 Interactions between each of the components are triggered by the receipt of messages from

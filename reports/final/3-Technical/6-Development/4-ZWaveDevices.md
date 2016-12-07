@@ -17,9 +17,8 @@ There are several challenges to overcome in order to write Z-Wave controller sof
 uses the Z-Stick.
 
 - Proprietary API: The serial API exposed by the Z-Stick is not made public
-
 - Low-level: The Z-Stick API is very low-level; significant effort is required in order to 
-  use the most basic features of Z-Wave devices
+    use the most basic features of Z-Wave devices
 
 In order to avoid the difficulties of using the Z-Stick API directly, we chose to search for
 a Z-Wave controller library which provides a higher level of abstraction away from the 
@@ -30,12 +29,10 @@ Z-Stick API.
 Comparison Criteria
 
 - Does the library have a Python binding? The hub code is primarily written in Python, it is less 
-effort to include a Python library as opposed to a C/C++ library
-
+    effort to include a Python library as opposed to a C/C++ library
 - Is the library mature enough to be a reliable part of the project? If many other projects use the
-library already, with positive results, this indicates that the library is stable enough to include
-in the project
-
+    library already, with positive results, this indicates that the library is stable enough to include
+    in the project
 - Is documentation and tutorial material readily accessible?
 
 ##### Sigma Designs Developer Kit (ZWare) {-}
@@ -56,14 +53,14 @@ The developer kit provides access to the following software resources:
 
 ##### OpenZWave {-}
 
-OpenZWave is a free open-source library for communicating with ZWave devices using compatible
+OpenZWave is a free open-source library for communicating with Z-Wave devices using compatible
 ZWave controller devices. The Aeotec Z-Stick is fully compatible with OpenZWave. OpenZWave is a 
 C++ library; the developers have created bindings for several other languages including Python.
 
 The OpenZWave source code is well-documented, and includes several examples of usage. OpenZWave is
 used by several existing home automation products to communicate with devices, with 259 forks on
-Github and an active community of developers [67]. Additionally, OpenZWave is a member of the ZWave 
-Alliance, the consortium of companies that certifies ZWave devices [68]. 
+Github and an active community of developers [67]. Additionally, OpenZWave is a member of the Z-Wave 
+Alliance, the consortium of companies that certifies Z-Wave devices [68]. 
 
 #### Comparison {-}
 
@@ -75,6 +72,6 @@ Alliance, the consortium of companies that certifies ZWave devices [68].
 We decided to include the OpenZWave library in the project. The availability of a Python binding
 for the library makes including it in the project simpler than the Sigma Designs C API. The Sigma 
 Designs Developer Kit is also targeted at companies that are attempting to create their own 
-certified ZWave devices, which is outside the scope of this project. Tutorials and examples of 
+certified Z-Wave devices, which is outside the scope of this project. Tutorials and examples of 
 using the OpenZWave library are also more accessible online, from a variety of sources.
 
