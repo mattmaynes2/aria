@@ -1,5 +1,5 @@
-<div style="text-align:center; padding-top: 200px;">
-	<h3 class="unnumbered" >Aria: Autonomous Real-Time Interactive Architecture</h3>
+<div style='text-align:center; padding-top: 200px;'>
+	<h3 class='unnumbered' >Aria: Autonomous Real-Time Interactive Architecture</h3>
 	<br/>
 	<p>By</p>
 	<p>
@@ -34,7 +34,7 @@
 	<br/>
 	<br/>
 	<br/>
-	<p>November 6, 2016</p>
+	<p>December 9, 2016</p>
 </div>
 
 <p style="page-break-after:always;"></p>
