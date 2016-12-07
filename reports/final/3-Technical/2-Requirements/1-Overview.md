@@ -28,6 +28,7 @@ Activities which are "In Scope":
     desired values of actuators.
 - Provide a simple interface which allows the homeowner to toggle on/off automated control of
     devices.
-- Develop a protocol which allows developers to enable new types of devices for use in the system
+- Provide a user interface for controlling the smart devices in the home.
+- Provide a user interface for monitoring the state of the home and the devices in it.
 
 
