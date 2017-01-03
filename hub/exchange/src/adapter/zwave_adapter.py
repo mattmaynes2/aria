@@ -94,6 +94,25 @@ class ZWaveAdapter(Adapter):
         else:
             log.warning("Invalid message type sent to ZWaveAdapter: " + str(message.type))
 
+    def setDeviceValue(self, message, device):
+        attributeName = message.data["set"]
+        value = message.data["value"]
+        paramChanges =  []
+        for param in value:
+            change = device.setValue(param["name"], param["value"])  
+            paramChanges.append(change)
+        response = {
+            "response" : attributeName,
+            "value" : {
+                "device" : device.getName(),
+                "deviceType" : device.getDeviceType()
+                "attribute" : {
+                    "name" : attributeName
+                    "parameters" : paramChanges
+                }
+            }
+        }
+
     def _handleRequest(self, message, device):
         if "get" in message.data:
             attributeName = message.data["get"]
@@ -103,8 +122,19 @@ class ZWaveAdapter(Adapter):
                         "value" : device.getValue(attributeName)
                         },
                 sender = message.receiver,
-                receiver = message.sender))
+                receiver = message.sender
+                ))
             return True
+        else if "set" in message.data:
+            response = setDeviceValue(message, device)
+            self.notify("received", Message(
+                type_ = Message.Response,
+                data = response,
+                sender = message.receiver,
+                receiver = message.sender
+            ))
+            return True
+
         return False
 
     def discover(self):

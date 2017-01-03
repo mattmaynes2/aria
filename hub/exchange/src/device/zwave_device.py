@@ -31,6 +31,11 @@ class ZWaveDevice(Device):
         return DeviceType(node.product_name, ZWaveDevice.PROTOCOL, node.manufacturer_name,\
         attributes=attributes)
 
+    def getName(self) :
+        return self._node.name
+
+    def getDeviceType(self) : 
+        return self._node.product_name
 
     def getValue(self, attribute):
         """
@@ -43,13 +48,32 @@ class ZWaveDevice(Device):
         }
         return parameters
 
-    def processEvent(self, val):
-        parameters = []
+    def buildParamChange(self, val):
         parameterChange = {
             'name' : val.label,
             'value' : val.data,
             'dataType' : ZWaveDevice.dataMappings[val.type]
         }
+
+    def setValue(self, attribute, value):
+        """
+        Sets the value of an attribute. This affects the state of the physical device
+        attribute is the name of an attribute
+        value is the new value of the attribute
+        """
+        zwaveVal = self._valueMap[attribute]
+        checkedVal = zwaveVal.check_data(value)
+        
+        if checkedVal == None:
+            raise ValueError("Invalid value for parameter " + attribute + " of attribute " + attribute + ": " + value)
+        else:
+            zwaveVal.data = checkedVal
+            return buildParamChange(val)
+
+
+    def processEvent(self, val):
+        parameters = []
+        buildParamChange(val)
         parameters.append(parameterChange)
         data = {
             'event' : 'device.event',
