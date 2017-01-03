@@ -102,16 +102,14 @@ class ZWaveAdapter(Adapter):
             change = device.setValue(param["name"], param["value"])  
             paramChanges.append(change)
         response = {
-            "response" : attributeName,
-            "value" : {
-                "device" : device.getName(),
-                "deviceType" : device.getDeviceType()
-                "attribute" : {
-                    "name" : attributeName
-                    "parameters" : paramChanges
-                }
+	    "device" : device.getName(),
+	    "deviceType" : device.getDeviceType(),
+	    "attribute" : {
+	        "name" : attributeName,
+	        "parameters" : paramChanges
             }
         }
+        return response
 
     def _handleRequest(self, message, device):
         if "get" in message.data:
@@ -125,8 +123,8 @@ class ZWaveAdapter(Adapter):
                 receiver = message.sender
                 ))
             return True
-        else if "set" in message.data:
-            response = setDeviceValue(message, device)
+        elif "set" in message.data:
+            response = self.setDeviceValue(message, device)
             self.notify("received", Message(
                 type_ = Message.Response,
                 data = response,

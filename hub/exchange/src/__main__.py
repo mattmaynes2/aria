@@ -6,6 +6,7 @@ sys.path.append('../lib')
 from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
 from adapter import AriaAdapter, HubAdapter, WemoAdapter, SoftwareAdapter
+from adapter.zwave_adapter import ZWaveAdapter
 from database import Database
 from ipc import Message
 from device     import SoftwareDeviceFactory
@@ -41,8 +42,8 @@ def create_exchange (hub, cli, database):
     # setup adapters
     exchange.register('hub'     , HubAdapter(hub))
     exchange.register('aria'    , ariaAdapter)
-    exchange.register('wemo'    , WemoAdapter())
-
+    #exchange.register('wemo'    , WemoAdapter())
+    exchange.register('zwave'    , ZWaveAdapter())
     softwareAdapter = SoftwareAdapter()
     SoftwareDeviceFactory.setDeviceListener(softwareAdapter.add_device)
     exchange.register('software', softwareAdapter)

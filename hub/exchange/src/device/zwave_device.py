@@ -4,8 +4,10 @@ from .data_types import DataType
 from .attribute import Attribute
 from .device_type import DeviceType
 import time
-
+import logging
 import uuid
+
+logger = logging.getLogger(__name__)
 
 class ZWaveDevice(Device):
     PROTOCOL='zwave'
@@ -54,6 +56,7 @@ class ZWaveDevice(Device):
             'value' : val.data,
             'dataType' : ZWaveDevice.dataMappings[val.type]
         }
+        return parameterChange
 
     def setValue(self, attribute, value):
         """
@@ -61,19 +64,21 @@ class ZWaveDevice(Device):
         attribute is the name of an attribute
         value is the new value of the attribute
         """
+        print(self._valueMap)
         zwaveVal = self._valueMap[attribute]
         checkedVal = zwaveVal.check_data(value)
-        
+        logger.debug("Received request to set value of attribute: " + attribute)         
         if checkedVal == None:
             raise ValueError("Invalid value for parameter " + attribute + " of attribute " + attribute + ": " + value)
         else:
+            logger.debug("Attempting to set attribute: " + str(attribute) + " to value " + str(value))
             zwaveVal.data = checkedVal
-            return buildParamChange(val)
+            return self.buildParamChange(zwaveVal)
 
 
     def processEvent(self, val):
         parameters = []
-        buildParamChange(val)
+        parameterChange = self.buildParamChange(val)
         parameters.append(parameterChange)
         data = {
             'event' : 'device.event',

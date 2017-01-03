@@ -80,6 +80,7 @@ class Hub(Device):
     
     def formatEvents(self,events):
         for event in events:
+            print(str(event))
             device=self.getDevice(uuid.UUID(event['source']).bytes)
             attribute=device.getAttribute(event['attribute'])
             if(attribute):

@@ -21,7 +21,7 @@ let ExchangeAdapter = (function () {
 
     ExchangeAdapter.prototype.register = function () {
         return new Promise ((resolve, reject) => {
-            send.call(this, 1, { 'port' : this.pushPort, 'name' : 'HttpGateway'}).then(
+            send.call(this, 1, new Buffer(16).fill(0), { 'port' : this.pushPort, 'name' : 'HttpGateway'}).then(
                 (response) => {
                 logger.debug('Got a response to discovery request');
                 if (response.type !== 4) {
@@ -53,7 +53,9 @@ let ExchangeAdapter = (function () {
         if (!this.registered) {
             throw new Error('Exchange adapter is not yet registered');
         }
-        return send.call(this, type, uuid.fromURN(destination), payload);
+	destBuf = new Buffer(16);
+	uuid.parse(destination, destBuf)
+        return send.call(this, type, destBuf, payload);
     }
 
     ExchangeAdapter.prototype.listen = function () {
