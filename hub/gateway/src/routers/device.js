@@ -51,6 +51,18 @@ let DeviceRouter = (function () {
                 .catch(onError.bind(this, res));
         });
 
+        app.post('/:id/setAttribute', (req, res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    set : req.body.name,
+                    value : req.body.value
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this, res));
+        });
+
         return app;
     };
 
