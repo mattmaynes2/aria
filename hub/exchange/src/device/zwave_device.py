@@ -24,7 +24,11 @@ class ZWaveDevice(Device):
     def _getDeviceType(self, node):
         attributes = []
         for key,val in node.get_values(genre='User').items():
-            parameter= Parameter(val.label, ZWaveDevice.dataMappings[val.type],max_=val.max, \
+            if val.type == 'Byte' and val.command_class == 38:
+                max = 99
+            else:
+                max = val.max
+            parameter= Parameter(val.label, ZWaveDevice.dataMappings[val.type],max_=max, \
             min_=val.min, value=val.data)
             attribute=Attribute(val.label,parameters=[parameter],isControllable=not val.is_read_only)
             attributes.append(attribute)
