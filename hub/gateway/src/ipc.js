@@ -1,3 +1,5 @@
+var uuid = require('uuid')
+
 let IPC = (function () {
 
     function parse (buffer) {

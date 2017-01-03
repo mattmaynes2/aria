@@ -46,8 +46,15 @@ let ExchangeAdapter = (function () {
         if (!this.registered) {
             throw new Error('Exchange adapter is not yet registered');
         }
-        return send.call(this, type, payload);
+        return send.call(this, type, new Buffer(16).fill(0), payload);
     };
+
+    ExchangeAdapter.prototype.sendTo = function(type, destination, payload) {
+        if (!this.registered) {
+            throw new Error('Exchange adapter is not yet registered');
+        }
+        return send.call(this, type, uuid.fromURN(destination), payload);
+    }
 
     ExchangeAdapter.prototype.listen = function () {
         var server = dgram.createSocket('udp4');
@@ -82,14 +89,15 @@ let ExchangeAdapter = (function () {
         server.bind(this.pushPort);
     };
 
-    function send (type, payload) {
+
+    function send (type, destination, payload) {
         return new Promise((resolve, reject) => {
             var client, packet, message, expiry;
 
             packet = {
                 type        : type,
                 sender      : this._id,
-                destination : new Buffer(16).fill(0),
+                destination : destination,
                 payload     : payload
             };
 
