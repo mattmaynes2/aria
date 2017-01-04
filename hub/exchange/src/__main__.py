@@ -1,6 +1,7 @@
 import sys
 import logging
 import logging.config
+from pkg_resources import resource_stream
 sys.path.append('../lib')
 
 from hub        import Hub, Exchange, CLI, args, daemon
@@ -9,13 +10,16 @@ from adapter import AriaAdapter, HubAdapter, WemoAdapter, SoftwareAdapter
 from database import Database
 from ipc import Message
 from device     import SoftwareDeviceFactory
+_log_config_file = 'configs/log.config'
+_log_config_location = resource_stream(__name__, _log_config_file)
+
 
 hub         = None
 cli         = None
 exchange    = None
 database    = None
 
-logging.config.fileConfig('log.config',disable_existing_loggers=False)
+logging.config.fileConfig(_log_config_location.name,disable_existing_loggers=False)
 
 def main ():
     global hub, cli, exchange
