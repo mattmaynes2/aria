@@ -14,10 +14,10 @@ class ZWaveDevice(Device):
     'List':DataType.List}
 
     def __init__ (self, node):
-        self._valueMap = {}
+        self.__valueMap = {}
         super().__init__(self._getDeviceType(node), name = node.name,address=uuid.uuid4().bytes,\
         version=str(node.version))
-        self._node = node
+        self.__node = node
 
     def _getDeviceType(self, node):
         attributes = []
@@ -26,7 +26,7 @@ class ZWaveDevice(Device):
             min_=val.min, value=val.data)
             attribute=Attribute(val.label,parameters=[parameter],isControllable=not val.is_read_only)
             attributes.append(attribute)
-            self._valueMap[val.label] = val
+            self.__valueMap[val.label] = val
 
         return DeviceType(node.product_name, ZWaveDevice.PROTOCOL, node.manufacturer_name,\
         attributes=attributes)
@@ -39,7 +39,7 @@ class ZWaveDevice(Device):
         """
         parameters = {
             "name" : attribute,
-            "value" : self._valueMap[attribute].data
+            "value" : self.__valueMap[attribute].data
         }
         return parameters
 
@@ -54,8 +54,8 @@ class ZWaveDevice(Device):
         data = {
             'event' : 'device.event',
             'timestamp' : int(time.time()),
-            'device' : self._node.name,
-            'deviceType' : self._node.product_name,
+            'device' : self.__node.name,
+            'deviceType' : self.__node.product_name,
             'attribute' : {
                 'name' : val.label,
                 'parameters' : parameters
