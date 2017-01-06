@@ -53,7 +53,7 @@ class ZWaveDevice(Device):
         parameters.append(parameterChange)
         data = {
             'event' : 'device.event',
-            'timestamp' : long(time.time()*1000),
+            'timestamp' : int(time.time()*1000),
             'device' : self.__node.name,
             'deviceType' : self.__node.product_name,
             'attribute' : {
