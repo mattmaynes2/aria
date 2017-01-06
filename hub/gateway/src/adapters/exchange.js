@@ -55,7 +55,7 @@ let ExchangeAdapter = (function () {
         if (!this.registered) {
             throw new Error('Exchange adapter is not yet registered');
         }
-	    destBuf = new Buffer(16);
+	    var destBuf = new Buffer(16);
 	    uuid.parse(destination, destBuf);
         return send.call(this, type, destBuf, payload);
     };
