@@ -1,4 +1,4 @@
-var uuid = require('uuid')
+
 
 let IPC = (function () {
 
