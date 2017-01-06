@@ -3,8 +3,6 @@ import struct
 from enum import Enum
 from uuid import UUID
 from device import Device,DeviceType,Attribute, Parameter
-from openzwave.node import ZWaveNode
-from openzwave.value import ZWaveValue
 import threading
 
 class Message:
@@ -78,6 +76,5 @@ class Message:
             return str(obj)
         if (isinstance(obj, threading.Thread)):
             return str(obj)
-        if(callable(obj) or isinstance(obj,(ZWaveNode, ZWaveValue))):
+        else:
             return
-        raise TypeError("Unserializable object {} of type {}".format(obj, type(obj)))
