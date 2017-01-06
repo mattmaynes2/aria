@@ -45,8 +45,7 @@ def create_exchange (hub, cli, database):
     # setup adapters
     exchange.register('hub'     , HubAdapter(hub))
     exchange.register('aria'    , ariaAdapter)
-    exchange.register('wemo'    , WemoAdapter())
-
+    #exchange.register('wemo'    , WemoAdapter())
     softwareAdapter = SoftwareAdapter()
     SoftwareDeviceFactory.setDeviceListener(softwareAdapter.add_device)
     exchange.register('software', softwareAdapter)
