@@ -53,7 +53,7 @@ class RequestTracker(DatabaseTranslator):
         self.dbTranslator.received(message)
         
     def createRequest(self,message):
-        data={'set':message.data['attribute'],'value': message.data['change']}
+        data={'set':message.data['attribute']['name'],'value': message.data['attribute']['parameters']}
         return Message(type_=Message.Request,data=data,receiver=message.sender,sender=message.sender)
 
             
