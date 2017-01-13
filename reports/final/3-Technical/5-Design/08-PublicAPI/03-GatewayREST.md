@@ -359,7 +359,7 @@ gateway. To see the available events over websockets
 |				|		{																		|
 | 				| 			"name" : "brightness",												|
 | 				| 			"value" : [                                                         |
-|               |     			{ "level" : 50 }                                                |
+|               |     			{ "naame" : "level", "value" : 50 }                                                |
 |               |               ...             	    				                        |
 |               |            ]                                                                  |
 | 				| 		}																		|
