@@ -106,7 +106,7 @@ class TestDatabaseIntegration(TestCase):
         myUuid = self.devices[0].address
         requestMessage = Message()
         requestMessage.type = Message.Request
-        requestMessage.data = {"set" : "brightness", "value" : [{'name':'brightness','value':100}]}
+        requestMessage.data = {"set" : "state", "value" : [{'name':'state','value':1}]}
         requestMessage.receiver = myUuid
         self.testAdapter.enqueueMessage(requestMessage)
         
@@ -120,9 +120,9 @@ class TestDatabaseIntegration(TestCase):
                 'name' : 'state',
                 'parameters' : [
                                 {
-                                    'name' : 'brightness',
-                                    'value' : 100,
-                                    'dataType' : DataType.Int
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
                                 }
                             ]
                         }
@@ -138,7 +138,7 @@ class TestDatabaseIntegration(TestCase):
                                 Event e INNER JOIN Request r ON e.request_id = r.id \
                                 join parameter_change pc on e.id=pc.event_id join Parameter p on \
                                 pc.parameter=p.id \
-                                WHERE p.name = 'brightness' AND pc.value = 100")
+                                WHERE p.name = 'state' AND pc.value = 1")
 
         firstResult = results.fetchone()
         self.assertEqual(firstResult['count'], 1)
