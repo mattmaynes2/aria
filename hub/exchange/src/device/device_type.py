@@ -17,5 +17,5 @@ class DeviceType:
         for attribute in self.attributes:
             if(attribute.name ==attributeName):
                 return attribute
-        log.warning('no attribute named '+attributeName["name"]+' found in deviceType '+self.name)
+        log.warning('no attribute named '+attributeName+' found in deviceType '+self.name)
         return None
