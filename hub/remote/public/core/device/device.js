@@ -4,6 +4,7 @@ import Widget           from '../widget/widget';
 import DeviceIcon       from './icon';
 import DeviceView       from './view';
 import DeviceAttribute  from './attribute';
+import Service          from '../service/service';
 
 import './device.css';
 
@@ -36,7 +37,15 @@ class Device extends Widget {
         super.render();
         this._$attrs = $('<div>').addClass('device-attributes')
             .append(this._state.deviceType.attributes.map((attr) => {
-                return new DeviceAttribute(attr, this._props).render().$el();
+                let devAttr = new DeviceAttribute(attr, this._props).render().$el();
+
+                devAttr.changed(() => {
+                    Service.set('/device/' + this._state.id + '/setAttribute', {
+                        name    : attr.name,
+                        value   : devAttr.state().parameters
+                    });
+                });
+                return devAttr;
             }));
 
         this._$el
