@@ -18,10 +18,10 @@ class Field extends Component {
         this._$value = $('<div>').addClass('field-value');
     }
     render () {
-        this._$label.text(this._state.label);
-        this._$value.text(this._state.value).removeClass('field-editable');
+        this._$label.text(this._props.label);
+        this._$value.text(this._state).removeClass('field-editable');
 
-        if (this._state.editable) {
+        if (this._props.editable) {
             this._$value
                 .addClass('field-editable')
                 .change(this._changed.bind(this));
