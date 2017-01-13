@@ -37,15 +37,15 @@ class Device extends Widget {
         super.render();
         this._$attrs = $('<div>').addClass('device-attributes')
             .append(this._state.deviceType.attributes.map((attr) => {
-                let devAttr = new DeviceAttribute(attr, this._props).render().$el();
+                let devAttr = new DeviceAttribute(attr, this._props);
 
                 devAttr.changed(() => {
                     Service.set('/device/' + this._state.id + '/setAttribute', {
                         name    : attr.name,
                         value   : devAttr.state().parameters
-                    });
+                    }).then(() => { console.log('Changed Attribute ' + attr.name); });
                 });
-                return devAttr;
+                return devAttr.render().$el();
             }));
 
         this._$el
