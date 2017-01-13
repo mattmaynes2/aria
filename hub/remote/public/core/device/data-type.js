@@ -4,6 +4,7 @@ import './data-type.css';
 
 class DataType extends Component {
     static get Binary   () { return 'binary';   }
+    static get Byte     () { return 'byte';     }
     static get Color    () { return 'color';    }
     static get Date     () { return 'date';     }
     static get Enum     () { return 'enum';     }
