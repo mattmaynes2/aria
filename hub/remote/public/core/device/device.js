@@ -23,6 +23,9 @@ class Device extends Widget {
                 attributes  : state.deviceType.attributes || []
             }
         };
+        this._props = {
+            controllable : false
+        };
 
         this._state.title  = this._state.name;
         this._icon = new DeviceIcon(this._state.deviceType.name);
@@ -38,7 +41,7 @@ class Device extends Widget {
                 this._view.render().$el().addClass('device-info')
             ])
             .append(this._state.deviceType.attributes.map((attr) => {
-                return new DeviceAttribute(attr).render().$el();
+                return new DeviceAttribute(attr, this._props).render().$el();
             }));
 
         return this;
