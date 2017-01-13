@@ -117,8 +117,10 @@ class Adapter (Thread):
         """
         self.setup()
         while (self.active):
-            if (None == self.receive()):
-                self.active = False
-                return False
-
+            try:
+                if (None == self.receive()):
+                    self.active = False
+                    return Fals
+            except Exception:
+                pass
         return True
