@@ -92,7 +92,7 @@ class TestDatabaseIntegration(TestCase):
         sensorStateChangeMessage.type = Message.Request
         sensorStateChangeMessage.sender = self.devices[0].address
 
-        sensorStateChangeMessage.data = {"set" : "mode", "value" :[{'name':'mode', 'value':2}] }
+        sensorStateChangeMessage.data = {"set" : "mode", "value" :2}
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.exchange.teardown()
  
@@ -135,8 +135,10 @@ class TestDatabaseIntegration(TestCase):
         self.exchange.teardown()
 
         results = self.db.query("SELECT count(*) as count FROM \
-                                Event e INNER JOIN Request r ON e.request_id = r.id\
-                                WHERE e.attribute = 'brightness' AND e.value = 100")
+                                Event e INNER JOIN Request r ON e.request_id = r.id \
+                                join parameter_change pc on e.id=pc.event_id join Parameter p on \
+                                pc.parameter=p.id \
+                                WHERE p.name = 'brightness' AND pc.value = 100")
 
         firstResult = results.fetchone()
         self.assertEqual(firstResult['count'], 1)
@@ -271,10 +273,9 @@ class StubDeviceAdapter(Adapter):
             message = self.q.get()
             if (message != None):
                 self.notify('received', message)
-            self.q.task_done()
-            return True
         except:
-            self.exceptionTrace = traceback.format_exc()
+            log.error(traceback.format_exc())
+        self.q.task_done()
         return True
 
     def teardown(self):
