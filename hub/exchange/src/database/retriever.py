@@ -59,6 +59,7 @@ class Retriever:
             id = self.getAttribute(_type)
             r["attribute"] = {}
             r["attribute"]["name"] = self.getAttributeName(id)
+            log.error("Type is: " + _type)
             params = self.getParametersChanged(r["id"])
 
             r["attribute"]["parameters"] = defaultdict(list)

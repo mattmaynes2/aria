@@ -100,16 +100,6 @@ class TestDatabaseIntegration(TestCase):
         results = self.db.query("SELECT count(*) as count FROM Event")
         self.assertEqual(results.fetchone()["count"], 0)
 
-
-    def test_events_should_be_linked_to_requests(self):
-
-        myUuid = self.devices[0].address
-        requestMessage = Message()
-        requestMessage.type = Message.Request
-        requestMessage.data = {"set" : "brightness", "value" : [{'name':'brightness','value':100}]}
-        requestMessage.receiver = myUuid
-        self.testAdapter.enqueueMessage(requestMessage)
-        
         eventMessage = Message()
         eventMessage.data = {
             'event' : 'device.event',
