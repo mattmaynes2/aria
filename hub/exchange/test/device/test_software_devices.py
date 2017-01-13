@@ -30,7 +30,7 @@ class TestTimerDevice (TestCase):
         # If the timer ticks up by 5 seconds, an event should be generated
         # This test calls tick() manually, in reality this will need to be a timer on a thread
         timer.tickOnce(lastTime)
-        eventCallback.assert_called_with(timer.get_uuid(), {'value': str(mock_datetime.datetime.now.return_value)})
+        eventCallback.assert_called_with(timer.get_uuid(), {'value': str(mock_datetime.datetime.now.return_value), 'event' : 'device.event'})
 
     def test_timer_should_not_generate_event_if_time_has_not_passed (self, mock_condition, mock_lock, mock_timer, mock_datetime):
         mock_datetime.datetime.now.return_value = datetime.datetime.fromtimestamp(1479659942)

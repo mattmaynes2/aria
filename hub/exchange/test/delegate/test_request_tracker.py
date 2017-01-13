@@ -57,8 +57,8 @@ class RequestTrackerTest(TestCase):
 
         self.hub.addDevice(self.dev)
         tracker=RequestTracker(MockTranslator, self.hub)
-        tracker.received(Message(Message.Event, data={'attribute':'state', 'change':\
-        [{'name':'state', 'value':0}]},\
+        tracker.received(Message(Message.Event, data={'attribute':{'name':'state', 'parameters':\
+        [{'name':'state', 'value':0}]}},\
             sender=self.id,receiver=uuid.uuid4().bytes))
         
         self.assertEqual(tracker.requests.get(self.dev.address),10)
@@ -77,8 +77,8 @@ class RequestTrackerTest(TestCase):
 
         self.hub.addDevice(self.dev)
         tracker=RequestTracker(MockTranslator, self.hub)
-        ret=tracker.received(Message(Message.Event, data={'attribute':'noControl', 'change':\
-        [{'name':'noControl', 'value':0}]},\
+        ret=tracker.received(Message(Message.Event, data={'attribute':{'name':'noControl', 'parameters':\
+        [{'name':'noControl', 'value':0}]}},\
             sender=self.id,receiver=uuid.uuid4().bytes))
         self.assertIsNone(ret)
         self.assertEqual(tracker.requests.get(self.dev.address),None)

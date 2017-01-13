@@ -336,4 +336,67 @@ gateway. To see the available events over websockets
 | 				| 			--data '{ "start" : 10, "count" : 10 }'	 							|
 +---------------+-------------------------------------------------------------------------------+
 
+##### Device Values {-}
 
++---------------+-------------------------------------------------------------------------------+
+| Title     	| **Set Device Attribute**                                     				    |
+|      		 	|                                                                             	|
+|       		| Sets the value of an attribute of a device							        |
++---------------+-------------------------------------------------------------------------------+
+| URL         	| `/device/:id/setAttribute` 													|
++---------------+-------------------------------------------------------------------------------+
+| Method		| `POST`																		|
++---------------+-------------------------------------------------------------------------------+
+| URL Params	| - **id**: The id of the device to set the attribute for 						|
+|				| 	(ex. `3c2538dd-64ed-4a0c-9ed3-14b2219feb11`) 								|
++---------------+-------------------------------------------------------------------------------+
+| Data Params	| - **name**: The name of the attribute to set									|
+| 				| - **value**: A list of parameters and their values for the attribute          |
+| 				| 																				|  
+|				| **Example:** Set the brightness of a light <br/>								|
+| 				| **Content:** <br/>															|
+|				|																				|
+|				|		{																		|
+| 				| 			"name" : "brightness",												|
+| 				| 			"value" : [                                                         |
+|               |     			{ "level" : 50 }                                                |
+|               |               ...             	    				                        |
+|               |            ]                                                                  |
+| 				| 		}																		|
++---------------+-------------------------------------------------------------------------------+
+| Success		| Upon successful response, value of the updated attribute will be returned  	|
+| Response		| 								                                                |
+|				| **Example** <br/>                                                             |
+|               |                {																|
+|				|					"response" 	: "brightness",							        |
+|				|					"device"		: "Light Bulb", 							|
+|				|					"deviceType"	: "Aeotec Dimmable LED",        			|
+|				|					"attribute"		: {											|
+|				|						"name"			: "brightness", 						|
+|				|						"parameters"	: [										|
+|				|							{													|
+|				|								"name"		: "level",							|
+|				|								"value"		: 50,								|
+|				|								"dataType"	: "byte",							|
+|				|							}													|
+|				|							...													|
+|				|						]														|
+|				|					}															|
+|				|				}																|
+|               |          																		|
++---------------+-------------------------------------------------------------------------------+
+| Error			|  **Example:** <br/>															|
+| Response		|  **Code:** `400 Bad Request` <br/>											|
+| 				|  **Content:**  `{ error : "Unknown device" }` <br/>							|
+| 				| OR <br/>																		|
+|				| **Example:** <br/>															|
+| 				| **Code:** `500 Internal Server Error` <br/>									|
+| 				| **Content:**  `{ error : "Invalid data format" }` <br/>						|
++---------------+-------------------------------------------------------------------------------+
+| Sample Call	| **Example:** Set the brightness value of device                        		|
+| 				| 	with id `3c2538dd-64ed-4a0c-9ed3-14b2219feb11`								|
+| 				|																				|
+| 				|		curl http://localhost:8080/device/3c2538dd-64ed-4a0c-9ed3-14b2219feb11/setAttribute \	|
+| 				|  			 -X POST -H 'Content-Type: application/json' \						|
+| 				| 			--data '{ "name" : "brightness", "value" : ["level" : 50]  }'    	|
++---------------+-------------------------------------------------------------------------------+

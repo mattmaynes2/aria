@@ -32,7 +32,7 @@ class RequestTracker(DatabaseTranslator):
         elif(Message.Event == message.type or Message.Response == message.type):
             reqid=self.requests.pop(message.sender,None)
             # don't create a request for a non controllable device
-            attribute=device.getAttribute(message.data.get('attribute'))
+            attribute = device.getAttribute(message.data['attribute']['name'])
             if(not attribute):
                 log.warning("{} dosen't have attribute {}".format(device.name,message.data.get('attribute')))
                 return False
@@ -53,7 +53,7 @@ class RequestTracker(DatabaseTranslator):
         self.dbTranslator.received(message)
         
     def createRequest(self,message):
-        data={'set':message.data['attribute'],'value': message.data['change']}
+        data={'set':message.data['attribute']['name'],'value': message.data['attribute']['parameters']}
         return Message(type_=Message.Request,data=data,receiver=message.sender,sender=message.sender)
 
             
