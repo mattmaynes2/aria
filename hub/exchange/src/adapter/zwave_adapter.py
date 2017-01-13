@@ -20,6 +20,8 @@ logger = logging.getLogger(__name__)
 
 class ZWaveAdapter(Adapter):
 
+    CONTROLLER_NODE = 1
+
     def __init__(self,controller='/dev/zstick',\
     configPath='/home/pi/python-openzwave/openzwave/config',
     userPath ='.'):
@@ -72,10 +74,17 @@ class ZWaveAdapter(Adapter):
         This is a callback for the OpenZWave SIGNAL_NODE_QUERIES_COMPLETE notification
         """
         node = kwargs["node"]
+        self._removeNodeAssociations(node)
         device=self.buildDevice(node)
         self._devices[node.location]=device
         logger.info("Discovered a ZWave device: " + device.name + " " + node.location)
         self.notify('discovered',device)
+
+    def _removeNodeAssociations(self, node):
+        for index, group in node.groups.items():
+            for association in group.associations:
+                if association != ZWaveAdapter.CONTROLLER_NODE:
+                    group.remove_association(association)
 
     def _setupCallbacks(self):
         """
