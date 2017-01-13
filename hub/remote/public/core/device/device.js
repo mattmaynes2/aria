@@ -39,7 +39,7 @@ class Device extends Widget {
             .append(this._state.deviceType.attributes.map((attr) => {
                 let devAttr = new DeviceAttribute(attr, this._props);
 
-                devAttr.changed(() => {
+                devAttr.change(() => {
                     Service.set('/device/' + this._state.id + '/setAttribute', {
                         name    : attr.name,
                         value   : devAttr.state().parameters
