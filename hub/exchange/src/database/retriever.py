@@ -17,30 +17,7 @@ class Retriever:
     GET_LAST_EVENT_ID       = "SELECT * FROM Event ORDER BY id DESC LIMIT 1 "
 
     def __init__(self, database):
-        self.database = database
-
-# {														
-# 	"records" : [										
-# 		{												
-# 			"index"			: 10,						
-# 			"timestamp"		: 1480262533722,			
-# 			"device"		: "Temperature Sensor",		
-# 			"deviceType"	: "ZigBee Temperature Sensor",
-# 			"attribute"		: {							
-# 				"name" 			: "State",				
-# 				"parameters"	: [						
-# 					{									
-# 						"name"		: "State",			
-# 						"value"		: 30,				
-# 						"dataType"	: "float"			
-# 					}									
-# 					... 								
-# 				]										
-# 			}											
-# 		}												
-# 		...												
-# 	]													
-# }																										
+        self.database = database																									
 
     ###
     # Get a list of count events across all devices
