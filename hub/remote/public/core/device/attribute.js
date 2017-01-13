@@ -22,6 +22,7 @@ class DeviceAttribute extends Component {
                 new DeviceParameter(param.value, param) :
                 new DataType(param.value, param);
         });
+
         this._parameters.forEach((param, i) => {
             param.change((state) => {
                 this._state.parameters[i].value = state;
@@ -29,13 +30,17 @@ class DeviceAttribute extends Component {
             });
         });
 
+        this._$parameters = $('<div>').addClass('device-params')
+            .append(this._parameters.map((param) => {
+                return param.render().$el();
+            }));
+
+
         this._$el
             .empty()
             .addClass('device-attribute')
             .append($('<div>').text(this._state.name).addClass('device-attribute-name'))
-            .append(this._parameters.map((param) => {
-                return param.render().$el();
-            }));
+            .append(this._$parameters);
         return this;
     }
 }

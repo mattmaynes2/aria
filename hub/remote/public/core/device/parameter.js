@@ -1,4 +1,5 @@
 import Component    from '../component';
+import ColorPicker  from '../control/color-picker';
 import StateButton  from '../control/state-button';
 import Slider       from '../control/slider';
 import DataType     from './data-type';
@@ -28,6 +29,13 @@ class DeviceParameter extends Component {
                 this._target = new StateButton(option, ['On', 'Off']);
                 this._target.change((v) => {
                     this._state = valueOf(this._props.dataType, v);
+                    this._changed();
+                });
+                break;
+            case DataType.Color:
+                this._target = new ColorPicker();
+                this._target.change((c) => {
+                    this._state = valueOf(this._props.dataType, c);
                     this._changed();
                 });
                 break;
