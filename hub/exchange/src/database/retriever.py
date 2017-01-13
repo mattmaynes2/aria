@@ -11,7 +11,7 @@ class Retriever:
     GET_PARAM_CHANGE        = "SELECT parameter, value FROM Parameter_Change WHERE event_id = ?"
     GET_PARAM_INFO          = "SELECT name, data_type FROM Parameter WHERE id = ?" 
     GET_DEVICE_TYPE         = "SELECT type FROM Device WHERE address = ?"
-    GET_ATTRIBUTE_ID        = "SELECT id FROM Attribute WHERE device_type = ? AND name = ?"
+    GET_ATTRIBUTE_ID        = "SELECT id FROM Attribute WHERE device_type = ?"
     GET_ATTRIBUTE_NAME      = "SELECT name FROM Attribute WHERE id = ?"
 
     GET_LAST_EVENT_ID       = "SELECT * FROM Event ORDER BY id DESC LIMIT 1 "
@@ -57,6 +57,7 @@ class Retriever:
         for r in results:
             _type = self.getDeviceType(r["source"])
             id = self.getAttribute(_type)
+            r["attribute"] = {}
             r["attribute"]["name"] = self.getAttributeName(id)
             params = self.getParametersChanged(r["id"])
 
@@ -64,12 +65,12 @@ class Retriever:
             
             for p in params:
                 count = 0
-                newParam = dict()
-                paramInfo = self.getParamInfo(p["parameter"])
+                newParam = {}
+                paramInfo = self.getParameterInfo(p["parameter"])
 
                 newParam["value"] = p["value"]
-                newParam["name"] = paramInfo["name"]
-                newParam["dataType"] = paramInfo["data_type"]
+                newParam["name"] = paramInfo[0]
+                newParam["dataType"] = paramInfo[0]
                 r["attribute"]["parameters"][count].append(newParam)
                 count += 1
             
@@ -91,8 +92,8 @@ class Retriever:
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         return results
 
-    def getAttribute(self, address):
-        return self.database.execute(Retriever.GET_ATTRIBUTE_ID, [address])
+    def getAttribute(self, deviceType):
+        return self.database.execute(Retriever.GET_ATTRIBUTE_ID, [deviceType])
 
     def getAttributeName(self, attributeID):
         return self.database.execute(Retriever.GET_ATTRIBUTE_NAME, [attributeID])
