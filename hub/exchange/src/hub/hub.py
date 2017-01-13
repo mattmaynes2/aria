@@ -6,6 +6,7 @@ from device import Device, DeviceType, Attribute, DataType, Parameter
 from ipc import Message
 from database import Retriever
 from device import SoftwareDeviceFactory
+from datetime import datetime
 
 log=logging.getLogger(__name__)
 
@@ -80,10 +81,14 @@ class Hub(Device):
     
     def formatEvents(self,events):
         for event in events:
-            device=self.getDevice(uuid.UUID(event['source']).bytes)
-            attribute=device.getAttribute(event['attribute'])
-            if(attribute):
-                event['dataType']=attribute.dataType
+            source=event['source']
+            if(source):
+                device=self.getDevice(uuid.UUID(source).bytes)
+                if(device):
+                    event['deviceType']=device.deviceType.name
+            time=datetime.strptime(event['timestamp'],'%Y-%m-%d %H:%M:%S')
+            event['timestamp']=int(time.timestamp()*1000)
+
 
     def addDevice (self,device):
        # don't add the hub or gateway to devices

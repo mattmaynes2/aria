@@ -54,7 +54,7 @@ class DatabaseTranslator(Delegate):
                     self._setParameter(attributeId, parameter)
 
         else:
-            log.warning("Device discoverd with null address")
+            log.warning("Device discovered with null address")
 
     def _request(self, message):
         values =  (self._getStr(message.sender), self._getStr(message.receiver))
@@ -106,6 +106,6 @@ class DatabaseTranslator(Delegate):
         self.database.execute(DatabaseTranslator.SET_ATTRIBUTE, values)
 
     def _setParameter(self, attributeId, parameter):
-        values = (str(parameter.name), attributeId, str(parameter.dataType), str(parameter.max)\
+        values = (str(parameter.name), attributeId, str(parameter.dataType.value), str(parameter.max)\
         , str(parameter.min), str(parameter.step))
         self.database.execute(DatabaseTranslator.SET_PARAMETER, values)
