@@ -62,22 +62,37 @@ class TestDatabaseIntegration(TestCase):
         sensorStateChangeMessage = Message()
         sensorStateChangeMessage.type = Message.Event
         sensorStateChangeMessage.sender = myUuid
-        sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
+        sensorStateChangeMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : myUuid,
+            'deviceType' : self.devices[0].deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
+                                }
+                            ]
+                        }
+            }
 
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.exchange.teardown()
         results = self.db.query("SELECT * FROM Event").fetchone()
         self.assertEqual(results["request_id"], 1)
         self.assertEqual(results["source"], str(UUID(bytes=myUuid)))
-        self.assertEqual(results["attribute"], "state")
-        self.assertEqual(results["value"], "1")
+        self.assertEqual(results["attribute"]["name"], "state")
+        self.assertEqual(results["attribute"]["parameters"][0]["value"], "1")
 
     def test_requests_to_hub_should_not_be_logged_to_database(self):
         sensorStateChangeMessage = Message()
         sensorStateChangeMessage.type = Message.Request
         sensorStateChangeMessage.sender = self.devices[0].address
 
-        sensorStateChangeMessage.data = {"set" : "mode", "value" : 2}
+        sensorStateChangeMessage.data = {"set" : "mode", "value" :[{'name':'mode', 'value':2}] }
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.exchange.teardown()
  
@@ -91,12 +106,27 @@ class TestDatabaseIntegration(TestCase):
         myUuid = self.devices[0].address
         requestMessage = Message()
         requestMessage.type = Message.Request
-        requestMessage.data = {"set" : "brightness", "value" : 100}
+        requestMessage.data = {"set" : "brightness", "value" : [{'name':'brightness','value':100}]}
         requestMessage.receiver = myUuid
         self.testAdapter.enqueueMessage(requestMessage)
         
         eventMessage = Message()
-        eventMessage.data = { "response" : "brightness", "value" : 100 }
+        eventMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : myUuid,
+            'deviceType' : self.devices[0].deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'brightness',
+                                    'value' : 100,
+                                    'dataType' : DataType.Int
+                                }
+                            ]
+                        }
+            }
         eventMessage.type = Message.Event 
         eventMessage.sender = myUuid
         eventMessage.receiver = Message.DEFAULT_ADDRESS
@@ -116,7 +146,22 @@ class TestDatabaseIntegration(TestCase):
         for device in self.devices:
             sensorStateChangeMessage = Message()
             sensorStateChangeMessage.type = Message.Event
-            sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
+            sensorStateChangeMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : device.address,
+            'deviceType' : device.deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
+                                }
+                            ]
+                        }
+            }
             sensorStateChangeMessage.sender = device.address
             self.testAdapter.enqueueMessage(sensorStateChangeMessage)
 
@@ -144,7 +189,22 @@ class TestDatabaseIntegration(TestCase):
         for device in self.devices:
             sensorStateChangeMessage = Message()
             sensorStateChangeMessage.type = Message.Event
-            sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
+            sensorStateChangeMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : device.address,
+            'deviceType' : device.deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
+                                }
+                            ]
+                        }
+            }
             sensorStateChangeMessage.sender = device.address
             self.testAdapter.enqueueMessage(sensorStateChangeMessage)
 
