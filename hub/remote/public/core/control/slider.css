@@ -2,6 +2,7 @@
 .slider-container {
     position    : relative;
     width       : 120px;
+    height      : 20px;
 }
 
 .slider-body {

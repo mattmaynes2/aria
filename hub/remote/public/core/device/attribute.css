@@ -3,10 +3,14 @@
     position        : relative;
     display         : flex;
     flex-direction  : row;
-    max-height      : 20px;
+    height          : 30px;
 }
 
 .device-attribute-name {
     margin          : auto 10px auto 0;
     user-select     : none;
+}
+
+.device-params {
+    margin : auto 0;
 }
