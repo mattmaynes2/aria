@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS "Parameter" (
 	"max" INTEGER,
 	"min" INTEGER,
 	"step" REAL,
-	FOREIGN KEY ("attribute_id") REFERENCES "Attributes"("id")
+	FOREIGN KEY ("attribute_id") REFERENCES "Attribute"("id")
 );
 
 /*
