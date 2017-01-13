@@ -1,4 +1,7 @@
 from threading import Thread
+import logging
+
+logger = logging.getLogger(__name__)
 
 class Adapter (Thread):
     """Adapters convert from internal message structure to external device protocols
@@ -122,5 +125,5 @@ class Adapter (Thread):
                     self.active = False
                     return Fals
             except Exception:
-                pass
+                logger.exception("Uncaught Exception in adapter")
         return True
