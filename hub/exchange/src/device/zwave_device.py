@@ -38,10 +38,10 @@ class ZWaveDevice(Device):
         attributes=attributes)
 
     def getName(self) :
-        return self._node.name
+        return self.__node.name
 
     def getDeviceType(self) : 
-        return self._node.product_name
+        return self.__node.product_name
 
     def getValue(self, attribute):
         """
@@ -68,8 +68,8 @@ class ZWaveDevice(Device):
         attribute is the name of an attribute
         value is the new value of the attribute
         """
-        print(self._valueMap)
-        zwaveVal = self._valueMap[attribute]
+        print(self.__valueMap)
+        zwaveVal = self.__valueMap[attribute]
         checkedVal = zwaveVal.check_data(value)
         logger.debug("Received request to set value of attribute: " + attribute)         
         if checkedVal == None:
