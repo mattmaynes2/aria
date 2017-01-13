@@ -57,8 +57,7 @@ class DatabaseTranslator(Delegate):
             log.warning("Device discoverd with null address")
 
     def _request(self, message):
-        values =  (self._getStr(message.sender), self._getStr(message.receiver)\
-        , str(message.data['set']), str(message.data['value']))
+        values =  (self._getStr(message.sender), self._getStr(message.receiver))
         self.database.execute(DatabaseTranslator.REQUEST, values)
         results = self.database.execute
         return self.database.getLastInsertId()
