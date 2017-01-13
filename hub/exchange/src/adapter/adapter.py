@@ -123,7 +123,7 @@ class Adapter (Thread):
             try:
                 if (None == self.receive()):
                     self.active = False
-                    return Fals
+                    return False
             except Exception:
                 logger.exception("Uncaught Exception in adapter")
         return True
