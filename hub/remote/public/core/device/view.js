@@ -10,6 +10,7 @@ class DeviceView extends Component {
         this._name      = new Field('', { label : 'Name:'           });
         this._maker     = new Field('', { label : 'Manufacturer:'   });
         this._protocol  = new Field('', { label : 'Protocol:'       });
+        this._id        = new Field('', { label : 'Device ID:'      });
     }
     render () {
 
@@ -17,9 +18,10 @@ class DeviceView extends Component {
             .empty()
             .addClass('device-view-body')
             .append([
-                this._name.render().state(this._state.name).$el(),
-                this._maker.render().state(this._state.deviceType.maker).$el(),
-                this._protocol.render().state(this._state.deviceType.protocol).$el()
+                this._name.state(this._state.name).render().$el(),
+                this._maker.state(this._state.deviceType.maker).render().$el(),
+                this._protocol.state(this._state.deviceType.protocol).render().$el(),
+                this._id.state(this._state.address).render().$el()
             ]);
 
         return this;

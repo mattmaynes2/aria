@@ -5,10 +5,16 @@
 .device-icon {
     width   : 150px;
     height  : 150px;
-    margin  : auto 0;
+    margin  : auto 10px;
 }
 
 .device-info {
-    margin-top : 10px;
-    width      : 50%;
+    margin-top  : 10px;
+    width       : 50%;
+}
+
+.device-attributes {
+    flex-direction : column;
+    display: flex;
+    flex-grow:1;
 }

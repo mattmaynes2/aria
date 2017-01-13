@@ -16,11 +16,13 @@ class DataType extends Component {
     constructor (state, props) {
         super();
         this._state = state || '';
-        this._props = props || '';
+        this._props = props || {
+            dataType : ''
+        };
     }
     render () {
         this._$el.addClass('device-data-type');
-        switch (this.props) {
+        switch (this._props.dataType) {
             case DataType.Binary:
                 this._$el.text(this._state ? 'On' : 'Off');
                 break;

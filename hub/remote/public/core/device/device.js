@@ -1,3 +1,4 @@
+import $                from 'jquery';
 import uuid             from 'react-native-uuid';
 import Widget           from '../widget/widget';
 import DeviceIcon       from './icon';
@@ -23,6 +24,9 @@ class Device extends Widget {
                 attributes  : state.deviceType.attributes || []
             }
         };
+        this._props = {
+            controllable : false
+        };
 
         this._state.title  = this._state.name;
         this._icon = new DeviceIcon(this._state.deviceType.name);
@@ -30,6 +34,11 @@ class Device extends Widget {
     }
     render () {
         super.render();
+        this._$attrs = $('<div>').addClass('device-attributes')
+            .append(this._state.deviceType.attributes.map((attr) => {
+                return new DeviceAttribute(attr, this._props).render().$el();
+            }));
+
         this._$el
             .height(200)
             .find('.widget-body').addClass('device-body')
@@ -37,10 +46,7 @@ class Device extends Widget {
                 this._icon.render().$el().addClass('device-icon'),
                 this._view.render().$el().addClass('device-info')
             ])
-            .append(this._state.deviceType.attributes.map((attr) => {
-                return new DeviceAttribute(attr).render().$el();
-            }));
-
+            .append(this._$attrs);
         return this;
     }
 }

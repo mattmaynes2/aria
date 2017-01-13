@@ -12,11 +12,15 @@
 .nav-title {
     position    : absolute;
     width       : 100px;
+    height      : 100%;
     left        : 15px;
-    padding-top : 10px;
+    margin      : 5px 10px;
     opacity     : 0.5;
     font-family : "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size   : 18pt;
+    background-image    : url('../assets/logo/logo-small.png');
+    background-size     : contain;
+    background-repeat   : no-repeat;
 }
 
 .nav-menu-group {

@@ -246,7 +246,7 @@ let IntegrateAdapter = (function () {
                 name        : maker + ' ' + protocol + ' ' + name,
                 maker       : maker,
                 protocol    : protocol,
-                attributes  : Array.apply(null, Array(random(5))).map(makeAttribute)
+                attributes  : Array.apply([], Array(randomInt(5))).map(makeAttribute)
             }
         };
     }
