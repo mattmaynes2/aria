@@ -20,6 +20,8 @@ logger = logging.getLogger(__name__)
 
 class ZWaveAdapter(Adapter):
 
+    CONTROLLER_NODE = 1
+
     def __init__(self,controller='/dev/zstick',\
     configPath='/home/pi/python-openzwave/openzwave/config',
     userPath ='.'):
@@ -32,7 +34,7 @@ class ZWaveAdapter(Adapter):
         # Set up condition variable allowing us to check if the network is ready or not
         self._ready = False
         self._lock = threading.Lock()
-        self._ready_condition = threading.Condition(self._lock)
+        #self._ready_condition = threading.Condition(self._lock)
 
         # Pass some default options to OpenZWave
         self.defaultOptions= ZWaveOption(controller,config_path=configPath,user_path=userPath)
@@ -46,9 +48,9 @@ class ZWaveAdapter(Adapter):
 
     def _networkReadyCallback(self, *args, **kwargs):
         logger.info("ZWave network is ready")
-        with self._ready_condition:
-            self._ready = True
-            self._ready_condition.notifyAll()
+        #with self._ready_condition:
+         #   self._ready = True
+          #  self._ready_condition.notifyAll()
 
     def _nodeEventCallback(self, *args, **kwargs):
         node = kwargs['node']
@@ -65,17 +67,24 @@ class ZWaveAdapter(Adapter):
                 self.notify('received', event)
 
         except Exception as e:
-            print("Error in node event callback: " + str(e))
+            logger.exception("Error in node event callback: " + str(e))
 
     def _deviceDiscoveredCallback(self,*args, **kwargs):
         """
         This is a callback for the OpenZWave SIGNAL_NODE_QUERIES_COMPLETE notification
         """
         node = kwargs["node"]
+        self._removeNodeAssociations(node)
         device=self.buildDevice(node)
         self._devices[node.location]=device
         logger.info("Discovered a ZWave device: " + device.name + " " + node.location)
         self.notify('discovered',device)
+
+    def _removeNodeAssociations(self, node):
+        for index, group in node.groups.items():
+            for association in group.associations:
+                if association != ZWaveAdapter.CONTROLLER_NODE:
+                    group.remove_association(association)
 
     def _setupCallbacks(self):
         """
@@ -94,6 +103,23 @@ class ZWaveAdapter(Adapter):
         else:
             log.warning("Invalid message type sent to ZWaveAdapter: " + str(message.type))
 
+    def setDeviceValue(self, message, device):
+        attributeName = message.data["set"]
+        value = message.data["value"]
+        paramChanges =  []
+        for param in value:
+            change = device.setValue(param["name"], param["value"])  
+            paramChanges.append(change)
+        response = {
+	    "device" : device.getName(),
+	    "deviceType" : device.getDeviceType(),
+	    "attribute" : {
+	        "name" : attributeName,
+	        "parameters" : paramChanges
+            }
+        }
+        return response
+
     def _handleRequest(self, message, device):
         if "get" in message.data:
             attributeName = message.data["get"]
@@ -103,8 +129,19 @@ class ZWaveAdapter(Adapter):
                         "value" : device.getValue(attributeName)
                         },
                 sender = message.receiver,
-                receiver = message.sender))
+                receiver = message.sender
+                ))
             return True
+        elif "set" in message.data:
+            response = self.setDeviceValue(message, device)
+            self.notify("received", Message(
+                type_ = Message.Response,
+                data = response,
+                sender = message.receiver,
+                receiver = message.sender
+            ))
+            return True
+
         return False
 
     def discover(self):

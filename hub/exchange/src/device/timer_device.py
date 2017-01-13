@@ -61,7 +61,7 @@ class TimerDevice(Observable):
         if time >= (lastTime + period):
             latestTime = time
             for listener in self.eventListeners:
-               listener(self.uuid, {"value" : str(time)})
+                listener(self.uuid, {"event" : "device.event", "value" : str(time)})
         else:
             latestTime = lastTime
         return latestTime

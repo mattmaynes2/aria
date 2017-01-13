@@ -49,3 +49,5 @@ __pycache__
 # Resources
 node_modules
 framework
+.coverage
+htmlcov

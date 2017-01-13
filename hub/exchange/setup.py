@@ -13,11 +13,12 @@ setup(
     scripts             = ['src/__main__.py'],
      entry_points={
         'setuptools.installation': [
-            'eggsecutable = exchange.__main__:main',
+            'eggsecutable = src.__main__:main',
         ]
     },
     install_requires    = ['netdisco', 'pywemo'],
     test_suite          = 'nose.collector',
     tests_require       = ['nose'],
-    zip_safe            = False
+    zip_safe            = False,
+    package_data        ={'':['*.config']}
 )
