@@ -3,6 +3,7 @@
     position        : relative;
     display         : flex;
     flex-direction  : row;
+    max-height      : 20px;
 }
 
 .device-attribute-name {

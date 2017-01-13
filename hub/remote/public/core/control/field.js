@@ -6,7 +6,6 @@ import './field.css';
 class Field extends Component {
     constructor (state, props) {
         super();
-        state = state || {};
         props = props || {};
         this._props = {
             label       : props.label    || '',
