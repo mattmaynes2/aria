@@ -17,7 +17,11 @@ class ZWaveDevice(Device):
 
     def __init__ (self, node):
         self.__valueMap = {}
-        super().__init__(self._getDeviceType(node), name = node.name,address=uuid.uuid4().bytes,\
+        nodeName = node.name
+        if not nodeName:
+            nodeName = node.product_name
+
+        super().__init__(self._getDeviceType(node), name = nodeName,address=uuid.uuid4().bytes,\
         version=str(node.version))
         self.__node = node
 
