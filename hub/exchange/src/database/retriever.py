@@ -1,18 +1,23 @@
 import sqlite3
 import logging
-
+from device import DataType
 log = logging.getLogger(__name__)
 
 class Retriever:
 
-    GET_ALL_EVENT_WINDOW    = "SELECT * FROM Event WHERE source NOT IN (?) ORDER BY id DESC LIMIT ?,?"
-
-    GET_DEVICE_EVENT_WINDOW = "SELECT * FROM Event where source = ? LIMIT  ?,?" 
+    GET_ALL_EVENT_WINDOW    = "SELECT id as 'index', timestamp, source \
+                               FROM Event WHERE source NOT IN (?) ORDER BY id DESC LIMIT ?,?"
+    GET_DEVICE_EVENT_WINDOW = "SELECT * FROM Event WHERE source = ? LIMIT  ?,?"
+    GET_PARAM_CHANGE        = "SELECT parameter, value FROM Parameter_Change WHERE event_id = ?"
+    GET_PARAM_INFO          = "SELECT name, data_type FROM Parameter WHERE id = ?" 
+    GET_DEVICE_TYPE         = "SELECT type, name FROM Device WHERE address = ?"
+    GET_ATTRIBUTE_ID        = "SELECT id FROM Attribute WHERE device_type = ?"
+    GET_ATTRIBUTE_NAME      = "SELECT name FROM Attribute WHERE id = ?"
 
     GET_LAST_EVENT_ID       = "SELECT * FROM Event ORDER BY id DESC LIMIT 1 "
 
     def __init__(self, database):
-        self.database = database
+        self.database = database																									
 
     ###
     # Get a list of count events across all devices
@@ -26,6 +31,26 @@ class Retriever:
     def getEventWindow(self, start, count, ignore):
         values = (ignore, start, count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
+        for r in results:
+            device = self.getDeviceType(r["source"])
+            #log.error("\rType is: " + str(_type[0]["type"]))
+            id = self.getAttribute(device[0]["type"])
+            #log.error("\rID is: " + id["id"])
+            r["attribute"] = {}
+            r["attribute"]["name"] = self.getAttributeName(id[0]['id'])[0]['name']
+            r['device']= device[0]['name']
+            params = self.getParametersChanged(r["index"])
+
+            r["attribute"]["parameters"] = []
+            
+            for p in params:
+                newParam = {}
+                paramInfo = self.getParameterInfo(p["parameter"])
+                newParam["value"] = p["value"]
+                newParam["name"] = paramInfo[0]['name']
+                newParam["dataType"] = DataType(paramInfo[0]['data_type'])
+                r["attribute"]["parameters"].append(newParam)
+            
         return results
 
     ###
@@ -39,10 +64,25 @@ class Retriever:
     ###
     def getDeviceEvents(self, id_, start, count):
         lastEventId = self.database.execute(Retriever.GET_LAST_EVENT_ID)
-        print("EVENT ID: " + str(lastEventId))
         values = (id_, start,count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         return results
+
+    def getAttribute(self, deviceType):
+        return self.database.execute(Retriever.GET_ATTRIBUTE_ID, [deviceType])
+
+    def getAttributeName(self, attributeID):
+        return self.database.execute(Retriever.GET_ATTRIBUTE_NAME, [attributeID])
+
+    def getDeviceType(self, address):
+        return self.database.execute(Retriever.GET_DEVICE_TYPE, [address])
+
+    def getParametersChanged(self, eventID):
+        return self.database.execute(Retriever.GET_PARAM_CHANGE, [eventID])
+
+    def getParameterInfo(self, paramID):
+        return self.database.execute(Retriever.GET_PARAM_INFO, [paramID])
+
 
 
 

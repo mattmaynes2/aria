@@ -76,7 +76,7 @@ name          --  name of the attribute
 device_type   --  type of device which has this attribute
 controllable  --  0 if not controllable, 1 if controllable
 */
-CREATE TABLE IF NOT EXISTS "Attributes" (
+CREATE TABLE IF NOT EXISTS "Attribute" (
 	"id" INTEGER PRIMARY KEY,
 	"name" TEXT,
 	"device_type" TEXT,
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS "Parameter" (
 	"max" INTEGER,
 	"min" INTEGER,
 	"step" REAL,
-	FOREIGN KEY ("attribute_id") REFERENCES "Attributes"("id")
+	FOREIGN KEY ("attribute_id") REFERENCES "Attribute"("id")
 );
 
 /*
