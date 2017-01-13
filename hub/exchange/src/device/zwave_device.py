@@ -68,7 +68,6 @@ class ZWaveDevice(Device):
         attribute is the name of an attribute
         value is the new value of the attribute
         """
-        print(self.__valueMap)
         zwaveVal = self.__valueMap[attribute]
         checkedVal = zwaveVal.check_data(value)
         logger.debug("Received request to set value of attribute: " + attribute)         
