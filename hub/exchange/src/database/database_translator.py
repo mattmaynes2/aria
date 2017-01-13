@@ -17,10 +17,10 @@ class DatabaseTranslator(Delegate):
 
     GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute_id = ? AND name = ?"
     GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE address = ?"
-    GET_ATTRIBUTE     = "SELECT id FROM Attributes WHERE device_type = ? AND name = ?"
+    GET_ATTRIBUTE     = "SELECT id FROM Attribute WHERE device_type = ? AND name = ?"
 
     SET_DEVICE_TYPE   = "INSERT INTO DEVICE_TYPE (name, protocol, maker) VALUES (?, ?, ?)"
-    SET_ATTRIBUTE     = "INSERT INTO Attributes (name, device_type, controllable) VALUES (?, ?, ?)"
+    SET_ATTRIBUTE     = "INSERT INTO Attribute (name, device_type, controllable) VALUES (?, ?, ?)"
     SET_PARAMETER     = "INSERT INTO Parameter (name, attribute_id, data_type, max, min, step) \
                          VALUES (?, ?, ?, ?, ?, ?)"
 
