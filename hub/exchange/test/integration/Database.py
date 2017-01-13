@@ -81,11 +81,16 @@ class TestDatabaseIntegration(TestCase):
 
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.exchange.teardown()
-        results = self.db.query("SELECT * FROM Event").fetchone()
+        results = self.db.query("SELECT request_id, source, a.name as attName, p.name as ParamName, \
+        pc.value, dt.name as deviceTypeName FROM Event e join parameter_change pc on\
+         e.id=pc.event_id join parameter p on p.id=pc.parameter join attribute a on p.attribute_id \
+         = a.id join device_type dt on a.device_type=dt.id").fetchone()
         self.assertEqual(results["request_id"], 1)
         self.assertEqual(results["source"], str(UUID(bytes=myUuid)))
-        self.assertEqual(results["attribute"]["name"], "state")
-        self.assertEqual(results["attribute"]["parameters"][0]["value"], "1")
+        self.assertEqual(results["attName"], "state")
+        self.assertEqual(results["ParamName"], "state")
+        self.assertEqual(results["deviceTypeName"], self.devices[0].deviceType.name)
+        self.assertEqual(results["value"],"1")
 
     def test_requests_to_hub_should_not_be_logged_to_database(self):
         sensorStateChangeMessage = Message()
@@ -100,7 +105,6 @@ class TestDatabaseIntegration(TestCase):
         results = self.db.query("SELECT count(*) as count FROM Event")
         self.assertEqual(results.fetchone()["count"], 0)
 
-
     def test_events_should_be_linked_to_requests(self):
 
         myUuid = self.devices[0].address
@@ -109,7 +113,7 @@ class TestDatabaseIntegration(TestCase):
         requestMessage.data = {"set" : "state", "value" : [{'name':'state','value':1}]}
         requestMessage.receiver = myUuid
         self.testAdapter.enqueueMessage(requestMessage)
-        
+
         eventMessage = Message()
         eventMessage.data = {
             'event' : 'device.event',

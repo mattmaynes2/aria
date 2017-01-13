@@ -56,9 +56,11 @@ class Retriever:
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         for r in results:
             _type = self.getDeviceType(r["source"])
-            id = self.getAttribute(_type)
+            #log.error("\rType is: " + str(_type[0]["type"]))
+            id = self.getAttribute(_type[0]["type"])
+            #log.error("\rID is: " + id["id"])
             r["attribute"] = {}
-            r["attribute"]["name"] = self.getAttributeName(id)
+            r["attribute"]["name"] = self.getAttributeName(str(id))
             params = self.getParametersChanged(r["id"])
 
             r["attribute"]["parameters"] = defaultdict(list)
