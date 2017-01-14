@@ -60,7 +60,7 @@ class ZWaveAdapter(Adapter):
             if node.location in self._devices:
                 device = self._devices[node.location]
                 event = Message(type_ = Message.Event, \
-                                data = device.processEvent(kwargs['value']), \
+                                data = device.processEvent(kwargs['value'].label), \
                                 sender = device.address, \
                                 receiver = Message.DEFAULT_ADDRESS)
                 logger.info("Received a ZWave event")

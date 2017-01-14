@@ -9,6 +9,30 @@ import uuid
 
 logger = logging.getLogger(__name__)
 
+class ZWaveValueWrapper():
+
+    def __init__(self, value):
+        self._wrappedValue = value
+        if value.data == 0:
+            self.on = False
+
+    @property
+    def data(self):
+        if self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == 38 and not self.on:
+            return 0
+        return self._wrappedValue.data
+
+    @data.setter
+    def data(self, value):
+        if self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == 38:
+            self.on = (value != 0)
+
+        self._wrappedValue.data = value
+
+    def __getattr__(self, attr):
+        """Everything else is delegated to the object"""
+        return getattr(self._wrappedValue, attr)
+
 class ZWaveDevice(Device):
     PROTOCOL='zwave'
     dataMappings={'Bool':DataType.Binary,'Byte':DataType.Byte, 'Decimal':DataType.Float,\
@@ -36,7 +60,7 @@ class ZWaveDevice(Device):
             min_=val.min, value=val.data)
             attribute=Attribute(val.label,parameters=[parameter],isControllable=not val.is_read_only)
             attributes.append(attribute)
-            self.__valueMap[val.label] = val
+            self.__valueMap[val.label] = ZWaveValueWrapper(val)
 
         return DeviceType(node.product_name, ZWaveDevice.PROTOCOL, node.manufacturer_name,\
         attributes=attributes)
@@ -83,7 +107,8 @@ class ZWaveDevice(Device):
             return self.buildParamChange(zwaveVal)
 
 
-    def processEvent(self, val):
+    def processEvent(self, label):
+        val = self.__valueMap[label]
         parameters = []
         parameterChange = self.buildParamChange(val)
         parameters.append(parameterChange)
