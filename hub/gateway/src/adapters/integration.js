@@ -93,7 +93,7 @@ let IntegrateAdapter = (function () {
                 switch (type) {
                     case IPC.Request:
                         if (payload.action) {
-                            response = requestAction.call(this, payload, id);
+                            response = requestAction.call(this, payload);
                         }
                         else {
                             response = payload.get ?
@@ -121,7 +121,7 @@ let IntegrateAdapter = (function () {
         logger.debug(`Setting device ${id} attribute ` + payload.set + ' to ' +
             JSON.stringify(payload.value));
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             setAttribute(getDevice.call(this, id) || {}, payload.set, payload.value);
             resolve(wrap(payload.set, payload.value));
         });
