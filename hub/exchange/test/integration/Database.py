@@ -233,6 +233,19 @@ class TestDatabaseIntegration(TestCase):
         for device in response.data["value"]["records"]:
             self.assertNotEqual(device["source"], str(self.devices[0].address))
 
+    def test_duplicate_device_type_is_ignored(self):
+        typeResults = self.db.query("SELECT Count(*) FROM Device_Type")
+        firstResult = typeResults.fetchone()
+        self.assertEqual(firstResult["Count(*)"], 2)
+
+        deviceResults = self.db.query("SELECT Count(*) FROM Device")
+        secondResult = deviceResults.fetchone()
+        self.assertEqual(secondResult["Count(*)"], 21)
+
+        deviceTypeResults = self.db.query("SELECT Count(*) FROM Device WHERE type = 2")
+        thirdResult = deviceTypeResults.fetchone()
+        self.assertEqual(thirdResult["Count(*)"], 20)
+
 class TestDatabase:
 
     def __init__(self, db_name):
