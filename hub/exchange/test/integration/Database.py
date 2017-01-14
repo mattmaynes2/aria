@@ -62,22 +62,42 @@ class TestDatabaseIntegration(TestCase):
         sensorStateChangeMessage = Message()
         sensorStateChangeMessage.type = Message.Event
         sensorStateChangeMessage.sender = myUuid
-        sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
+        sensorStateChangeMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : myUuid,
+            'deviceType' : self.devices[0].deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
+                                }
+                            ]
+                        }
+            }
 
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.exchange.teardown()
-        results = self.db.query("SELECT * FROM Event").fetchone()
+        results = self.db.query("SELECT request_id, source, a.name as attName, p.name as ParamName, \
+        pc.value, dt.name as deviceTypeName FROM Event e join parameter_change pc on\
+         e.id=pc.event_id join parameter p on p.id=pc.parameter join attribute a on p.attribute_id \
+         = a.id join device_type dt on a.device_type=dt.id").fetchone()
         self.assertEqual(results["request_id"], 1)
         self.assertEqual(results["source"], str(UUID(bytes=myUuid)))
-        self.assertEqual(results["attribute"], "state")
-        self.assertEqual(results["value"], "1")
+        self.assertEqual(results["attName"], "state")
+        self.assertEqual(results["ParamName"], "state")
+        self.assertEqual(results["deviceTypeName"], self.devices[0].deviceType.name)
+        self.assertEqual(results["value"],"1")
 
     def test_requests_to_hub_should_not_be_logged_to_database(self):
         sensorStateChangeMessage = Message()
         sensorStateChangeMessage.type = Message.Request
         sensorStateChangeMessage.sender = self.devices[0].address
 
-        sensorStateChangeMessage.data = {"set" : "mode", "value" : 2}
+        sensorStateChangeMessage.data = {"set" : "mode", "value" :2}
         self.testAdapter.enqueueMessage(sensorStateChangeMessage)
         self.exchange.teardown()
  
@@ -85,18 +105,32 @@ class TestDatabaseIntegration(TestCase):
         results = self.db.query("SELECT count(*) as count FROM Event")
         self.assertEqual(results.fetchone()["count"], 0)
 
-
     def test_events_should_be_linked_to_requests(self):
 
         myUuid = self.devices[0].address
         requestMessage = Message()
         requestMessage.type = Message.Request
-        requestMessage.data = {"set" : "brightness", "value" : 100}
+        requestMessage.data = {"set" : "state", "value" : [{'name':'state','value':1}]}
         requestMessage.receiver = myUuid
         self.testAdapter.enqueueMessage(requestMessage)
-        
+
         eventMessage = Message()
-        eventMessage.data = { "response" : "brightness", "value" : 100 }
+        eventMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : myUuid,
+            'deviceType' : self.devices[0].deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
+                                }
+                            ]
+                        }
+            }
         eventMessage.type = Message.Event 
         eventMessage.sender = myUuid
         eventMessage.receiver = Message.DEFAULT_ADDRESS
@@ -105,8 +139,10 @@ class TestDatabaseIntegration(TestCase):
         self.exchange.teardown()
 
         results = self.db.query("SELECT count(*) as count FROM \
-                                Event e INNER JOIN Request r ON e.request_id = r.id\
-                                WHERE e.attribute = 'brightness' AND e.value = 100")
+                                Event e INNER JOIN Request r ON e.request_id = r.id \
+                                join parameter_change pc on e.id=pc.event_id join Parameter p on \
+                                pc.parameter=p.id \
+                                WHERE p.name = 'state' AND pc.value = 1")
 
         firstResult = results.fetchone()
         self.assertEqual(firstResult['count'], 1)
@@ -116,7 +152,22 @@ class TestDatabaseIntegration(TestCase):
         for device in self.devices:
             sensorStateChangeMessage = Message()
             sensorStateChangeMessage.type = Message.Event
-            sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
+            sensorStateChangeMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : device.address,
+            'deviceType' : device.deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
+                                }
+                            ]
+                        }
+            }
             sensorStateChangeMessage.sender = device.address
             self.testAdapter.enqueueMessage(sensorStateChangeMessage)
 
@@ -131,7 +182,7 @@ class TestDatabaseIntegration(TestCase):
         self.testAdapter.enqueueMessage(sensorEventWindowRequest)
 
         # Give some time for the hub to respond to the request
-        time.sleep(10)
+        time.sleep(20)
         
         response = self.testAdapter.receivedMessages[0]
         
@@ -144,7 +195,22 @@ class TestDatabaseIntegration(TestCase):
         for device in self.devices:
             sensorStateChangeMessage = Message()
             sensorStateChangeMessage.type = Message.Event
-            sensorStateChangeMessage.data = {"response" : "state", "value" : 1}
+            sensorStateChangeMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : device.address,
+            'deviceType' : device.deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
+                                }
+                            ]
+                        }
+            }
             sensorStateChangeMessage.sender = device.address
             self.testAdapter.enqueueMessage(sensorStateChangeMessage)
 
@@ -211,10 +277,9 @@ class StubDeviceAdapter(Adapter):
             message = self.q.get()
             if (message != None):
                 self.notify('received', message)
-            self.q.task_done()
-            return True
         except:
-            self.exceptionTrace = traceback.format_exc()
+            log.error(traceback.format_exc())
+        self.q.task_done()
         return True
 
     def teardown(self):

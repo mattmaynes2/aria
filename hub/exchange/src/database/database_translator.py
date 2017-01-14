@@ -17,10 +17,10 @@ class DatabaseTranslator(Delegate):
 
     GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute_id = ? AND name = ?"
     GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE address = ?"
-    GET_ATTRIBUTE     = "SELECT id FROM Attributes WHERE device_type = ? AND name = ?"
+    GET_ATTRIBUTE     = "SELECT id FROM Attribute WHERE device_type = ? AND name = ?"
 
     SET_DEVICE_TYPE   = "INSERT INTO DEVICE_TYPE (name, protocol, maker) VALUES (?, ?, ?)"
-    SET_ATTRIBUTE     = "INSERT INTO Attributes (name, device_type, controllable) VALUES (?, ?, ?)"
+    SET_ATTRIBUTE     = "INSERT INTO Attribute (name, device_type, controllable) VALUES (?, ?, ?)"
     SET_PARAMETER     = "INSERT INTO Parameter (name, attribute_id, data_type, max, min, step) \
                          VALUES (?, ?, ?, ?, ?, ?)"
 
@@ -54,11 +54,10 @@ class DatabaseTranslator(Delegate):
                     self._setParameter(attributeId, parameter)
 
         else:
-            log.warning("Device discoverd with null address")
+            log.warning("Device discovered with null address")
 
     def _request(self, message):
-        values =  (self._getStr(message.sender), self._getStr(message.receiver)\
-        , str(message.data['set']), str(message.data['value']))
+        values =  (self._getStr(message.sender), self._getStr(message.receiver))
         self.database.execute(DatabaseTranslator.REQUEST, values)
         results = self.database.execute
         return self.database.getLastInsertId()
@@ -107,6 +106,6 @@ class DatabaseTranslator(Delegate):
         self.database.execute(DatabaseTranslator.SET_ATTRIBUTE, values)
 
     def _setParameter(self, attributeId, parameter):
-        values = (str(parameter.name), attributeId, str(parameter.dataType), str(parameter.max)\
+        values = (str(parameter.name), attributeId, str(parameter.dataType.value), str(parameter.max)\
         , str(parameter.min), str(parameter.step))
         self.database.execute(DatabaseTranslator.SET_PARAMETER, values)
