@@ -40,7 +40,7 @@ class DeviceParameter extends Component {
                 });
                 break;
             case DataType.Byte:
-                this._props.max = Math.max(this._props.max, 255);
+                this._props.max = Math.min(this._props.max, 255);
                 this._props.min = Math.min(Math.abs(this._props.min), 0);
                 /* falls through */
             case DataType.Integer:
