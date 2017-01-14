@@ -93,7 +93,7 @@ let IntegrateAdapter = (function () {
                 switch (type) {
                     case IPC.Request:
                         if (payload.action) {
-                            response = requestAction.call(this, payload);
+                            response = requestAction.call(this, payload, id);
                         }
                         else {
                             response = payload.get ?
@@ -114,6 +114,19 @@ let IntegrateAdapter = (function () {
             }
             resolve(response);
         });
+
+    };
+
+    IntegrateAdapter.prototype.sendTo = function (type, id, payload) {
+        logger.debug(`Setting device ${id} attribute ` + payload.set + ' to ' +
+            JSON.stringify(payload.value));
+
+        return new Promise((resolve, reject) => {
+            setAttribute(getDevice.call(this, id) || {}, payload.set, payload.value);
+            resolve(wrap(payload.set, payload.value));
+        });
+
+
     };
 
     function wrap (res, value) {
@@ -193,6 +206,24 @@ let IntegrateAdapter = (function () {
 
     function event () {
         return {};
+    }
+
+    function getDevice (id) {
+        for (var dev in this._state.hub.devices) {
+            if (dev.id === id) {
+                return dev;
+            }
+        }
+        return null;
+    }
+
+    function setAttribute (dev, name, params) {
+        for (var attr in dev.attributes) {
+            if (attr.name === name) {
+                attr.parameters = params;
+            }
+        }
+        return dev;
     }
 
     function makeEvents (payload) {

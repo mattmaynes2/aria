@@ -8,6 +8,7 @@ class ColorPicker extends Component {
         super();
         this._state = color || '000000';
         this._$el = $('<input>').prop('type', 'color');
+        this._$el.change(this._changed.bind(this));
     }
     render () {
         this._$el.val(this._state);
