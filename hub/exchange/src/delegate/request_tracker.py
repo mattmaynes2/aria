@@ -29,7 +29,7 @@ class RequestTracker(DatabaseTranslator):
         if(Message.Request == message.type and message.receiver != self.hub.address):
             self.requests[message.receiver]=self.dbTranslator.received(message)
             return self.requests[message.receiver]
-        elif(Message.Event == message.type or Message.Response == message.type):
+        elif(Message.Event == message.type):
             reqid=self.requests.pop(message.sender,None)
             # don't create a request for a non controllable device
             attribute = device.getAttribute(message.data['attribute']['name'])
@@ -42,6 +42,8 @@ class RequestTracker(DatabaseTranslator):
                 try:
                     msg=self.createRequest(message)
                     reqid=self.received(msg)
+                    # remove the request from the dict
+                    self.requests.pop(message.sender,None)
                     self.sendEvent(reqid,message)
                 except Exception as e:
                     log.error ('Invalid Event message '+str(message)+ str(e),exc_info=True)
