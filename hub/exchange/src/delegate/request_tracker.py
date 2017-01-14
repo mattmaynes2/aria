@@ -16,20 +16,20 @@ class RequestTracker(DatabaseTranslator):
 
     def received(self,message):
         """
-            decorates the receive of database translator to assosiate a request to a device
+            decorates the receive of database translator to associates a request to a device
             with an event/response from a device. If a previous request doesn't exist
             for a device then this was a manual user action, a request is created for this 
             action.
         """
-        device= self.hub.getDevice(message.sender)
-        if(not device):
-            log.warning('Unknown sender '+str(UUID(bytes=message.sender)))
-            return False
         # ignore requests to hub they don't need to be logged
         if(Message.Request == message.type and message.receiver != self.hub.address):
             self.requests[message.receiver]=self.dbTranslator.received(message)
             return self.requests[message.receiver]
         elif(Message.Event == message.type):
+            device= self.hub.getDevice(message.sender)
+            if(not device):
+                log.warning('Unknown sender '+str(UUID(bytes=message.sender)))
+                return False
             reqid=self.requests.pop(message.sender,None)
             # don't create a request for a non controllable device
             attribute = device.getAttribute(message.data['attribute']['name'])
