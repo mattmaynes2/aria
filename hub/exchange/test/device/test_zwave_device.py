@@ -2,6 +2,7 @@ from device.zwave_device import ZWaveDevice
 from device.data_types import DataType
 from unittest import TestCase
 from unittest.mock import Mock
+from unittest import mock
 import uuid
 import unittest
 
@@ -98,9 +99,21 @@ class ZWaveDeviceTest(TestCase):
         self.assertEqual(10, value["value"])
         self.assertEqual("Brightness", value["name"])
 
-    def test_process_event_should_create_dictionary_representation_of_event(self):
+    @mock.patch("device.zwave_device.time")
+    def test_process_event_should_create_dictionary_representation_of_event(self, mockTime):
         '''
         HTTP GATEWAY RELIES ON THIS FORMAT
         The dictionary is Json-Serialized
         '''
-        
+        mockVal = self.mockValues["Brightness"]
+        device = ZWaveDevice(self.mockNode)
+        mockTime.time.return_value = 30
+        ret = device.processEvent(mockVal)
+        self.assertEqual("device.event", ret["event"])
+        self.assertEqual(30000, ret["timestamp"])
+        self.assertEqual("testdevice", ret["device"])
+        self.assertEqual("testproduct", ret["deviceType"])
+        self.assertEqual("Brightness", ret["attribute"]["name"])
+        self.assertEqual("Brightness", ret["attribute"]["parameters"][0]["name"])
+        self.assertEqual(10, ret["attribute"]["parameters"][0]["value"])
+        self.assertEqual(DataType.Byte, ret["attribute"]["parameters"][0]["dataType"])
