@@ -114,6 +114,19 @@ let IntegrateAdapter = (function () {
             }
             resolve(response);
         });
+
+    };
+
+    IntegrateAdapter.prototype.sendTo = function (type, id, payload) {
+        logger.debug(`Setting device ${id} attribute ` + payload.set + ' to ' +
+            JSON.stringify(payload.value));
+
+        return new Promise((resolve) => {
+            setAttribute(getDevice.call(this, id) || {}, payload.set, payload.value);
+            resolve(wrap(payload.set, payload.value));
+        });
+
+
     };
 
     function wrap (res, value) {
@@ -195,6 +208,24 @@ let IntegrateAdapter = (function () {
         return {};
     }
 
+    function getDevice (id) {
+        for (var dev in this._state.hub.devices) {
+            if (dev.id === id) {
+                return dev;
+            }
+        }
+        return null;
+    }
+
+    function setAttribute (dev, name, params) {
+        for (var attr in dev.attributes) {
+            if (attr.name === name) {
+                attr.parameters = params;
+            }
+        }
+        return dev;
+    }
+
     function makeEvents (payload) {
         var i, events = [], devices = this._state.hub.devices, device,
             start   = payload.start,
@@ -246,7 +277,7 @@ let IntegrateAdapter = (function () {
                 name        : maker + ' ' + protocol + ' ' + name,
                 maker       : maker,
                 protocol    : protocol,
-                attributes  : Array.apply([], Array(randomInt(5))).map(makeAttribute)
+                attributes  : Array.apply([], Array(randomInt(10))).map(makeAttribute)
             }
         };
     }

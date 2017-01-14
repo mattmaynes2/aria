@@ -54,8 +54,8 @@ let DeviceRouter = (function () {
         app.post('/:id/setAttribute', (req, res) => {
             this._adapter
                 .sendTo(IPC.Request, req.params.id, {
-                    set : req.body.name,
-                    value : req.body.value
+                    set     : req.body.name,
+                    value   : req.body.value
                 })
                 .then((reply) => {
                     res.json(reply.payload.value);

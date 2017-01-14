@@ -58,7 +58,7 @@ class DeviceParameter extends Component {
                 });
                 break;
             default:
-                this._target = null;
+                this._target = new DataType(this._state, this._props);
                 break;
         }
 
