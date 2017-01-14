@@ -18,7 +18,7 @@ class Slider extends Component {
         };
         this._$target = $('<div>');
 
-        $(document)
+        this._$target
             .mouseup(() => {
                 this._dragging = false;
                 this._$target.removeClass('slider-target-active');
