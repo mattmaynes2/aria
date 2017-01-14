@@ -24,9 +24,6 @@ class RequestTrackerTest(TestCase):
     def test_ignore_message(self,MockTranslator):
         MockTranslator.received.return_value=True
         tracker=RequestTracker(MockTranslator, self.hub)
-        # test ignore unkown sender
-        self.assertFalse(tracker.received(Message(Message.Request,sender=uuid.uuid4().bytes,\
-        receiver=self.id)))
         self.hub.addDevice(self.dev)
         # test ignore request for hub
         self.assertFalse(tracker.received(Message(Message.Request,sender=self.id)))
@@ -52,6 +49,7 @@ class RequestTrackerTest(TestCase):
                 return 10
             elif (message.type == Message.Event):
                 self.assertTrue('requestId' in message.data)
+                self.assertEqual(message.data['requestId'],10)
                 
         MockTranslator.received=receive
 
@@ -61,7 +59,7 @@ class RequestTrackerTest(TestCase):
         [{'name':'state', 'value':0}]}},\
             sender=self.id,receiver=uuid.uuid4().bytes))
         
-        self.assertEqual(tracker.requests.get(self.dev.address),10)
+        self.assertEqual(tracker.requests.get(self.dev.address),None)
 
 
     @patch('database.DatabaseTranslator')
