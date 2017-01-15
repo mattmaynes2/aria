@@ -11,6 +11,8 @@ logger = logging.getLogger(__name__)
 
 class ZWaveValueWrapper():
 
+    COMMAND_CLASS_MULTILEVEL_SWITCH = 38
+
     def __init__(self, value):
         self._wrappedValue = value
         if value.data == 0:
@@ -18,13 +20,13 @@ class ZWaveValueWrapper():
 
     @property
     def data(self):
-        if self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == 38 and not self.on:
+        if self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_MULTILEVEL_SWITCH and not self.on:
             return 0
         return self._wrappedValue.data
 
     @data.setter
     def data(self, value):
-        if self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == 38:
+        if self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_MULTILEVEL_SWITCH:
             self.on = (value != 0)
 
         self._wrappedValue.data = value
@@ -52,7 +54,7 @@ class ZWaveDevice(Device):
     def _getDeviceType(self, node):
         attributes = []
         for key,val in node.get_values(genre='User').items():
-            if val.type == 'Byte' and val.command_class == 38:
+            if val.type == 'Byte' and val.command_class == ZWaveValueWrapper.COMMAND_CLASS_MULTILEVEL_SWITCH:
                 max = 99
             else:
                 max = val.max
