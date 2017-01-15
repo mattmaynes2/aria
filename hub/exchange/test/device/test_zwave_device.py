@@ -108,7 +108,7 @@ class ZWaveDeviceTest(TestCase):
         mockVal = self.mockValues["Brightness"]
         device = ZWaveDevice(self.mockNode)
         mockTime.time.return_value = 30
-        ret = device.processEvent(mockVal)
+        ret = device.processEvent("Brightness")
         self.assertEqual("device.event", ret["event"])
         self.assertEqual(30000, ret["timestamp"])
         self.assertEqual("testdevice", ret["device"])
