@@ -2,8 +2,12 @@ import sqlite3
 import logging
 import os.path
 import pkgutil
+from sync import synchronized
+from   threading import Lock
 
 log=logging.getLogger(__name__)
+
+lock=Lock()
 
 class Database:
 
@@ -30,7 +34,8 @@ class Database:
             return d
         self.connection.row_factory = dict_factory
         self.cursor = self.connection.cursor()
-
+    
+    @synchronized(lock)
     def execute (self, sql, values=None):
         try:
             log.debug("Running SQL statement: " + sql)
@@ -38,7 +43,7 @@ class Database:
             self.connection.commit()
             return self.cursor.fetchall()
         except Exception as e:
-            log.error("Could not execute command " + sql + " " + str(e))
+            log.exception("Could not execute command " + sql)
 
     def shutdown (self):
         self.cursor.close()
