@@ -29,7 +29,7 @@ class Hub extends Widget {
         this._stateButton.change((state) => {
             Service.set('/hub/mode', { mode : Hub.mode(state) })
                 .then((res) => {
-                    this._state.mode = res.mode;
+                    this._state.mode = res.payload.mode;
                     this.render();
                 });
         });
@@ -51,9 +51,10 @@ class Hub extends Widget {
 
     update () {
         Service.get('/hub/state').then((res) => {
-            this._state.mode    = res.mode;
-            this._state.devices = res.devices;
-            this._state.version = res.version;
+            let payload = res.payload;
+            this._state.mode    = payload.mode;
+            this._state.devices = payload.devices;
+            this._state.version = payload.version;
             this.render();
         });
         return this;

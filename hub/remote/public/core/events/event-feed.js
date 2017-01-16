@@ -22,7 +22,7 @@ class EventFeed extends Widget {
     update () {
         Service.get('/hub/events', { start : 0, count : 10 })
             .then((res) => {
-                this._state.events = res.records.map((event) => {
+                this._state.events = res.payload.records.map((event) => {
                     return new Event(event);
                 });
                 this.render();

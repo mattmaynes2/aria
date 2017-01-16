@@ -5,6 +5,7 @@ import DeviceIcon       from './icon';
 import DeviceView       from './view';
 import DeviceAttribute  from './attribute';
 import Service          from '../service/service';
+import Notify           from '../notify/notify';
 
 import './device.css';
 
@@ -36,14 +37,25 @@ class Device extends Widget {
     render () {
         super.render();
 
-        this._attrs = this._state.deviceType.attributes.map((attr) => {
+        this._origAttrs = this._state.deviceType.attributes.map((attr) => {
+            return $.extend(true, {}, attr);
+        });
+
+        this._attrs = this._state.deviceType.attributes.map((attr, i) => {
             var devAttr = new DeviceAttribute(attr, this._props);
 
             devAttr.change(() => {
                 Service.set('/device/' + this._state.address + '/setAttribute', {
                     name    : attr.name,
                     value   : devAttr.state().parameters
-                }).then(() => { console.log('Changed Attribute ' + attr.name); });
+                })
+                .then(() => {
+                    this._origAttrs[i] = $.extend(true, {}, devAttr.state());
+                })
+                .catch(() => {
+                    Notify.error(`Failed to set device ${this._state.name} attribute ${attr.name}`);
+                    devAttr.state($.extend(true, {}, this._origAttrs[i])).render();
+                });
             });
             return devAttr;
         });
