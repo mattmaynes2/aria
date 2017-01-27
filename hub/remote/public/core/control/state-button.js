@@ -46,7 +46,7 @@ function buttonSelected (index, e) {
     clearSelected(this._$el);
     $(e.delegateTarget).addClass('state-button-selected');
     this._state = this._props[index];
-    this._changed();
+    this.trigger('change');
 }
 
 export default StateButton;

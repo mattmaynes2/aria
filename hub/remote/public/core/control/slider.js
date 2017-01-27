@@ -22,7 +22,7 @@ class Slider extends Component {
             .mouseup(() => {
                 this._dragging = false;
                 this._$target.removeClass('slider-target-active');
-                this._changed();
+                this.trigger('change');
             })
             .mousemove((e) => {
                 if (this._dragging) {

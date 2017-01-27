@@ -19,7 +19,7 @@ class Component {
     }
     remove () {
         this._clickObserver = null;
-        this._$el.remove();
+        if (this._$el) { this._$el.remove(); }
         return this;
     }
     $el (el) {
@@ -51,7 +51,7 @@ class Component {
     }
     click (observer) {
         if (!this._clickObserver) {
-            this._clickObserver = this._clicked.bind(this);
+            this._clickObserver = this._click.bind(this);
         } else {
             this._$el.off(this._clickObserver);
         }
@@ -62,10 +62,17 @@ class Component {
         }
         return this;
     }
-    _changed (custom) {
+    trigger (event, custom) {
+        let id = '_' + event;
+
+        if (this[id]) {
+            this[id](custom);
+        }
+    }
+    _change (custom) {
         notify.call(this, this._observers.change, custom);
     }
-    _clicked (custom) {
+    _click (custom) {
         notify.call(this, this._observers.click, custom);
     }
 }
