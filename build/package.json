@@ -1,6 +1,6 @@
 {
   "name": "build",
-  "version": "0.2.0",
+  "version": "0.5.0",
   "description": "Build configuration for smart-learning platform",
   "main": "execute.js",
   "scripts": {

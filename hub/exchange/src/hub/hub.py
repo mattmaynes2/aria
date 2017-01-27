@@ -11,10 +11,10 @@ from datetime import datetime
 log=logging.getLogger(__name__)
 
 class Hub(Device):
-    VERSION = '0.0.2'
+    VERSION = '0.5.0'
     ADDRESS= Message.DEFAULT_ADDRESS
-    GATEWAY_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01' 
-    
+    GATEWAY_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
+
     def __init__ (self, database, args = {}, exit = None):
         # setup device attributes and DeviceType
         methods=[Attribute('name',[Parameter('name',DataType.String)]), \
@@ -78,7 +78,7 @@ class Hub(Device):
         count=params['count']
         results = self.retriever.getEventWindow(id_,start,count)
         return{'total':len(results),'records':results}
-    
+
     def formatEvents(self,events):
         for event in events:
             source=event['source']
