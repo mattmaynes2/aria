@@ -44,6 +44,9 @@ class Service {
                         reject(new Response({}, xhr.status));
                     }
                     else {
+                        if (xhr.responseText) {
+                            Notify.error('Request Failed: ' + JSON.parse(xhr.responseText).error);
+                        }
                         reject(new Response(xhr.responseText, xhr.status));
                     }
                 }
