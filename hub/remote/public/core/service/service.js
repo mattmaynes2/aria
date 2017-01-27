@@ -1,5 +1,6 @@
 import io       from 'socket.io-client';
 import Notify   from '../notify/notify';
+import Response from './response';
 
 var socket;
 
@@ -33,10 +34,17 @@ class Service {
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        resolve(xhr.responseText ? JSON.parse(xhr.responseText) : {});
+                        resolve(
+                            new Response(xhr.responseText ? JSON.parse(xhr.responseText) : {}),
+                            xhr.status
+                        );
+                    }
+                    else if (xhr.status === 0) {
+                        Notify.error('Aria is offline - Check connection and try again');
+                        reject(new Response({}, xhr.status));
                     }
                     else {
-                        reject(xhr.responseText);
+                        reject(new Response(xhr.responseText, xhr.status));
                     }
                 }
             };

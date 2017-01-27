@@ -11,7 +11,7 @@ class DevicePanel extends WidgetPanel {
     }
     update () {
         Service.get('/device/list').then((res) => {
-            this._state.devices = res.devices.map((dev) => {
+            this._state.devices = res.payload.devices.map((dev) => {
                 return new Device(dev).props({ controllable : true });
             });
             this.render();
