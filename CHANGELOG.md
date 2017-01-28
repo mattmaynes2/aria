@@ -1,6 +1,16 @@
 Change Log
 ==========
 
+## v0.5.0
+
+- Updated Database Design
+    - Modified database storage to match specification
+    - Added data types for device parameters and attributes
+- User Interface
+    - Added display fields for different data types
+    - Added integrated control for actuators in the system
+    - Introduced error handling for web client when disconnected from the ARIA system
+
 ## v0.4.0
 
 - End-to-end Push Events
