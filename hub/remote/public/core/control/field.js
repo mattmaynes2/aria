@@ -34,6 +34,12 @@ class Field extends Component {
 
         return this;
     }
+    trigger (event, custom) {
+        if (event === 'change' && !this._props.editable) {
+            return this;
+        }
+        return super.trigger(event, custom);
+    }
 }
 
 export default Field;

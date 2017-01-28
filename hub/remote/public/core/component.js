@@ -40,7 +40,7 @@ class Component {
         if (arguments.length === 0) {
             return this._props;
         }
-        this._props = props;
+        this._props = $.extend(this._props || {}, props);
         return this;
     }
     change (observer) {
@@ -65,9 +65,8 @@ class Component {
     trigger (event, custom) {
         let id = '_' + event;
 
-        if (this[id]) {
-            this[id](custom);
-        }
+        if (this[id]) { this[id](custom); }
+        return this;
     }
     _change (custom) {
         notify.call(this, this._observers.change, custom);
