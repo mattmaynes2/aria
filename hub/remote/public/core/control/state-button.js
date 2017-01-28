@@ -25,7 +25,7 @@ class StateButton extends Component {
     }
     state (state) {
         if (arguments.length === 0) {
-            return this._props[this._state];
+            return this._state;
         }
         this._state = state;
         clearSelected.call(this, this._$el);

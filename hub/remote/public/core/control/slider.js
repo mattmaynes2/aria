@@ -44,7 +44,7 @@ class Slider extends Component {
             .mousedown((e) => {
                 this._dragging  = true;
                 this._start     = e.clientX;
-                this._max = this._$el.width() - this._$target.width();
+                this._max       = this._$el.width() - this._$target.width();
                 this._offset    = bound(0, this._max,
                     this._start - this._$el.offset().left - (this._$target.width() / 2)
                 );
