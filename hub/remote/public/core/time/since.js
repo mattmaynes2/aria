@@ -16,7 +16,7 @@ class Since extends Component {
     remove () {
         this._state = null;
         super.remove();
-        return this;
+        return this.
     }
 }
 
