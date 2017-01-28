@@ -1,6 +1,6 @@
 # Project Background
 
-## Introduction 
+## Introduction
 
 Provide a general context for the problem (introduce the problem area). This should be brief, since 
 the readers are familiar with the problem area (the supervisor has been involved with the project 
