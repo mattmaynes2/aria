@@ -13,6 +13,11 @@ class Since extends Component {
         updateTime.call(this);
         return this;
     }
+    remove () {
+        this._state = null;
+        super.remove();
+        return this;
+    }
 }
 
 let TimeInterval = {

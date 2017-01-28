@@ -1,6 +1,7 @@
 // Karma configuration
 
-var webpack = require('./webpack.config');
+var config  = require('./webpack.config'),
+    webpack = config;
 
 module.exports = function(config) {
     config.set({
@@ -56,10 +57,7 @@ module.exports = function(config) {
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: true,
+        singleRun: true
 
-        // Concurrency level
-        // how many browser should be started simultaneous
-        concurrency: Infinity
     });
 };

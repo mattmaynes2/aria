@@ -23,7 +23,7 @@ class Field extends Component {
         if (this._props.editable) {
             this._$value
                 .addClass('field-editable')
-                .change(this._changed.bind(this));
+                .change(this.trigger.bind(this, 'change'));
         }
 
         this._$el
@@ -33,6 +33,12 @@ class Field extends Component {
 
 
         return this;
+    }
+    trigger (event, custom) {
+        if (event === 'change' && !this._props.editable) {
+            return this;
+        }
+        return super.trigger(event, custom);
     }
 }
 
