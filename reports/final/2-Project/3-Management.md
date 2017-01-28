@@ -23,6 +23,8 @@ and other Agile methodologies. Use of practices which are widely accepted in ind
 that new developers are comfortable working on the project. The process prescribes some practices to
 be used for: Source Code Management, Code Reviews, Issue Tracking, and Testing.
 
+![][code-lifecycle]
+
 ### Source Code Management
 
 The project uses a source code management tool to achieve the following goals:
@@ -97,7 +99,7 @@ of development. Issues are prioritized using labels (minor, major, critical, blo
 assigned to a team member when work begins; when work on an issue is completed the issue is closed
 using a commit message.
 
-### Testing practices
+### Testing Practices
 
 Agile processes generally encourage a short feedback loop for developers (problems with code should
 be exposed as early as possible). This project uses principles of test-driven development (TDD) and

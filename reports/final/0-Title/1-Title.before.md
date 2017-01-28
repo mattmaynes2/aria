@@ -17,7 +17,7 @@
 	<br/>
 	<br/>
 	<p>
-		A report submitted in partial fulfillment of the requirements 
+		A report submitted in partial fulfillment of the requirements
 		<br/>
 		of SYSC-4907 Engineering Project
 	</p>
@@ -34,7 +34,7 @@
 	<br/>
 	<br/>
 	<br/>
-	<p>December 9, 2016</p>
+	<p>February 1, 2017</p>
 </div>
 
 <p style="page-break-after:always;"></p>
