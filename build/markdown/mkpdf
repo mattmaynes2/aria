@@ -26,6 +26,7 @@ NUM=""
 TARGET="./"
 STYLE="$SCRIPT_PATH/./styles/style.css"
 HTML_TEMPLATE="$SCRIPT_PATH/./templates/default.html"
+TOC_XSL="$SCRIPT_PATH/./templates/toc.xsl"
 
 function info () {
     echo -e "$NAME $VERSION $HELP"
@@ -62,11 +63,11 @@ function tohtml () {
     # the $FLAG variable to be split. This is a shellcheck violation and needs to be
     # disabled here.
     # shellcheck disable=SC2086
-    pandoc --template="$HTML_TEMPLATE" "${TOC[@]}" $FLAGS $VARIABLE "$1" > "$2"
+    pandoc --template="$HTML_TEMPLATE" $FLAGS $VARIABLE "$1" > "$2"
 }
 
 function topdf () {
-    wkhtmltopdf --footer-right '[sitepage]' --footer-font-size 8 --footer-font-name 'Helvetica' -L 35 -R 25 -T 25 -B 25 -s Letter cover "$1" "$2" "$3"
+    wkhtmltopdf --footer-right '[sitepage]' --footer-font-size 8 --footer-font-name 'Helvetica' -L 35 -R 25 -T 25 -B 25 -s Letter cover "$1" "${TOC[@]}" "$2" "$3"
 }
 
 IFS=' ' read -r -a args <<< "$@"
@@ -98,7 +99,11 @@ do
             args=("${args[@]:1}")
             ;;
         --toc)
-            TOC=(--toc -V toctitle:'Table of Contents')
+            # WKHTMLTOPDF TOC
+            TOC=(toc --xsl-style-sheet "$TOC_XSL")
+
+            # Pandoc TOC
+            # TOC=(--toc -V toctitle:'Table of Contents')
             ;;
         --toc-depth)
             TOC_DEPTH="${args[0]}"
@@ -129,10 +134,11 @@ concat "$BEFORE" .tmp.before.markdown
 concat "$BODY" .tmp.markdown
 
 linkify .tmp.markdown .tmp.linked
-
 tohtml .tmp.linked .tmp.html
 
-TOC=()
+# Pandoc
+# TOC=()
+
 tohtml .tmp.before.markdown .tmp.before.html
 
 topdf .tmp.before.html .tmp.html "$OUTPUT"
