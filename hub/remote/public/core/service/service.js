@@ -35,22 +35,30 @@ class Service {
             var req = new Service.Request();
 
             req.onreadystatechange = () => {
+                var res;
+
                 if (req.readyState === 4) {
+                    try {
+                        res = JSON.parse(req.responseText);
+                    } catch (e) {
+                        res = req.responseText || '';
+                    }
+
                     if (req.status === 200) {
                         resolve(
-                            new Response(req.responseText ? JSON.parse(req.responseText) : {}),
+                            new Response(res),
                             req.status
                         );
                     }
                     else if (req.status === 0) {
                         Notify.error('Aria is offline - Check connection and try again');
-                        reject(new Response({}, req.status));
+                        reject(new Response(res, req.status));
                     }
                     else {
-                        if (req.responseText) {
-                            Notify.error('Request Failed: ' + JSON.parse(req.responseText).error);
+                        if (res.error) {
+                            Notify.error('Request Failed: ' + res.error);
                         }
-                        reject(new Response(req.responseText, req.status));
+                        reject(new Response(res, req.status));
                     }
                 }
             };

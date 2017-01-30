@@ -57,6 +57,10 @@ describe('Service', function () {
         spyOn(MockRequest.prototype, 'send');
     });
 
+    afterEach(function () {
+        MockRequest.defaults = {};
+    });
+
     it('Sends a get request', function () {
         Service.get('/abc/test');
 
@@ -73,6 +77,30 @@ describe('Service', function () {
 
     it('Sends a set request', function () {
         Service.set('/abc/name', 'foo');
+
+        expect(MockRequest.prototype.open).toHaveBeenCalledWith('POST', '/abc/name', true);
+        expect(MockRequest.prototype.send).toHaveBeenCalledWith('foo');
+    });
+
+    it('Sends a request that responds with a failure', function (done) {
+        MockRequest.prototype.send.and.callFake(function (payload) {
+            this.payload        = payload;
+            this.readyState     = 4;
+            this.status         = 500;
+            this.responseText   = '{ "error" : "failure" }';
+
+            if (this.async) {
+                setTimeout(this.onreadystatechange.bind(this), this.waitInterval);
+            }
+       });
+
+        Service.set('/abc/name', 'foo')
+            .then(function () { fail(); })
+            .catch(function (res) {
+                expect(res.status).toEqual(500);
+                expect(res.payload).toEqual({ error : 'failure' });
+                done();
+            });
 
         expect(MockRequest.prototype.open).toHaveBeenCalledWith('POST', '/abc/name', true);
         expect(MockRequest.prototype.send).toHaveBeenCalledWith('foo');
