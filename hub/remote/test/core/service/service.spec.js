@@ -106,5 +106,27 @@ describe('Service', function () {
         expect(MockRequest.prototype.send).toHaveBeenCalledWith('foo');
     });
 
+    it('Sends a request that responds as offline', function (done) {
+        MockRequest.prototype.send.and.callFake(function (payload) {
+            this.payload        = payload;
+            this.readyState     = 4;
+            this.status         = 0;
+
+            if (this.async) {
+                setTimeout(this.onreadystatechange.bind(this), this.waitInterval);
+            }
+       });
+
+        Service.set('/abc/name', 'foo')
+            .then(function () { fail(); })
+            .catch(function (res) {
+                expect(res.status).toEqual(0);
+                expect(res.payload).toEqual('');
+                done();
+            });
+
+        expect(MockRequest.prototype.open).toHaveBeenCalledWith('POST', '/abc/name', true);
+        expect(MockRequest.prototype.send).toHaveBeenCalledWith('foo');
+    });
 
 });
