@@ -64,5 +64,19 @@ describe('Service', function () {
         expect(MockRequest.prototype.send).toHaveBeenCalledWith('');
     });
 
+    it('Sends a get request with parameters', function () {
+        Service.get('/user', 'foo');
+
+        expect(MockRequest.prototype.open).toHaveBeenCalledWith('POST', '/user', true);
+        expect(MockRequest.prototype.send).toHaveBeenCalledWith('foo');
+    });
+
+    it('Sends a set request', function () {
+        Service.set('/abc/name', 'foo');
+
+        expect(MockRequest.prototype.open).toHaveBeenCalledWith('POST', '/abc/name', true);
+        expect(MockRequest.prototype.send).toHaveBeenCalledWith('foo');
+    });
+
 
 });
