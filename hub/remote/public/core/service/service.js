@@ -2,9 +2,11 @@ import io       from 'socket.io-client';
 import Notify   from '../notify/notify';
 import Response from './response';
 
-var socket;
+var socket, Request;
 
 class Service {
+    static get Request ()       { return Request ? Request : XMLHttpRequest;   }
+    static set Request (req)    { Request = req;    }
     static get socket () {
         if (!socket) {
             socket = io();
@@ -28,32 +30,33 @@ class Service {
     }
 
     static send (method, endpoint, data) {
+        data = data || '';
         return new Promise((resolve, reject) => {
-            var xhr = new XMLHttpRequest();
+            var req = new Service.Request();
 
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
+            req.onreadystatechange = () => {
+                if (req.readyState === 4) {
+                    if (req.status === 200) {
                         resolve(
-                            new Response(xhr.responseText ? JSON.parse(xhr.responseText) : {}),
-                            xhr.status
+                            new Response(req.responseText ? JSON.parse(req.responseText) : {}),
+                            req.status
                         );
                     }
-                    else if (xhr.status === 0) {
+                    else if (req.status === 0) {
                         Notify.error('Aria is offline - Check connection and try again');
-                        reject(new Response({}, xhr.status));
+                        reject(new Response({}, req.status));
                     }
                     else {
-                        if (xhr.responseText) {
-                            Notify.error('Request Failed: ' + JSON.parse(xhr.responseText).error);
+                        if (req.responseText) {
+                            Notify.error('Request Failed: ' + JSON.parse(req.responseText).error);
                         }
-                        reject(new Response(xhr.responseText, xhr.status));
+                        reject(new Response(req.responseText, req.status));
                     }
                 }
             };
-            xhr.open(method, endpoint, true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(typeof data === 'string' ? data : JSON.stringify(data));
+            req.open(method, endpoint, true);
+            req.setRequestHeader('Content-Type', 'application/json');
+            req.send(typeof data === 'string' ? data : JSON.stringify(data));
         });
 
     }
