@@ -128,8 +128,7 @@ DeviceType: {
                                             value: False, 
                                             min 0, 
                                             max: 0, 
-                                            step: 
-                                            None
+                                            step: None
                                         }
 
                                     ]
