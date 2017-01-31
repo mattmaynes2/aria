@@ -1,7 +1,6 @@
 ## Problem Statement
 
-Give a short, clear statement of the problem(s) being solved. The problem(s) must have been
-identified in the motivation discussion. Make sure that you have identified the problem(s) that
-your accomplishments have solved. A project often solves only a small part of a larger problem.
-In case, the motivation will identify the larger problem and the sub-problems, while the problem
-statement must clarify which problem is being solved.
+Smart home automation is not accessible to non-technical users. Setting up IoT devices can
+require knowledge of many levels of the device's inner-workings and how it communicates.
+Additionally, scheduling behaviours of devices for the smart home requires operation of a
+technical user interface to control, schedule and monitor their behaviour.

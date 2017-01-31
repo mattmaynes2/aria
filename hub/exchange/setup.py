@@ -9,9 +9,8 @@ setup(
     version             = '0.0.2',
     description         = 'Central control server for the smart learning system',
     packages            = find_packages('src'),
-    package_dir         = {'':'src'},
-    scripts             = ['src/__main__.py'],
-     entry_points={
+    package_dir         = { '':'src'},
+    entry_points={
         'setuptools.installation': [
             'eggsecutable = src.__main__:main',
         ]
@@ -20,5 +19,5 @@ setup(
     test_suite          = 'nose.collector',
     tests_require       = ['nose'],
     zip_safe            = False,
-    package_data        ={'':['*.config']}
+    package_data        ={'':['*.config', '*.sql']}
 )
