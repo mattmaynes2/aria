@@ -70,46 +70,40 @@ Insteon uses a central hub to communicate between the devices and the users app.
 is used for all device communications and control. Devices connect and send all event information
 to the central hub.
 
-Insteon uses a peer-to-peer network to connect the devices.[^A-1-3] All of Insteon's devices can act as a
-controller to send messages, a repeater to forward messages or a responder to receive messages.
+Insteon uses a peer-to-peer network to connect the devices [^A-1-3]. All of Insteon's devices can
+act as a controller to send messages, a repeater to forward messages or a responder to receive
+messages.
 
-###### Application Programming Interface {-}
+###### Application Programming Interfaces {-}
 
-Insteon provides a REST API to interact with their devices.
+Insteon provides a complete REST API for querying the properties of their hub. The REST API allows
+a client to query properties about the hub, the connected devices, any connected cameras, contacts,
+scenes, rooms and more. The API also provides endpoints for setting data values in devices and
+configuring properties of users [^A-1-4].
 
-| Feature                               | Supported |
-| ---------                             | --------- |
-| List all devices                      | Y         |
-| Receive update on device state change | Y         |
-| Modify device state                   | Y         |
-
-In order to use the API approval from Insteon is required. Applying for an API key is done through
-the Insteon website.[^A-1-4]
+The REST documentation does state that there are some limitations in the design of the protocol.
+It states that the REST API does not provide full support for configuring devices and scenes and
+states that the Insteon app is still required for complete access [^A-1-4].
 
 ###### Third Party Support {-}
 
-Insteon supports devices from the following manufacturers:
+Insteon produces its own devices for most of its smart home purposes [^A-1-5]. On top of these
+basic devices, Insteon has created integrations with a number of third party smart technology
+vendors. These vendors include: Nest, Logitech, Amazon Echo, Stringify, Apple HomeKit,
+Cortana, First Alert, Sonos, and MiLocks [^A-1-6].
 
-- Nest
-- Logitech
-- Amazon Echo
-- Stringify
-- Apple HomeKit
-- Cortana
-- First Alert
-- Sonos
-- MiLocks
+This exceptional list of partners demonstrates that the Insteon API is flexible enough to
+support many existing industry technologies. This may indicate that their platform is
+generic enough to support all smart device requirements. The framework developed by Insteon
+would be a valuable area of study for this project's design.
 
 ###### Limitations {-}
 
-In order to use the API an Insteon Hub is required also adding new Insteon devices to a network
-still require configuration through the Insteon App.
+As stated in the API section of this analysts, in order to properly configure all devices and
+scenes in the Insteon system, the Insteon app is required. This limitation impedes on the
+user experience of the system and would hurt the overall usability.
 
-##### Evaluation {-}
-
-The Insteon system is very reliable and easy to setup however because they use their own
-communication protocol the devices that can be added is limited mostly to those manufactured by
-Insteon. A closed system such as this is not what we are striving for with this project.
+##### Summary {-}
 
 #### A-1-2 Wink {-}
 
@@ -310,16 +304,18 @@ which operate using these communication protocols. Deciding on a communication p
 subsequent device manufactures to support is an important part of our design for our home
 automation system.
 
-[^A-1-1]: Insteon®, "Home," in Insteon, Insteon, 2016. [Online]. Available: <http://www.insteon.com/>. Accessed: Oct. 6, 2016.
-[^A-1-2]: Insteon®, "WHITEPAPER: The Details,". [Online]. Available: <http://cache.insteon.com/documentation/insteon_details.pdf>. Accessed: Oct. 6, 2016.
-[^A-1-3]: Insteon®, "WHITEPAPER: Compared,". [Online]. Available: <http://cache.insteon.com/documentation/insteon_compared.pdf>. Accessed: Oct. 6, 2016.
-[^A-1-4]: Apiary, "Insteon API · Apiary,". [Online]. Available: <http://docs.insteon.apiary.io/>. Accessed: Oct. 6, 2016.
-[^A-1-5]: Apiary, "Wink API · Apiary,". [Online]. Available: <http://docs.winkapiv2.apiary.io/#reference/oauth/obtain-access-token>. Accessed: Oct. 9, 2016.
-[^A-1-6]: Wink, "Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: <http://wiki.winkathome.net/Wink_FAQ>. Accessed: Oct. 6, 2016.
-[^A-1-7]: Wink, "A simpler smart home," Wink, 2016. [Online]. Available: <http://www.wink.com/help/faq/>. Accessed: Oct. 8, 2016.
-[^A-1-8]: Samsung, "Samsung SmartThings hub FAQ — SmartThings developer documentation," 2016. [Online]. Available: <http://docs.smartthings.com/en/latest/sept-2015-faq.html>. Accessed: Oct. 6, 2016.
-[^A-1-9]: SmartThings, "How it works," SmartThings, 2016. [Online]. Available: <https://www.smartthings.com/how-it-works>. Accessed: Oct. 10, 2016.
-[^A-1-10]: Apple, "Use the home app on your iPhone, iPad, and iPod touch," Apple Support, 2016. [Online]. Available: <https://support.apple.com/en-ca/HT204893>. Accessed: Oct. 10, 2016.
+[^A-1-1]: "Home," in Insteon, Insteon, 2016. [Online]. Available: <http://www.insteon.com/>. Accessed: Oct. 6, 2016.
+[^A-1-2]: "WHITEPAPER: The Details,". [Online]. Available: <http://cache.insteon.com/documentation/insteon_details.pdf>. Accessed: Oct. 6, 2016.
+[^A-1-3]: "WHITEPAPER: Compared,". [Online]. Available: <http://cache.insteon.com/documentation/insteon_compared.pdf>. Accessed: Oct. 6, 2016.
+[^A-1-4]: "Insteon API · Apiary,". [Online]. Available: <http://docs.insteon.apiary.io/>. Accessed: Oct. 6, 2016.
+[^A-1-5]: "Technology," in Insteon, Insteon, 2016. [Online]. Available: <http://www.insteon.com/technology/>. Accessed: Jan. 31, 2017.
+[^A-1-6]: "Insteon Connects," in Insteon, Insteon. [Online]. Available: <http://www.insteon.com/connects>. Accessed: Jan. 31, 2017.
+[^A-1-7]: "Wink API · Apiary,". [Online]. Available: <http://docs.winkapiv2.apiary.io/#reference/oauth/obtain-access-token>. Accessed: Oct. 9, 2016.
+[^A-1-8]: "Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: <http://wiki.winkathome.net/Wink_FAQ>. Accessed: Oct. 6, 2016.
+[^A-1-9]: "A simpler smart home," Wink, 2016. [Online]. Available: <http://www.wink.com/help/faq/>. Accessed: Oct. 8, 2016.
+[^A-1-10]: "Samsung SmartThings hub FAQ — SmartThings developer documentation," 2016. [Online]. Available: <http://docs.smartthings.com/en/latest/sept-2015-faq.html>. Accessed: Oct. 6, 2016.
+[^A-1-11]: "How it works," SmartThings, 2016. [Online]. Available: <https://www.smartthings.com/how-it-works>. Accessed: Oct. 10, 2016.
+[^A-1-12]: "Use the home app on your iPhone, iPad, and iPod touch," Apple Support, 2016. [Online]. Available: <https://support.apple.com/en-ca/HT204893>. Accessed: Oct. 10, 2016.
 
 
 
