@@ -1,65 +1,47 @@
-### Automation Systems {#section-rs-sys}
+### A-1 Automation Systems {- #A-1}
 
-#### Background {-}
+##### Background {-}
 
-In this section we are looking at existing systems so that we can better understand what
-technologies currently exist in the market. Having a better grasp of existing technology will help
-us understand how we can differentiate our smart home automation system. In particular, we are
-interested in which features are common in home automation systems and their benefits to the end
-user.
+This section contains research on existing home automation systems in order to better understand
+what technologies currently exist. This research is intended to help understand how a new system
+could improve on existing technology or if there are particular architecture patterns that are
+relevant for this system's design. In particular, this research focuses on features that are common
+between home automation systems and their benefits to the end user.
 
-An important aspect of our project is to have custom logic for controlling smart devices in a home
-automation system. Existing systems implement their own logic, so we will not be using them
-directly. Looking at existing systems gives us a better understanding of what the end user expects
-of home automation, allowing us to better design our own system.
+Since usability is the focus of this system, it is important to investigate the features that a
+user would expect in a smart home system. It is also important to examine any short comings of
+existing systems and if these short comings can be addressed.
 
-The research will investigate the following characteristics of existing home automation systems.
-
-###### Supported Communication protocols {-}
-
-Which protocols does the system support? If there are common protocols across all main automation
+In order to compare these smart home systems, a set of criteria is required such that they can
+be evaluated. For this research, the following criteria will be examined: supported communication
+protocols, device discovery and setup, network configuration, application programming interfaces,
+third party integrations and limitations. If there are common protocols across all main automation
 systems then they should be considered for this system. Industry standard protocols may be
-discovered by reviewing these existing systems.
+discovered by reviewing these existing systems. If there is a special focus on the ease of use
+then this system should consider the efforts that other systems have taken. The network
+configuration of a system will govern its performance, power consumption and allowable number of
+connections. This research will investigate how these systems organize their network topologies
+to satisfy these quality attributes. In order to control these devices we require that the
+following; a way to view all connected devices, a way to get notifications when a device in the
+system changes states, a way to change the state of a device. Finally, if there are accepted
+standards of third party integrations then this system should consider them in its design to
+maximize overall interoperability.
 
-###### Device Discovery and Setup {-}
-
-How are new devices added to the system's network? If there is a special focus on the ease of use
-then this system should consider the efforts that other systems have taken.
-
-###### Network {-}
-
-How do these systems setup the network of devices. Do they use a central server, are all devices
-independent? The network configuration of a system will govern its performance, power consumption
-and allowable number of connections. This research will investigate how these systems organize
-their network topologies to satisfy these quality attributes.
-
-###### API {-}
-
-Does the system provide an API that our system could potentially use to control the devices
-connected to these systems. In order to control these devices we require that the following; a way
-to view all connected devices, a way to get notifications when a device in the system changes
-states, a way to change the state of a device.
-
-###### Third Party Integrations {-}
-
-Which companies have these systems decided are important to support? If there are accepted standards
-of third party integrations then this system should consider them in its design to maximize overall
-interoperability.
-
-
-#### Insteon {-}
+#### A-1-1 Insteon {- #A-1-1}
 
 ##### Description {-}
 
 Insteon is a home automation system that allows smart devices to connect over a home area network
 with a focus on ease of use. Insteon allows you to monitor and control all of the devices within
 the system. All devices in connect through a central Insteon smart hub which is then controlled
-by the user through a app on the user's mobile device. Controlling of s can also be automated
+by the user through a app on the user's mobile device. Controlling devices can also be automated
 using manually configured schedules, IFTTT or through the use of **scenes**.
 
-A scene is configured a configuration for a room that the user sets up at a specific time or when
-specific environmental conditions are met. Insteon has all of the devices remember their current
-states and whenever these states are met then it has the devices recreate the saved scene.[^B-1-1]
+A scene allows a user to configure device behaviours based on grouping of devices in their home.
+The devices are grouped into rooms which can represent the physical rooms of the home. The user
+can then create a configuration for a specific date, time or environmental condition. Insteon
+then monitors the state of the home for these conditions, when they are met then it recreates
+the user's configuration. [^A-1-1].
 
 ##### Technical Overview {-}
 
@@ -69,29 +51,29 @@ Insteon uses a proprietary messaging protocol to send messages between devices a
 The Insteon messaging protocol uses message repeating to send messages across a peer-to-peer network
 of devices. This messaging protocol is outlined in a detailed
 [white paper](http://cache.insteon.com/documentation/insteon_details.pdf) that describes the
-network protocol as well as the messaging protocol.[^B-1-2]
+network protocol as well as the messaging protocol.[^A-1-2]
 
 Insteon also integrates with a number of third party devices and controllers. These third party
 devices can be added to the network and be controlled through the Insteon smart hub. The hub's
-devices can also be controlled through the integrations of these third party devices.[^B-1-2]
+devices can also be controlled through the integrations of these third party devices.[^A-1-2]
 
 ###### Device Discovery and Setup {-}
 
 Adding a new device is done through the Insteon app. A new device is first plugged in and turned on.
 The device then locates the user's mobile app on the network and is ready to be connected.
 Using the app the user selects the new device and enters the device ID. Once the ID is
-entered the device is able to be configured and added to the Insteon network.[^B-1-2]
+entered the device is able to be configured and added to the Insteon network.[^A-1-2]
 
-###### Network {-}
+###### Network Configuration {-}
 
 Insteon uses a central hub to communicate between the devices and the users app. The Insteon hub
 is used for all device communications and control. Devices connect and send all event information
 to the central hub.
 
-Insteon uses a peer-to-peer network to connect the devices.[^B-1-3] All of Insteon's devices can act as a
+Insteon uses a peer-to-peer network to connect the devices.[^A-1-3] All of Insteon's devices can act as a
 controller to send messages, a repeater to forward messages or a responder to receive messages.
 
-###### API {-}
+###### Application Programming Interface {-}
 
 Insteon provides a REST API to interact with their devices.
 
@@ -102,14 +84,9 @@ Insteon provides a REST API to interact with their devices.
 | Modify device state                   | Y         |
 
 In order to use the API approval from Insteon is required. Applying for an API key is done through
-the Insteon website.[^B-1-4]
+the Insteon website.[^A-1-4]
 
-###### Limitations {-}
-
-In order to use the API an Insteon Hub is required also adding new Insteon devices to a network
-still require configuration through the Insteon App.
-
-##### Third Party Support {-}
+###### Third Party Support {-}
 
 Insteon supports devices from the following manufacturers:
 
@@ -123,6 +100,10 @@ Insteon supports devices from the following manufacturers:
 - Sonos
 - MiLocks
 
+###### Limitations {-}
+
+In order to use the API an Insteon Hub is required also adding new Insteon devices to a network
+still require configuration through the Insteon App.
 
 ##### Evaluation {-}
 
@@ -130,7 +111,7 @@ The Insteon system is very reliable and easy to setup however because they use t
 communication protocol the devices that can be added is limited mostly to those manufactured by
 Insteon. A closed system such as this is not what we are striving for with this project.
 
-#### Wink {-}
+#### A-1-2 Wink {-}
 
 ##### Description {-}
 
@@ -207,7 +188,7 @@ that we hope to mimic, although not to the full extent of Wink. Specifically, th
 connecting devices from any manufacturer will likely be useful to us for this project.
 
 
-#### SmartThings {-}
+#### A-1-3 SmartThings {-}
 
 ##### Description {-}
 
@@ -268,7 +249,7 @@ This is something that we will be striving for in out project. The dependency on
 connection to a cloud service is something that we would like to avoid for our project.
 
 
-#### Apple HomeKit {-}
+#### A-1-4 Apple HomeKit {-}
 
 ##### Description {-}
 
@@ -328,5 +309,17 @@ Z-wave, Zigbee, Insteon and WiFi. Along side these are devices from many differe
 which operate using these communication protocols. Deciding on a communication protocol and 
 subsequent device manufactures to support is an important part of our design for our home
 automation system.
+
+[^A-1-1]: Insteon®, "Home," in Insteon, Insteon, 2016. [Online]. Available: <http://www.insteon.com/>. Accessed: Oct. 6, 2016.
+[^A-1-2]: Insteon®, "WHITEPAPER: The Details,". [Online]. Available: <http://cache.insteon.com/documentation/insteon_details.pdf>. Accessed: Oct. 6, 2016.
+[^A-1-3]: Insteon®, "WHITEPAPER: Compared,". [Online]. Available: <http://cache.insteon.com/documentation/insteon_compared.pdf>. Accessed: Oct. 6, 2016.
+[^A-1-4]: Apiary, "Insteon API · Apiary,". [Online]. Available: <http://docs.insteon.apiary.io/>. Accessed: Oct. 6, 2016.
+[^A-1-5]: Apiary, "Wink API · Apiary,". [Online]. Available: <http://docs.winkapiv2.apiary.io/#reference/oauth/obtain-access-token>. Accessed: Oct. 9, 2016.
+[^A-1-6]: Wink, "Wink FAQ - Wink@Home Wiki," 2015. [Online]. Available: <http://wiki.winkathome.net/Wink_FAQ>. Accessed: Oct. 6, 2016.
+[^A-1-7]: Wink, "A simpler smart home," Wink, 2016. [Online]. Available: <http://www.wink.com/help/faq/>. Accessed: Oct. 8, 2016.
+[^A-1-8]: Samsung, "Samsung SmartThings hub FAQ — SmartThings developer documentation," 2016. [Online]. Available: <http://docs.smartthings.com/en/latest/sept-2015-faq.html>. Accessed: Oct. 6, 2016.
+[^A-1-9]: SmartThings, "How it works," SmartThings, 2016. [Online]. Available: <https://www.smartthings.com/how-it-works>. Accessed: Oct. 10, 2016.
+[^A-1-10]: Apple, "Use the home app on your iPhone, iPad, and iPod touch," Apple Support, 2016. [Online]. Available: <https://support.apple.com/en-ca/HT204893>. Accessed: Oct. 10, 2016.
+
 
 
