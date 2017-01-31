@@ -5,13 +5,13 @@ from pkg_resources import resource_stream
 from pkg_resources import resource_filename
 sys.path.append('../lib')
 
-from src.hub        import Hub, Exchange, CLI, args, daemon
-from src.device     import Device
-from src.adapter import AriaAdapter, HubAdapter, WemoAdapter, SoftwareAdapter
-from src.adapter.zwave_adapter import ZWaveAdapter
-from src.database import Database
-from src.ipc import Message
-from src.device     import SoftwareDeviceFactory
+from hub        import Hub, Exchange, CLI, args, daemon
+from device     import Device
+from adapter import AriaAdapter, HubAdapter, WemoAdapter, SoftwareAdapter
+from adapter.zwave_adapter import ZWaveAdapter
+from database import Database
+from ipc import Message
+from device     import SoftwareDeviceFactory
 _log_config_file = 'configs/log.config'
 _log_config_location = resource_filename(__name__, _log_config_file)
 
