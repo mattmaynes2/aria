@@ -102,8 +102,8 @@ control, schedule and configure the devices in their smart home using the Insteo
 
 Insteon has a wide variety of third party integrations but offers only an incomplete API for
 controlling their own devices. This smart home does not allow third party code to run on their
-and requires that their app be installed on a user's smart phone in order to properly control
-their devices. These extendability issues make the Insteon platform a closed, commercialized
+hub and requires that their app be installed on a user's smart phone in order to properly control
+their devices. These extensibility issues make the Insteon platform a closed, commercialized
 system that would not be able to support additional development of a non-partner organization.
 
 [^A-1-1]: "Home," in Insteon, Insteon, 2016. [Online]. Available: <http://www.insteon.com/>. Accessed: Oct. 6, 2016.
