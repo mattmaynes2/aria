@@ -40,4 +40,7 @@
 | [Hub Testing](#section-test-hub)                     | Cameron           | Peter             | November 27, 2016 |
 | [Remote Testing](#section-test-remote)               | Matthew           |                   | November 28, 2016 |
 | [ZWave Communication](#section-zwave-implementation) | Cameron           | Matthew           | December 6, 2016  |
+| [Add Device Workflow](#section-workflow-addDevice  ) | Peter & Jeremy    |                   | January 30, 2017  |
+
+#section-workflow-addDevice
 
