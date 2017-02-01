@@ -7,7 +7,8 @@
 When the Z-Wave adapter starts up, it uses the OpenZWave library to initiate a Z-Wave network. When 
 a Z-Wave device is first paired with the Z-Stick (which is attached to the Raspberry Pi), the network
 initiated by our Z-Wave adapter receives a device object. This device object has been built by the 
-OpenZWave library. An example of a such an object is shown below.
+OpenZWave library. An example of a such an object is shown below. For all of the data received from 
+the device see [Appendix-G](#ZwaveDeviceData)
 
 ```
 basic:4
@@ -22,115 +23,11 @@ values:{
       'units':'',
       'node_id':3
    },
-   72057594102726788:{  
-      'label':'Test Status',
-      'data':'Failed',
-      'genre':'System',
-      'value_id':72057594102726788,
-      'units':'',
-      'node_id':3
-   },
-   72057594102382614:{  
-      'label':'InstallerIcon',
-      'data':1536,
-      'genre':'System',
-      'value_id':72057594102382614,
-      'units':'',
-      'node_id':3
-   },
-   72057594101465153:{  
-      'label':'Start Level',
-      'data':0,
-      'genre':'System',
-      'value_id':72057594101465153,
-      'units':'',
-      'node_id':3
-   },
-   72057594101481476:{  
-      'label':'Switch All',
-      'data':'On and Off Enabled',
-      'genre':'System',
-      'value_id':72057594101481476,
-      'units':'',
-      'node_id':3
-   },
-   72057594102726673:{  
-      'label':'Timeout',
-      'data':0,
-      'genre':'System',
-      'value_id':72057594102726673,
-      'units':'seconds',
-      'node_id':3
-   },
-   72057594098483220:{  
-      'label':'Dim Level Memory',
-      'data':'Full Brightness',
-      'genre':'Config',
-      'value_id':72057594098483220,
-      'units':'',
-      'node_id':3
-   },
-   72057594102726742:{  
-      'label':'Frame Count',
-      'data':0,
-      'genre':'System',
-      'value_id':72057594102726742,
-      'units':'',
-      'node_id':3
-   },
-   72057594103037975:{  
-      'label':'Protocol Version',
-      'data':'3.95',
-      'genre':'System',
-      'value_id':72057594103037975,
-      'units':'',
-      'node_id':3
-   },
    72057594093076504:{  
       'label':'Bright',
       'data':False,
       'genre':'User',
       'value_id':72057594093076504,
-      'units':'',
-      'node_id':3
-   },
-   72057594102726724:{  
-      'label':'Test Powerlevel',
-      'data':'Normal',
-      'genre':'System',
-      'value_id':72057594102726724,
-      'units':'dB',
-      'node_id':3
-   },
-   72057594102726806:{  
-      'label':'Acked Frames',
-      'data':0,
-      'genre':'System',
-      'value_id':72057594102726806,
-      'units':'',
-      'node_id':3
-   },
-   72057594102382593:{  
-      'label':'ZWave+ Version',
-      'data':1,
-      'genre':'System',
-      'value_id':72057594102382593,
-      'units':'',
-      'node_id':3
-   },
-   72057594102382630:{  
-      'label':'UserIcon',
-      'data':1536,
-      'genre':'System',
-      'value_id':72057594102382630,
-      'units':'',
-      'node_id':3
-   },
-   72057594103037991:{  
-      'label':'Application Version',
-      'data':'5.08',
-      'genre':'System',
-      'value_id':72057594103037991,
       'units':'',
       'node_id':3
    },
@@ -142,62 +39,6 @@ values:{
       'units':'',
       'node_id':3
    },
-   72057594103037959:{  
-      'label':'Library Version',
-      'data':'3',
-      'genre':'System',
-      'value_id':72057594103037959,
-      'units':'',
-      'node_id':3
-   },
-   72057594101465136:{  
-      'label':'Ignore Start Level',
-      'data':True,
-      'genre':'System',
-      'value_id':72057594101465136,
-      'units':'',
-      'node_id':3
-   },
-   72057594102726705:{  
-      'label':'Test Node',
-      'data':0,
-      'genre':'System',
-      'value_id':72057594102726705,
-      'units':'',
-      'node_id':3
-   },
-   72057594102726696:{  
-      'label':'Set Powerlevel',
-      'data':False,
-      'genre':'System',
-      'value_id':72057594102726696,
-      ' units':'',
-      'node_id':3
-   },
-   72057594102726776:{  
-      'label':'Report',
-      'data':False,
-      'genre':'System',
-      'value_id':72057594102726776,
-      'units':'',
-      'node_id':3
-   },
-   72057594102726760:{  
-      'label':'Test',
-      'data':False,
-      'genre':'System',
-      'value_id':72057594102726760,
-      'units':'',
-      'node_id':3
-   },
-   72057594102726660:{  
-      'label':'Powerlevel',
-      'data':'Normal',
-      'genre':'System',
-      'value_id':72057594102726660,
-      'units':'dB',
-      'node_id':3
-   }
 }
 node_id:3
 location:
