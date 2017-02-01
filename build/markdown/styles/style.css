@@ -30,7 +30,7 @@ p {
 }
 
 td > p {
-    text-index : 0;
+    text-indent : 0;
 }
 
 strong {
