@@ -13,12 +13,12 @@ user would expect in a smart home system. It is also important to examine any sh
 existing systems and if these short comings can be addressed.
 
 In order to compare these smart home systems, a set of criteria is required such that they can
-be evaluated. For this research, the following criteria will be examined: supported communication
-protocols, device discovery and setup, network configuration, application programming interfaces,
-third party integrations and limitations. If there are common protocols across all main automation
-systems then they should be considered for this system. Industry standard protocols may be
-discovered by reviewing these existing systems. If there is a special focus on the ease of use
-then this system should consider the efforts that other systems have taken. The network
+be evaluated. For this research, the following criteria will be examined: user interaction,
+device discovery and setup, network configuration, communication protocols, application programming
+interfaces, third party integrations, and limitations. If there are common protocols across all
+main automation systems then they should be considered for this system. Industry standard
+protocols may be discovered by reviewing these existing systems. If there is a special focus on
+the ease of use then this system should consider the efforts that other systems have taken. The network
 configuration of a system will govern its performance, power consumption and allowable number of
 connections. This research will investigate how these systems organize their network topologies
 to satisfy these quality attributes. In order to control these devices we require that the
