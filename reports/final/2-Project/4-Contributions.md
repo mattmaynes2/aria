@@ -7,7 +7,6 @@
 | Section                                              | Author(s)         | Editor(s)        | Updated           |
 | --------------------------------------------------   | ----------------- | --------------   | ----------------  |
 | [Development Process](#section-dev-process)          | Cameron           | Peter            | November 6, 2016  |
-| [Technical Introduction](#section-back-intro)        | Matthew           | Cameron          | December 6, 2016  |
 | [Technical Requirements](#section-reqs)              | Cameron & Matthew | Peter            | October 10, 2016  |
 | [Scenario Introduction](#section-sc)                 | Cameron           | Matthew          | October 10, 2016  |
 | [Music Scenario](#section-sc-music)                  | Cameron & Matthew | Peter            | November 6, 2016  |
