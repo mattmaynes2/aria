@@ -1,9 +1,9 @@
 import sqlite3
 import logging
 import os.path
-import pkgutil
 from sync import synchronized
 from   threading import Lock
+from pkg_resources import resource_string 
 
 log=logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ class Database:
         log.info("Closed connection to " + self.name)
 
     def createDB (self):
-        sql = pkgutil.get_data('database','database-setup.sql')
+        sql = resource_string(__name__, 'database-setup.sql')
         sql = sql.decode('utf-8')
         self.connection.executescript(sql)
         self.connection.commit()
