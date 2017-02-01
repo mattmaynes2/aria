@@ -35,7 +35,7 @@
 | [Remote Testing](#section-test-remote)               | Matthew           |                   | November 28, 2016 |
 | [ZWave Communication](#section-zwave-implementation) | Cameron           | Matthew           | December 6, 2016  |
 | [Lighting Scenario Data] (#section-lighting-data)    | Cameron & Jeremy  |                   | February 1, 2017  |
-
+| [Add Device Workflow](#section-workflow-addDevice  ) | Peter & Jeremy    |                   | January 30, 2017  |
 
 ### Appendix Contributions
 
@@ -47,6 +47,5 @@
 | [D Custom Devices](#D)           | Cameron           | Peter & Matthew   | October 30, 2016  |
 | [E Smart Devices](#E)            | All               |                   | October 29, 2016  |
 | [F Shopping List](#F)            | Jeremy            |                   | November 13, 2016 |
-
 
 

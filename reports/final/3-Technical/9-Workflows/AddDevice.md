@@ -1,6 +1,6 @@
 ## Data Flows
 
-### Add Device Data Flow
+### Add Device Data Flow {#section-workflow-addDevice}
 
 ![](./uml/addDeviceFlow.png)
 
