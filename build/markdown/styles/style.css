@@ -33,6 +33,10 @@ td > p {
     text-indent : 0;
 }
 
+li > p {
+    text-indent : 0;
+}
+
 strong {
   font-weight: bold;
 }
