@@ -13,11 +13,11 @@ The Raspberry Pi Zero has the smallest surface area of any of the Pi's, measurin
 65mm long by 30mm wide. To make the board as small as possible, many of the standard Raspberry Pi
 features were removed. This means that the Zero has no on-board WiFi, Bluetooth or even Ethernet.
 Despite these losses, the board is still equip with a 32-bit 1GHz Broadcom BCM283 processor backed
-by 512MB of flash storage.
+by 512MB of flash storage [^B-6-1].
 
 The Zero provides a lot of room for flexibility with 40 available GPIO pins. The combination of
 the Zero's computing power and general IO makes it ideal for small spaces that need a lot of
-power.
+power [^B-6-2].
 
 #### Summary {-}
 
@@ -25,5 +25,8 @@ The Zero could be useful for programming devices in the system; however, while t
 a smaller physical footprint and more GPIO pins than the Arduino Uno, it does require more power to
 maintain operation. This extra power consumption does come with more performance which may be
 useful but likely unnecessary for the smart learning system.
+
+[^B-6-1]: "Raspberry pi Zero," Raspberry Pi. [Online]. Available: <https://www.raspberrypi.org/products/pi-zero/>. Accessed: Oct. 10, 2016.
+[^B-6-2]: "Raspberry Pi Zero,". [Online]. Available: <https://shop.pimoroni.com/products/raspberry-pi-zero>. Accessed: Oct. 10, 2016.
 
 
