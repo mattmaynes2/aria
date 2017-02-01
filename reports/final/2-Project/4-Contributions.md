@@ -14,12 +14,6 @@
 | [Temperature Scenario](#section-sc-temp)             | Matthew           | Peter             | November 6, 2016  |
 | [Coffee Scenario](#section-sc-coffee)                | Jeremy & Matthew  | Peter             | November 5, 2016  |
 | [Lighting Scenario](#section-sc-light)               | Peter             | Matthew           | November 28, 2016 |
-| [Automation Systems](#section-rs-sys)                | Jeremy            | Peter & Matthew   | October 27, 2016  |
-| [Smart Devices](#section-rs-dev)                     | All               |                   | October 29, 2016  |
-| [Communication Protocols](#section-rs-comm)          | Peter             | Cameron & Matthew | October 30, 2016  |
-| [Computing Devices](#section-rs-compute)             | Matthew           | Cameron           | October 30, 2016  |
-| [Custom Devices](#section-rs-custom)                 | Cameron           | Peter & Matthew   | October 30, 2016  |
-| [Shopping List](#section-rs-purchases)               | Jeremy            |                   | November 13, 2016 |
 | [Design Introduction](#section-design-intro)         | Matthew           |                   | October 30, 2016  |
 | [Component Design](#section-design-components)       | Matthew           | Jeremy & Cameron  | November 27, 2016 |
 | [Deployment Design](#section-design-deploy)          | Matthew           |                   | October 30, 2016  |
@@ -40,4 +34,18 @@
 | [Hub Testing](#section-test-hub)                     | Cameron           | Peter             | November 27, 2016 |
 | [Remote Testing](#section-test-remote)               | Matthew           |                   | November 28, 2016 |
 | [ZWave Communication](#section-zwave-implementation) | Cameron           | Matthew           | December 6, 2016  |
+
+
+### Appendix Contributions
+
+| Section                          | Author(s)         | Editor(s)         | Updated           |
+| -------------------------------- | ----------------- | --------------    | ----------------  |
+| [A Automation Systems](#A)       | Jeremy & Matthew  | Peter             | January 31, 2017  |
+| [B Computing Devices](#B)        | Matthew           | Cameron           | February 1, 2017  |
+| [C Communication Protocols](#C)  | Peter             | Cameron & Matthew | October 30, 2016  |
+| [D Custom Devices](#D)           | Cameron           | Peter & Matthew   | October 30, 2016  |
+| [E Smart Devices](#E)            | All               |                   | October 29, 2016  |
+| [F Shopping List](#F)            | Jeremy            |                   | November 13, 2016 |
+
+
 
