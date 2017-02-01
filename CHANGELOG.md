@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+## v0.5.1
+
+- Error Management
+    - Web client now captures errors from requests and presents them to the user
+- Notification History
+    - Notifications that are sent to the user interface are now maintained in a history buffer
+
 ## v0.5.0
 
 - Updated Database Design
