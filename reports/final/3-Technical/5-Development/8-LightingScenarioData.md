@@ -14,22 +14,6 @@ TODO
 #### Data
 TODO: MOVE TO APPENDIX
 
-<style>
-table, th,td{
-border:1px solid black;
-
-}
-table{
-border-collapse:collapse;
-width:100%;
-cellspacing:0;
-cellpadding:0;
-}
-
-tr{
-text-align:center;
-}
-</style>
 <pre>SELECT event_id, 
        e.timestamp, 
        e.source, 
@@ -49,7 +33,6 @@ FROM   parameter_change pc
 <table>
 <TR><TH>event_id</TH>
 <TH>timestamp</TH>
-<TH>source</TH>
 <TH>name</TH>
 <TH>value</TH>
 <TH>request_id</TH>
