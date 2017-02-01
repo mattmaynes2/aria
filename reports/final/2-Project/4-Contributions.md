@@ -4,38 +4,38 @@
 
 ### Report Contributions
 
-| Section                                              | Author(s)         | Editor(s)         | Updated           |
-| --------------------------------------------------   | ----------------- | --------------    | ----------------  |
-| [Development Process](#section-dev-process)          | Cameron           | Peter             | November 6, 2016  |
-| [Technical Introduction](#section-back-intro)        | Matthew           | Cameron           | December 6, 2016  |
-| [Technical Requirements](#section-reqs)              | Cameron & Matthew | Peter             | October 10, 2016  |
-| [Scenario Introduction](#section-sc)                 | Cameron           | Matthew           | October 10, 2016  |
-| [Music Scenario](#section-sc-music)                  | Cameron & Matthew | Peter             | November 6, 2016  |
-| [Temperature Scenario](#section-sc-temp)             | Matthew           | Peter             | November 6, 2016  |
-| [Coffee Scenario](#section-sc-coffee)                | Jeremy & Matthew  | Peter             | November 5, 2016  |
-| [Lighting Scenario](#section-sc-light)               | Peter             | Matthew           | November 28, 2016 |
-| [Design Introduction](#section-design-intro)         | Matthew           |                   | October 30, 2016  |
-| [Component Design](#section-design-components)       | Matthew           | Jeremy & Cameron  | November 27, 2016 |
-| [Deployment Design](#section-design-deploy)          | Matthew           |                   | October 30, 2016  |
-| [Database Design](#section-design-db)                | Peter             |                   | November 27, 2016 |
-| [Device Discovery](#section-design-discovery)        | Matthew           |                   | October 30, 2016  |
-| [Device Requests](#section-design-reqs)              | Peter             | Matthew           | October 30, 2016  |
-| [Remote User Interface](#section-design-ui)          | Matthew           |                   | November 13, 2016 |
-| [IPC Protocol](#section-design-api-ipc)              | Matthew & Cameron | Jeremy            | November 27, 2016 |
-| [Database Interface](#section-design-api-db)         | Peter             | Matthew           | November 27, 2016 |
-| [REST API Design](#section-design-api-rest)          | Matthew           |                   | November 27, 2016 |
-| [Websocket Design](#section-design-api-ws)           | Matthew           |                   | November 27, 2016 |
-| [Deployment](#section-dev-deploy)                    | Matthew           | Cameron & Peter   | November 6, 2016  |
-| [Technology](#section-dev-tech)                      | Matthew           | Peter             | November 6, 2016  |
-| [Hub Implementation](#section-dev-hub)               | Jeremy            |                   | November 27, 2016 |
-| [Gateway Implementation](#section-dev-gateway)       | Matthew           |                   | November 27, 2016 |
-| [Remote Implementation](#section-dev-remote)         | Matthew           |                   | November 28, 2016 |
-| [Testing](#section-testing)                          | Cameron           |                   | November 27, 2016 |
-| [Hub Testing](#section-test-hub)                     | Cameron           | Peter             | November 27, 2016 |
-| [Remote Testing](#section-test-remote)               | Matthew           |                   | November 28, 2016 |
-| [ZWave Communication](#section-zwave-implementation) | Cameron           | Matthew           | December 6, 2016  |
-| [Lighting Scenario Data] (#section-lighting-data)    | Cameron & Jeremy  |                   | February 1, 2017  |
-
+| Section                                              | Author(s)         | Editor(s)        | Updated           |
+| --------------------------------------------------   | ----------------- | --------------   | ----------------  |
+| [Development Process](#section-dev-process)          | Cameron           | Peter            | November 6, 2016  |
+| [Technical Introduction](#section-back-intro)        | Matthew           | Cameron          | December 6, 2016  |
+| [Technical Requirements](#section-reqs)              | Cameron & Matthew | Peter            | October 10, 2016  |
+| [Scenario Introduction](#section-sc)                 | Cameron           | Matthew          | October 10, 2016  |
+| [Music Scenario](#section-sc-music)                  | Cameron & Matthew | Peter            | November 6, 2016  |
+| [Temperature Scenario](#section-sc-temp)             | Matthew           | Peter            | November 6, 2016  |
+| [Coffee Scenario](#section-sc-coffee)                | Jeremy & Matthew  | Peter            | November 5, 2016  |
+| [Lighting Scenario](#section-sc-light)               | Peter             | Matthew          | November 28, 2016 |
+| [Design Introduction](#section-design-intro)         | Matthew           |                  | October 30, 2016  |
+| [Component Design](#section-design-components)       | Matthew           | Jeremy & Cameron | November 27, 2016 |
+| [Deployment Design](#section-design-deploy)          | Matthew           |                  | October 30, 2016  |
+| [Database Design](#section-design-db)                | Peter             |                  | November 27, 2016 |
+| [Device Discovery](#section-design-discovery)        | Matthew           |                  | October 30, 2016  |
+| [Device Requests](#section-design-reqs)              | Peter             | Matthew          | October 30, 2016  |
+| [Remote User Interface](#section-design-ui)          | Matthew           |                  | November 13, 2016 |
+| [IPC Protocol](#section-design-api-ipc)              | Matthew & Cameron | Jeremy           | November 27, 2016 |
+| [Database Interface](#section-design-api-db)         | Peter             | Matthew          | November 27, 2016 |
+| [REST API Design](#section-design-api-rest)          | Matthew           |                  | November 27, 2016 |
+| [Websocket Design](#section-design-api-ws)           | Matthew           |                  | November 27, 2016 |
+| [Deployment](#section-dev-deploy)                    | Matthew           | Cameron & Peter  | November 6, 2016  |
+| [Technology](#section-dev-tech)                      | Matthew           | Peter            | November 6, 2016  |
+| [Hub Implementation](#section-dev-hub)               | Jeremy            |                  | November 27, 2016 |
+| [Gateway Implementation](#section-dev-gateway)       | Matthew           |                  | November 27, 2016 |
+| [Remote Implementation](#section-dev-remote)         | Matthew           |                  | November 28, 2016 |
+| [Testing](#section-testing)                          | Cameron           |                  | November 27, 2016 |
+| [Hub Testing](#section-test-hub)                     | Cameron           | Peter            | November 27, 2016 |
+| [Remote Testing](#section-test-remote)               | Matthew           |                  | November 28, 2016 |
+| [ZWave Communication](#section-zwave-implementation) | Cameron           | Matthew          | December 6, 2016  |
+| [Lighting Scenario Data](#section-lighting-data)     | Cameron & Jeremy  |                  | February 1, 2017  |
+| [Add Device Workflow](#section-workflow-addDevice)   | Peter & Jeremy    | Matthew          | January 30, 2017  |
 
 ### Appendix Contributions
 
@@ -47,6 +47,5 @@
 | [D Custom Devices](#D)           | Cameron           | Peter & Matthew   | October 30, 2016  |
 | [E Smart Devices](#E)            | All               |                   | October 29, 2016  |
 | [F Shopping List](#F)            | Jeremy            |                   | November 13, 2016 |
-
-
+| [G Raw Data](#G)                 | Jeremy            |                   | January 31, 2017  |
 
