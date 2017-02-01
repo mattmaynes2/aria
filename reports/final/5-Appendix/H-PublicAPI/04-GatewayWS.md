@@ -1,4 +1,4 @@
-### Gateway Websocket Protocol {#section-design-api-ws}
+### H-4 Gateway Websocket Protocol {- #H-4}
 
 ##### General {-}
 

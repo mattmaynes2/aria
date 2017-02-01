@@ -1,4 +1,4 @@
-### Gateway REST API {#section-design-api-rest}
+### H-3 Gateway REST API {- #H-3}
 
 ##### General {-}
 
