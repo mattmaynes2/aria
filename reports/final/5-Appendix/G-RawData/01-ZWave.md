@@ -1,4 +1,4 @@
-## Zwave Device Data (#ZwaveDeviceData)
+### G-1 Z-Wave Device Data {- #G-1}
 
 A full representation of the python object for a zwave device from the openzwave library is below.
 
