@@ -1,14 +1,17 @@
 ### Lighting Scenario Data {#section-lighting-data}
 
-#### Purpose
+#### Purpose {-}
+
 The purpose of this section is to present analysis of actual device data for the 
 Smart Lighting Scenario. 
 
-#### Devices
+#### Devices {-}
+
 - Aeon Labs Z-wave Multisensor 6
 - LB60Z-1 Z-wave Dimmable lightbulb
 
-#### Steps to Produce
+#### Steps to Produce {-}
+
 1. Motion sensor and Dimmable LED set up facing each other in empty room.
 2. User enters the room
 3. User turns LED on to 100% brightness
@@ -17,8 +20,7 @@ Smart Lighting Scenario.
 6. User increases brightness level to 100%
 7. User turns off LED from Web UI and leaves the room
 
-#### Data
-TODO: MOVE TO APPENDIX
+#### Data {-}
 
 <pre>SELECT event_id, 
        e.timestamp, 
