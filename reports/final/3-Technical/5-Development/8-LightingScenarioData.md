@@ -45,8 +45,7 @@ FROM   parameter_change pc
 <TD>0.0</TD>
 <TD></TD>
 <TD></TD>
-<TD></TD>
-<TD></TD>
+
 </TR>
 <TR><TD>10</TD>
 <TD>2017-02-01 03:57:19</TD>
@@ -55,16 +54,14 @@ FROM   parameter_change pc
 <TD>0.0</TD>
 <TD></TD>
 <TD></TD>
-<TD></TD>
-<TD></TD>
+
 </TR>
 
 <TR><TD>15</TD>
 <TD>2017-02-01 03:57:25</TD>
 <TD>Luminance</TD>
 <TD>0.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -73,8 +70,7 @@ FROM   parameter_change pc
 <TD>2017-02-01 03:57:26</TD>
 <TD>Motion</TD>
 <TD>1</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -94,8 +90,7 @@ FROM   parameter_change pc
 
 <TD>Alarm Type</TD>
 <TD>0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -104,28 +99,17 @@ FROM   parameter_change pc
 
 <TD>Alarm Level</TD>
 <TD>0</TD>
-<TD></TD>
-<TD></TD>
-<TD></TD>
-<TD></TD>
-</TR>
-<TR><TD>21</TD>
-<TD>2017-02-01 03:57:27</TD>
 
-<TD>SourceNodeId</TD>
-<TD>0</TD>
-<TD></TD>
-<TD></TD>
 <TD></TD>
 <TD></TD>
 </TR>
+
 <TR><TD>22</TD>
 <TD>2017-02-01 03:57:27</TD>
 
 <TD>Burglar</TD>
 <TD>8</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -135,8 +119,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>4.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -146,8 +129,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>4.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -156,8 +138,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>4.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -178,8 +159,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>1.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -199,8 +179,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>4.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -210,8 +189,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>4.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -232,8 +210,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>4.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -243,8 +220,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>0.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -254,8 +230,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>0.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -264,8 +239,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>0.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -275,8 +249,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>0.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -286,8 +259,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>0.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -297,8 +269,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>0.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
@@ -308,8 +279,7 @@ FROM   parameter_change pc
 
 <TD>Luminance</TD>
 <TD>0.0</TD>
-<TD></TD>
-<TD></TD>
+
 <TD></TD>
 <TD></TD>
 </TR>
