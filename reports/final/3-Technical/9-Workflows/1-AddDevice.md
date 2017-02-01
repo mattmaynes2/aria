@@ -2,6 +2,11 @@
 
 ### Add Device Data Flow {#section-workflow-addDevice}
 
+This data flow outlines the details of how a new device is connected to the system. In
+particular, this workflow focuses on adding a Z-Wave device to the system after. This
+workflow assumes that the system is already online and operational, that the Z-Wave
+stick is plugged into the smart hub and that the network is live
+
 ![](./uml/addDeviceFlow.png)
 
 When the Z-Wave adapter starts up, it uses the OpenZWave library to initiate a Z-Wave network. When 
@@ -116,10 +121,10 @@ device object. From here, the device must be stored in the database, and the UI 
 to display the new device and its information. The exchange forwards the device object to the 
 database and to another adapter, which formats it properly for the UI.
 
-The AriaAdapter is responsible for doing this formatting. In order to be properly displayed on the 
+The device adapter is responsible for doing this formatting. In order to be properly displayed on the 
 UI, the device object must be converted into a JSON string. Once this is done, a device discovered 
 message is sent to the Gateway.
 
 The purpose of the Gateway is to take messages received over a UDP socket and forward them over a 
-Web socket to the user interface. *Matt insert UI knowledge in and around this area* :^)
+Web socket to the user interface.
  
