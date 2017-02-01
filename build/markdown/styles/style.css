@@ -29,6 +29,10 @@ p {
     text-indent     : 30px;
 }
 
+td > p {
+    text-index : 0;
+}
+
 strong {
   font-weight: bold;
 }
