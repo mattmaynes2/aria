@@ -1,3 +1,9 @@
+## Data Flows
+
+### Add Device Data Flow
+
+![](./uml/addDeviceFlow.png)
+
 When the Z-Wave adapter starts up, it uses the OpenZWave library to initiate a Z-Wave network. When 
 a Z-Wave device is first paired with the Z-Stick (which is attached to the Raspberry Pi), the network
 initiated by our Z-Wave adapter receives a device object. This device object has been built by the 

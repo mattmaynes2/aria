@@ -33,7 +33,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFZ8ZU4su1QrM0="
 									},
-									"name": "FlowchartDiagram1",
+									"name": "addDeviceFlow",
 									"visible": true,
 									"defaultDiagram": false,
 									"ownedViews": [
@@ -64,7 +64,7 @@
 													"containerExtending": false,
 													"left": 498,
 													"top": 162,
-													"width": 54.18994140625,
+													"width": 94,
 													"height": 26,
 													"autoResize": false,
 													"underline": false,
@@ -84,7 +84,7 @@
 											"containerExtending": false,
 											"left": 488,
 											"top": 152,
-											"width": 74.18994140625,
+											"width": 114,
 											"height": 46,
 											"autoResize": false,
 											"nameLabel": {
@@ -392,9 +392,9 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 505,
+													"left": 516,
 													"top": 26,
-													"width": 44.43896484375,
+													"width": 87,
 													"height": 39,
 													"autoResize": false,
 													"underline": false,
@@ -414,7 +414,7 @@
 											"containerExtending": false,
 											"left": 480,
 											"top": 16,
-											"width": 94.43896484375,
+											"width": 159,
 											"height": 59,
 											"autoResize": false,
 											"nameLabel": {
