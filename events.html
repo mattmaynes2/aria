@@ -1,0 +1,1721 @@
+<style>
+table, th,td{
+border:1px solid black;
+
+}
+table{
+border-collapse:collapse;
+}
+
+tr{
+text-align:center;
+}
+</style>
+<pre>SELECT event_id, 
+       e.timestamp, 
+       e.source, 
+       p.NAME, 
+       pc.value, 
+       e.request_id, 
+       r.timestamp AS request_time, 
+       r.source, 
+       r.receiver 
+FROM   parameter_change pc 
+       JOIN event e 
+         ON e.id = pc.event_id 
+       JOIN parameter p 
+         ON p.id = pc.parameter 
+       LEFT JOIN request r 
+              ON e.request_id = r.id </pre>
+<table>
+<TR><TH>event_id</TH>
+<TH>timestamp</TH>
+<TH>source</TH>
+<TH>name</TH>
+<TH>value</TH>
+<TH>request_id</TH>
+<TH>request_time</TH>
+<TH>source</TH>
+<TH>receiver</TH>
+</TR>
+<TR><TD>1</TD>
+<TD>2017-02-01 03:12:43</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.4000015258789</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>2</TD>
+<TD>2017-02-01 03:12:43</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>3</TD>
+<TD>2017-02-01 03:12:44</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>4</TD>
+<TD>2017-02-01 03:12:44</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>5</TD>
+<TD>2017-02-01 03:12:44</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>6</TD>
+<TD>2017-02-01 03:12:49</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.5</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>7</TD>
+<TD>2017-02-01 03:12:49</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>8</TD>
+<TD>2017-02-01 03:12:50</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>9</TD>
+<TD>2017-02-01 03:12:50</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>10</TD>
+<TD>2017-02-01 03:12:50</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>11</TD>
+<TD>2017-02-01 03:12:56</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.5</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>12</TD>
+<TD>2017-02-01 03:12:56</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>13</TD>
+<TD>2017-02-01 03:12:57</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>14</TD>
+<TD>2017-02-01 03:12:57</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>15</TD>
+<TD>2017-02-01 03:12:57</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>16</TD>
+<TD>2017-02-01 03:13:02</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.5999984741211</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>17</TD>
+<TD>2017-02-01 03:13:03</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>18</TD>
+<TD>2017-02-01 03:13:03</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>19</TD>
+<TD>2017-02-01 03:13:03</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>20</TD>
+<TD>2017-02-01 03:13:04</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>21</TD>
+<TD>2017-02-01 03:13:09</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.5999984741211</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>22</TD>
+<TD>2017-02-01 03:13:09</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>23</TD>
+<TD>2017-02-01 03:13:10</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>24</TD>
+<TD>2017-02-01 03:13:10</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>25</TD>
+<TD>2017-02-01 03:13:10</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>26</TD>
+<TD>2017-02-01 03:13:15</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.5999984741211</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>27</TD>
+<TD>2017-02-01 03:13:16</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>28</TD>
+<TD>2017-02-01 03:13:16</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>29</TD>
+<TD>2017-02-01 03:13:16</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>30</TD>
+<TD>2017-02-01 03:13:17</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>31</TD>
+<TD>2017-02-01 03:13:22</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.5999984741211</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>32</TD>
+<TD>2017-02-01 03:13:22</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>33</TD>
+<TD>2017-02-01 03:13:23</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>34</TD>
+<TD>2017-02-01 03:13:23</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>35</TD>
+<TD>2017-02-01 03:13:23</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>36</TD>
+<TD>2017-02-01 03:13:28</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.6999969482422</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>37</TD>
+<TD>2017-02-01 03:13:29</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>38</TD>
+<TD>2017-02-01 03:13:29</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>39</TD>
+<TD>2017-02-01 03:13:30</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>40</TD>
+<TD>2017-02-01 03:13:30</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>41</TD>
+<TD>2017-02-01 03:13:35</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.6999969482422</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>42</TD>
+<TD>2017-02-01 03:13:35</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>43</TD>
+<TD>2017-02-01 03:13:36</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>44</TD>
+<TD>2017-02-01 03:13:36</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>45</TD>
+<TD>2017-02-01 03:13:36</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>46</TD>
+<TD>2017-02-01 03:13:41</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.6999969482422</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>47</TD>
+<TD>2017-02-01 03:13:42</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>48</TD>
+<TD>2017-02-01 03:13:43</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>49</TD>
+<TD>2017-02-01 03:13:43</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>50</TD>
+<TD>2017-02-01 03:13:43</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>51</TD>
+<TD>2017-02-01 03:13:48</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.8000030517578</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>52</TD>
+<TD>2017-02-01 03:13:48</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>53</TD>
+<TD>2017-02-01 03:13:49</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>54</TD>
+<TD>2017-02-01 03:13:49</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>55</TD>
+<TD>2017-02-01 03:13:49</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>56</TD>
+<TD>2017-02-01 03:13:54</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.8000030517578</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>57</TD>
+<TD>2017-02-01 03:13:55</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>58</TD>
+<TD>2017-02-01 03:13:56</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>59</TD>
+<TD>2017-02-01 03:13:56</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>60</TD>
+<TD>2017-02-01 03:13:56</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>61</TD>
+<TD>2017-02-01 03:14:01</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.9000015258789</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>62</TD>
+<TD>2017-02-01 03:14:01</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>63</TD>
+<TD>2017-02-01 03:14:02</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>64</TD>
+<TD>2017-02-01 03:14:02</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>65</TD>
+<TD>2017-02-01 03:14:02</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>66</TD>
+<TD>2017-02-01 03:14:07</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.9000015258789</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>67</TD>
+<TD>2017-02-01 03:14:08</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>68</TD>
+<TD>2017-02-01 03:14:09</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>69</TD>
+<TD>2017-02-01 03:14:09</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>70</TD>
+<TD>2017-02-01 03:14:09</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>71</TD>
+<TD>2017-02-01 03:14:14</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.8000030517578</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>72</TD>
+<TD>2017-02-01 03:14:14</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>73</TD>
+<TD>2017-02-01 03:14:15</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>74</TD>
+<TD>2017-02-01 03:14:15</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>75</TD>
+<TD>2017-02-01 03:14:15</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>76</TD>
+<TD>2017-02-01 03:14:21</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.9000015258789</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>77</TD>
+<TD>2017-02-01 03:14:21</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>78</TD>
+<TD>2017-02-01 03:14:22</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>79</TD>
+<TD>2017-02-01 03:14:22</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>80</TD>
+<TD>2017-02-01 03:14:22</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>81</TD>
+<TD>2017-02-01 03:14:27</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.9000015258789</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>82</TD>
+<TD>2017-02-01 03:14:27</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>83</TD>
+<TD>2017-02-01 03:14:28</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>84</TD>
+<TD>2017-02-01 03:14:28</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>85</TD>
+<TD>2017-02-01 03:14:28</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>86</TD>
+<TD>2017-02-01 03:14:34</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.9000015258789</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>87</TD>
+<TD>2017-02-01 03:14:34</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>88</TD>
+<TD>2017-02-01 03:14:35</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>89</TD>
+<TD>2017-02-01 03:14:35</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>90</TD>
+<TD>2017-02-01 03:14:35</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>91</TD>
+<TD>2017-02-01 03:14:40</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>66.9000015258789</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>92</TD>
+<TD>2017-02-01 03:14:41</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>93</TD>
+<TD>2017-02-01 03:14:41</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>94</TD>
+<TD>2017-02-01 03:14:41</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>95</TD>
+<TD>2017-02-01 03:14:42</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>96</TD>
+<TD>2017-02-01 03:14:47</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>97</TD>
+<TD>2017-02-01 03:14:47</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>98</TD>
+<TD>2017-02-01 03:14:48</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>99</TD>
+<TD>2017-02-01 03:14:48</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>100</TD>
+<TD>2017-02-01 03:14:48</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>101</TD>
+<TD>2017-02-01 03:14:50</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Sensor</TD>
+<TD>1</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>102</TD>
+<TD>2017-02-01 03:14:50</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Alarm Type</TD>
+<TD>0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>103</TD>
+<TD>2017-02-01 03:14:50</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Alarm Level</TD>
+<TD>0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>104</TD>
+<TD>2017-02-01 03:14:50</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>SourceNodeId</TD>
+<TD>0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>105</TD>
+<TD>2017-02-01 03:14:50</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Burglar</TD>
+<TD>8</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>106</TD>
+<TD>2017-02-01 03:14:52</TD>
+<TD>2ada9f7f-99b5-4f76-8e0f-61383c55ac2a</TD>
+<TD>Level</TD>
+<TD>95</TD>
+<TD>1</TD>
+<TD>2017-02-01 03:14:52</TD>
+<TD>00000000-0000-0000-0000-000000000001</TD>
+<TD>2ada9f7f-99b5-4f76-8e0f-61383c55ac2a</TD>
+</TR>
+<TR><TD>107</TD>
+<TD>2017-02-01 03:14:53</TD>
+<TD>2ada9f7f-99b5-4f76-8e0f-61383c55ac2a</TD>
+<TD>Level</TD>
+<TD>99</TD>
+<TD>2</TD>
+<TD>2017-02-01 03:14:53</TD>
+<TD>00000000-0000-0000-0000-000000000001</TD>
+<TD>2ada9f7f-99b5-4f76-8e0f-61383c55ac2a</TD>
+</TR>
+<TR><TD>108</TD>
+<TD>2017-02-01 03:14:53</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>109</TD>
+<TD>2017-02-01 03:14:54</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>110</TD>
+<TD>2017-02-01 03:14:54</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>111</TD>
+<TD>2017-02-01 03:14:55</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>4.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>112</TD>
+<TD>2017-02-01 03:14:55</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>113</TD>
+<TD>2017-02-01 03:15:00</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>114</TD>
+<TD>2017-02-01 03:15:00</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>115</TD>
+<TD>2017-02-01 03:15:01</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>116</TD>
+<TD>2017-02-01 03:15:01</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>5.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>117</TD>
+<TD>2017-02-01 03:15:01</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>118</TD>
+<TD>2017-02-01 03:15:06</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>119</TD>
+<TD>2017-02-01 03:15:07</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>120</TD>
+<TD>2017-02-01 03:15:08</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>121</TD>
+<TD>2017-02-01 03:15:08</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>5.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>122</TD>
+<TD>2017-02-01 03:15:08</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>123</TD>
+<TD>2017-02-01 03:15:13</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>124</TD>
+<TD>2017-02-01 03:15:13</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>125</TD>
+<TD>2017-02-01 03:15:14</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>126</TD>
+<TD>2017-02-01 03:15:14</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>5.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>127</TD>
+<TD>2017-02-01 03:15:14</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>128</TD>
+<TD>2017-02-01 03:15:19</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.0999984741211</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>129</TD>
+<TD>2017-02-01 03:15:20</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>130</TD>
+<TD>2017-02-01 03:15:21</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>131</TD>
+<TD>2017-02-01 03:15:21</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>5.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>132</TD>
+<TD>2017-02-01 03:15:21</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>133</TD>
+<TD>2017-02-01 03:15:26</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.0999984741211</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>134</TD>
+<TD>2017-02-01 03:15:26</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>135</TD>
+<TD>2017-02-01 03:15:27</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>136</TD>
+<TD>2017-02-01 03:15:27</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>5.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>137</TD>
+<TD>2017-02-01 03:15:27</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>138</TD>
+<TD>2017-02-01 03:15:31</TD>
+<TD>2ada9f7f-99b5-4f76-8e0f-61383c55ac2a</TD>
+<TD>Level</TD>
+<TD>0</TD>
+<TD>3</TD>
+<TD>2017-02-01 03:15:31</TD>
+<TD>00000000-0000-0000-0000-000000000001</TD>
+<TD>2ada9f7f-99b5-4f76-8e0f-61383c55ac2a</TD>
+</TR>
+<TR><TD>139</TD>
+<TD>2017-02-01 03:15:32</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.0999984741211</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>140</TD>
+<TD>2017-02-01 03:15:33</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>141</TD>
+<TD>2017-02-01 03:15:34</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>142</TD>
+<TD>2017-02-01 03:15:34</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>5.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>143</TD>
+<TD>2017-02-01 03:15:34</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>144</TD>
+<TD>2017-02-01 03:15:39</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.0999984741211</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>145</TD>
+<TD>2017-02-01 03:15:39</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>146</TD>
+<TD>2017-02-01 03:15:40</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>147</TD>
+<TD>2017-02-01 03:15:40</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>148</TD>
+<TD>2017-02-01 03:15:40</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>149</TD>
+<TD>2017-02-01 03:15:46</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.1999969482422</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>150</TD>
+<TD>2017-02-01 03:15:46</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>151</TD>
+<TD>2017-02-01 03:15:47</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>152</TD>
+<TD>2017-02-01 03:15:47</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>153</TD>
+<TD>2017-02-01 03:15:47</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>154</TD>
+<TD>2017-02-01 03:15:52</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.1999969482422</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>155</TD>
+<TD>2017-02-01 03:15:52</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>156</TD>
+<TD>2017-02-01 03:15:53</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>157</TD>
+<TD>2017-02-01 03:15:53</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>158</TD>
+<TD>2017-02-01 03:15:54</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>159</TD>
+<TD>2017-02-01 03:15:59</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.1999969482422</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>160</TD>
+<TD>2017-02-01 03:15:59</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>31.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>161</TD>
+<TD>2017-02-01 03:16:00</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>162</TD>
+<TD>2017-02-01 03:16:00</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>163</TD>
+<TD>2017-02-01 03:16:00</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>164</TD>
+<TD>2017-02-01 03:16:05</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Temperature</TD>
+<TD>67.1999969482422</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>165</TD>
+<TD>2017-02-01 03:16:06</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Relative Humidity</TD>
+<TD>32.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>166</TD>
+<TD>2017-02-01 03:16:06</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Battery Level</TD>
+<TD>100</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>167</TD>
+<TD>2017-02-01 03:16:06</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Luminance</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR><TD>168</TD>
+<TD>2017-02-01 03:16:07</TD>
+<TD>4cfef8ea-d35d-4f84-8583-532c0795dab8</TD>
+<TD>Ultraviolet</TD>
+<TD>0.0</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+</table>
