@@ -2,12 +2,12 @@
 
 #### Description {-}
 
-Wink is a smart home automation system that prides itself on simplicity. This smart home system
-that prides itself on simplicity and user experience. The Wink system provides standard smart
-home features such as monitoring and controlling of devices, but also offers more advanced
-features such as energy consumption monitoring [^A-2-1]. Wink uses a central hub architecture,
-where all devices in the network communicate to a single "smart" hub. Additionally, Wink
-provides a smart phone app for users to interact with the system [^A-2-1].
+Wink is a smart home automation system that prides itself on simplicity and user experience.
+The Wink system provides standard smart home features such as monitoring and controlling of
+devices, but also offers more advanced features such as energy consumption monitoring
+[^A-2-1]. Wink uses a central hub architecture, where all devices in the network communicate
+to a single "smart" hub. Additionally, Wink provides a smart phone app for users to interact
+with the system [^A-2-1].
 
 #### Technical Overview {-}
 
@@ -40,7 +40,7 @@ to the Wink Hub. Pressing a button on the Wink Hub broadcasts a pairing signal a
 viewed from the Wink app. The user then selects the new device and enters the device identifier
 (located on the physical device) to add it to the automation system.
 
-If the new device requires a setup through a third party app then new device must be added to
+If the new device requires a setup through a third party app then the new device must be added to
 the home network using the app provided by the manufacturer. Once it has been added through
 the manufacturers app, it will be visible using the Wink app. It can be added to the
 automation system from here using the Wink app [^A-2-5].
