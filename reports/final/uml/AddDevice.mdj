@@ -62,7 +62,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 498,
+													"left": 482,
 													"top": 162,
 													"width": 94,
 													"height": 26,
@@ -82,7 +82,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 488,
+											"left": 472,
 											"top": 152,
 											"width": 114,
 											"height": 46,
@@ -392,7 +392,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 516,
+													"left": 484,
 													"top": 26,
 													"width": 87,
 													"height": 39,
@@ -412,7 +412,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 480,
+											"left": 448,
 											"top": 16,
 											"width": 159,
 											"height": 59,
@@ -515,8 +515,8 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 539,
-													"top": 379,
+													"left": 593,
+													"top": 330,
 													"width": 0,
 													"height": 13,
 													"autoResize": false,
@@ -546,8 +546,8 @@
 											"tail": {
 												"$ref": "AAAAAAFZ8ZXO3e2hpLo="
 											},
-											"lineStyle": 2,
-											"points": "539:312;539:400;600:400",
+											"lineStyle": 1,
+											"points": "545:313;624:383",
 											"nameLabel": {
 												"$ref": "AAAAAAFZ8ZfyHO37gBc="
 											}
@@ -775,8 +775,8 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 513,
-													"top": 409,
+													"left": 488,
+													"top": 352,
 													"width": 0,
 													"height": 13,
 													"autoResize": false,
@@ -806,8 +806,8 @@
 											"tail": {
 												"$ref": "AAAAAAFZ8ZXO3e2hpLo="
 											},
-											"lineStyle": 2,
-											"points": "514:312;514:400;467:400",
+											"lineStyle": 1,
+											"points": "510:313;445:383",
 											"nameLabel": {
 												"$ref": "AAAAAAFZ8ZvWpe5QR9U="
 											}
