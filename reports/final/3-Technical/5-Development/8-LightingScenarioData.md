@@ -8,8 +8,14 @@ Smart Lighting Scenario.
 - Aeon Labs Z-wave Multisensor 6
 - LB60Z-1 Z-wave Dimmable lightbulb
 
-#### Analysis 
-TODO
+#### Steps to Produce
+1. Motion sensor and Dimmable LED set up facing each other in empty room.
+2. User enters the room
+3. User turns LED on to 100% brightness
+4. User decreases LED brightness to low value
+5. User blocks multisensor with hand
+6. User increases brightness level to 100%
+7. User turns off LED from Web UI and leaves the room
 
 #### Data
 TODO: MOVE TO APPENDIX
