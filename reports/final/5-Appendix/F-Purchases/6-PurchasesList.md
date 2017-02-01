@@ -1,4 +1,4 @@
-### Purchases List {#section-rs-purchases}
+## F Purchases List {- #E}
 
 After all of the research that we have done in the previous sections we have decided that we 
 will  be purchasing the following device to work with our scenarios.
