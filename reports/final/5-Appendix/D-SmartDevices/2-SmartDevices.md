@@ -1,4 +1,4 @@
-### Smart Devices {#section-rs-dev}
+### A-2 Smart Devices {- #A-2}
 
 #### Background {-}
 
@@ -31,7 +31,7 @@ available?
 - What restrictions does the device introduce to the system? For example, do users need to create an
 account with another company in order to use the device with our system?
 
-#### WeMo {-}
+#### A-2-1 WeMo {-}
 
 ##### Description {-}
 
@@ -103,7 +103,7 @@ All WeMo Devices
 |        |         |                   | UPnP     | We need to Write it |
 
 
-#### Nest Thermostat {-}
+#### A-2-2 Nest Thermostat {-}
 
 ##### Description {-}
 
@@ -129,7 +129,7 @@ these resons it seems like the nest thermostat is not a great fit for our system
 not invest time into integrating with it.
 
 
-#### Honeywell VisionPro Thermostat {-}
+#### A-2-3 Honeywell VisionPro Thermostat {-}
 
 ##### Description {-}
 
@@ -153,7 +153,7 @@ This is a simple thermostat that will be easy to control using Z-Wave and as it 
 learning on it, so there won't be any conflicts with our system.
 
 
-#### Wireless Speakers {-}
+#### A-2-4 Wireless Speakers {-}
 
 ##### Available Devices {-}
 
