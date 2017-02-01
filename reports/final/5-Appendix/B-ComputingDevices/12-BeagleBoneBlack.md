@@ -13,10 +13,10 @@ learning hub and other computing devices
 The BeagleBone Black is driven by a 32-bit 1GHz Arm processor and is backed by 512MB of RAM. It
 also comes with more standard communication options than is predecessor including WiFi and
 Bluetooth. The Black model comes standard with 2 USB connections for serial communication and an
-HDMI interface for video feedback.
+HDMI interface for video feedback [^B-12-1].
 
 The Black Model uses the same pin configuration as the basic BeagleBone with a few extra specialty
-pins. It provides 68 GPIO pins with an additional UART connection.
+pins. It provides 68 GPIO pins with an additional UART connection [^B-12-2].
 
 #### Summary {-}
 
@@ -24,5 +24,10 @@ The BeagleBone Black is does have many powerful features but cannot complete wit
 3 for the learning hub roll. The Black model may be useful for embedded devices that require
 additional computation but since it requires more power than the standard BeagleBone with minimal
 gain it may not be feasible.
+
+[^B-12-1]: "BeagleBone Black,". [Online]. Available: <http://beagleboard.org/black>. Accessed: Oct. 10, 2016.
+[^B-12-2]: "Beagleboard: BeagleBoneBlack,". [Online]. Available: <http://elinux.org/Beagleboard:BeagleBoneBlack>. Accessed: Oct. 10, 2016.
+
+
 
 
