@@ -77,7 +77,7 @@ The REST documentation does state that there are some limitations in the design 
 It states that the REST API does not provide full support for configuring devices and scenes and
 states that the Insteon app is still required for complete access [^A-1-4].
 
-##### Third Party Support {-}
+##### Third Party Integration {-}
 
 Insteon produces its own devices for most of its smart home purposes [^A-1-5]. On top of these
 basic devices, Insteon has created integrations with a number of third party smart technology
