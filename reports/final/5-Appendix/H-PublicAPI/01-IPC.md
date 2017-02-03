@@ -1,4 +1,4 @@
-### IPC Protocol {#section-design-api-ipc}
+### H-1 IPC Protocol {- #H-1}
 
 This section defines a basic protocol for interprocess communication (IPC) between the 
 HTTP gateway and the central server.
