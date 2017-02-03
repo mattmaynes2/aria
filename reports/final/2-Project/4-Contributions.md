@@ -20,10 +20,6 @@
 | [Device Discovery](#section-design-discovery)        | Matthew           |                  | October 30, 2016  |
 | [Device Requests](#section-design-reqs)              | Peter             | Matthew          | October 30, 2016  |
 | [Remote User Interface](#section-design-ui)          | Matthew           |                  | November 13, 2016 |
-| [IPC Protocol](#section-design-api-ipc)              | Matthew & Cameron | Jeremy           | November 27, 2016 |
-| [Database Interface](#section-design-api-db)         | Peter             | Matthew          | November 27, 2016 |
-| [REST API Design](#section-design-api-rest)          | Matthew           |                  | November 27, 2016 |
-| [Websocket Design](#section-design-api-ws)           | Matthew           |                  | November 27, 2016 |
 | [Deployment](#section-dev-deploy)                    | Matthew           | Cameron & Peter  | November 6, 2016  |
 | [Technology](#section-dev-tech)                      | Matthew           | Peter            | November 6, 2016  |
 | [Hub Implementation](#section-dev-hub)               | Jeremy            |                  | November 27, 2016 |
@@ -47,4 +43,5 @@
 | [E Smart Devices](#E)            | All               |                   | October 29, 2016  |
 | [F Shopping List](#F)            | Jeremy            |                   | November 13, 2016 |
 | [G Raw Data](#G)                 | Jeremy            |                   | January 31, 2017  |
+| [H Public APIs](#H)              | All               |                   | November 27, 2016 |
 
