@@ -48,6 +48,7 @@
         "clean"     : ["cd ../hub/remote", "rm -rf bin"]
     },
     "uml" : {
+        "all" : "ignore",
         "enviro" : [
             "./support/pkman install --try -p brew pkg-config cairo libpng jpeg giflib",
             "./support/pkman install --try -p apt-get libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++",
@@ -63,10 +64,12 @@
         ]
     },
    "reports.proposal" : {
+        "all"   : "ignore",
         "build" : "./support/try ./markdown/mkpdf -o Proposal.pdf ../reports/proposal",
         "clean" : "rm -f ../reports/proposal/*.pdf"
     },
-     "reports.final" : {
+    "reports.final" : {
+        "all"   : "ignore",
         "build" : "./support/try ./markdown/mkpdf --auto-number --toc -o Report.pdf ../reports/final",
         "clean" : [
             "rm -f ../reports/final/*.pdf",

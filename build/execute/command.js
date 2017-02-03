@@ -60,7 +60,7 @@ let Command = (function () {
         }
 
         return Object.keys(manifest).filter((target) => {
-            return !!manifest[target][directive];
+            return !!manifest[target][directive] && manifest[target].all !== 'ignore' ;
         }).map((target) => {
             return new Command(directive, target).script(manifest[target][directive]);
         });
