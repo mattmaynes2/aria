@@ -1,6 +1,6 @@
 ### I-1 Development Process {- #I-1}
 
-#### Introduction
+#### Introduction {-}
 
 An important part of any sizeable software project is the selection of an appropriate development 
 process. A development process imposes a particular structure on the development of a product. The 
@@ -25,7 +25,7 @@ be used for: Source Code Management, Code Reviews, Issue Tracking, and Testing.
 
 ![][code-lifecycle]
 
-#### Source Code Management
+#### Source Code Management {-}
 
 The project uses a source code management tool to achieve the following goals:
 
@@ -43,7 +43,7 @@ The project's git repository is hosted on Github. Github allows the team to acce
 and makes sharing code with new developers simple. Additionally, Github provides some project
 management tools that can be used elsewhere in the process, as explained in subsequent sections.
 
-#### Branching and Code Reviews
+#### Branching and Code Reviews {-}
 
 We make strategic use of a git feature, branching, in order to ensure that code which makes it into the
 official version of our software is of the quality expected of a fourth year project. A technique we
@@ -57,7 +57,7 @@ on a particular feature is submitted to its own branch; branches are merged to m
 feature has been completed. A code review is required before any branch may be merged into master. 
 Feature branches helps to ensure that code reviews are short and focused.
 
-#### Continuous Integration
+#### Continuous Integration {-}
 
 A practice which complements the branching strategy adopted by this project is continuous integration. 
 In combination with test automation, continuous integration allows team members to get early 
@@ -73,7 +73,7 @@ Github rules were created to ensure that any code which is merged into the maste
 break existing work. Merges to master are blocked until Travis has successfully run unit tests on the
 merged code.
 
-#### Issue Tracking
+#### Issue Tracking {-}
 
 In order for the team to measure the progress of the project, and to ensure that tasks are not forgotten, 
 it is important for this process to incorporate a process for tracking tasks. Issue tracking may also 
@@ -99,7 +99,7 @@ of development. Issues are prioritized using labels (minor, major, critical, blo
 assigned to a team member when work begins; when work on an issue is completed the issue is closed
 using a commit message.
 
-#### Testing Practices
+#### Testing Practices {-}
 
 Agile processes generally encourage a short feedback loop for developers (problems with code should
 be exposed as early as possible). This project uses principles of test-driven development (TDD) and

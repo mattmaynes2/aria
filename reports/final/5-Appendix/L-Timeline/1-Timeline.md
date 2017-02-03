@@ -1,4 +1,4 @@
-### L-1 Proposed Timeline {- #L}
+### L-1 Proposed Timeline {- #L-1}
 
 At the beginning of the project, the development of the project was planned in a week to week
 plan. This development plan had fairly restrictive timelines and did not leave much room for

@@ -1,4 +1,4 @@
-## L Project Progress (- #L)
+## L Project Progress {- #L}
 
 This section outlines the details about the implementation of the Aria system. It is a record of
 the major decisions made in the implementation of the system as well as a record of the progress

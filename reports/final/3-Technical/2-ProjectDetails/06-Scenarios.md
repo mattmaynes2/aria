@@ -1,4 +1,4 @@
-## Scenarios {#section-sc}
+### Scenarios {#section-sc}
 
 In order to better understand the motivations for using the learning home automation system, we have
 created a number of scenarios where we expect the behaviour of homeowners to follow patterns that a
@@ -8,16 +8,16 @@ a list of smart devices involved. Using the devices identified in these scenario
 compile a list of devices which will showcase the machine learning capabilities of the system for
 testing and demos.
 
-### Music Automation {#section-sc-music}
+#### Music Automation {- #section-sc-music}
 
-#### Background {-}
+###### Background {-}
 
 Smart home automation should make your life easy and fun. Imagine a group of people arrive at your
 house for a party. Your home automation system has learned how to set up your environment to give
 you the best experience possible. The lights dim, the temperature goes down, and the music goes up.
 Your home is now ready for your guests!
 
-#### System Interaction {-}
+###### System Interaction {-}
 
 The home automation system will be able to interact with a music system. The remote interface will
 allow the user to turn on and off music and control the system volume. The system may also be able
@@ -34,7 +34,7 @@ temperature, lights, and any other devices they wish. This could indicate to the
 when there are many people in the home, all of the trained systems should be activated.
 
 
-#### System Requirements {-}
+###### System Requirements {-}
 
 To be able to monitor the home, the following sensors may be of interest. These sensors will be
 use to monitor the occupancy of the home as well as determine the noise level of the home to
@@ -57,9 +57,9 @@ scenario.
 | Thermostat          | Allows temperature to be adjusted                   |
 
 
-### Efficient Lights and Temperature {#section-sc-temp}
+#### Efficient Lights and Temperature {- #section-sc-temp}
 
-#### Background {-}
+###### Background {-}
 
 A smart home should reduce your energy bills and keep you comfy. During your work week, your home
 is left to cool during the day when no one is home. In the evening, before you arrive, the
@@ -75,7 +75,7 @@ In the summer months, when it is more light outside, the system does not turn th
 on until later. In the winter months, the home turns the lights on earlier.
 
 
-#### System Interaction {-}
+###### System Interaction {-}
 
 The system will need to interact with multiple sensors as well as light and temperature
 controllers. The remote interface will need to be able to display the state of all the sensors
@@ -91,7 +91,7 @@ be much longer. At different times of day the user will change the temperature. 
 factors changes, the system will make these observations and use them to decide what the should
 be set to.
 
-#### System Requirements {-}
+###### System Requirements {-}
 
 To enable light and temperature control, sensors will be needed to observe the system. The
 sensors will be needed to observe the ambient light and temperature of the home. There
@@ -116,9 +116,9 @@ The following is a list of the devices that will be needed and how they will be 
 
 
 
-### Coffee Automation {#section-sc-coffee}
+#### Coffee Automation {- #section-sc-coffee}
 
-#### Background {-}
+###### Background {-}
 
 Routine tasks done on a periodic schedule and can be automated by a smart process. Every morning
 you wake up and make a pot of coffee before you go about your day. Making a pot of coffee is a
@@ -129,7 +129,7 @@ Let's imagine that on the weekend you don't make any morning coffee, the system 
 behaviour and adapt during the days of the week. On a day that you are not at home, the system
 should not make any coffee either.
 
-#### System Interaction {-}
+###### System Interaction {-}
 
 The system will need to be able to interact with a number of sensors to detect the user's
 presence. The system will also need to be able to communicate to a smart coffee maker so that it
@@ -141,7 +141,7 @@ into bed. The user could then get out of bed and go directly to the kitchen and 
 of coffee. The system could observe the user's leaving the bed with motion sensors and track
 that they are making coffee in a smart coffee maker.
 
-#### System Requirements {-}
+###### System Requirements {-}
 
 To track the user's motion in the home, the system will need motion sensors. To be able to
 differentiate between the days of the week and time, the system will also need access to a
@@ -158,9 +158,9 @@ To be able to actually make the coffee, a smart coffee maker will be needed. Thi
 smart device that will be required to automate this scenario.
 
 
-### Effortless Home Lighting {#section-sc-light}
+#### Effortless Home Lighting {- #section-sc-light}
 
-#### Background {-}
+###### Background {-}
 
 A learning smart home should reduce the need to manually perform everyday environmental control 
 tasks. The system should be able to take in information from multiple sensors and devices, and be
@@ -176,7 +176,7 @@ At the same time the following day, the home owner re-enters the office. The wea
 and rainy. The lights turn on to a comfortable brightness level upon entry, and remain there as
 the home owner works into the evening again. Upon exiting the room, the lights shut off again.
 
-#### System Interaction {-}
+###### System Interaction {-}
 
 The system is required to combine information about the external environment with information about
 the homes internal environment. Simply tracking any one factor will not result in the system 
@@ -188,7 +188,7 @@ to specifically do this, as you cannot easily control the external light levels.
 home owner keeps the light in the room at a certain level while the system is learning, the behaviour
 should be able to to be learned.
 
-#### System Requirements {-}
+###### System Requirements {-}
 
 Two different sensors are needed for this scenario. A passive infrared sensor would be used to detect
 when there is someone present in a room. An ambient light sensor for inside the room will also be
