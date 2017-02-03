@@ -7,6 +7,7 @@ from hub import Hub
 from delegate import RequestTracker
 from ipc import Message
 from database import Database
+from hub.hub_mode import HubMode
 
 
 class RequestTrackerTest(TestCase):
@@ -18,6 +19,7 @@ class RequestTrackerTest(TestCase):
         Attribute('noControl',[Parameter('noControl',DataType.Binary, value=1)],isControllable=False)])\
         , name= 'Lamp Switch', address=self.id,version='0.1.0')
         self.hub=Hub(Database())
+        self.hub.mode=HubMode.Learning
 
 
     @patch('database.DatabaseTranslator')       
@@ -30,15 +32,11 @@ class RequestTrackerTest(TestCase):
     
     @patch('database.DatabaseTranslator')
     def test_request(self,MockTranslator):
-
-        def receive(message):
-            self.assertTrue(message.type == Message.Request)
-       
-        MockTranslator.received=receive
         tracker=RequestTracker(MockTranslator, self.hub)
         self.hub.addDevice(self.dev)
         tracker.received(Message(Message.Request,\
             sender=self.id,receiver=uuid.uuid4().bytes))
+        self.assertTrue(MockTranslator.received.called)
 
         
     @patch('database.DatabaseTranslator')
@@ -65,21 +63,25 @@ class RequestTrackerTest(TestCase):
     @patch('database.DatabaseTranslator')
     def test_no_request(self,MockTranslator):
 
-        def receive(message):
-            if (message.type == Message.Request):
-                return 10
-            elif (message.type == Message.Event):
-                self.assertFalse('requestId' in message.data)
-                
-        MockTranslator.received=receive
-
         self.hub.addDevice(self.dev)
         tracker=RequestTracker(MockTranslator, self.hub)
         ret=tracker.received(Message(Message.Event, data={'attribute':{'name':'noControl', 'parameters':\
         [{'name':'noControl', 'value':0}]}},\
             sender=self.id,receiver=uuid.uuid4().bytes))
+        self.assertTrue(MockTranslator.received.calledwith({'attribute':{'name':'noControl', 'parameters':\
+        [{'name':'noControl', 'value':0}]}}))
         self.assertIsNone(ret)
         self.assertEqual(tracker.requests.get(self.dev.address),None)
+        
+
+    @patch('database.DatabaseTranslator')
+    def test_dont_log(self,MockTranslator):
+        self.hub.mode = HubMode.Normal
+        tracker=RequestTracker(MockTranslator, self.hub)
+        self.hub.addDevice(self.dev)
+        tracker.received(Message(Message.Request,\
+            sender=self.id,receiver=uuid.uuid4().bytes))
+        self.assertFalse(MockTranslator.received.called)
 
          
 
