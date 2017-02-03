@@ -4,37 +4,37 @@ In order to describe the Aria system and the field of smart home automation, tec
 will be required. This section outlines a set of technical terms and phrases that will be used
 to describe this field of technology.
 
-###### Real-Time System
+###### Real-Time System {-}
 
 A real-time system is a computing system that processes input data within a millisecond window
 such that the output is ready virtually immediately [^TT-1]. Real-time systems will be used as
 smart devices as well as computing devices in the Aria system.
 
-###### Embedded Device
+###### Embedded Device {-}
 
 An embedded device is a special purpose computing device that is encapsulated by the device
 it interacts with or controls [^TT-5].
 
-###### Smart Home
+###### Smart Home {-}
 
 A smart home is an environment that contains sensors and actuators that can be controlled
 remotely [^TT-2].
 
-###### Machine Learning
+###### Machine Learning {-}
 
 Machine learning is an process for a computer to modify its behaviour based on its inputs [^TT-3].
 
-###### Internet of Things (IoT)
+###### Internet of Things (IoT) {-}
 
 The internet of things (IoT) is a term used to describe a network of embedded devices that send
 and receive data via the internet [^TT-4].
 
-###### Smart Hub
+###### Smart Hub {-}
 
 A smart hub is an embedded device that all smart home devices interact with as a central point
 of communication.
 
-###### If This Then That (IFTTT)
+###### If This Then That (IFTTT) {-}
 
 An algorithm that causes a reaction when a set of criteria are met. If the criteria are met
 then an action is performed.
