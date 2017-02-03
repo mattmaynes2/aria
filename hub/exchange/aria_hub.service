@@ -5,7 +5,6 @@ After=network.target
 [Service]
 WorkingDirectory=/home/pi
 Type=simple
-PIDFile=/home/pi/daemon.pid
 ExecStart=/usr/bin/python3 /home/pi/aria/hub/exchange/src/__main__.py
 
 [Install]
