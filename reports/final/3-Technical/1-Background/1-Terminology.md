@@ -10,6 +10,11 @@ A real-time system is a computing system that processes input data within a mill
 such that the output is ready virtually immediately [^TT-1]. Real-time systems will be used as
 smart devices as well as computing devices in the Aria system.
 
+###### Embedded Device
+
+An embedded device is a special purpose computing device that is encapsulated by the device
+it interacts with or controls [^TT-5].
+
 ###### Smart Home
 
 A smart home is an environment that contains sensors and actuators that can be controlled
@@ -29,7 +34,7 @@ and receive data via the internet [^TT-4].
 A smart hub is an embedded device that all smart home devices interact with as a central point
 of communication.
 
-###### If This Then That (TFTTT)
+###### If This Then That (IFTTT)
 
 An algorithm that causes a reaction when a set of criteria are met. If the criteria are met
 then an action is performed.
@@ -41,3 +46,4 @@ then an action is performed.
 [^TT-2]: "smart home", in Oxford English Dictionary Online, 2016. [Online]. Available: <https://en.oxforddictionaries.com/definition/smart_home>. Accessed: Jan. 15, 2017.
 [^TT-3]: "machine learning", in Oxford English Dictionary Online, 2016. [Online]. Available: <https://en.oxforddictionaries.com/definition/machine_learning>. Accessed: Jan. 15, 2017.
 [^TT-4]: "internet of things", in Oxford English Dictionary Online, 2016. [Online]. Available: <https://en.oxforddictionaries.com/definition/internet_of_things>. Accessed: Feb. 3, 2017.
+[^TT-5]: "Embedded Device", in NC State Electrical & Computer Engineering, 2010. [Online]. Available <https://www.ece.ncsu.edu/research/cas/ecs>. Accessed: Feb. 3, 2017.
