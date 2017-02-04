@@ -120,7 +120,7 @@ class ZWaveDevice(Device):
         value is the new value of the attribute
         """
         zwaveVal = self.__valueMap[attribute]
-        logger.info("Received request to set value of attribute: " + attribute + " to " + str(value))         
+        logger.debug("Received request to set value of attribute: " + attribute + " to " + str(value))         
         checkedVal = zwaveVal.check_data(value)
         if checkedVal == None:
             raise ValueError("Invalid value for parameter " + attribute + " of attribute " + attribute + ": " + value)
