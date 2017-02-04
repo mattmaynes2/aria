@@ -34,6 +34,12 @@ and receive data via the internet [^TT-4].
 A smart hub is an embedded device that all smart home devices interact with as a central point
 of communication.
 
+###### Device Scenes {-}
+
+A software configuration of smart devices in a home that outlines specific behaviours of each
+device. Scenes are used by smart homes to recreate a specific setups that a user has configured.
+<!-- TODO: Add reference -->
+
 ###### If This Then That (IFTTT) {-}
 
 An algorithm that causes a reaction when a set of criteria are met. If the criteria are met
