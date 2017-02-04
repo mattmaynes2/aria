@@ -6,13 +6,15 @@ from .device_type import DeviceType
 import time
 import logging
 import uuid
+import codecs
 
 logger = logging.getLogger(__name__)
 
 class ZWaveValueWrapper():
 
     COMMAND_CLASS_MULTILEVEL_SWITCH = 38
-
+    COMMAND_CLASS_COLOR             = 51 
+    
     def __init__(self, value):
         self._wrappedValue = value
         if value.data == 0:
@@ -22,7 +24,15 @@ class ZWaveValueWrapper():
     def data(self):
         if self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_MULTILEVEL_SWITCH and not self.on:
             return 0
+
         return self._wrappedValue.data
+
+    @property
+    def type(self):
+        if self._wrappedValue.type == 'String' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_COLOR:
+            return 'Color'
+        return self._wrappedValue.type
+
 
     @data.setter
     def data(self, value):
@@ -30,6 +40,12 @@ class ZWaveValueWrapper():
             self.on = (value != 0)
 
         self._wrappedValue.data = value
+
+    def check_data(self, value):
+        if self._wrappedValue.type == 'String' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_COLOR:
+            #return codecs.decode(value, 'hex')
+            return str.encode("#"+value+"0000") 
+        return self._wrappedValue.check_data(value)
 
     def __getattr__(self, attr):
         """Everything else is delegated to the object"""
@@ -39,7 +55,7 @@ class ZWaveDevice(Device):
     PROTOCOL='zwave'
     dataMappings={'Bool':DataType.Binary,'Byte':DataType.Byte, 'Decimal':DataType.Float,\
     'Int':DataType.Int, 'Short':DataType.Int, 'String':DataType.String, 'Button':DataType.Binary, \
-    'List':DataType.List}
+    'List':DataType.List, 'Color':DataType.Color}
 
     def __init__ (self, node):
         self.__valueMap = {}
@@ -58,11 +74,12 @@ class ZWaveDevice(Device):
                 max = 99
             else:
                 max = val.max
-            parameter= Parameter(val.label, ZWaveDevice.dataMappings[val.type],max_=max, \
+            wrapped = ZWaveValueWrapper(val)
+            parameter= Parameter(val.label, ZWaveDevice.dataMappings[wrapped.type],max_=max, \
             min_=val.min, value=val.data)
             attribute=Attribute(val.label,parameters=[parameter],isControllable=not val.is_read_only)
             attributes.append(attribute)
-            self.__valueMap[val.label] = ZWaveValueWrapper(val)
+            self.__valueMap[val.label] = wrapped 
 
         return DeviceType(node.product_name, ZWaveDevice.PROTOCOL, node.manufacturer_name,\
         attributes=attributes)
@@ -99,8 +116,8 @@ class ZWaveDevice(Device):
         value is the new value of the attribute
         """
         zwaveVal = self.__valueMap[attribute]
+        logger.info("Received request to set value of attribute: " + attribute + " to " + str(value))         
         checkedVal = zwaveVal.check_data(value)
-        logger.debug("Received request to set value of attribute: " + attribute)         
         if checkedVal == None:
             raise ValueError("Invalid value for parameter " + attribute + " of attribute " + attribute + ": " + value)
         else:
