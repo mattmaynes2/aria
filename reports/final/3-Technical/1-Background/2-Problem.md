@@ -29,4 +29,5 @@ configuration to a non-technical audience.
 <!-- TODO: Insert paragraph on device configuration and its issues -->
 <!-- TODO: Insert paragraph on user configuration and its issues -->
 
+<!-- TODO: Add concluding statement to summarize issue -->
 
