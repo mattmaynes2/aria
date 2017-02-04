@@ -6,7 +6,6 @@ from .device_type import DeviceType
 import time
 import logging
 import uuid
-import codecs
 
 logger = logging.getLogger(__name__)
 
@@ -20,30 +19,35 @@ class ZWaveValueWrapper():
         if value.data == 0:
             self.on = False
 
+    def isMultilevelValue(self):
+        return self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_MULTILEVEL_SWITCH
+
+    def isColourValue(self):
+        return self._wrappedValue.type == 'String' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_COLOR
+
     @property
     def data(self):
-        if self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_MULTILEVEL_SWITCH and not self.on:
+        if self.isMultilevelValue() and not self.on:
             return 0
 
         return self._wrappedValue.data
 
     @property
     def type(self):
-        if self._wrappedValue.type == 'String' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_COLOR:
+        if self.isColourValue():
             return 'Color'
         return self._wrappedValue.type
 
 
     @data.setter
     def data(self, value):
-        if self._wrappedValue.type == 'Byte' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_MULTILEVEL_SWITCH:
+        if self.isMultilevelValue():
             self.on = (value != 0)
 
         self._wrappedValue.data = value
 
     def check_data(self, value):
-        if self._wrappedValue.type == 'String' and self._wrappedValue.command_class == ZWaveValueWrapper.COMMAND_CLASS_COLOR:
-            #return codecs.decode(value, 'hex')
+        if self.isColourValue():
             return str.encode("#"+value+"0000") 
         return self._wrappedValue.check_data(value)
 
