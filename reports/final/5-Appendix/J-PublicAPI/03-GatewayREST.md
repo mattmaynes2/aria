@@ -429,10 +429,10 @@ gateway. To see the available events over websockets
 | 				|  **Content:**  `{ error : "Failed to add behaviour" }` <br/>  				|
 +---------------+-------------------------------------------------------------------------------+
 
-##### Get Behaviours {-}
+##### List Behaviours {-}
 
 +---------------+-------------------------------------------------------------------------------+
-| Title     	| **Add Behaviour**	                                                            |
+| Title     	| **List Behaviours**	                                                        |
 |      		 	|                                                                             	|
 |       		| This method returns a paged list of existing behaviours.                      |
 +---------------+-------------------------------------------------------------------------------+
