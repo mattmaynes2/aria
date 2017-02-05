@@ -34,6 +34,12 @@ and receive data via the internet [^TT-4].
 A smart hub is an embedded device that all smart home devices interact with as a central point
 of communication.
 
+###### Device Scenes {-}
+
+A software configuration of smart devices in a home that outlines specific behaviours of each
+device. Scenes are used by smart homes to recreate a specific setups that a user has configured
+[^TT-6].
+
 ###### If This Then That (IFTTT) {-}
 
 An algorithm that causes a reaction when a set of criteria are met. If the criteria are met
@@ -47,3 +53,5 @@ then an action is performed.
 [^TT-3]: "machine learning", in Oxford English Dictionary Online, 2016. [Online]. Available: <https://en.oxforddictionaries.com/definition/machine_learning>. Accessed: Jan. 15, 2017.
 [^TT-4]: "internet of things", in Oxford English Dictionary Online, 2016. [Online]. Available: <https://en.oxforddictionaries.com/definition/internet_of_things>. Accessed: Feb. 3, 2017.
 [^TT-5]: "Embedded Device", in NC State Electrical & Computer Engineering, 2010. [Online]. Available <https://www.ece.ncsu.edu/research/cas/ecs>. Accessed: Feb. 3, 2017.
+[^TT-6]: "WHITEPAPER: The Details,". [Online]. Available: <http://cache.insteon.com/documentation/insteon_details.pdf>. Accessed: Oct. 6, 2016.
+
