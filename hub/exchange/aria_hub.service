@@ -1,0 +1,11 @@
+[Unit]
+Description=ARIA Hub Service
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/aria/hub/exchange/src/__main__.py
+
+[Install]
+WantedBy=multi-user.target
