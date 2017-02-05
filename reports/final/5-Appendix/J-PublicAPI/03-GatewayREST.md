@@ -408,7 +408,7 @@ gateway. To see the available events over websockets
 |      		 	|                                                                             	|
 |       		| This method creates a new behaviour that can be trained.                      |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/hub/behaviour` 																|
+| URL         	| `/hub/training/behaviour` 																|
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **POST**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -436,7 +436,7 @@ gateway. To see the available events over websockets
 |      		 	|                                                                             	|
 |       		| This method returns a paged list of existing behaviours.                      |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/hub/behaviour` 																|
+| URL         	| `/hub/training/behaviours` 																|
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **GET**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -477,7 +477,7 @@ gateway. To see the available events over websockets
 |      		 	|                                                                             	|
 |       		| This method returns a paged list of existing training sessions.               |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/hub/session` 																|
+| URL         	| `/hub/training/sessions` 																|
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **GET**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -517,7 +517,7 @@ gateway. To see the available events over websockets
 |      		 	|                                                                             	|
 |       		| This method creates a new training session for a behaviour                    |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/hub/session` 																|
+| URL         	| `/hub/training/session` 																|
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **POST**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -548,7 +548,7 @@ gateway. To see the available events over websockets
 |       		| This method activates a training session. New events and user requests will   | 
 |               | be associated with the training session                                       |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/session/<id>/start` 														|
+| URL         	| `/hub/training/session/<id>/start` 														|
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **POST**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -573,7 +573,7 @@ gateway. To see the available events over websockets
 |       		| This method deactivates an active training session. New events and requests   |
 |               | will no longer be associated with this training session.                      |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/session/<id>/stop` 											    			|
+| URL         	| `hub/training/session/<id>/stop` 											    			|
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **POST**																		|
 +---------------+-------------------------------------------------------------------------------+
