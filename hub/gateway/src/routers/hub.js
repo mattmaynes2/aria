@@ -60,6 +60,89 @@ let HubRouter = (function () {
                     .catch(onError.bind(this, res));
             });
 
+        app.route('/training/behaviour')
+            .post((req, res) => {
+                this._adapter
+                    .send(IPC.Request, {
+                        "create" : "behaviour",
+                        "name" : req.body.name
+                    })
+                    .then((reply) => {
+                        res.json(reply.payload.value);
+                    })
+                    .catch(onError.bind(this,res));
+            })
+
+        app.route('/training/behaviours')
+            .get((req,res) => {
+                this._adapter
+                    .send(IPC.Request, {
+                        "get" : "behaviours",
+                        "start" : req.body.start,
+                        "count" : 10
+                    })
+                    .then((reply) => {
+                        res.json(reply.payload.value);
+                    })
+                    .catch(onError.bind(this,res));
+            });
+
+        app.route('/training/session')
+            .post((req,res) => {
+                this._adapter
+                    .send(IPC.Request, {
+                        "create" : "session",
+                        "behaviourId" : req.body.behaviourId,
+                        "name" : req.body.name
+                    })
+                    .then((reply) => {
+                        res.json(reply.payload.value);
+                    })
+                    .catch(onError.bind(this,res));
+            });
+
+        app.route('/training/sessions')
+        .get((req,res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    "get" : "sessions",
+                    "behaviourId" : req.body.behaviourId
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        })
+
+        app.route('/training/session/:id/start')
+        .post((req,res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    "start" : "session",
+                    "value" : req.params.id
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
+            
+        app.route('/training/session/:id/stop')
+        .post((req,res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    "stop" : "session",
+                    "value" : req.params.id
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
+            
+        app.route("/")
+            
+        
         return app;
     };
 
