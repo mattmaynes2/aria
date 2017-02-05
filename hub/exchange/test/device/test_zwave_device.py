@@ -20,12 +20,19 @@ class ZWaveDeviceTest(TestCase):
         mockValueBrightness = Mock()
         mockValueBrightness.label = "Brightness"
         mockValueBrightness.type = "Byte"
-        mockValueBrightness.command_class = 2
+        mockValueBrightness.command_class = 38
         mockValueBrightness.max = 255
         mockValueBrightness.min = 0
         mockValueBrightness.data = 10
         mockValueBrightness.is_read_only = False
 
+        mockValueColour = Mock()
+        mockValueColour.label = "Colour"
+        mockValueColour.command_class = 51
+        mockValueColour.is_read_only = False
+        mockValueColour.type = "String"
+        
+        self.mockValues["Colour"] = mockValueColour
         self.mockValues["Brightness"] = mockValueBrightness
         self.mockNode.get_values.return_value = self.mockValues
 
@@ -56,7 +63,7 @@ class ZWaveDeviceTest(TestCase):
         brightnessParameters = brightnessAttribute.parameters
         self.assertEqual("Brightness", brightnessParameters[0].name)
         self.assertEqual(0, brightnessParameters[0].min)
-        self.assertEqual(255, brightnessParameters[0].max)
+        self.assertEqual(99, brightnessParameters[0].max)
         self.assertEqual(None, brightnessParameters[0].step)
         self.assertEqual(10, brightnessParameters[0].value)
         self.assertEqual(DataType.Byte, brightnessParameters[0]._dataType)
@@ -72,22 +79,43 @@ class ZWaveDeviceTest(TestCase):
         See the Z-Wave Command Class Specification: 
         http://z-wave.sigmadesigns.com/wp-content/uploads/2016/08/SDS12657-12-Z-Wave-Command-Class-Specification-A-M.pdf
         '''
-        mockValueBrightness = Mock()
-        mockValueBrightness.label = "Brightness"
-        mockValueBrightness.type = "Byte"
-        mockValueBrightness.command_class = 38
-        mockValueBrightness.max = 255
-        mockValueBrightness.min = 0
-        mockValueBrightness.data = 10
-        mockValueBrightness.is_read_only = False
-
-        self.mockValues["Brightness"] = mockValueBrightness
         device = ZWaveDevice(self.mockNode)
         deviceType = device.deviceType 
         brightnessAttribute = deviceType.getAttribute("Brightness")
         brightnessParameters = brightnessAttribute.parameters
         self.assertEqual(99, brightnessParameters[0].max)
         self.assertEqual(0, brightnessParameters[0].min)
+
+    def test_attribute_type_is_color_for_command_class_color(self):
+        '''
+        Explanation
+        After tests with a Z-wave RGB bulb, we discovered that the lightbulb reports the type of 
+        its Colour value as a String. This needs to be translated to a type Color for our system, in
+        order for the UI to display a colour picker, etc.
+        '''
+        
+        device = ZWaveDevice(self.mockNode)
+        deviceType = device.deviceType
+        colourAttribute = deviceType.getAttribute("Colour")
+        self.assertEqual(DataType.Color, colourAttribute.parameters[0].dataType)
+
+        
+    def test_translation_from_string_colour_to_bytes(self):
+        '''
+        Explanation
+        Colour values send within our system need to be translated into the proper format for 
+        Z-wave
+        Our Colours are hex strings in the format "rrggbb"
+        Z-wave colours need to be the bytes of a string in the format "#rrggbb0000"
+        '''
+        
+        device = ZWaveDevice(self.mockNode)
+        deviceType = device.deviceType
+        colourAttribute = deviceType.getAttribute("Colour")
+        incomingColour = "ff00ff"
+        expectedColour = b'#ff00ff0000'
+        device.setValue("Colour", "ff00ff")
+        self.assertEqual(expectedColour, self.mockValues["Colour"].data)
 
     def test_device_get_value_should_return_dictionary(self):
         '''
