@@ -61,42 +61,42 @@ let HubRouter = (function () {
             });
 
         app.post('/training/behaviour', (req, res) => {
-                this._adapter
-                    .send(IPC.Request, {
-                        'create' : 'behaviour',
-                        'name' : req.body.name
-                    })
-                    .then((reply) => {
-                        res.json(reply.payload.value);
-                    })
-                    .catch(onError.bind(this,res));
-            });
+            this._adapter
+                .send(IPC.Request, {
+                    'create' : 'behaviour',
+                    'name' : req.body.name
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
 
         app.get('/training/behaviours', (req,res) => {
-                this._adapter
-                    .send(IPC.Request, {
-                        'get' : 'behaviours',
-                        'start' : req.body.start,
-                        'count' : 10
-                    })
-                    .then((reply) => {
-                        res.json(reply.payload.value);
-                    })
-                    .catch(onError.bind(this,res));
-            });
+            this._adapter
+                .send(IPC.Request, {
+                    'get' : 'behaviours',
+                    'start' : req.body.start,
+                    'count' : 10
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
 
         app.post('/training/session', (req,res) => {
-                this._adapter
-                    .send(IPC.Request, {
-                        'create' : 'session',
-                        'behaviourId' : req.body.behaviourId,
-                        'name' : req.body.name
-                    })
-                    .then((reply) => {
-                        res.json(reply.payload.value);
-                    })
-                    .catch(onError.bind(this,res));
-            });
+            this._adapter
+                .send(IPC.Request, {
+                    'create' : 'session',
+                    'behaviourId' : req.body.behaviourId,
+                    'name' : req.body.name
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
 
         app.get('/training/sessions', (req,res) => {
             this._adapter
