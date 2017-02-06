@@ -1,13 +1,24 @@
-### Overall Description
+### Overview
 
-#### Product Perspective {-}
+#### Introduction {-}
 
-Systems are becoming more readily available in the general market place. This system builds upon
-traditional home automation systems by adding true automation in the form of learning. Unlike
-traditional systems, this system observes the homeowner's interactions with devices and
-automatically makes decisions based on historical behaviours. By combining the fields of machine
-learning and home automation, the our system will provide an end user with a simplified
-smart home experience.
+The Autonomous Real-Time Interactive Architecture (ARIA) will allow a homeowner to set up a collection
+of devices in their home which will automatically control their environment and automate common tasks.
+Task automation in the system will not require any user configuration, instead tasks will be automated
+based on the user's interaction with devices in the system.
+
+The system will consist of a hub device with a simple interface that a homeowner can connect to their
+home network. After connecting the hub, the homeowner can add enabled devices for the system to
+control by simply connecting them to the network. As new devices are connected, their input will be
+used to make more predictive decisions about user behaviour.
+
+#### Project Scope {-}
+
+The purpose of the system is to make home automation as easy as possible to set up. Many existing
+home automation systems require some form of programming from the user, in the form of a schedule or
+explicit scenarios which describe how the devices connected to them should behave. This project will
+improve upon such systems by inferring the correct state of connected devices from data collected
+during the homeowner's routine use of the devices.
 
 #### Product Functions {-}
 
@@ -31,24 +42,5 @@ user to view the state of the system and manually control any connected device. 
 be used for manually configuring desired behaviours as well as for enabling the learning mode of the
 system. The interface must allow the user to view the state of all devices in the system as well as
 view their recorded interactions.
-
-#### User Classes {-}
-
-While the primary audience of the system is a homeowner, it is also for building owners, nursing
-home residence, or anyone who needs building automation. The end user of this product is intended to
-be non-technical users who want simple control and automation of their building. This product will
-also provide utilities for more technically proficient users who wish to create their own devices
-that communicate to the system.
-
-##### Base User (Non-Technical Users) {-}
-
-- End user of the system that needs simple interface to use system
-- Will want low maintenance to keep system running and expect system to perform correctly
-
-##### Developers (Technical Users) {-}
-
-- Will require technical documentation about the system
-- Will require an API to communicate to custom devices for the system
-- May also be a base user
 
 

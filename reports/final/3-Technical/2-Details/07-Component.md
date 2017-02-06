@@ -12,7 +12,8 @@ The event logger is responsible for listening to all event signals and record th
 database. This data will be accessible by the remote client as well as the ML algorithm component.
 The events recorded will be used to make decisions about actions to carry out. The event logger
 will consume the event interface that is provided by the communication server and will simply
-observe all data.
+observe all data. The implementation details of the database system are outlined in
+[Appendix H-2](#H-2).
 
 ##### ML Algorithm {-}
 
@@ -30,13 +31,15 @@ The server has a cache of all connected devices and must store any related setti
 Events and messages are routed through the communication server using the event interface. The
 communication server is also responsible for sending messages to other third party protocols.
 The server should provide a mechanism for installing plugins for other third party devices that
-are not natively supported.
+are not natively supported. The implementation of the exchange server is outlined in
+[Appendix H-1](#H-1).
 
 ##### HTTP Gateway {-}
 
 The HTTP gateway is responsible for supporting the web client interface. It must serve the web
 client's requests over a REST interface and translate them to the internal event interface used
-by the communication server. The gateway must be able to support multiple web clients.
+by the communication server. The gateway must be able to support multiple web clients. The
+implementation details of the gateway can be seen in [Appendix H-7](#H-7).
 
 ##### Sensor Reader {-}
 
@@ -47,11 +50,14 @@ events when sensor data changes. The Sensor Reader will provide the Sensor Inter
 
 The Device Controller is responsible for controlling the physical device. It consumes events
 and modifies the output of the device accordingly. The Device Controller provides the Device 
-Control Interface.
+Control Interface. For technical specification about the Z-Wave device controller, refer to
+[Appendix H-8](#H-8).
 
 ##### Device Control {-}
 
-This interface allows the device communication to pass events to the Device controller.
+This interface allows the device communication to pass events to the Device controller. Proposed
+designs for the user interface can be seen in [Appendix H-5](#H-5). The design and implementation
+of the user interface are outlined in [Appendix H-6](#H-6).
 
 #### Component Interfaces {-}
 
