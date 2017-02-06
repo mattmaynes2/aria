@@ -1,4 +1,4 @@
-### System Features
+### Use Cases
 
 ![][system-use-case]
 

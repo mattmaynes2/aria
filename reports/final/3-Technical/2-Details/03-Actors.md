@@ -1,4 +1,4 @@
-### User Classes
+### Actors
 
 While the primary audience of the system is a homeowner, it is also for building owners, nursing
 home residence, or anyone who needs building automation. The end user of this product is intended to
