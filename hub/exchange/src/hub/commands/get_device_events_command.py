@@ -6,7 +6,7 @@ class GetDeviceEventsCommand(DatabaseCommand):
     def __init__(self, database):
         super().__init__(self,CommandType.GET,'deviceEvents',database)
     
-    def execute(hub,data):
+    def execute(self,hub,data):
         id_=data['id']
         start=data['start']
         count=data['count']

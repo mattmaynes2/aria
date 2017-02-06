@@ -1,9 +1,9 @@
-__all__ = ['get_devices_command', 'get_hub_mode_command','get_hub_name_command',\
-'get_hub_status_command','set_hub_mode_command', 'set_hub_name_command']
+__all__ = ['get_devices', 'get_mode','get_name',\
+'get_status','set_mode', 'set_name']
 
-from .get_devices_command import GetDevicesCommand # NOQA
-from .get_hub_mode_command import GetHubModeCommand # NOQA
-from .get_hub_name_command import GetHubNameCommand # NOQA
-from .get_hub_status_command import GetHubStatusCommand # NOQA
-from .set_hub_mode_command import SetHubModeCommand  # NOQA
-from .set_hub_name_command import SetHubNameCommand # NOQA
+from .get_devices import GetDevicesCommand # NOQA
+from .get_mode import GetHubModeCommand # NOQA
+from .get_name import GetHubNameCommand # NOQA
+from .get_status import GetHubStatusCommand # NOQA
+from .set_mode import SetHubModeCommand  # NOQA
+from .set_name import SetHubNameCommand # NOQA

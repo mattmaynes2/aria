@@ -3,7 +3,7 @@ from hub.commands.command_type import CommandType
 
 class GetHubStatusCommand(Command):
     def __init__(self):
-        super().__init__(self,CommandType.GET,'status')
+        super().__init__(CommandType.GET,'status')
     
-    def execute(hub,data):
+    def execute(self,hub,data):
         return hub.status

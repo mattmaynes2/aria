@@ -3,8 +3,8 @@ from hub.commands.command_type import CommandType
 
 class SetHubModeCommand(Command):
     def __init__(self):
-        super().__init__(self,CommandType.SET,'mode')
+        super().__init__(CommandType.SET,'mode')
     
-    def execute(hub,data):
-        hub.mode=setMode(data['value'])
+    def execute(self,hub,data):
+        hub.setMode(data['value'])
         return hub.mode

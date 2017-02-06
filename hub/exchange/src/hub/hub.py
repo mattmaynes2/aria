@@ -3,7 +3,7 @@ import logging
 import uuid
 from .hub_mode  import HubMode
 from .commands import CommandType, Command
-from .commands.hub_commands import GetHubNameCommand
+from .commands.hub_commands import *
 from device import Device, DeviceType, Attribute, DataType, Parameter
 from ipc import Message
 from device import SoftwareDeviceFactory
@@ -27,10 +27,15 @@ class Hub(Device):
         self.mode    = HubMode.Normal
         self.exit    = exit if exit else lambda: None
         self.__commands= { key.value: {}  for key in CommandType}
-        #self.addAttributeCommands()
+        self.addAttributeCommands()
     
     def addAttributeCommands(self):
-        self.addCommand(GetHubNameCommand())
+        self.addCommand(get_name.GetHubNameCommand())
+        self.addCommand(get_mode.GetHubModeCommand())
+        self.addCommand(set_name.SetHubNameCommand())
+        self.addCommand(set_mode.SetHubModeCommand())
+        self.addCommand(get_devices.GetDevicesCommand())
+        self.addCommand(get_status.GetHubStatusCommand())
 
     def addCommand(self,command):          
         self.__commands[command.commandType.value][command.name]=command

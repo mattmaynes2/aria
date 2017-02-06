@@ -3,7 +3,7 @@ from hub.commands.command_type import CommandType
 
 class GetHubModeCommand(Command):
     def __init__(self):
-        super().__init__(self,CommandType.GET,'mode')
+        super().__init__(CommandType.GET,'mode')
     
-    def execute(hub,data):
+    def execute(self,hub,data):
         return hub.mode

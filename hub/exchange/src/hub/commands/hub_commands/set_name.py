@@ -3,8 +3,8 @@ from hub.commands.command_type import CommandType
 
 class SetHubNameCommand(Command):
     def __init__(self):
-        super().__init__(self,CommandType.SET,'name')
+        super().__init__(CommandType.SET,'name')
     
-    def execute(hub,data):
-        hub.name=name
+    def execute(self,hub,data):
+        hub.name=data['value']
         return hub.name

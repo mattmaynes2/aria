@@ -6,7 +6,7 @@ class GetEventWindowCommand(DatabaseCommand):
     def __init__(self, database):
         super().__init__(self,CommandType.GET,'eventWindow',database)
     
-    def execute(hub,data):
+    def execute(self,hub,data):
         start=data['start']
         count=data['count']
         ignore=data.get('ignore','')
