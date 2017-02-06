@@ -5,8 +5,10 @@ log = logging.getLogger(__name__)
 
 class Retriever:
 
-    GET_BEHAVIOUR_WINDOW    = "SELECT id, name, created_date, last_updated, active FROM Behaviours \
+    GET_BEHAVIOUR_WINDOW    = "SELECT id, name, created_date, last_updated, active FROM Behaviour \
                                ORDER BY id DESC LIMIT ?,?" 
+    GET_SESSION_WINDOW      = "SELECT id, name, created_date, active FROM Session WHERE \
+                               behaviour_id = ? ORDER BY id DESC LIMIT ?,?"
     GET_ALL_EVENT_WINDOW    = "SELECT id as 'index', timestamp, source \
                                FROM Event WHERE source NOT IN (?) ORDER BY id DESC LIMIT ?,?"
     GET_DEVICE_EVENT_WINDOW = "SELECT * FROM Event WHERE source = ? LIMIT  ?,?"
