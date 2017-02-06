@@ -60,8 +60,7 @@ let HubRouter = (function () {
                     .catch(onError.bind(this, res));
             });
 
-        app.route('/training/behaviour')
-            .post((req, res) => {
+        app.post('/training/behaviour', (req, res) => {
                 this._adapter
                     .send(IPC.Request, {
                         'create' : 'behaviour',
@@ -73,8 +72,7 @@ let HubRouter = (function () {
                     .catch(onError.bind(this,res));
             });
 
-        app.route('/training/behaviours')
-            .get((req,res) => {
+        app.get('/training/behaviours', (req,res) => {
                 this._adapter
                     .send(IPC.Request, {
                         'get' : 'behaviours',
@@ -87,8 +85,7 @@ let HubRouter = (function () {
                     .catch(onError.bind(this,res));
             });
 
-        app.route('/training/session')
-            .post((req,res) => {
+        app.post('/training/session', (req,res) => {
                 this._adapter
                     .send(IPC.Request, {
                         'create' : 'session',
@@ -101,8 +98,7 @@ let HubRouter = (function () {
                     .catch(onError.bind(this,res));
             });
 
-        app.route('/training/sessions')
-        .get((req,res) => {
+        app.get('/training/sessions', (req,res) => {
             this._adapter
                 .send(IPC.Request, {
                     'get' : 'sessions',
@@ -114,8 +110,7 @@ let HubRouter = (function () {
                 .catch(onError.bind(this,res));
         });
 
-        app.route('/training/session/:id/start')
-        .post((req,res) => {
+        app.post('/training/session/:id/start', (req,res) => {
             this._adapter
                 .send(IPC.Request, {
                     'start' : 'session',
@@ -127,8 +122,7 @@ let HubRouter = (function () {
                 .catch(onError.bind(this,res));
         });
             
-        app.route('/training/session/:id/stop')
-        .post((req,res) => {
+        app.post('/training/session/:id/stop', (req,res) => {
             this._adapter
                 .send(IPC.Request, {
                     'stop' : 'session',
