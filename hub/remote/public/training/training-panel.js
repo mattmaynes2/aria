@@ -10,7 +10,7 @@ class TrainingPanel extends WidgetPanel {
         };
     }
     update () {
-        Service.set('/hub/training/behaviours', { start: 0, count: 1}).then((res) => {
+        Service.set('/hub/training/behaviours', { start: 0, count: 10}).then((res) => {
             this._state.behaviours = res.payload.records.map((b) => {
                 return new Behaviour(b);
             });

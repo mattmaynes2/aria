@@ -199,7 +199,7 @@ let IntegrateAdapter = (function () {
                 return wrap(payload.get, { records: Array.prototype.slice.call(
                     this._state.hub.behaviours,
                     payload.start, 
-                    payload.start+payload.count
+                    min(this._state.hub.behaviours.length, payload.start+payload.count)
                 )});
             default:
                 throw new Error('Unknown request');
