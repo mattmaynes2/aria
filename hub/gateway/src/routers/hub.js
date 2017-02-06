@@ -1,5 +1,6 @@
 let router  = require('express').Router,
-    IPC     = require('../ipc');
+    IPC     = require('../ipc'),
+    logger          = require('winston');
 
 let HubRouter = (function () {
 
@@ -72,7 +73,7 @@ let HubRouter = (function () {
                 .catch(onError.bind(this,res));
         });
 
-        app.get('/training/behaviours', (req,res) => {
+        app.post('/training/behaviours', (req,res) => {
             this._adapter
                 .send(IPC.Request, {
                     'get' : 'behaviours',
@@ -97,11 +98,13 @@ let HubRouter = (function () {
                 })
                 .catch(onError.bind(this,res));
         });
-
-        app.get('/training/sessions', (req,res) => {
+    
+        app.post('/training/sessions', (req,res) => {
             this._adapter
                 .send(IPC.Request, {
                     'get' : 'sessions',
+                    'start' : req.body.start,
+                    'count' : req.body.count,
                     'behaviourId' : req.body.behaviourId
                 })
                 .then((reply) => {
@@ -138,6 +141,7 @@ let HubRouter = (function () {
     };
 
     function onError (res, err) {
+        logger.error('Error handling request: ', err);
         res.status(500).json({ error : err || '' });
     }
 
