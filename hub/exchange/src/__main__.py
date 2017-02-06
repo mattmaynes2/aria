@@ -12,6 +12,7 @@ from adapter.zwave_adapter import ZWaveAdapter
 from database import Database
 from ipc import Message
 from device     import SoftwareDeviceFactory
+from hub.commands import GetDeviceEventsCommand, GetEventWindowCommand
 _log_config_file = 'configs/log.config'
 _log_config_location = resource_filename(__name__, _log_config_file)
 
@@ -31,6 +32,7 @@ def main ():
     database    = Database()
     hub         = Hub(argv, exit)
     cli         = CLI(hub)
+    setupCommands(hub,database)
     exchange    = create_exchange(hub, cli, database)
     exchange.discovered(hub)
 
@@ -60,6 +62,11 @@ def create_exchange (hub, cli, database):
 def exit ():
     global exchange
     exchange.teardown()
+
+def setupCommands(hub,database):
+    hub.addCommand(GetDeviceEventsCommand(database))
+    hub.addCommand(GetEventWindowCommand(database))
+
 
 if (__name__ == '__main__'):
     main()

@@ -227,7 +227,7 @@ class TestDatabaseIntegration(TestCase):
         sensorEventWindowRequest.sender = self.devices[0].address
         self.testAdapter.enqueueMessage(sensorEventWindowRequest)
         # Give some time for the hub to respond to the request
-        time.sleep(10)
+        time.sleep(20)
 
         response = self.testAdapter.receivedMessages[0]
         self.assertEqual(response.data["response"], "eventWindow")

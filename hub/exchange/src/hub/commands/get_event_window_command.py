@@ -4,7 +4,7 @@ from database import Retriever
 
 class GetEventWindowCommand(DatabaseCommand):
     def __init__(self, database):
-        super().__init__(self,CommandType.GET,'eventWindow',database)
+        super().__init__(CommandType.GET,'eventWindow',database)
     
     def execute(self,hub,data):
         start=data['start']
@@ -13,5 +13,5 @@ class GetEventWindowCommand(DatabaseCommand):
         if(ignore):
             ignore =",".join(ignore)
         results = self.retriever.getEventWindow(start,count,ignore)
-        self.formatEvents(results)
+        self.formatEvents(results,hub)
         return {'total':len(results),'records':results}

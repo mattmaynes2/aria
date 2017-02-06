@@ -1,10 +1,12 @@
 from .command import Command
 from .command_type import CommandType
 from database import Retriever
+import uuid
+from datetime import datetime
 
 class DatabaseCommand(Command):
     def __init__(self, commandType, name,database):
-        super().__init__(self,commandType,name)
+        super().__init__(commandType,name)
         self.retriever= Retriever(database)
 
 
