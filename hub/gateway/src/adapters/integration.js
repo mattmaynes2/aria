@@ -236,7 +236,7 @@ let IntegrateAdapter = (function () {
                                                 active: true
                                             });
                 var res = wrap(payload.get, { id: index });
-                logger.debug("Sending test response: ", res);
+                logger.debug('Sending test response: ', res);
                 return res;
         }
     }
