@@ -29,7 +29,7 @@ def main ():
         daemon.daemonize()
 
     database    = Database()
-    hub         = Hub(database,argv, exit)
+    hub         = Hub(argv, exit)
     cli         = CLI(hub)
     exchange    = create_exchange(hub, cli, database)
     exchange.discovered(hub)

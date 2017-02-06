@@ -2,7 +2,7 @@ from .database_command import DatabaseCommand
 from .command_type import CommandType
 from database import Retriever
 
-class GetHubEventWindowCommand(DatabaseCommand):
+class GetEventWindowCommand(DatabaseCommand):
     def __init__(self, database):
         super().__init__(self,CommandType.GET,'eventWindow',database)
     

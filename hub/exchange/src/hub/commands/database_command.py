@@ -8,11 +8,11 @@ class DatabaseCommand(Command):
         self.retriever= Retriever(database)
 
 
-    def formatEvents(self,events):
+    def formatEvents(self,events,hub):
         for event in events:
             source=event['source']
             if(source):
-                device=self.getDevice(uuid.UUID(source).bytes)
+                device=hub.getDevice(uuid.UUID(source).bytes)
                 if(device):
                     event['deviceType']=device.deviceType.name
             time=datetime.strptime(event['timestamp'],'%Y-%m-%d %H:%M:%S')

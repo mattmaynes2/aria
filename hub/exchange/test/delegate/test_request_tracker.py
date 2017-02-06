@@ -17,7 +17,7 @@ class RequestTrackerTest(TestCase):
         attributes=[Attribute('state',[Parameter('state',DataType.Binary)]),\
         Attribute('noControl',[Parameter('noControl',DataType.Binary, value=1)],isControllable=False)])\
         , name= 'Lamp Switch', address=self.id,version='0.1.0')
-        self.hub=Hub(Database())
+        self.hub=Hub()
 
 
     @patch('database.DatabaseTranslator')       

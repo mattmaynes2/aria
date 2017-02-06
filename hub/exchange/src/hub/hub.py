@@ -27,7 +27,7 @@ class Hub(Device):
         self.mode    = HubMode.Normal
         self.exit    = exit if exit else lambda: None
         self.__commands= { key.value: {}  for key in CommandType}
-        self.addAttributeCommands()
+        #self.addAttributeCommands()
     
     def addAttributeCommands(self):
         self.addCommand(GetHubNameCommand())
