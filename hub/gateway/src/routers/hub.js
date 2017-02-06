@@ -60,6 +60,80 @@ let HubRouter = (function () {
                     .catch(onError.bind(this, res));
             });
 
+        app.post('/training/behaviour', (req, res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    'create' : 'behaviour',
+                    'name' : req.body.name
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
+
+        app.get('/training/behaviours', (req,res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    'get' : 'behaviours',
+                    'start' : req.body.start,
+                    'count' : 10
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
+
+        app.post('/training/session', (req,res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    'create' : 'session',
+                    'behaviourId' : req.body.behaviourId,
+                    'name' : req.body.name
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
+
+        app.get('/training/sessions', (req,res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    'get' : 'sessions',
+                    'behaviourId' : req.body.behaviourId
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
+
+        app.post('/training/session/:id/start', (req,res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    'activate' : 'session',
+                    'value' : req.params.id
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
+            
+        app.post('/training/session/:id/stop', (req,res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    'deactivate' : 'session',
+                    'value' : req.params.id
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value);
+                })
+                .catch(onError.bind(this,res));
+        });
+                    
         return app;
     };
 

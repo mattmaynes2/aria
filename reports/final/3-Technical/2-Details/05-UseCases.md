@@ -1,8 +1,8 @@
-### System Features
+### Use Cases
 
 ![][system-use-case]
 
-#### Install Hub {-}
+##### Install Hub {-}
 
 The user installs the learning hub in their home in order to enable automation of their smart
 devices.
@@ -82,4 +82,70 @@ through the remote interface.
 Postcondition: States of the selected devices from before the reset are no longer used to infer
 states in normal mode.
 
+#### Training Use Cases
 
+![][training-use-case]
+
+##### View Behaviours {-}
+
+1. User naviagtes to the training view
+1. User is presented with a list of existing behaviours
+
+##### Add Behaviour {-}
+
+**PRECONDITION**: User is on the training view
+1. User selects "Add behaviour"
+1. User specifies a name for the new behaviour
+1. User saves behaviour
+**POSTCONDITION**: User is on the details view for the new behaviour
+
+##### Edit Behaviour {-}
+
+**PRECONDITION**: User is on the training view
+1. User selects a behaviour from the list of behaviours.
+1. Behaviour details view is opened.
+1. User can change the name of the behaviour.
+1. User is presented with a list of training sessions associated with the behaviour.
+
+##### Add Training Session {-}
+
+**PRECONDITION**: User is on the behaviour details view
+
+1. User clicks on the add new training session button
+1. User specifies a name for their session
+1. User saves session
+
+**POSTCONDITION**: User is on the details view for the new session
+
+##### Edit Training Session {-}
+
+1. User clicks the details view for a training sesion
+2. User clicks a view event details button
+3. System displays system events associated with that training session
+
+
+##### Start Training Session {-}
+
+**PRECONDITION**: User is on the details view for a session
+
+1. User clicks start session button
+1. View indicates that the training session is active
+
+**POSTCONDITION**: The active training session is indicated on the hub main view
+
+**POSTCONDITION**: The system starts recording events and associating them with the training session
+
+**POSTCONDITION**: Hub is in training mode
+
+##### Stop Training Session {-}
+
+**PRECONDITION**: User is on the details view for a session
+
+1. User clicks stop session button
+1. View indicates that the training session is no longer active
+
+**POSTCONDITION**: The training session is not longer marked as active on the hub main view
+
+**POSTCONDITION**: The system no longer associated new events with the session
+
+**POSTCONDITION**: Hub is in normal mode
