@@ -1,21 +1,20 @@
 var proxyquire = require('proxyquire');
 var sinon = require('sinon');
-var expect  = require('chai').expect;
-var ipc = require("../../src/ipc")
+var ipc = require('../../src/ipc');
 
 describe('Test the endpoints provided by the hub router', function(){
 
-    var subAdapter;
     var express;
     var HubRouter;
     var stubRouter;
     var stubRoute;
     var specificRouter;
+    var stubAdapter;
 
     beforeEach(()=>{
         stubAdapter = sinon.stub();
         stubAdapter.send = sinon.stub();
-        stubPromise = sinon.stub();
+        var stubPromise = sinon.stub();
         stubPromise.then = sinon.stub();
         stubPromise.catch = sinon.stub();     
         stubPromise.then.returns(stubPromise);
@@ -48,8 +47,8 @@ describe('Test the endpoints provided by the hub router', function(){
         HubRouter = proxyquire('../../src/routers/hub.js', {'express' : express});
     });
 
-    setupStubForRoute = function (route) {
-        argsRouter = sinon.stub();
+    var setupStubForRoute = function (route) {
+        var argsRouter = sinon.stub();
         argsRouter.route = sinon.stub();
         argsRouter.route.returns(stubRouter);
         argsRouter.route.withArgs(route).returns(specificRouter);
@@ -60,76 +59,80 @@ describe('Test the endpoints provided by the hub router', function(){
         express.Router.returns(argsRouter);
     };
 
-    it("Should have an endpoint for Adding Behaviours", () => {
-        setupStubForRoute("/training/behaviour");
-        hubRouter = new HubRouter(stubAdapter);
-        router = hubRouter.router();
+    it('Should have an endpoint for Adding Behaviours', () => {
+        setupStubForRoute('/training/behaviour');
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router();
 
-        postFn = specificRouter.post.getCalls()[0].args[0];
-        req = { body: { name: "test" }};
-        res = {};
+        var postFn = specificRouter.post.getCalls()[0].args[0];
+        var req = { body: { name: 'test' }};
+        var res = {};
         postFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { "create" : "behaviour", "name" : "test" });
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'create' : 'behaviour', 'name' : 
+                                                                'test' });
     });
 
-    it("Should have an endpoint for getting a list of behaviours", () => {
-        setupStubForRoute("/training/behaviours");
-        hubRouter = new HubRouter(stubAdapter);
-        router = hubRouter.router();
+    it('Should have an endpoint for getting a list of behaviours', () => {
+        setupStubForRoute('/training/behaviours');
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router();
 
-        getFn = specificRouter.get.getCalls()[0].args[0];
-        req = { body: { start: 1, count: 10}};
-        res = {};
+        var getFn = specificRouter.get.getCalls()[0].args[0];
+        var req = { body: { start: 1, count: 10}};
+        var res = {};
         getFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { "get" : "behaviours", "start": 1, "count": 10 });
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'get' : 'behaviours', 'start': 1, 
+                                                                'count': 10 });
     });
 
-    it("Should have an endpoint for creating a new training session for a behaviour", () => {
-        setupStubForRoute("/training/session");
-        hubRouter = new HubRouter(stubAdapter);
-        router = hubRouter.router();
+    it('Should have an endpoint for creating a new training session for a behaviour', () => {
+        setupStubForRoute('/training/session');
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router();
 
-        postFn = specificRouter.post.getCalls()[0].args[0];
-        req = { body: { behaviourId: 1, name: "test"}};
-        res = {};
+        var postFn = specificRouter.post.getCalls()[0].args[0];
+        var req = { body: { behaviourId: 1, name: 'test'}};
+        var res = {};
         postFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { "behaviourId" : 1, "create" : "session", "name":"test" });
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'behaviourId' : 1, 'create' : 
+                                                                'session', 'name':'test' });
     });
 
-    it("Should have an endpoint for activating a session", () => {
-        setupStubForRoute("/training/session/:id/start");
-        hubRouter = new HubRouter(stubAdapter);
-        router = hubRouter.router();
+    it('Should have an endpoint for activating a session', () => {
+        setupStubForRoute('/training/session/:id/start');
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router();
 
-        postFn = specificRouter.post.getCalls()[0].args[0];
-        req = { params: { id: 1}, body: { behaviourId: 1}};
-        res = {};
+        var postFn = specificRouter.post.getCalls()[0].args[0];
+        var req = { params: { id: 1}, body: { behaviourId: 1}};
+        var res = {};
         postFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { "value" : 1, "start" : "session"});
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'value' : 1, 'start' : 'session'});
     });
 
-    it("Should have an endpoint for activating a session", () => {
-        setupStubForRoute("/training/session/:id/stop");
-        hubRouter = new HubRouter(stubAdapter);
-        router = hubRouter.router();
+    it('Should have an endpoint for activating a session', () => {
+        setupStubForRoute('/training/session/:id/stop');
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router();
 
-        postFn = specificRouter.post.getCalls()[0].args[0];
-        req = { params: { id: 1}, body: { behaviourId: 1}};
-        res = {};
+        var postFn = specificRouter.post.getCalls()[0].args[0];
+        var req = { params: { id: 1}, body: { behaviourId: 1}};
+        var res = {};
         postFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { "value" : 1, "stop" : "session"});
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'value' : 1, 'stop' : 'session'});
     });
 
-    it("Should have an endpoint for getting a list of training sessions for a behaviour", () => {
-        setupStubForRoute("/training/sessions");
-        hubRouter = new HubRouter(stubAdapter);
-        router = hubRouter.router(); 
+    it('Should have an endpoint for getting a list of training sessions for a behaviour', () => {
+        setupStubForRoute('/training/sessions');
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router(); 
 
-        getFn = specificRouter.get.getCalls()[0].args[0];
-        req = { body: { behaviourId: 1}};
-        res = {};
+        var getFn = specificRouter.get.getCalls()[0].args[0];
+        var req = { body: { behaviourId: 1}};
+        var res = {};
         getFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { "behaviourId" : 1, "get" : "sessions"});
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'behaviourId' : 1, 'get' : 
+                                                                'sessions'});
     });
 
 });

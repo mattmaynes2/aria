@@ -64,22 +64,22 @@ let HubRouter = (function () {
             .post((req, res) => {
                 this._adapter
                     .send(IPC.Request, {
-                        "create" : "behaviour",
-                        "name" : req.body.name
+                        'create' : 'behaviour',
+                        'name' : req.body.name
                     })
                     .then((reply) => {
                         res.json(reply.payload.value);
                     })
                     .catch(onError.bind(this,res));
-            })
+            });
 
         app.route('/training/behaviours')
             .get((req,res) => {
                 this._adapter
                     .send(IPC.Request, {
-                        "get" : "behaviours",
-                        "start" : req.body.start,
-                        "count" : 10
+                        'get' : 'behaviours',
+                        'start' : req.body.start,
+                        'count' : 10
                     })
                     .then((reply) => {
                         res.json(reply.payload.value);
@@ -91,9 +91,9 @@ let HubRouter = (function () {
             .post((req,res) => {
                 this._adapter
                     .send(IPC.Request, {
-                        "create" : "session",
-                        "behaviourId" : req.body.behaviourId,
-                        "name" : req.body.name
+                        'create' : 'session',
+                        'behaviourId' : req.body.behaviourId,
+                        'name' : req.body.name
                     })
                     .then((reply) => {
                         res.json(reply.payload.value);
@@ -105,21 +105,21 @@ let HubRouter = (function () {
         .get((req,res) => {
             this._adapter
                 .send(IPC.Request, {
-                    "get" : "sessions",
-                    "behaviourId" : req.body.behaviourId
+                    'get' : 'sessions',
+                    'behaviourId' : req.body.behaviourId
                 })
                 .then((reply) => {
                     res.json(reply.payload.value);
                 })
                 .catch(onError.bind(this,res));
-        })
+        });
 
         app.route('/training/session/:id/start')
         .post((req,res) => {
             this._adapter
                 .send(IPC.Request, {
-                    "start" : "session",
-                    "value" : req.params.id
+                    'start' : 'session',
+                    'value' : req.params.id
                 })
                 .then((reply) => {
                     res.json(reply.payload.value);
@@ -131,18 +131,15 @@ let HubRouter = (function () {
         .post((req,res) => {
             this._adapter
                 .send(IPC.Request, {
-                    "stop" : "session",
-                    "value" : req.params.id
+                    'stop' : 'session',
+                    'value' : req.params.id
                 })
                 .then((reply) => {
                     res.json(reply.payload.value);
                 })
                 .catch(onError.bind(this,res));
         });
-            
-        app.route("/")
-            
-        
+                    
         return app;
     };
 
