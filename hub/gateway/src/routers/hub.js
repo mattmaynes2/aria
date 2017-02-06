@@ -113,7 +113,7 @@ let HubRouter = (function () {
         app.post('/training/session/:id/start', (req,res) => {
             this._adapter
                 .send(IPC.Request, {
-                    'start' : 'session',
+                    'activate' : 'session',
                     'value' : req.params.id
                 })
                 .then((reply) => {
@@ -125,7 +125,7 @@ let HubRouter = (function () {
         app.post('/training/session/:id/stop', (req,res) => {
             this._adapter
                 .send(IPC.Request, {
-                    'stop' : 'session',
+                    'deactivate' : 'session',
                     'value' : req.params.id
                 })
                 .then((reply) => {

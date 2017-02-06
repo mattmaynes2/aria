@@ -83,7 +83,7 @@ describe('Test the endpoints provided by the hub router', function(){
         var req = { params: { id: 1}, body: { behaviourId: 1}};
         var res = {};
         postFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'value' : 1, 'start' : 'session'});
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'value' : 1, 'activate' : 'session'});
     });
 
     it('Should have an endpoint for activating a session', () => {
@@ -95,7 +95,7 @@ describe('Test the endpoints provided by the hub router', function(){
         var req = { params: { id: 1}, body: { behaviourId: 1}};
         var res = {};
         postFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'value' : 1, 'stop' : 'session'});
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'value' : 1, 'deactivate' : 'session'});
     });
 
     it('Should have an endpoint for getting a list of training sessions for a behaviour', () => {
