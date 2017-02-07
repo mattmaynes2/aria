@@ -6,6 +6,7 @@ from ipc import Message
 from adapter import Adapter
 from database import Database
 from delegate import RequestTracker
+from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand
 import queue
 import sqlite3
 import os
@@ -39,9 +40,11 @@ class TestDatabaseIntegration(TestCase):
             pass
 
         self.database    = Database(self._testMethodName + ".db")
-        self.hub         = Hub(self.database)
+        self.hub         = Hub()
         self.cli         = CLI(self.hub)
         self.exchange    = Exchange(self.hub, self.cli, self.database)
+        self.hub.addCommand(GetEventWindowCommand(self.database))
+        self.hub.addCommand(GetDeviceEventsCommand(self.database))
         self.testAdapter = StubDeviceAdapter()
         self.exchange.register('stub', self.testAdapter)
         self.exchange.register('hub',HubAdapter(self.hub))
@@ -224,7 +227,7 @@ class TestDatabaseIntegration(TestCase):
         sensorEventWindowRequest.sender = self.devices[0].address
         self.testAdapter.enqueueMessage(sensorEventWindowRequest)
         # Give some time for the hub to respond to the request
-        time.sleep(10)
+        time.sleep(20)
 
         response = self.testAdapter.receivedMessages[0]
         self.assertEqual(response.data["response"], "eventWindow")
