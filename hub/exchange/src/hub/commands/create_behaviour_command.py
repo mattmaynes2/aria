@@ -4,9 +4,9 @@ from database import Retriever
 
 class CreateBehavioursCommand(DatabaseCommand):
     def __init__(self, database):
-        super().__init__(CommandType.CREATE,'behaviours',database)
+        super().__init__(CommandType.CREATE,'behaviour',database)
     
     def execute(self,hub,data):
         name=data['name']
-        results = self.retriever.addBehaviour(name)
-        return results
+        _id = self.retriever.addBehaviour(name)
+        return {"id":_id}

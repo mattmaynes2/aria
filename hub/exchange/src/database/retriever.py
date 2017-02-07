@@ -85,7 +85,7 @@ class Retriever:
     ###
     def addBehaviour(self, name):
         self.database.execute(Retriever.ADD_NEW_BEHAVIOUR, [name])
-        return self.database.execute(Retriever.GET_LAST_BEAVIOUR_ID)
+        return self.database.execute(Retriever.GET_LAST_BEAVIOUR_ID)[0]["id"]
 
     ###
     # Add a new session

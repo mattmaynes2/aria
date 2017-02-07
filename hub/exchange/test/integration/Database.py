@@ -251,8 +251,8 @@ class TestDatabaseIntegration(TestCase):
         self.assertEqual(thirdResult["Count(*)"], 20)
 
     def test_behaviours(self):
-        self.hub.addCommand(GetBehavioursCommand())
-        self.hub.addCommand(CreateBehavioursCommand())
+        self.hub.addCommand(GetBehavioursCommand(self.database))
+        self.hub.addCommand(CreateBehavioursCommand(self.database))
         myUuid = self.devices[0].address
         createMessage= Message()
         createMessage.type= Message.Request
@@ -264,9 +264,9 @@ class TestDatabaseIntegration(TestCase):
         time.sleep(0.5)
         response = self.testAdapter.receivedMessages[0]
         self.assertEqual(response.data["response"], "behaviour")
-        self.assertEqual(response.data["value"], 1)
+        self.assertEqual(response.data["value"]["id"], 1)
         results = self.db.query("SELECT Count(*) FROM Behaviour")
-        results = deviceResults.fetchone()
+        results=results.fetchone()
         self.assertEqual(results["Count(*)"], 1)
 
         createMessage.data= {'create':'behaviour', 'name':'temperature'}
@@ -285,7 +285,7 @@ class TestDatabaseIntegration(TestCase):
         self.assertEqual(response.data["response"], "behaviours")
         self.assertEqual(response.data["value"]["total"], 2)
         self.assertEqual(len(response.data["value"]["records"]), 2)
-        self.assertEqual(response.data["value"]["records"][0]['name'],'lights')
+        self.assertEqual(response.data["value"]["records"][0]['name'],'temperature')
 
 class TestDatabase:
 

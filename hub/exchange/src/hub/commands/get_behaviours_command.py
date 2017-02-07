@@ -7,11 +7,10 @@ class GetBehavioursCommand(DatabaseCommand):
         super().__init__(CommandType.GET,'behaviours',database)
     
     def execute(self,hub,data):
-        id_=data['id']
         start=data['start']
         count=data['count']
-        results = self.retriever.getBehaviourWindow(id_,start,count)
+        results = self.retriever.getBehaviourWindow(start,count)
         for result in results:
-            result['created_date']=self.fromatDate(result['created_date'])
+            result['created_date']=self.formatDate(result['created_date'])
             result['last_updated']=self.formatDate(result['last_updated'])
         return{'total':len(results),'records':results}

@@ -39,7 +39,10 @@ class Database:
     def execute (self, sql, values=None):
         try:
             log.debug("Running SQL statement: " + sql)
-            results = self.cursor.execute(sql, values)
+            if(values):
+                results = self.cursor.execute(sql, values)
+            else:
+                results =self.cursor.execute(sql)
             self.connection.commit()
             return self.cursor.fetchall()
         except Exception as e:
