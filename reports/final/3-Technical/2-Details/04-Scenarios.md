@@ -6,7 +6,7 @@ machine learning algorithm could pick up on. These particular scenarios were cho
 involve relationships between multiple devices which may not be obvious. The scenarios also include
 a list of smart devices involved. Using the devices identified in these scenarios, the team can
 compile a list of devices which will showcase the machine learning capabilities of the system for
-testing and demos.
+testing and demos. For example scenarios with sample data, please refer to [Appendix G](#G).
 
 #### Music Automation {- #section-sc-music}
 
@@ -15,7 +15,8 @@ testing and demos.
 Smart home automation should make your life easy and fun. Imagine a group of people arrive at your
 house for a party. Your home automation system has learned how to set up your environment to give
 you the best experience possible. The lights dim, the temperature goes down, and the music goes up.
-Your home is now ready for your guests!
+Your home is now ready for your guests! The sample data for this scenario can be found in
+[Appendix G-1](#G-1).
 
 ###### System Interaction {-}
 
@@ -32,7 +33,6 @@ be required to measure the occupancy of the home to enable this learning.
 Using a similar method to the music training, the user could train the system to tune the
 temperature, lights, and any other devices they wish. This could indicate to the system that
 when there are many people in the home, all of the trained systems should be activated.
-
 
 ###### System Requirements {-}
 
@@ -72,7 +72,8 @@ to go to a store, the system turns off all the lights and lowers the temperature
 arrive home again the system turns the lights back on and raises the temperature.
 
 In the summer months, when it is more light outside, the system does not turn the home's lights
-on until later. In the winter months, the home turns the lights on earlier.
+on until later. In the winter months, the home turns the lights on earlier. The sample data
+for this scenario can be found in [Appendix G-2](#G-2).
 
 
 ###### System Interaction {-}
@@ -114,8 +115,6 @@ The following is a list of the devices that will be needed and how they will be 
 | Smart Lights          | Lights that can be controlled through an API             |
 | Thermostat Controller | A device that can control the temperature through an API |
 
-
-
 #### Coffee Automation {- #section-sc-coffee}
 
 ###### Background {-}
@@ -127,7 +126,8 @@ you wake up and make your coffee for you.
 
 Let's imagine that on the weekend you don't make any morning coffee, the system should learn this
 behaviour and adapt during the days of the week. On a day that you are not at home, the system
-should not make any coffee either.
+should not make any coffee either. The sample data for this scenario can be found in
+[Appendix G-3](#G-3).
 
 ###### System Interaction {-}
 
@@ -175,12 +175,13 @@ room. When the homeowner exits the room, the lights shut off.
 At the same time the following day, the home owner re-enters the office. The weather outside is dark
 and rainy. The lights turn on to a comfortable brightness level upon entry, and remain there as
 the home owner works into the evening again. Upon exiting the room, the lights shut off again.
+The sample data for this scenario can be found in [Appendix G-4](#G-4).
 
 ###### System Interaction {-}
 
 The system is required to combine information about the external environment with information about
 the homes internal environment. Simply tracking any one factor will not result in the system 
-being able to perform this scenario, as the required device output does not correspond linerally to
+being able to perform this scenario, as the required device output does not correspond linearly to
 any one input.
 
 Having the external environment be a factor in this scenario makes it hard to train the system 

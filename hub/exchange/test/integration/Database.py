@@ -6,6 +6,8 @@ from ipc import Message
 from adapter import Adapter
 from database import Database
 from delegate import RequestTracker
+from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavioursCommand,\
+ CreateBehavioursCommand
 import queue
 import sqlite3
 import os
@@ -39,9 +41,11 @@ class TestDatabaseIntegration(TestCase):
             pass
 
         self.database    = Database(self._testMethodName + ".db")
-        self.hub         = Hub(self.database)
+        self.hub         = Hub()
         self.cli         = CLI(self.hub)
         self.exchange    = Exchange(self.hub, self.cli, self.database)
+        self.hub.addCommand(GetEventWindowCommand(self.database))
+        self.hub.addCommand(GetDeviceEventsCommand(self.database))
         self.testAdapter = StubDeviceAdapter()
         self.exchange.register('stub', self.testAdapter)
         self.exchange.register('hub',HubAdapter(self.hub))
@@ -224,7 +228,7 @@ class TestDatabaseIntegration(TestCase):
         sensorEventWindowRequest.sender = self.devices[0].address
         self.testAdapter.enqueueMessage(sensorEventWindowRequest)
         # Give some time for the hub to respond to the request
-        time.sleep(10)
+        time.sleep(20)
 
         response = self.testAdapter.receivedMessages[0]
         self.assertEqual(response.data["response"], "eventWindow")
@@ -245,6 +249,43 @@ class TestDatabaseIntegration(TestCase):
         deviceTypeResults = self.db.query("SELECT Count(*) FROM Device WHERE type = 2")
         thirdResult = deviceTypeResults.fetchone()
         self.assertEqual(thirdResult["Count(*)"], 20)
+
+    def test_behaviours(self):
+        self.hub.addCommand(GetBehavioursCommand())
+        self.hub.addCommand(CreateBehavioursCommand())
+        myUuid = self.devices[0].address
+        createMessage= Message()
+        createMessage.type= Message.Request
+        createMessage.data= {'create':'behaviour', 'name':'lights'}
+        createMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(createMessage)
+        
+
+        time.sleep(0.5)
+        response = self.testAdapter.receivedMessages[0]
+        self.assertEqual(response.data["response"], "behaviour")
+        self.assertEqual(response.data["value"], 1)
+        results = self.db.query("SELECT Count(*) FROM Behaviour")
+        results = deviceResults.fetchone()
+        self.assertEqual(results["Count(*)"], 1)
+
+        createMessage.data= {'create':'behaviour', 'name':'temperature'}
+        self.testAdapter.enqueueMessage(createMessage)
+
+
+
+        requestMessage = Message()
+        requestMessage.type = Message.Request
+        requestMessage.data = {"get" : "behaviours", "start" : 0, 'count' :  2 }
+        requestMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(requestMessage)
+        
+        time.sleep(0.5)
+        response = self.testAdapter.receivedMessages[2]
+        self.assertEqual(response.data["response"], "behaviours")
+        self.assertEqual(response.data["value"]["total"], 2)
+        self.assertEqual(len(response.data["value"]["records"]), 2)
+        self.assertEqual(response.data["value"]["records"][0]['name'],'lights')
 
 class TestDatabase:
 

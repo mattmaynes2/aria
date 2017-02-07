@@ -2,9 +2,10 @@ import json
 import logging
 import uuid
 from .hub_mode  import HubMode
+from .commands import CommandType, Command
+from .commands.hub_commands import *
 from device import Device, DeviceType, Attribute, DataType, Parameter
 from ipc import Message
-from database import Retriever
 from device import SoftwareDeviceFactory
 from datetime import datetime
 
@@ -15,80 +16,41 @@ class Hub(Device):
     ADDRESS= Message.DEFAULT_ADDRESS
     GATEWAY_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
 
-    def __init__ (self, database, args = {}, exit = None):
+    def __init__ (self, args = {}, exit = None):
         # setup device attributes and DeviceType
         methods=[Attribute('name',[Parameter('name',DataType.String)]), \
         Attribute('devices',[Parameter('devices',DataType.List)]),\
         Attribute('mode',[Parameter('mode',DataType.String)])]
         devType=DeviceType('Hub','hub',attributes=methods)
         super().__init__(devType,'Smart Hub',Hub.ADDRESS, version= Hub.VERSION)
-        self._devices = {}
+        self.devices = {}
         self.mode    = HubMode.Normal
         self.exit    = exit if exit else lambda: None
-        self.retriever=Retriever(database)
+        self.__commands= { key.value: {}  for key in CommandType}
+        self.addAttributeCommands()
+    
+    def addAttributeCommands(self):
+        self.addCommand(get_name.GetHubNameCommand())
+        self.addCommand(get_mode.GetHubModeCommand())
+        self.addCommand(set_name.SetHubNameCommand())
+        self.addCommand(set_mode.SetHubModeCommand())
+        self.addCommand(get_devices.GetDevicesCommand())
+        self.addCommand(get_status.GetHubStatusCommand())
 
-    def getCommand (self, attribute,params=None):
-        if attribute == 'status':
-            return self.status()
-        if attribute == 'devices':
-            return self.getDevicesJson()
-        if attribute == 'name':
-            return self.name
-        if attribute == 'mode':
-            return self.mode.value
-        if attribute == 'eventWindow':
-            return self.getEventWindow(params)
-        if attribute == 'deviceEvents':
-            return self.getDeviceEvents(params)
-        if attribute == 'softwareDevices' :
-            return SoftwareDeviceFactory.getAvailableDevices()
+    def addCommand(self,command):          
+        self.__commands[command.commandType.value][command.name]=command
 
-    def setCommand (self, attribute,value):
-        if attribute == 'name':
-            self.name=value
-            return self.name
-        if attribute == 'mode':
-            self.setMode(value)
-            return self.mode.value
-        if attribute == 'softwareDevices':
-            print("VALUE " + str(value))
-            device = SoftwareDeviceFactory.create(value)
-            return 'true'
+    def executeCommand(self,commandType,data):
+        # execute the command specified by the incoming message
+        return self.__commands[commandType.value][data[commandType.value]].execute(self,data)
 
+    @property
     def status (self):
         return {
             'version'   : self.version,
             'mode'      : self.mode.value,
-            'devices'   : len(self._devices)
+            'devices'   : len(self.devices)
         }
-
-    def getEventWindow(self,params):
-        start=params['start']
-        count=params['count']
-        ignore=params.get('ignore','')
-        if(ignore):
-            ignore =",".join(ignore)
-        results = self.retriever.getEventWindow(start,count,ignore)
-        self.formatEvents(results)
-        return {'total':len(results),'records':results}
-
-    def getDeviceWindow(self,params):
-        id_=params['id']
-        start=params['start']
-        count=params['count']
-        results = self.retriever.getEventWindow(id_,start,count)
-        return{'total':len(results),'records':results}
-
-    def formatEvents(self,events):
-        for event in events:
-            source=event['source']
-            if(source):
-                device=self.getDevice(uuid.UUID(source).bytes)
-                if(device):
-                    event['deviceType']=device.deviceType.name
-            time=datetime.strptime(event['timestamp'],'%Y-%m-%d %H:%M:%S')
-            event['timestamp']=int(time.timestamp()*1000)
-
 
     def addDevice (self,device):
        # don't add the hub or gateway to devices
@@ -97,15 +59,10 @@ class Hub(Device):
         elif (device.address == Hub.GATEWAY_ADDRESS):
             return
         log.debug('adding device '+str(device))
-        self._devices[device.address]=device
-
-    def getDevicesJson (self):
-        data=list(self._devices.values())
-        log.debug('sending device list '+ str(data))
-        return data
+        self.devices[device.address]=device
 
     def setMode(self,mode):
         self.mode=HubMode(mode)
 
     def getDevice(self,address):
-        return self if address == self.address else self._devices.get(address)
+        return self if address == self.address else self.devices.get(address)

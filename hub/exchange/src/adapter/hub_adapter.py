@@ -1,5 +1,6 @@
 import logging
 from ipc import Message
+from hub.commands import CommandType
 from .adapter import Adapter
 
 log = logging.getLogger(__name__)
@@ -11,30 +12,20 @@ class HubAdapter (Adapter):
         self.hub = hub
 
     def send (self, message):
-        if ('get' in message.data):
-            attribute=message.data['get']
-            params=message.data
-            try:
-                value=self.hub.getCommand(attribute,params)
-                self.notifyResponse(attribute,value,message.sender)
-                return True
-            except Exception as e:
-                 log.exception("Invalid get message "+ str(message))
-        elif('set' in message.data and 'value' in message.data):
-            attribute= message.data['set']
-            value=message.data['value']
-            try:
-                responseValue=self.hub.setCommand(attribute,value)
-                self.notifyResponse(attribute,responseValue,message.sender)
-                return True
-            except Exception as e:
-                log.exception("Invalid set message "+ str(message))
-        elif(message.type == Message.Error):
+        if(message.type == Message.Error):
             log.warning('Recieved error '+str(message))
             return False
         elif(message.type == Message.Event):
-            # TODO Where do event messages actually go?
+            # TODO not sure what to do with events that go to the hub
             return
+        for type in CommandType:
+            if(type.value in message.data):           
+                try:
+                    value=self.hub.executeCommand(type,message.data)
+                    self.notifyResponse(message.data[type.value],value,message.sender)
+                    return True
+                except Exception as e:
+                    log.exception("Invalid message "+ str(message))
         self.notifyFailure(message.sender)
 
     def notifyResponse(self,attribute,responseValue,receiver):
