@@ -7,16 +7,17 @@ class BehaviourView extends Component {
     constructor (behaviour) {
         super();
         this._state = behaviour || {};
-        this._name      = new Field('', { label : 'Name:'           });
+        this._name      = new Field('', { label : 'Name:' });
     }
+
     render () {
 
         this._$el
             .empty()
             .addClass('behaviour-view-body')
-            .append([
+            .append(
                 this._name.state(this._state.name).render().$el(),
-            ]);
+            );
 
         return this;
     }

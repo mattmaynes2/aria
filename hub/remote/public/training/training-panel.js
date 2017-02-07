@@ -1,6 +1,7 @@
 import WidgetPanel  from '../core/widget/widget-panel';
 import Service      from '../core/service/service';
-import Behaviour       from '../core/behaviour/behaviour';
+import Behaviour    from '../core/behaviour/behaviour';
+import Button      from '../core/control/button'; 
 
 class TrainingPanel extends WidgetPanel {
     constructor () {
@@ -19,6 +20,9 @@ class TrainingPanel extends WidgetPanel {
         return this;
     }
     render () {
+        this._$el.append(
+            new Button("Add").render().$el()
+        );
         this._$el
             .append(this._state.behaviours.map((b) => {
                 return b.render().$el();
