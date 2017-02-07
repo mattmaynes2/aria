@@ -1,88 +1,155 @@
 ### Use Cases
 
-![][fig-system-use-case]
+In order to translate the scenarios into technical requirements for the Aria system, use cases
+were developed. These use cases outline the major functionality that is required by the Aria
+system. Figure <!-- FIGURE NUMBER --> outlines the use cases for the entire Aria system.
+Below are the descriptions of each use case for the system.
 
-##### Install Hub {-}
+![][system-use-case]
 
-The user installs the learning hub in their home in order to enable automation of their smart
-devices.
++----------------+--------------------------------------------------------------------------------+
+| Name           | **Install Hub**                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Description    | The user installs the learning hub in their home in order to enable automation |
+|                | of their smart devices.                                                        |
++----------------+--------------------------------------------------------------------------------+
+| Primary Actor  | Homeowner                                                                      |
++----------------+--------------------------------------------------------------------------------+
+| Precondition   |                                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Postcondition  |                                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Flow 			 | 1. User plugs hub into outlet and turns power on                               |
+|                | 2. User connects hub to a home network using Ethernet                          |
+|                | 3. Hub provides confirmation that system is online                             |
++----------------+--------------------------------------------------------------------------------+
 
-1. User plugs hub into outlet and turns power on
-2. User connects hub to a home network using Ethernet
-3. Hub provides confirmation that system is online
 
-##### Add Device {-}
++----------------+--------------------------------------------------------------------------------+
+| Name           | **Add Device**                                                                 |
++----------------+--------------------------------------------------------------------------------+
+| Description    | Devices can be added to the system simply by powering them on and connecting   |
+|                | to the network.                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Primary Actor  | Homeowner                                                                      |
++----------------+--------------------------------------------------------------------------------+
+| Precondition   | A learning hub must be installed in the user's home                            |
++----------------+--------------------------------------------------------------------------------+
+| Postcondition  | The device's state will now be used as input in learning mode. If the device   |
+|                | contains an actuator, the actuator will be controlled by the learning hub in   |
+|                | normal mode.                                                                   |               
++----------------+--------------------------------------------------------------------------------+
+| Flow 			 | 1. User plugs in device and turns power on                                     |
+|                | 2. Device discovers network                                                    |
+|                | 3. Hub discovers device and provides confirmation                              |
++----------------+--------------------------------------------------------------------------------+
 
-Devices can be added to the system simply by powering them on and connecting to the network.
 
-Precondition: A learning hub must be installed in the user's home.
++----------------+--------------------------------------------------------------------------------+
+| Name           | **Enter Learning Mode**                                                        |
++----------------+--------------------------------------------------------------------------------+
+| Description    | The user enters learning mode in order to indicate to the system that it       |
+|                | should begin recording changes in the state of connected devices, without      |
+|                | attempting to control them. Learning mode accomplishes the user's goal of      |
+|                | configuring the system without manual programming.                             | 
++----------------+--------------------------------------------------------------------------------+
+| Primary Actor  | Homeowner                                                                      |
++----------------+--------------------------------------------------------------------------------+
+| Precondition   |                                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Postcondition  | The system saves changes in the state of connected devices                     |              
++----------------+--------------------------------------------------------------------------------+
+| Flow 			 | 1. User selects enter learning mode                                            |
+|                | 2. While the system is in learning mode, the system will record the user's     |
+|                |    interactions with connected devices.                                        |
+|                | 3. When the user selects normal mode or standby mode, the system exits         |
+|                |    learning mode.                                                              |
++----------------+--------------------------------------------------------------------------------+
 
-1. User plugs in device and turns power on
-2. Device discovers network
-3. Hub discovers device and provides confirmation
++----------------+--------------------------------------------------------------------------------+
+| Name           | **Enter Normal Mode**                                                          |
++----------------+--------------------------------------------------------------------------------+
+| Description    | The user enters normal mode in order to instruct the system to begin           |
+|                | controlling connected devices.                                                 |
++----------------+--------------------------------------------------------------------------------+
+| Primary Actor  | Homeowner                                                                      |
++----------------+--------------------------------------------------------------------------------+
+| Precondition   |                                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Postcondition  | The system maintains control over connected actuators                          |              
++----------------+--------------------------------------------------------------------------------+
+| Flow 			 | 1. User selects enter normal mode                                              |
+|                | 2. System exits the currently active mode                                      |
+|                | 3. System begins controlling connected actuators, using the data collected     |
+|                |    during learning mode to infer the desired state of the system.              |
++----------------+--------------------------------------------------------------------------------+
 
-Postcondition: The device's state will now be used as input in learning mode. If the device contains
-an actuator, the actuator will be controlled by the learning hub in normal mode.
++----------------+--------------------------------------------------------------------------------+
+| Name           | **Enter Standby Mode**                                                         |
++----------------+--------------------------------------------------------------------------------+
+| Description    | The user enters standby mode in order to instruct the system that control over |
+|                | connected devices should be halted, and changes in the state of devices should |
+|                | not be accepted as learning data. Standby mode allows a user to control their  |
+|                | devices under exceptional circumstances without learning the system to perform |
+|                | an incorrect task.                                                             |
++----------------+--------------------------------------------------------------------------------+
+| Primary Actor  | Homeowner                                                                      |
++----------------+--------------------------------------------------------------------------------+
+| Precondition   |                                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Postcondition  | System does not accept learning data, System does not modify the state of      |
+|                | devices                                                                        |               
++----------------+--------------------------------------------------------------------------------+
+| Flow 			 | 1. User enters standby mode                                                    |
+|                | 2. System exits the active mode                                                |
++----------------+--------------------------------------------------------------------------------+
 
-##### Enter Learning Mode {-}
++----------------+--------------------------------------------------------------------------------+
+| Name           | **Remove Device**                                                              |
++----------------+--------------------------------------------------------------------------------+
+| Description    | Devices will stop recording when removed from the smart learning network. To   |
+|                | remove the history of the device, the user can delete it using the remote      |
+|                | interface.                                                                     |
++----------------+--------------------------------------------------------------------------------+
+| Dependencies   | **INCLUDE** Reset Device                                                       |
++----------------+--------------------------------------------------------------------------------+
+| Primary Actor  | Homeowner                                                                      |
++----------------+--------------------------------------------------------------------------------+
+| Precondition   |                                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Postcondition  | System does not accept learning data, System does not modify the state of      |
+|                | devices                                                                        |               
++----------------+--------------------------------------------------------------------------------+
+| Flow 			 | 1. User disconnects device from the network                                    |  
+|                | 2. If the user wishes to remove the device permanently, **INCLUDE** use case   |
+|                |    Reset Device                                                                |
++----------------+--------------------------------------------------------------------------------+
 
-The user enters learning mode in order to indicate to the system that it should begin recording
-changes in the state of connected devices, without attempting to control them. Learning mode
-accomplishes the user's goal of configuring the system without manual programming.
++----------------+--------------------------------------------------------------------------------+
+| Name           | **Reset Device**                                                               |
++----------------+--------------------------------------------------------------------------------+
+| Description    | States of the selected devices from before the reset are no longer used to     |
+|                | infer states in normal mode.                                                   |
++----------------+--------------------------------------------------------------------------------+
+| Dependencies   |                                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Primary Actor  | Homeowner                                                                      |
++----------------+--------------------------------------------------------------------------------+
+| Precondition   |                                                                                |
++----------------+--------------------------------------------------------------------------------+
+| Postcondition  | System does not accept learning data, System does not modify the state of      |
+|                | devices                                                                        |               
++----------------+--------------------------------------------------------------------------------+
+| Flow 			 | 1. User logs in to remote interface                                            | 
+|                | 2. User selects a device                                                       |
+|                | 3. User selects reset device                                                   |
+|                | 4. System erases the saved historical states of the device                     |
++----------------+--------------------------------------------------------------------------------+
 
-1. User selects enter learning mode
-2. While the system is in learning mode, the system will record the user's interactions with
-   connected devices.
-3. When the user selects normal mode or standby mode, the system exits learning mode.
-
-Postcondition: The system saves changes in the state of connected devices.
-
-##### Enter Normal Mode {-}
-
-The user enters normal mode in order to instruct the system to begin controlling connected
-devices.
-
-1. User selects enter normal mode
-2. System exits the currently active mode
-3. System begins controlling connected actuators, using the data collected during learning mode
-   to infer the desired state of the system.
-
-Postcondition: The system maintains control over connected actuators.
-
-##### Enter Standby Mode {-}
-
-The user enters standby mode in order to instruct the system that control over connected devices
-should be halted, and changes in the state of devices should not be accepted as learning data.
-Standby mode allows a user to control their devices under exceptional circumstances without learning
-the system to perform an incorrect task.
-
-1. User enters standby mode
-2. System exits the active mode
-
-Postcondition: System does not accept learning data, System does not modify the state of devices
-
-##### Remove device {-}
-
-Devices will stop recording when removed from the smart learning network. To remove the history of
-the device, the user can delete it using the remote interface.
-
-1. User disconnects device from the network
-2. If the user wishes to remove the device permanently, include use case Reset Device
-
-##### Reset Device {-}
-
-If the input of a device is causing unexpected or undesired output then it can be reset by the user
-through the remote interface.
-
-1. User logs in to remote interface
-2. User selects a device
-3. User selects reset device
-4. System erases the saved historical states of the device
-
-Postcondition: States of the selected devices from before the reset are no longer used to infer
-states in normal mode.
 
 #### Training Use Cases
+
+
 
 ![][training-use-case]
 
