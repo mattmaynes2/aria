@@ -33,9 +33,9 @@ gateway. To see the available events over websockets
 | Response		| **Code:** `200` <br/>															|
 | 				| **Content:**  `{ }` <br/>														|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Unable to initiate discovery" }` <br/>				|
+| Error			| **Example:** 	<br/>															|
+| Response		| **Code:** `500 Internal Server Error` <br/>									|
+| 				| **Content:**  `{ error : "Unable to initiate discovery" }` <br/>				|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| `curl -X GET http://localhost:8080/hub/discover`								|
 +---------------+-------------------------------------------------------------------------------+
@@ -67,9 +67,9 @@ gateway. To see the available events over websockets
 | 				|		 	"devices" 	: 8 													|
 | 				|		}																		|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `400 Bad Request` <br/>											|
-| 				|  **Content:**  `{ error : "Invalid Request" }` <br/>							|
+| Error			| **Example:** 	<br/>															|
+| Response		| **Code:** `400 Bad Request` <br/>												|
+| 				| **Content:**  `{ error : "Invalid Request" }` <br/>							|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| `curl -X GET http://localhost:8080/hub/state`		 							|
 +---------------+-------------------------------------------------------------------------------+
@@ -93,9 +93,9 @@ gateway. To see the available events over websockets
 | Response		| **Code:** `200` <br/>															|
 | 				| **Content:** `{ "mode" : 1 }` <br/>											|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `400 Bad Request` <br/>											|
-| 				|  **Content:**  `{ error : "Invalid request" }` <br/>							|
+| Error			| **Example:** 	<br/>															|
+| Response		| **Code:** `400 Bad Request` <br/>												|
+| 				| **Content:**  `{ error : "Invalid request" }` <br/>							|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| `curl -X GET http://localhost:8080/hub/mode`		 							|
 +---------------+-------------------------------------------------------------------------------+
@@ -121,9 +121,9 @@ gateway. To see the available events over websockets
 | Response		| **Code:** `200` <br/>															|
 | 				| **Content:** `{ "mode" : 2 }` <br/>											|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `400 Bad Request` <br/>											|
-| 				|  **Content:**  `{ error : "Invalid mode" }` <br/>								|
+| Error			| **Example:** 	<br/>															|
+| Response		| **Code:** `400 Bad Request` <br/>												|
+| 				| **Content:**  `{ error : "Invalid mode" }` <br/>								|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| **Example:** Set the mode to *Normal*											|
 | 				|																				|
@@ -189,9 +189,9 @@ gateway. To see the available events over websockets
 | 				| 			]																	|
 | 				| 		}																		|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** <br/>															|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Invalid event window" }` <br/>						|
+| Error			| **Example:** <br/>															|
+| Response		| **Code:** `500 Internal Server Error` <br/>									|
+| 				| **Content:**  `{ error : "Invalid event window" }` <br/>						|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| **Example:** Retrieve a window of 10 records starting after 10				|
 | 				|																				|
@@ -255,9 +255,9 @@ gateway. To see the available events over websockets
 |				|			]																	|
 |				|		}																		|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Failed request" }` <br/>							|
+| Error			| **Example:** 	<br/>															|
+| Response		| **Code:** `500 Internal Server Error` <br/>									|
+| 				| **Content:**  `{ error : "Failed request" }` <br/>							|
 +---------------+-------------------------------------------------------------------------------+
 | Sample Call	| `curl -X GET http://localhost:8080/device/list`		 						|
 +---------------+-------------------------------------------------------------------------------+
@@ -320,9 +320,9 @@ gateway. To see the available events over websockets
 |				|			]																	|
 |				|		}																		|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** <br/>															|
-| Response		|  **Code:** `400 Bad Request` <br/>											|
-| 				|  **Content:**  `{ error : "Unknown device" }` <br/>							|
+| Error			| **Example:** <br/>															|
+| Response		| **Code:** `400 Bad Request` <br/>												|
+| 				| **Content:**  `{ error : "Unknown device" }` <br/>							|
 | 				| OR <br/>																		|
 |				| **Example:** <br/>															|
 | 				| **Code:** `500 Internal Server Error` <br/>									|
@@ -356,10 +356,10 @@ gateway. To see the available events over websockets
 |				| **Example:** Set the brightness of a light <br/>								|
 | 				| **Content:** <br/>															|
 |				|																				|
-|				|		{																		|
+|				| 		{																		|
 | 				| 			"name" : "brightness",												|
 | 				| 			"value" : [                                                         |
-|               |     			{ "naame" : "level", "value" : 50 }                                                |
+|               |     			{ "naame" : "level", "value" : 50 }                             |
 |               |               ...             	    				                        |
 |               |            ]                                                                  |
 | 				| 		}																		|
@@ -367,27 +367,28 @@ gateway. To see the available events over websockets
 | Success		| Upon successful response, value of the updated attribute will be returned  	|
 | Response		| 								                                                |
 |				| **Example** <br/>                                                             |
-|               |                {																|
-|				|					"response" 	: "brightness",							        |
-|				|					"device"		: "Light Bulb", 							|
-|				|					"deviceType"	: "Aeotec Dimmable LED",        			|
-|				|					"attribute"		: {											|
-|				|						"name"			: "brightness", 						|
-|				|						"parameters"	: [										|
-|				|							{													|
-|				|								"name"		: "level",							|
-|				|								"value"		: 50,								|
-|				|								"dataType"	: "byte",							|
-|				|							}													|
-|				|							...													|
-|				|						]														|
-|				|					}															|
-|				|				}																|
-|               |          																		|
+|               |                                                                               |
+|               |       {																        |
+|				|			"response" 	: "brightness",							                |
+|				|			"device"		: "Light Bulb", 							        |
+|				|			"deviceType"	: "Aeotec Dimmable LED",        			        |
+|				|			"attribute"		: {											        |
+|				|				"name"			: "brightness", 						        |
+|				|				"parameters"	: [										        |
+|				|					{													        |
+|				|						"name"		: "level",							        |
+|				|						"value"		: 50,								        |
+|				|						"dataType"	: "byte",							        |
+|				|					}													        |
+|				|					...													        |
+|				|				]														        |
+|				|		}												    			        |
+|				|																		        |
+|               |       																        |
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** <br/>															|
-| Response		|  **Code:** `400 Bad Request` <br/>											|
-| 				|  **Content:**  `{ error : "Unknown device" }` <br/>							|
+| Error			| **Example:** <br/>															|
+| Response		| **Code:** `400 Bad Request` <br/>											    |
+| 				| **Content:**  `{ error : "Unknown device" }` <br/>							|
 | 				| OR <br/>																		|
 |				| **Example:** <br/>															|
 | 				| **Code:** `500 Internal Server Error` <br/>									|
@@ -408,25 +409,27 @@ gateway. To see the available events over websockets
 |      		 	|                                                                             	|
 |       		| This method creates a new behaviour that can be trained.                      |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/hub/training/behaviour` 																|
+| URL         	| `/hub/training/behaviour` 													|
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **POST**																		|
 +---------------+-------------------------------------------------------------------------------+
 | URL Params	| **None**																		|
 +---------------+-------------------------------------------------------------------------------+
 | Data Params	| - **name**: The name to give to the new behaviour 							|
+| 				| 																				| 
 |               | **Example** <br/>                                                             |
-|               |               {                                                               |
-|               |                   "name" : "Turn lightbulb on"                                |
-|               |               }                                                               |
+|               | 		                                                                        |
+|               | 		{                                                                       |
+|               |        		"name" : "Turn lightbulb on"                                    |
+|               |		}                                                                       |
 +---------------+-------------------------------------------------------------------------------+
 | Success		| **Example:** <br/>															|
 | Response		| **Code:** `200` <br/>															|
 | 				| **Content:**  `{ "id" : < integer >}` <br/>   								|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Failed to add behaviour" }` <br/>  				|
+| Error			| **Example:** 	<br/>															|
+| Response		| **Code:** `500 Internal Server Error` <br/>									|
+| 				| **Content:**  `{ error : "Failed to add behaviour" }` <br/>  					|
 +---------------+-------------------------------------------------------------------------------+
 
 ##### List Behaviours {-}
@@ -436,7 +439,7 @@ gateway. To see the available events over websockets
 |      		 	|                                                                             	|
 |       		| This method returns a paged list of existing behaviours.                      |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/hub/training/behaviours` 																|
+| URL         	| `/hub/training/behaviours` 											        |
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **GET**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -444,29 +447,35 @@ gateway. To see the available events over websockets
 +---------------+-------------------------------------------------------------------------------+
 | Data Params	| - **start**: The id of the behaviour to start from (will not be included)  	|
 |               | - **count**: The number of records to return                                  |
-|               | **Example** <br/>                                                             |
-|               |               {                                                               |
-|               |                   "start" : 5                                                 |
-|               |                   "count" : 15                                                |
-|               |               }                                                               |
+| 				| 																				| 
+|               | **Example** <br/>         													|
+|               | 		                                                                        |
+|               | 		{                                                               		|
+|               | 		    "start" : 5                                                 		|
+|               | 		    "count" : 15                                                		|
+|               | 		}                                                               		|
 +---------------+-------------------------------------------------------------------------------+
 | Success		| **Example:** <br/>															|
 | Response		| **Code:** `200` <br/>															|
-| 				| **Content:**  {																|	
-|               |                   "records": [{                                               |
-|               |                               id: < integer > ,                               |
-|               |                               name: < string > ,                              |
-|               |                               createdDate: < datetime > ,                     |
-|               |                               lastUpdated: < datetime > ,                     |
-|               |                               active: < boolean >                             |
-|               |                       }                                                       |
-|               |                       ...                                                     |
-|               |                   ]														    |
-|               |                } <br/>														|
+| 				| **Content:**  																|
+| 				| 																				|
+| 				| 		{																		|	
+|               |       	"records": [{                                               		|
+|               |           	"id" 			: 1 ,                                       	|
+|               |           	"name"			: "My Behaviour",                              	|
+|               |           	"createdDate"	: 1380269867612,                     			|
+|               |           	"lastUpdated"	: 1480256989762,                     			|
+|               |           	"active" 		: false                            		        |
+|               |				}                                                         	 	|
+|               |               ...                                                          	|
+|               |        	]														    		|
+|               |		}               														|
+|				|																		        |
+|               |       																        |
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Could not fetch behaviours" }` <br/>				|
+| Error			| **Example:** 	<br/>															|
+| Response		| **Code:** `500 Internal Server Error` <br/>									|
+| 				| **Content:**  `{ error : "Could not fetch behaviours" }` <br/>				|
 +---------------+-------------------------------------------------------------------------------+
 
 
@@ -477,7 +486,7 @@ gateway. To see the available events over websockets
 |      		 	|                                                                             	|
 |       		| This method returns a paged list of existing training sessions.               |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/hub/training/sessions` 																|
+| URL         	| `/hub/training/sessions` 														|
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **GET**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -485,29 +494,35 @@ gateway. To see the available events over websockets
 +---------------+-------------------------------------------------------------------------------+
 | Data Params	| - **start**: The id of the behaviour to start from (will not be included)  	|
 |               | - **count**: The number of records to return                                  |
-|               | **Example** <br/>                                                             |
-|               |               {                                                               |
-|               |                   "start" : 5                                                 |
-|               |                   "count" : 15                                                |
-|               |               }                                                               |
+| 				| 																				| 
+|               | **Example** <br/>																|
+| 				|																		        |
+|               |		{                                                               		|
+|               |		    "start" : 5                                                 		|
+|               |		    "count" : 15                                                		|
+|               |		}                                                               		|
 +---------------+-------------------------------------------------------------------------------+
 | Success		| **Example:** <br/>															|
 | Response		| **Code:** `200` <br/>															|
-| 				| **Content:**  {																|	
-|               |                   "records": [{                                               |
-|               |                               id: < integer > ,                               |
-|               |                               behaviourId: < integer >,                       |
-|               |                               name: < string > ,                              |
-|               |                               createdDate: < datetime > ,                     |
-|               |                               active: < boolean >                             |
-|               |                       }                                                       |
-|               |                       ...                                                     |
-|               |                   ]														    |
-|               |                } <br/>														|
+| 				| **Content:**  																|
+| 				| 																				|
+| 				| 		{																		|	
+|               |       	"records": [{                                               		|
+|               |           	"id" 			: 1 ,                                       	|
+|               |           	"name"			: "My Behaviour",                              	|
+|               |           	"createdDate"	: 1380269867612,                     			|
+|               |           	"lastUpdated"	: 1480256989762,                     			|
+|               |           	"active" 		: false                            		        |
+|               |				}                                                       		|
+|               |               ...                                                          	|
+|               |        	]														    		|
+|               |		}               														|
+|				|																		        |
+|               |       																        |
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Could not fetch training sessions" }` <br/>    	|
+| Error			| **Example:** 	<br/>															|
+| Response		| **Code:** `500 Internal Server Error` <br/>									|
+| 				| **Content:**  `{ error : "Could not fetch training sessions" }` <br/>    		|
 +---------------+-------------------------------------------------------------------------------+
 
 ##### Add Training Session {-}
@@ -517,7 +532,7 @@ gateway. To see the available events over websockets
 |      		 	|                                                                             	|
 |       		| This method creates a new training session for a behaviour                    |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/hub/training/session` 																|
+| URL         	| `/hub/training/session` 													    |
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **POST**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -525,19 +540,21 @@ gateway. To see the available events over websockets
 +---------------+-------------------------------------------------------------------------------+
 | Data Params	| - **name**: The name to give to the training session							|
 |               | - **behaviourId**: The id of the behaviour to associate with the session      |
+| 				| 																				| 
 |               | **Example** <br/>                                                             |
-|               |               {                                                               |
-|               |                   "name" : "Wednesday Session"                                |
-|               |                   "behaviourId" : 2                                           |
-|               |               }                                                               |
+|               | 		        																|
+| 				| 			{                                                                   |
+|               |               "name" 			: "Wednesday Session",                          |
+|               |           	"behaviourId"	: 2                                          	|
+|               |           }                                                               	|
 +---------------+-------------------------------------------------------------------------------+
 | Success		| **Example:** <br/>															|
 | Response		| **Code:** `200` <br/>															|
 | 				| **Content:**  `{ "id" : < integer >}` <br/>   								|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Failed to add session" }` <br/>     				|
+| Error			| **Example:** 	<br/>														    |
+| Response		| **Code:** `500 Internal Server Error` <br/>									|
+| 				| **Content:**  `{ error : "Failed to add session" }` <br/>     				|
 +---------------+-------------------------------------------------------------------------------+
 
 ##### Start Training Session {-}
@@ -545,10 +562,10 @@ gateway. To see the available events over websockets
 +---------------+-------------------------------------------------------------------------------+
 | Title     	| **Start Training Session**                                                    |
 |      		 	|                                                                             	|
-|       		| This method activates a training session. New events and user requests will   | 
+|       		| This method activates a training session. New events and user requests will   |
 |               | be associated with the training session                                       |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `/hub/training/session/<id>/start` 														|
+| URL         	| `/hub/training/session/<id>/start` 											|
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **POST**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -560,9 +577,9 @@ gateway. To see the available events over websockets
 | Response		| **Code:** `200` <br/>															|
 | 				| **Content:**  `{ }` <br/>   	                    							|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Failed to add session" }` <br/>     				|
+| Error			| **Example:** 	<br/>													     	|
+| Response		| **Code:** `500 Internal Server Error` <br/>									|
+| 				| **Content:**  `{ error : "Failed to add session" }` <br/>     				|
 +---------------+-------------------------------------------------------------------------------+
 
 ##### Stop Training Session {-}
@@ -573,7 +590,7 @@ gateway. To see the available events over websockets
 |       		| This method deactivates an active training session. New events and requests   |
 |               | will no longer be associated with this training session.                      |
 +---------------+-------------------------------------------------------------------------------+
-| URL         	| `hub/training/session/<id>/stop` 											    			|
+| URL         	| `hub/training/session/<id>/stop` 											    |
 +---------------+-------------------------------------------------------------------------------+
 | Method		| **POST**																		|
 +---------------+-------------------------------------------------------------------------------+
@@ -585,11 +602,13 @@ gateway. To see the available events over websockets
 | Response		| **Code:** `200` <br/>															|
 | 				| **Content:**  `{ }` <br/>   	                    							|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `500 Internal Server Error` <br/>									|
-| 				|  **Content:**  `{ error : "Failed to add session" }` <br/>     				|
+| Error			| **Example:** 	<br/>														    |
+| Response		| **Code:** `500 Internal Server Error` <br/>								 	|
+| 				| **Content:**  `{ error : "Failed to add session" }` <br/>     				|
+|               | OR <br/>	                                                                    |
+|               | **Example:** 	<br/>														    |
+|               | **Code:** `400 Bad Request` <br/>									            |
+|               | **Content:**  `{ error : "Training session is not active" }` <br/>     		|
 +---------------+-------------------------------------------------------------------------------+
-| Error			|  **Example:** 	<br/>														|
-| Response		|  **Code:** `400 Bad Request` <br/>									        |
-| 				|  **Content:**  `{ error : "Training session is not active" }` <br/>     		|
-+---------------+-------------------------------------------------------------------------------+
+
+
