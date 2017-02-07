@@ -17,5 +17,8 @@ class DatabaseCommand(Command):
                 device=hub.getDevice(uuid.UUID(source).bytes)
                 if(device):
                     event['deviceType']=device.deviceType.name
-            time=datetime.strptime(event['timestamp'],'%Y-%m-%d %H:%M:%S')
-            event['timestamp']=int(time.timestamp()*1000)
+            event['timestamp']=self.formatDate(event['timestamp'])
+
+    def formatDate(self,date):
+        time=datetime.strptime(date,'%Y-%m-%d %H:%M:%S')
+        return int(time.timestamp()*1000)

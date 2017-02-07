@@ -6,7 +6,8 @@ from ipc import Message
 from adapter import Adapter
 from database import Database
 from delegate import RequestTracker
-from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand
+from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavioursCommand,\
+ CreateBehavioursCommand
 import queue
 import sqlite3
 import os
@@ -248,6 +249,43 @@ class TestDatabaseIntegration(TestCase):
         deviceTypeResults = self.db.query("SELECT Count(*) FROM Device WHERE type = 2")
         thirdResult = deviceTypeResults.fetchone()
         self.assertEqual(thirdResult["Count(*)"], 20)
+
+    def test_behaviours(self):
+        self.hub.addCommand(GetBehavioursCommand())
+        self.hub.addCommand(CreateBehavioursCommand())
+        myUuid = self.devices[0].address
+        createMessage= Message()
+        createMessage.type= Message.Request
+        createMessage.data= {'create':'behaviour', 'name':'lights'}
+        createMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(createMessage)
+        
+
+        time.sleep(0.5)
+        response = self.testAdapter.receivedMessages[0]
+        self.assertEqual(response.data["response"], "behaviour")
+        self.assertEqual(response.data["value"], 1)
+        results = self.db.query("SELECT Count(*) FROM Behaviour")
+        results = deviceResults.fetchone()
+        self.assertEqual(results["Count(*)"], 1)
+
+        createMessage.data= {'create':'behaviour', 'name':'temperature'}
+        self.testAdapter.enqueueMessage(createMessage)
+
+
+
+        requestMessage = Message()
+        requestMessage.type = Message.Request
+        requestMessage.data = {"get" : "behaviours", "start" : 0, 'count' :  2 }
+        requestMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(requestMessage)
+        
+        time.sleep(0.5)
+        response = self.testAdapter.receivedMessages[2]
+        self.assertEqual(response.data["response"], "behaviours")
+        self.assertEqual(response.data["value"]["total"], 2)
+        self.assertEqual(len(response.data["value"]["records"]), 2)
+        self.assertEqual(response.data["value"]["records"][0]['name'],'lights')
 
 class TestDatabase:
 
