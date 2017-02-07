@@ -54,10 +54,10 @@ describe('Test the endpoints provided by the hub router', function(){
         var hubRouter = new HubRouter(stubAdapter);
         hubRouter.router();
 
-        var getFn = stubApp.get.withArgs('/training/behaviours').getCalls()[0].args[1];
+        var postFn = stubApp.post.withArgs('/training/behaviours').getCalls()[0].args[1];
         var req = { body: { start: 1, count: 10}};
         var res = {};
-        getFn(req, res);
+        postFn(req, res);
         sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'get' : 'behaviours', 'start': 1, 
                                                                 'count': 10 });
     });
@@ -87,7 +87,7 @@ describe('Test the endpoints provided by the hub router', function(){
                                                                                 'session'});
     });
 
-    it('Should have an endpoint for activating a session', () => {
+    it('Should have an endpoint for stopping a session', () => {
         var hubRouter = new HubRouter(stubAdapter);
         hubRouter.router();
 
@@ -104,11 +104,13 @@ describe('Test the endpoints provided by the hub router', function(){
         var hubRouter = new HubRouter(stubAdapter);
         hubRouter.router(); 
 
-        var getFn = stubApp.get.withArgs('/training/sessions').getCalls()[0].args[1];
-        var req = { body: { behaviourId: 1}};
+        var getFn = stubApp.post.withArgs('/training/sessions').getCalls()[0].args[1];
+        var req = { body: { start: 1, count: 10, behaviourId: 1}};
         var res = {};
         getFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'behaviourId' : 1, 'get' : 
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'start' : 1,
+                                                                 'count' : 10,
+                                                                'behaviourId' : 1, 'get' : 
                                                                 'sessions'});
     });
 

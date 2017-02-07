@@ -1,4 +1,4 @@
-### Other Nonfunctional Requirements
+### Non-Functional Requirements
 
 #### Performance Requirements {-}
 
