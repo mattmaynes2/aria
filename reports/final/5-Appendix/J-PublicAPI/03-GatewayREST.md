@@ -492,7 +492,7 @@ gateway. To see the available events over websockets
 +---------------+-------------------------------------------------------------------------------+
 | URL Params	| **None**																		|
 +---------------+-------------------------------------------------------------------------------+
-| Data Params	| - **start**: The id of the behaviour to start from (will not be included)  	|
+| Data Params	| - **start**: The id of the session to start from (will not be included)  	|
 |               | - **count**: The number of records to return                                  |
 | 				| 																				| 
 |               | **Example** <br/>																|
@@ -511,7 +511,6 @@ gateway. To see the available events over websockets
 |               |           	"id" 			: 1 ,                                       	|
 |               |           	"name"			: "My Behaviour",                              	|
 |               |           	"createdDate"	: 1380269867612,                     			|
-|               |           	"lastUpdated"	: 1480256989762,                     			|
 |               |           	"active" 		: false                            		        |
 |               |				}                                                       		|
 |               |               ...                                                          	|
@@ -610,5 +609,4 @@ gateway. To see the available events over websockets
 |               | **Code:** `400 Bad Request` <br/>									            |
 |               | **Content:**  `{ error : "Training session is not active" }` <br/>     		|
 +---------------+-------------------------------------------------------------------------------+
-
 
