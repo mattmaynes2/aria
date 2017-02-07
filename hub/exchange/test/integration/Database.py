@@ -7,7 +7,7 @@ from adapter import Adapter
 from database import Database
 from delegate import RequestTracker
 from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavioursCommand,\
- CreateBehavioursCommand
+ CreateBehavioursCommand, CreateSessionCommand
 import queue
 import sqlite3
 import os
@@ -286,6 +286,102 @@ class TestDatabaseIntegration(TestCase):
         self.assertEqual(response.data["value"]["total"], 2)
         self.assertEqual(len(response.data["value"]["records"]), 2)
         self.assertEqual(response.data["value"]["records"][0]['name'],'temperature')
+
+    def test_session(self):
+        self.hub.addCommand(CreateBehavioursCommand(self.database))
+        self.hub.addCommand(CreateSessionCommand(self.database))
+        myUuid = self.devices[0].address
+        createMessage= Message()
+        createMessage.type= Message.Request
+        createMessage.data= {'create':'behaviour', 'name':'lights'}
+        createMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(createMessage)
+
+        time.sleep(0.5)
+        createMessage= Message()
+        createMessage.type= Message.Request
+        createMessage.data= {'create':'session', 'name':'lights_1', 'behaviourid':1}
+        createMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(createMessage)
+
+        time.sleep(0.5)
+
+        response = self.testAdapter.receivedMessages[1]
+        self.assertEqual(response.data["response"], "session")
+        self.assertEqual(response.data["value"]["id"], 1)
+        results = self.db.query("SELECT * FROM session").fetchall()
+        
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]['behaviour_id'],1)
+
+        
+        createMessage= Message()
+        createMessage.type= Message.Request
+        createMessage.data= {'start':'session', 'id':1}
+        createMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(createMessage)
+        time.sleep(0.5)
+        self.assertEqual(self.hub.session, 1)
+
+        eventMessage = Message()
+        eventMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : myUuid,
+            'deviceType' : self.devices[0].deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
+                                }
+                            ]
+                        }
+            }
+        eventMessage.type = Message.Event 
+        eventMessage.sender = myUuid
+        eventMessage.receiver = Message.DEFAULT_ADDRESS
+        self.testAdapter.enqueueMessage(eventMessage)    
+        time.sleep(1)
+        results = self.db.query("SELECT * FROM event").fetchone()
+
+        assertEqual(results['session_id'],1)
+
+        createMessage= Message()
+        createMessage.type= Message.Request
+        createMessage.data= {'stop':'session', 'id':1}
+        createMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(createMessage)
+        self.assertEqual(self.hub.session, None)
+        
+        eventMessage = Message()
+        eventMessage.data = {
+            'event' : 'device.event',
+            'timestamp' : int(time.time()*1000),
+            'device' : myUuid,
+            'deviceType' : self.devices[0].deviceType.name,
+            'attribute' : {
+                'name' : 'state',
+                'parameters' : [
+                                {
+                                    'name' : 'state',
+                                    'value' : 1,
+                                    'dataType' : DataType.Binary
+                                }
+                            ]
+                        }
+            }
+        eventMessage.type = Message.Event 
+        eventMessage.sender = myUuid
+        eventMessage.receiver = Message.DEFAULT_ADDRESS
+        self.testAdapter.enqueueMessage(eventMessage)    
+        time.sleep(1)
+
+        results = self.db.query("SELECT * FROM event").fetchall()
+        assertEqual(len(results),1)
+
 
 class TestDatabase:
 

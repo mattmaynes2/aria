@@ -93,10 +93,10 @@ class Retriever:
     #
     # @return        The id of newly created session
     ###
-    def addSession(behaviourId, name):
+    def addSession(self,behaviourId, name):
         values = (behaviourId, name) 
         self.database.execute(Retriever.ADD_NEW_SESSION, values)
-        return self.database.execute(Retriever.GET_LAST_SESSION_ID)
+        return self.database.execute(Retriever.GET_LAST_SESSION_ID)[0]['id']
 
 
     ###
