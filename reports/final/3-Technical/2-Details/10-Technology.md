@@ -71,7 +71,7 @@ technology has been used for the HTTP gateway to simplify the development.
 In order to compile the server into a single executable, **Webpack** is being used. Webpack bundles
 all of a systems source code into a single file and adds a node.js 'shebang' (`#!/usr/local/env node`)
 to the start. This process allows the simple JavaScript files to be turned into an executable
-bundle.
+bundle. For the full details of the deployment process, refer to [Appendix I-2](#I-2).
 
 ###### Package Management {-}
 
@@ -112,7 +112,8 @@ the old version equivalent ones.
 Once the web client has been converted into browser executable code, it is then bundled into a
 single web app file using **Webpack**. This is the same tool that is used for the gateway to make
 it executable. Here the intent is to obfuscate and minimize the size of the web application so
-that it has a faster load time on client.
+that it has a faster load time on client. The full details about the deployment of the web
+client are outlined in [Appendix I-2](#I-2).
 
 ###### Quality Control {-}
 
