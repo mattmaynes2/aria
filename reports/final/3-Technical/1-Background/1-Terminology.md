@@ -1,4 +1,4 @@
-### Technical Terminology
+### Technical Terminology {#sec-3-1-1-1}
 
 In order to describe the Aria system and the field of smart home automation, technical terminology
 will be required. This section outlines a set of technical terms and phrases that will be used
