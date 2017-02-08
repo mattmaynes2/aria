@@ -2,35 +2,88 @@
 
 ### Project Contributions
 
+| Component                | Primary Developer(s)            | Secondary Developer(s)          |
+| ------------------------ | ------------------------------- | ------------------------------- |
+| System Deployment        | Matthew                         |                                 |
+| Exchange Server          | Jeremy & Cameron                | Peter                           |
+| Database                 | Peter                           | Jeremy                          |
+| HTTP Gateway             | Matthew & Cameron               |                                 |
+| Remote Interface         | Matthew                         | Cameron                         |
+
 ### Report Contributions
 
-| Section                                              | Author(s)         | Editor(s)        | Updated           |
-| --------------------------------------------------   | ----------------- | --------------   | ----------------  |
-| [Development Process](#section-dev-process)          | Cameron           | Peter            | November 6, 2016  |
-| [Technical Requirements](#section-reqs)              | Cameron & Matthew | Peter            | October 10, 2016  |
-| [Scenario Introduction](#section-sc)                 | Cameron           | Matthew          | October 10, 2016  |
-| [Music Scenario](#section-sc-music)                  | Cameron & Matthew | Peter            | November 6, 2016  |
-| [Temperature Scenario](#section-sc-temp)             | Matthew           | Peter            | November 6, 2016  |
-| [Coffee Scenario](#section-sc-coffee)                | Jeremy & Matthew  | Peter            | November 5, 2016  |
-| [Lighting Scenario](#section-sc-light)               | Peter             | Matthew          | November 28, 2016 |
-| [Design Introduction](#section-design-intro)         | Matthew           |                  | October 30, 2016  |
-| [Component Design](#section-design-components)       | Matthew           | Jeremy & Cameron | November 27, 2016 |
-| [Deployment Design](#section-design-deploy)          | Matthew           |                  | October 30, 2016  |
-| [Database Design](#section-design-db)                | Peter             |                  | November 27, 2016 |
-| [Device Discovery](#section-design-discovery)        | Matthew           |                  | October 30, 2016  |
-| [Device Requests](#section-design-reqs)              | Peter             | Matthew          | October 30, 2016  |
-| [Remote User Interface](#section-design-ui)          | Matthew           |                  | November 13, 2016 |
-| [Deployment](#section-dev-deploy)                    | Matthew           | Cameron & Peter  | November 6, 2016  |
-| [Technology](#section-dev-tech)                      | Matthew           | Peter            | November 6, 2016  |
-| [Hub Implementation](#section-dev-hub)               | Jeremy            |                  | November 27, 2016 |
-| [Gateway Implementation](#section-dev-gateway)       | Matthew           |                  | November 27, 2016 |
-| [Remote Implementation](#section-dev-remote)         | Matthew           |                  | November 28, 2016 |
-| [Testing](#section-testing)                          | Cameron           |                  | November 27, 2016 |
-| [Hub Testing](#section-test-hub)                     | Cameron           | Peter            | November 27, 2016 |
-| [Remote Testing](#section-test-remote)               | Matthew           |                  | November 28, 2016 |
-| [ZWave Communication](#section-zwave-implementation) | Cameron           | Matthew          | December 6, 2016  |
-| [Lighting Scenario Data](#section-lighting-data)     | Cameron & Jeremy  |                  | February 1, 2017  |
-| [Add Device Workflow](#section-workflow-addDevice)   | Peter & Jeremy    | Matthew          | January 30, 2017  |
+<!--
+    Section References:
+
+    Section references should conform to the following format:
+
+                        sec-A[-B]-C-X
+
+    Where:
+        sec - Indicates this reference is to a section header
+        A   - The major section number this reference belongs to
+        B   - Optional: The minor section number this reference belongs to
+        C   - The file number this section resides in
+        X   - The header reference number within that file
+
+    Example:
+
+    - final/
+        - 0-Title/
+        - 1-Introduction/
+        - 2-Project/
+            - 1-Background.md
+
+                ## Project Background {#sec-2-1-1}
+
+                ### Overview {#sec-2-1-2}
+
+        sec-2-1-1
+
+        2 - From the project section number of 2
+        1 - Background file number of 1
+        1 - First header reference in that file
+
+
+    Appendix References:
+
+    Appendices should be referenced by letter. Sub-sections in an appendix should use dash separated
+    numbering. References to an appendix should be just the letters and dash separated numbers of that
+    appendix.
+
+    Example: A-1-1
+-->
+
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| **Section**                                        | **Author(s)**           | **Editor(s)**    | **Updated**             |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Project Background](#sec-1-1-1)                   | Matthew                 | All              | February 3, 2017        |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Technical Terminology](#sec-3-1-1-1) <br/>		 | Matthew 	 		       | Peter 		      | February 3, 2017        |
+| [Problem Background](#sec-3-1-2-1) <br/> 			 |          		       |       		      |                         |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Technical Overview](#sec-3-2-1-1)                 | Cameron & Matthew       | Peter            | October 10, 2016        |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Music Scenario](#sec-3-2-3-2) <br/>               | Cameron & Matthew <br/> | Peter <br/>      | November 6, 2016 <br/>  |
+| [Temperature Scenario](#sec-3-2-3-3) <br/>         | Matthew <br/>           | Peter <br/>      | November 6, 2016 <br/>  |
+| [Coffee Scenario](#sec-3-2-3-4) <br/>              | Jeremy & Matthew <br/>  | Peter <br/>      | November 5, 2016 <br/>  |
+| [Lighting Scenario](#sec-3-2-3-) <br/>             | Peter <br/>             | Matthew <br/>    | November 28, 2016 <br/> |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Use Cases](#3-2-4-1) <br/>    					 | Cameron & Matthew       | <br/>            | November 6, 2016 <br/>  |
+| [Training Use Cases](#3-2-4-2) <br/>	 			 | Cameron 				   | Matthew          | February 6, 2017 <br/>  |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Nonfunctional Requirements](#3-2-5-1)             | Cameron 				   |  			      | November 27, 2016       |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Component Design](#sec-3-2-6-1)                   | Matthew                 | Jeremy & Cameron | November 27, 2016 		|
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [System Interfaces](#sec-3-2-7-1)                  | Matthew 				   | 				  | November 13, 2016       |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Deployment](#sec-3-2-8-1)                         | Cameron                 | Matthew & Peter  | November 6, 2016        |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Technology](#sec-3-2-9-1)                         | Matthew                 | Peter            | November 6, 2016        |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
+| [Testing](#sec-3-2-10-1)                           | Cameron                 |                  | November 27, 2016       |
++----------------------------------------------------+-------------------------+------------------+-------------------------+
 
 ### Appendix Contributions
 
@@ -44,4 +97,11 @@
 | [F Shopping List](#F)            | Jeremy            |                   | November 13, 2016 |
 | [G Raw Data](#G)                 | Jeremy            |                   | January 31, 2017  |
 | [H Public APIs](#H)              | All               |                   | November 27, 2016 |
+| [I Project Lifecycle](#I)        | Cameron           |                   | January 18, 2017  |
+| [K System Data](#K)              | Cameron & Jeremy  |                   | February 1, 2017  |
+| [L Project Progress](#L)         | All               |                   | December 6, 2016  |
+
+
+
+
 

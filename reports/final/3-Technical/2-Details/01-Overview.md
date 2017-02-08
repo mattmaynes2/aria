@@ -1,8 +1,8 @@
-### Overview
+### Overview {#sec-3-2-1-1}
 
 #### Introduction {-}
 
-The Autonomous Real-Time Interactive Architecture (ARIA) will allow a homeowner to set up a collection
+The Autonomous Real-Time Interactive Architecture (Aria) will allow a homeowner to set up a collection
 of devices in their home which will automatically control their environment and automate common tasks.
 Task automation in the system will not require any user configuration, instead tasks will be automated
 based on the user's interaction with devices in the system.
@@ -12,18 +12,10 @@ home network. After connecting the hub, the homeowner can add enabled devices fo
 control by simply connecting them to the network. As new devices are connected, their input will be
 used to make more predictive decisions about user behaviour.
 
-#### Project Scope {-}
-
-The purpose of the system is to make home automation as easy as possible to set up. Many existing
-home automation systems require some form of programming from the user, in the form of a schedule or
-explicit scenarios which describe how the devices connected to them should behave. This project will
-improve upon such systems by inferring the correct state of connected devices from data collected
-during the homeowner's routine use of the devices.
-
 #### Product Functions {-}
 
-To provide simplicity and seamless interaction, the system must be easy to use and highly
-interactive. The system will provide a learning hub that will be the base of computation and
+To ensure a non-technical user can utilize the system, the system must be easy to use and highly
+interactive. The system will provide a smart hub that will be the base of computation and
 communication for all other components in the system.
 
 The system will have many different smart devices. These devices can be sensory inputs or controls
