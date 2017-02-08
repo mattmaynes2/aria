@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS "Event" (
 	"timestamp" DATETIME DEFAULT current_timestamp,
 	"request_id" INTEGER,
 	"source" TEXT,	
+	"session_id" INTEGER,
 	FOREIGN KEY ("request_id") REFERENCES Request("id"),
 	FOREIGN KEY ("source") REFERENCES Device("address")
 );

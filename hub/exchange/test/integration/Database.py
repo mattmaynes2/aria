@@ -1,13 +1,13 @@
 from unittest import TestCase
 import unittest
-from hub        import Hub, Exchange, CLI, args, daemon
+from hub        import Hub, Exchange, CLI, args, daemon, HubMode
 from device     import Device,DeviceType, Attribute, DataType, Parameter 
 from ipc import Message
 from adapter import Adapter
 from database import Database
 from delegate import RequestTracker
 from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavioursCommand,\
- CreateBehavioursCommand, CreateSessionCommand
+ CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand
 import queue
 import sqlite3
 import os
@@ -290,6 +290,7 @@ class TestDatabaseIntegration(TestCase):
     def test_session(self):
         self.hub.addCommand(CreateBehavioursCommand(self.database))
         self.hub.addCommand(CreateSessionCommand(self.database))
+        self.hub.addCommand(ActivateSessionCommand(self.database))
         myUuid = self.devices[0].address
         createMessage= Message()
         createMessage.type= Message.Request
@@ -317,11 +318,13 @@ class TestDatabaseIntegration(TestCase):
         
         createMessage= Message()
         createMessage.type= Message.Request
-        createMessage.data= {'start':'session', 'id':1}
+        createMessage.data= {'activate':'session', 'id':1}
         createMessage.sender = myUuid
         self.testAdapter.enqueueMessage(createMessage)
         time.sleep(0.5)
-        self.assertEqual(self.hub.session, 1)
+        self.assertEqual(self.hub.session.id, 1)
+        self.assertEqual(self.hub.session.behaviour_id, 1)
+        self.assertEqual(self.hub.mode, HubMode.Learning)
 
         eventMessage = Message()
         eventMessage.data = {
@@ -347,11 +350,11 @@ class TestDatabaseIntegration(TestCase):
         time.sleep(1)
         results = self.db.query("SELECT * FROM event").fetchone()
 
-        assertEqual(results['session_id'],1)
+        self.assertEqual(results['session_id'],1)
 
         createMessage= Message()
         createMessage.type= Message.Request
-        createMessage.data= {'stop':'session', 'id':1}
+        createMessage.data= {'deactivate':'session', 'id':1}
         createMessage.sender = myUuid
         self.testAdapter.enqueueMessage(createMessage)
         self.assertEqual(self.hub.session, None)

@@ -17,7 +17,7 @@ class Retriever:
     GET_DEVICE_TYPE         = "SELECT type, name FROM Device WHERE address = ?"
     GET_ATTRIBUTE_ID        = "SELECT id FROM Attribute WHERE device_type = ?"
     GET_ATTRIBUTE_NAME      = "SELECT name FROM Attribute WHERE id = ?"
-
+    GET_SESSION             = "SELECT * from session where id=?"
     GET_LAST_EVENT_ID       = "SELECT id FROM Event ORDER BY id DESC LIMIT 1 "
     GET_LAST_BEAVIOUR_ID    = "SELECT id FROM Behaviour ORDER BY id DESC LIMIT 1 "
     GET_LAST_SESSION_ID     = "SELECT id FROM Session ORDER BY id DESC LIMIT 1 "
@@ -98,6 +98,12 @@ class Retriever:
         self.database.execute(Retriever.ADD_NEW_SESSION, values)
         return self.database.execute(Retriever.GET_LAST_SESSION_ID)[0]['id']
 
+    ###
+    # @param id     the id of the session
+    #
+    # @return       A single session
+    def getSession(self,id_):
+        return self.database.execute(Retriever.GET_SESSION, [id_])[0]
 
     ###
     # Get a list of count behaviours
