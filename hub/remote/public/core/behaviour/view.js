@@ -16,7 +16,7 @@ class BehaviourView extends Component {
             .empty()
             .addClass('behaviour-view-body')
             .append(
-                this._name.state(this._state.name).render().$el(),
+                this._name.state(this._state.name).render().$el()
             );
 
         return this;

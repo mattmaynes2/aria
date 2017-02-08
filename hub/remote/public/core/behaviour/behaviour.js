@@ -1,9 +1,5 @@
-import $                from 'jquery';
-import uuid             from 'react-native-uuid';
 import Widget           from '../widget/widget';
 import BehaviourView       from './view';
-import Service          from '../service/service';
-import Notify           from '../notify/notify';
 
 import './behaviour.css';
 
