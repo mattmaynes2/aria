@@ -18,6 +18,10 @@ let PAGES = [
     {
         name    : 'Statistics',
         href    : '../stats/'
+    },
+    {
+        name    : 'Training',
+        href    : '../training'
     }
 ];
 
