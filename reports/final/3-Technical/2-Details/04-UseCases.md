@@ -274,4 +274,3 @@ associated with it which are depicted in Figure <!-- FIGURE NUMBER -->.
 | Flow 			 | 1. User clicks stop session button
 |                | 2. View indicates that the training session is no longer active                |
 +----------------+--------------------------------------------------------------------------------+
-
