@@ -10,7 +10,7 @@ being relayed to the specific device.
 
 The design for this system will need to consider the requirement that multiple devices will need
 to connect to a single smart hub. The hub will also need to support concurrent connections with
-users, as more than one may wish to have access at any given time. These feature present some
+users, as more than one may wish to have access at any given time. These features present some
 hardware requirements that must be satisfied. The physical smart hub must have external interfaces
 for communicating to multiple devices and must support concurrent processes. The communication
 protocol to interface with the smart devices themselves must also be considered as it must
@@ -40,7 +40,7 @@ hardware and software level specification that integrates a wide spectrum of dev
 a single, standard interface. For this reason, it was selected as the primary device
 communication for the Aria system.
 
-The remained of the technical section outlines the details of the software development and
+The remainder of the technical section outlines the details of the software development and
 implementation of the smart hub. Included in this analysis is the details of the remote client
 interface for controlling the smart hub and its connected devices.
 

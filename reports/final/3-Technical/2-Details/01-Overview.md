@@ -14,7 +14,7 @@ used to make more predictive decisions about user behaviour.
 
 #### Product Functions {-}
 
-To provide simplicity and seamless interaction, the system must be easy to use and highly
+To ensure a non-technical user can utilize the system, the system must be easy to use and highly
 interactive. The system will provide a smart hub that will be the base of computation and
 communication for all other components in the system.
 
