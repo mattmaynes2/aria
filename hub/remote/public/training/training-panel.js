@@ -21,7 +21,7 @@ class TrainingPanel extends WidgetPanel {
     }
     render () {
         this._$el.append(
-            new Button("Add").render().$el()
+            new Button('Add').render().$el()
         );
         this._$el
             .append(this._state.behaviours.map((b) => {
