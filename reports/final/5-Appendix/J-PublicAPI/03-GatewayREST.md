@@ -483,10 +483,11 @@ gateway. To see the available events over websockets
 +---------------+-------------------------------------------------------------------------------+
 | URL Params	| **None**																		|
 +---------------+-------------------------------------------------------------------------------+
-| Data Params	| - **start**: The id of the behaviour to start from (will not be included)  	|
+| Data Params	| - **start**: The id of the session to start from (will not be included)  	|
 |               | - **count**: The number of records to return                                  |
 |               | **Example** <br/>                                                             |
 |               |               {                                                               |
+|               |                   "behaviourId" : 2                                           |
 |               |                   "start" : 5                                                 |
 |               |                   "count" : 15                                                |
 |               |               }                                                               |
@@ -496,7 +497,6 @@ gateway. To see the available events over websockets
 | 				| **Content:**  {																|	
 |               |                   "records": [{                                               |
 |               |                               id: < integer > ,                               |
-|               |                               behaviourId: < integer >,                       |
 |               |                               name: < string > ,                              |
 |               |                               createdDate: < datetime > ,                     |
 |               |                               active: < boolean >                             |
