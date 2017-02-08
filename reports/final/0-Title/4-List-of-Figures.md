@@ -25,4 +25,3 @@
 [scenario-light-temperature-sequence]: ./uml/LightTemperatureSequence.png "Figure 6: Light Temperature Scenario Sequence" {#fig-light-temperature-sequence}
 [scenario-coffee-sequence]: ./uml/CoffeeSequence.png "Figure 7: Coffee Scenario Sequence" {#fig-scenario-coffee-sequence}
 
-
