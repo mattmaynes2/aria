@@ -1,6 +1,6 @@
 ### Use Cases
 
-![][system-use-case]
+![][fig-system-use-case]
 
 ##### Install Hub {-}
 
