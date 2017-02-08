@@ -19,6 +19,7 @@ import traceback
 import threading
 from uuid import UUID
 from adapter import HubAdapter
+from hub.hub_mode import HubMode
 
 logging.disable(logging.WARNING)
 log=logging.getLogger(__name__)
@@ -42,6 +43,7 @@ class TestDatabaseIntegration(TestCase):
 
         self.database    = Database(self._testMethodName + ".db")
         self.hub         = Hub()
+        self.hub.mode    = HubMode.Learning
         self.cli         = CLI(self.hub)
         self.exchange    = Exchange(self.hub, self.cli, self.database)
         self.hub.addCommand(GetEventWindowCommand(self.database))
