@@ -7,7 +7,7 @@ from adapter import Adapter
 from database import Database
 from delegate import RequestTracker
 from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavioursCommand,\
- CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand
+ CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand, DeactivateSessionCommand
 import queue
 import sqlite3
 import os
@@ -293,6 +293,7 @@ class TestDatabaseIntegration(TestCase):
         self.hub.addCommand(CreateBehavioursCommand(self.database))
         self.hub.addCommand(CreateSessionCommand(self.database))
         self.hub.addCommand(ActivateSessionCommand(self.database))
+        self.hub.addCommand(DeactivateSessionCommand())
         myUuid = self.devices[0].address
         createMessage= Message()
         createMessage.type= Message.Request
@@ -359,7 +360,9 @@ class TestDatabaseIntegration(TestCase):
         createMessage.data= {'deactivate':'session', 'id':1}
         createMessage.sender = myUuid
         self.testAdapter.enqueueMessage(createMessage)
+        time.sleep(0.5)
         self.assertEqual(self.hub.session, None)
+        self.assertEqual(self.hub.mode,HubMode.Normal)
         
         eventMessage = Message()
         eventMessage.data = {
@@ -384,8 +387,9 @@ class TestDatabaseIntegration(TestCase):
         self.testAdapter.enqueueMessage(eventMessage)    
         time.sleep(1)
 
+        # make sure the event isn't logged when there is no active session
         results = self.db.query("SELECT * FROM event").fetchall()
-        assertEqual(len(results),1)
+        self.assertEqual(len(results),1)
 
 
 class TestDatabase:
