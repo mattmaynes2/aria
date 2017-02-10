@@ -7,7 +7,7 @@ class Modal extends WidgetPanel {
         super();
 
         var button = new Button('X');
-        button._$el.addClass('close');
+        button._$el.addClass('modal-close');
         button.click(()=>{
             this._$el.hide();
         });
