@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+## v0.5.2
+
+- Training behaviours and sessions have been added to database and gateway
+- Added release build command to build
+- Removed report compilation from continuous integration
+
 ## v0.5.1
 
 - Error Management
