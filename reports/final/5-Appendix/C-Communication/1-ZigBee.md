@@ -31,7 +31,7 @@ The low power consumption of ZigBee devices when compared to WiFi leads to bette
 and a longer batter life [^C-1-3].
 
 Theoretically, up to 256 devices can be connected to one network. However, in practise, the system performance
-tends to degrade at around thirty devices [C-1-4].
+tends to degrade at around thirty devices [^C-1-4].
 
 One of the major drawbacks of ZigBee is that for it to be effective, it must operate in the 2.4 GHz
 frequency band. This would not be an issue, except for the fact that this is the same frequency
@@ -40,7 +40,7 @@ packet loss for both networks. The lost packets have to be retransmitted until t
 the intended endpoint, causing lag in both networks. ZigBee packets suffer more from this
 interference in practice, with the level of interference rising as the number of nodes and the
 amount of traffic rises. Fortunately, newer WiFi networks operate on the 5 GHz channel which would
-eliminate this interference [C-1-5].
+eliminate this interference [^C-1-5].
 
 A second potential drawback of ZigBee is the historical lack of official standards for
 application-level protocols for ZigBee devices. While ZigBee devices all communicate using the same
@@ -48,7 +48,7 @@ physical layer protocol, each device may use a different high-level protocol for
 The result of this lack of standardization is that different companies have their own protocols for
 ZigBee device communication, so devices from different companies cannot be assumed to be
 compatible. The limited interoperability has been somewhat fixed with the introduction of the ZigBee
-Alliance, but could present some legacy issues [C-1-6].
+Alliance, but could present some legacy issues [^C-1-6].
 
 [^C-1-1] L. LABS, "Z-Wave vs. Zigbee," in Wireless Technology, Link Labs, 2015. [Online]. Available: http://www.link-labs.com/z-wave-vs-zigbee/. Accessed: Oct. 6, 2016.
 
