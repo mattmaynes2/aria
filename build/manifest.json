@@ -9,7 +9,8 @@
         "deps" : "./support/pkman install --try shellcheck"
     },
     "common.markdown" : {
-        "enviro" : [
+        "all"       : "ignore",
+        "enviro"    : [
             "./support/pkman install pandoc",
             "./support/pkman install -p cask wkhtmltopdf",
             "./support/pkman install -t -p apt-get wkhtmltopdf"
@@ -38,14 +39,16 @@
         "build"     : ["cd ../hub/gateway", "npm run build"],
         "deploy"    : ["cd ../hub/gateway", "npm start"],
         "test"      : ["cd ../hub/gateway", "npm test"],
-        "clean"     : ["cd ../hub/gateway", "rm -rf bin"]
+        "clean"     : ["cd ../hub/gateway", "rm -rf bin"],
+        "release"   : ["cd ../hub/gateway", "npm run release"]
     },
     "hub.remote" : {
         "enviro"    : "./support/pkman install node",
         "deps"      : ["cd ../hub/remote", "npm install"],
         "build"     : ["cd ../hub/remote", "npm run build"],
         "test"      : ["cd ../hub/remote", "npm test"],
-        "clean"     : ["cd ../hub/remote", "rm -rf bin"]
+        "clean"     : ["cd ../hub/remote", "rm -rf bin"],
+        "release"   : ["cd ../hub/remote", "npm run release"]
     },
     "uml" : {
         "all" : "ignore",
@@ -61,19 +64,22 @@
             "mkdir -p mdtmp__",
             "cd mdtmp__ && MDJ=$(find ../../ -name '*.mdj') && for file in $MDJ; do ../support/try mdgen image -m $file; mv *.png $(dirname $file); done && cd ..",
             "rm -rf mdtmp__"
-        ]
+        ],
+        "release" : "self.build"
     },
    "reports.proposal" : {
-        "all"   : "ignore",
-        "build" : "./support/try ./markdown/mkpdf -o Proposal.pdf ../reports/proposal",
-        "clean" : "rm -f ../reports/proposal/*.pdf"
-    },
+        "all"       : "ignore",
+        "build"     : "./support/try ./markdown/mkpdf -o Proposal.pdf ../reports/proposal",
+        "clean"     : "rm -f ../reports/proposal/*.pdf",
+        "release"   : "self.build" 
+   },
     "reports.final" : {
         "all"   : "ignore",
         "build" : "./support/try ./markdown/mkpdf --auto-number --toc -o Report.pdf ../reports/final",
         "clean" : [
             "rm -f ../reports/final/*.pdf",
             "rm -f ../reports/final/uml/*.png"
-        ]
+        ],
+        "release" : "self.build"
     }
 }
