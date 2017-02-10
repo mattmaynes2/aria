@@ -1,6 +1,8 @@
-### Hub Testing {#section-test-hub}
+### Testing {#sec-3-2-10-1}
 
-#### Context {-}
+#### Hub Testing {-}
+
+##### Context {-}
 
 The DeviceCommunication, CommunicationServer, and EventLogger components form the core of the 
 system's hub. Each of these components is written in Python, and work together to react to 
@@ -12,7 +14,7 @@ appropriate component, which may be another device HTTPGateway or EventLogger. T
 describes the unit testing of each component, as well the method used to test that the components 
 perform correctly together.
 
-#### Unit Testing {-}
+##### Unit Testing {-}
 
 The modules that make up each component are unit tested using Python's *unittest* framework. 
 The unit tests are used for regression testing, and are written by the same person who implemented
@@ -25,7 +27,7 @@ can be replaced with a mock obejcts automatically by declaring a test case with 
 control the behaviour of the dependencies of a module. For example, mock objects are used to 
 return test data when a module attempts to read data from a network socket.
 
-#### Integration Testing {-}
+##### Integration Testing {-}
 
 Interactions between each of the components are triggered by the receipt of messages from
 smart devices, as well as requests to the REST API. In order to make tests repeatable and to
@@ -51,9 +53,9 @@ out dependencies such as threads, database, etc. The *unittest* framework is use
 the execution of tests, so the behaviour of the components is as close as possible to their actual
 behaviour when the entire system is running.
 
-### Remote Testing {#section-test-remote}
+#### Remote Testing {-}
 
-#### Context {-}
+##### Context {-}
 
 The gateway and remote client work closely to provide control and observability to the Aria system.
 These components are written in JavaScript and need to communicate using a REST API. The gateway
@@ -61,7 +63,7 @@ is responsible for translating REST communications to the required IPC communica
 operations. The remote is simply a user interface to interacting with the controls provided by
 the gateway.
 
-#### Unit Testing {-}
+##### Unit Testing {-}
 
 The gateway is executed in node.js, a server side environment for JavaScript applications. In
 order to test the internal behaviours of the gateway, a common BDD testing framework called
@@ -77,7 +79,7 @@ remote, a unit testing framework called *karma* was used. Karma is a test runner
 This unit testing library is run against every build of the system and is used for regression
 testing purposes.
 
-#### Integration Testing {-}
+##### Integration Testing {-}
 
 In order to isolate the behaviours of the gateway and remote from the exchange server, an
 interactive integration testing suite was added. This testing suite mocks all communication

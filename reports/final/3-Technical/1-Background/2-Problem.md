@@ -1,4 +1,4 @@
-### Problem Background
+### Problem Background {#sec-3-1-2-1}
 
 The expanding IoT market has sparked a rush of companies to introduce smart home automation
 platforms to market. These new smart home system systems offer rich features but have a complex
