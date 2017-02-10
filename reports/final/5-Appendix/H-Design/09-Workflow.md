@@ -7,7 +7,7 @@ particular, this workflow focuses on adding a Z-Wave device to the system after.
 workflow assumes that the system is already online and operational, that the Z-Wave
 stick is plugged into the smart hub and that the network is live
 
-![](./uml/addDeviceFlow.png)
+![][h-14]
 
 When the Z-Wave adapter starts up, it uses the OpenZWave library to initiate a Z-Wave network. When 
 a Z-Wave device is first paired with the Z-Stick (which is attached to the Raspberry Pi), the network

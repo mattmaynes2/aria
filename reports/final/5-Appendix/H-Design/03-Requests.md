@@ -14,12 +14,12 @@ user initiates all requests in the use case diagram for this system.
 
 ##### System Hub {-}
 
-The SystemHub actor represents the central hub of the ARIA system. The system hub is in charge
+The SystemHub actor represents the central hub of the Aria system. The system hub is in charge
 of relaying information of the system to the User through the Web Client.
 
 ##### Device {-}
 
-The Device actor represents any device in the ARIA system. A device is responsible for relaying
+The Device actor represents any device in the Aria system. A device is responsible for relaying
 its specific information to the User through the Web Client.
 
 ##### List Devices {-}
@@ -63,14 +63,14 @@ values depending on the device.
 
 #### Server Request {-}
 
-![](./uml/ServerRequest.png)
+![][h-3]
 
 The Server Request diagram shows the workflow that occurs when an end user wants to retrieve
 information about the state of the communication server through the web client.
 
 #### Device Request {-}
 
-![](./uml/DeviceRequest.png)
+![][h-4]
 
 The Device Request diagram shows the workflow that occurs when an end user wants to retrieve 
 inform about a specific device in the system through the web client. 
