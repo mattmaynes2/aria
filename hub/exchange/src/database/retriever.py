@@ -5,6 +5,10 @@ log = logging.getLogger(__name__)
 
 class Retriever:
 
+    GET_BEHAVIOUR_WINDOW    = "SELECT id, name, created_date, last_updated, active FROM Behaviour \
+                               ORDER BY id DESC LIMIT ?,?" 
+    GET_SESSION_WINDOW      = "SELECT id, name, created_date, active FROM Session WHERE \
+                               behaviour_id = ? ORDER BY id DESC LIMIT ?,?"
     GET_ALL_EVENT_WINDOW    = "SELECT id as 'index', timestamp, source \
                                FROM Event WHERE source NOT IN (?) ORDER BY id DESC LIMIT ?,?"
     GET_DEVICE_EVENT_WINDOW = "SELECT * FROM Event WHERE source = ? LIMIT  ?,?"
@@ -13,8 +17,13 @@ class Retriever:
     GET_DEVICE_TYPE         = "SELECT type, name FROM Device WHERE address = ?"
     GET_ATTRIBUTE_ID        = "SELECT id FROM Attribute WHERE device_type = ?"
     GET_ATTRIBUTE_NAME      = "SELECT name FROM Attribute WHERE id = ?"
+    GET_SESSION             = "SELECT * from session where id=?"
+    GET_LAST_EVENT_ID       = "SELECT id FROM Event ORDER BY id DESC LIMIT 1 "
+    GET_LAST_BEAVIOUR_ID    = "SELECT id FROM Behaviour ORDER BY id DESC LIMIT 1 "
+    GET_LAST_SESSION_ID     = "SELECT id FROM Session ORDER BY id DESC LIMIT 1 "
 
-    GET_LAST_EVENT_ID       = "SELECT * FROM Event ORDER BY id DESC LIMIT 1 "
+    ADD_NEW_BEHAVIOUR       = "INSERT INTO Behaviour (name) VALUES (?)"
+    ADD_NEW_SESSION         = "INSERT INTO Session (behaviour_id, name) VALUES (?, ?)"
 
     def __init__(self, database):
         self.database = database																									
@@ -32,20 +41,20 @@ class Retriever:
         values = (ignore, start, count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         for r in results:
-            device = self.getDeviceType(r["source"])
+            device = self._getDeviceType(r["source"])
             #log.error("\rType is: " + str(_type[0]["type"]))
-            id = self.getAttribute(device[0]["type"])
+            id = self._getAttribute(device[0]["type"])
             #log.error("\rID is: " + id["id"])
             r["attribute"] = {}
-            r["attribute"]["name"] = self.getAttributeName(id[0]['id'])[0]['name']
+            r["attribute"]["name"] = self._getAttributeName(id[0]['id'])[0]['name']
             r['device']= device[0]['name']
-            params = self.getParametersChanged(r["index"])
+            params = self._getParametersChanged(r["index"])
 
             r["attribute"]["parameters"] = []
             
             for p in params:
                 newParam = {}
-                paramInfo = self.getParameterInfo(p["parameter"])
+                paramInfo = self._getParameterInfo(p["parameter"])
                 newParam["value"] = p["value"]
                 newParam["name"] = paramInfo[0]['name']
                 newParam["dataType"] = DataType(paramInfo[0]['data_type'])
@@ -68,19 +77,72 @@ class Retriever:
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         return results
 
-    def getAttribute(self, deviceType):
+    ###
+    # Add a new behaviour
+    # @param name    Name of the new behaviour
+    #
+    # @return        The id of newly created behaviour
+    ###
+    def addBehaviour(self, name):
+        self.database.execute(Retriever.ADD_NEW_BEHAVIOUR, [name])
+        return self.database.execute(Retriever.GET_LAST_BEAVIOUR_ID)[0]["id"]
+
+    ###
+    # Add a new session
+    # @param name    Name of the new session
+    #
+    # @return        The id of newly created session
+    ###
+    def addSession(self,behaviourId, name):
+        values = (behaviourId, name) 
+        self.database.execute(Retriever.ADD_NEW_SESSION, values)
+        return self.database.execute(Retriever.GET_LAST_SESSION_ID)[0]['id']
+
+    ###
+    # @param id     the id of the session
+    #
+    # @return       A single session
+    def getSession(self,id_):
+        return self.database.execute(Retriever.GET_SESSION, [id_])[0]
+
+    ###
+    # Get a list of count behaviours
+    # @param start   Index in the database to start retrieving from, with 0 being the most recent
+    #                record
+    # @param count   Number of behaviours to retrieve
+    #
+    # @return        List of count number of event objects across all devices
+    ###
+    def getBehaviourWindow(self, start, count):
+        values = (start, count)
+        return self.database.execute(Retriever.GET_BEHAVIOUR_WINDOW, values)
+
+    ###
+    # Get a list of count training sessions for a behaviour
+    # @param start        Index in the database to start retrieving from, with 0 being the most recent
+    #                     record
+    # @param count        Number of sessions to retrieve
+    # @param behaviourId  The behaviour to retrieve training sessions from
+    #
+    # @return        List of count number of event objects across all devices
+    ###
+    def getSessionWindow(self, start, count, behaviourId):
+        values = (start, count, behaviourId)
+        return self.database.execute(Retriever.GET_SESSION_WINDOW, values)
+
+    def _getAttribute(self, deviceType):
         return self.database.execute(Retriever.GET_ATTRIBUTE_ID, [deviceType])
 
-    def getAttributeName(self, attributeID):
+    def _getAttributeName(self, attributeID):
         return self.database.execute(Retriever.GET_ATTRIBUTE_NAME, [attributeID])
 
-    def getDeviceType(self, address):
+    def _getDeviceType(self, address):
         return self.database.execute(Retriever.GET_DEVICE_TYPE, [address])
 
-    def getParametersChanged(self, eventID):
+    def _getParametersChanged(self, eventID):
         return self.database.execute(Retriever.GET_PARAM_CHANGE, [eventID])
 
-    def getParameterInfo(self, paramID):
+    def _getParameterInfo(self, paramID):
         return self.database.execute(Retriever.GET_PARAM_INFO, [paramID])
 
 

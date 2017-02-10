@@ -38,7 +38,7 @@ let Gateway = (function () {
 
         app.use('/hub'      , this._routers.hub.router());
         app.use('/device'   , this._routers.device.router());
-
+        
         websock.on('connection', (socket) => {
             var emitters = Gateway.SocketEvents.map((event) => {
                 return this._adapter.subscribe(event, (data) => {

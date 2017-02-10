@@ -1,6 +1,29 @@
 Change Log
 ==========
 
+## v0.5.2
+
+- Training behaviours and sessions have been added to database and gateway
+- Added release build command to build
+- Removed report compilation from continuous integration
+
+## v0.5.1
+
+- Error Management
+    - Web client now captures errors from requests and presents them to the user
+- Notification History
+    - Notifications that are sent to the user interface are now maintained in a history buffer
+
+## v0.5.0
+
+- Updated Database Design
+    - Modified database storage to match specification
+    - Added data types for device parameters and attributes
+- User Interface
+    - Added display fields for different data types
+    - Added integrated control for actuators in the system
+    - Introduced error handling for web client when disconnected from the ARIA system
+
 ## v0.4.0
 
 - End-to-end Push Events

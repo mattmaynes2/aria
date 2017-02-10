@@ -57,7 +57,8 @@ let IntegrateAdapter = (function () {
                 version : '1.0.0',
                 mode    : 1,
                 name    : 'Smart Hub',
-                devices : []
+                devices : [],
+                behaviours : []
             }
         };
 
@@ -96,9 +97,7 @@ let IntegrateAdapter = (function () {
                             response = requestAction.call(this, payload);
                         }
                         else {
-                            response = payload.get ?
-                                requestGet.call(this, payload) :
-                                requestSet.call(this, payload);
+                            response = makeRequest.call(this, payload);
                         }
                         break;
                     case IPC.Event:
@@ -139,6 +138,20 @@ let IntegrateAdapter = (function () {
                 value       : value
             }
         };
+    }
+
+    function makeRequest (payload) {
+        var response;
+        if (payload.get) {
+            response = requestGet.call(this, payload);
+        }
+        else if (payload.set){
+            response = requestSet.call(this, payload);
+        }
+        else if (payload.create) {
+            response = requestCreate.call(this, payload);
+        }
+        return response;
     }
 
     function requestAction (payload) {
@@ -182,6 +195,12 @@ let IntegrateAdapter = (function () {
                 return wrap(payload.get, { total : 1500, records : makeEvents.call(this, payload)});
             case 'deviceEvents':
                 return wrap(payload.get, { total : 100, records : makeEvents.call(this, payload)});
+            case 'behaviours' :
+                return wrap(payload.get, { records: Array.prototype.slice.call(
+                    this._state.hub.behaviours,
+                    payload.start, 
+                    Math.min(this._state.hub.behaviours.length, payload.start+payload.count)
+                )});
             default:
                 throw new Error('Unknown request');
         }
@@ -202,6 +221,25 @@ let IntegrateAdapter = (function () {
         }
         payload.get = payload.set;
         return requestGet.call(this, payload);
+    }
+
+    function requestCreate (payload) {
+        switch (payload.create) {
+            case 'behaviour': 
+                logger.debug(`Creating a new behaviour with name ${payload.name}`);
+                var index = this._state.hub.behaviours.length;
+                this._state.hub.behaviours.push({
+                                                name: payload.name, 
+                                                id: index, 
+                                                createdDate: generateTime(),
+                                                lastUpdated: generateTime(),
+                                                active: true,
+                                                sessions: []
+                                            });
+                var res = wrap(payload.get, { id: index });
+                logger.debug('Sending test response: ', res);
+                return res;
+        }
     }
 
     function event () {

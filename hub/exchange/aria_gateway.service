@@ -1,0 +1,12 @@
+[Unit]
+Description=The ARIA home automation system HTTP gateway server
+After=aria_hub.service
+
+[Service]
+Type=forking
+WorkingDirectory=/home/pi/aria/hub/gateway
+ExecStart=/usr/bin/npm start
+ExecStop=/usr/bin/npm stop
+
+[Install]
+WantedBy=multi-user.target

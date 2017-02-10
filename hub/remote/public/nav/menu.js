@@ -8,6 +8,10 @@ let PAGES = [
         href    : '../hub/'
     },
     {
+        name    : 'Training',
+        href    : '../training'
+    },
+    {
         name    : 'Devices',
         href    : '../devices/'
     },

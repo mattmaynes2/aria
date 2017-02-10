@@ -1,11 +1,12 @@
 from unittest import TestCase
 import unittest
-from hub        import Hub, Exchange, CLI, args, daemon
+from hub        import Hub, Exchange, CLI, args, daemon, HubMode
 from device     import Device,DeviceType, Attribute, DataType, Parameter 
 from ipc import Message
 from adapter import Adapter
 from database import Database
 from delegate import RequestTracker
+from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand
 import queue
 import sqlite3
 import os
@@ -17,6 +18,7 @@ import traceback
 import threading
 from uuid import UUID
 from adapter import HubAdapter
+from hub.hub_mode import HubMode
 
 logging.disable(logging.WARNING)
 log=logging.getLogger(__name__)
@@ -39,9 +41,12 @@ class TestDatabaseIntegration(TestCase):
             pass
 
         self.database    = Database(self._testMethodName + ".db")
-        self.hub         = Hub(self.database)
+        self.hub         = Hub()
+        self.hub.mode    = HubMode.Learning
         self.cli         = CLI(self.hub)
         self.exchange    = Exchange(self.hub, self.cli, self.database)
+        self.hub.addCommand(GetEventWindowCommand(self.database))
+        self.hub.addCommand(GetDeviceEventsCommand(self.database))
         self.testAdapter = StubDeviceAdapter()
         self.exchange.register('stub', self.testAdapter)
         self.exchange.register('hub',HubAdapter(self.hub))
@@ -224,7 +229,7 @@ class TestDatabaseIntegration(TestCase):
         sensorEventWindowRequest.sender = self.devices[0].address
         self.testAdapter.enqueueMessage(sensorEventWindowRequest)
         # Give some time for the hub to respond to the request
-        time.sleep(10)
+        time.sleep(20)
 
         response = self.testAdapter.receivedMessages[0]
         self.assertEqual(response.data["response"], "eventWindow")
@@ -246,6 +251,7 @@ class TestDatabaseIntegration(TestCase):
         thirdResult = deviceTypeResults.fetchone()
         self.assertEqual(thirdResult["Count(*)"], 20)
 
+
 class TestDatabase:
 
     def __init__(self, db_name):
@@ -261,7 +267,9 @@ class TestDatabase:
         self.cursor = self.conn.cursor()
 
     def query(self, sql):
-        return self.cursor.execute(sql)
+        result= self.cursor.execute(sql)
+        self.conn.commit()
+        return result
 
 
 

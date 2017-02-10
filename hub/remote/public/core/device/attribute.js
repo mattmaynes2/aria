@@ -26,7 +26,7 @@ class DeviceAttribute extends Component {
         this._parameters.forEach((param, i) => {
             param.change((state) => {
                 this._state.parameters[i].value = state;
-                this._changed(this._state.parameters[i]);
+                this.trigger('change', this._state.parameters[i]);
             });
         });
 

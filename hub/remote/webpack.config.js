@@ -20,22 +20,18 @@ let loaders = {
         ]
     };
 
-function page (name) {
-    name = name || '';
-    return {
-        entry   :  __dirname + `/public/${name}/index.js`,
-        output  : {
-            path        : __dirname + `/public/${name}`,
-            filename    : name ? `${name}.bundle.js` : 'bundle.js',
-        },
-        module : loaders,
-        devtool: '#inline-source-map'
-    };
-}
 
-module.exports = [
-    page('hub'),
-    page('devices'),
-    page('stats'),
-    page('schedule')
-];
+module.exports = {
+    entry   : {
+        'hub'       : __dirname + '/public/hub/index.js',
+        'devices'   : __dirname + '/public/devices/index.js',
+        'stats'     : __dirname + '/public/stats/index.js',
+        'schedule'  : __dirname + '/public/schedule/index.js',
+        'training'  : __dirname + '/public/training/index.js'
+    },
+    output  : {
+        path        : __dirname + '/public/',
+        filename    : '[name]/[name].bundle.js',
+    },
+    module : loaders
+};

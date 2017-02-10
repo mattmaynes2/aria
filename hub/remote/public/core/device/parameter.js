@@ -29,14 +29,14 @@ class DeviceParameter extends Component {
                 this._target = new StateButton(option, ['On', 'Off']);
                 this._target.change((v) => {
                     this._state = valueOf(this._props.dataType, v);
-                    this._changed();
+                    this.trigger('change');
                 });
                 break;
             case DataType.Color:
                 this._target = new ColorPicker();
                 this._target.change((c) => {
                     this._state = valueOf(this._props.dataType, c);
-                    this._changed();
+                    this.trigger('change');
                 });
                 break;
             case DataType.Byte:
@@ -54,7 +54,7 @@ class DeviceParameter extends Component {
                 });
                 this._target.change((v) => {
                     this._state = v;
-                    this._changed();
+                    this.trigger('change');
                 });
                 break;
             default:

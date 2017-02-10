@@ -1,6 +1,7 @@
 import logging
 from ipc import Message
 from database import DatabaseTranslator 
+from hub.hub_mode import HubMode
 from uuid import UUID
 
 log= logging.getLogger(__name__)
@@ -21,21 +22,28 @@ class RequestTracker(DatabaseTranslator):
             for a device then this was a manual user action, a request is created for this 
             action.
         """
+        # Only log messages if the hub is in learning mode
+        if(self.hub.mode != HubMode.Learning):
+            #TODO need a better solution for when not in learning mode
+            return
         # ignore requests to hub they don't need to be logged
         if(Message.Request == message.type and message.receiver != self.hub.address):
             self.requests[message.receiver]=self.dbTranslator.received(message)
             return self.requests[message.receiver]
         elif(Message.Event == message.type):
+            if(self.hub.session):
+                # associates an event with active training session
+                message.data['session_id']=self.hub.session.id
             device= self.hub.getDevice(message.sender)
             if(not device):
                 log.warning('Unknown sender '+str(UUID(bytes=message.sender)))
-                return False
+                return
             reqid=self.requests.pop(message.sender,None)
             # don't create a request for a non controllable device
             attribute = device.getAttribute(message.data['attribute']['name'])
             if(not attribute):
                 log.warning("{} dosen't have attribute {}".format(device.name,message.data.get('attribute')))
-                return False
+                return
             if(reqid or not attribute.isControllable):
                 self.sendEvent(reqid,message)
             else:
@@ -47,6 +55,7 @@ class RequestTracker(DatabaseTranslator):
                     self.sendEvent(reqid,message)
                 except Exception as e:
                     log.error ('Invalid Event message '+str(message)+ str(e),exc_info=True)
+
         
             
     def sendEvent(self,reqid,message):

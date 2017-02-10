@@ -11,7 +11,7 @@ class DatabaseTranslator(Delegate):
 
     DISCOVER          = "INSERT INTO Device (address, version, type, name) VALUES (?, ?, ?, ?)"
     REQUEST           = "INSERT INTO Request (source, receiver) VALUES (?, ?)"
-    EVENT             = "INSERT INTO Event (request_id, source) VALUES (?, ?)"
+    EVENT             = "INSERT INTO Event (request_id, source, session_id) VALUES (?, ?,?)"
     PARAMETER_CHANGE  = "INSERT INTO Parameter_Change (parameter, value, event_id) VALUES \
                         (?, ?, ?)"
 
@@ -77,8 +77,10 @@ class DatabaseTranslator(Delegate):
             id_ = event.data["requestId"]
         else:
             id_ = None
+        session_id= event.data.get("session_id",None) 
 
-        values = (id_, self._getStr(event.sender))
+
+        values = (id_, self._getStr(event.sender),session_id)
         self.database.execute(DatabaseTranslator.EVENT, values)
         eventID = self.database.getLastInsertId()
 
