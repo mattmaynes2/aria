@@ -5,7 +5,7 @@
 There are many different ways to connect devices across a network. A familiar example is WiFi, but
 other protocols are available that specialize in different aspects of wireless communication.
 The goal of this section is to investigate the strengths and weaknesses of different communication
-protocols, and evaluate them against each other.
+protocols, and evaluate them against each other according to the requirements of the project.
 
 ##### Selection Criteria {-}
 
