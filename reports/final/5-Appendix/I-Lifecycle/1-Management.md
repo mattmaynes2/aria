@@ -23,7 +23,7 @@ and other Agile methodologies. Use of practices which are widely accepted in ind
 that new developers are comfortable working on the project. The process prescribes some practices to
 be used for: Source Code Management, Code Reviews, Issue Tracking, and Testing.
 
-![][code-lifecycle]
+![][I-1]
 
 #### Source Code Management {-}
 

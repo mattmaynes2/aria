@@ -1,6 +1,6 @@
 ### H-1 Hub Implementation {- #H-1}
 
-![](./uml/ExchangeClassDiagram.png)
+![]]
 
 #### Adapters {-}
 

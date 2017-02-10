@@ -9,7 +9,7 @@ the state of all components within the system.
 
 ##### Hub Page {-}
 
-![](./images/Remote-Home.png)
+![][h-9]
 
 This page provides the user with controls for updating the state of the hub and discovering devices.
 In the lower area of the page there is an event feed that is updated using push notifications
@@ -17,8 +17,8 @@ whenever an action happens within the system. This provides the user with detail
 behaviours in the system, what is changing and when it happened. To notify the user when errors
 or warning happen within the hub, push notifications are used.
 
-![](./images/Remote-Notify-Error.png)
-![](./images/Remote-Notify-Warning.png)
+![][h-10]
+![][h-11]
 
 ###### Discovery {-}
 
@@ -27,11 +27,11 @@ begins searching for new devices in the local network area. If a device is found
 then it is added to the hub. The user is notified of the addition of these devices through push
 events as seen below.
 
-![](./images/Remote-Notify-Discover.png)
+![][h-12]
 
 ##### Device Page {-}
 
-![](./images/Remote-Devices.png)
+![][h-13]
 
 This page is responsible for providing the user with state information and controls for the
 devices within the system. Each device's current state is displayed to the user in the device
