@@ -128,9 +128,9 @@ turning on the lights and resetting the TSLM variable.
 
 ##### Graphs {-}
 
-![](./images/Scenario-NoActivity.png)
+![][g-1]
 
-![](./images/Scenario-OfficeActivity.png)
+![][g-2]
 
 ##### Feature Extraction {-}
 
