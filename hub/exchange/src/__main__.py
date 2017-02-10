@@ -12,7 +12,8 @@ from adapter.zwave_adapter import ZWaveAdapter
 from database import Database
 from ipc import Message
 from device     import SoftwareDeviceFactory
-from hub.commands import GetDeviceEventsCommand, GetEventWindowCommand
+from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavioursCommand,\
+ CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand, DeactivateSessionCommand
 _log_config_file = 'configs/log.config'
 _log_config_location = resource_filename(__name__, _log_config_file)
 
@@ -66,6 +67,11 @@ def exit ():
 def setupCommands(hub,database):
     hub.addCommand(GetDeviceEventsCommand(database))
     hub.addCommand(GetEventWindowCommand(database))
+    hub.addCommand(GetBehavioursCommand(database))
+    hub.addCommand(CreateBehavioursCommand(database))
+    hub.addCommand(CreateSessionCommand(database))
+    hub.addCommand(ActivateSessionCommand(database))
+    hub.addCommand(DeactivateSessionCommand(database))
 
 
 if (__name__ == '__main__'):
