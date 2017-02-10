@@ -38,7 +38,7 @@ let Command = (function () {
         return `[${this.directive}] <${this.target}> ` + this.script();
     };
 
-    Command.parse = function (manifest, directive, target) {
+    Command.parse = function (manifest, directive, target, all) {
         var matches, exp;
 
         manifest = dealias(manifest, directive);
@@ -56,13 +56,13 @@ let Command = (function () {
         }
         else if (directive === 'all') {
             return [].concat.apply([], Command.ALL.map((directive) => {
-                return Command.parse(manifest, directive, target);
+                return Command.parse(manifest, directive, target, true);
             }));
         }
 
         return Object.keys(manifest).filter((target) => {
             return !!manifest[target][directive] &&
-                !(directive === 'all' && manifest[target].all === 'ignore');
+                !(all && /ignore/.test(manifest[target].all));
         }).map((target) => {
             return new Command(directive, target).script(manifest[target][directive]);
         });

@@ -9,7 +9,8 @@
         "deps" : "./support/pkman install --try shellcheck"
     },
     "common.markdown" : {
-        "enviro" : [
+        "all"       : "ignore",
+        "enviro"    : [
             "./support/pkman install pandoc",
             "./support/pkman install -p cask wkhtmltopdf",
             "./support/pkman install -t -p apt-get wkhtmltopdf"
