@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS "Event" (
 	"timestamp" DATETIME DEFAULT current_timestamp,
 	"request_id" INTEGER,
 	"source" TEXT,	
+	"session_id" INTEGER,
 	FOREIGN KEY ("request_id") REFERENCES Request("id"),
 	FOREIGN KEY ("source") REFERENCES Device("address")
 );
@@ -129,7 +130,38 @@ CREATE TABLE IF NOT EXISTS "Schedule" (
 	"expire" DATETIME,
 	"interval" DATETIME,
 	"repeat" INTEGER
-)
+);
+
+/*
+id            -- auto incrementing integer key
+name          -- name of the behaviour
+created_date  -- timestamp of when the behaviour was created
+last_updated  -- timestamp of the last time this behaviour was updated
+active        -- is this behaviour enabled or is it disabled, defaults to enabled 
+*/
+CREATE TABLE IF NOT EXISTS "Behaviour" (
+	"id" INTEGER PRIMARY KEY,
+	"name" TEXT,
+	"created_date" DATETIME DEFAULT current_timestamp,
+	"last_updated" DATETIME DEFAULT current_timestamp,
+	"active" BOOLEAN DEFAULT 1
+);
+
+/*
+id            -- auto incrementing integer key
+behaviour_id  -- link to the behaviour this session belongs to
+name          -- name of the session
+created_date  -- timestamp of when the session was created
+active        -- is this session enabled or is it disabled, defaults to enabled 
+*/
+CREATE TABLE IF NOT EXISTS "Session" (
+	"id" INTEGER PRIMARY KEY,
+	"behaviour_id" INTEGER,
+	"name" TEXT,
+	"created_date" DATETIME DEFAULT current_timestamp,
+	"active" BOOLEAN DEFAULT 1,
+	FOREIGN KEY ("behaviour_id") REFERENCES "Behaviour"("id")
+);
 
 
 

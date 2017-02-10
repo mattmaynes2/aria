@@ -31,6 +31,9 @@ class RequestTracker(DatabaseTranslator):
             self.requests[message.receiver]=self.dbTranslator.received(message)
             return self.requests[message.receiver]
         elif(Message.Event == message.type):
+            if(self.hub.session):
+                # associates an event with active training session
+                message.data['session_id']=self.hub.session.id
             device= self.hub.getDevice(message.sender)
             if(not device):
                 log.warning('Unknown sender '+str(UUID(bytes=message.sender)))

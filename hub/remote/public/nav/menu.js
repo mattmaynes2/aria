@@ -8,6 +8,10 @@ let PAGES = [
         href    : '../hub/'
     },
     {
+        name    : 'Training',
+        href    : '../training'
+    },
+    {
         name    : 'Devices',
         href    : '../devices/'
     },
@@ -18,10 +22,6 @@ let PAGES = [
     {
         name    : 'Statistics',
         href    : '../stats/'
-    },
-    {
-        name    : 'Training',
-        href    : '../training'
     }
 ];
 

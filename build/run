@@ -12,7 +12,8 @@ let DIRECTIVES  = [
         { cmd : 'build'     , info : 'Compile project and run build'                    },
         { cmd : 'test'      , info : 'Run tests on built projects'                      },
         { cmd : 'deploy'    , info : 'Starts running the built project'                 },
-        { cmd : 'clean'     , info : 'Cleans the build resources'                       }
+        { cmd : 'clean'     , info : 'Cleans the build resources'                       },
+        { cmd : 'release'   , info : 'Creates a release of the entire project'          }
     ];
 
 var manifest = `${__dirname}/manifest.json`, config, directive, target, commands, root;

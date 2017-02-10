@@ -38,9 +38,10 @@ let Command = (function () {
         return `[${this.directive}] <${this.target}> ` + this.script();
     };
 
-    Command.parse = function (manifest, directive, target) {
+    Command.parse = function (manifest, directive, target, all) {
         var matches, exp;
 
+        manifest = dealias(manifest, directive);
         if (target) {
             exp = new RegExp(target);
             matches = Object.keys(manifest).filter((target) => { return exp.test(target); });
@@ -55,12 +56,13 @@ let Command = (function () {
         }
         else if (directive === 'all') {
             return [].concat.apply([], Command.ALL.map((directive) => {
-                return Command.parse(manifest, directive, target);
+                return Command.parse(manifest, directive, target, true);
             }));
         }
 
         return Object.keys(manifest).filter((target) => {
-            return !!manifest[target][directive] && manifest[target].all !== 'ignore' ;
+            return !!manifest[target][directive] &&
+                !(all && /ignore/.test(manifest[target].all));
         }).map((target) => {
             return new Command(directive, target).script(manifest[target][directive]);
         });
@@ -68,6 +70,22 @@ let Command = (function () {
 
     function shellJoin (cmd) {
         return Array.isArray(cmd) ? cmd.join(' && ') : cmd;
+    }
+
+    function dealias (manifest, directive) {
+        Object.keys(manifest).map((target) => {
+            var res, cmd = manifest[target][directive];
+            cmd = 'string' === typeof cmd ? [cmd] : cmd;
+
+            if (cmd) {
+                res = cmd.map((x) => {
+                    return /^self\./.test(x) ? manifest[target][x.slice(5)] : x;
+                });
+                manifest[target][directive] = [].concat.apply([], res);
+            }
+
+        });
+        return manifest;
     }
 
     return Command;

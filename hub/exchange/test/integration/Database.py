@@ -1,6 +1,6 @@
 from unittest import TestCase
 import unittest
-from hub        import Hub, Exchange, CLI, args, daemon
+from hub        import Hub, Exchange, CLI, args, daemon, HubMode
 from device     import Device,DeviceType, Attribute, DataType, Parameter 
 from ipc import Message
 from adapter import Adapter
@@ -251,6 +251,7 @@ class TestDatabaseIntegration(TestCase):
         thirdResult = deviceTypeResults.fetchone()
         self.assertEqual(thirdResult["Count(*)"], 20)
 
+
 class TestDatabase:
 
     def __init__(self, db_name):
@@ -266,7 +267,9 @@ class TestDatabase:
         self.cursor = self.conn.cursor()
 
     def query(self, sql):
-        return self.cursor.execute(sql)
+        result= self.cursor.execute(sql)
+        self.conn.commit()
+        return result
 
 
 
