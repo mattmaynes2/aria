@@ -1,14 +1,18 @@
-### Scenarios {#section-sc}
+### Scenarios {#sec-3-2-3-1}
 
-In order to better understand the motivations for using the learning home automation system, we have
-created a number of scenarios where we expect the behaviour of homeowners to follow patterns that a
-machine learning algorithm could pick up on. These particular scenarios were chosen because they
-involve relationships between multiple devices which may not be obvious. The scenarios also include
-a list of smart devices involved. Using the devices identified in these scenarios, the team can
-compile a list of devices which will showcase the machine learning capabilities of the system for
-testing and demos. For example scenarios with sample data, please refer to [Appendix G](#G).
+In order to better understand the motivations for using the learning home automation system,
+scenarios outlining expected behaviours have been developed. These scenarios are designed to
+examine use cases of the Aria system. The intent of these scenarios is to explore what ways
+the system could be used, uncover potential areas of concern and to help reason about the technical
+operations of the system. In particular, each scenario has been coupled with a set of example
+data that will be used to better understand the data requirements of the system. These samples
+scenario sequences can be found in [Appendix G](#G).
 
-#### Music Automation {- #section-sc-music}
+The following scenarios are isolated example usages of the system. Each provides a brief
+description of the scenario, followed by the details about the interactions and features the
+scenario will require from the system
+
+#### Music Automation {- #sec-3-2-3-2}
 
 ###### Background {-}
 
@@ -57,7 +61,7 @@ scenario.
 | Thermostat          | Allows temperature to be adjusted                   |
 
 
-#### Efficient Lights and Temperature {- #section-sc-temp}
+#### Efficient Lights and Temperature {- #sec-3-2-3-3}
 
 ###### Background {-}
 
@@ -74,7 +78,6 @@ arrive home again the system turns the lights back on and raises the temperature
 In the summer months, when it is more light outside, the system does not turn the home's lights
 on until later. In the winter months, the home turns the lights on earlier. The sample data
 for this scenario can be found in [Appendix G-2](#G-2).
-
 
 ###### System Interaction {-}
 
@@ -115,7 +118,7 @@ The following is a list of the devices that will be needed and how they will be 
 | Smart Lights          | Lights that can be controlled through an API             |
 | Thermostat Controller | A device that can control the temperature through an API |
 
-#### Coffee Automation {- #section-sc-coffee}
+#### Coffee Automation {- #sec-3-2-3-4}
 
 ###### Background {-}
 
@@ -158,7 +161,7 @@ To be able to actually make the coffee, a smart coffee maker will be needed. Thi
 smart device that will be required to automate this scenario.
 
 
-#### Effortless Home Lighting {- #section-sc-light}
+#### Effortless Home Lighting {- #sec-3-2-3-5}
 
 ###### Background {-}
 
@@ -207,7 +210,4 @@ The following is a list of the devices that will be needed and how they will be 
 | --------------------- | ----------------------------------------------- |
 | Smart Lights          | Lights that can be controlled through an API    |
 
-
-
- 
 

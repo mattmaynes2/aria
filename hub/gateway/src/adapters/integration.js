@@ -199,7 +199,7 @@ let IntegrateAdapter = (function () {
                 return wrap(payload.get, { records: Array.prototype.slice.call(
                     this._state.hub.behaviours,
                     payload.start, 
-                    payload.start+payload.count
+                    Math.min(this._state.hub.behaviours.length, payload.start+payload.count)
                 )});
             default:
                 throw new Error('Unknown request');
@@ -233,7 +233,8 @@ let IntegrateAdapter = (function () {
                                                 id: index, 
                                                 createdDate: generateTime(),
                                                 lastUpdated: generateTime(),
-                                                active: true
+                                                active: true,
+                                                sessions: []
                                             });
                 var res = wrap(payload.get, { id: index });
                 logger.debug('Sending test response: ', res);

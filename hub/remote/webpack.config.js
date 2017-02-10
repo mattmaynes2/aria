@@ -26,7 +26,8 @@ module.exports = {
         'hub'       : __dirname + '/public/hub/index.js',
         'devices'   : __dirname + '/public/devices/index.js',
         'stats'     : __dirname + '/public/stats/index.js',
-        'schedule'  : __dirname + '/public/schedule/index.js'
+        'schedule'  : __dirname + '/public/schedule/index.js',
+        'training'  : __dirname + '/public/training/index.js'
     },
     output  : {
         path        : __dirname + '/public/',

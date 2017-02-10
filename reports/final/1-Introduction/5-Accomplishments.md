@@ -1,6 +1,5 @@
 ## Accomplishments
 
-
 ##### Discovery of devices {-}
 
 The user is able to add devices to the system by connecting them to the network and following

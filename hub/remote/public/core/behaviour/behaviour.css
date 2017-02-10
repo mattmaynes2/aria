@@ -1,0 +1,9 @@
+.behaviour-body {
+    display : flex;
+}
+
+.behaviour-info {
+    margin-top  : 10px;
+    width       : 50%;
+    height      : 100%;
+}
