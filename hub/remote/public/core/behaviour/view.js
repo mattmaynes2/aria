@@ -7,7 +7,7 @@ class BehaviourView extends Component {
     constructor (behaviour) {
         super();
         this._state = behaviour || {};
-        this._name      = new Field('', { label : 'Name:' });
+        this._name  = new Field('', { label : 'Name :' });
     }
 
     render () {
