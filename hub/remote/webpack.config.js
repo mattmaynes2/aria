@@ -33,6 +33,5 @@ module.exports = {
         path        : __dirname + '/public/',
         filename    : '[name]/[name].bundle.js',
     },
-    module : loaders,
-    devtool: '#inline-source-map'
+    module : loaders
 };
