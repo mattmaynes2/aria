@@ -11,8 +11,14 @@ describe('Color Picker', function () {
         picker.remove();
     });
 
+    function pad(hexString, length){
+        var pad = '000000';
+        return (pad+hexString).slice(-length);
+    }
+
     function randomColor () {
-        return Math.floor(Math.random() * 16777215).toString(16);
+        //16777215 is the number of possible colours
+        return pad(Math.floor(Math.random() * 16777215).toString(16), 6);
     }
 
     it('Displays a color using hexadecimal values', function () {
