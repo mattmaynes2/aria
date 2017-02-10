@@ -1,6 +1,5 @@
-import Component from '../component';
 import './modal.css';
-import Button from '../control/button'
+import Button from '../control/button';
 import WidgetPanel from '../widget/widget-panel.js';
 
 class Modal extends WidgetPanel {
