@@ -7,11 +7,11 @@ class DeactivateSessionCommand(Command):
         super().__init__(CommandType.DEACTIVATE,'session')
     
     def execute(self,hub,data):
-        if data['id'] == hub.session.id:
+        if int(data['id']) == int(hub.session.id):
             hub.session=None
             hub.mode=HubMode.Normal
             return 'Success'
-        raise ValueError("Invalid session id")
+        raise ValueError("Invalid session id {}".format(data.get('id')))
 
 # change the database dictionary into a session object
 class _session:

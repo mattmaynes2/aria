@@ -71,7 +71,7 @@ def setupCommands(hub,database):
     hub.addCommand(CreateBehavioursCommand(database))
     hub.addCommand(CreateSessionCommand(database))
     hub.addCommand(ActivateSessionCommand(database))
-    hub.addCommand(DeactivateSessionCommand(database))
+    hub.addCommand(DeactivateSessionCommand())
 
 
 if (__name__ == '__main__'):
