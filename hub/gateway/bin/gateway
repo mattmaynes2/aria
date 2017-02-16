@@ -1,0 +1,1522 @@
+#!/usr/bin/env node
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(__dirname) {let fs              = __webpack_require__(1),
+	    logger          = __webpack_require__(2),
+	    program         = __webpack_require__(3),
+	    TestAdapter     = __webpack_require__(4),
+	    ExchangeAdapter = __webpack_require__(8),
+	    Gateway         = __webpack_require__(10);
+
+	let DEFAULT_CONFIG = {
+	    port        : 8080,
+	    public      : '../remote/public/',
+	    pushPort   : 60000,
+	    exchange    : {
+	        port      : '7600',
+	        address   : 'localhost'
+	    },
+	    logfile     : 'gateway.log'
+	};
+
+	var adapter, gateway, config, dirname;
+
+	program
+	    .version('0.1.0')
+	    .arguments('[options ...]')
+	    .option('-c, --config', 'Path to configuration file [config.json]')
+	    .option('-l, --log-level [level]', 'Level of message logging to use')
+	    .option('-p, --port [port]', 'Port for gateway to serve client on')
+	    .option('-t, --test', 'Run the gateway with integration testing adapter');
+
+	program.parse(process.argv);
+
+	try {
+	    dirname = program.config || /\/$/g.test(__dirname) ? process.cwd() + '/bin' : __dirname;
+	    config = JSON.parse(fs.readFileSync(dirname + '/../config.json'));
+	} catch (e) {
+	    console.log('Failed to load config file. Using defaults');
+	    config = DEFAULT_CONFIG;
+	}
+
+	logger.configure({
+	    transports : [
+	        new (logger.transports.File) ({
+	            levels   : logger.config.syslog.levels,
+	            filename : config.logfile,
+	            level    : 'debug'
+	        }),
+	        new (logger.transports.Console) ({
+	            levels      : logger.config.syslog.levels,
+	            level       : program.logLevel || 'error',
+	            colorize    : true
+	        })
+	    ]
+	});
+
+	if (program.test) {
+	    adapter = new TestAdapter();
+	}
+	else {
+	    adapter = new ExchangeAdapter(config.endpoint, config.pushPort);
+	}
+
+	adapter.listen();
+
+	gateway = new Gateway(adapter);
+
+	adapter.register().then(() => {
+	    var port = program.port || config.port;
+
+	    gateway.public = config.public;
+	    gateway.start(port);
+	    logger.info('Server running on port ', port);
+	}, () => {
+	    logger.warn('Failed to register adapter');
+	});
+
+
+
+	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	module.exports = require("fs");
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = require("winston");
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = require("commander");
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	let uuid        = __webpack_require__(5),
+	    logger      = __webpack_require__(2),
+	    observable  = __webpack_require__(6),
+	    IPC         = __webpack_require__(7);
+
+	let IntegrateAdapter = (function () {
+
+	    let DEVICE_TYPES = [
+	        'Z-Wave',
+	        'SmartThings',
+	        'UPnP',
+	        'ZigBee',
+	        'WiFi'
+	        ],
+	        DEVICE_NAMES = [
+	            'Light',
+	            'Switch',
+	            'Light Sensor',
+	            'Temperature Sensor',
+	            'Music Player',
+	            'Coffee Maker',
+	            'Thermostat'
+	        ],
+	        DEVICE_ATTRIBUTES = [
+	            'State',
+	            'Brightness',
+	            'Hue'
+	        ],
+	        DEVICE_MAKERS = [
+	            'WeMo',
+	            'Phillips',
+	            'Aeon Labs',
+	            'Honeywell',
+	            'Nest',
+	            'Google',
+	            'Apple'
+	        ],
+	        DATA_TYPES = [
+	            'binary',
+	            'int',
+	            'float',
+	            'color',
+	            'enum',
+	            'time',
+	            'date',
+	            'string'
+	        ],
+	        HUB_ID = new Buffer(16).fill(0);
+
+	    function IntegrateAdapter () {
+	        var i, n;
+	        logger.debug('Gateway entering testing mode');
+
+	        this._id = new Buffer(16);
+	        this._state = {
+	            hub : {
+	                version : '1.0.0',
+	                mode    : 1,
+	                name    : 'Smart Hub',
+	                devices : [],
+	                behaviours : []
+	            }
+	        };
+
+	        n = randomInt(10);
+	        logger.debug(`Seeding hub with ${n} devices`);
+
+	        for (i = 0; i < n; i++) {
+	            this._state.hub.devices.push(makeDevice());
+	        }
+
+	        uuid.v4(null, this._id);
+	        observable.create(this);
+	        spawnEvent.call(this);
+	    }
+
+	    IntegrateAdapter.prototype.register = function () {
+	        logger.debug('Received request to register server');
+	        return Promise.resolve();
+	    };
+
+	    IntegrateAdapter.prototype.listen = function () {};
+	    IntegrateAdapter.prototype.id = function () {
+	        return uuid.unparse(this._id);
+	    };
+
+	    IntegrateAdapter.prototype.send = function (type, payload) {
+	        logger.debug(`Sending test message of type ${type} with payload ` +
+	            JSON.stringify(payload));
+
+	        return new Promise((resolve, reject) => {
+	            var response;
+	            try {
+	                switch (type) {
+	                    case IPC.Request:
+	                        if (payload.action) {
+	                            response = requestAction.call(this, payload);
+	                        }
+	                        else {
+	                            response = makeRequest.call(this, payload);
+	                        }
+	                        break;
+	                    case IPC.Event:
+	                        response = event.call(this, payload);
+	                        break;
+	                    default:
+	                        logger.error('Invalid message type');
+	                        reject('Invalid message type');
+	                }
+	            }
+	            catch (e) {
+	                reject(e.message);
+	            }
+	            resolve(response);
+	        });
+
+	    };
+
+	    IntegrateAdapter.prototype.sendTo = function (type, id, payload) {
+	        logger.debug(`Setting device ${id} attribute ` + payload.set + ' to ' +
+	            JSON.stringify(payload.value));
+
+	        return new Promise((resolve) => {
+	            setAttribute(getDevice.call(this, id) || {}, payload.set, payload.value);
+	            resolve(wrap(payload.set, payload.value));
+	        });
+
+
+	    };
+
+	    function wrap (res, value) {
+	        return {
+	            type        : IPC.Request,
+	            sender      : HUB_ID,
+	            destination : this._id,
+	            payload     : {
+	                response    : res,
+	                value       : value
+	            }
+	        };
+	    }
+
+	    function makeRequest (payload) {
+	        var response;
+	        if (payload.get) {
+	            response = requestGet.call(this, payload);
+	        }
+	        else if (payload.set){
+	            response = requestSet.call(this, payload);
+	        }
+	        else if (payload.create) {
+	            response = requestCreate.call(this, payload);
+	        }
+	        return response;
+	    }
+
+	    function requestAction (payload) {
+	        switch(payload.action) {
+	            case 'discover':
+	                logger.debug('Received request to launch discovery');
+	                setTimeout(() => {
+	                    var i, dev;
+	                    for (i = 0; i < 1 + randomInt(5); i++) {
+	                        dev = makeDevice();
+	                        setTimeout(
+	                            this.signal.bind(this, observable.NEXT, 'device.discovered', dev),
+	                            (1 + i) * randomInt(1000)
+	                        );
+	                        this._state.hub.devices.push(dev);
+	                    }
+	                }, 500);
+	                return wrap(payload.action, {});
+	            default:
+	                throw new Error('Unknown request');
+
+	        }
+	    }
+
+	    function requestGet (payload) {
+	        switch (payload.get) {
+	            case 'status':
+	                return wrap(payload.get, {
+	                    version     : this._state.hub.version,
+	                    mode        : this._state.hub.mode,
+	                    name        : this._state.hub.name,
+	                    devices     : this._state.hub.devices.length
+	                });
+	            case 'mode':
+	                return wrap(payload.get, this._state.hub.mode);
+	            case 'name':
+	                return wrap(payload.get, this._state.hub.name);
+	            case 'devices':
+	                return wrap(payload.get, this._state.hub.devices);
+	            case 'eventWindow':
+	                return wrap(payload.get, { total : 1500, records : makeEvents.call(this, payload)});
+	            case 'deviceEvents':
+	                return wrap(payload.get, { total : 100, records : makeEvents.call(this, payload)});
+	            case 'behaviours' :
+	                return wrap(payload.get, { records: Array.prototype.slice.call(
+	                    this._state.hub.behaviours,
+	                    payload.start, 
+	                    Math.min(this._state.hub.behaviours.length, payload.start+payload.count)
+	                )});
+	            default:
+	                throw new Error('Unknown request');
+	        }
+	    }
+
+	    function requestSet (payload) {
+	        switch (payload.set) {
+	            case 'mode':
+	                logger.debug(`Setting hub mode to ${payload.value}`);
+	                this._state.hub.mode = payload.value || 0;
+	                break;
+	            case 'name':
+	                logger.debug(`Setting hub name to ${payload.value}`);
+	                this._state.hub.name = payload.value;
+	                break;
+	            default:
+	                throw new Error ('Unknown request');
+	        }
+	        payload.get = payload.set;
+	        return requestGet.call(this, payload);
+	    }
+
+	    function requestCreate (payload) {
+	        switch (payload.create) {
+	            case 'behaviour': 
+	                logger.debug(`Creating a new behaviour with name ${payload.name}`);
+	                var index = this._state.hub.behaviours.length;
+	                this._state.hub.behaviours.push({
+	                                                name: payload.name, 
+	                                                id: index, 
+	                                                createdDate: generateTime(),
+	                                                lastUpdated: generateTime(),
+	                                                active: true,
+	                                                sessions: []
+	                                            });
+	                var res = wrap(payload.get, { id: index });
+	                logger.debug('Sending test response: ', res);
+	                return res;
+	        }
+	    }
+
+	    function event () {
+	        return {};
+	    }
+
+	    function getDevice (id) {
+	        for (var dev in this._state.hub.devices) {
+	            if (dev.id === id) {
+	                return dev;
+	            }
+	        }
+	        return null;
+	    }
+
+	    function setAttribute (dev, name, params) {
+	        for (var attr in dev.attributes) {
+	            if (attr.name === name) {
+	                attr.parameters = params;
+	            }
+	        }
+	        return dev;
+	    }
+
+	    function makeEvents (payload) {
+	        var i, events = [], devices = this._state.hub.devices, device,
+	            start   = payload.start,
+	            count   = payload.count,
+	            id      = payload.id || '',
+	            last    = 0, offset = 0,
+	            index   = devices.map((dev) => { return dev.id; }).indexOf(id);
+
+	        for (i = 0; i < count; i++) {
+	            device  = index >= 0 ? devices[index] : random(devices);
+	            offset = last + randomInt(20000000);
+	            events.push(makeEvent(device, start, i, offset));
+	            last = offset;
+	        }
+
+	        return events;
+	    }
+
+	    function makeParameter () {
+	        var dataType = random(DATA_TYPES);
+	        return {
+	                name        : random(DEVICE_ATTRIBUTES),
+	                value       : generateValue(dataType),
+	                dataType    : dataType,
+	                min         : random(10),
+	                max         : 10 + random(10),
+	                step        : random(3)
+	        };
+	    }
+
+	    function makeAttribute () {
+	        return {
+	            name            : random(DEVICE_ATTRIBUTES),
+	            isControllable  : true,
+	            dataType        : random(DATA_TYPES),
+	            parameters      : [makeParameter()]
+	        };
+	    }
+
+	    function makeDevice () {
+	        var maker   = random(DEVICE_MAKERS), protocol = random(DEVICE_TYPES),
+	            name    = random(DEVICE_NAMES);
+
+	        return {
+	            version     : '' + randomInt(10) + '.' + randomInt(10) + '.' + randomInt(10),
+	            name        : name,
+	            address     : uuid.v4(),
+	            deviceType  : {
+	                name        : maker + ' ' + protocol + ' ' + name,
+	                maker       : maker,
+	                protocol    : protocol,
+	                attributes  : Array.apply([], Array(randomInt(10))).map(makeAttribute)
+	            }
+	        };
+	    }
+
+	    function makeEvent (device, start, i, offset) {
+	        return {
+	            index       : start + i,
+	            timestamp   : generateTime(offset),
+	            source      : device.id,
+	            device      : device.name,
+	            deviceType  : device.deviceType.name,
+	            attribute   : makeAttribute(),
+	            dataType    : random(DATA_TYPES),
+	        };
+	    }
+
+	    function generateTime (offset) {
+	        var now = new Date();
+
+	        if (offset) {
+	            now = new Date(now.getTime() - offset);
+	        }
+
+	        return now.getTime();
+	    }
+
+	    function generateValue (type) {
+	        switch (type) {
+	            case 'color':
+	                return toHex([randomInt(256), randomInt(256), randomInt(256)]);
+	            default:
+	                return randomInt(100);
+	        }
+	    }
+
+	    function spawnEvent () {
+	        setTimeout(() => {
+	            this.signal(
+	                observable.NEXT,
+	                'device.event',
+	                makeEvent(random(this._state.hub.devices), 0, 0)
+	            );
+	            spawnEvent.call(this);
+	        }, randomInt(5000));
+	    }
+
+	    function toHex (arr) {
+	        return arr.map((byte) => {
+	            return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+	        }).join('');
+	    }
+
+	    function random (arr) {
+	        return arr[Math.floor(Math.random() * arr.length)];
+	    }
+
+	    function randomInt (max) {
+	        return Math.floor(Math.random() * max);
+	    }
+	    return IntegrateAdapter;
+	} ());
+
+	module.exports = IntegrateAdapter;
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	module.exports = require("node-uuid");
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	   The MIT License (MIT)
+
+	   Copyright (c) 2015 Matthew Maynes & Contributors
+
+	   Permission is hereby granted, free of charge, to any person obtaining a copy
+	   of this software and associated documentation files (the "Software"), to deal
+	   in the Software without restriction, including without limitation the rights
+	   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	   copies of the Software, and to permit persons to whom the Software is
+	   furnished to do so, subject to the following conditions:
+
+	   The above copyright notice and this permission notice shall be included in
+	   all copies or substantial portions of the Software.
+
+	   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	   THE SOFTWARE.
+	   */
+
+	var Observable = (function () {
+	    'use strict';
+
+	    /**
+	     * This is the observable object. Observable follows a singleton pattern
+	     * so this object represents the public API of Observable. There are 3
+	     * defined event streams for each available signal.
+	     *
+	     * @type {object}
+	     */
+	    var self = {
+	        NEXT		: 'onNext',
+	        ERROR		: 'onError',
+	        COMPLETE	: 'onComplete'
+	    };
+
+	    /* public */
+
+	    /**
+	     * Forwards a signal from one target to another.
+	     *
+	     * @param origin    {Observable}    Observable origin to forward signals from
+	     * @param target    {Observable}    Observable target to attach delegates to
+	     * @param signal    {string}        ID of signal to forward
+	     * @param transform {function}      Transformation of stream data
+	     */
+	    self.forward = function (origin, target, signal, transform) {
+	        _checkTarget(origin);
+	        _checkTarget(target);
+	        signal = 'string' === typeof signal ? { from : signal, to : signal } : signal;
+
+	        origin.subscribe(signal.from, _forward(signal.to, target, transform));
+	        return target;
+	    };
+
+	    /**
+	     * Forwards all signals from the origin to the new target. The given transformation
+	     * function will be applied to all data that is signalled
+	     *
+	     * @param origin    {Observable}    Observable origin to forward signals from
+	     * @param target    {Observable}    Observable target to attach delegates to
+	     * @param transform {function}      Transformation of stream data
+	     */
+	    self.forwardAll = function (origin, target, transform) {
+	        for (var signal in origin._signals) {
+	            self.forward(origin, target, signal, transform);
+	        }
+	        return target;
+	    };
+
+	    /**
+	     * Makes the target object observable. This adds the observable functions
+	     * to the target and allows other objects to listen to it.
+	     *
+	     * @param [target]	{object}	The object to make observable
+	     * @param [signals]	{object}	An explicit definition of the events that
+	     * the target will offer. Each signal can have individual properties.
+	     * @end
+	     *
+	     * @return {object} The new observable object
+	     */
+	    self.create = function (target, signals) {
+	        target = target || {};
+
+	        /**
+	         * The target maintains its own state. This holds all of the
+	         * subscribers observing the target.
+	         *
+	         * @type {object}
+	         */
+	        target._subs = target._subs || {};
+
+	        /**
+	         * Maintains all of the signals for this target and any properties
+	         * associated with each signal.
+	         *
+	         * @type {object}
+	         */
+	        target._signals = target._signals || {};
+
+	        // If there are signals provided as an argument then add them
+	        // to the set of registered signals. If the data passed in
+	        // is an array then make a key for each element.
+	        if (signals) {
+	            if (signals instanceof Array) {
+	                signals.forEach(function (key) {target._signals[key] = {};});
+	            }
+	            else{
+	                _extend(target._signals, signals);
+	            }
+	        }
+
+	        /**
+	         * Subscribes the given delegate to the signal specified. The delegate
+	         * object is returned and can be modified at a later time.
+	         *
+	         * @param signal		{string}	Signal to observe
+	         * @param [delegate]	{object}	Signal delegate handle onNext,
+	         * onError and onComplete events
+	         * @end
+	         *
+	         * @return {object} The subscription delegate
+	         *
+	         * @throws error if the signal is not defined in this objects
+	         * observable signals.
+	         * @end
+	         */
+	        target.subscribe = function (signal, delegate) {
+	            _checkTarget(this);
+	            _checkSignal(this, signal);
+
+	            // If we get here then the signal is valid
+	            return _addSub(this, signal, delegate || {});
+	        };
+
+	        /**
+	         * Unsubscribes the given delegate from this observable. Returns if the
+	         * delegate was removed or not (i.e. if it existed in the first place).
+	         * If no delegate is provided then all delegates are unsubscribed
+	         *
+	         * @param [delegate] {object} The delegate object to unsubscribe
+	         *
+	         * @return {boolean} If the delegate was removed
+	         *
+	         * @throws error if this object is not observable
+	         */
+	        target.unsubscribe = function (delegate) {
+	            var index, signal;
+	            _checkTarget(this);
+
+	            if (!delegate || !delegate._signals) {
+	                return false;
+	            }
+
+	            for(var i in delegate._signals) {
+	                signal = delegate._signals[i];
+	                index  = signal in this._subs ? this._subs[signal].indexOf(delegate) : -1;
+	                if (index >= 0) {
+	                    this._subs[signal].splice(index, 1);
+	                    return true;
+	                }
+	            }
+	            return false;
+	        };
+
+	        /**
+	         * Unsubscribes all listeners from this observable object
+	         */
+	        target.unsubscribeAll = function () {
+	            this._subs = {};
+	        };
+
+
+	        /**
+	         * Adds a signal with the target obeservable applying the given
+	         * options. The available options are listed below. If the signal
+	         * already exists then the options will be applied to the curent
+	         * signal.
+	         *
+	         * @param signal	{string} The name of the signal to register
+	         * @param options	{object} Avaialable options:
+	         * async {boolean} If this signal should be executed asynchronously
+	         * @end
+	         *
+	         * @return The signal object
+	         */
+	        target.addSignal = function (signal, options) {
+	            _checkTarget(this);
+	            _checkSignal(this, signal);
+
+	            this._signals[signal] = _extend(
+	                this._signals[signal] || {},
+	                options	|| {}
+	            );
+	            this._subs[signal] = this._subs[signal] || [];
+	            return this._signals[signal];
+	        };
+
+
+	        /**
+	         * Removes the given signal from this object. Returns if the signal
+	         * was removed successfully
+	         *
+	         * @param signal {string} The signal to remove
+	         *
+	         * @return {boolean} If the unregister was successful
+	         */
+	        target.removeSignal = function (signal) {
+	            _checkTarget(this);
+	            _checkSignal(this, signal);
+	            return delete this._signals[signal];
+	        };
+
+	        /**
+	         * Sends a signal to all listeners for the given stream and observation
+	         *
+	         * @param stream	{string} Signal stream (i.e. NEXT)
+	         * @param signal	{string} Observation identifier
+	         * @param [data]	{object} A data object to pass to any delegate
+	         * functions. The structure of this object arbitrary
+	         * @end
+	         *
+	         *
+	         * @throws error if signal is not a string
+	         *
+	         * @example
+	         * this.signal(Observable.NEXT, 'data' { message : 'Hello, World!'});
+	         * @end
+	         *
+	         */
+	        target.signal = function (stream, signal, data) {
+	            _checkTarget(this);
+	            _checkSignal(this, signal);
+
+	            // Ensure that the signal exist before emitting it
+	            this._signals[signal] = this._signals[signal] || {};
+	            _signal(this, stream, signal, typeof data === 'undefined' ? {} : data);
+	        };
+
+	        return target;
+	    };
+
+	    /* private */
+
+
+	    /**
+	     * Checks if the given target is observable or not
+	     *
+	     * @param target {object} Object to examine
+	     *
+	     * @return {boolean} If the target is observable
+	     * @private
+	     */
+	    function _isObs (target) {
+	        return target		!== undefined &&
+	            target._signals !== undefined &&
+	            target._subs	!== undefined;
+	    }
+
+	    /**
+	     * Checks if the target is observable and if not then throws an error
+	     *
+	     * @param target {object} The object to check
+	     *
+	     * @throws error if the target is not observable
+	     * @private
+	     */
+	    function _checkTarget (target) {
+	        if (!_isObs(target)) {
+	            throw new Error('Target object is not observable');
+	        }
+	    }
+
+	    /**
+	     * Ensures that the observation specified is within the targets signal set
+	     *
+	     * @param target {object} Validation source
+	     * @param signal {string} Signal to validate
+	     *
+	     * @throws error if the target will not accept the signal
+	     * @private
+	     */
+	    function _checkSignal (target, signal) {
+	        if ('string' !== typeof signal) {
+	            throw new Error('Signal must be a string');
+	        }
+	    }
+
+	    /**
+	     * Adds a subscription to the target object. If there is no existing
+	     * subscription for the given signal then one is added
+	     *
+	     * @param target	{object}	Observable target
+	     * @param signal	{string}	Observable signal
+	     * @param delegate	{object}	Signal delegate
+	     *
+	     * @return {object} The delegate object
+	     * @private
+	     */
+	    function _addSub (target, signal, delegate) {
+
+	        // If the delegate is a function then put it in the
+	        // onNext channel of the delegate
+	        if (typeof delegate === 'function') {
+	            delegate = { onNext : delegate };
+	        }
+
+	        // If there are already signals in this delegate then add a new one
+	        if (delegate._signals) {
+	            delegate._signals.push(signal);
+	        }
+	        else {
+	            delegate._signals = [signal];
+	        }
+
+	        // If there are no signals then add a new one
+	        if (target._subs[signal]) {
+	            target._subs[signal].push(delegate);
+	        }
+	        else {
+	            target._subs[signal] = [delegate];
+	        }
+
+	        return delegate;
+	    }
+
+	    /**
+	     * Signals the delegates of the target object on the given event stream
+	     *
+	     * @param target	{object}	Observable target
+	     * @param stream	{string}	Signal stream
+	     * @param signal	{string}	Observable signal
+	     * @param data		{object}	Signal data
+	     *
+	     * @private
+	     */
+	    function _signal (target, stream, signal, data) {
+	        // Get all of the delegates for the specific signal
+	        var delegates = target._subs[signal] || [];
+
+	        // Determine if the signal is synchronous or not. Sync by default
+	        var emitter	= target._signals[signal].async ? _emitAsync : _emitSync;
+
+	        delegates.forEach(function (delegate) {
+	            emitter(target, stream, data, delegate);
+	        });
+	    }
+
+	    /**
+	     * Emits a single synchronous event on the given event stream sending the
+	     * defined data object
+	     *
+	     * @param target	{object}	Observable target
+	     * @param stream	{string}	Signal stream
+	     * @param data		{object}	Signal data
+	     * @param delegate	{object}	Delegate target
+	     *
+	     * @private
+	     */
+	    function _emitSync (target, stream, data, delegate) {
+	        var listener = delegate[stream];
+	        if ('function' === typeof listener) {
+	            listener(data, target);
+	        }
+	    }
+
+	    /**
+	     * Emits a single event asynchronously
+	     *
+	     * @param target	{object}	Observable target
+	     * @param stream    {string}    Signal stream
+	     * @param data      {object}    Signal data
+	     * @param delegate  {object}    Delegate target
+	     *
+	     * @private
+	     */
+	    function _emitAsync (target, stream, data, delegate) {
+	        // Runs a synchronous call in a different execution stack immediately
+	        setTimeout(_emitSync.bind(null, target, stream, data, delegate), 0);
+	    }
+
+	    /**
+	     * Extends the base object to include all values from the
+	     * extension. Any existing properties are overwritten
+	     *
+	     * @param base	{object} Base object to extend
+	     * @param ext	{object} Extension to add to the base
+	     *
+	     * @return {object} The extended object
+	     */
+	    function _extend (base, ext) {
+	        for (var key in ext) {
+	            base[key] = ext[key];
+	        }
+	        return base;
+	    }
+
+	    /**
+	     * If the input is undefined then returns the identity function.
+	     * Otherwise, returns the input
+	     *
+	     * @param transform {function} Function to check
+	     * @return {function} Identity or transform
+	     */
+	    function _transform (transform) {
+	        if (!transform) {
+	            return function (x) { return x; };
+	        }
+	        return transform;
+	    }
+
+	    function _forward (signal, target, transform) {
+	        transform = _transform(transform);
+	        return {
+	            onNext      : function (data) { target.signal(self.NEXT, signal, transform(data)); },
+	            onError     : function (data) { target.signal(self.ERROR, signal, transform(data)); },
+	            onComplete  : function (data) { target.signal(self.COMPLETE, signal, transform(data)); }
+	        };
+	    }
+
+	    return self;
+	}());
+
+	// If in node then export observable
+	if (true) { module.exports = Observable; }
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	
+
+	let IPC = (function () {
+
+	    function parse (buffer) {
+	        var type        = buffer.readUIntBE(0, 1),
+	            size        = buffer.readUIntBE(1, 4),
+	            sender      = buffer.slice(5, 21),
+	            destination = buffer.slice(21, 37),
+	            payload     = JSON.parse(buffer.toString('utf8', 37));
+
+	        return {
+	            type: type,
+	            size: size,
+	            sender: sender,
+	            destination: destination,
+	            payload: payload
+	        };
+	    }
+
+	    function serialize (packet) {
+	        var payloadSize = JSON.stringify(packet.payload).length;
+
+	        var buf = new Buffer(5);
+
+	        buf.writeUInt8(packet.type, 0);
+	        buf.writeUInt32BE(payloadSize, 1);
+
+	        return  Buffer.concat ([buf,
+	                               packet.sender,
+	                               packet.destination,
+	                               Buffer.from(JSON.stringify(packet.payload))]);
+	    }
+
+	    return {
+	        Error       : 0,
+	        Discover    : 1,
+	        Request     : 2,
+	        Event       : 3,
+	        Ack         : 4,
+	        parse       : parse,
+	        serialize   : serialize
+	    };
+
+	} ());
+
+	module.exports = IPC;
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	let dgram   = __webpack_require__(9),
+	    uuid    = __webpack_require__(5),
+	    logger  = __webpack_require__(2),
+	    IPC     = __webpack_require__(7),
+	    observable = __webpack_require__(6);
+
+	let ExchangeAdapter = (function () {
+
+	    function ExchangeAdapter (endpoint, pushPort) {
+	        this._id        = new Buffer(16);
+	        this.registered = false;
+	        this.transport  = dgram;
+	        this.endpoint   = endpoint || {
+	            port    : 7600,
+	            address : 'localhost'
+	        };
+	        this.pushPort = pushPort;
+	        observable.create(this);
+	        uuid.parse('00000000-0000-0000-0000-000000000001', this._id);
+	    }
+
+	    ExchangeAdapter.prototype.register = function () {
+	        return new Promise ((resolve, reject) => {
+	            send.call(this, 1, 
+	                        new Buffer(16).fill(0), { 'port' : this.pushPort, 'name' : 'HttpGateway'})
+	                        .then(
+	                (response) => {
+	                logger.debug('Got a response to discovery request');
+	                if (response.type !== 4) {
+	                    reject(Error('Communication server responded with an unexpected packet type'));
+	                }
+	                else {
+	                    this.registered = true;
+	                    resolve();
+	                }
+
+	            }, () => {
+	                reject(Error('Error in discovery request'));
+	            });
+	        });
+	    };
+
+	    ExchangeAdapter.prototype.id = function () {
+	        return uuid.unparse(this._id);
+	    };
+
+	    ExchangeAdapter.prototype.send = function (type, payload) {
+	        if (!this.registered) {
+	            throw new Error('Exchange adapter is not yet registered');
+	        }
+	        return send.call(this, type, new Buffer(16).fill(0), payload);
+	    };
+
+	    ExchangeAdapter.prototype.sendTo = function(type, destination, payload) {
+	        if (!this.registered) {
+	            throw new Error('Exchange adapter is not yet registered');
+	        }
+		    var destBuf = new Buffer(16);
+		    uuid.parse(destination, destBuf);
+	        return send.call(this, type, destBuf, payload);
+	    };
+
+	    ExchangeAdapter.prototype.listen = function () {
+	        var server = dgram.createSocket('udp4');
+
+	        server.on('listening', function() {
+	            var address = server.address();
+	            logger.info('UDP Push server listening on address ', address.address, ' : ',
+	                        address.port);
+	        });
+
+	        server.on('message', (message, remote) => {
+	            logger.info('Got a push message from ', remote.address, ' : ', remote.port);
+	            logger.debug('Raw message is: 0x' + message.toString('hex'));
+	            try {
+	                var parsed = IPC.parse(message);
+	                logger.debug('Push message payload: ', parsed.payload);
+	                this.signal(observable.NEXT, parsed.payload.event, parsed.payload);
+	            } catch (err) {
+	                logger.error('Error parsing push message from exchange. Stack:', err.stack);
+	                this.signal(observable.ERROR, 'error',  err);
+	            }
+	        });
+
+	        server.on('close', () => {
+	            this.signal(observable.COMPLETE, 'complete');
+	        });
+
+	        server.on('error', (err) => {
+	            this.signal(observable.ERROR, 'error', err);
+	        });
+
+	        server.bind(this.pushPort);
+	    };
+
+
+	    function send (type, destination, payload) {
+	        return new Promise((resolve, reject) => {
+	            var client, packet, message, expiry;
+
+	            packet = {
+	                type        : type,
+	                sender      : this._id,
+	                destination : destination,
+	                payload     : payload
+	            };
+
+	            client  = this.transport.createSocket('udp4');
+	            message = IPC.serialize(packet);
+	            expiry  = setTimeout(() => {
+	                client.close();
+	                reject(Error('Response wait period timed out'));
+	            }, 5000);
+
+	            client.on('message', function (message) {
+	                logger.debug('Received response from comm server');
+	                client.close();
+	                clearTimeout(expiry);
+	                resolve(IPC.parse(message));
+	            });
+
+	            client.send(message, 0, message.length,
+	                this.endpoint.port, this.endpoint.address,
+	                function (err) {
+	                    if (err) {
+	                        clearTimeout(expiry);
+	                        reject(Error(err));
+	                    }
+	                    logger.debug('Sent UDP message');
+	                }
+	            );
+	        });
+
+	    }
+
+	    return ExchangeAdapter;
+	} ());
+
+	module.exports = ExchangeAdapter;
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = require("dgram");
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	let express         = __webpack_require__(11),
+	    io              = __webpack_require__(12),
+	    http            = __webpack_require__(13),
+	    bodyParser      = __webpack_require__(14),
+	    logger          = __webpack_require__(2),
+	    IPC             = __webpack_require__(7),
+	    HubRouter       = __webpack_require__(15),
+	    DeviceRouter    = __webpack_require__(16);
+
+	let Gateway = (function () {
+
+	    function Gateway (adapter) {
+	        this.public = 'public';
+	        this._adapter = adapter;
+	        this._routers = {
+	            hub     : new HubRouter(adapter),
+	            device  : new DeviceRouter(adapter)
+	        };
+	    }
+
+	    Gateway.SocketEvents = [
+	        'device.discovered',
+	        'device.event'
+	    ];
+
+
+	    Gateway.prototype.start = function (port) {
+	        var app = express(), server = http.createServer(app), websock = io(server);
+
+	        app.use(bodyParser.json());
+	        app.use((req, res, next) => {
+	            logger.debug('[' + new Date().toUTCString() + '] ' + req.method + ' ' + req.url);
+	            if (req.method === 'POST') {
+	                logger.debug('Message Body: ' + JSON.stringify(req.body));
+	            }
+	            next();
+	        });
+
+	        app.use('/hub'      , this._routers.hub.router());
+	        app.use('/device'   , this._routers.device.router());
+	        
+	        websock.on('connection', (socket) => {
+	            var emitters = Gateway.SocketEvents.map((event) => {
+	                return this._adapter.subscribe(event, (data) => {
+	                    logger.debug(`Received socket event ${event} - forwarding to clients`);
+	                    socket.emit(event, data);
+	                });
+	            });
+
+	            socket.on('disconnect', () => {
+	                logger.debug('Websocket disconnected');
+	                emitters.map((emitter) => { this._adapter.unsubscribe(emitter); });
+	            });
+	        });
+
+	        app.post('/request', (req, res) => {
+	            this._adapter.send(IPC.Request, req.body).then((response) => {
+	                res.send(JSON.stringify(response));
+	            }, (err) => {
+	                logger.error('Error sending request to communication server', err);
+	            });
+	        });
+
+	        app.use(express.static(this.public));
+	        server.listen(port);
+	        return this;
+	    };
+
+	    return Gateway;
+
+	} ());
+
+	module.exports = Gateway;
+
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = require("express");
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	module.exports = require("socket.io");
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	module.exports = require("http");
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	module.exports = require("body-parser");
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	let router  = __webpack_require__(11).Router,
+	    IPC     = __webpack_require__(7),
+	    logger          = __webpack_require__(2);
+
+	let HubRouter = (function () {
+
+	    function HubRouter (adapter) {
+	        this._adapter = adapter;
+	    }
+
+	    HubRouter.prototype.router = function () {
+	        var app = router();
+
+	        app.get('/state', (req, res) => {
+	            this._adapter
+	                .send(IPC.Request, { get : 'status' })
+	                .then((reply) => {
+	                    res.json(reply.payload.value);
+	                })
+	                .catch(onError.bind(this, res));
+	        });
+
+	        app.get('/discover', (req, res) => {
+	            this._adapter
+	                .send(IPC.Request, { action : 'discover' })
+	                .then(() => {
+	                    res.json({});
+	                })
+	                .catch(onError.bind(this, res));
+	        });
+
+	        app.route('/mode')
+	            .get((req, res) => {
+	                this._adapter
+	                    .send(IPC.Request, { get : 'mode' })
+	                    .then((reply) => {
+	                        res.json({ mode : reply.payload.value });
+	                    })
+	                    .catch(onError.bind(this, res));
+	            })
+	            .post((req, res) => {
+	                this._adapter
+	                    .send(IPC.Request, { set : 'mode', value : req.body.mode})
+	                    .then((reply) => {
+	                        res.json({ mode : reply.payload.value });
+	                    })
+	                    .catch(onError.bind(this, res));
+	            });
+
+	        app.route('/events')
+	            .post((req, res) => {
+	                this._adapter
+	                    .send(IPC.Request, {
+	                        get     : 'eventWindow',
+	                        start   : req.body.start,
+	                        count   : req.body.count
+	                    })
+	                    .then((reply) => {
+	                        res.json(reply.payload.value || { records : [] });
+	                    })
+	                    .catch(onError.bind(this, res));
+	            });
+
+	        app.post('/training/behaviour', (req, res) => {
+	            this._adapter
+	                .send(IPC.Request, {
+	                    'create' : 'behaviour',
+	                    'name' : req.body.name
+	                })
+	                .then((reply) => {
+	                    res.json(reply.payload.value);
+	                })
+	                .catch(onError.bind(this,res));
+	        });
+
+	        app.post('/training/behaviours', (req,res) => {
+	            this._adapter
+	                .send(IPC.Request, {
+	                    'get' : 'behaviours',
+	                    'start' : req.body.start,
+	                    'count' : 10
+	                })
+	                .then((reply) => {
+	                    res.json(reply.payload.value);
+	                })
+	                .catch(onError.bind(this,res));
+	        });
+
+	        app.post('/training/session', (req,res) => {
+	            this._adapter
+	                .send(IPC.Request, {
+	                    'create' : 'session',
+	                    'behaviourId' : req.body.behaviourId,
+	                    'name' : req.body.name
+	                })
+	                .then((reply) => {
+	                    res.json(reply.payload.value);
+	                })
+	                .catch(onError.bind(this,res));
+	        });
+	    
+	        app.post('/training/sessions', (req,res) => {
+	            this._adapter
+	                .send(IPC.Request, {
+	                    'get' : 'sessions',
+	                    'start' : req.body.start,
+	                    'count' : req.body.count,
+	                    'behaviourId' : req.body.behaviourId
+	                })
+	                .then((reply) => {
+	                    res.json(reply.payload.value);
+	                })
+	                .catch(onError.bind(this,res));
+	        });
+
+	        app.post('/training/session/:id/start', (req,res) => {
+	            this._adapter
+	                .send(IPC.Request, {
+	                    'activate' : 'session',
+	                    'value' : req.params.id
+	                })
+	                .then((reply) => {
+	                    res.json(reply.payload.value);
+	                })
+	                .catch(onError.bind(this,res));
+	        });
+	            
+	        app.post('/training/session/:id/stop', (req,res) => {
+	            this._adapter
+	                .send(IPC.Request, {
+	                    'deactivate' : 'session',
+	                    'value' : req.params.id
+	                })
+	                .then((reply) => {
+	                    res.json(reply.payload.value);
+	                })
+	                .catch(onError.bind(this,res));
+	        });
+	                    
+	        return app;
+	    };
+
+	    function onError (res, err) {
+	        logger.error('Error handling request: ', err);
+	        res.status(500).json({ error : err || '' });
+	    }
+
+	    return HubRouter;
+	} ());
+
+	module.exports = HubRouter;
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	let router  = __webpack_require__(11).Router,
+	    IPC     = __webpack_require__(7);
+
+	let DeviceRouter = (function () {
+	    function DeviceRouter (adapter) {
+	        this._adapter = adapter;
+	    }
+
+	    DeviceRouter.prototype.router = function () {
+	        var app = router();
+
+	        app.get('/list', (req, res) => {
+	            this._adapter
+	                .send(IPC.Request, { get : 'devices' })
+	                .then((reply) => {
+	                    res.json({ devices : reply.payload.value });
+	                })
+	                .catch(onError.bind(this, res));
+	        });
+
+
+	        app.route('/custom')
+	            .get((req, res) => {
+	                this._adapter
+	                    .send(IPC.Request, { get : 'softwareDevices' })
+	                    .then((reply) => {
+	                        res.json({ devices : reply.payload.value });
+	                    })
+	                    .catch(onError.bind(this, res));
+	            })
+	            .post((req, res) => {
+	                this._adapter
+	                    .send(IPC.Request, { set : 'softwareDevices', value : req.body})
+	                    .then(() => {
+	                        res.json({ });
+	                    })
+	                    .catch(onError.bind(this, res));
+	            });
+
+	        app.post('/:id/events', (req, res) => {
+	            this._adapter
+	                .send(IPC.Request, {
+	                    get     : 'deviceEvents',
+	                    start   : req.body.start,
+	                    count   : req.body.count,
+	                    id      : req.params.id
+	                })
+	                .then((reply) => {
+	                    res.json(reply.payload.value);
+	                })
+	                .catch(onError.bind(this, res));
+	        });
+
+	        app.post('/:id/setAttribute', (req, res) => {
+	            this._adapter
+	                .sendTo(IPC.Request, req.params.id, {
+	                    set     : req.body.name,
+	                    value   : req.body.value
+	                })
+	                .then((reply) => {
+	                    res.json(reply.payload.value);
+	                })
+	                .catch(onError.bind(this, res));
+	        });
+
+	        return app;
+	    };
+
+	    function onError (res, err) {
+	        res.status(500).json({ error : err });
+	    }
+
+	    return DeviceRouter;
+	} ());
+
+
+	module.exports = DeviceRouter;
+
+
+/***/ }
+/******/ ]);
