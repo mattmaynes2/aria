@@ -6,4 +6,4 @@ class GetHubModeCommand(Command):
         super().__init__(CommandType.GET,'mode')
     
     def execute(self,hub,data):
-        return hub.mode
+        return hub.mode.value
