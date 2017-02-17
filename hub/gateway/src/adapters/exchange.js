@@ -34,8 +34,8 @@ let ExchangeAdapter = (function () {
                     resolve();
                 }
 
-            }, () => {
-                reject(Error('Error in discovery request'));
+            }, (error) => {
+                reject(Error('Error in discovery request: ' + error.stack));
             });
         });
     };
@@ -106,17 +106,26 @@ let ExchangeAdapter = (function () {
             };
 
             client  = this.transport.createSocket('udp4');
+
             message = IPC.serialize(packet);
             expiry  = setTimeout(() => {
                 client.close();
                 reject(Error('Response wait period timed out'));
             }, 5000);
-
+            
             client.on('message', function (message) {
-                logger.debug('Received response from comm server');
+                logger.debug('Received response from exchange server');
                 client.close();
                 clearTimeout(expiry);
-                resolve(IPC.parse(message));
+                try {
+                    response = IPC.parse(message);
+                }catch(err){
+                    reject("Error parsing message: " + message);
+                }
+                if (response.type === IPC.Error) {
+                    reject(Error("Received an error response from exchange server: " + response.payload));
+                }
+                resolve(response);
             });
 
             client.send(message, 0, message.length,
@@ -124,7 +133,7 @@ let ExchangeAdapter = (function () {
                 function (err) {
                     if (err) {
                         clearTimeout(expiry);
-                        reject(Error(err));
+                        reject(Error("Error in send: " + err.stack));
                     }
                     logger.debug('Sent UDP message');
                 }

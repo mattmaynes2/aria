@@ -38,6 +38,7 @@ describe('Test the endpoints provided by the hub router', function(){
         HubRouter = proxyquire('../../src/routers/hub.js', {'express' : express});
     });
 
+
     it('Should have an endpoint for Adding Behaviours', () => {
         var hubRouter = new HubRouter(stubAdapter);
         hubRouter.router();
