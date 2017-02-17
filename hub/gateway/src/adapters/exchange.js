@@ -123,7 +123,8 @@ let ExchangeAdapter = (function () {
                     reject("Error parsing message: " + message);
                 }
                 if (response.type === IPC.Error) {
-                    reject(Error("Received an error response from exchange server: " + response.payload));
+                    reject(Error("Received an error response from exchange server: " + 
+                                    JSON.stringify(response.payload)));
                 }
                 resolve(response);
             });
