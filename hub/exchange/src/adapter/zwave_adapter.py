@@ -145,7 +145,8 @@ class ZWaveAdapter(Adapter):
         return False
 
     def discover(self):
-        self.network.heal()
+        self.network.controller.kill_command()
+        self.network.controller.add_node()
 
     def setup(self):
         super().setup()

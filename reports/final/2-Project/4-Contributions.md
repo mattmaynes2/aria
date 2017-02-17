@@ -69,10 +69,10 @@
 | [Coffee Scenario](#sec-3-2-3-4) <br/>              | Jeremy & Matthew <br/>  | Peter <br/>      | November 5, 2016 <br/>  |
 | [Lighting Scenario](#sec-3-2-3-) <br/>             | Peter <br/>             | Matthew <br/>    | November 28, 2016 <br/> |
 +----------------------------------------------------+-------------------------+------------------+-------------------------+
-| [Use Cases](#3-2-4-1) <br/>    					 | Cameron & Matthew       | <br/>            | November 6, 2016 <br/>  |
-| [Training Use Cases](#3-2-4-2) <br/>	 			 | Cameron 				   | Matthew          | February 6, 2017 <br/>  |
+| [Use Cases](#sec-3-2-4-1) <br/>    				 | Cameron & Matthew       | <br/>            | November 6, 2016 <br/>  |
+| [Training Use Cases](#sec-3-2-4-2) <br/>	 		 | Cameron 				   | Matthew          | February 6, 2017 <br/>  |
 +----------------------------------------------------+-------------------------+------------------+-------------------------+
-| [Nonfunctional Requirements](#3-2-5-1)             | Cameron 				   |  			      | November 27, 2016       |
+| [Nonfunctional Requirements](#sec-3-2-5-1)         | Cameron 				   |  			      | November 27, 2016       |
 +----------------------------------------------------+-------------------------+------------------+-------------------------+
 | [Component Design](#sec-3-2-6-1)                   | Matthew                 | Jeremy & Cameron | November 27, 2016 		|
 +----------------------------------------------------+-------------------------+------------------+-------------------------+
