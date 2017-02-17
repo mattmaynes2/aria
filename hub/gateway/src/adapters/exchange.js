@@ -134,7 +134,7 @@ let ExchangeAdapter = (function () {
                 function (err) {
                     if (err) {
                         clearTimeout(expiry);
-                        reject(Error("Error in send: " + err.stack));
+                        reject(Error("Error in send: " + err.message));
                     }
                     logger.debug('Sent UDP message');
                 }
