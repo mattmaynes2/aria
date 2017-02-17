@@ -6,19 +6,19 @@ import DataType         from './data-type';
 import './attribute.css';
 
 class DeviceAttribute extends Component {
-    constructor (state, props) {
+    constructor (state) {
         super();
         this._state = {
             name        : state.name || 'Unknown Attribute',
-            parameters  : state.parameters || []
+            parameters  : state.parameters || [],
+            isControllable : state.isControllable || false 
         };
-        this._props = props || { isControllable : false };
     }
 
     render () {
 
         this._parameters = this._state.parameters.map((param) => {
-            return this._props.isControllable ?
+            return this._state.isControllable ?
                 new DeviceParameter(param.value, param) :
                 new DataType(param.value, param);
         });
