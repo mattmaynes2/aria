@@ -12,13 +12,13 @@ class DeviceAttribute extends Component {
             name        : state.name || 'Unknown Attribute',
             parameters  : state.parameters || []
         };
-        this._props = props || { controllable : false };
+        this._props = props || { isControllable : false };
     }
 
     render () {
 
         this._parameters = this._state.parameters.map((param) => {
-            return this._props.controllable ?
+            return this._props.isControllable ?
                 new DeviceParameter(param.value, param) :
                 new DataType(param.value, param);
         });
