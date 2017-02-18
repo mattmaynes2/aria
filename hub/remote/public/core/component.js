@@ -32,9 +32,9 @@ class Component {
     }
 
     /**
+     * Updates the state of this component but does not re-render the component
      *
-     * @param state
-     *
+     * @param state {object} The new state of this component
      * @return {Component} The updated component
      */
     update (state) {
@@ -42,6 +42,13 @@ class Component {
         return this;
     }
 
+    /**
+     * Renders this component and all of its children. Subclasses of the Component class should
+     * avoid overriding this method and instead override the `_prerender` or `_postrender`
+     * methods where applicable.
+     *
+     * @return {Component} The rendered version of this component
+     */
     render () {
         this._prerender();
         this._$el
@@ -54,6 +61,11 @@ class Component {
         return this;
     }
 
+    /**
+     * Removes this component from the visible DOM
+     *
+     * @return {Component} The removed component
+     */
     remove () {
         this._clickObserver = null;
         if (this._$el) { this._$el.remove(); }

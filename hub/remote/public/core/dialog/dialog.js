@@ -11,13 +11,13 @@ class Dialog extends Component {
         this._props = {
             title   : this._props.title     || '',
             buttons : this._props.buttons   || [],
-            close   : this._props.close === undefined ? true : this._props.close,
-            classes : 'dialog'
+            close   : this._props.close === undefined ? true : this._props.close
         };
     }
 
     _prerender () {
-        $(document).append(this._$el);
+        $('body').append(this._$el);
+        this.addClass('dialog');
 
         this._buttons = new Component().addClass('dialog-buttons').append(
             this._props.buttons.map((text) => {
@@ -32,7 +32,9 @@ class Dialog extends Component {
 
         this.append([
             new Component().addClass('dialog-title').text(this._props.title),
-            new Component().addClass('dialog-body').append(this._state)
+            new Component().addClass('dialog-body').append(
+                this._state instanceof Component ? this._state : new Component()
+            )
         ]);
 
         return this;
