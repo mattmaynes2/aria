@@ -18,13 +18,13 @@ device limits, it is very similar, being able to handle between 30 and 40 device
 start to occur [^C-2-3]. Z-Wave is similar to ZigBee in terms of device range and power consumption.
 Z-Wave has an even lower data transfer rate than ZigBee at 40 kbits/sec [^C-2-4].
 
-[^C-2-1]S. Designs, "Z-Wave public specification | Z-Wave developers," Z-Wave Developers, 2016. [Online]. Available: http://z-wave.sigmadesigns.com/design-z-wave/z-wave-public-specification/. Accessed: Oct. 8, 2016.
+[^C-2-1]: S. Designs, "Z-Wave public specification | Z-Wave developers," Z-Wave Developers, 2016. [Online]. Available: http://z-wave.sigmadesigns.com/design-z-wave/z-wave-public-specification/. Accessed: Oct. 8, 2016.
 
-[^C-2-2]L. Frenzel, "What’s the difference between ZigBee and Z-Wave?," 2012. [Online]. Available: http://electronicdesign.com/communications/what-s-difference-between-zigbee-and-z-wave. Accessed: Oct. 8, 2016.
+[^C-2-2]: L. Frenzel, "What’s the difference between ZigBee and Z-Wave?," 2012. [Online]. Available: http://electronicdesign.com/communications/what-s-difference-between-zigbee-and-z-wave. Accessed: Oct. 8, 2016.
 
-[^C-2-3]SMARTHOME®, "Smarthome solution center," 1995. [Online]. Available: http://www.smarthome.com/sc-what-technology. Accessed: Oct. 8, 2016.
+[^C-2-3]: SMARTHOME®, "Smarthome solution center," 1995. [Online]. Available: http://www.smarthome.com/sc-what-technology. Accessed: Oct. 8, 2016.
 
-[^C-2-4] L. Frenzel, "What’s the difference between ZigBee and Z-Wave?," in Electronic Design, 2012. [Online]. Available: http://electronicdesign.com/communications/what-s-difference-between-zigbee-and-z-wave. Accessed: Oct. 6, 2016.
+[^C-2-4]: L. Frenzel, "What’s the difference between ZigBee and Z-Wave?," in Electronic Design, 2012. [Online]. Available: http://electronicdesign.com/communications/what-s-difference-between-zigbee-and-z-wave. Accessed: Oct. 6, 2016.
 
 
 
