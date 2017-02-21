@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS "Scheduled_Change" (
 	"schedule_id" INTEGER,
 	"parameter" INTEGER,
 	"value" TEXT,
-	FOREIGN KEY ("schedule") REFERENCES "Schedule"("id")
+	FOREIGN KEY ("schedule_id") REFERENCES "Schedule"("id")
 );
 
 /*
