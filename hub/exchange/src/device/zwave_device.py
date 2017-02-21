@@ -45,7 +45,7 @@ class ZWaveValueWrapper():
             self.on = (value != 0)
         self._wrappedValue.data = value
 
-    def build_data(self, value):
+    def buildData(self, value):
         if self.isColourValue():
             return "#"+value
         return self._wrappedValue.check_data(value)
@@ -133,7 +133,7 @@ class ZWaveDevice(Device):
             zwaveVal.data = checkedVal
             for att in self.deviceType.attributes : 
                 if att.name == attribute:
-                    att.parameters[0].value = zwaveVal.build_data(value)
+                    att.parameters[0].value = zwaveVal.buildData(value)
 
             return self.buildParamChange(zwaveVal)
 
