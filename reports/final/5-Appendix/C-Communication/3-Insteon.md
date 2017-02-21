@@ -37,8 +37,8 @@ modern day smart home communication protocol. That said, there are many legacy a
 place which still use X10 devices. If support for these legecy systems was needed for this project, 
 then Insteon would be a competetive choice for our communication protocol.
 
-[^C-3-1] "WHITEPAPER: Compared," in INSTEON. [Online]. Available: http://cache.insteon.com/pdf/INSTEONCompared.pdf. Accessed: Oct. 6, 2016.
-[^C-3-2] "X10," in Build Your Smarthome, 2014. [Online]. Available: http://buildyoursmarthome.co/home-automation/protocols/x10/. Accessed: Oct. 8, 2016.
+[^C-3-1]: "WHITEPAPER: Compared," in INSTEON. [Online]. Available: http://cache.insteon.com/pdf/INSTEONCompared.pdf. Accessed: Oct. 6, 2016.
+[^C-3-2]: "X10," in Build Your Smarthome, 2014. [Online]. Available: http://buildyoursmarthome.co/home-automation/protocols/x10/. Accessed: Oct. 8, 2016.
 
 
 
