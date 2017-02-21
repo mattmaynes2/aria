@@ -71,6 +71,9 @@ class ZWaveDevice(Device):
         version=str(node.version))
         self.__node = node
 
+    def refreshValues(self):
+        self.deviceType = self._getDeviceType(self.__node)
+
     def _getDeviceType(self, node):
         attributes = []
         for key,val in node.get_values(genre='User').items():
@@ -128,7 +131,6 @@ class ZWaveDevice(Device):
             logger.debug("Attempting to set attribute: " + str(attribute) + " to value " + str(value))
             zwaveVal.data = checkedVal
             return self.buildParamChange(zwaveVal)
-
 
     def processEvent(self, label):
         val = self.__valueMap[label]
