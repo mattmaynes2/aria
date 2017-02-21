@@ -141,8 +141,8 @@ let HubRouter = (function () {
     };
 
     function onError (res, err) {
-        logger.error('Error handling request: ', err);
-        res.status(500).json({ error : err || '' });
+        logger.error('Error handling request: ', err.message);
+        res.status(500).json({ error : err.message || '' });
     }
 
     return HubRouter;
