@@ -90,7 +90,7 @@ let HubRouter = (function () {
             this._adapter
                 .send(IPC.Request, {
                     'create' : 'session',
-                    'behaviourid' : req.body.behaviourId,
+                    'behaviourId' : req.body.behaviourId,
                     'name' : req.body.name
                 })
                 .then((reply) => {
