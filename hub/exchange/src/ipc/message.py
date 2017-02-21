@@ -4,6 +4,9 @@ from enum import Enum
 from uuid import UUID
 from device import Device,DeviceType,Attribute, Parameter
 import threading
+import logging
+
+logger = logging.getLogger(__name__)
 
 class Message:
     Error               = 0
