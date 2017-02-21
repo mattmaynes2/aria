@@ -23,10 +23,3 @@ class Device:
 
     def getAttribute(self, attributeName):
         return self.deviceType.getAttribute(attributeName)
-
-    def refreshValues(self):
-        '''
-        Specific devices can override this to provide a way to refresh the values of their 
-        attributes
-        '''
-        pass
