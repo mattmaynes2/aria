@@ -129,7 +129,7 @@ class ZWaveDevice(Device):
             zwaveVal.data = checkedVal
             for att in self.deviceType.attributes : 
                 if att.name == attribute:
-                    att.parameters[0].value = checkedVal
+                    att.parameters[0].value = zwaveVal.data
 
             return self.buildParamChange(zwaveVal)
 

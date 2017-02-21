@@ -60,9 +60,6 @@ class Message:
         return message
 
     def __str__(self):
-        logger.debug("SENDER: " + str(self.sender))
-        logger.debug("RECEIVER: " + str(self.receiver))
-
         return 'Message [ type:'+str(self.type)+', data:'+str(json.dumps(self.data,default=Message.json_encode,sort_keys=True).encode(Message.ENCODING))+', sender:'+\
         str(UUID(bytes=self.sender))+ ', receiver: '+str(UUID(bytes=self.receiver))+']'
     
