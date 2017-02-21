@@ -1,4 +1,6 @@
 import sys
+import os
+import signal
 import logging
 import logging.config
 from pkg_resources import resource_stream
@@ -29,6 +31,9 @@ def main ():
     argv = args.parse()
     if argv.daemonize:
         daemon.daemonize()
+        
+    pid = os.getpid()
+    signal.signal(signal.SIGTERM, signalHandler)
 
     database    = Database()
     hub         = Hub(argv, exit)
@@ -40,6 +45,10 @@ def main ():
     cli.start()
     exchange.start()
 
+def signalHandler(signum, frame):
+    exit()
+    sys.stdout.write('Initiating graceful shutdown')
+    sys.exit(0)
 
 def create_exchange (hub, cli, database):
     global exchange
