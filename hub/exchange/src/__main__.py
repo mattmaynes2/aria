@@ -10,7 +10,7 @@ sys.path.append('../lib')
 from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
 from adapter import AriaAdapter, HubAdapter, WemoAdapter, SoftwareAdapter
-#from adapter.zwave_adapter import ZWaveAdapter
+from adapter.zwave_adapter import ZWaveAdapter
 from database import Database
 from ipc import Message
 from device     import SoftwareDeviceFactory
