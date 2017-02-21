@@ -18,6 +18,7 @@ id          --  auto incrementing integer key
 timestamp   --  date and time of the request
 request_id  --  id of request in Request table which caused the event, 0 if not caused by request
 source      --  UUID of the sending device
+session_id  --  id of the session if currently in a training session
 */
 CREATE TABLE IF NOT EXISTS "Event" (
 	"id" INTEGER PRIMARY KEY,
@@ -26,7 +27,8 @@ CREATE TABLE IF NOT EXISTS "Event" (
 	"source" TEXT,	
 	"session_id" INTEGER,
 	FOREIGN KEY ("request_id") REFERENCES Request("id"),
-	FOREIGN KEY ("source") REFERENCES Device("address")
+	FOREIGN KEY ("source") REFERENCES Device("address"),
+	FOREIGN KEY ("session_id") REFERENCES Session("id")
 );
 
 /*
@@ -106,14 +108,14 @@ CREATE TABLE IF NOT EXISTS "Parameter" (
 );
 
 /*
-id         --  auto incrementing integer key
-schedule   --  link to a schedule in the Schedule table
-parameter  --  parameter to be changed
-value      --  value the parameter should be changed to
+id          --  auto incrementing integer key
+schedule_id --  link to a schedule in the Schedule table
+parameter   --  parameter to be changed
+value       --  value the parameter should be changed to
 */
 CREATE TABLE IF NOT EXISTS "Scheduled_Change" (
 	"id" INTEGER PRIMARY KEY,
-	"schedule" INTEGER,
+	"schedule_id" INTEGER,
 	"parameter" INTEGER,
 	"value" TEXT,
 	FOREIGN KEY ("schedule") REFERENCES "Schedule"("id")
