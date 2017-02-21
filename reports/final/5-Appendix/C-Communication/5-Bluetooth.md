@@ -31,13 +31,13 @@ efficient. It accomplishes this by closing inactive connections while no data is
 Once data needs to be transferred, it reestablishes the necessary connection, completes the
 transfer, and closes the connection again[^C-5-4].
 
-[^C-5-1] J. 0, "Bluetooth basics," in Sparkfun. [Online]. Available: https://learn.sparkfun.com/tutorials/bluetooth-basics/how-bluetooth-works. Accessed: Oct. 10, 2016.
+[^C-5-1]: J. 0, "Bluetooth basics," in Sparkfun. [Online]. Available: https://learn.sparkfun.com/tutorials/bluetooth-basics/how-bluetooth-works. Accessed: Oct. 10, 2016.
 
-[^C-5-2] Jim, "Bluetooth basics," in Sparkfun. [Online]. Available: https://learn.sparkfun.com/tutorials/bluetooth-basics/common-versions. Accessed: Oct. 9, 2016.
+[^C-5-2]: Jim, "Bluetooth basics," in Sparkfun. [Online]. Available: https://learn.sparkfun.com/tutorials/bluetooth-basics/common-versions. Accessed: Oct. 9, 2016.
 
-[^C-5-3] "Data rates using BLE," in Anaren atmosphere. [Online]. Available: https://atmosphere.anaren.com/wiki/Data_rates_using_BLE. Accessed: Oct. 9, 2016.
+[^C-5-3]: "Data rates using BLE," in Anaren atmosphere. [Online]. Available: https://atmosphere.anaren.com/wiki/Data_rates_using_BLE. Accessed: Oct. 9, 2016.
 
-[^C-5-4] "Bluetooth low energy," in CSR. [Online]. Available: https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336. Accessed: Oct. 9, 2016.
+[^C-5-4]: "Bluetooth low energy," in CSR. [Online]. Available: https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=227336. Accessed: Oct. 9, 2016.
 
 
 
