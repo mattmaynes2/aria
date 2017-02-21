@@ -1,8 +1,8 @@
 import uuid
 import logging
 import soco
-from Adapter import Adapter
-from device import Device, DeviceType
+from adapter import Adapter
+from device.sonos_device import SonosDevice
 from ipc import Message
 
 import sys
@@ -15,6 +15,9 @@ class SonosAdapter (Adapter):
 
     def discover(self):
         devices=soco.discover()
+        for device in devices:
+            SonosDevice(device)
+            
 
     def send (self, message):
         pass
