@@ -2,7 +2,7 @@
 
 #### Description {-}
 
-Insteon is substantially different from the two above protocols. It is not a public specification
+Insteon is substantially different from the ZigBee and Z-Wave protocols. It is not a public specification
 of any kind. It is a fully closed off system that only operates within itself. Insteon used both 
 a wireless frequency and powerline to communnicate, providing more stability than most other 
 home automation communication protocols. The technical information below is directly from the
