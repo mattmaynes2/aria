@@ -29,7 +29,7 @@ help avoid interference with WiFi channels.
 One of the goals of BLE is to make devices that do not require constant data transmission more
 efficient. It accomplishes this by closing inactive connections while no data is being transferred.
 Once data needs to be transferred, it reestablishes the necessary connection, completes the
-transfer, and closes the connection again[^C-5-4].
+transfer, and closes the connection again [^C-5-4].
 
 [^C-5-1]: J. 0, "Bluetooth basics," in Sparkfun. [Online]. Available: https://learn.sparkfun.com/tutorials/bluetooth-basics/how-bluetooth-works. Accessed: Oct. 10, 2016.
 
