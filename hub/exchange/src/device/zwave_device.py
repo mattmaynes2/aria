@@ -47,7 +47,7 @@ class ZWaveValueWrapper():
 
     def buildData(self, value):
         if self.isColourValue():
-            return "#"+value
+            return value
         return self._wrappedValue.check_data(value)
 
     def check_data(self, value):
