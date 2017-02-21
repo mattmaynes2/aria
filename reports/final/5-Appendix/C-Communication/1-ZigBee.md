@@ -28,10 +28,8 @@ highest band has 16 available channels. The respective data transfer rates are 2
 other, and generally only devices using the 2.4 GHz range are commercially available.
 
 The low power consumption of ZigBee devices when compared to WiFi leads to better energy efficiency
-and a longer batter life [^C-1-3].
-
-Theoretically, up to 256 devices can be connected to one network. However, in practise, the system performance
-tends to degrade at around thirty devices [^C-1-4].
+and a longer batter life [^C-1-3]. Theoretically, up to 256 devices can be connected to one network. 
+However, in practise, the system performance tends to degrade at around thirty devices [^C-1-4].
 
 One of the major drawbacks of ZigBee is that for it to be effective, it must operate in the 2.4 GHz
 frequency band. This would not be an issue, except for the fact that this is the same frequency
