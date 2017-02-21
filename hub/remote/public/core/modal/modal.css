@@ -1,0 +1,35 @@
+.modal-dialog {
+    display         : none;
+    position        : relative;
+    overflow        : auto;
+    width           : 80%;
+    height          : 80%;
+    background      : rgb(255,255,255)
+}
+
+.modal-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 5% auto; 
+    padding: 20px;
+    width:80%;
+    height:80%;
+    border: 1px solid #888;
+}
+
+.modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

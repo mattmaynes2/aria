@@ -147,7 +147,7 @@ Below are the descriptions of each use case for the system.
 +----------------+--------------------------------------------------------------------------------+
 
 
-#### Training Use Cases {#sec-3-2-4-2}
+#### Training Use Cases {- #sec-3-2-4-2}
 
 A subset of the behaviour required for the sart home behaviour is the training of the system.
 Training involves a user creating a behaviour they wish to train the system to perform, then by

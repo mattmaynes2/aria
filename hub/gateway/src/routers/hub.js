@@ -117,7 +117,7 @@ let HubRouter = (function () {
             this._adapter
                 .send(IPC.Request, {
                     'activate' : 'session',
-                    'value' : req.params.id
+                    'id' : req.params.id
                 })
                 .then((reply) => {
                     res.json(reply.payload.value);
@@ -129,7 +129,7 @@ let HubRouter = (function () {
             this._adapter
                 .send(IPC.Request, {
                     'deactivate' : 'session',
-                    'value' : req.params.id
+                    'id' : req.params.id
                 })
                 .then((reply) => {
                     res.json(reply.payload.value);
@@ -141,8 +141,8 @@ let HubRouter = (function () {
     };
 
     function onError (res, err) {
-        logger.error('Error handling request: ', err);
-        res.status(500).json({ error : err || '' });
+        logger.error('Error handling request: ', err.message);
+        res.status(500).json({ error : err.message || '' });
     }
 
     return HubRouter;

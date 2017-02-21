@@ -38,6 +38,7 @@ describe('Test the endpoints provided by the hub router', function(){
         HubRouter = proxyquire('../../src/routers/hub.js', {'express' : express});
     });
 
+
     it('Should have an endpoint for Adding Behaviours', () => {
         var hubRouter = new HubRouter(stubAdapter);
         hubRouter.router();
@@ -83,7 +84,7 @@ describe('Test the endpoints provided by the hub router', function(){
         var req = { params: { id: 1}, body: { behaviourId: 1}};
         var res = {};
         postFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'value' : 1, 'activate' : 
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'id' : 1, 'activate' : 
                                                                                 'session'});
     });
 
@@ -96,7 +97,7 @@ describe('Test the endpoints provided by the hub router', function(){
         var req = { params: { id: 1}, body: { behaviourId: 1}};
         var res = {};
         postFn(req, res);
-        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'value' : 1, 'deactivate' : 
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 'id' : 1, 'deactivate' : 
                                                                                 'session'});
     });
 

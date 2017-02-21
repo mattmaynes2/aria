@@ -14,7 +14,7 @@ The message then propagates through the system to the communication server which
 discovery message to find new devices. If a device receives a request to be discovered then it
 begins the device driven discovery sequence
 
-![](./uml/UserDrivenDiscovery.png)
+![][h-4]
 
 #### Device Driven Discovery {-}
 
@@ -24,7 +24,7 @@ information then the request is propagated to the web client. Once the web clien
 notification that a new device is available, it prompts to user to add the device. The user can
 then choose to accept or reject the device which will send a message to the device.
 
-![](./uml/DeviceDrivenDiscovery.png)
+![][h-6]
 
 
 

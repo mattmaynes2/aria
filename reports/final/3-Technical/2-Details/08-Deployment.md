@@ -1,6 +1,6 @@
 ### Deployment {#sec-3-2-8-1}
 
-![](./uml/SystemDeployment.png)
+![][system-deployment]
 
 ##### Smart Hub {-}
 

@@ -8,7 +8,7 @@ the system. Currently there is no plan for adding push back over the sockets for
 
 #### Endpoint Documentation {-}
 
-##### Device Discovered {- #section-design-api-ws-discovered}
+##### Device Discovered {-}
 
 +---------------+-------------------------------------------------------------------------------+
 | Title     	| **Event: Device Discovered**	                                                |
@@ -54,7 +54,7 @@ the system. Currently there is no plan for adding push back over the sockets for
 |				|			}																	|
 +---------------+-------------------------------------------------------------------------------+
 
-##### Device Event {- #section-design-api-ws-event}
+##### Device Event {-}
 
 +---------------+-------------------------------------------------------------------------------+
 | Title     	| **Event: Device Event**	                                               		|
