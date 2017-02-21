@@ -90,7 +90,7 @@ let HubRouter = (function () {
             this._adapter
                 .send(IPC.Request, {
                     'create' : 'session',
-                    'behaviourId' : req.body.behaviourId,
+                    'behaviourid' : req.body.behaviourId,
                     'name' : req.body.name
                 })
                 .then((reply) => {
@@ -117,7 +117,7 @@ let HubRouter = (function () {
             this._adapter
                 .send(IPC.Request, {
                     'activate' : 'session',
-                    'value' : req.params.id
+                    'id' : req.params.id
                 })
                 .then((reply) => {
                     res.json(reply.payload.value);
@@ -129,7 +129,7 @@ let HubRouter = (function () {
             this._adapter
                 .send(IPC.Request, {
                     'deactivate' : 'session',
-                    'value' : req.params.id
+                    'id' : req.params.id
                 })
                 .then((reply) => {
                     res.json(reply.payload.value);
