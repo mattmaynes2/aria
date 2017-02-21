@@ -12,12 +12,14 @@ log=logging.getLogger(__name__)
 class SonosAdapter (Adapter):
     def __init__(self):
         super().__init__()
+        self.__devices={}
 
     def discover(self):
         devices=soco.discover()
         for device in devices:
-            SonosDevice(device)
-            
+            device=SonosDevice(device)
+            self.__devices[device.address]=device
+            self.notify('discovered',device)
 
     def send (self, message):
         pass
