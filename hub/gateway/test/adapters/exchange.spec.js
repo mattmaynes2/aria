@@ -47,12 +47,6 @@ describe('Exchange Adapter Testing', function(){
         sizeBuf.fill(0);
         sizeBuf.writeUInt32BE(JSON.stringify(payload).length);
 
-        var expectedBuffer = Buffer.concat([Buffer.from([0x02]),
-                                        sizeBuf,
-                                        adapter._id,
-                                        new Buffer(16).fill(0),
-                                        Buffer.from(JSON.stringify(payload))]);
-
         var discoveryAck = Buffer.concat([Buffer.from([0x04]),
                                             sizeBuf,
                                             new Buffer(16).fill(0),
@@ -64,10 +58,10 @@ describe('Exchange Adapter Testing', function(){
         adapter.send(2, payload).then(()=>{
         }).catch(()=>{
             assert(false);
-        })
+        });
    });
 
-   it("Should signal that an error has occurred if an error response is received", () => {
+   it('Should signal that an error has occurred if an error response is received', () => {
         var payload = {'response':'Invalid Message'};
 
         var sizeBuf = new Buffer(4);
@@ -81,9 +75,9 @@ describe('Exchange Adapter Testing', function(){
                                             Buffer.from(JSON.stringify(payload))]);
         fakeSocket.setNextResponse(errorResponse);
         adapter.registered = true;
-        var error = false;
+        
         adapter.send(2, {}).then(()=>{
-            assert(false, "Promise did not error as expected");
+            assert(false, 'Promise did not error as expected');
         }).catch(()=>{
         });
    });

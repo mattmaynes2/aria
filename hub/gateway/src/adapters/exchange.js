@@ -117,13 +117,14 @@ let ExchangeAdapter = (function () {
                 logger.debug('Received response from exchange server');
                 client.close();
                 clearTimeout(expiry);
+                var response;
                 try {
                     response = IPC.parse(message);
                 }catch(err){
-                    reject("Error parsing message: " + message);
+                    reject('Error parsing message: ' + message);
                 }
                 if (response.type === IPC.Error) {
-                    reject(Error("Received an error response from exchange server: " + 
+                    reject(Error('Received an error response from exchange server: ' + 
                                     JSON.stringify(response.payload)));
                 }
                 resolve(response);
@@ -134,7 +135,7 @@ let ExchangeAdapter = (function () {
                 function (err) {
                     if (err) {
                         clearTimeout(expiry);
-                        reject(Error("Error in send: " + err.message));
+                        reject(Error('Error in send: ' + err.message));
                     }
                     logger.debug('Sent UDP message');
                 }
