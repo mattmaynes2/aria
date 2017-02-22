@@ -25,6 +25,7 @@ class SonosAdapterTest(TestCase):
         self.mockNode.loudness=True
         self.mockNode.mute=False
         self.mockNode.ip_address='localhost'
+        self.mockNode.get_current_transport_info.return_value={'current_transport_state':'STOPPED'}
     
     @mock.patch('soco.discover')
     def test_discover(self,MockScan):
