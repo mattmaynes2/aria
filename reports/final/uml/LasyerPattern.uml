@@ -183,7 +183,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="o8cK1g1poE2BrHUeIJhJPwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="AXsI/vowJ0upejfq/KQEyQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">CommunicationServer</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Exchange Server</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="+A9A1SX4yUSRyYtntMfORQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -430,7 +430,7 @@
 <XPD:REF name="Namespace">LjDLze6g3UWSp2U+LrTguwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[8]" type="UMLComponent" guid="8fzwfRyy4EOIT2OVYcOAAAAA">
-<XPD:ATTR name="Name" type="string">CommunicationServer</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Exchange Server</XPD:ATTR>
 <XPD:REF name="Namespace">LjDLze6g3UWSp2U+LrTguwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">2</XPD:ATTR>
 <XPD:REF name="Views[0]">FSWKQuDYM0epPldf8B2vPgAA</XPD:REF>

@@ -87,7 +87,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "CommunicationServer",
+											"text": "Exchange Server",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -6869,7 +6869,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFYAgVIlugFQOI="
 					},
-					"name": "CommunicationServer",
+					"name": "Exchange Server",
 					"ownedElements": [
 						{
 							"_type": "UMLInterfaceRealization",
@@ -11997,6 +11997,25 @@
 					"isAbstract": false,
 					"isFinalSpecialization": false,
 					"isLeaf": false
+				},
+				{
+					"_type": "UMLPackageDiagram",
+					"_id": "AAAAAAFaZ5SD6i+DlaY=",
+					"_parent": {
+						"$ref": "AAAAAAFYAgVIlugFQOI="
+					},
+					"name": "PackageDiagram1",
+					"visible": true,
+					"defaultDiagram": false
+				},
+				{
+					"_type": "UMLPackage",
+					"_id": "AAAAAAFaZ5ST/i+Vyk0=",
+					"_parent": {
+						"$ref": "AAAAAAFYAgVIlugFQOI="
+					},
+					"name": "Package1",
+					"visibility": "public"
 				}
 			],
 			"visibility": "public"
