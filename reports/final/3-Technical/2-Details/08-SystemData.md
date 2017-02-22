@@ -16,6 +16,7 @@ how to send messages to devices, what capabilities they have, and about their cu
 important. Once devices are able to be represented, a record of their state changes and factors 
 leading to those state changes must be captured. An example of the structure of a device is shown
 below.
+
 ```
 {  
    "ZWaveDevice__valueMap":{  
@@ -63,6 +64,8 @@ information about what value changed on what device must be remembered. Because 
 includes a machine learning component, there also needs to be a differentiation between state 
 changes caused by the user and state changes caused by a learned behaviour of the system. An example
 of a generated event is shown below.
+
+```
 {  
    type:3,
    data:{  
@@ -88,6 +91,7 @@ of a generated event is shown below.
    sender:35434141-4644   -4335-3139   -414530313430,
    receiver:00000000-0000   -0000-0000   -000000000000
 }
+```
 
 ##### Learning {-}
 
