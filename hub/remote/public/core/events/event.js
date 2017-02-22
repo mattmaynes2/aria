@@ -21,7 +21,7 @@ class Event extends Component {
 
         this._time      = new Since(this._state.timestamp);
         this._icon      = new DeviceIcon(this._state.deviceType);
-        this._device    = new Field('', { label : this._state.deviceType });
+        this._device    = new Field('', { label : this._state.device });
         this._attribute = new DeviceAttribute(this._state.attribute);
     }
     
