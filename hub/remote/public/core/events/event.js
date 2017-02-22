@@ -21,9 +21,10 @@ class Event extends Component {
 
         this._time      = new Since(this._state.timestamp);
         this._icon      = new DeviceIcon(this._state.deviceType);
-        this._device    = new Field('', { label : this._state.device });
+        this._device    = new Field('', { label : this._state.deviceType });
         this._attribute = new DeviceAttribute(this._state.attribute);
     }
+    
     render () {
         this._$body = $('<div>')
             .addClass('event-body')
