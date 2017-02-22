@@ -27,7 +27,7 @@ Several subtypes of events have been identified:
 
 #### Component Organization {-}
 
-![][aria-components]
+![][system-components]
 
 #### Component Descriptions {-}
 
@@ -53,7 +53,8 @@ InternalMessaging interface provides a way for components that are running in th
 the Exchange Server to send and receive event messages. The IPCMessaging interface allows
 components that are running in different processes to send and receive messages from one another,
 using an IPC (InterProcess Communication) protocol. The IPC protocol is described in further detail
-in section [IPC Protocol](#section-design-api-ipc).
+in section [Appendix J-1](#J-1). Details about individual implementing this component can be 
+found in [Appendix H-1](#H-1).
 
 ##### Event Logger {-}
 
@@ -107,7 +108,7 @@ This section discusses the architectural patterns that have been identified with
 pattern is described by first presenting the problem that each pattern is intended to solve, in the 
 context of this system.
 
-##### Layer Pattern
+##### Layer Pattern {-}
 
 In order to allow for efficient teamwork during the development of this project, it is necessary
 that development on certain components can proceed in parallel. Use of the layer pattern enforces 
