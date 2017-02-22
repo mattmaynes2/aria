@@ -15,7 +15,7 @@ setup(
             'eggsecutable = src.__main__:main',
         ]
     },
-    install_requires    = ['netdisco', 'pywemo'],
+    install_requires    = ['netdisco', 'pywemo','soco'],
     test_suite          = 'nose.collector',
     tests_require       = ['nose'],
     zip_safe            = False,
