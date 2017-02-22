@@ -6,6 +6,7 @@ from unittest import TestCase
 from unittest.mock import Mock
 from device.data_types import DataType
 from device.sonos_device import SonosDevice
+from device.music_controls import MusicControls
 from ipc import Message
 
 
@@ -26,13 +27,14 @@ class SonosDeviceTest(TestCase):
         self.mockNode.loudness=True
         self.mockNode.mute=False
         self.mockNode.ip_address='localhost'
+        self.mockNode.get_current_transport_info.return_value={'current_transport_state':'STOPPED'}
         
     def test_create(self):
         device= SonosDevice(self.mockNode,None)
         self.assertEqual("Media Room",device.name)
         self.assertEqual('Sonos PLAY:1',device.deviceType.name)
-        self.assertEqual(5,len(device.deviceType.attributes))
         self.assertEqual('http://localhost:1400/img/icon-S1.png',device.icon)
+        self.assertEqual(MusicControls.Stop, device.music_control)
     
     def test_handleRenderingEvent(self):
         mockService = Mock()
@@ -126,3 +128,25 @@ class SonosDeviceTest(TestCase):
     def test_bass(self):
         device= SonosDevice(self.mockNode,None)
         self.assertEqual(0,device.bass)
+
+    def test_play(self):
+        mockAdapter = Mock()
+        device= SonosDevice(self.mockNode,mockAdapter)
+        response= device.handleRequest('music_control','play')
+        self.assertEqual({
+                            'name' : 'music_control',
+                             'value': MusicControls.Play,
+                              'dataType': 'enum'
+                            },response)
+        self.assertTrue(self.mockNode.play.called)
+
+    def test_next(self):
+        mockAdapter = Mock()
+        device= SonosDevice(self.mockNode,mockAdapter)
+        response= device.handleRequest('music_control','next')
+        self.assertEqual({
+                            'name' : 'music_control',
+                             'value': MusicControls.Stop,
+                              'dataType': 'enum'
+                            },response)
+        self.assertTrue(self.mockNode.next.called)
