@@ -1,11 +1,11 @@
 ### System Components {#sec-3-2-6-1}
 
 The objective of this section is to present technical details about the implementation of the 
-proposed solution. We begin by introducing the fundamental terms and concepts used throughout this
+proposed solution. We begin by introducing some of the fundamental concepts used throughout this 
 section. Following these definitions is a component diagram showing the relationships between 
 system components, as well as a description of each component and the interfaces that it provides. 
-The component description section focuses on describing why each component is necessary in the 
-system.
+This section also includes a discussion of the architectural patterns that have been used, as well
+as the deployment of the system.
 
 #### Domain Concept Definitions {-}
 
@@ -100,3 +100,35 @@ devices to the uniform messaging interface used internally by the system.
 
 For technical specification about the Z-Wave protocol supported by the system, please see
 [Appendix H-8](#H-8).
+
+#### Architectural Patterns {-}
+
+This section discusses the architectural patterns that have been identified within the system. Each
+pattern is described by first presenting the problem that each pattern is intended to solve, in the 
+context of this system.
+
+##### Layer Pattern
+
+In order to allow for efficient teamwork during the development of this project, it is necessary
+that development on certain components can proceed in parallel. Use of the layer pattern enforces 
+the separation of concerns between different layers, allowing individual layers to be developed 
+independently to some degree.
+
+The components of this project are paritioned into three layers: Persistence, Application, and 
+Presentation. This pattern is commonly known as a Three-tier architecture for client-server 
+applications.
+
+The Persistence layer is responsible for storing objects in a database. In the ARIA system, the 
+persisted objects are events and device metadata.
+
+The Application layer is responsible for carrying out the business logic of the application. In the 
+ARIA system, this includes autonomous control of devices using machine learning.
+
+The Presentation layer is responsible for displaying information to the user. In the ARIA system, 
+this layer consists of a single-page web application. The web application uses the RESTful 
+interface provided by the application layer to retrieve information and inform the application 
+layer of user actions.
+
+The following diagram shows the organization of system components into a layered pattern.
+
+![][layer-architecture]
