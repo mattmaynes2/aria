@@ -17,7 +17,7 @@ class SonosAdapter (Adapter):
     def discover(self):
         devices=soco.discover()
         for device in devices:
-            device=SonosDevice(device)
+            device=SonosDevice(device,self)
             self.__devices[device.address]=device
             self.notify('discovered',device)
 
@@ -26,3 +26,6 @@ class SonosAdapter (Adapter):
 
     def receive (self):
         return None
+    
+    def received (self,message):
+        self.notify('received',message)

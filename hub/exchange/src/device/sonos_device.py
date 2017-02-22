@@ -29,8 +29,9 @@ class SonosDevice(Device):
     PROTOCOL ='sonos'
     # list of parameters that use the Master key for current value
     MASTERVALS=['volume','mute','loudness']
-    def __init__(self, device):
+    def __init__(self, device,adapter):
         self.__device=device
+        self.__adapter=adapter
         # fromat UID from device into UUID
         address= uuid.UUID(bytes=bytes(device.uid.replace('RINCON_',''),'utf-8')[:16])
         info =device.get_speaker_info()
@@ -41,7 +42,7 @@ class SonosDevice(Device):
         self.__queue=SonosQueue(self)
         self.__device.avTransport.subscribe(auto_renew=True,event_queue=self.__queue)
         self.__device.renderingControl.subscribe(auto_renew=True,event_queue=self.__queue)
-
+    
     def _buildDeviceType(self):
         attributes=[]
         info = self.__device.speaker_info
@@ -68,13 +69,13 @@ class SonosDevice(Device):
             attribute=self._handleRenderingEvent(event)
             data = {
                 'event' : 'device.event',
-                'timestamp' : int(event.timestamp)*1000,
+                'timestamp' : int(event.timestamp*1000),
                 'device' : self.name,
                 'deviceType' : self.deviceType.name,
                 'attribute' : attribute
                 }
-            m=Message(Message.Event,data)
-            print('{}'.format(m.encode()))
+            self.__adapter.received(Message(Message.Event,data,sender=self.address))
+
 
     def handleRequest(self, request):
         pass
