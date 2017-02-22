@@ -26,9 +26,6 @@ class Device extends Widget {
                 attributes  : state.deviceType.attributes || []
             }
         };
-        this._props = {
-            controllable : false
-        };
 
         this._state.title  = this._state.name;
         this._icon = new DeviceIcon(this._state.deviceType.name);
@@ -42,7 +39,7 @@ class Device extends Widget {
         });
 
         this._attrs = this._state.deviceType.attributes.map((attr, i) => {
-            var devAttr = new DeviceAttribute(attr, this._props);
+            var devAttr = new DeviceAttribute(attr);
 
             devAttr.change(() => {
                 Service.set('/device/' + this._state.address + '/setAttribute', {
