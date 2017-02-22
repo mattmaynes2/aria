@@ -60,3 +60,43 @@ class SonosAdapterTest(TestCase):
             'deviceType': 'Sonos PLAY:1',
             'attribute': device.getAttribute('volume')
         },sender=device.address))
+
+    @mock.patch('soco.discover')
+    def test_set_request(self, MockScan):
+        s=set()
+        s.add(self.mockNode)
+        MockScan.return_value=s
+        mockDelegate= Mock()
+        self.adapter.add_delegate(mockDelegate)
+        self.adapter.discover()
+        device =SonosDevice(self.mockNode,self.adapter)
+        
+        data={
+            "set": "mute", "value": [
+                {
+                    "dataType": "binary", 
+                    "max": 'null', 
+                    "min": 'null',
+                    "name": "mute",
+                    "step": 'null', 
+                    "value": 1
+                  }
+                ]
+            }
+        message = Message(Message.Request,data,receiver=device.address)
+        self.adapter.send(message)
+        response = mockDelegate.received.call_args[0][0]
+        self.assertEqual({  
+                            'device':'Media Room',
+                            'deviceType':'Sonos PLAY:1',
+                            'attribute':{  
+                                'name':'mute',
+                                'parameters':[  
+                                    {  
+                                        'name':'mute',
+                                        'value':1,
+                                        'dataType':'binary'
+                                    }
+                                ]
+                              }
+                            }, response.data  )
