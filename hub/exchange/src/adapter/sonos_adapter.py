@@ -4,7 +4,7 @@ import soco
 from adapter import Adapter
 from device.sonos_device import SonosDevice
 from ipc import Message
-
+from soco.events import event_listener
 import sys
 
 log=logging.getLogger(__name__)
@@ -58,3 +58,12 @@ class SonosAdapter (Adapter):
             }
         }
         return response
+    
+    def teardown (self):
+        try:
+            for device in self.__devices:
+                device.unsubscribe()
+            event_listener.stop()
+        except:
+            pass
+        return super().teardown()

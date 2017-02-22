@@ -7,6 +7,7 @@ from .data_types import DataType
 from .attribute import Attribute
 from .device_type import DeviceType
 from ipc import Message
+from .music_controls import MusicControls
 
 log = logging.getLogger(__name__)
 
@@ -29,10 +30,12 @@ class SonosDevice(Device):
     PROTOCOL ='sonos'
     # list of parameters that use the Master key for current value
     MASTERVALS=['volume','mute','loudness']
-    
+    PLAYCONTROLMAP= {'PLAYING':MusicControls.Play, 'TRANSITIONING': MusicControls.Play, 
+    'PAUSED_PLAYBACK':MusicControls.Pause, 'STOPPED': MusicControls.Stop}
     def __init__(self, device,adapter):
         self.__device=device
         self.__adapter=adapter
+        self.__subscriptions=[]
         # fromat UID from device into UUID
         address= uuid.UUID(bytes=bytes(device.uid.replace('RINCON_',''),'utf-8')[:16])
         info =device.get_speaker_info()
@@ -41,8 +44,10 @@ class SonosDevice(Device):
         super().__init__(self._buildDeviceType(),name,address.bytes,version,
             icon='http://{}:1400{}'.format(self.__device.ip_address,info.get('player_icon')))
         self.__queue=SonosQueue(self)
-        self.__device.avTransport.subscribe(auto_renew=True,event_queue=self.__queue)
-        self.__device.renderingControl.subscribe(auto_renew=True,event_queue=self.__queue)
+        self.__subscriptions.append(self.__device.avTransport.subscribe(auto_renew=True,
+        event_queue=self.__queue))
+        self.__subscriptions.append(self.__device.renderingControl.subscribe(auto_renew=True,
+        event_queue=self.__queue))
     
     @property
     def volume(self):
@@ -84,6 +89,18 @@ class SonosDevice(Device):
     @loudness.setter
     def loudness(self,val):
        self.__setValue('loudness',val)
+
+    @property
+    def music_control(self):
+        currentState=self.__device.get_current_transport_info().get('current_transport_state')
+        return SonosDevice.PLAYCONTROLMAP[currentState]
+    
+    @music_control.setter
+    def music_control(self,val):
+        getattr(self.__device,val)()
+        if val != MusicControls.Next.value and val != MusicControls.Prev.value:
+            self.getAttribute('music_control').parameters[0].value=MusicControls(val)
+
     
     def __setValue(self,attribute,val):
         param =self.getAttribute(attribute).parameters[0]
@@ -98,8 +115,9 @@ class SonosDevice(Device):
         info = self.__device.speaker_info
 
         self._buildRenderingControlAttributes(attributes)
+        self._buildAvTransportAttributes(attributes)
         return DeviceType(info['model_name'],SonosDevice.PROTOCOL,attributes=attributes)
-
+    
     def _buildRenderingControlAttributes(self,attributes):
         attributes.append(Attribute('bass',[Parameter('bass',DataType.Int,min_=-10,max_=10,
         value=self.__device.bass)]))
@@ -111,6 +129,12 @@ class SonosDevice(Device):
         value=self.__device.volume)]))
         attributes.append(Attribute('mute',[Parameter('mute',DataType.Binary,
         value=self.__device.mute)]))
+
+    def _buildAvTransportAttributes(self,attributes):
+        currentState=self.__device.get_current_transport_info().get('current_transport_state')
+        attributes.append(Attribute('music_control',[Parameter('music_control',DataType.Enum,
+        value=SonosDevice.PLAYCONTROLMAP[currentState])]))
+        
     
     def handleEvent(self,event):
         """
@@ -175,3 +199,7 @@ class SonosDevice(Device):
             attribute=self.getAttribute('treble')
             attribute.parameters[0].value=value
             return attribute
+    
+    def unsubscribe(self):
+        for subscription in self.__subscriptions:
+            subscription.unsubscribe()
