@@ -1,6 +1,6 @@
 ### System Design
 
-<!-- INSERT IMAGE: ![][product-design] -->
+![][product-design]
 
 This design illustrates the configuration that the Aria system will be used in. The smart hub will
 be the main point of communication for all smart devices in the network. The user will use the
