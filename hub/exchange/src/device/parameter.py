@@ -25,3 +25,8 @@ class Parameter():
             self._dataType = dataType
          else:
             raise TypeError('Invalid DataType {}'.format(dataType))
+    
+    def isValidValue(self,value):
+        if self.max and self.min :
+            return self.min< value and self.max> value
+        return True 
