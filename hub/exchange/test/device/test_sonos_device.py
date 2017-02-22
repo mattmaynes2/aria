@@ -99,3 +99,30 @@ class SonosDeviceTest(TestCase):
             'attribute': device.getAttribute('treble')
         },sender=device.address))
         self.assertEqual(-10,device.getAttribute('treble').parameters[0].value)
+
+    def test_RenderRequest(self):
+        mockAdapter = Mock()
+        device= SonosDevice(self.mockNode,mockAdapter)
+
+        response=device.handleRequest('volume',30)
+        self.assertEqual({ 
+                    'name' : 'volume',
+                    'value' : 30,
+                    'dataType' : 'int'
+                }, response)
+        self.assertEqual(30,device.volume)
+
+    def test_setLoudness(self):
+        mockAdapter = Mock()
+        device= SonosDevice(self.mockNode,mockAdapter)
+
+        response=device.handleRequest('loudness',1)
+        self.assertEqual({ 
+                    'name' : 'loudness',
+                    'value' : 1,
+                    'dataType' : 'binary'
+                }, response)
+        
+    def test_bass(self):
+        device= SonosDevice(self.mockNode,None)
+        self.assertEqual(0,device.bass)

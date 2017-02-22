@@ -8,7 +8,7 @@ from .attribute import Attribute
 from .device_type import DeviceType
 from ipc import Message
 
-logger = logging.getLogger(__name__)
+log = logging.getLogger(__name__)
 
 # turn soco logger to error 
 _SOCO_LOGGER = logging.getLogger('soco')
@@ -29,6 +29,7 @@ class SonosDevice(Device):
     PROTOCOL ='sonos'
     # list of parameters that use the Master key for current value
     MASTERVALS=['volume','mute','loudness']
+    
     def __init__(self, device,adapter):
         self.__device=device
         self.__adapter=adapter
@@ -43,10 +44,63 @@ class SonosDevice(Device):
         self.__device.avTransport.subscribe(auto_renew=True,event_queue=self.__queue)
         self.__device.renderingControl.subscribe(auto_renew=True,event_queue=self.__queue)
     
+    @property
+    def volume(self):
+        return self.__device.volume
+
+    @volume.setter
+    def volume(self,val):
+       self.__setValue('volume',val)
+            
+    
+    @property
+    def mute(self):
+        return self.__device.mute
+    
+    @mute.setter
+    def mute(self,val):
+        self.__setValue('mute',val)
+
+    @property
+    def bass(self):
+        return self.__device.bass
+    
+    @bass.setter
+    def bass(self,val):
+       self.__setValue('bass',val)
+
+    @property
+    def treble(self):
+        return self.__device.treble
+    
+    @treble.setter
+    def treble(self,val):
+       self.__setValue('treble',val)
+
+    @property
+    def loudness(self):
+        return self.__device.loudness
+    
+    @loudness.setter
+    def loudness(self,val):
+       self.__setValue('loudness',val)
+    
+    def __setValue(self,attribute,val):
+        param =self.getAttribute(attribute).parameters[0]
+        if param.isValidValue(val):
+            param.value=val
+            setattr(self.__device,attribute,val)
+        else:
+            raise ValueError('{} is not a valid value for {}'.format(val,attribute))
+
     def _buildDeviceType(self):
         attributes=[]
         info = self.__device.speaker_info
 
+        self._buildRenderingControlAttributes(attributes)
+        return DeviceType(info['model_name'],SonosDevice.PROTOCOL,attributes=attributes)
+
+    def _buildRenderingControlAttributes(self,attributes):
         attributes.append(Attribute('bass',[Parameter('bass',DataType.Int,min_=-10,max_=10,
         value=self.__device.bass)]))
         attributes.append(Attribute('treble',[Parameter('treble',DataType.Int,min_=-10,max_=10,
@@ -57,12 +111,19 @@ class SonosDevice(Device):
         value=self.__device.volume)]))
         attributes.append(Attribute('mute',[Parameter('mute',DataType.Binary,
         value=self.__device.mute)]))
-        return DeviceType(info['model_name'],SonosDevice.PROTOCOL,attributes=attributes)
-
+    
     def handleEvent(self,event):
-        logger.debug("service: {}".format(type(event.service)))
-        logger.debug("variables: {}".format(event.variables))
-        logger.debug("timestamp: {}".format(event.timestamp))
+        """
+         Handle events from the sonos device
+         an event object is composed of: 
+            service: The service on the sonos that sent the event
+            variables: A python dictionary with the modified data
+            timestamp: The time the event took replace
+        """
+
+        log.debug("service: {}".format(type(event.service)))
+        log.debug("variables: {}".format(event.variables))
+        log.debug("timestamp: {}".format(event.timestamp))
         if event.service == self.__device.avTransport :
             pass
         elif event.service == self.__device.renderingControl:
@@ -77,10 +138,25 @@ class SonosDevice(Device):
             self.__adapter.received(Message(Message.Event,data,sender=self.address))
 
 
-    def handleRequest(self, request):
-        pass
-    
+    def handleRequest(self, attribute,value):
+        if hasattr(self,attribute):
+            setattr(self,attribute,value)
+            param =self.getAttribute(attribute).parameters[0]
+            return {
+                    'name' : param.name,
+                    'value' : param.value,
+                    'dataType' : param.dataType.value
+                    }
+
     def _handleRenderingEvent(self,event):
+        """
+         Handles events from the device for changes to:
+            mute
+            volume
+            bass
+            treble
+            loudness
+        """
         variables=event.variables
         for val in SonosDevice.MASTERVALS: 
             if(val in variables):
@@ -99,6 +175,3 @@ class SonosDevice(Device):
             attribute=self.getAttribute('treble')
             attribute.parameters[0].value=value
             return attribute
-        
-    
-

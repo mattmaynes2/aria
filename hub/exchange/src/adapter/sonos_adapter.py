@@ -22,10 +22,39 @@ class SonosAdapter (Adapter):
             self.notify('discovered',device)
 
     def send (self, message):
-        pass
+        if message.type == Message.Request:
+            if message.receiver in self.__devices:
+                device =self.__devices[message.receiver]
+                if 'set' in message.data:
+                    self.notify('received', Message( 
+                            Message.Response,
+                            data=self.setDeviceValue(message.data,device),
+                            sender=device.address,
+                            receiver=message.sender
+                        ))
+                    return True
+            else:
+                raise ValueError('Invalid receiver {}'.format(message.receiver))
 
     def receive (self):
         return None
     
     def received (self,message):
         self.notify('received',message)
+
+    def setDeviceValue(self, request, device):
+        attributeName = request["set"]
+        value = request["value"]
+        paramChanges =  []
+        for param in value:
+            change = device.handleRequest(param["name"], param["value"])  
+            paramChanges.append(change)
+        response = {
+	    "device" : device.name,
+	    "deviceType" : device.deviceType.name,
+	    "attribute" : {
+	        "name" : attributeName,
+	        "parameters" : paramChanges
+            }
+        }
+        return response
