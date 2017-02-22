@@ -33,6 +33,7 @@ class SonosDevice(Device):
     def __init__(self, device,adapter):
         self.__device=device
         self.__adapter=adapter
+        self.__subscriptions=[]
         # fromat UID from device into UUID
         address= uuid.UUID(bytes=bytes(device.uid.replace('RINCON_',''),'utf-8')[:16])
         info =device.get_speaker_info()
@@ -41,8 +42,10 @@ class SonosDevice(Device):
         super().__init__(self._buildDeviceType(),name,address.bytes,version,
             icon='http://{}:1400{}'.format(self.__device.ip_address,info.get('player_icon')))
         self.__queue=SonosQueue(self)
-        self.__device.avTransport.subscribe(auto_renew=True,event_queue=self.__queue)
-        self.__device.renderingControl.subscribe(auto_renew=True,event_queue=self.__queue)
+        self.__subscriptions.append(self.__device.avTransport.subscribe(auto_renew=True,
+        event_queue=self.__queue))
+        self.__subscriptions.append(self.__device.renderingControl.subscribe(auto_renew=True,
+        event_queue=self.__queue))
     
     @property
     def volume(self):
@@ -175,3 +178,7 @@ class SonosDevice(Device):
             attribute=self.getAttribute('treble')
             attribute.parameters[0].value=value
             return attribute
+    
+    def unsubscribe(self):
+        for subscription in self.__subscriptions:
+            subscription.unsubscribe()
