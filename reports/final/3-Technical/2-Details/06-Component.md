@@ -1,10 +1,24 @@
 ### System Components {#sec-3-2-6-1}
 
+This section will present the components of the system and their organization. Following a 
+description of the components is a discussion of the architectural decisions made in this design.
+
 #### Component Organization {-}
 
-![][system-components]
+![][aria-components]
 
 #### Component Descriptions {-}
+
+##### Communication Server {-}
+
+The communication server is responsible for routing messages within the ARIA system. This component
+provides two interface: InternalMessaging and IPCMessaging.
+The server has a cache of all connected devices and must store any related settings for each.
+Events and messages are routed through the communication server using the event interface. The
+communication server is also responsible for sending messages to other third party protocols.
+The server should provide a mechanism for installing plugins for other third party devices that
+are not natively supported. The implementation of the exchange server is outlined in
+[Appendix H-1](#H-1).
 
 ##### Event Logger {-}
 
@@ -23,16 +37,6 @@ The implementation of this algorithm can be customized as long as it provides th
 interface. The ML algorithm will receive data from the event logger using snapshots of data.
 These data snapshots will reduce the amount of information that the ML algorithm needs to process 
 by removing redundant information.
-
-##### Exchange Server {-}
-
-The communication server is responsible for routing all messages through the smart home system.
-The server has a cache of all connected devices and must store any related settings for each.
-Events and messages are routed through the communication server using the event interface. The
-communication server is also responsible for sending messages to other third party protocols.
-The server should provide a mechanism for installing plugins for other third party devices that
-are not natively supported. The implementation of the exchange server is outlined in
-[Appendix H-1](#H-1).
 
 ##### HTTP Gateway {-}
 
