@@ -4,6 +4,9 @@ from enum import Enum
 from uuid import UUID
 from device import Device,DeviceType,Attribute, Parameter
 import threading
+import logging
+
+logger = logging.getLogger(__name__)
 
 class Message:
     Error               = 0
@@ -57,7 +60,7 @@ class Message:
         return message
 
     def __str__(self):
-        return 'Message [ type:'+str(self.type)+', data:'+str(self.data)+', sender:'+\
+        return 'Message [ type:'+str(self.type)+', data:'+str(json.dumps(self.data,default=Message.json_encode,sort_keys=True).encode(Message.ENCODING))+', sender:'+\
         str(UUID(bytes=self.sender))+ ', receiver: '+str(UUID(bytes=self.receiver))+']'
     
     @staticmethod

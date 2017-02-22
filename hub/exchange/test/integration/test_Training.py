@@ -102,7 +102,7 @@ class TestBehaviours(TestCase):
         self.db.query("Insert into behaviour(name) values('lights and motion')")
         createMessage= Message()
         createMessage.type= Message.Request
-        createMessage.data= {'create':'session', 'name':'lights_1', 'behaviourid':1}
+        createMessage.data= {'create':'session', 'name':'lights_1', 'behaviourId':1}
         createMessage.sender = self.device.address
         self.testAdapter.enqueueMessage(createMessage)
         time.sleep(0.5)
@@ -121,7 +121,7 @@ class TestBehaviours(TestCase):
 
         createMessage= Message()
         createMessage.type= Message.Request
-        createMessage.data= {'create':'session', 'name':'lights_1', 'behaviourid':1}
+        createMessage.data= {'create':'session', 'name':'lights_1', 'behaviourId':1}
         createMessage.sender = myUuid
         self.testAdapter.enqueueMessage(createMessage)
         

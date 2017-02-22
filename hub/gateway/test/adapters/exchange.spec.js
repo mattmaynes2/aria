@@ -1,7 +1,7 @@
 var ExchangeAdapter = require('../../src/adapters/exchange');
 //var IPC = require('../../src/ipc')
 var sinon = require('sinon');
-//var assert = require('assert');
+var assert = require('assert');
 
 function FakeSocket(){
 
@@ -25,12 +25,20 @@ FakeSocket.prototype.close = function(){};
 
 describe('Exchange Adapter Testing', function(){
 
+    var adapter;
+    var fakeSocket;
+
+    beforeEach(function() {
+      adapter =  new ExchangeAdapter();
+      fakeSocket = new FakeSocket();
+      sinon.stub(adapter.transport, 'createSocket', () => { return fakeSocket; });
+     });
+
+     afterEach(function () {
+        adapter.transport.createSocket.restore();
+     });
+
     it('Should send messages over UDP to the exchange server', function(){
-        var adapter = new ExchangeAdapter();
-        var fakeSocket = new FakeSocket();
-
-        sinon.stub(adapter.transport, 'createSocket', () => { return fakeSocket; });
-
         var payload = {
             action  : 'status'
         };
@@ -39,12 +47,6 @@ describe('Exchange Adapter Testing', function(){
         sizeBuf.fill(0);
         sizeBuf.writeUInt32BE(JSON.stringify(payload).length);
 
-        var expectedBuffer = Buffer.concat([Buffer.from([0x02]),
-                                        sizeBuf,
-                                        adapter._id,
-                                        new Buffer(16).fill(0),
-                                        Buffer.from(JSON.stringify(payload))]);
-
         var discoveryAck = Buffer.concat([Buffer.from([0x04]),
                                             sizeBuf,
                                             new Buffer(16).fill(0),
@@ -52,29 +54,31 @@ describe('Exchange Adapter Testing', function(){
                                             Buffer.from(JSON.stringify(payload))]);
 
         fakeSocket.setNextResponse(discoveryAck);
-
-        adapter.register().then(()=>{
-            var spy = sinon.spy(fakeSocket, 'send');
-            adapter.send(2, payload).then(()=>{
-                sinon.assert.calledWith(spy, expectedBuffer);
-            });
+        adapter.registered = true;
+        adapter.send(2, payload).then(()=>{
+        }).catch(()=>{
+            assert(false);
         });
    });
 
-//    it ('Should listen for push messages from the exchange server',function() {
-//        var adapter = new ExchangeAdapter(null, 60000)
-//        var fakeSocket = new FakeSocket();
-//        sinon.stub(adapter.transport, 'createSocket', () => { return fakeSocket; });
+   it('Should signal that an error has occurred if an error response is received', () => {
+        var payload = {'response':'Invalid Message'};
 
-//        // The name HttpGateway is apparently very important, don't change it unless you know why
-//        var expectedPayload = { "port" : 60000, "name" : "HttpGateway"}; 
-//        var spy = sinon.spy(fakeSocket, 'send');
-//        adapter.register().then(() => {
-//            var args = spy.args[0];
-//            message = IPC.parse(args[0])
-//            assert(message.payload.port === 60000);
-//            assert(message.payload.name === 'HttpGateway');
-//        })
+        var sizeBuf = new Buffer(4);
+        sizeBuf.fill(0);
+        sizeBuf.writeUInt32BE(JSON.stringify(payload).length);
 
-//    });
+        var errorResponse = Buffer.concat([Buffer.from([0x00]),
+                                            sizeBuf,
+                                            new Buffer(16).fill(0),
+                                            adapter._id,
+                                            Buffer.from(JSON.stringify(payload))]);
+        fakeSocket.setNextResponse(errorResponse);
+        adapter.registered = true;
+        
+        adapter.send(2, {}).then(()=>{
+            assert(false, 'Promise did not error as expected');
+        }).catch(()=>{
+        });
+   });
 });

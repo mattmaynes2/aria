@@ -99,6 +99,17 @@ of development. Issues are prioritized using labels (minor, major, critical, blo
 assigned to a team member when work begins; when work on an issue is completed the issue is closed
 using a commit message.
 
+#### Workload Estimation
+
+During each weekly sprint, the team selects a number of tasks to commit to finishing during the
+week. In order to attempt to avoid committing to too much work during a sprint, the effort required
+for each task is estimated relative to a well-known issue. When the time comes to bring these tasks
+into a sprint, each size is given a number of story points based on the estimated effort. Story
+points are simply a number which reflects the difficulty of the task relative to the baseline. The
+number of story points allowed in a sprint is based on the historical number of story points that
+the team has completed, and adjusted for the estimated availability of team members. This process 
+helps prevent the team from taking on more work than can be reasonably accomplished.
+
 #### Testing Practices {-}
 
 Agile processes generally encourage a short feedback loop for developers (problems with code should

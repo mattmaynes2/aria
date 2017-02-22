@@ -7,4 +7,4 @@ class SetHubModeCommand(Command):
     
     def execute(self,hub,data):
         hub.setMode(data['value'])
-        return hub.mode
+        return hub.mode.value
