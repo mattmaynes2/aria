@@ -11,4 +11,3 @@ class DataType(Enum):
     String='string'
     List='list'
     Byte='byte'
-    Image='image'
