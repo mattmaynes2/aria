@@ -16,7 +16,10 @@ class DataType extends Component {
 
     constructor (state, props) {
         super();
-        this._state = state || '';
+        this._state = state;
+        if (!state && (state !== 0)) {
+            this._state = '';
+        }
         this._props = props || {
             dataType : ''
         };

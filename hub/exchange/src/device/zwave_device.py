@@ -43,8 +43,12 @@ class ZWaveValueWrapper():
     def data(self, value):
         if self.isMultilevelValue():
             self.on = (value != 0)
-
         self._wrappedValue.data = value
+
+    def buildData(self, value):
+        if self.isColourValue():
+            return value
+        return self._wrappedValue.check_data(value)
 
     def check_data(self, value):
         if self.isColourValue():
@@ -127,8 +131,11 @@ class ZWaveDevice(Device):
         else:
             logger.debug("Attempting to set attribute: " + str(attribute) + " to value " + str(value))
             zwaveVal.data = checkedVal
-            return self.buildParamChange(zwaveVal)
+            for att in self.deviceType.attributes : 
+                if att.name == attribute:
+                    att.parameters[0].value = zwaveVal.buildData(value)
 
+            return self.buildParamChange(zwaveVal)
 
     def processEvent(self, label):
         val = self.__valueMap[label]
