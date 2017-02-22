@@ -60,9 +60,9 @@ class SonosDevice(Device):
         return DeviceType(info['model_name'],SonosDevice.PROTOCOL,attributes=attributes)
 
     def handleEvent(self,event):
-        print("service: {}".format(type(event.service)))
-        print("variables: {}".format(event.variables))
-        print("timestamp: {}".format(event.timestamp))
+        logger.debug("service: {}".format(type(event.service)))
+        logger.debug("variables: {}".format(event.variables))
+        logger.debug("timestamp: {}".format(event.timestamp))
         if event.service == self.__device.avTransport :
             pass
         elif event.service == self.__device.renderingControl:
