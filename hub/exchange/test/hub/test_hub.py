@@ -36,7 +36,7 @@ class HubTest (TestCase):
     def test_set_mode(self):
         self.assertRaises(ValueError,self.hub.executeCommand,\
         CommandType.SET,{'set':'mode', 'value':3})
-        self.assertEquals(1,self.hub.executeCommand( CommandType.SET,{'set':'mode', 'value':1}))
+        self.assertEqual(1,self.hub.executeCommand( CommandType.SET,{'set':'mode', 'value':1}))
         self.assertEqual(HubMode(1),self.hub.mode)
 
     
