@@ -35,6 +35,8 @@ class SonosDeviceTest(TestCase):
         self.assertEqual('Sonos PLAY:1',device.deviceType.name)
         self.assertEqual('http://localhost:1400/img/icon-S1.png',device.icon)
         self.assertEqual(MusicControls.Stop, device.music_control)
+        self.assertEqual([x.value for x in MusicControls],
+                        device.getAttribute('music_control').parameters[0].enum)
     
     def test_handleRenderingEvent(self):
         mockService = Mock()
@@ -150,3 +152,51 @@ class SonosDeviceTest(TestCase):
                               'dataType': 'enum'
                             },response)
         self.assertTrue(self.mockNode.next.called)
+
+    def test_change_play_mode(self):
+        mockService = Mock()
+        self.mockNode.avTransport=mockService
+        mockAdapter= Mock()
+        device= SonosDevice(self.mockNode,mockAdapter)
+
+        event_time=time.time()
+        mockEvent= Mock()
+        mockEvent.service=mockService
+        mockEvent.variables={'current_play_mode': 'NORMAL', 'number_of_tracks': '2', 
+        'current_crossfade_mode': '0',
+         'current_track_duration': '0:05:19', 'current_track': '1', 'transport_state': 'PLAYING', 
+         'enqueued_transport_uri': 'x-file-cifs://localhost/Music/song/url.mp3', 
+         'current_section': '0'}
+        mockEvent.timestamp=event_time
+        device.handleEvent(mockEvent)   
+
+        mockAdapter.received.assert_called_with(Message(Message.Event,{
+            'event' : 'device.event',
+            'timestamp' : int(event_time*1000),
+            'device':'Media Room',
+            'deviceType': 'Sonos PLAY:1',
+            'attribute': device.getAttribute('music_control')
+        },sender=device.address))
+        self.assertEqual(MusicControls.Play,device.music_control)
+        
+        # make sure we don't call play when updateing the value
+        self.assertFalse(self.mockNode.play.called)
+    
+    def test_no_change(self):
+        """
+        test that no event generated when system state isn't changed
+        """
+        mockService = Mock()
+        self.mockNode.avTransport=mockService
+        mockAdapter= Mock()
+        device= SonosDevice(self.mockNode,mockAdapter)
+
+        event_time=time.time()
+        mockEvent= Mock()
+        mockEvent.service=mockService
+        mockEvent.variables={'transport_state': 'STOPPED'}
+        mockEvent.timestamp=event_time
+        device.handleEvent(mockEvent)   
+
+        self.assertFalse(mockAdapter.received.called)
+        self.assertEqual(MusicControls.Stop,device.music_control)
