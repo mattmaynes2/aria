@@ -99,6 +99,10 @@ class Component {
         return this;
     }
 
+    children () {
+        return this._children;
+    }
+
     props (props) {
         if (arguments.length === 0) {
             return this._props;
