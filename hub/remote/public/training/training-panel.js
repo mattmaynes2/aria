@@ -1,8 +1,7 @@
 import WidgetPanel  from '../core/widget/widget-panel';
 import Service      from '../core/service/service';
 import Behaviour    from '../core/behaviour/behaviour';
-import Button      from '../core/control/button'; 
-import Modal from '../core/modal/modal';
+import Button       from '../core/control/button';
 
 class TrainingPanel extends WidgetPanel {
     constructor () {
@@ -10,7 +9,6 @@ class TrainingPanel extends WidgetPanel {
         this._state = {
             behaviours: []
         };
-        this._behaviourModal = new Modal();
     }
 
     update () {
@@ -25,14 +23,11 @@ class TrainingPanel extends WidgetPanel {
     render () {
         var addButton = new Button('Add');
         addButton.click(()=>{
-            this._behaviourModal.show();
         });
-       
+
         this._$el.append(
             addButton.render().$el()
         );
-
-        this._$el.append(this._behaviourModal.render().$el());
 
         this._$el
             .append(this._state.behaviours.map((b) => {
