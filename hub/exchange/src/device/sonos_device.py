@@ -92,8 +92,7 @@ class SonosDevice(Device):
 
     @property
     def music_control(self):
-        currentState=self.__device.get_current_transport_info().get('current_transport_state')
-        return SonosDevice.PLAYCONTROLMAP[currentState]
+        return self.getAttribute('music_control').parameters[0].value
     
     @music_control.setter
     def music_control(self,val):
@@ -149,17 +148,11 @@ class SonosDevice(Device):
         log.debug("variables: {}".format(event.variables))
         log.debug("timestamp: {}".format(event.timestamp))
         if event.service == self.__device.avTransport :
-            pass
+            self._handleAvTransportEvent(event)
         elif event.service == self.__device.renderingControl:
             attribute=self._handleRenderingEvent(event)
-            data = {
-                'event' : 'device.event',
-                'timestamp' : int(event.timestamp*1000),
-                'device' : self.name,
-                'deviceType' : self.deviceType.name,
-                'attribute' : attribute
-                }
-            self.__adapter.received(Message(Message.Event,data,sender=self.address))
+            self._sendEvent(attribute,event)
+            
 
 
     def handleRequest(self, attribute,value):
@@ -172,6 +165,29 @@ class SonosDevice(Device):
                     'dataType' : param.dataType.value
                     }
 
+    def _sendEvent(self,attribute,event):
+        data= {
+                'event' : 'device.event',
+                'timestamp' : int(event.timestamp*1000),
+                'device' : self.name,
+                'deviceType' : self.deviceType.name,
+                'attribute' : attribute
+                }
+        self.__adapter.received(Message(Message.Event,data,sender=self.address))
+
+    def _handleAvTransportEvent(self,event):
+        """
+        Handle events for av transport events.
+        These events all contain all of the parameters from the avTransport service
+        so we need to check the current device state to see if anything we are tracking has
+        changed
+        """
+        transport_state= event.variables.get('transport_state')
+        newVal=SonosDevice.PLAYCONTROLMAP[transport_state]
+        if( newVal!= self.music_control):
+            self.getAttribute('music_control').parameters[0].value=newVal
+            self._sendEvent(self.getAttribute('music_control'),event)
+            
     def _handleRenderingEvent(self,event):
         """
          Handles events from the device for changes to:
