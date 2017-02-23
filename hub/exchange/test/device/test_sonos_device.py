@@ -35,6 +35,8 @@ class SonosDeviceTest(TestCase):
         self.assertEqual('Sonos PLAY:1',device.deviceType.name)
         self.assertEqual('http://localhost:1400/img/icon-S1.png',device.icon)
         self.assertEqual(MusicControls.Stop, device.music_control)
+        self.assertEqual([x.value for x in MusicControls],
+                        device.getAttribute('music_control').parameters[0].enum)
     
     def test_handleRenderingEvent(self):
         mockService = Mock()
