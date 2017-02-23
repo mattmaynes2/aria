@@ -39,12 +39,12 @@ class Slider extends Component {
             .append($('<div>').addClass('slider-body'))
             .append(this._$target.addClass('slider-target'));
 
-        this._max = this._$el.width() - (this._$target.width() / 2);
         this._$el
             .off()
             .mousedown((e) => {
                 this._dragging  = true;
                 this._start     = e.clientX;
+                this._max = this._$el.width() - (this._$target.width() / 2);
                 this._offset    = bound(0, this._max,
                     this._start - this._$el.offset().left - (this._$target.width() / 2)
                 );
@@ -78,7 +78,7 @@ function setValue (lower, upper, value) {
 }
 
 function mapDomain (omin, omax, nmin, nmax, val) {
-    return nmin + (nmax - nmin) * bound(0, 1, val / (omax - omin));
+    return nmin + ((nmax - nmin) * bound(0, 1, val / (omax - omin)));
 }
 
 function stepValue (val, step) {
