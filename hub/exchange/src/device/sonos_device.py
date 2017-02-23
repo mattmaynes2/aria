@@ -135,7 +135,7 @@ class SonosDevice(Device):
         currentState=self.__device.get_current_transport_info().get('current_transport_state')
         attributes.append(Attribute('music_control',[Parameter('music_control',DataType.Enum,
         value=SonosDevice.PLAYCONTROLMAP[currentState], 
-        possibleVals=[val.value for val in MusicControls])]))
+        enum=[val.value for val in MusicControls])]))
         
     
     def handleEvent(self,event):
