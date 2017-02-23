@@ -9,7 +9,7 @@ class BehaviourView extends Component {
     }
     _prerender () {
         this.append(
-            new Field(this._state.active ? 'Yes' : 'No', { label : 'Active: ' })
+            new Field(this._state.active ? 'Active' : 'Inactive', { label : 'Status: ' })
         ).append(
             new Field(new Date(this._state.createdDate).toLocaleString(), { label : 'Created: ' })
         )
