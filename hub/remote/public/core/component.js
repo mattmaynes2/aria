@@ -50,9 +50,9 @@ class Component {
      * @return {Component} The rendered version of this component
      */
     render () {
+        this._$el.empty();
         this._prerender();
         this._$el
-            .empty()
             .append(this._children.map((child) => { return child.render().$el(); }));
         this._decorations.forEach((decor) => {
             decor.render(this);
@@ -96,6 +96,12 @@ class Component {
         else {
             throw new Error('Cannot append element of type ' + typeof c + ' - expected Component');
         }
+        return this;
+    }
+
+    clear () {
+        this._$el.empty();
+        this._children = [];
         return this;
     }
 

@@ -21,8 +21,7 @@ class Behaviour extends Widget {
             .find('.widget-body').addClass('behaviour-body')
             .append(
                 this._view.render().$el().addClass('behaviour-info')
-            )
-            .append(this._$attrs);
+            );
         return this;
     }
 }

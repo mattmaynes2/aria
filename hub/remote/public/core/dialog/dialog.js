@@ -63,7 +63,7 @@ class Dialog extends Component {
 
         this._body.append(
             this._state instanceof Component ? this._state : new Component()
-        );
+        ).render();
 
         this._header.text(this._props.title).append(this._closeButton);
         this._closeButton.text('x').click(this.remove.bind(this));
