@@ -155,6 +155,14 @@ function notify (V, e) {
     V.forEach((v) => { v(this._state, this, e); });
 }
 
+
+/**
+ * Wraps a jQuery function so that it is first class within the given context
+ *
+ * @param s {jQuery}    Source object to inherit method from
+ * @param t {object}    Target method to promote to the current context
+ * @param a {boolean}   Assignment or function (false indicates function)
+ */
 function wrap (s, t, a) {
     this[t] = function (x) {
         if (arguments.length === 0) {
