@@ -58,7 +58,7 @@ class DeviceParameter extends Component {
                 });
                 break;
             case DataType.Enum:
-                    this._target= new StateButton(option,this._props.enum)
+                    this._target= new StateButton(option,this._props.enum);
                     this._target.change((v) => {
                     this._state = valueOf(this._props.dataType, v);
                     this.trigger('change');
