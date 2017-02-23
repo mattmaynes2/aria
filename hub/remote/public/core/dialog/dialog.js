@@ -76,8 +76,4 @@ class Dialog extends Component {
     }
 }
 
-// TODO TESTING ONLY! //
-window.Dialog = Dialog;
-window.Component = Component;
-
 export default Dialog;
