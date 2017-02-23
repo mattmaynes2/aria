@@ -11,11 +11,13 @@ from .music_controls import MusicControls
 
 log = logging.getLogger(__name__)
 
-# turn soco logger to error 
-_SOCO_LOGGER = logging.getLogger('soco')
-_SOCO_LOGGER.setLevel(logging.ERROR)
-_REQUESTS_LOGGER = logging.getLogger('requests')
-_REQUESTS_LOGGER.setLevel(logging.ERROR)
+# turn logging from the sonos library to ERROR only
+socoLogger = logging.getLogger('soco')
+socoLogger.setLevel(logging.ERROR)
+requestLogger = logging.getLogger('requests')
+requestLogger.setLevel(logging.ERROR)
+
+TIMESTAMP_FACTOR = 1000
 
 class SonosQueue():
     
@@ -168,7 +170,7 @@ class SonosDevice(Device):
     def _sendEvent(self,attribute,event):
         data= {
                 'event' : 'device.event',
-                'timestamp' : int(event.timestamp*1000),
+                'timestamp' : int(event.timestamp*TIMESTAMP_FACTOR),
                 'device' : self.name,
                 'deviceType' : self.deviceType.name,
                 'attribute' : attribute
