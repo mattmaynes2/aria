@@ -4,20 +4,18 @@ import Field        from '../control/field';
 import './view.css';
 
 class BehaviourView extends Component {
-    constructor (state) {
-        super();
-        this._state = state || {};
-        this._name  = new Field('', { label : 'Name: ' });
+    constructor (state, props) {
+        super(state, props);
     }
-
-    render () {
-        this._$el
-            .empty()
-            .addClass('behaviour-view-body')
-            .append(
-                this._name.state(this._state.name).render().$el()
-            );
-
+    _prerender () {
+        this.append(
+            new Field(this._state.active ? 'Yes' : 'No', { label : 'Active: ' })
+        ).append(
+            new Field(new Date(this._state.createdDate).toLocaleString(), { label : 'Created: ' })
+        )
+        .append(
+            new Field(new Date(this._state.lastUpdated).toLocaleString(), { label : 'Updated: ' })
+        );
         return this;
     }
 }

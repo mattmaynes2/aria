@@ -196,11 +196,15 @@ let IntegrateAdapter = (function () {
             case 'deviceEvents':
                 return wrap(payload.get, { total : 100, records : makeEvents.call(this, payload)});
             case 'behaviours' :
-                return wrap(payload.get, { records: Array.prototype.slice.call(
-                    this._state.hub.behaviours,
-                    payload.start,
-                    Math.min(this._state.hub.behaviours.length, payload.start+payload.count)
-                )});
+                return wrap(payload.get, {
+                    records     : this._state.hub.behaviours.slice(
+                        payload.start,
+                        Math.min(
+                            this._state.hub.behaviours.length,
+                            payload.start + payload.count
+                        )
+                    )
+                });
             default:
                 throw new Error('Unknown request');
         }
