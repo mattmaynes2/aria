@@ -6,6 +6,8 @@ import Service      from '../core/service/service';
 import Notify       from '../core/notify/notify';
 import './hub.css';
 
+import '../core/dialog/dialog';
+
 class Hub extends Widget {
     static get modes () {
         return ['Standby', 'Normal', 'Learning'];
