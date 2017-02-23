@@ -74,6 +74,8 @@ class ZWaveAdapter(Adapter):
         This is a callback for the OpenZWave SIGNAL_NODE_QUERIES_COMPLETE notification
         """
         node = kwargs["node"]
+        if node.location in self._devices:
+            return
         self._removeNodeAssociations(node)
         device=self.buildDevice(node)
         self._devices[node.location]=device
