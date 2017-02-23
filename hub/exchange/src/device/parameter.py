@@ -5,16 +5,16 @@ log = logging.getLogger(__name__)
 
 class Parameter():
 
-    def __init__(self,name,dataType,max_=None,min_=None,step=None,value=None,possibleVals=None):
+    def __init__(self,name,dataType,max_=None,min_=None,step=None,value=None,enum=None):
         self.name=name
         self.min = min_
         self.max= max_
         self.step=step
         self.value=value
         self._dataType=dataType
-        self.possibleVals=possibleVals
-        if(self.dataType == DataType.Enum and not possibleVals):
-            log.warning("Using enum without a list of possible Values Parameter may not "\
+        self.enum=enum
+        if(self.dataType == DataType.Enum and not enum):
+            log.warning("Using enum without a list of possible values may not "\
                         +"display properly in the UI")
        
         

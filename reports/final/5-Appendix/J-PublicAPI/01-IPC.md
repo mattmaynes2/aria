@@ -127,7 +127,7 @@ Represents a parameter to an attribute of a device
     "max"           : <int>,
     "min"           : <int>,
     "step"          : <float>
-    "possibleVals"  : [<string>]
+    "enum"         : [<string>]
 }
 ```
 
@@ -136,7 +136,7 @@ Represents a parameter to an attribute of a device
 - **min**: the min value the attribute can be, this may be null
 - **name**: the attribute name, this is used in set and get request to query the device
 - **step**: the  difference between each acceptable value of the device, may be null
-- **possibleVals**: a list of possible values for an enum
+- **enum**: a list of possible values for an enum
 
 
 ##### Attribute {-}
