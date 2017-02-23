@@ -110,25 +110,24 @@ context of this system.
 
 ##### Layer Pattern {-}
 
-In order to allow for efficient teamwork during the development of this project, it is necessary
-that development on certain components can proceed in parallel. Use of the layer pattern enforces 
-the separation of concerns between different layers, allowing individual layers to be developed 
-independently to some degree.
+In order to allow for development on different parts of the code to proceed independently, it was
+necessary to introduce separation of concerns into the organization of components. This project 
+makes use of the layer pattern to improve separation of concerns.
 
 The components of this project are paritioned into three layers: Persistence, Application, and 
-Presentation. This pattern is commonly known as a Three-tier architecture for client-server 
+Presentation. This pattern is commonly known as a three-tier architecture for client-server 
 applications.
 
-The Persistence layer is responsible for storing objects in a database. In the ARIA system, the 
+The persistence layer is responsible for storing objects in a database. In the Aria system, the 
 persisted objects are events and device metadata.
 
-The Application layer is responsible for carrying out the business logic of the application. In the 
-ARIA system, this includes autonomous control of devices using machine learning.
+The application layer is responsible for carrying out the business logic of the application. In the 
+Aria system, this includes autonomous control of devices using machine learning.
 
-The Presentation layer is responsible for displaying information to the user. In the ARIA system, 
-this layer consists of a single-page web application. The web application uses the RESTful 
-interface provided by the application layer to retrieve information and inform the application 
-layer of user actions.
+The presentation layer is responsible for displaying information to the user, and providing the 
+user with a way to control the system. In the Aria system, this layer is composed of HTML pages 
+which make use of AJAX to retrieve data from the RESTful interface provided by the application 
+layer.
 
 The following diagram shows the organization of system components into a layered pattern.
 
