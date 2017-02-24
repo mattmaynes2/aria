@@ -39,7 +39,11 @@ function clearSelected ($el) {
 }
 
 function select (x) {
-    this._$el.children().eq(this._props.indexOf(x)).addClass('state-button-selected');
+    let index = this._props.indexOf(x);
+    if (index === -1) {
+        index = Number(x);
+    }
+    this._$el.children().eq(index).addClass('state-button-selected');
 }
 
 function buttonSelected (index, e) {
