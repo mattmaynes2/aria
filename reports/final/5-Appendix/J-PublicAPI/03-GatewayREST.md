@@ -461,11 +461,11 @@ gateway. To see the available events over websockets
 | 				| 																				|
 | 				| 		{																		|	
 |               |       	"records": [{                                               		|
-|               |           	"id" 			: 1 ,                                       	|
-|               |           	"name"			: "My Behaviour",                              	|
-|               |           	"createdDate"	: 1380269867612,                     			|
-|               |           	"lastUpdated"	: 1480256989762,                     			|
-|               |           	"active" 		: false                            		        |
+|               |           	"id" 		: 1 ,                                       	    |
+|               |           	"name"		: "My Behaviour",                              	    |
+|               |           	"created"	: 1380269867612,                     			    |
+|               |           	"updated"	: 1480256989762,                     			    |
+|               |           	"active" 	: false                            		            |
 |               |				}                                                         	 	|
 |               |               ...                                                          	|
 |               |        	]														    		|
@@ -508,10 +508,10 @@ gateway. To see the available events over websockets
 | 				| 																				|
 | 				| 		{																		|	
 |               |       	"records": [{                                               		|
-|               |           	"id" 			: 1 ,                                       	|
-|               |           	"name"			: "My Behaviour",                              	|
-|               |           	"createdDate"	: 1380269867612,                     			|
-|               |           	"active" 		: false                            		        |
+|               |           	"id" 		: 1 ,                                       	    |
+|               |           	"name"		: "My Session",                              	    |
+|               |           	"created"   : 1380269867612,                     			    |
+|               |           	"active" 	: false                            		            |
 |               |				}                                                       		|
 |               |               ...                                                          	|
 |               |        	]														    		|
