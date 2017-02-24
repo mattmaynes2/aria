@@ -4,7 +4,7 @@ from unittest import TestCase
 from unittest.mock import Mock,patch
 from device import Device, DeviceType,Attribute,DataType, Parameter
 from hub import Hub
-from delegate import RequestTracker
+from delegate.request_tracker import RequestTracker
 from ipc import Message
 from database import Database
 from hub.hub_mode import HubMode
