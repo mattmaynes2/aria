@@ -78,6 +78,11 @@
     margin : 0 4px;
 }
 
+.dialog-text {
+    padding : 10px 10px;
+    color   : black;
+}
+
 .dialog-footer {
     position : relative;
     bottom  : 0;
