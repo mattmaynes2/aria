@@ -1,5 +1,6 @@
 import Widget           from '../widget/widget';
-import BehaviourView       from './view';
+import BehaviourView    from './view';
+import BehaviourControl from './control';
 
 import './behaviour.css';
 
@@ -18,15 +19,17 @@ class Behaviour extends Widget {
         };
 
         this._view = new BehaviourView(this._state);
+        this._control = new BehaviourControl(this._state);
     }
     render () {
         super.render();
 
         this._$el
             .find('.widget-body').addClass('behaviour-body')
-            .append(
-                this._view.render().$el().addClass('behaviour-info')
-            );
+            .append([
+                this._view.render().$el().addClass('behaviour-info'),
+                this._control.render().$el().addClass('behaviour-buttons')
+            ]);
         return this;
     }
 }
