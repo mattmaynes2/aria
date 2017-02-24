@@ -53,9 +53,11 @@
 [product-design]: ./images/ProductDesign.png "Figure 1: Product Design" {#fig-product-design}
 [system-use-case]: ./uml/SystemUseCase.png "Figure 2: System Use Case" {#fig-system-use-case}
 [training-use-case]: ./uml/TrainingUseCase.png "Figure 3: Training Use Case" {#fig-training-use-case}
-[system-components]: ./uml/SystemComponents.png "Figure 4: System Components" {#fig-system-components}
+[system-components]: ./uml/AriaComponents.png "Figure 4: System Components" {#fig-system-components}
 [remote-use-case]: ./uml/RemoteUseCase.png "Figure 5: Remote Use Case" {#fig-remote-use-case}
 [system-deployment]: ./uml/SystemDeployment.png "Figure 6: System Deployment" {#fig-system-deployment}
+[layer-architecture]: ./uml/LayerArchitecture.jpg "Figure 7: Layered Architecture" {#fig-layer-architecture}
+
 
 [g-1]: ./images/Scenario-NoActivity.png "Figure G-1: Graph of no office activity" {#fig-g-1}
 [g-2]: ./images/Scenario-OfficeActivity.png "Figure G-2: Graph of office activity" {#fig-g-2}
