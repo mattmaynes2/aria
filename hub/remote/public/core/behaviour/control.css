@@ -1,0 +1,8 @@
+.behaviour-control {
+    display : flex;
+    flex-direction : column;
+}
+
+.behaviour-control-button {
+    margin : 4px 0;
+}
