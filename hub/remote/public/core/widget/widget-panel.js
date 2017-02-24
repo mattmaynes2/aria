@@ -7,20 +7,22 @@ class WidgetPanel extends Component {
         this._widgets = [];
     }
 
-    render () {
+    _prerender () {
         this._$el.addClass('widget-panel').empty();
 
-        this._widgets.forEach((widget) => {
-            this._$el.append(widget.render().$el());
-        });
-
+        this._widgets.forEach(this.append.bind(this));
         return this;
     }
 
     addWidget (widget) {
         this._widgets.push(widget);
+        return this;
     }
 
+    clearWidgets () {
+        this._widgets = [];
+        return this;
+    }
 }
 
 export default WidgetPanel;
