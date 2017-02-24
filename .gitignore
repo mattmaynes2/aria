@@ -17,7 +17,7 @@
 *.o
 
 # Logs
-*.log
+*.log*
 
 # Reports
 *.doc*
