@@ -1,1 +1,1 @@
-from .model import Model    # NOQA
+from .decision_broker import DecisionBroker    # NOQA

@@ -1,7 +1,7 @@
 from ipc import Message
 from delegate import Delegate
 
-class Model(Delegate):
+class DecisionBroker(Delegate):
 
     def __init__(self, adapter, decisionStrategy):
         super().__init__()
