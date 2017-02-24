@@ -58,6 +58,7 @@ class Slider extends Component {
             this._max = this._$el.width() - (this._$target.width() / 2);
             setValue.call(this, 0, this._max, this._state);
         }, 0);
+        setValue.call(this, 0, 100, this._state);
         return this;
     }
 }
