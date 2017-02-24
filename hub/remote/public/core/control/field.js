@@ -21,7 +21,7 @@ class Field extends Component {
         this._$value.text(this._state).removeClass('field-editable');
 
         if (this._props.editable) {
-            this._$value
+            this._$value = $('<input type="text">')
                 .addClass('field-editable')
                 .change(this.trigger.bind(this, 'change'));
         }
@@ -38,6 +38,7 @@ class Field extends Component {
         if (event === 'change' && !this._props.editable) {
             return this;
         }
+        this._state = this._$value.val();
         return super.trigger(event, custom);
     }
 }

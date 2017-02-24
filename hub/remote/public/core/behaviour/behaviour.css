@@ -1,9 +1,16 @@
 .behaviour-body {
     display : flex;
+    flex-direction : row;
 }
 
 .behaviour-info {
-    margin-top  : 10px;
-    width       : 50%;
-    height      : 100%;
+    margin-top      : 10px;
+    height          : 100%;
+    padding-left    : 10px;
+    flex-grow       : 1;
+}
+
+.behaviour-buttons {
+    flex-shrink : 0;
+    margin : auto 10px;
 }

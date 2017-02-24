@@ -16,8 +16,11 @@
 }
 
 .field-editable {
-    cursor : pointer;
-
+    cursor      : pointer;
+    margin      : auto;
+    left        : 0;
+    top         : 0;
+    flex-grow   : 1;
 }
 
 .field-editable:hover {

@@ -54,11 +54,11 @@ let IntegrateAdapter = (function () {
         this._id = new Buffer(16);
         this._state = {
             hub : {
-                version : '1.0.0',
-                mode    : 1,
-                name    : 'Smart Hub',
-                devices : [],
-                behaviours : []
+                version     : '1.0.0',
+                mode        : 1,
+                name        : 'Smart Hub',
+                devices     : [],
+                behaviours  : []
             }
         };
 
@@ -196,11 +196,15 @@ let IntegrateAdapter = (function () {
             case 'deviceEvents':
                 return wrap(payload.get, { total : 100, records : makeEvents.call(this, payload)});
             case 'behaviours' :
-                return wrap(payload.get, { records: Array.prototype.slice.call(
-                    this._state.hub.behaviours,
-                    payload.start, 
-                    Math.min(this._state.hub.behaviours.length, payload.start+payload.count)
-                )});
+                return wrap(payload.get, {
+                    records     : this._state.hub.behaviours.slice(
+                        payload.start,
+                        Math.min(
+                            this._state.hub.behaviours.length,
+                            payload.start + payload.count
+                        )
+                    )
+                });
             default:
                 throw new Error('Unknown request');
         }
@@ -224,20 +228,23 @@ let IntegrateAdapter = (function () {
     }
 
     function requestCreate (payload) {
+        var index, res;
+
         switch (payload.create) {
-            case 'behaviour': 
+            case 'behaviour':
                 logger.debug(`Creating a new behaviour with name ${payload.name}`);
-                var index = this._state.hub.behaviours.length;
+
+                index = this._state.hub.behaviours.length;
                 this._state.hub.behaviours.push({
-                                                name: payload.name, 
-                                                id: index, 
-                                                createdDate: generateTime(),
-                                                lastUpdated: generateTime(),
-                                                active: true,
-                                                sessions: []
-                                            });
-                var res = wrap(payload.get, { id: index });
-                logger.debug('Sending test response: ', res);
+                    name        : payload.name,
+                    id          : index,
+                    createdDate : generateTime(),
+                    lastUpdated : generateTime(),
+                    active      : true,
+                    sessions    : []
+                });
+                res = wrap(payload.get, this._state.hub.behaviours[index]);
+                logger.debug('Sending test response: ' + JSON.stringify(res));
                 return res;
         }
     }
