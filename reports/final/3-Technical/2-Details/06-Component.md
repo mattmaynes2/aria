@@ -132,3 +132,61 @@ layer.
 The following diagram shows the organization of system components into a layered pattern.
 
 ![][layer-architecture]
+
+
+##### Client-Server and Broker Patterns {-}
+
+The decision to provide a user interface in the form of a web application imposed a client-server
+architecture on the project. Client-server is the architecture used by the web, so some form of 
+client-server architecture is necessary in the project. The deployment diagram below shows the 
+process distribution between client and server.
+
+![][client-server-deployment]
+
+One architectural feature of note is the separation of the HTTP gateway component into a separate 
+process from the application server. This design decision was made in order to improve the future 
+usability of the system. An alternative solution considered during system design is to include both
+the application logic and HTTP server within a single process. The decision to separate the 
+components into two processes was made following a comparison of the benefits of each approach:
+
+###### Single Process Benefits {-}
+
+- Lower Overhead: Separation of a component into a separate process introduces overhead in 
+    communication between components
+
+- Ease of Implementation: Interprocess communication can potentially introduce unnecessary
+    complexity to the code.
+
+###### Multi-Process Benefits{-}
+
+- Independence between the location of the HTTP server and the application logic. The web client
+    does not need to know the location of the application server. 
+
+- Allows use of different technologies for the HTTP server and application logic.
+
+The independence between the location of the HTTP server and application logic is ultimately the
+reason for separating the components into different processes. A common feature of existing smart 
+home automation systems is the ability to control and monitor the home from a computer that is not c
+urrently inside the home. For example; a user can see whether  their door is open or not from their
+work computer. Users expect this feature to be available from any commercial home automation system.
+While this is not currently a feature of the Aria system, the system design accounts for the fact 
+that this is likely an essential feature in the future.
+
+The ability to control the home remotely presents a technical challenge. In order for a web client
+that is not on the same LAN as the hub device to communicate with the hub directly, the user would
+need to configure port-forwarding on their router, modify their firewall configuration to allow for
+inbound HTTP requests, and configure a public, static IP address for their network. For even a 
+technical user this could be a daunting task. Given that the major requirement for the Aria system
+is usability, direct communication between a remote client and the user's Aria hub is clearly not 
+an acceptable solution.
+
+An acceptable solution to this problem is to make use of a Broker pattern, with the HTTP server 
+acting as a broker for the application server. The web client can communicates with the HTTP server 
+at a well-known public address, potentially hosted on a cloud computing platform, from any physical 
+location. This server can then relay requests to the Aria hub within the user's home.
+The communication between the HTTP server and the system hub can use a mechanism that does 
+not require special network configuration on the part of the user, such as WebSockets or 
+HTTP long polling. 
+
+The extensibility and usability benefits of separating the HTTP and application servers into 
+separate processes are worth the added complexity and overhead. 

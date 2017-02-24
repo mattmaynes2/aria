@@ -10,6 +10,8 @@
 | [4. System Components](#fig-system-components)    | Matthew & Jeremy     |                      |
 | [5. Remote Use Case](#fig-remote-use-case)        | Matthew              | Cameron              |
 | [6. System Deployment](#fig-system-deployment)    | Jeremy               |                      |
+| [7. Layer Architecture](#fig-layer-architecture)  | Cameron              |                      |
+| [8. Client-Server Deployment](#fig-client-server) | Cameron              |                      |  
 | [G-1 Office Activity](#fig-g-1)                   | Peter                |                      |
 | [G-2 Office No Activity](#fig-g-2)                | Peter                |                      |
 | [H-1 Exchange Classes](#fig-h-1)                  | Jeremy               |                      |
@@ -57,7 +59,7 @@
 [remote-use-case]: ./uml/RemoteUseCase.png "Figure 5: Remote Use Case" {#fig-remote-use-case}
 [system-deployment]: ./uml/SystemDeployment.png "Figure 6: System Deployment" {#fig-system-deployment}
 [layer-architecture]: ./uml/LayerArchitecture.jpg "Figure 7: Layered Architecture" {#fig-layer-architecture}
-
+[client-server-deployment]: ./uml/AriaDeployment.png "Figrue 8: Client Server Deployment" {#fig-client-server} 
 
 [g-1]: ./images/Scenario-NoActivity.png "Figure G-1: Graph of no office activity" {#fig-g-1}
 [g-2]: ./images/Scenario-OfficeActivity.png "Figure G-2: Graph of office activity" {#fig-g-2}
