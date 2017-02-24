@@ -1,10 +1,13 @@
 from ipc import Message
 from delegate import Delegate
 
+MACHINE_LEARNING_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02'
+
 class DecisionBroker(Delegate):
 
-    def __init__(self, adapter, decisionStrategy):
+    def __init__(self, adapter, decisionStrategy=None):
         super().__init__()
+        self.id=MACHINE_LEARNING_ADDRESS
         self.adapter = adapter
         self.decisionStrategy = decisionStrategy
 
@@ -12,8 +15,11 @@ class DecisionBroker(Delegate):
         if (data["event"] == "device.event"):
             decision = self.decisionStrategy.decide(data)
             if (decision):
-                self.adapter.send(decision)
+                decision.sender=self.id
+                self.adapter.received(decision)
 
     def received(self, message):
+        if not self.decisionStrategy:
+            return
         if (message.type == Message.Event):
             self.handleEventMessage(message.data)

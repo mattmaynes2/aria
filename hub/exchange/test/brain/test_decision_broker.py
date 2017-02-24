@@ -39,10 +39,11 @@ class DecisionBrokerTest (TestCase):
 
     def test_model_should_send_response_from_learning_strategy(self):
         strategy = Mock()
-        strategy.decide.return_value = "decision"
+        mockDecision= Mock()
+        strategy.decide.return_value =mockDecision
         model = DecisionBroker(self.stubAdapter, strategy)
         model.received(self.testDeviceEvent)
-        self.stubAdapter.send.assert_called_with("decision")
+        self.stubAdapter.received.assert_called_with(mockDecision)
 
         
     def test_model_shold_not_attempt_to_forward_null_decision(self):
@@ -50,17 +51,17 @@ class DecisionBrokerTest (TestCase):
         strategy.decide.return_value = None
         model = DecisionBroker(self.stubAdapter, strategy)
         model.received(self.testDeviceEvent)
-        self.stubAdapter.send.assert_not_called()
+        self.stubAdapter.received.assert_not_called()
 
     def test_model_should_not_respond_to_non_device_event_messages(self):
         strategy = Mock()
         model = DecisionBroker(self.stubAdapter, strategy)
         model.received(self.testNonDeviceEvent)
-        self.stubAdapter.send.asssert_not_called()
+        self.stubAdapter.received.asssert_not_called()
 
     def test_model_should_only_respond_to_event_messages(self):
         strategy = Mock()
         model = DecisionBroker(self.stubAdapter, strategy)
         model.received(self.testNonEventMessage)
-        self.stubAdapter.send.asssert_not_called()
+        self.stubAdapter.received.asssert_not_called()
         
