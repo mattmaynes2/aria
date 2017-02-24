@@ -44,7 +44,7 @@ class Slider extends Component {
             .mousedown((e) => {
                 this._dragging  = true;
                 this._start     = e.clientX;
-                this._max = this._$el.width() - (this._$target.width() / 2);
+                this._max       = this._$el.width() - (this._$target.width() / 2);
                 this._offset    = bound(0, this._max,
                     this._start - this._$el.offset().left - (this._$target.width() / 2)
                 );
@@ -54,7 +54,11 @@ class Slider extends Component {
                 e.stopPropagation();
             });
 
-        setValue.call(this, 0, this._max, this._state);
+        setTimeout(() => {
+            this._max = this._$el.width() - (this._$target.width() / 2);
+            setValue.call(this, 0, this._max, this._state);
+        }, 0);
+        setValue.call(this, 0, 100, this._state);
         return this;
     }
 }

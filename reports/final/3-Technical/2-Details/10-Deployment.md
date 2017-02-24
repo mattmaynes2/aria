@@ -1,4 +1,4 @@
-### Deployment {#sec-3-2-8-1}
+### Deployment {#sec-3-2-10-1}
 
 ![][system-deployment]
 
@@ -22,5 +22,4 @@ communicating to the central smart hub.
 The web client is the end user's browser and will present a remote interface for controlling the
 smart hub as well as all devices that are connected to the system. The web interface must be able
 to render on various industry standard browsers (Chrome, Firefox, IE, Safari).
-
 
