@@ -12,11 +12,16 @@ from device     import Device
 from adapter import AriaAdapter, HubAdapter, WemoAdapter, SoftwareAdapter
 from adapter.zwave_adapter import ZWaveAdapter
 from adapter.sonos_adapter import SonosAdapter
-from database import Database
+from database import Database, Retriever
 from ipc import Message
 from device     import SoftwareDeviceFactory
 from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavioursCommand,\
  CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand, DeactivateSessionCommand
+from brain.model_builder import ModelBuilder
+from brain.decision_broker import DecisionBroker
+
+
+
 _log_config_file = 'configs/log.config'
 _log_config_location = resource_filename(__name__, _log_config_file)
 
@@ -66,8 +71,14 @@ def create_exchange (hub, cli, database):
     SoftwareDeviceFactory.setDeviceListener(softwareAdapter.add_device)
     exchange.register('software', softwareAdapter)
     
+    # setup  Machine learning
+    decisionBroker = DecisionBroker(exchange,hub)
+    modelBuilder = ModelBuilder(Retriever(database),decisionBroker)
+
     # setup delegates
     exchange.addDelegate(ariaAdapter)
+    exchange.addDelegate(decisionBroker)
+    exchange.addDelegate(modelBuilder)
 
     return exchange
 
