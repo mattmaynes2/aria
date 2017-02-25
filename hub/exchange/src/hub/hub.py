@@ -67,3 +67,6 @@ class Hub(Device):
 
     def getDevice(self,address):
         return self if address == self.address else self.devices.get(address)
+
+    def isNormalMode(self):
+        return self.mode == HubMode.Normal

@@ -29,13 +29,15 @@ class Retriever:
 	                            " e.source, " +\
 	                            " p.NAME as parameter_name, " +\
 	                            " pc.value, " +\
-	                            " e.request_id " +\
+	                            " e.request_id, " +\
+                                " a.name as attribute_name " +\
 	                            "FROM   event e " +\
 	                            "  JOIN parameter_change pc " +\
 	                            "    ON e.id = pc.event_id " +\
 	                            "  JOIN parameter p " +\
 	                            "    ON p.id = pc.parameter " +\
-	                            "WHERE  session_id = ? order by e.id ASC"
+                                "  JOIN attribute a on a.id = p.attribute_id"+\
+	                            " WHERE  session_id = ? order by e.id ASC"
 
     def __init__(self, database):
         self.database = database																									
