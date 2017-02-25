@@ -1,7 +1,10 @@
+import logging
 from ipc import Message
 from delegate import Delegate
 
 MACHINE_LEARNING_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02'
+
+log = logging.getLogger(__name__)
 
 class DecisionBroker(Delegate):
 
@@ -20,7 +23,10 @@ class DecisionBroker(Delegate):
                 self.adapter.received(decision)
 
     def received(self, message):
+        log.debug('received message {}'.format(message))
         if not self.decisionStrategy:
+            log.debug('no strategy set')
             return
-        if (self.hub.isNormalMode() and message.type == Message.Event):
+        if (self.hub.isNormalMode() and (message.type == Message.Event)):
+            log.debug('handling the event')
             self.handleEventMessage(message.data)

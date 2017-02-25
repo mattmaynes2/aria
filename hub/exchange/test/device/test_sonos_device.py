@@ -56,7 +56,7 @@ class SonosDeviceTest(TestCase):
             'timestamp' : int(event_time*1000),
             'device':'Media Room',
             'deviceType': 'Sonos PLAY:1',
-            'attribute': device.getAttribute('volume')
+            'attribute': dict(device.getAttribute('volume'))
         },sender=device.address))
         self.assertEqual(100,device.getAttribute('volume').parameters[0].value)
 
@@ -78,7 +78,7 @@ class SonosDeviceTest(TestCase):
             'timestamp' : int(event_time*1000),
             'device':'Media Room',
             'deviceType': 'Sonos PLAY:1',
-            'attribute': device.getAttribute('bass')
+            'attribute': dict(device.getAttribute('bass'))
         },sender=device.address))
         self.assertEqual(5,device.getAttribute('bass').parameters[0].value)
 
@@ -100,7 +100,7 @@ class SonosDeviceTest(TestCase):
             'timestamp' : int(event_time*1000),
             'device':'Media Room',
             'deviceType': 'Sonos PLAY:1',
-            'attribute': device.getAttribute('treble')
+            'attribute': dict(device.getAttribute('treble'))
         },sender=device.address))
         self.assertEqual(-10,device.getAttribute('treble').parameters[0].value)
 
@@ -137,7 +137,7 @@ class SonosDeviceTest(TestCase):
         response= device.handleRequest('music_control','play')
         self.assertEqual({
                             'name' : 'music_control',
-                             'value': MusicControls.Play,
+                             'value': MusicControls.Play.value,
                               'dataType': 'enum'
                             },response)
         self.assertTrue(self.mockNode.play.called)
@@ -148,7 +148,7 @@ class SonosDeviceTest(TestCase):
         response= device.handleRequest('music_control','next')
         self.assertEqual({
                             'name' : 'music_control',
-                             'value': MusicControls.Stop,
+                             'value': MusicControls.Stop.value,
                               'dataType': 'enum'
                             },response)
         self.assertTrue(self.mockNode.next.called)
@@ -175,28 +175,9 @@ class SonosDeviceTest(TestCase):
             'timestamp' : int(event_time*1000),
             'device':'Media Room',
             'deviceType': 'Sonos PLAY:1',
-            'attribute': device.getAttribute('music_control')
+            'attribute': dict(device.getAttribute('music_control'))
         },sender=device.address))
         self.assertEqual(MusicControls.Play,device.music_control)
         
         # make sure we don't call play when updateing the value
         self.assertFalse(self.mockNode.play.called)
-    
-    def test_no_change(self):
-        """
-        test that no event generated when system state isn't changed
-        """
-        mockService = Mock()
-        self.mockNode.avTransport=mockService
-        mockAdapter= Mock()
-        device= SonosDevice(self.mockNode,mockAdapter)
-
-        event_time=time.time()
-        mockEvent= Mock()
-        mockEvent.service=mockService
-        mockEvent.variables={'transport_state': 'STOPPED'}
-        mockEvent.timestamp=event_time
-        device.handleEvent(mockEvent)   
-
-        self.assertFalse(mockAdapter.received.called)
-        self.assertEqual(MusicControls.Stop,device.music_control)
