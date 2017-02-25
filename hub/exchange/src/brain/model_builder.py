@@ -14,7 +14,10 @@ class ModelBuilder(Delegate):
     def received(self,message):
         if message.type == Message.Request and isSessionStopMessage(message):
             events=self.retriever.getSessionEvents(message.data['id'])
-            self.decisionBroker.strategy=self.createStrategy(events)
+            
+            strategy=self.createStrategy(events)
+            log.debug('setting strategy {}'.format(strategy.triggeredEvent))
+            self.decisionBroker.decisionStrategy=strategy
     
     def createStrategy(self,events):
         for event in reversed(events):
