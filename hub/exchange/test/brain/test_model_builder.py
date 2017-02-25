@@ -12,9 +12,9 @@ class ModelBuilderTest (TestCase):
         self.modelBuilder= ModelBuilder(self.mockRetriever,self.mockDecisionBroker)
     
     def test_retrieve_session(self):
-        id1=uuid.uuid4().bytes
+        id1=uuid.uuid4()
         id2=uuid.uuid4().bytes
-        self.mockRetriever.getSessionEvents.return_value=[{'source':id1, 'attribute_name':'Foo', 
+        self.mockRetriever.getSessionEvents.return_value=[{'source':str(id1), 'attribute_name':'Foo', 
                                                             'parameter_name':'Foo','value':'5', 
                                                             'request_id':2}]
 
