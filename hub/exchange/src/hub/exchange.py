@@ -4,7 +4,7 @@ from delegate import Delegate
 import logging
 from uuid import UUID
 from database import DatabaseTranslator
-from delegate import RequestTracker
+from delegate.request_tracker import RequestTracker
 from threading import Lock
 from sync import synchronized
 log =logging.getLogger(__name__)
