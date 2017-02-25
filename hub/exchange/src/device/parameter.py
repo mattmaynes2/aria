@@ -1,5 +1,6 @@
 import logging
 from .data_types import DataType
+from enum import Enum
 
 log = logging.getLogger(__name__)
 
@@ -38,3 +39,10 @@ class Parameter():
         if self.max and self.min :
             return self.min< value and self.max> value
         return True 
+
+    def __iter__(self):
+        for key,val in vars(self).items():
+            if isinstance(val,Enum) :
+                yield key, val.value
+            else:
+                yield key,val 
