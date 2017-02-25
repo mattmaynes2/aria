@@ -2,6 +2,7 @@ import logging
 from ipc import Message
 from delegate import Delegate
 from .strategies.v1_strategy import V1Strategy
+from uuid import UUID
 
 log= logging.getLogger(__name__)
 
@@ -26,7 +27,7 @@ class ModelBuilder(Delegate):
                 {
                     'set':event['attribute_name'],
                     'value':[{'name':event['parameter_name'], 'value':event['value']}]
-                }, receiver=event['source'])
+                }, receiver=UUID(event['source']).bytes)
                 return V1Strategy(message)
 
 def isSessionStopMessage(message):
