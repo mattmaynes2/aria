@@ -1,6 +1,7 @@
 import time
 import logging
 import uuid
+from enum import Enum
 from .device import Device
 from .parameter import Parameter
 from .data_types import DataType
@@ -164,7 +165,7 @@ class SonosDevice(Device):
             param =self.getAttribute(attribute).parameters[0]
             return {
                     'name' : param.name,
-                    'value' : param.value,
+                    'value' : param.value if not isinstance(param.value,Enum) else param.value.value,
                     'dataType' : param.dataType.value
                     }
 
@@ -174,22 +175,19 @@ class SonosDevice(Device):
                 'timestamp' : int(event.timestamp*TIMESTAMP_FACTOR),
                 'device' : self.name,
                 'deviceType' : self.deviceType.name,
-                'attribute' : attribute
+                'attribute' : dict(attribute)
                 }
         self.__adapter.received(Message(Message.Event,data,sender=self.address))
 
     def _handleAvTransportEvent(self,event):
         """
         Handle events for av transport events.
-        These events all contain all of the parameters from the avTransport service
-        so we need to check the current device state to see if anything we are tracking has
-        changed
         """
         transport_state= event.variables.get('transport_state')
         newVal=SonosDevice.PLAYCONTROLMAP[transport_state]
-        if( newVal!= self.music_control):
-            self.getAttribute('music_control').parameters[0].value=newVal
-            self._sendEvent(self.getAttribute('music_control'),event)
+
+        self.getAttribute('music_control').parameters[0].value=newVal
+        self._sendEvent(self.getAttribute('music_control'),event)
             
     def _handleRenderingEvent(self,event):
         """
