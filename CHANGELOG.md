@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+## v0.6.0
+
+- Added basic learning component to system for training purposes
+- Added basic behaviour management to the user interface
+- Generated logs from staged system to make decisions about learning
+
 ## v0.5.2
 
 - Training behaviours and sessions have been added to database and gateway
