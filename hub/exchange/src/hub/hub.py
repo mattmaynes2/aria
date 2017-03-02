@@ -12,7 +12,7 @@ from datetime import datetime
 log=logging.getLogger(__name__)
 
 class Hub(Device):
-    VERSION = '0.5.0'
+    VERSION = '0.6.0'
     ADDRESS= Message.DEFAULT_ADDRESS
     GATEWAY_ADDRESS=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
 
@@ -29,7 +29,7 @@ class Hub(Device):
         self.__commands= { key.value: {}  for key in CommandType}
         self.addAttributeCommands()
         self.session= None
-    
+
     def addAttributeCommands(self):
         self.addCommand(get_name.GetHubNameCommand())
         self.addCommand(get_mode.GetHubModeCommand())
@@ -38,7 +38,7 @@ class Hub(Device):
         self.addCommand(get_devices.GetDevicesCommand())
         self.addCommand(get_status.GetHubStatusCommand())
 
-    def addCommand(self,command):          
+    def addCommand(self,command):
         self.__commands[command.commandType.value][command.name]=command
 
     def executeCommand(self,commandType,data):
