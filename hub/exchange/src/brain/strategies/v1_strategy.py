@@ -3,7 +3,7 @@ from ipc import Message
 class V1Strategy():
 
     def __init__(self):
-        self.triggeredEvent = None
+        self.triggeredEvent = []
 
     def processSession(self, events):
         for event in reversed(events):
@@ -13,7 +13,7 @@ class V1Strategy():
                     'set':event['attribute_name'],
                     'value':[{'name':event['parameter_name'], 'value':event['value']}]
                 }, receiver=UUID(event['source']).bytes)
-                self.triggeredEvent = message
+                self.triggeredEvent.append(message)
 
     def decide(self, event):
         return self.triggeredEvent

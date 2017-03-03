@@ -20,12 +20,12 @@ class V1StrategyTest(TestCase):
 
     def test_strategy_should_return_no_decision_if_no_sessions_processed(self):
         strategy = V1Strategy()
-        self.assertEqual(None, strategy.decide(self.testDeviceEvent))
+        self.assertEqual([], strategy.decide(self.testDeviceEvent))
         
 
     def test_strategy_should_respond_with_set_message_for_any_device_event(self):
         strategy = V1Strategy()
         strategy.processSession(self.testEvents)
-        self.assertEqual(strategy.decide(self.testDeviceEvent).data["value"], 
+        self.assertEqual(strategy.decide(self.testDeviceEvent)[0].data["value"], 
                             [ { "name" : "Foo", "value" : '5'} ])
         

@@ -17,8 +17,8 @@ class DecisionBroker(Delegate):
 
     def handleEventMessage(self, data):
         if (data["event"] == "device.event"):
-            decision = self.decisionStrategy.decide(data)
-            if (decision):
+            decisions = self.decisionStrategy.decide(data)
+            for decision in decisions:
                 decision.sender=self.id
                 self.adapter.received(decision)
 
