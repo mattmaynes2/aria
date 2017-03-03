@@ -44,10 +44,10 @@ class V2Strategy():
                 return event
 
     def buildEventIdentifierFromMessage(self, message):
-        source = str(UUID(bytes=event.sender))
-        attributeName = event.data["attribute"]["name"]
-        parameterName = event.data["attribute"]["parameters"][0]["name"]
-        value = event.data["attribute"]["parameters"][0]["value"]
+        source = str(UUID(bytes=message.sender))
+        attributeName = message.data["attribute"]["name"]
+        parameterName = message.data["attribute"]["parameters"][0]["name"]
+        value = message.data["attribute"]["parameters"][0]["value"]
         return self.buildEventIdentifier(source, attributeName, parameterName, value)
 
     def buildEventIdentifierFromDatabaseObject(self, event):

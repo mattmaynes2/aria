@@ -9,9 +9,14 @@ class V1StrategyTest(TestCase):
 
     def setUp(self):
         id1=uuid.uuid4()
-        self.testEvents= [{'source':str(id1), 'attribute_name':'Foo', 
-                                                            'parameter_name':'Foo','value':'5', 
-                                                            'request_id':2}]
+        self.testEvents= [{
+                            'source': str(id1),
+                            'attribute_name': 'Foo',
+                            'parameter_name': 'Foo',
+                            'value': '5',
+                            'request_id': 2
+                        }]
+                        
         self.testDeviceEvent = Mock()
         self.testDeviceEvent.type = Message.Event
         self.testDeviceEvent.sender = uuid.uuid4().bytes
