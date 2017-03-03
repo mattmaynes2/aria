@@ -143,6 +143,7 @@ class TestBehaviours(TestCase):
         self.testAdapter.enqueueMessage(createMessage)
         self.sendEvent()  
         
+        # sleep so that messages can be processed
         time.sleep(1.5)
 
         self.assertEqual(self.hub.session, None)
@@ -171,7 +172,7 @@ class TestBehaviours(TestCase):
         self.testAdapter.enqueueMessage(deactivateMessage)
 
         self.testAdapter.enqueueMessage(activateMessage)
-
+        # sleep to allow time to process messages 
         time.sleep(1)
         response = self.testAdapter.receivedMessages[2]
         self.assertEqual(Message.Error, response.type)
