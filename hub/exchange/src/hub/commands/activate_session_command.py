@@ -1,6 +1,9 @@
+import logging
 from .database_command import DatabaseCommand
 from .command_type import CommandType
 from hub.hub_mode import HubMode
+
+log = logging.getLogger(__name__)
 
 class ActivateSessionCommand(DatabaseCommand):
     def __init__(self,database):
@@ -8,9 +11,11 @@ class ActivateSessionCommand(DatabaseCommand):
     
     def execute(self,hub,data):
         session=self.retriever.getSession(data['id'])
-        hub.session=_session(session)
-        hub.mode=HubMode.Learning
-        return 'Success'
+        if( not bool(session['stopped'])):
+            hub.session=_session(session)
+            hub.mode=HubMode.Learning
+            return 'Success'
+        raise ValueError("Session {} has already been captured".format(session['name']))
 
 # change the database dictionary into a session object
 class _session:

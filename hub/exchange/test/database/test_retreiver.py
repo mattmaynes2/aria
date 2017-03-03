@@ -74,6 +74,14 @@ class RetrieverTest(TestCase):
         self.assertTrue(set({"name":"Take 1", "id": 1, "behaviour_id":1}).issubset(
             set(self.retriever.addSession(1,"Take 1"))))
 
+    def test_stop_session(self):
+        self.database.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')")
+        self.database.execute("INSERT INTO Session(id,name,behaviour_id) VALUES(1,'Take 1',1)")
+
+        self.retriever.stopSession(1)
+        result=self.database.execute("select * from session")[0]
+        self.assertEqual(1,result['stopped'])
+
 class TestDatabase:
 
     def __init__(self, db_name):

@@ -12,6 +12,7 @@ class HubAdapter (Adapter):
         self.hub = hub
 
     def send (self, message):
+        error = None
         if(message.type == Message.Error):
             log.warning('Recieved error '+str(message))
             return False
@@ -25,8 +26,9 @@ class HubAdapter (Adapter):
                     self.notifyResponse(message.data[type.value],value,message.sender)
                     return True
                 except Exception as e:
+                    error=str(e)
                     log.exception("Invalid message "+ str(message))
-        self.notifyFailure(message.sender)
+        self.notifyFailure(message.sender,error)
 
     def notifyResponse(self,attribute,responseValue,receiver):
         self.notify(
@@ -36,9 +38,9 @@ class HubAdapter (Adapter):
         sender = self.hub.address, receiver = receiver)
         )
 
-    def notifyFailure(self,receiver):
+    def notifyFailure(self,receiver,error=None):
         self.notify(
         'received',
-        Message(type_= Message.Error,data = {'response':'Invalid Message'},
+        Message(type_= Message.Error,data = {'response':error if error else 'Invalid Message'},
         sender = self.hub.address, receiver = receiver)
         )
