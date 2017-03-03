@@ -16,14 +16,6 @@ files, which makes it difficult to ensure the information is being stored with t
 This also implies that the data must be parsed when being read. A specification for the format of
 data storage would need to be created and followed internally for flat files to be a viable option.    
 
-SQL is a common solution for storing relational data, and has many different concrete 
-implementations. SQL is generally an appropriate choice when dealing with complex queries. Two
-examples of such implementations are PostgreSQL and MySQL. A common feature of SQL implementations 
-is that they are server based databases. This requires that a separate process is running to support
-a dedicated server for the database. All requests to the database require a connection to this 
-database server. As mentioned above, the database is being run on a Raspberry Pi,meaning there are a
-limited amount of computational resources available. 
-
 NoSQL is an alternative option to classic SQL solutions. NoSQL is a document based method of data
 persistence as opposed to the table based methods of SQL. This makes it less adapt at performing 
 complex queries, but it excels at storing hierarchical relationships. General advantages of NoSQL 
@@ -34,8 +26,16 @@ the database design. The benifits of a NoSQL database are not relevant to this p
 added complexity makes NoSQL unnecessary and undesirable in this situation. This leads to the last
 option, which is SQLite.
 
+SQL is a common solution for storing relational data, and has many different concrete 
+implementations. SQL is generally an appropriate choice when dealing with complex queries. Two
+examples of such implementations are PostgreSQL and MySQL. A common feature of SQL implementations 
+is that they are server based databases. This requires that a separate process is running to support
+a dedicated server for the database. All requests to the database require a connection to this 
+database server. As mentioned above, the database is being run on a Raspberry Pi,meaning there are a
+limited amount of computational resources available. 
+
 SQLite is a file-based database, which does not require a separate process to run a database server.
-SQLite instead allows the system to write to a file directly, while still maintaining the relational
-structure offered by SQL. This is the ideal choice for our system, as it fulfills the need for 
-relational data without overburdening the constraints set by our limited hardware.
+It essentially acts as a library which can be used accross programming languages to access a SQLite
+file and perform SQL queries and operations. This is the ideal choice for our system, as it fulfills
+the need for relational data without overburdening the constraints set by our limited hardware.
 
