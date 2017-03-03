@@ -43,7 +43,7 @@ class DecisionBrokerTest (TestCase):
     def test_model_should_send_response_from_learning_strategy(self):
         strategy = Mock()
         mockDecision= Mock()
-        strategy.decide.return_value =mockDecision
+        strategy.decide.return_value =[mockDecision]
         model = DecisionBroker(self.stubAdapter, self.mockHub, strategy)
         model.received(self.testDeviceEvent)
         self.stubAdapter.received.assert_called_with(mockDecision)
@@ -51,7 +51,7 @@ class DecisionBrokerTest (TestCase):
         
     def test_model_should_not_attempt_to_forward_null_decision(self):
         strategy = Mock()
-        strategy.decide.return_value = None
+        strategy.decide.return_value = []
         model = DecisionBroker(self.stubAdapter, self.mockHub,strategy)
         model.received(self.testDeviceEvent)
         self.stubAdapter.received.assert_not_called()

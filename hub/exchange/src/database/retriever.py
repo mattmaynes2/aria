@@ -36,7 +36,8 @@ class Retriever:
 	                            "  JOIN parameter p " +\
 	                            "    ON p.id = pc.parameter " +\
                                 "  JOIN attribute a on a.id = p.attribute_id"+\
-	                            " WHERE  session_id = ? order by e.id ASC"
+	                            " WHERE  session_id = ? order by e.timestamp ASC"
+    STOP_SESSION            = "UPDATE session set stopped = 1 where id=?"
 
     def __init__(self, database):
         self.database = database																									
@@ -149,6 +150,9 @@ class Retriever:
         @param session_id   The id of the session 
         """
         return self.database.execute(Retriever.GET_SESSION_EVENTS, [session_id])
+
+    def stopSession(self,session_id):
+        self.database.execute(Retriever.STOP_SESSION,[session_id])
 
     def _getAttribute(self, deviceType):
         return self.database.execute(Retriever.GET_ATTRIBUTE_ID, [deviceType])
