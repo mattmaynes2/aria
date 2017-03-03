@@ -1,4 +1,5 @@
-
+from uuid import UUID
+from ipc import Message
 class V1Strategy():
 
     def __init__(self):

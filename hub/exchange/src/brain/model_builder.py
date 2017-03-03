@@ -17,15 +17,6 @@ class ModelBuilder(Delegate):
             events=self.retriever.getSessionEvents(message.data['id']) 
             self.strategy.processSession(events)
     
-    def createStrategy(self,events):
-        for event in reversed(events):
-            if event['request_id']:
-                message = Message(Message.Request, data=
-                {
-                    'set':event['attribute_name'],
-                    'value':[{'name':event['parameter_name'], 'value':event['value']}]
-                }, receiver=UUID(event['source']).bytes)
-                return V1Strategy(message)
     @property
     def strategy (self):
         return self.__strategy
