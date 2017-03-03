@@ -15,7 +15,6 @@ class Retriever:
     GET_PARAM_CHANGE        = "SELECT parameter, value FROM Parameter_Change WHERE event_id = ?"
     GET_PARAM_INFO          = "SELECT name, data_type FROM Parameter WHERE id = ?" 
     GET_DEVICE_TYPE         = "SELECT type, name FROM Device WHERE address = ?"
-    GET_ATTRIBUTE_ID        = "SELECT id FROM Attribute WHERE device_type = ?"
     GET_ATTRIBUTE_NAME      = "SELECT name FROM Attribute WHERE id = ?"
     GET_SESSION             = "SELECT * from session where id=?"
     GET_LAST_EVENT_ID       = "SELECT id FROM Event ORDER BY id DESC LIMIT 1 "
@@ -56,14 +55,11 @@ class Retriever:
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         for r in results:
             device = self._getDeviceType(r["source"])
-            #log.error("\rType is: " + str(_type[0]["type"]))
-            id = self._getAttribute(device[0]["type"])
-            #log.error("\rID is: " + id["id"])
-            r["attribute"] = {}
-            r["attribute"]["name"] = self._getAttributeName(id[0]['id'])[0]['name']
+
             r['device']= device[0]['name']
             params = self._getParametersChanged(r["index"])
 
+            r["attribute"] = {}
             r["attribute"]["parameters"] = []
             
             for p in params:
@@ -73,6 +69,8 @@ class Retriever:
                 newParam["name"] = paramInfo[0]['name']
                 newParam["dataType"] = DataType(paramInfo[0]['data_type'])
                 r["attribute"]["parameters"].append(newParam)
+            
+            r["attribute"]["name"] = self._getAttributeName(paramInfo[0]['attribute_id'])[0]['name']
             
         return results
 
