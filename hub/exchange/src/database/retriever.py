@@ -13,7 +13,7 @@ class Retriever:
                                FROM Event WHERE source NOT IN (?) ORDER BY id DESC LIMIT ?,?"
     GET_DEVICE_EVENT_WINDOW = "SELECT * FROM Event WHERE source = ? LIMIT  ?,?"
     GET_PARAM_CHANGE        = "SELECT parameter, value FROM Parameter_Change WHERE event_id = ?"
-    GET_PARAM_INFO          = "SELECT name, data_type FROM Parameter WHERE id = ?" 
+    GET_PARAM_INFO          = "SELECT name, data_type, attribute_id FROM Parameter WHERE id = ?" 
     GET_DEVICE_TYPE         = "SELECT type, name FROM Device WHERE address = ?"
     GET_ATTRIBUTE_NAME      = "SELECT name FROM Attribute WHERE id = ?"
     GET_SESSION             = "SELECT * from session where id=?"
@@ -50,7 +50,7 @@ class Retriever:
     #
     # @return        List of count number of event objects across all devices
     ###
-    def getEventWindow(self, start, count, ignore):
+    def getEventWindow(self, start, count, ignore=''):
         values = (ignore, start, count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         for r in results:
