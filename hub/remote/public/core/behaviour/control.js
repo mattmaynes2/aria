@@ -1,6 +1,8 @@
 import Component    from '../component';
 import Button       from '../control/button';
 import Dialog       from '../dialog/dialog';
+import Session      from './session';
+import SessionPanel from './session-panel';
 
 import './control.css';
 
@@ -24,7 +26,10 @@ class BehaviourControl extends Component {
 
 function sessions () {
     new Dialog(
-        '',
+        new SessionPanel({
+            sessions    : this._state.sessions.map((s) => { return new Session(s); }),
+            behaviour   : this._state
+        }),
         {
             title   : `${this._state.title} Sessions`,
             close   : true
