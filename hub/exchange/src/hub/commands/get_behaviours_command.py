@@ -13,4 +13,5 @@ class GetBehavioursCommand(DatabaseCommand):
         for result in results:
             result['created_date']=self.formatDate(result['created_date'])
             result['last_updated']=self.formatDate(result['last_updated'])
+            self._formatColumnNames(result)
         return{'total':len(results),'records':results}
