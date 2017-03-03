@@ -16,6 +16,7 @@ class V2Strategy():
     def addDecision(self, triggeringEvent, action):
         triggerString = self.makeEventStringFromDatabase(triggeringEvent)
         logger.debug("Adding decision for trigger string " + triggerString)
+        logger.debug("The action taken will be " + str(action))
         if triggerString not in self.eventMapping:
             self.eventMapping[triggerString] = []
 

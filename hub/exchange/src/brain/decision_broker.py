@@ -29,4 +29,4 @@ class DecisionBroker(Delegate):
             return
         if (self.hub.isNormalMode() and (message.type == Message.Event)):
             log.debug('handling the event')
-            self.handleEventMessage(message.data)
+            self.handleEventMessage(message)
