@@ -10,7 +10,6 @@ sys.path.append('../lib')
 from hub        import Hub, Exchange, CLI, args, daemon
 from device     import Device
 from adapter import AriaAdapter, HubAdapter, WemoAdapter, SoftwareAdapter
-from adapter.zwave_adapter import ZWaveAdapter
 from adapter.sonos_adapter import SonosAdapter
 from database import Database, Retriever
 from ipc import Message
@@ -19,7 +18,7 @@ from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavio
  CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand, DeactivateSessionCommand
 from brain.model_builder import ModelBuilder
 from brain.decision_broker import DecisionBroker
-from brain.strategies import StrategyV1
+from brain.strategies import V2Strategy
 
 
 _log_config_file = 'configs/log.config'
@@ -31,6 +30,7 @@ exchange    = None
 database    = None
 
 logging.config.fileConfig(_log_config_location, disable_existing_loggers=False)
+logger = logging.getLogger(__name__)
 
 def main ():
     global hub, cli, exchange
@@ -66,14 +66,20 @@ def create_exchange (hub, cli, database):
     exchange.register('aria'    , ariaAdapter)
     exchange.register('sonos'   , SonosAdapter())
     #exchange.register('wemo'    , WemoAdapter())
-    exchange.register('zwave'    , ZWaveAdapter())
+
+    try:
+        from adapter.zwave_adapter import ZWaveAdapter
+        exchange.register('zwave'    , ZWaveAdapter())
+    except:
+        logger.warn("Unable to load Zwave adapter")
+
     softwareAdapter = SoftwareAdapter()
     SoftwareDeviceFactory.setDeviceListener(softwareAdapter.add_device)
     exchange.register('software', softwareAdapter)
     
     # setup  Machine learning
     #TODO add past events to strategy
-    strategy = StrategyV1()
+    strategy = V2Strategy()
     decisionBroker = DecisionBroker(exchange,hub)
     modelBuilder = ModelBuilder(Retriever(database),decisionBroker,strategy)
 

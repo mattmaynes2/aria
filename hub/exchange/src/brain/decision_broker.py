@@ -17,8 +17,8 @@ class DecisionBroker(Delegate):
 
     def handleEventMessage(self, data):
         if (data["event"] == "device.event"):
-            decision = self.decisionStrategy.decide(data)
-            if (decision):
+            decisions = self.decisionStrategy.decide(data)
+            for decision in decisions:
                 decision.sender=self.id
                 self.adapter.received(decision)
 
@@ -29,4 +29,4 @@ class DecisionBroker(Delegate):
             return
         if (self.hub.isNormalMode() and (message.type == Message.Event)):
             log.debug('handling the event')
-            self.handleEventMessage(message.data)
+            self.handleEventMessage(message)

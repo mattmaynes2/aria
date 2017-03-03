@@ -17,14 +17,6 @@ class Dialog extends Component {
 
     _prerender () {
 
-        // A dialog has already been rendered. DO NOT RENDER!
-        // Rendering multiple dialogs will cause the dialog lock
-        // to be removed when the first one closes which will allow
-        // the background to become active
-        if ($('.dialog').length > 0) {
-            return;
-        }
-
         $('body')
             .append($('<div>').addClass('dialog-wall'))
             .append(this._$el)
