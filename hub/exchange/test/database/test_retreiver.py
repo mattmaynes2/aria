@@ -74,6 +74,7 @@ class RetrieverTest(TestCase):
         self.assertTrue(set({"name":"Take 1", "id": 1, "behaviour_id":1}).issubset(
             set(self.retriever.addSession(1,"Take 1"))))
 
+
     def test_stop_session(self):
         self.database.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')")
         self.database.execute("INSERT INTO Session(id,name,behaviour_id) VALUES(1,'Take 1',1)")
@@ -81,6 +82,22 @@ class RetrieverTest(TestCase):
         self.retriever.stopSession(1)
         result=self.database.execute("select * from session")[0]
         self.assertEqual(1,result['stopped'])
+
+    def test_event_window(self):
+        self.setupDevices()
+        self.testDatabase.execute("INSERT INTO event(id,source)" + \
+                              " VALUES(1,'35434141-4644-4335-3139-414530313430')")
+        self.testDatabase.execute("INSERT INTO event(id,source)" + \
+                              " VALUES(2,'35434141-4644-4335-3139-414530313430')")
+        self.testDatabase.execute("INSERT INTO parameter_change VALUES(1,4,'10',1)")
+        self.testDatabase.execute("INSERT INTO parameter_change VALUES(2,1,'0',2)")
+        self.testDatabase.commit()
+
+        results=self.retriever.getEventWindow(0,10)
+        self.assertEqual(len(results),2)
+        self.assertEqual( "bass",results[0]["attribute"]["name"])
+        self.assertEqual( "0",results[0]["attribute"]["parameters"][0]["value"])
+
 
 class TestDatabase:
 
