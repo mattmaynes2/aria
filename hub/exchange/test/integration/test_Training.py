@@ -1,5 +1,7 @@
-import unittest
 import os
+import time
+import logging
+import unittest
 from unittest import TestCase
 from hub.commands import GetBehavioursCommand,\
  CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand, DeactivateSessionCommand
@@ -9,7 +11,8 @@ from hub import Hub,Exchange,CLI, HubMode
 from database import Database
 from adapter import HubAdapter
 from ipc import Message
-import time
+
+log= logging.getLogger(__name__)
 
 class TestBehaviours(TestCase):
     
@@ -44,7 +47,7 @@ class TestBehaviours(TestCase):
         self.hub.addCommand(CreateBehavioursCommand(self.database))
         self.hub.addCommand(CreateSessionCommand(self.database))
         self.hub.addCommand(ActivateSessionCommand(self.database))
-        self.hub.addCommand(DeactivateSessionCommand())
+        self.hub.addCommand(DeactivateSessionCommand(self.database))
 
     def tearDown(self):
         self.exchange.teardown()
@@ -140,7 +143,7 @@ class TestBehaviours(TestCase):
         self.testAdapter.enqueueMessage(createMessage)
         self.sendEvent()  
         
-        time.sleep(1)
+        time.sleep(1.5)
 
         self.assertEqual(self.hub.session, None)
         self.assertEqual(self.hub.mode,HubMode.Normal)
@@ -149,6 +152,29 @@ class TestBehaviours(TestCase):
         self.assertEqual(len(results),1)
         # make sure the event was associated with the session
         self.assertEqual(1,results[0]['session_id'])
+
+    def test_cant_start_session_twice(self):
+        self.db.query("Insert into behaviour(name) values('lights and motion')")
+        self.db.query("INSERT into session(name,behaviour_id) values ('Feb 10',1)")
+        myUuid = self.device.address
+        
+        activateMessage= Message()
+        activateMessage.type= Message.Request
+        activateMessage.data= {'activate':'session', 'id':1}
+        activateMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(activateMessage)
+        
+        deactivateMessage= Message()
+        deactivateMessage.type= Message.Request
+        deactivateMessage.data= {'deactivate':'session', 'id':1}
+        deactivateMessage.sender = myUuid
+        self.testAdapter.enqueueMessage(deactivateMessage)
+
+        self.testAdapter.enqueueMessage(activateMessage)
+
+        time.sleep(1)
+        response = self.testAdapter.receivedMessages[2]
+        self.assertEqual(Message.Error, response.type)
 
 
     def sendEvent(self):
