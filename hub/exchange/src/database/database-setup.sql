@@ -6,7 +6,7 @@ receiver  --  UUID of the receiving device
 */
 CREATE TABLE IF NOT EXISTS "Request" (
 	"id" Integer PRIMARY KEY,
-	"timestamp" DATETIME DEFAULT current_timestamp,
+	"timestamp" DATETIME DEFAULT (datetime('now','localtime')),
 	"source" TEXT,
 	"receiver" TEXT,
 	FOREIGN Key ("source") REFERENCES Device("address"),
@@ -22,7 +22,7 @@ session_id  --  id of the session if currently in a training session
 */
 CREATE TABLE IF NOT EXISTS "Event" (
 	"id" INTEGER PRIMARY KEY,
-	"timestamp" DATETIME DEFAULT current_timestamp,
+	"timestamp" DATETIME DEFAULT (datetime('now','localtime')),
 	"request_id" INTEGER,
 	"source" TEXT,	
 	"session_id" INTEGER,
@@ -144,8 +144,8 @@ active        -- is this behaviour enabled or is it disabled, defaults to enable
 CREATE TABLE IF NOT EXISTS "Behaviour" (
 	"id" INTEGER PRIMARY KEY,
 	"name" TEXT,
-	"created_date" DATETIME DEFAULT current_timestamp,
-	"last_updated" DATETIME DEFAULT current_timestamp,
+	"created_date" DATETIME DEFAULT (datetime('now','localtime')),
+	"last_updated" DATETIME DEFAULT (datetime('now','localtime')),
 	"active" BOOLEAN DEFAULT 1
 );
 
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS "Session" (
 	"id" INTEGER PRIMARY KEY,
 	"behaviour_id" INTEGER,
 	"name" TEXT,
-	"created_date" DATETIME DEFAULT current_timestamp,
+	"created_date" DATETIME DEFAULT (datetime('now','localtime')),
 	"active" BOOLEAN DEFAULT 1,
 	FOREIGN KEY ("behaviour_id") REFERENCES "Behaviour"("id")
 );

@@ -1,0 +1,9 @@
+
+.session-button-bar {
+    display         : flex;
+    width           : 50%;
+    flex-direction  : row-reverse;
+    margin          : 10px auto;
+    max-width       : 800px;
+    min-width       : 200px;
+}
