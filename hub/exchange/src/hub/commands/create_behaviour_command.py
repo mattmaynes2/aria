@@ -8,5 +8,4 @@ class CreateBehavioursCommand(DatabaseCommand):
     
     def execute(self,hub,data):
         name=data['name']
-        _id = self.retriever.addBehaviour(name)
-        return {"id":_id}
+        return self.retriever.addBehaviour(name)
