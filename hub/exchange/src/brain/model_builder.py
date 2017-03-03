@@ -1,24 +1,21 @@
 import logging
 from ipc import Message
 from delegate import Delegate
-from .strategies.v1_strategy import V1Strategy
 from uuid import UUID
 
 log= logging.getLogger(__name__)
 
 class ModelBuilder(Delegate):
     
-    def __init__(self,retriever, decisionBroker):
+    def __init__(self,retriever, decisionBroker,strategy):
         self.retriever =retriever
         self.decisionBroker=decisionBroker
+        self.strategy=strategy
     
     def received(self,message):
         if message.type == Message.Request and isSessionStopMessage(message):
-            events=self.retriever.getSessionEvents(message.data['id'])
-            
-            strategy=self.createStrategy(events)
-            log.debug('setting strategy {}'.format(strategy.triggeredEvent))
-            self.decisionBroker.decisionStrategy=strategy
+            events=self.retriever.getSessionEvents(message.data['id']) 
+            self.strategy.processSession(events)
     
     def createStrategy(self,events):
         for event in reversed(events):
@@ -29,6 +26,15 @@ class ModelBuilder(Delegate):
                     'value':[{'name':event['parameter_name'], 'value':event['value']}]
                 }, receiver=UUID(event['source']).bytes)
                 return V1Strategy(message)
+    @property
+    def strategy (self):
+        return self.__strategy
+
+    @strategy.setter
+    def strategy(self, strategy):
+        self.__strategy=strategy
+        log.debug('setting Decision Broker to {}'.format(strategy))
+        self.decisionBroker.decisionStrategy=strategy
 
 def isSessionStopMessage(message):
     data= message.data
