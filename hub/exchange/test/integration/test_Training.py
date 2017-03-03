@@ -109,7 +109,7 @@ class TestBehaviours(TestCase):
 
         response = self.testAdapter.receivedMessages[0]
         self.assertEqual(response.data["response"], "session")
-        self.assertTrue(set({"name": "lights_1","behaviour_id":1, "id":1}).issubset(set(response.data["value"])))
+        self.assertTrue(set({"name": "lights_1","behaviourId":1, "id":1}).issubset(set(response.data["value"])))
     
     def test_session_end_to_end(self):
         myUuid = self.device.address

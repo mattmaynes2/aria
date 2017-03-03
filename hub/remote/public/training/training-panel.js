@@ -32,9 +32,9 @@ class TrainingPanel extends WidgetPanel {
 
 
         this.clearWidgets();
-        this._state.behaviours.forEach(this.addWidget.bind(this));
-
         this.append(this._buttonBar);
+
+        this._state.behaviours.forEach(this.addWidget.bind(this));
         this._buttonBar.append(this._newButton);
         super._prerender();
 

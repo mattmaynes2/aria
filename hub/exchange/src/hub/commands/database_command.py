@@ -22,3 +22,10 @@ class DatabaseCommand(Command):
     def formatDate(self,date):
         time=datetime.strptime(date,'%Y-%m-%d %H:%M:%S')
         return int(time.timestamp()*1000)
+
+    def _formatColumnNames(self, data):
+        return {self._to_camel_case(key):val for key,val in data.items()}
+    
+    def _to_camel_case(self,string):
+        words = string.split('_')
+        return words[0] + "".join(word.title() for word in words[1:])
