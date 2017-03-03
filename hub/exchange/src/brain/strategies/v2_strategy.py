@@ -57,7 +57,7 @@ class V2Strategy():
                                 , event['value'])
 
     def buildEventString(self, source, name, parameter, value):
-        return source + name + parameter + value
+        return str(source) + str(name) + str(parameter) + str(value)
 
     def decide(self, event):
         logger.debug("Looking for decision for event " + str(event))
