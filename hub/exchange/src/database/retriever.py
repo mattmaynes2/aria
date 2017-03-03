@@ -37,7 +37,7 @@ class Retriever:
 	                            "  JOIN parameter p " +\
 	                            "    ON p.id = pc.parameter " +\
                                 "  JOIN attribute a on a.id = p.attribute_id"+\
-	                            " WHERE  session_id = ? order by e.id ASC"
+	                            " WHERE  session_id = ? order by e.timestamp ASC"
 
     def __init__(self, database):
         self.database = database																									
