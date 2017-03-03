@@ -20,8 +20,14 @@ class V1StrategyTest(TestCase):
         self.testDeviceEvent.receiver = uuid.uuid4().bytes
         self.testDeviceEvent.data = { "event" : "device.event" }
 
+    def test_strategy_should_return_no_decision_if_no_sessions_processed(self):
+        strategy = V1Strategy()
+        self.assertEqual(None, strategy.decide(self.testDeviceEvent))
+        
+
     def test_strategy_should_respond_with_set_message_for_any_device_event(self):
-        strategy = V1Strategy(self.testRequest)
+        strategy = V1Strategy()
+        strategy.processSession([self.testRequest])
         self.assertEqual(strategy.decide(self.testDeviceEvent)["value"], 
                             [ { "name" : "Brightness", "value" : 10} ])
         
