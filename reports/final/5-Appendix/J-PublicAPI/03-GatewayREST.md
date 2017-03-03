@@ -464,7 +464,7 @@ gateway. To see the available events over websockets
 |               |           	"id" 		    : 1 ,                                       	    |
 |               |           	"name"		    : "My Behaviour",                              	    |
 |               |           	"createdDate"	: 1380269867612,                     			    |
-|               |           	"updatedDate"	: 1480256989762,                     			    |
+|               |           	"lastUpdated"	: 1480256989762,                     			    |
 |               |           	"active"     	: false                            		            |
 |               |				}                                                         	 	|
 |               |               ...                                                          	|
