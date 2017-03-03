@@ -14,7 +14,7 @@ class V2Strategy():
         self.eventMapping = {}
 
     def addDecision(self, triggeringEvent, action):
-        triggerString = self.makeEventStringFromDatabase(triggeringEvent)
+        triggerString = self.buildEventIdentifierFromDatabaseObject(triggeringEvent)
         logger.debug("Adding decision for trigger string " + triggerString)
         logger.debug("The action taken will be " + str(action))
         if triggerString not in self.eventMapping:
@@ -43,25 +43,25 @@ class V2Strategy():
                 logger.debug("Found a trigger event for the request")
                 return event
 
-    def makeEventStringFromEventMessage(self, event):
-        source = str(UUID(bytes=event.sender))
-        attributeName = event.data["attribute"]["name"]
-        parameterName = event.data["attribute"]["parameters"][0]["name"]
-        value = event.data["attribute"]["parameters"][0]["value"]
-        return self.buildEventString(source, attributeName, parameterName, value)
+    def buildEventIdentifierFromMessage(self, message):
+        source = str(UUID(bytes=message.sender))
+        attributeName = message.data["attribute"]["name"]
+        parameterName = message.data["attribute"]["parameters"][0]["name"]
+        value = message.data["attribute"]["parameters"][0]["value"]
+        return self.buildEventIdentifier(source, attributeName, parameterName, value)
 
-    def makeEventStringFromDatabase(self, event):
-        return self.buildEventString(event['source']  
+    def buildEventIdentifierFromDatabaseObject(self, event):
+        return self.buildEventIdentifier(event['source']  
                                 , event['attribute_name']
                                 , event['parameter_name']
                                 , event['value'])
 
-    def buildEventString(self, source, name, parameter, value):
+    def buildEventIdentifier(self, source, name, parameter, value):
         return str(source) + str(name) + str(parameter) + str(value)
 
     def decide(self, event):
         logger.debug("Looking for decision for event " + str(event))
-        eventString = self.makeEventStringFromEventMessage(event)
+        eventString = self.buildEventIdentifierFromMessage(event)
         logger.debug("Looking for decision for trigger string " + eventString)
 
         if eventString in self.eventMapping:
