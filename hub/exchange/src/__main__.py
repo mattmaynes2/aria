@@ -19,7 +19,7 @@ from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavio
  CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand, DeactivateSessionCommand
 from brain.model_builder import ModelBuilder
 from brain.decision_broker import DecisionBroker
-
+from brain.strategies import StrategyV1
 
 
 _log_config_file = 'configs/log.config'
@@ -72,8 +72,10 @@ def create_exchange (hub, cli, database):
     exchange.register('software', softwareAdapter)
     
     # setup  Machine learning
+    #TODO add past events to strategy
+    strategy = StrategyV1()
     decisionBroker = DecisionBroker(exchange,hub)
-    modelBuilder = ModelBuilder(Retriever(database),decisionBroker)
+    modelBuilder = ModelBuilder(Retriever(database),decisionBroker,strategy)
 
     # setup delegates
     exchange.addDelegate(ariaAdapter)
