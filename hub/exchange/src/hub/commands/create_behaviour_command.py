@@ -11,4 +11,4 @@ class CreateBehavioursCommand(DatabaseCommand):
         behaviour = self.retriever.addBehaviour(name)
         behaviour['created_date']=self.formatDate(behaviour['created_date'])
         behaviour['last_updated']=self.formatDate(behaviour['last_updated'])
-        return behaviour
+        return self._formatColumnNames(behaviour)

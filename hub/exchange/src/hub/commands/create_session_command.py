@@ -11,4 +11,4 @@ class CreateSessionCommand(DatabaseCommand):
         behaviourId=data['behaviourId']
         session= self.retriever.addSession(behaviourId,name)
         session['created_date']=self.formatDate(session['created_date'])
-        return session
+        return self._formatColumnNames(session)
