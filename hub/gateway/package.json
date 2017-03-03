@@ -1,6 +1,6 @@
 {
   "name": "aria-gateway",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A RESTful interface between web clients and the ARIA system",
   "repository": {
     "type": "git",

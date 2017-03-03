@@ -25,3 +25,8 @@ class Attribute:
         if(not isinstance(param, Parameter)):
             raise TypeError('{} not a valid Parameter'.format(param))
         self._parameters.append(param) 
+
+    def __iter__(self):
+        yield 'name', self.name
+        yield 'parameters', [dict(p) for p in self.parameters]
+        yield 'isControllable', self.isControllable 

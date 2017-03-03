@@ -24,6 +24,20 @@ class Retriever:
 
     ADD_NEW_BEHAVIOUR       = "INSERT INTO Behaviour (name) VALUES (?)"
     ADD_NEW_SESSION         = "INSERT INTO Session (behaviour_id, name) VALUES (?, ?)"
+    GET_SESSION_EVENTS      = 	"SELECT e.id, " +\
+	                            " e.timestamp, " +\
+	                            " e.source, " +\
+	                            " p.NAME as parameter_name, " +\
+	                            " pc.value, " +\
+	                            " e.request_id, " +\
+                                " a.name as attribute_name " +\
+	                            "FROM   event e " +\
+	                            "  JOIN parameter_change pc " +\
+	                            "    ON e.id = pc.event_id " +\
+	                            "  JOIN parameter p " +\
+	                            "    ON p.id = pc.parameter " +\
+                                "  JOIN attribute a on a.id = p.attribute_id"+\
+	                            " WHERE  session_id = ? order by e.id ASC"
 
     def __init__(self, database):
         self.database = database																									
@@ -129,6 +143,14 @@ class Retriever:
     def getSessionWindow(self, start, count, behaviourId):
         values = (start, count, behaviourId)
         return self.database.execute(Retriever.GET_SESSION_WINDOW, values)
+
+    def getSessionEvents(self,session_id):
+        """
+        Get a list of events associated with a training session
+            
+        @param session_id   The id of the session 
+        """
+        return self.database.execute(Retriever.GET_SESSION_EVENTS, [session_id])
 
     def _getAttribute(self, deviceType):
         return self.database.execute(Retriever.GET_ATTRIBUTE_ID, [deviceType])

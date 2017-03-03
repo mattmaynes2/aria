@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 sys.path.append('../src')
 setup(
     name                = 'exchange',
-    version             = '0.0.2',
+    version             = '0.6.0',
     description         = 'Central control server for the smart learning system',
     packages            = find_packages('src'),
     package_dir         = { '':'src'},

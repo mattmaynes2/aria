@@ -5,7 +5,7 @@ from device     import Device,DeviceType, Attribute, DataType, Parameter
 from ipc import Message
 from adapter import Adapter
 from database import Database
-from delegate import RequestTracker
+from delegate.request_tracker import RequestTracker
 from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand
 import queue
 import sqlite3
