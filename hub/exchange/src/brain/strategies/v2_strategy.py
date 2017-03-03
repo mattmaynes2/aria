@@ -1,6 +1,12 @@
 from uuid import UUID
 from ipc import Message
 
+import logging
+
+logger = logging.getLogger(__name__)
+fileHandler = logging.FileHandler('Decisions.log')
+logger.addHandler(fileHandler)
+logger.setLevel(logging.DEBUG)
 
 class V2Strategy():
 
@@ -9,7 +15,7 @@ class V2Strategy():
 
     def addDecision(self, triggeringEvent, action):
         triggerString = self.makeEventStringFromDatabase(triggeringEvent)
-        print("Adding decision for trigger string " + triggerString)
+        logger.debug("Adding decision for trigger string " + triggerString)
         if triggerString not in self.eventMapping:
             self.eventMapping[triggerString] = []
 
@@ -17,8 +23,10 @@ class V2Strategy():
 
     # It is assumed that the list of events passed to the strategy are sorted by time of occurance
     def processSession(self, events):
+        logger.debug("Processing data from a new session")
         for i, event in enumerate(events):
             if event['request_id']:
+                logger.debug("Found a request made during the session")
                 triggeringEvent = self.findLastEventBefore(i, events)
                 if (triggeringEvent):
                     message = Message(Message.Request, data=
@@ -31,6 +39,7 @@ class V2Strategy():
     def findLastEventBefore(self, index, eventList):
         for event in reversed(eventList[:index]):
             if not event["request_id"]:
+                logger.debug("Found a trigger event for the request")
                 return event
 
     def makeEventStringFromEventMessage(self, event):
@@ -50,9 +59,11 @@ class V2Strategy():
         return source + name + parameter + value
 
     def decide(self, event):
+        logger.debug("Looking for decision for event " + str(event))
         eventString = self.makeEventStringFromEventMessage(event)
-        print("Looking for decision for trigger string " + eventString)
+        logger.debug("Looking for decision for trigger string " + eventString)
 
         if eventString in self.eventMapping:
+            logger.debug("Found a decision " + str(self.eventMapping[eventString]))
             return self.eventMapping[eventString]
         return []
