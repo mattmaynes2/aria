@@ -9,4 +9,6 @@ class CreateSessionCommand(DatabaseCommand):
     def execute(self,hub,data):
         name=data['name']
         behaviourId=data['behaviourId']
-        return self.retriever.addSession(behaviourId,name)
+        session= self.retriever.addSession(behaviourId,name)
+        session['created_date']=self.formatDate(session['created_date'])
+        return session

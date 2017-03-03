@@ -8,4 +8,7 @@ class CreateBehavioursCommand(DatabaseCommand):
     
     def execute(self,hub,data):
         name=data['name']
-        return self.retriever.addBehaviour(name)
+        behaviour = self.retriever.addBehaviour(name)
+        behaviour['created_date']=self.formatDate(behaviour['created_date'])
+        behaviour['last_updated']=self.formatDate(behaviour['last_updated'])
+        return behaviour
