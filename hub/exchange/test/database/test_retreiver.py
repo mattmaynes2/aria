@@ -15,9 +15,8 @@ class RetrieverTest(TestCase):
         self.testDatabase  =TestDatabase(self._testMethodName + ".db") 
         self.retriever = Retriever(self.database)
 
-        self.setupDatabase()
     
-    def setupDatabase(self):
+    def setupDevices(self):
        
         self.testDatabase.execute("INSERT INTO Device_Type VALUES(2,'Dummy','foo','');")
         self.testDatabase.execute("INSERT INTO Device VALUES('00000000-0000-0000-0000-000000000000','0.5.0',2,'Dummy');")
@@ -39,6 +38,7 @@ class RetrieverTest(TestCase):
         self.testDatabase.commit()
     
     def test_get_session_events(self):
+        self.setupDevices()
         # setup behaviour and sessions
         self.testDatabase.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')")
         self.testDatabase.execute("INSERT INTO Session(id,name,behaviour_id) VALUES(1,'Take 1',1)")
@@ -63,6 +63,16 @@ class RetrieverTest(TestCase):
 
         self.assertEqual('volume',results[0]['parameter_name'])
         self.assertEqual('bass',results[1]['parameter_name'])
+
+
+    def test_addBehaviour(self):
+        self.assertTrue(set({"name":"Test", "id": 1}).issubset(
+            set(self.retriever.addBehaviour("Test"))))
+
+    def test_addSession(self):
+        self.database.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')",None)
+        self.assertTrue(set({"name":"Take 1", "id": 1, "behaviour_id":1}).issubset(
+            set(self.retriever.addSession(1,"Take 1"))))
 
 class TestDatabase:
 
