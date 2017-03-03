@@ -42,9 +42,9 @@ class HubTest (TestCase):
     
     def test_create_behaviour(self):
         mockCommand=Mock()
-        mockCommand.execute.return_value=1;
+        mockCommand.execute.return_value={"name":"lights on"}
         mockCommand.commandType=CommandType.CREATE
         mockCommand.name='behaviour'
         self.hub.addCommand(mockCommand)
-        self.assertEqual(1,self.hub.executeCommand(CommandType.CREATE,\
-        {'create':'behaviour', 'value':{'name':'lights on'}}))
+        self.assertTrue(set({"name":"lights on"}).issubset(set(self.hub.executeCommand(CommandType.CREATE,\
+        {'create':'behaviour', 'value':{'name':'lights on'}}))))
