@@ -161,7 +161,7 @@ CREATE TABLE IF NOT EXISTS "Session" (
 	"behaviour_id" INTEGER,
 	"name" TEXT,
 	"created_date" DATETIME DEFAULT (datetime('now','localtime')),
-	"active" BOOLEAN DEFAULT 1,
+	"stopped" BOOLEAN DEFAULT 0,
 	FOREIGN KEY ("behaviour_id") REFERENCES "Behaviour"("id")
 );
 
