@@ -59,8 +59,12 @@ class ZWaveAdapter(Adapter):
             #Ignore value changes from devices that aren't fully discovered yet
             if node.location in self._devices:
                 device = self._devices[node.location]
+                data = device.processEvent(kwargs['value'].label)
+                if not data:
+                    return
+                    
                 event = Message(type_ = Message.Event, \
-                                data = device.processEvent(kwargs['value'].label), \
+                                data = data, \
                                 sender = device.address, \
                                 receiver = Message.DEFAULT_ADDRESS)
                 logger.info("Received a ZWave event")
