@@ -2,8 +2,8 @@ import Component from '../component';
 import './widget-panel.css';
 
 class WidgetPanel extends Component {
-    constructor () {
-        super();
+    constructor (state, props) {
+        super(state, props);
         this._widgets = [];
     }
 

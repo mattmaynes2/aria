@@ -18,8 +18,8 @@ class Retriever:
     GET_ATTRIBUTE_NAME      = "SELECT name FROM Attribute WHERE id = ?"
     GET_SESSION             = "SELECT * from session where id=?"
     GET_LAST_EVENT_ID       = "SELECT id FROM Event ORDER BY id DESC LIMIT 1 "
-    GET_LAST_BEAVIOUR_ID    = "SELECT id FROM Behaviour ORDER BY id DESC LIMIT 1 "
-    GET_LAST_SESSION_ID     = "SELECT id FROM Session ORDER BY id DESC LIMIT 1 "
+    GET_LAST_BEAVIOUR       = "SELECT * FROM Behaviour ORDER BY id DESC LIMIT 1 "
+    GET_LAST_SESSION        = "SELECT * FROM Session ORDER BY id DESC LIMIT 1 "
 
     ADD_NEW_BEHAVIOUR       = "INSERT INTO Behaviour (name) VALUES (?)"
     ADD_NEW_SESSION         = "INSERT INTO Session (behaviour_id, name) VALUES (?, ?)"
@@ -93,22 +93,22 @@ class Retriever:
     # Add a new behaviour
     # @param name    Name of the new behaviour
     #
-    # @return        The id of newly created behaviour
+    # @return        The newly created behaviour
     ###
     def addBehaviour(self, name):
         self.database.execute(Retriever.ADD_NEW_BEHAVIOUR, [name])
-        return self.database.execute(Retriever.GET_LAST_BEAVIOUR_ID)[0]["id"]
+        return self.database.execute(Retriever.GET_LAST_BEAVIOUR)[0]
 
     ###
     # Add a new session
     # @param name    Name of the new session
     #
-    # @return        The id of newly created session
+    # @return        The newly created session
     ###
     def addSession(self,behaviourId, name):
         values = (behaviourId, name) 
         self.database.execute(Retriever.ADD_NEW_SESSION, values)
-        return self.database.execute(Retriever.GET_LAST_SESSION_ID)[0]['id']
+        return self.database.execute(Retriever.GET_LAST_SESSION)[0]
 
     ###
     # @param id     the id of the session
