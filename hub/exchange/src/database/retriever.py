@@ -39,7 +39,7 @@ class Retriever:
 	                            " WHERE  session_id = ? order by e.timestamp ASC"
     STOP_SESSION            = "UPDATE session set stopped = 1 where id=?"  
     DELETE_BEHAVIOUR        = "DELETE FROM behaviour where id=?"
-
+    DELETE_SESSION          = "DELETE FROM session where id=?"
     def __init__(self, database):
         self.database = database																									
 
@@ -157,6 +157,9 @@ class Retriever:
 
     def deleteBehaviour(self,behaviour_id):
         self.database.execute(Retriever.DELETE_BEHAVIOUR,[behaviour_id])
+        
+    def deleteSession(self,session_id):
+        self.database.execute(Retriever.DELETE_SESSION,[session_id])
 
     def _getAttribute(self, deviceType):
         return self.database.execute(Retriever.GET_ATTRIBUTE_ID, [deviceType])
