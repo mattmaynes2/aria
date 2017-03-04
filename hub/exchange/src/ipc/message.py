@@ -59,6 +59,22 @@ class Message:
 
         return message
 
+    @staticmethod
+    def encode_to_json(self):
+        return '{"type":"'+str(self.type)+'", "data":'+str(json.dumps(self.data,default=Message.json_encode,sort_keys=True))+', "sender":"'+\
+        str(UUID(bytes=self.sender))+ '", "receiver": "'+str(UUID(bytes=self.receiver))+'"}'
+
+    @staticmethod
+    def decode_from_json(string):
+        dictionary = json.loads(string)
+        print(dictionary)
+        message = Message()
+        message.type = dictionary["type"]
+        message.sender = dictionary["sender"]
+        message.receiver = dictionary["receiver"]
+        message.data = dictionary["data"]
+        return message
+
     def __str__(self):
         return 'Message [ type:'+str(self.type)+', data:'+str(json.dumps(self.data,default=Message.json_encode,sort_keys=True).encode(Message.ENCODING))+', sender:'+\
         str(UUID(bytes=self.sender))+ ', receiver: '+str(UUID(bytes=self.receiver))+']'
