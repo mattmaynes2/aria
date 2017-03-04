@@ -253,14 +253,13 @@ let IntegrateAdapter = (function () {
     }
 
     function requestDelete (payload) {
-        logger.debug("Received delete request " + payload);
-        logger.debug("HERE " + payload.delete);
+        logger.debug('Received delete request ' + payload);
 
         switch (payload.delete) {
             case 'behaviour':
                 logger.debug(`Deleting behaviour with id ${payload.id}`);
                 deleteBehaviour.call(this, payload.id);
-                res = wrap(payload.delete, payload.id);
+                var res = wrap(payload.delete, payload.id);
                 logger.debug('Sending test response: ' + JSON.stringify(res));
                 return res;
         }
