@@ -145,3 +145,11 @@ class ZWaveDeviceTest(TestCase):
         self.assertEqual("Brightness", ret["attribute"]["parameters"][0]["name"])
         self.assertEqual(10, ret["attribute"]["parameters"][0]["value"])
         self.assertEqual(DataType.Byte, ret["attribute"]["parameters"][0]["dataType"])
+
+        
+    @mock.patch("device.zwave_device.time")
+    def test_process_event_should_ignore_events_for_untracked_system_values(self, mockTime):
+        mockVal = self.mockValues["Brightness"]
+        device = ZWaveDevice(self.mockNode)
+        mockTime.time.return_value = 30
+        self.assertEqual(None, device.processEvent("NodeIDChanged"))
