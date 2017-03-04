@@ -3,8 +3,8 @@ import time
 import logging
 import unittest
 from unittest import TestCase
-from hub.commands import GetBehavioursCommand,\
- CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand, DeactivateSessionCommand
+from hub.commands import GetBehavioursCommand,CreateBehavioursCommand, CreateSessionCommand, \
+ActivateSessionCommand, DeactivateSessionCommand, DeleteBehaviourCommand
 from .Database import StubDeviceAdapter, TestDatabase
 from device import Device, DeviceType, Attribute, DataType, Parameter
 from hub import Hub,Exchange,CLI, HubMode
@@ -48,6 +48,7 @@ class TestBehaviours(TestCase):
         self.hub.addCommand(CreateSessionCommand(self.database))
         self.hub.addCommand(ActivateSessionCommand(self.database))
         self.hub.addCommand(DeactivateSessionCommand(self.database))
+        self.hub.addCommand(DeleteBehaviourCommand(self.database))
 
     def tearDown(self):
         self.exchange.teardown()
@@ -176,6 +177,26 @@ class TestBehaviours(TestCase):
         time.sleep(1)
         response = self.testAdapter.receivedMessages[2]
         self.assertEqual(Message.Error, response.type)
+
+    def test_delete_behaviour(self):
+        self.db.query("Insert into behaviour(name) values('lights and motion')")
+        self.db.query("Insert into behaviour(name) values('Other')")
+        self.db.query("INSERT into session(name,behaviour_id) values ('Mar 3',1)")
+        self.db.query("INSERT into session(name,behaviour_id) values ('Mar 3_1',1)")
+        
+        deleteMessage= Message()
+        deleteMessage.type= Message.Request
+        deleteMessage.data= {'delete':'behaviour', 'id':1}
+        deleteMessage.sender = self.device.address
+        self.testAdapter.enqueueMessage(deleteMessage)
+       
+        # sleep to allow time to process messages 
+        time.sleep(0.5)
+
+        numSessions =self.db.query("SELECT count(*) FROM SESSION").fetchone()["count(*)"]
+        numBehaviours =self.db.query("SELECT count(*) FROM behaviour").fetchone()["count(*)"]
+        self.assertEqual(1,numBehaviours)
+        self.assertEqual(0,numSessions)
 
 
     def sendEvent(self):

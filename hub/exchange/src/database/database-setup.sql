@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS "Session" (
 	"name" TEXT,
 	"created_date" DATETIME DEFAULT (datetime('now','localtime')),
 	"stopped" BOOLEAN DEFAULT 0,
-	FOREIGN KEY ("behaviour_id") REFERENCES "Behaviour"("id")
+	FOREIGN KEY ("behaviour_id") REFERENCES "Behaviour"("id") ON DELETE CASCADE
 );
 
 
