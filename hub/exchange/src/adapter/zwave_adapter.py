@@ -163,6 +163,6 @@ class ZWaveAdapter(Adapter):
         super().teardown()
 
     def buildDevice(self,node):
-        device= ZWaveDevice(node)
         node.location=str(UUID(bytes=device.address))
+        device= ZWaveDevice(node)
         return device
