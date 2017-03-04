@@ -23,7 +23,7 @@ class V2Strategy():
         self.eventMapping[triggerString].append(action)
 
     # It is assumed that the list of events passed to the strategy are sorted by time of occurance
-    def processSession(self, events):
+    def processSession(self, events,state=None):
         logger.debug("Processing data from a new session")
         for i, event in enumerate(events):
             if event['request_id']:
