@@ -6,6 +6,7 @@ from .device_type import DeviceType
 import time
 import logging
 import uuid
+from uuid import UUID
 
 logger = logging.getLogger(__name__)
 
