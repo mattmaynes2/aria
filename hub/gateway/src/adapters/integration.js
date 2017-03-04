@@ -271,9 +271,8 @@ let IntegrateAdapter = (function () {
         var behaviour, i;
         for (i in this._state.hub.behaviours) {
             behaviour = this._state.hub.behaviours[i];
-            logger.debug("Checking behaviour: " + JSON.stringify(behaviour));
-            if (behaviour.id == id) {
-                logger.debug("Found behaviour to delete: " + JSON.stringify(behaviour));
+            if (behaviour.id === parseInt(id)) {
+                logger.debug('Found behaviour to delete: ' + JSON.stringify(behaviour));
                 delete this._state.hub.behaviours[i];
             }
         }
