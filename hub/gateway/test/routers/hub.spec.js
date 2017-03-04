@@ -130,5 +130,19 @@ describe('Test the endpoints provided by the hub router', function(){
                                                                  'id' : 1
                                                                 });
     });
+    
+    it ('Should have an endpoint for deleting a session', () => {
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router();
+
+        var deleteFn = stubApp.delete.withArgs('/training/session/:id').getCalls()[0].args[1];
+        var req = { params : {id: 1}};
+        var res = {};
+        deleteFn(req, res);
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 
+                                                                'delete' : 'session',
+                                                                 'id' : 1
+                                                                });
+    });
 
 });

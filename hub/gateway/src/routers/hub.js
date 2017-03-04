@@ -98,6 +98,18 @@ let HubRouter = (function () {
                 .catch(onError.bind(this,res));
         });
 
+        app.delete('/training/session/:id', (req,res) => {
+            this._adapter
+                .send(IPC.Request, {
+                    delete    : 'session',
+                    id          : req.params.id
+                })
+                .then((reply) => {
+                    res.json(reply.payload.value || {});
+                })
+                .catch(onError.bind(this,res));
+        });
+
         app.post('/training/session', (req,res) => {
             this._adapter
                 .send(IPC.Request, {
@@ -153,6 +165,7 @@ let HubRouter = (function () {
     };
 
     function onError (res, err) {
+        logger.error("Error stack trace: ", err.stack);
         logger.error('Error handling request: ', err.message);
         res.status(500).json({ error : err.message || '' });
     }

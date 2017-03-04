@@ -151,6 +151,9 @@ let IntegrateAdapter = (function () {
         else if (payload.create) {
             response = requestCreate.call(this, payload);
         }
+        else if (payload.delete) {
+            response = requestDelete.call(this, payload);
+        }
         return response;
     }
 
@@ -246,6 +249,33 @@ let IntegrateAdapter = (function () {
                 res = wrap(payload.get, this._state.hub.behaviours[index]);
                 logger.debug('Sending test response: ' + JSON.stringify(res));
                 return res;
+        }
+    }
+
+    function requestDelete (payload) {
+        logger.debug("Received delete request " + payload);
+        logger.debug("HERE " + payload.delete);
+
+        switch (payload.delete) {
+            case 'behaviour':
+                logger.debug(`Deleting behaviour with id ${payload.id}`);
+                deleteBehaviour.call(this, payload.id);
+                res = wrap(payload.delete, payload.id);
+                logger.debug('Sending test response: ' + JSON.stringify(res));
+                return res;
+        }
+    }
+
+    function deleteBehaviour (id) {
+
+        var behaviour, i;
+        for (i in this._state.hub.behaviours) {
+            behaviour = this._state.hub.behaviours[i];
+            logger.debug("Checking behaviour: " + JSON.stringify(behaviour));
+            if (behaviour.id == id) {
+                logger.debug("Found behaviour to delete: " + JSON.stringify(behaviour));
+                delete this._state.hub.behaviours[i];
+            }
         }
     }
 
