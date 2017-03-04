@@ -38,6 +38,17 @@ class SonosAdapterTest(TestCase):
         device=mockDelegate.discovered.call_args[0][0]
         self.assertEqual(type(device),SonosDevice)
         self.assertEqual("Media Room",device.name)
+ 
+    @mock.patch('soco.discover')
+    def test_only_discover_once(self,MockScan):
+        s=set()
+        s.add(self.mockNode)
+        MockScan.return_value=s
+        mockDelegate= Mock()
+        self.adapter.add_delegate(mockDelegate)
+        self.adapter.discover()
+        self.adapter.discover()
+        self.assertEqual(1,mockDelegate.discovered.call_count)
 
     def test_event_push(self):
         mockDelegate= Mock()

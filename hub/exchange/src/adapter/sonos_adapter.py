@@ -18,8 +18,9 @@ class SonosAdapter (Adapter):
         devices=soco.discover()
         for device in devices:
             device=SonosDevice(device,self)
-            self.__devices[device.address]=device
-            self.notify('discovered',device)
+            if ( device.address not in self.__devices ):
+                self.__devices[device.address]=device
+                self.notify('discovered',device)
 
     def send (self, message):
         if message.type == Message.Request:
