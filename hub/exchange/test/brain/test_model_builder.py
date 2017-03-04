@@ -27,7 +27,7 @@ class ModelBuilderTest (TestCase):
         self.modelBuilder.received(Message(Message.Request,data={'deactivate':'session', 'id':1}))
         self.mockRetriever.getSessionEvents.assert_called_with(1)
 
-        self.mockStrategy.processSession.assert_called_with(self.mockRetriever.getSessionEvents(),[])
+        self.mockStrategy.processSession.assert_called_with(self.mockRetriever.getSessionEvents(),{})
 
     def test_set_strategy(self):
         strategy2=Mock()
@@ -56,13 +56,13 @@ class ModelBuilderTest (TestCase):
         self.modelBuilder.received(Message(Message.Request,data={'activate':'session', 'id':1}))
         state=self.modelBuilder.state
 
-        self.assertEqual(2,len(state))
-        for device in state:
-            if (device['device'] == id1):
-                device1=device
-            else:
-                device2=device
-        self.assertEqual(id1,device1['device'])
+        id1=str(uuid.UUID(bytes=id1))
+        id2=str(uuid.UUID(bytes=id2))
+        self.assertTrue( id1 in state)
+        self.assertTrue( id2 in state)
+        device1=state[id1]
+        device2=state[id2]
+        self.assertEqual('state',device1['attributes'][0]['name'])
         self.assertEqual(1,len(device1['attributes']))
         volume=device2['attributes'][0]
         self.assertEqual('volume',volume['name'])

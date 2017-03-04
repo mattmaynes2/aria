@@ -12,7 +12,7 @@ class ModelBuilder(Delegate):
         self.decisionBroker=decisionBroker
         self.strategy=strategy
         self.devices=devices
-        self.state=[]
+        self.state={}
     
     def received(self,message):
         if message.type == Message.Request and isSessionStartMessage(message):
@@ -32,10 +32,10 @@ class ModelBuilder(Delegate):
         self.decisionBroker.decisionStrategy=strategy
 
     def getState(self):
-        state=[]
+        state={}
         for device in self.devices:
-            state.append({"device":device.address,"attributes":\
-                    [dict(attribute) for attribute in device.deviceType.attributes]})
+            state[str(UUID(bytes=device.address))]={"attributes":\
+                    [dict(attribute) for attribute in device.deviceType.attributes]}
         log.debug("Current State: {}".format(state))
         return state
 
