@@ -138,14 +138,21 @@ class ZWaveDevice(Device):
             return self.buildParamChange(zwaveVal)
 
     def processEvent(self, label):
+        if label not in self.__valueMap:
+            return None
+
         val = self.__valueMap[label]
         parameters = []
         parameterChange = self.buildParamChange(val)
         parameters.append(parameterChange)
+        name = self.__node.name
+        if not name:
+            name = self.__node.product_name
+
         data = {
             'event' : 'device.event',
             'timestamp' : int(time.time()*1000),
-            'device' : self.__node.name,
+            'device' : name,
             'deviceType' : self.__node.product_name,
             'attribute' : {
                 'name' : val.label,
