@@ -17,6 +17,20 @@ class SessionPanel extends WidgetPanel {
         };
     }
 
+    update () {
+        Service.get('/hub/training/sessions', {
+            start           : 0,
+            count           : 10,
+            behaviourId     : this._state.behaviour.id
+        }).then((res) => {
+            this._state.sessions = res.payload.records.map((s) => {
+                return new Session (s);
+            });
+            this.render();
+        });
+        return this;
+    }
+
     _prerender () {
         this.clear();
         this._buttonBar = new Component().addClass('session-button-bar');

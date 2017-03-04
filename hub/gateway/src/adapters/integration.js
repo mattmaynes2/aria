@@ -205,6 +205,18 @@ let IntegrateAdapter = (function () {
                         )
                     )
                 });
+            case 'sessions':
+               logger.debug('Getting sessions for behaviour id: ' + payload.behaviourId);
+               var behaviour = getBehaviour.call(this, payload.behaviourId);
+               return wrap(payload.get, {
+                    records     : behaviour.sessions.slice(
+                        payload.start,
+                        Math.min(
+                            behaviour.sessions.length,
+                            payload.start + payload.count
+                        )
+                    )
+                });
             default:
                 throw new Error('Unknown request');
         }
