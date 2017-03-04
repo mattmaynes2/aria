@@ -29,11 +29,6 @@ class V3Strategy(V2Strategy):
 
         return jsonMessageList
     
-    def decide(self, val):
-        print(self.eventMapping)
-        return super().decide(val)
-
-
     def load(self):
         decisionList = {}
         with open(self.saveFileName, 'r') as f:

@@ -67,7 +67,6 @@ class Message:
     @staticmethod
     def decode_from_json(string):
         dictionary = json.loads(string)
-        print(dictionary)
         message = Message()
         message.type = dictionary["type"]
         message.sender = dictionary["sender"]
