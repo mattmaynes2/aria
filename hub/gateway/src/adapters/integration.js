@@ -54,7 +54,7 @@ let IntegrateAdapter = (function () {
         this._id = new Buffer(16);
         this._state = {
             hub : {
-                version     : '1.0.0',
+                version     : 'Test',
                 mode        : 1,
                 name        : 'Smart Hub',
                 devices     : [],
@@ -228,24 +228,42 @@ let IntegrateAdapter = (function () {
     }
 
     function requestCreate (payload) {
-        var index, res;
+        var index, res, behaviour, session;
 
         switch (payload.create) {
             case 'behaviour':
                 logger.debug(`Creating a new behaviour with name ${payload.name}`);
-
                 index = this._state.hub.behaviours.length;
-                this._state.hub.behaviours.push({
+                behaviour = {
                     name        : payload.name,
                     id          : index,
                     createdDate : generateTime(),
                     lastUpdated : generateTime(),
                     active      : true,
                     sessions    : []
-                });
-                res = wrap(payload.get, this._state.hub.behaviours[index]);
+                };
+
+                this._state.hub.behaviours.push(behaviour);
+
+                res = wrap(payload.create, behaviour);
                 logger.debug('Sending test response: ' + JSON.stringify(res));
                 return res;
+            case 'session':
+                logger.debug(`Creating a new session for behaviour ${payload.behaviourId}`);
+                session = {
+                    name        : payload.name,
+                    behaviourId : payload.behaviourId,
+                    create      : generateTime()
+                };
+                behaviour = getBehaviour.call(this, payload.behaviourId);
+
+                logger.debug('Adding session to behaviour: ' + JSON.stringify(behaviour));
+                behaviour.sessions.push(session);
+                res = wrap(payload.create, session);
+                logger.debug('Sending test response: ' + JSON.stringify(res));
+                return res;
+            default:
+                throw new Error('Unknown type to create');
         }
     }
 
@@ -257,6 +275,17 @@ let IntegrateAdapter = (function () {
         for (var dev in this._state.hub.devices) {
             if (dev.id === id) {
                 return dev;
+            }
+        }
+        return null;
+    }
+
+    function getBehaviour (id) {
+        var behaviour, i;
+        for (i in this._state.hub.behaviours) {
+            behaviour = this._state.hub.behaviours[i];
+            if (behaviour.id === id) {
+                return behaviour;
             }
         }
         return null;
