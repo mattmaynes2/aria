@@ -72,11 +72,15 @@ class ZWaveDevice(Device):
         if not nodeName:
             nodeName = node.product_name
 
-        location = uuid.uuid4()
-        if node.location:
-            location = UUID(node.location)
+        address = None
 
-        super().__init__(self._getDeviceType(node), name = nodeName,address=location.bytes,\
+        if node.location:
+            address = UUID(node.location)
+        else:
+            address = uuid.uuid4()
+            node.location = str(address)
+
+        super().__init__(self._getDeviceType(node), name = nodeName,address=address.bytes,\
         version=str(node.version))
         self.__node = node
 
