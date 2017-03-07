@@ -25,16 +25,20 @@ class BehaviourControl extends Component {
 }
 
 function sessions () {
+    let panel = new SessionPanel({
+        sessions    : this._state.sessions.map((s) => { return new Session(s); }),
+        behaviour   : this._state
+    });
+
     new Dialog(
-        new SessionPanel({
-            sessions    : this._state.sessions.map((s) => { return new Session(s); }),
-            behaviour   : this._state
-        }),
+        panel,
         {
             title   : `${this._state.title} Sessions`,
             close   : true
         }
     ).render();
+
+    panel.update();
 }
 
 function remove () {

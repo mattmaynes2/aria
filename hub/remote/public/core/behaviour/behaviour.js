@@ -11,7 +11,7 @@ class Behaviour extends Widget {
 
         this._state = {
             title       : state.name          || 'Unknown Behaviour',
-            id          : state.id            || '',
+            id          : state.id            || 0,
             sessions    : state.sessions      || [],
             active      : state.active        || false,
             createdDate : state.createdDate   || 0,

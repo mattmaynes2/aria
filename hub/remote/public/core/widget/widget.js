@@ -3,12 +3,11 @@ import Component    from '../component';
 import './widget.css';
 
 class Widget extends Component {
-    constructor () {
-        super();
-        this._state = {
-            title   : 'Widget',
-            body    : ''
-        };
+    constructor (state, props) {
+        super(state, props);
+        this._state = this._state || {};
+        this._state.title = this._state.title || 'Widget';
+        this._state.body  = this._state.body  || '';
     }
 
     render () {
