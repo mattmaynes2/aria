@@ -151,6 +151,9 @@ let IntegrateAdapter = (function () {
         else if (payload.create) {
             response = requestCreate.call(this, payload);
         }
+        else if (payload.delete) {
+            response = requestDelete.call(this, payload);
+        }
         return response;
     }
 
@@ -276,6 +279,31 @@ let IntegrateAdapter = (function () {
                 return res;
             default:
                 throw new Error('Unknown type to create');
+        }
+    }
+
+    function requestDelete (payload) {
+        logger.debug('Received delete request ' + payload);
+
+        switch (payload.delete) {
+            case 'behaviour':
+                logger.debug(`Deleting behaviour with id ${payload.id}`);
+                deleteBehaviour.call(this, payload.id);
+                var res = wrap(payload.delete, payload.id);
+                logger.debug('Sending test response: ' + JSON.stringify(res));
+                return res;
+        }
+    }
+
+    function deleteBehaviour (id) {
+
+        var behaviour, i;
+        for (i in this._state.hub.behaviours) {
+            behaviour = this._state.hub.behaviours[i];
+            if (behaviour.id === parseInt(id)) {
+                logger.debug('Found behaviour to delete: ' + JSON.stringify(behaviour));
+                delete this._state.hub.behaviours[i];
+            }
         }
     }
 
