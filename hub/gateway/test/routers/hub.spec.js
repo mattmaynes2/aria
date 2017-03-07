@@ -15,8 +15,10 @@ describe('Test the endpoints provided by the hub router', function(){
         stubApp.route.returns(stubApp);
         stubApp.get = sinon.stub();
         stubApp.post = sinon.stub();
+        stubApp.delete = sinon.stub();
         stubApp.get.returns(stubApp);
         stubApp.post.returns(stubApp);
+        stubApp.delete.returns(stubApp);
         express.Router.returns(stubApp);
     };
 
@@ -113,6 +115,34 @@ describe('Test the endpoints provided by the hub router', function(){
                                                                  'count' : 10,
                                                                 'behaviourId' : 1, 'get' : 
                                                                 'sessions'});
+    });
+
+    it ('Should have an endpoint for deleting a behaviour', () => {
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router();
+
+        var deleteFn = stubApp.delete.withArgs('/training/behaviour/:id').getCalls()[0].args[1];
+        var req = { params : {id: 1}};
+        var res = {};
+        deleteFn(req, res);
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 
+                                                                'delete' : 'behaviour',
+                                                                 'id' : 1
+                                                                });
+    });
+    
+    it ('Should have an endpoint for deleting a session', () => {
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router();
+
+        var deleteFn = stubApp.delete.withArgs('/training/session/:id').getCalls()[0].args[1];
+        var req = { params : {id: 1}};
+        var res = {};
+        deleteFn(req, res);
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 
+                                                                'delete' : 'session',
+                                                                 'id' : 1
+                                                                });
     });
 
 });
