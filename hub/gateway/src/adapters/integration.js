@@ -154,6 +154,12 @@ let IntegrateAdapter = (function () {
         else if (payload.delete) {
             response = requestDelete.call(this, payload);
         }
+        else if (payload.activate) {
+            response = requestActivate.call(this, payload);
+        }
+        else if (payload.deactivate) {
+            response = requestDeactivate.call(this, payload);
+        }
         return response;
     }
 
@@ -265,12 +271,13 @@ let IntegrateAdapter = (function () {
                 return res;
             case 'session':
                 logger.debug(`Creating a new session for behaviour ${payload.behaviourId}`);
+                behaviour = getBehaviour.call(this, payload.behaviourId);
                 session = {
+                    id          : payload.behaviourId + behaviour.sessions.length,
                     name        : payload.name,
                     behaviourId : payload.behaviourId,
-                    create      : generateTime()
+                    createdDate : generateTime()
                 };
-                behaviour = getBehaviour.call(this, payload.behaviourId);
 
                 logger.debug('Adding session to behaviour: ' + JSON.stringify(behaviour));
                 behaviour.sessions.push(session);
@@ -293,6 +300,29 @@ let IntegrateAdapter = (function () {
                 logger.debug('Sending test response: ' + JSON.stringify(res));
                 return res;
         }
+    }
+
+    function requestActivate (payload) {
+        logger.debug('Received request to activate ' + payload.id);
+
+        switch (payload.activate) {
+            case 'session':
+                return wrap(payload.activate, payload.id);
+            default:
+                throw new Error('Unknown activation type');
+        }
+    }
+
+    function requestDeactivate (payload) {
+        logger.debug('Received request to deactivate ' + payload.id);
+
+        switch (payload.deactivate) {
+            case 'session':
+                return wrap(payload.deactivate, payload.id);
+            default:
+                throw new Error('Unknown deactivation type');
+        }
+
     }
 
     function deleteBehaviour (id) {
