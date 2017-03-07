@@ -58,7 +58,7 @@
 [system-components]: ./uml/AriaComponents.png "Figure 4: System Components" {#fig-system-components}
 [remote-use-case]: ./uml/RemoteUseCase.png "Figure 5: Remote Use Case" {#fig-remote-use-case}
 [system-deployment]: ./uml/SystemDeployment.png "Figure 6: System Deployment" {#fig-system-deployment}
-[layer-architecture]: ./uml/LayerArchitecture.jpg "Figure 7: Layered Architecture" {#fig-layer-architecture}
+[layer-architecture]: ./images/LayerArchitecture.png "Figure 7: Layered Architecture" {#fig-layer-architecture}
 [client-server-deployment]: ./uml/AriaDeployment.png "Figrue 8: Client Server Deployment" {#fig-client-server} 
 
 [g-1]: ./images/Scenario-NoActivity.png "Figure G-1: Graph of no office activity" {#fig-g-1}
