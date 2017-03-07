@@ -15,6 +15,7 @@ class ZWaveDeviceTest(TestCase):
         self.mockNode.product_name = "testproduct"
         self.mockNode.manufacturer_name = "unittest"
         self.mockNode.version = 1
+        self.mockNode.location = ""
 
         self.mockValues = {}
         mockValueBrightness = Mock()
