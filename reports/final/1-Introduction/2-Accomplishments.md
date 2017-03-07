@@ -17,10 +17,10 @@ the user.
 ##### Device Controlled through User Interface {-}
 
 All devices that are visible in the user interface which have a controllable attribute, such as the
-brightness level on a lightbulb, can be controlled. The method for controlling these attributes 
+brightness level on a light bulb, can be controlled. The method for controlling these attributes 
 depends on the type of the data being changed. For example, a binary value such as On/Off is
 controlled with a toggle button, the volume of a speaker is controlled with a slider, and the colour
-of a lightbulb is controlled with a colour picking graphic.
+of a light bulb is controlled with a colour picking graphic.
 
 ##### Events Displayed in User Interface {-}
 
