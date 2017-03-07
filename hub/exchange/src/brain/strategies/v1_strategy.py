@@ -5,7 +5,7 @@ class V1Strategy():
     def __init__(self):
         self.triggeredEvent = []
 
-    def processSession(self, events):
+    def processSession(self, events,state=None):
         for event in reversed(events):
             if event['request_id']:
                 message = Message(Message.Request, data=

@@ -82,7 +82,7 @@ def create_exchange (hub, cli, database):
     #TODO add past events to strategy
     strategy = V2Strategy()
     decisionBroker = DecisionBroker(exchange,hub)
-    modelBuilder = ModelBuilder(Retriever(database),decisionBroker,strategy)
+    modelBuilder = ModelBuilder(Retriever(database),decisionBroker,strategy,hub.devices.values())
 
     # setup delegates
     exchange.addDelegate(ariaAdapter)
