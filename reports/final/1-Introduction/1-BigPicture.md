@@ -29,6 +29,6 @@ prevents adoption of home automation by consumers. The solution proposed by this
 machine learning in a home automation system to reduce the complexity of installing and customizing 
 a smart home through a simple user interface. 
 
-[^PB-1]: "Overview of the Internet of things," in "Telecommunication Standardization Sector of ITU," ITU, Jun. 15, 2012. [Online]. Available: http://handle.itu.int/11.1002/1000/11559. Accessed: Jan. 31, 2017.
-[^PB-2]: A. J. Brush, B. Lee, R. Mahajan, S. Agarwal, S. Saroiu, and C. Dixon, "Home automation in the wild: Challenges and opportunities - Microsoft research," Microsoft Research, 2011. [Online]. Available: https://www.microsoft.com/en-us/research/publication/home-automation-in-the-wild-challenges-and-opportunities/. Accessed: Jan. 31, 2017.
-[^PB-3] "Rogers Smart Home Monitoring User Guide". [Online]. Available: http://www.rogers.com/cms/support/pdfs/SHM/SHM_USER_GUIDE_EN_032016.pdf. Accessed: February 10, 2017.
+[^PB-1]: "Overview of the Internet of things," in "Telecommunication Standardization Sector of ITU," ITU, Jun. 15, 2012. [Online]. Available: <http://handle.itu.int/11.1002/1000/11559>. Accessed: Jan. 31, 2017.
+[^PB-2]: A. J. Brush, B. Lee, R. Mahajan, S. Agarwal, S. Saroiu, and C. Dixon, "Home automation in the wild: Challenges and opportunities - Microsoft research," Microsoft Research, 2011. [Online]. Available: <https://www.microsoft.com/en-us/research/publication/home-automation-in-the-wild-challenges-and-opportunities/>. Accessed: Jan. 31, 2017.
+[^PB-3]: "Rogers Smart Home Monitoring User Guide". [Online]. Available: <http://www.rogers.com/cms/support/pdfs/SHM/SHM_USER_GUIDE_EN_032016.pdf>. Accessed: February 10, 2017.
