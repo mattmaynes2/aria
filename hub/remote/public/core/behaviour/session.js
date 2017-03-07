@@ -1,4 +1,8 @@
 import Widget from '../widget/widget';
+import SessionView from './session-view';
+import SessionControl from './session-control';
+
+import './session.css';
 
 class Session extends Widget {
     constructor (state, props) {
@@ -6,10 +10,24 @@ class Session extends Widget {
         this._state = {
             id          : this._state.id            || 0,
             title       : this._state.name          || '',
-            created     : this._state.createdDate   || 0
+            createdDate : this._state.createdDate   || 0
         };
+
+        this._view = new SessionView(this._state);
+        this._control = new SessionControl(this._state);
     }
 
+    render () {
+        super.render();
+
+        this._$el
+            .find('.widget-body').addClass('session-body')
+            .append([
+                this._view.addClass('session-info').render().$el(),
+                this._control.addClass('session-buttons').render().$el()
+            ]);
+        return this;
+    }
 }
 
 export default Session;
