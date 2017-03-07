@@ -1,0 +1,17 @@
+.session-body {
+    display : flex;
+    flex-direction : row;
+    margin-top: 4px;
+}
+
+.session-info {
+    margin-top      : 10px;
+    height          : 100%;
+    padding-left    : 10px;
+    flex-grow       : 1;
+}
+
+.session-buttons {
+    flex-shrink : 0;
+    margin : auto 10px;
+}
