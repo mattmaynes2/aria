@@ -7,8 +7,8 @@ class Retriever:
 
     GET_BEHAVIOUR_WINDOW    = "SELECT id, name, created_date, last_updated, active FROM Behaviour \
                                ORDER BY id DESC LIMIT ?,?" 
-    GET_SESSION_WINDOW      = "SELECT id, name, created_date, active FROM Session WHERE \
-                               behaviour_id = ? ORDER BY id DESC LIMIT ?,?"
+    GET_SESSIONS_WINDOW      = "SELECT * FROM session WHERE behaviour_id = ? \
+                                ORDER BY id DESC LIMIT ?,?"
     GET_ALL_EVENT_WINDOW    = "SELECT id as 'index', timestamp, source \
                                FROM Event WHERE source NOT IN (?) ORDER BY id DESC LIMIT ?,?"
     GET_DEVICE_EVENT_WINDOW = "SELECT * FROM Event WHERE source = ? LIMIT  ?,?"
@@ -18,7 +18,7 @@ class Retriever:
     GET_ATTRIBUTE_NAME      = "SELECT name FROM Attribute WHERE id = ?"
     GET_SESSION             = "SELECT * from session where id=?"
     GET_LAST_EVENT_ID       = "SELECT id FROM Event ORDER BY id DESC LIMIT 1 "
-    GET_LAST_BEAVIOUR       = "SELECT * FROM Behaviour ORDER BY id DESC LIMIT 1 "
+    GET_LAST_BEHAVIOUR       = "SELECT * FROM Behaviour ORDER BY id DESC LIMIT 1 "
     GET_LAST_SESSION        = "SELECT * FROM Session ORDER BY id DESC LIMIT 1 "
 
     ADD_NEW_BEHAVIOUR       = "INSERT INTO Behaviour (name) VALUES (?)"
@@ -99,7 +99,7 @@ class Retriever:
     ###
     def addBehaviour(self, name):
         self.database.execute(Retriever.ADD_NEW_BEHAVIOUR, [name])
-        return self.database.execute(Retriever.GET_LAST_BEAVIOUR)[0]
+        return self.database.execute(Retriever.GET_LAST_BEHAVIOUR)[0]
 
     ###
     # Add a new session
@@ -140,9 +140,9 @@ class Retriever:
     #
     # @return        List of count number of event objects across all devices
     ###
-    def getSessionWindow(self, start, count, behaviourId):
-        values = (start, count, behaviourId)
-        return self.database.execute(Retriever.GET_SESSION_WINDOW, values)
+    def getSessionsWindow(self, start, count, behaviourId):
+        values = (behaviourId,start, count)
+        return self.database.execute(Retriever.GET_SESSIONS_WINDOW, values)
 
     def getSessionEvents(self,session_id):
         """
