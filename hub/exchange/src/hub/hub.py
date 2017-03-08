@@ -48,9 +48,9 @@ class Hub(Device):
     @property
     def status (self):
         sessionDict = None
-        if (self.session)
+        if self.session:
             sessionDict = self.session.__dict__
-            
+
         return {
             'version'   : self.version,
             'mode'      : self.mode.value,
