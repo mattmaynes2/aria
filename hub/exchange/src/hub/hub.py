@@ -50,7 +50,8 @@ class Hub(Device):
         return {
             'version'   : self.version,
             'mode'      : self.mode.value,
-            'devices'   : len(self.devices)
+            'devices'   : len(self.devices),
+            'session'   : self.session
         }
 
     def addDevice (self,device):
