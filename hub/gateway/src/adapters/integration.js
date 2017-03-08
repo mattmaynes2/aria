@@ -54,7 +54,7 @@ let IntegrateAdapter = (function () {
         this._id = new Buffer(16);
         this._state = {
             hub : {
-                version     : '1.0.0',
+                version     : 'Test',
                 mode        : 1,
                 name        : 'Smart Hub',
                 devices     : [],
@@ -151,6 +151,15 @@ let IntegrateAdapter = (function () {
         else if (payload.create) {
             response = requestCreate.call(this, payload);
         }
+        else if (payload.delete) {
+            response = requestDelete.call(this, payload);
+        }
+        else if (payload.activate) {
+            response = requestActivate.call(this, payload);
+        }
+        else if (payload.deactivate) {
+            response = requestDeactivate.call(this, payload);
+        }
         return response;
     }
 
@@ -205,6 +214,18 @@ let IntegrateAdapter = (function () {
                         )
                     )
                 });
+            case 'sessions':
+               logger.debug('Getting sessions for behaviour id: ' + payload.behaviourId);
+               var behaviour = getBehaviour.call(this, payload.behaviourId);
+               return wrap(payload.get, {
+                    records     : behaviour.sessions.slice(
+                        payload.start,
+                        Math.min(
+                            behaviour.sessions.length,
+                            payload.start + payload.count
+                        )
+                    )
+                });
             default:
                 throw new Error('Unknown request');
         }
@@ -228,24 +249,91 @@ let IntegrateAdapter = (function () {
     }
 
     function requestCreate (payload) {
-        var index, res;
+        var index, res, behaviour, session;
 
         switch (payload.create) {
             case 'behaviour':
                 logger.debug(`Creating a new behaviour with name ${payload.name}`);
-
                 index = this._state.hub.behaviours.length;
-                this._state.hub.behaviours.push({
+                behaviour = {
                     name        : payload.name,
                     id          : index,
                     createdDate : generateTime(),
                     lastUpdated : generateTime(),
                     active      : true,
                     sessions    : []
-                });
-                res = wrap(payload.get, this._state.hub.behaviours[index]);
+                };
+
+                this._state.hub.behaviours.push(behaviour);
+
+                res = wrap(payload.create, behaviour);
                 logger.debug('Sending test response: ' + JSON.stringify(res));
                 return res;
+            case 'session':
+                logger.debug(`Creating a new session for behaviour ${payload.behaviourId}`);
+                behaviour = getBehaviour.call(this, payload.behaviourId);
+                session = {
+                    id          : payload.behaviourId + behaviour.sessions.length,
+                    name        : payload.name,
+                    behaviourId : payload.behaviourId,
+                    createdDate : generateTime()
+                };
+
+                logger.debug('Adding session to behaviour: ' + JSON.stringify(behaviour));
+                behaviour.sessions.push(session);
+                res = wrap(payload.create, session);
+                logger.debug('Sending test response: ' + JSON.stringify(res));
+                return res;
+            default:
+                throw new Error('Unknown type to create');
+        }
+    }
+
+    function requestDelete (payload) {
+        logger.debug('Received delete request ' + payload);
+
+        switch (payload.delete) {
+            case 'behaviour':
+                logger.debug(`Deleting behaviour with id ${payload.id}`);
+                deleteBehaviour.call(this, payload.id);
+                var res = wrap(payload.delete, payload.id);
+                logger.debug('Sending test response: ' + JSON.stringify(res));
+                return res;
+        }
+    }
+
+    function requestActivate (payload) {
+        logger.debug('Received request to activate ' + payload.id);
+
+        switch (payload.activate) {
+            case 'session':
+                return wrap(payload.activate, payload.id);
+            default:
+                throw new Error('Unknown activation type');
+        }
+    }
+
+    function requestDeactivate (payload) {
+        logger.debug('Received request to deactivate ' + payload.id);
+
+        switch (payload.deactivate) {
+            case 'session':
+                return wrap(payload.deactivate, payload.id);
+            default:
+                throw new Error('Unknown deactivation type');
+        }
+
+    }
+
+    function deleteBehaviour (id) {
+
+        var behaviour, i;
+        for (i in this._state.hub.behaviours) {
+            behaviour = this._state.hub.behaviours[i];
+            if (behaviour.id === parseInt(id)) {
+                logger.debug('Found behaviour to delete: ' + JSON.stringify(behaviour));
+                delete this._state.hub.behaviours[i];
+            }
         }
     }
 
@@ -257,6 +345,17 @@ let IntegrateAdapter = (function () {
         for (var dev in this._state.hub.devices) {
             if (dev.id === id) {
                 return dev;
+            }
+        }
+        return null;
+    }
+
+    function getBehaviour (id) {
+        var behaviour, i;
+        for (i in this._state.hub.behaviours) {
+            behaviour = this._state.hub.behaviours[i];
+            if (behaviour.id === id) {
+                return behaviour;
             }
         }
         return null;

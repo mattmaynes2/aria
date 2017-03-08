@@ -6,6 +6,7 @@ from .device_type import DeviceType
 import time
 import logging
 import uuid
+from uuid import UUID
 
 logger = logging.getLogger(__name__)
 
@@ -71,7 +72,15 @@ class ZWaveDevice(Device):
         if not nodeName:
             nodeName = node.product_name
 
-        super().__init__(self._getDeviceType(node), name = nodeName,address=uuid.uuid4().bytes,\
+        address = None
+
+        if node.location:
+            address = UUID(node.location)
+        else:
+            address = uuid.uuid4()
+            node.location = str(address)
+
+        super().__init__(self._getDeviceType(node), name = nodeName,address=address.bytes,\
         version=str(node.version))
         self.__node = node
 

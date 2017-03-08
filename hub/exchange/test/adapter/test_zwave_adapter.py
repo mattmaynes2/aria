@@ -33,6 +33,7 @@ class ZWaveAdapterTest(TestCase):
         associations = [1, 3]
         self.associationGroup1.associations = associations
         self.mockNode.groups = { "1" : self.associationGroup1 }
+        self.mockNode.location = ""
 
         self.mockDevice = Mock()
         self.myUuid = uuid.uuid4()
