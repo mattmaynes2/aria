@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+## v0.6.1
+
+- Completed first draft of final report
+- Added version 2 and 3 of machine learning algorithms (see report for details)
+- Completed session viewing from user interface
+- Sessions can now be stopped and started from the user interaface
+
 ## v0.6.0
 
 - Added basic learning component to system for training purposes
