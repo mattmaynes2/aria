@@ -53,6 +53,8 @@ events that did not actually cause a change in the state of the home environment
 triggers a user action based on the first event that indicated a change in the state of the 
 system.
 
+#### Future Strategies {-}
+
 The results of testing with the third version of the learning strategy revealed challenges for 
 future improvement. This strategy considers even small changes in the environment to be significant,
 when in reality they are minor fluctuations in sensor readings. One example found in testing is that
