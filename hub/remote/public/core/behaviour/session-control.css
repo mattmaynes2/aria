@@ -1,0 +1,8 @@
+.session-control {
+    display : flex;
+    flex-direction : row;
+}
+
+.session-control-button {
+    margin : 0 4px;
+}

@@ -12,5 +12,4 @@ the idea of using custom smart devices and to instead use device manufactured by
 No work was performed in a lab environment, so there were no other personal safety concerns during
 the duration of this project.
 
-[^HS-1-1]: "Laboratory Health and Safety Manual," Carleton University. [Online]. 
-Available: http://www.sce.carleton.ca/courses/health-and-safety.pdf. Accessed: Mar. 4, 2017.
+[^HS-1-1]: "Laboratory Health and Safety Manual," Carleton University. [Online]. Available: <http://www.sce.carleton.ca/courses/health-and-safety.pdf>. Accessed: Mar. 4, 2017.
