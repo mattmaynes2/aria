@@ -98,6 +98,15 @@ class RetrieverTest(TestCase):
         self.assertEqual( "bass",results[0]["attribute"]["name"])
         self.assertEqual( "0",results[0]["attribute"]["parameters"][0]["value"])
 
+    def  test_get_sessions_window(self):
+        self.database.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')")
+        self.database.execute("INSERT INTO Session(id,name,behaviour_id) VALUES(1,'Take 1',1)")
+        self.database.execute("INSERT INTO Session(id,name,behaviour_id) VALUES(2,'Take 2',1)")
+
+        results=self.retriever.getSessionsWindow(0,10,1)
+        self.assertEqual(len(results), 2)
+
+
 
 class TestDatabase:
 
