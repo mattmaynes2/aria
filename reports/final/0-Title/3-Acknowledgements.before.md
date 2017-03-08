@@ -5,7 +5,7 @@
         We would like to acknowledge our project supervisor Babak Esfandiari for his assistence
         throughout the course of this project. His willingness to offer his advice and guidance has
         been instrumental in keeping the project on schedule and heading in the right direction.
-    </p
+    </p>
     <br/>
     <p>
         We would also like to acknowledge Hannah Maynes for her artistic assistance in designing 
