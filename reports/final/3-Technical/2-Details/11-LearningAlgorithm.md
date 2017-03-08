@@ -23,8 +23,8 @@ a basic working algorithm is available if unforeseen difficulties are found in i
 
 #### Strategy Version 1 {-}
 
-The first strategy implemented considers the list of device and sensor events for a single training
-session. The simple algorithm proceeds as follows:
+The first version of the learaning strategy considers the list of device and sensor events for a 
+single training session. The simple algorithm proceeds as follows:
 
 1. Find the last user action taken during the training session
 2. Find the first event preceding that action
@@ -43,14 +43,28 @@ implementations of the learning strategy to be interchanged easily.
 
 #### Strategy Version 2 {-}
 
-The second strategy implemented improved on the previous strategy by looking for all user 
-requests in the training session and associating each one with the event that had happened 
-right before the request was made. The algorithm would then check if an incoming event had any 
-requests associated with it. If it found a request it would trigger that action. 
-
+The second strategy improved on the previous strategy by looking for all user requests in a training
+session and associating each one with the event that immediately preceded the request.
 
 #### Strategy Version 3 {-}
 
-The third and current strategy looks at the events for a session as well as tracks the state of 
-the system since the training session started and associates a user action with the last event 
-that caused a change in the system.
+The third and current strategy also looks at all user requests in a training session. Additionally,
+this strategy uses the state of all sensors at the beginning of the training session to filter out 
+events that did not actually cause a change in the state of the home environment. This strategy 
+triggers a user action based on the first event that indicated a change in the state of the 
+system.
+
+The results of testing with the third version of the learning strategy revealed challenges for 
+future improvement. This strategy considers even small changes in the environment to be significant,
+when in reality they are minor fluctuations in sensor readings. One example found in testing is that
+the algorithm associated a small change in temperature with user actions, when the desired 
+behaviour was to trigger the action when motion was detected.
+
+Some enhancements that could be made to the algorithm in the future are the discretization of data,
+and learning behaviours based on multiple training sessions. Discretization of the data could allow
+the learning component to decide whether a change in a sensor value is significant enought that
+an action should be triggered. For example, only temperature changes of a certain number of degrees
+should be considered to be significant changes to the environment.
+
+Future strategies could also consider data from multiple training sessions in order to identify 
+patterns that appear consistently.
