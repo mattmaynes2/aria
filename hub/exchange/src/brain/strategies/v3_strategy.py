@@ -52,10 +52,12 @@ class V3Strategy(V2Strategy):
                     for key, val in item.items():
                         decisionList[key] = []
                         for decision in val:
-                            d = Message.decode_from_json(decision)
+                                d = Message.decode_from_json(decision)
                             decisionList[key].append(d)
         except FileNotFoundError:
-            pass
+            logger.debug("No saved decisions found")
+        except ValueError:
+            logger.debug("Error decoding json")
 
         self.eventMapping = decisionList
 
