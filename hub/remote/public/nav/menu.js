@@ -14,14 +14,6 @@ let PAGES = [
     {
         name    : 'Devices',
         href    : '../devices/'
-    },
-    {
-        name    : 'Schedule',
-        href    : '../schedule/'
-    },
-    {
-        name    : 'Statistics',
-        href    : '../stats/'
     }
 ];
 
