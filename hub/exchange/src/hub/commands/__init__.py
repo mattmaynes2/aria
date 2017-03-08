@@ -9,3 +9,4 @@ from .activate_session_command      import ActivateSessionCommand   # NOQA
 from .deactivate_session_command    import DeactivateSessionCommand # NOQA
 from .delete_behaviour_command      import DeleteBehaviourCommand   # NOQA
 from .delete_session_command        import DeleteSessionCommand     # NOQA
+from .get_sessions_command          import  GetSessionsCommand      # NOQA
