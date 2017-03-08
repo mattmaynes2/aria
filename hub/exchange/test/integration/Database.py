@@ -195,49 +195,6 @@ class TestDatabaseIntegration(TestCase):
         self.assertEqual(response.data["value"]["total"], 10)
         self.assertEqual(len(response.data["value"]["records"]), 10)        
 
-    def test_request_event_window_ignores_specified_devices(self):
-        # Send a bunch of events from random devices
-        for device in self.devices:
-            sensorStateChangeMessage = Message()
-            sensorStateChangeMessage.type = Message.Event
-            sensorStateChangeMessage.data = {
-            'event' : 'device.event',
-            'timestamp' : int(time.time()*1000),
-            'device' : device.address,
-            'deviceType' : device.deviceType.name,
-            'attribute' : {
-                'name' : 'state',
-                'parameters' : [
-                                {
-                                    'name' : 'state',
-                                    'value' : 1,
-                                    'dataType' : DataType.Binary
-                                }
-                            ]
-                        }
-            }
-            sensorStateChangeMessage.sender = device.address
-            self.testAdapter.enqueueMessage(sensorStateChangeMessage)
-
-        # Give some time to write to database
-        time.sleep(0.5)
-
-        # Request the last 10 events that occurred
-        sensorEventWindowRequest = Message()
-        sensorEventWindowRequest.type = Message.Request
-        sensorEventWindowRequest.data = {"get": "eventWindow", "start": 0, "count": 20, "ignore" : [str(UUID(bytes=self.devices[0].address))]}
-        sensorEventWindowRequest.sender = self.devices[0].address
-        self.testAdapter.enqueueMessage(sensorEventWindowRequest)
-        # Give some time for the hub to respond to the request
-        time.sleep(20)
-
-        response = self.testAdapter.receivedMessages[0]
-        self.assertEqual(response.data["response"], "eventWindow")
-        self.assertEqual(response.data["value"]["total"], 19)
-        self.assertEqual(len(response.data["value"]["records"]), 19)
-        for device in response.data["value"]["records"]:
-            self.assertNotEqual(device["source"], str(self.devices[0].address))
-
     def test_duplicate_device_type_is_ignored(self):
         typeResults = self.db.query("SELECT Count(*) FROM Device_Type")
         firstResult = typeResults.fetchone()

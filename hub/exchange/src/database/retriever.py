@@ -10,7 +10,7 @@ class Retriever:
     GET_SESSIONS_WINDOW      = "SELECT * FROM session WHERE behaviour_id = ? \
                                 ORDER BY id DESC LIMIT ?,?"
     GET_ALL_EVENT_WINDOW    = "SELECT id as 'index', timestamp, source \
-                               FROM Event WHERE source NOT IN (?) ORDER BY id DESC LIMIT ?,?"
+                               FROM Event WHERE source ORDER BY id DESC LIMIT ?,?"
     GET_DEVICE_EVENT_WINDOW = "SELECT * FROM Event WHERE source = ? LIMIT  ?,?"
     GET_PARAM_CHANGE        = "SELECT parameter, value FROM Parameter_Change WHERE event_id = ?"
     GET_PARAM_INFO          = "SELECT name, data_type, attribute_id FROM Parameter WHERE id = ?" 
@@ -43,6 +43,15 @@ class Retriever:
     def __init__(self, database):
         self.database = database																									
 
+    def retriable(operation):
+        def wrapper(*args, **kwargs):
+            try:
+                return operation(*args, **kwargs)
+            except Exception as e:
+                log.exception(e)
+                return operation(*args, **kwargs)
+        return wrapper
+
     ###
     # Get a list of count events across all devices
     # @param start   Index in the database to start retrieving from, with 0 being the most recent
@@ -52,8 +61,9 @@ class Retriever:
     #
     # @return        List of count number of event objects across all devices
     ###
-    def getEventWindow(self, start, count, ignore=''):
-        values = (ignore, start, count)
+    @retriable
+    def getEventWindow(self, start, count):
+        values = (start, count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
         for r in results:
             device = self._getDeviceType(r["source"])
