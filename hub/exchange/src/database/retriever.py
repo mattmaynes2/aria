@@ -43,6 +43,15 @@ class Retriever:
     def __init__(self, database):
         self.database = database																									
 
+    def retriable(operation):
+        def wrapper(*args, **kwargs):
+            try:
+                return operation(*args, **kwargs)
+            except Exception as e:
+                debug.exception(e)
+                return operation(*args, **kwargs)
+        return wrapper
+
     ###
     # Get a list of count events across all devices
     # @param start   Index in the database to start retrieving from, with 0 being the most recent
@@ -52,6 +61,7 @@ class Retriever:
     #
     # @return        List of count number of event objects across all devices
     ###
+    @retriable
     def getEventWindow(self, start, count):
         values = (start, count)
         results = self.database.execute(Retriever.GET_ALL_EVENT_WINDOW, values)
