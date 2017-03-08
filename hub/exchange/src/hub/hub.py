@@ -47,11 +47,15 @@ class Hub(Device):
 
     @property
     def status (self):
+        sessionDict = None
+        if (self.session)
+            sessionDict = self.session.__dict__
+            
         return {
             'version'   : self.version,
             'mode'      : self.mode.value,
             'devices'   : len(self.devices),
-            'session'   : self.session
+            'session'   : sessionDict
         }
 
     def addDevice (self,device):
