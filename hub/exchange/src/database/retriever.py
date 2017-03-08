@@ -48,7 +48,7 @@ class Retriever:
             try:
                 return operation(*args, **kwargs)
             except Exception as e:
-                debug.exception(e)
+                log.exception(e)
                 return operation(*args, **kwargs)
         return wrapper
 
