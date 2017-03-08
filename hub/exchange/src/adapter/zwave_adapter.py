@@ -107,8 +107,8 @@ class ZWaveAdapter(Adapter):
             device = self._devices[receiverString]
             self._handleRequest(message, device)
         else:
-            log.warning("Invalid message type sent to ZWaveAdapter: " + str(message.type))
-
+            logger.warning("Invalid message type sent to ZWaveAdapter: " + str(message.type))
+            
     def setDeviceValue(self, message, device):
         attributeName = message.data["set"]
         value = message.data["value"]
