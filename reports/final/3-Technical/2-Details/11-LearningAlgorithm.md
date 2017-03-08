@@ -26,9 +26,8 @@ a basic working algorithm is available if unforeseen difficulties are found in i
 The first version of the learaning strategy considers the list of device and sensor events for a 
 single training session. The simple algorithm proceeds as follows:
 
-1. Find the last user action taken during the training session
-2. Find the first event preceding that action
-3. Whenever the event found in (2) is detected, perform the user action
+1. Find the last user action taken during the training session.
+2. Perform that action whenever any event occurs.
 
 Whenever the user completes a training session, the strategy is rebuilt based on the session.
 
