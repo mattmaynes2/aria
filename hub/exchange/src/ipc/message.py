@@ -69,8 +69,8 @@ class Message:
         dictionary = json.loads(string)
         message = Message()
         message.type = dictionary["type"]
-        message.sender = dictionary["sender"]
-        message.receiver = dictionary["receiver"]
+        message.sender = UUID(dictionary["sender"]).bytes
+        message.receiver = UUID(dictionary["receiver"]).bytes
         message.data = dictionary["data"]
         return message
 
