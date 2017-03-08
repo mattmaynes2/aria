@@ -53,7 +53,7 @@ class V3Strategy(V2Strategy):
                         decisionList[key] = []
                         for decision in val:
                                 d = Message.decode_from_json(decision)
-                            decisionList[key].append(d)
+                                decisionList[key].append(d)
         except FileNotFoundError:
             logger.debug("No saved decisions found")
         except ValueError:
