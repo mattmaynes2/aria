@@ -31,6 +31,7 @@ hub         = None
 cli         = None
 exchange    = None
 database    = None
+strategy    = None
 
 logging.config.fileConfig(_log_config_location, disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
@@ -61,6 +62,7 @@ def signalHandler(signum, frame):
 
 def create_exchange (hub, cli, database):
     global exchange
+    global strategy
     exchange = Exchange(hub, cli, database)
     ariaAdapter=AriaAdapter()
     
@@ -96,6 +98,7 @@ def create_exchange (hub, cli, database):
 def exit ():
     global exchange
     exchange.teardown()
+    strategy.save()
 
 def setupCommands(hub,database):
     hub.addCommand(GetDeviceEventsCommand(database))
