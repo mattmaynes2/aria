@@ -16,8 +16,8 @@ This process of inferring the relationship between the state of sensors and user
 *supervised learning* 
 
 An iterative approach was used for development of the supervised learning component. Starting with a very simple
-algorithm allowed early experimentation with sensor and device configurations. Building iteratively upon a simple a
-lgorithm rather than attempting to use a complex machine learning algorithm or library immediately allows early 
+algorithm allowed early experimentation with sensor and device configurations. Building iteratively upon a simple 
+algorithm rather than attempting to use a complex machine learning algorithm or library immediately allows early 
 identification of the challenges that are involved in machine learning. Iterative development also ensures that 
 a basic working algorithm is available if unforeseen difficulties are found in implementing a more complex solution.
 
@@ -37,7 +37,7 @@ machine learning component:
 - An entity that observes incoming events and feeds them to the learning strategy.
 - An entity that retrieves events from a training session and builds a strategy using the events
 
-The machine learning component makes use of a Strategy design pattern, which allows different 
+The machine learning component makes use of a Strategy Pattern, which allows different 
 implementations of the learning strategy to be interchanged easily.
 
 #### Strategy Version 2 {-}
