@@ -9,9 +9,6 @@ class GetEventWindowCommand(DatabaseCommand):
     def execute(self,hub,data):
         start=data['start']
         count=data['count']
-        ignore=data.get('ignore','')
-        if(ignore):
-            ignore =",".join(ignore)
-        results = self.retriever.getEventWindow(start,count,ignore)
+        results = self.retriever.getEventWindow(start,count)
         self.formatEvents(results,hub)
         return {'total':len(results),'records':results}
