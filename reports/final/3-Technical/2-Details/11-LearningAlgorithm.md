@@ -16,17 +16,30 @@ This process of inferring the relationship between the state of sensors and user
 *supervised learning* 
 
 An iterative approach was used for development of the supervised learning component. Starting with a very simple
-algorithm allowed early experimentation of sensor and device configuration, as well as analysis of device data
-in the context of machine learning. Building iteratively upon a simple algorithm rather than attempting to use a 
-complex machine learning algorithm or library immediately allows early identification of the challenges that are 
-involved in machine learning. Iterative development also ensures that a basic working algorithm is available 
-if unforeseen difficulties are found in implementing a more complex solution.
+algorithm allowed early experimentation with sensor and device configurations. Building iteratively upon a simple a
+lgorithm rather than attempting to use a complex machine learning algorithm or library immediately allows early 
+identification of the challenges that are involved in machine learning. Iterative development also ensures that 
+a basic working algorithm is available if unforeseen difficulties are found in implementing a more complex solution.
 
 #### Strategy Version 1 {-}
 
-The first strategy implemented was a simple algorithm that looked at the events for a training 
-session, find the last user request and use this as its action on every incoming event to the 
-system. 
+The first strategy implemented considers the list of device and sensor events for a single training
+session. The simple algorithm proceeds as follows:
+
+1. Find the last user action taken during the training session
+2. Find the first event preceding that action
+3. Whenever the event found in (2) is detected, perform the user action
+
+Whenever the user completes a training session, the strategy is rebuilt based on the session.
+
+Implementing this simple strategy allowed for development of several building blocks for the 
+machine learning component:
+
+- An entity that observes incoming events and feeds them to the learning strategy.
+- An entity that retrieves events from a training session and builds a strategy using the events
+
+The machine learning component makes use of a Strategy design pattern, which allows different 
+implementations of the learning strategy to be interchanged easily.
 
 #### Strategy Version 2 {-}
 
