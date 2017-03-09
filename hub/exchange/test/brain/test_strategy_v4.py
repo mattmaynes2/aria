@@ -5,6 +5,7 @@ from ipc import Message
 from brain.strategies import V4Strategy
 import uuid
 from io import StringIO
+import os
 
 class V4StrategyTest(TestCase):
 
