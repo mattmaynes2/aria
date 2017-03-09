@@ -42,7 +42,7 @@ class V4Strategy(V3Strategy):
                 message=self.buildMessageFromEvent(event)
                 for e in events[ i-self.windowSize if i-self.windowSize>0 else 0 : i] :
                     self.addDecision(e,message)
-        log.debug("done processing session current table is {}".format(dict(self.eventMapping)))
+        logger.debug("done processing session current table is {}".format(dict(self.eventMapping)))
     
     def save(self):
         '''
