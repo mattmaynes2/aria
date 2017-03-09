@@ -14,8 +14,8 @@ class Session extends Widget {
             stopped     : this._state.stopped       || 0
         };
 
-        this._view = new SessionView(this._state);
-        this._control = new SessionControl(this._state);
+        this._view = new SessionView(this._state, this._props);
+        this._control = new SessionControl(this._state, this._props);
     }
 
     render () {

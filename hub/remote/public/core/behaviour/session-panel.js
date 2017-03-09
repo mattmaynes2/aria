@@ -18,15 +18,21 @@ class SessionPanel extends WidgetPanel {
     }
 
     update () {
-        Service.get('/hub/training/sessions', {
-            start           : 0,
-            count           : 10,
-            behaviourId     : this._state.behaviour.id
-        }).then((res) => {
-            this._state.sessions = res.payload.records.map((s) => {
-                return new Session (s);
+        Service.get('/hub/state').then((res) => {
+            var session = res.payload.session || {};
+            Service.get('/hub/training/sessions', {
+                start           : 0,
+                count           : 10,
+                behaviourId     : this._state.behaviour.id
+            }).then((res) => {
+                this._state.sessions = res.payload.records.map((s) => {
+                    if (s.id === session.id) {
+                        return new Session(s, { isActive : true }).addClass('session-active');
+                    }
+                    return new Session(s, { hideButtons : true });
+                });
+                this.render();
             });
-            this.render();
         });
         return this;
     }
