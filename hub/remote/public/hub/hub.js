@@ -85,13 +85,6 @@ class Hub extends Widget {
                     .append($('<li>').text(`Devices : ${this._state.devices}`))
             );
 
-        if (!this._state.session) {
-            this._activeIcon.addClass('hub-hide-active-icon');
-        }
-        else {
-            this._activeIcon.removeClass('hub-hide-active-icon');
-        }
-
         this._$el
             .find('.widget-footer').css('position', 'relative')
             .append(this._activeIcon.render().$el().addClass('hub-active-icon'))
@@ -99,7 +92,15 @@ class Hub extends Widget {
             .append(this._stateButton.$el().addClass('hub-mode-toggle'));
         this._discoverButton.click(this._discoverHandler);
 
-        return this;
+        if (!this._state.session) {
+            this._activeIcon.addClass('hub-hide-active-icon');
+        }
+        else {
+            this._activeIcon.text('Session Active: ' + this._state.session.name);
+            this._activeIcon.removeClass('hub-hide-active-icon');
+        }
+
+       return this;
     }
 
 }
