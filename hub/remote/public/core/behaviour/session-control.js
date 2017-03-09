@@ -10,10 +10,17 @@ class SessionControl extends Component {
         super(state, props);
 
         this._added = true;
-        if (!this._state.stopped || this._props.hideButtons) {
+        this._started = this._props.isActive;
+        if (!this._state.stopped && !this._props.hideButtons) {
             this._start = new Button('Start').addClass('session-control-button');
             this._stop  = new Button('Stop').addClass('session-control-button');
-            this.append([this._start, this._stop]);
+
+            if (this._props.isActive) {
+                this.append(this._stop);
+            }
+            else {
+                this.append([this._start, this._stop]);
+            }
             this._added = false;
         }
 
@@ -40,19 +47,20 @@ class SessionControl extends Component {
 
 
 function start () {
-    this._started = true;
     Service.set(`/hub/training/session/${this._state.id}/start`, {})
         .then(() => {
+            this._started = true;
+            this._start.remove();
             this._$el.parent().parent().addClass('session-active');
         });
 }
 
 function stop () {
     if (this._started) {
-        this._state.stopped = true;
-        this.clear().render();
         Service.set(`/hub/training/session/${this._state.id}/stop`, {})
             .then(() => {
+                this._state.stopped = true;
+                this.clear().render();
                 this._$el.parent().parent().removeClass('session-active');
             });
     }
