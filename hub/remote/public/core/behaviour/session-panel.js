@@ -18,17 +18,30 @@ class SessionPanel extends WidgetPanel {
     }
 
     update () {
+        Service.get('/hub/state').then((res) => {
+            this._hubState = res.payload;
+            list_sessions()
+        });
+
+        return this;
+    }
+
+    list_sessions () {
         Service.get('/hub/training/sessions', {
             start           : 0,
             count           : 10,
             behaviourId     : this._state.behaviour.id
         }).then((res) => {
             this._state.sessions = res.payload.records.map((s) => {
+                if ( this._hubStaate && (s.id === this._hubState.session.id)){
+                    s.active = true
+                } else {
+                    s.active = false;
+                }
                 return new Session (s);
             });
             this.render();
         });
-        return this;
     }
 
     _prerender () {

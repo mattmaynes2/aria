@@ -16,6 +16,9 @@ class SessionControl extends Component {
             this.append([this._start, this._stop]);
             this._added = false;
         }
+        if (this._state.active) {
+            this.addClass('session-active');
+        }
 
         this.addClass('session-control');
     }
@@ -40,16 +43,13 @@ class SessionControl extends Component {
 
 
 function start () {
-    this._started = true;
     Service.set(`/hub/training/session/${this._state.id}/start`, {});
 }
 
 function stop () {
-    if (this._started) {
-        this._state.stopped = true;
-        this.clear().render();
-        Service.set(`/hub/training/session/${this._state.id}/stop`, {});
-    }
+    this._state.stopped = true;
+    this.clear().render();
+    Service.set(`/hub/training/session/${this._state.id}/stop`, {});
 }
 
 export default SessionControl;
