@@ -24,8 +24,6 @@ class V4Strategy(V3Strategy):
 
     def addDecision(self, triggeringEvent, action):
         triggerString = self.buildEventIdentifierFromDatabaseObject(triggeringEvent)
-        logger.debug("Adding decision for trigger string " + triggerString)
-        logger.debug("The action taken will be " + str(action))
         self.eventMapping.addDecision(triggerString,\
         Decision(triggeringEvent['behaviour_id'],action))
 
@@ -34,6 +32,7 @@ class V4Strategy(V3Strategy):
 
     def processSession(self, events,state):
         events[:] = self.filterEvents(events,state)
+        logger.debug('filtered events are {}'.format(events))
         for i, event in enumerate(events):
             eventString = self.buildEventIdentifierFromDatabaseObject(event)
             self.eventMapping.addEvent(eventString)

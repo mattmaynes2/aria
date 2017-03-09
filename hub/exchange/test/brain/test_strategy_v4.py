@@ -6,7 +6,7 @@ from brain.strategies import V4Strategy
 import uuid
 from io import StringIO
 
-class V3StrategyTest(TestCase):
+class V4StrategyTest(TestCase):
 
     def setUp(self):
         self.userActionId=uuid.uuid4()
@@ -141,7 +141,8 @@ class V3StrategyTest(TestCase):
         
     def test_processSession(self):
         strategy= V4Strategy("v4.json")
-        strategy.processSession(self.testEvents,self.testState)
+        state=self.testState.copy()
+        strategy.processSession(self.testEvents,state)
         eventMap=strategy.eventMapping
         self.assertEqual(strategy.decide(self.testTriggeringEvent)[0].data["value"], 
                         [{
@@ -158,6 +159,13 @@ class V3StrategyTest(TestCase):
 
 
         session2 = [ {
+                        'source': str(self.sensorId),
+                        'attribute_name': 'Bar',
+                        'parameter_name': 'Foo',
+                        'value': '5',
+                        'request_id': None,
+                        'behaviour_id': 1
+                    },{
                         'source': str(self.sensorId),
                         'attribute_name': 'FuBar',
                         'parameter_name': 'Foo',
@@ -224,14 +232,42 @@ class V3StrategyTest(TestCase):
                         'value': '5',
                         'request_id': 2,
                         'behaviour_id': 1
+                    },
+                    {
+                        'source': str(self.sensorId),
+                        'attribute_name': 'Bar',
+                        'parameter_name': 'Foo',
+                        'value': '5',
+                        'request_id': None,
+                        'behaviour_id': 1
+                    },
+                    {
+                        'source': str(self.userActionId),
+                        'attribute_name': 'Foo',
+                        'parameter_name': 'Foo',
+                        'value': '5',
+                        'request_id': 3,
+                        'behaviour_id': 1
                     }]
-
+    
+        strategy.processSession(session2,self.testState)
         self.testTriggeringEvent.data['attribute']['parameters'][0]['value'] = '10'
         self.assertEqual(strategy.decide(self.testTriggeringEvent)[0].data["value"], 
                         [{
                             "name": "Foo",
                             "value": "5"
                         }])
-        # After the second training session Foobar =10 shouldn't trigger an event
+
+        
+        mapping=strategy.eventMapping
+        eventString = strategy.buildEventIdentifierFromMessage(self.testTriggeringEvent)
+        row=mapping.table[eventString]
+        self.assertEqual(2, row.count)
+        self.assertEqual(3,row.decisions[0].count)
+
+
+        # After the second training session Foobar =5  shouldn't trigger an event
         self.testTriggeringEvent.data['attribute']['parameters'][0]['value'] = '5'
-        self.assertEqual(strategy.decide(self.testNonTriggeringEvent), [])
+        eventString = strategy.buildEventIdentifierFromMessage(self.testTriggeringEvent)
+        row=mapping.table[eventString]
+        self.assertEqual(strategy.decide(self.testTriggeringEvent), [])
