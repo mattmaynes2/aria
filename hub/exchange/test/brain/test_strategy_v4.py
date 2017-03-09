@@ -271,3 +271,21 @@ class V4StrategyTest(TestCase):
         eventString = strategy.buildEventIdentifierFromMessage(self.testTriggeringEvent)
         row=mapping.table[eventString]
         self.assertEqual(strategy.decide(self.testTriggeringEvent), [])
+
+        # test save and reload
+        strategy.save()
+        strategy.eventMapping={}
+        strategy.load()
+        
+        self.testTriggeringEvent.data['attribute']['parameters'][0]['value'] = '10'
+        self.assertEqual(strategy.decide(self.testTriggeringEvent)[0].data["value"], 
+                        [{
+                            "name": "Foo",
+                            "value": "5"
+                        }])
+        try:
+            os.remove("v4.json")
+        except OSError as e:
+            pass
+
+

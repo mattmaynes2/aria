@@ -5,6 +5,7 @@ from .decision import Decision
 from functools import partial
 from .decision_table import DecisionTable
 import json
+import pickle
 
 import logging
 
@@ -41,4 +42,21 @@ class V4Strategy(V3Strategy):
                 message=self.buildMessageFromEvent(event)
                 for e in events[ i-self.windowSize if i-self.windowSize>0 else 0 : i] :
                     self.addDecision(e,message)
+        log.debug("done processing session current table is {}".format(dict(self.eventMapping)))
+    
+    def save(self):
+        '''
+        Saves decisions to a file
+        '''
+        with open(self.saveFileName, 'wb') as f:
+            pickle.dump(self.eventMapping, f, pickle.HIGHEST_PROTOCOL)
 
+    def load(self):
+        '''
+        Saves decisions to a file
+        '''
+        try:
+            with open(self.saveFileName, 'rb') as f:
+                self.eventMapping=pickle.load(f)
+        except FileNotFoundError:
+            logger.info("Couldn't find {} not loading any decisions".format(self.saveFileName))

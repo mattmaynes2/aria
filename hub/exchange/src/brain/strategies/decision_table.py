@@ -37,7 +37,9 @@ class DecisionTable():
 
     def __str__(self):
         return str(self.__dict__)
-
+    
+    def __iter__(self):
+        yield "table", {key:dict(val) for key,val in self.table.items()}
 
 class TableRow():
     def __init__(self):
@@ -56,3 +58,7 @@ class TableRow():
 
     def __str__(self):
         return str(self.__dict__)
+    
+    def __iter__(self):
+        yield 'decisions' , [dict(d) for d in self.decisions]
+        yield 'count' , self.count
