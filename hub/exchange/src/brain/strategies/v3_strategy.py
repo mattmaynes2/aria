@@ -31,7 +31,7 @@ class V3Strategy(V2Strategy):
 
     def findLastEventBefore(self, index, eventList):
         for event in reversed(eventList[:index]):
-                logger.error("Found a trigger event for the request")
+                logger.debug("Found a trigger event for the request")
                 return event
 
     def getDecisionString(self, key, decisions):
