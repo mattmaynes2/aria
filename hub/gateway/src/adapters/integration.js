@@ -58,7 +58,8 @@ let IntegrateAdapter = (function () {
                 mode        : 1,
                 name        : 'Smart Hub',
                 devices     : [],
-                behaviours  : []
+                behaviours  : [],
+                session     : null
             }
         };
 
@@ -192,7 +193,8 @@ let IntegrateAdapter = (function () {
                     version     : this._state.hub.version,
                     mode        : this._state.hub.mode,
                     name        : this._state.hub.name,
-                    devices     : this._state.hub.devices.length
+                    devices     : this._state.hub.devices.length,
+                    session     : this._state.hub.session
                 });
             case 'mode':
                 return wrap(payload.get, this._state.hub.mode);
@@ -276,7 +278,8 @@ let IntegrateAdapter = (function () {
                     id          : payload.behaviourId + behaviour.sessions.length,
                     name        : payload.name,
                     behaviourId : payload.behaviourId,
-                    createdDate : generateTime()
+                    createdDate : generateTime(),
+                    stopped     : false
                 };
 
                 logger.debug('Adding session to behaviour: ' + JSON.stringify(behaviour));
@@ -307,6 +310,7 @@ let IntegrateAdapter = (function () {
 
         switch (payload.activate) {
             case 'session':
+                this._state.hub.session = getSession.call(this, parseInt(payload.id));
                 return wrap(payload.activate, payload.id);
             default:
                 throw new Error('Unknown activation type');
@@ -314,11 +318,16 @@ let IntegrateAdapter = (function () {
     }
 
     function requestDeactivate (payload) {
+        var session;
         logger.debug('Received request to deactivate ' + payload.id);
 
         switch (payload.deactivate) {
             case 'session':
-                return wrap(payload.deactivate, payload.id);
+                session = getSession.call(this, parseInt(payload.id));
+                this._state.hub.session = null;
+                logger.debug('Stopping session: ' + JSON.stringify(session));
+                session.stopped = true;
+                return wrap(payload.deactivate, session);
             default:
                 throw new Error('Unknown deactivation type');
         }
@@ -356,6 +365,20 @@ let IntegrateAdapter = (function () {
             behaviour = this._state.hub.behaviours[i];
             if (behaviour.id === id) {
                 return behaviour;
+            }
+        }
+        return null;
+    }
+
+    function getSession (id) {
+        var behaviour, i, j;
+
+        for (i in this._state.hub.behaviours) {
+            behaviour = this._state.hub.behaviours[i];
+            for (j in behaviour.sessions) {
+                if (behaviour.sessions[j].id === id) {
+                    return behaviour.sessions[j];
+                }
             }
         }
         return null;

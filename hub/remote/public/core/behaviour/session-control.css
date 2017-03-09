@@ -6,3 +6,12 @@
 .session-control-button {
     margin : 0 4px;
 }
+
+.session-complete {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+.session-active {
+    border: 1px solid rgba(110, 226, 110, 0.7);
+}

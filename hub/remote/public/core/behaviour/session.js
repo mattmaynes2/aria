@@ -10,11 +10,12 @@ class Session extends Widget {
         this._state = {
             id          : this._state.id            || 0,
             title       : this._state.name          || '',
-            createdDate : this._state.createdDate   || 0
+            createdDate : this._state.createdDate   || 0,
+            stopped     : this._state.stopped       || 0
         };
 
-        this._view = new SessionView(this._state);
-        this._control = new SessionControl(this._state);
+        this._view = new SessionView(this._state, this._props);
+        this._control = new SessionControl(this._state, this._props);
     }
 
     render () {

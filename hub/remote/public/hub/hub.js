@@ -1,4 +1,5 @@
 import $            from 'jquery';
+import Component    from '../core/component';
 import Widget       from '../core/widget/widget';
 import Button       from '../core/control/button';
 import StateButton  from '../core/control/state-button';
@@ -25,7 +26,8 @@ class Hub extends Widget {
             title   : 'Smart Hub',
             version : '',
             mode    : 0,
-            devices : 0
+            devices : 0,
+            session : null
         };
         this._stateButton = new StateButton(0, Hub.modes);
         this._stateButton.change((state) => {
@@ -41,6 +43,8 @@ class Hub extends Widget {
                 Notify.info('Starting device discovery');
             });
         };
+        this._activeIcon = new Component();
+        this._activeIcon.$el().attr('title', 'Aria is recording a session');
         Service.socket.on('device.discovered', (msg) => {
             Notify.success('New device ' +
                 (msg.name ? '\'' + msg.name + '\'' : '') +
@@ -57,6 +61,7 @@ class Hub extends Widget {
             this._state.mode    = payload.mode;
             this._state.devices = payload.devices;
             this._state.version = payload.version;
+            this._state.session = payload.session;
             this.render();
         });
         return this;
@@ -81,12 +86,21 @@ class Hub extends Widget {
             );
 
         this._$el
-            .find('.widget-footer')
+            .find('.widget-footer').css('position', 'relative')
+            .append(this._activeIcon.render().$el().addClass('hub-active-icon'))
             .append(this._discoverButton.render().$el().addClass('hub-discover-button'))
             .append(this._stateButton.$el().addClass('hub-mode-toggle'));
         this._discoverButton.click(this._discoverHandler);
 
-        return this;
+        if (!this._state.session) {
+            this._activeIcon.addClass('hub-hide-active-icon');
+        }
+        else {
+            this._activeIcon.text('Session Active: ' + this._state.session.name);
+            this._activeIcon.removeClass('hub-hide-active-icon');
+        }
+
+       return this;
     }
 
 }

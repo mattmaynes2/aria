@@ -8,30 +8,62 @@ class SessionControl extends Component {
 
     constructor (state, props) {
         super(state, props);
-        this._start = new Button('Start').addClass('session-control-button');
-        this._stop  = new Button('Stop').addClass('session-control-button');
 
-        this.append([this._start, this._stop]);
+        this._added = true;
+        this._started = this._props.isActive;
+        if (!this._state.stopped && !this._props.hideButtons) {
+            this._start = new Button('Start').addClass('session-control-button');
+            this._stop  = new Button('Stop').addClass('session-control-button');
+
+            if (this._props.isActive) {
+                this.append(this._stop);
+            }
+            else {
+                this.append([this._start, this._stop]);
+            }
+            this._added = false;
+        }
+
         this.addClass('session-control');
-        this._added = false;
     }
-
     _postrender () {
         if (!this._added) {
             this._added = true;
             this._start.click(start.bind(this));
             this._stop.click(stop.bind(this));
         }
+        if (this._state.stopped) {
+            this._$el.append(
+                new Component()
+                    .addClass('session-complete')
+                    .render()
+                    .$el()
+                    .text('Session Complete')
+            );
+        }
+
     }
 }
 
 
 function start () {
-    Service.set(`/hub/training/session/${this._state.id}/start`, {});
+    Service.set(`/hub/training/session/${this._state.id}/start`, {})
+        .then(() => {
+            this._started = true;
+            this._start.remove();
+            this._$el.parent().parent().addClass('session-active');
+        });
 }
 
 function stop () {
-    Service.set(`/hub/training/session/${this._state.id}/stop`, {});
+    if (this._started) {
+        Service.set(`/hub/training/session/${this._state.id}/stop`, {})
+            .then(() => {
+                this._state.stopped = true;
+                this.clear().render();
+                this._$el.parent().parent().removeClass('session-active');
+            });
+    }
 }
 
 export default SessionControl;

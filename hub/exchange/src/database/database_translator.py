@@ -16,6 +16,7 @@ class DatabaseTranslator(Delegate):
                         (?, ?, ?)"
 
     GET_PARAMETER     = "SELECT id FROM Parameter WHERE attribute_id = ? AND name = ?"
+    GET_DEVICE        = "SELECT 1 FROM Device WHERE address = ?"
     GET_DEVICE_TYPE   = "SELECT type FROM Device WHERE address = ?"
     GET_ATTRIBUTE     = "SELECT id FROM Attribute WHERE device_type = ? AND name = ?"
 
@@ -45,19 +46,25 @@ class DatabaseTranslator(Delegate):
             
             
             deviceTypeId = None
-            existingId = self._getDeviceTypeId(str(device.deviceType.name))
+            existingType = self._getDeviceTypeId(str(device.deviceType.name))
             
-            if existingId:
+            if existingType:
                 log.info("DeviceType " + str(device.deviceType.name) + " already exists in the \
                 database")
-                deviceTypeId = existingId[0]["id"]
+                deviceTypeId = existingType[0]["id"]
                 
             else:
                 self.database.execute(DatabaseTranslator.SET_DEVICE_TYPE, typeValues)
                 deviceTypeId = self.database.getLastInsertId()
+            
+            existingDevice = self._getDevice(self._getStr(device.address))
+            if existingDevice: 
+                log.info("Device " + str(self._getStr(device.address) + " already exists in the \
+                database"))
+            else:
+                self.database.execute(DatabaseTranslator.DISCOVER, (self._getStr(device.address)\
+                , str(device.version), deviceTypeId, str(device.name)))  
 
-            self.database.execute(DatabaseTranslator.DISCOVER, (self._getStr(device.address)\
-            , str(device.version), deviceTypeId, str(device.name)))           
             for attribute in device.deviceType.attributes:
                 self._setAttribute(attribute, deviceTypeId)
                 attributeId = self.database.getLastInsertId()
@@ -124,3 +131,6 @@ class DatabaseTranslator(Delegate):
 
     def _getDeviceTypeId(self, name):
         return self.database.execute(DatabaseTranslator.GET_DEVICE_TYPE_ID, [name])
+
+    def _getDevice(self, address):
+        return self.database.execute(DatabaseTranslator.GET_DEVICE, [address])
