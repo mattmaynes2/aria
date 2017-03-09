@@ -58,7 +58,8 @@ let IntegrateAdapter = (function () {
                 mode        : 1,
                 name        : 'Smart Hub',
                 devices     : [],
-                behaviours  : []
+                behaviours  : [],
+                session     : null
             }
         };
 
@@ -192,7 +193,8 @@ let IntegrateAdapter = (function () {
                     version     : this._state.hub.version,
                     mode        : this._state.hub.mode,
                     name        : this._state.hub.name,
-                    devices     : this._state.hub.devices.length
+                    devices     : this._state.hub.devices.length,
+                    session     : this._state.hub.session
                 });
             case 'mode':
                 return wrap(payload.get, this._state.hub.mode);
@@ -308,6 +310,7 @@ let IntegrateAdapter = (function () {
 
         switch (payload.activate) {
             case 'session':
+                this._state.hub.session = getSession.call(this, parseInt(payload.id));
                 return wrap(payload.activate, payload.id);
             default:
                 throw new Error('Unknown activation type');
@@ -321,6 +324,7 @@ let IntegrateAdapter = (function () {
         switch (payload.deactivate) {
             case 'session':
                 session = getSession.call(this, parseInt(payload.id));
+                this._state.hub.session = null;
                 logger.debug('Stopping session: ' + JSON.stringify(session));
                 session.stopped = true;
                 return wrap(payload.deactivate, session);
