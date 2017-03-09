@@ -41,14 +41,20 @@ class SessionControl extends Component {
 
 function start () {
     this._started = true;
-    Service.set(`/hub/training/session/${this._state.id}/start`, {});
+    Service.set(`/hub/training/session/${this._state.id}/start`, {})
+        .then(function () {
+            this._$el.parent().parent().addClass('session-active');
+        }.bind(this));
 }
 
 function stop () {
     if (this._started) {
         this._state.stopped = true;
         this.clear().render();
-        Service.set(`/hub/training/session/${this._state.id}/stop`, {});
+        Service.set(`/hub/training/session/${this._state.id}/stop`, {})
+            .then(function () {
+                this._$el.parent().parent().removeClass('session-active');
+            }.bind(this));
     }
 }
 
