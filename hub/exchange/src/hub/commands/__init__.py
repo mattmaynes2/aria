@@ -2,11 +2,12 @@ from .command_type                  import CommandType              # NOQA
 from .command                       import Command                  # NOQA
 from .get_device_events_command     import GetDeviceEventsCommand   # NOQA
 from .get_event_window_command      import GetEventWindowCommand    # NOQA
-from .get_behaviours_command        import  GetBehavioursCommand    # NOQA
+from .get_behaviours_command        import GetBehavioursCommand     # NOQA
 from .create_behaviour_command      import CreateBehavioursCommand  # NOQA
 from .create_session_command        import CreateSessionCommand     # NOQA
 from .activate_session_command      import ActivateSessionCommand   # NOQA
 from .deactivate_session_command    import DeactivateSessionCommand # NOQA
 from .delete_behaviour_command      import DeleteBehaviourCommand   # NOQA
 from .delete_session_command        import DeleteSessionCommand     # NOQA
-from .get_sessions_command          import  GetSessionsCommand      # NOQA
+from .get_sessions_command          import GetSessionsCommand       # NOQA
+from .set_behaviour_command         import SetBehaviourCommand     # NOQA

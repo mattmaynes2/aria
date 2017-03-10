@@ -16,7 +16,7 @@ from ipc import Message
 from device     import SoftwareDeviceFactory
 from hub.commands import GetDeviceEventsCommand,GetEventWindowCommand,GetBehavioursCommand,\
  CreateBehavioursCommand, CreateSessionCommand, ActivateSessionCommand, DeactivateSessionCommand,\
- DeleteBehaviourCommand, DeleteSessionCommand, GetSessionsCommand
+ DeleteBehaviourCommand, DeleteSessionCommand, GetSessionsCommand, SetBehaviourCommand
 from brain.model_builder import ModelBuilder
 from brain.decision_broker import DecisionBroker
 from brain.strategies import V4Strategy
@@ -111,6 +111,7 @@ def setupCommands(hub,database):
     hub.addCommand(DeleteBehaviourCommand(database))
     hub.addCommand(DeleteSessionCommand(database))
     hub.addCommand(GetSessionsCommand(database))
+    hub.addCommand(SetBehaviourCommand(database))
 
 if (__name__ == '__main__'):
     main()
