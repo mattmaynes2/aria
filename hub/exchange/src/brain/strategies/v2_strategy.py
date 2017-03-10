@@ -1,6 +1,6 @@
 from uuid import UUID
 from ipc import Message
-from .decision_broker import MACHINE_LEARNING_ADDRESS
+from ..decision_broker import MACHINE_LEARNING_ADDRESS
 import logging
 
 logger = logging.getLogger(__name__)
