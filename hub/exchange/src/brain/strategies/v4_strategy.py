@@ -17,16 +17,16 @@ logger.setLevel(logging.DEBUG)
 
 class V4Strategy(V3Strategy):
 
-    def __init__(self,saveFileName, inactive=[]):
+    def __init__(self,saveFileName, inactive=[],threshold=0.8,window=6):
         super().__init__(saveFileName)
         self.eventMapping=DecisionTable()
         # set of behaviour Ids that are inactive
         self.inactive=set(inactive)
         # using a threshold of 80% to determine if a decision is should be triggered on an event
         # this is calculated as decision_count / event_count > threshold
-        self.threshold=0.8
+        self.threshold=threshold
         # the window is the number of events each decision is
-        self.windowSize=6
+        self.windowSize=window
 
     def deactivateBehaviour(self,behaviourId):
         self.inactive.add(behaviourId)

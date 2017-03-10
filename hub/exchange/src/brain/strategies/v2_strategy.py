@@ -1,6 +1,6 @@
 from uuid import UUID
 from ipc import Message
-
+from .decision_broker import MACHINE_LEARNING_ADDRESS
 import logging
 
 logger = logging.getLogger(__name__)
@@ -39,7 +39,7 @@ class V2Strategy():
                     'set':event['attribute_name'],
                     'value':[{'name':event['parameter_name'],
                     'value':event['value']}]
-            }, receiver=UUID(event['source']).bytes)
+            }, receiver=UUID(event['source']).bytes, sender=MACHINE_LEARNING_ADDRESS )
                     
 
     def findLastEventBefore(self, index, eventList):
