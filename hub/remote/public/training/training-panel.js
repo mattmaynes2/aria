@@ -18,8 +18,12 @@ class TrainingPanel extends WidgetPanel {
 
     update () {
         Service.get('/hub/training/behaviours', { start: 0, count: 10 }).then((res) => {
-            this._state.behaviours = res.payload.records.map((b) => {
-                return new Behaviour(b);
+            this._state.behaviours = res.payload.records.map((b, i) => {
+                return new Behaviour(b, {
+                    remove : () => {
+                        this._state.behaviours.splice(i, 1);
+                    }
+                });
             });
             this.render();
         });
