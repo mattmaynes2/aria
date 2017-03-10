@@ -352,7 +352,7 @@ let IntegrateAdapter = (function () {
             behaviour = this._state.hub.behaviours[i];
             if (behaviour.id === parseInt(id)) {
                 logger.debug('Found behaviour to delete: ' + JSON.stringify(behaviour));
-                delete this._state.hub.behaviours[i];
+                this._state.hub.behaviours.splice(i, 1);
             }
         }
     }

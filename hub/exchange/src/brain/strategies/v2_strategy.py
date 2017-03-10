@@ -30,12 +30,17 @@ class V2Strategy():
                 logger.debug("Found a request made during the session")
                 triggeringEvent = self.findLastEventBefore(i, events)
                 if (triggeringEvent):
-                    message = Message(Message.Request, data=
-                    {
-                        'set':event['attribute_name'],
-                        'value':[{'name':event['parameter_name'], 'value':event['value']}]
-                    }, receiver=UUID(event['source']).bytes)
+                    message=self.buildMessageFromEvent(event)
                     self.addDecision(triggeringEvent, message)
+
+    def buildMessageFromEvent(self,event):
+        return Message(Message.Request, data=
+                {
+                    'set':event['attribute_name'],
+                    'value':[{'name':event['parameter_name'],
+                    'value':event['value']}]
+            }, receiver=UUID(event['source']).bytes)
+                    
 
     def findLastEventBefore(self, index, eventList):
         for event in reversed(eventList[:index]):
@@ -64,7 +69,12 @@ class V2Strategy():
         eventString = self.buildEventIdentifierFromMessage(event)
         logger.debug("Looking for decision for trigger string " + eventString)
 
-        if eventString in self.eventMapping:
-            logger.debug("Found a decision " + str(self.eventMapping[eventString]))
-            return self.eventMapping[eventString]
-        return []
+            
+        decision=self.getDecision(eventString)
+        if decision :
+           logger.debug("Found a decision " + str(decision))
+        return decision
+
+
+    def getDecision(self,eventString):
+        return self.eventMapping.get(eventString,[])
