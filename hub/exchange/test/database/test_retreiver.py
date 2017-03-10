@@ -107,7 +107,40 @@ class RetrieverTest(TestCase):
         results=self.retriever.getSessionsWindow(0,10,1)
         self.assertEqual(len(results), 2)
 
+    def test_update_behaviour_change_none(self):
+         self.database.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')")
+         behaviour =self.retriever.updateBehaviour(1,'Test',1)
+         self.assertEqual(1,behaviour["id"])
+         self.assertEqual("Test",behaviour["name"])
+         self.assertEqual(1,behaviour["active"])
 
+    def test_update_behaviour_change_name(self):
+         self.database.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')")
+         behaviour =self.retriever.updateBehaviour(1,"New Name",None)
+         self.assertEqual(1,behaviour["id"])
+         self.assertEqual("New Name",behaviour["name"])
+         self.assertEqual(1,behaviour["active"])
+
+    def test_update_behaviour_change_active(self):
+         self.database.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')")
+         behaviour =self.retriever.updateBehaviour(1,None,0)
+         self.assertEqual(1,behaviour["id"])
+         self.assertEqual("Test",behaviour["name"])
+         self.assertEqual(0,behaviour["active"])
+    
+    def test_update_behaviour_change_both(self):
+         self.database.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')")
+         behaviour =self.retriever.updateBehaviour(1,"New Name",0)
+         self.assertEqual(1,behaviour["id"])
+         self.assertEqual("New Name",behaviour["name"])
+         self.assertEqual(0,behaviour["active"])
+
+    def test_update_behaviour_no_params(self):
+         self.database.execute("INSERT INTO Behaviour(id,name) VALUES(1,'Test')")
+         behaviour =self.retriever.updateBehaviour(1,None,None)
+         self.assertEqual(1,behaviour["id"])
+         self.assertEqual("Test",behaviour["name"])
+         self.assertEqual(1,behaviour["active"])
 
 class TestDatabase:
 
