@@ -18,8 +18,9 @@ class Retriever:
     GET_ATTRIBUTE_NAME      = "SELECT name FROM Attribute WHERE id = ?"
     GET_SESSION             = "SELECT * from session where id=?"
     GET_LAST_EVENT_ID       = "SELECT id FROM Event ORDER BY id DESC LIMIT 1 "
-    GET_LAST_BEHAVIOUR       = "SELECT * FROM Behaviour ORDER BY id DESC LIMIT 1 "
+    GET_LAST_BEHAVIOUR      = "SELECT * FROM Behaviour ORDER BY id DESC LIMIT 1 "
     GET_LAST_SESSION        = "SELECT * FROM Session ORDER BY id DESC LIMIT 1 "
+    GET_BEHAVIOUR           = "SELECT * FROM Behaviour where id= ?"
 
     ADD_NEW_BEHAVIOUR       = "INSERT INTO Behaviour (name) VALUES (?)"
     ADD_NEW_SESSION         = "INSERT INTO Session (behaviour_id, name) VALUES (?, ?)"
@@ -163,6 +164,19 @@ class Retriever:
         @param session_id   The id of the session 
         """
         return self.database.execute(Retriever.GET_SESSION_EVENTS, [session_id])
+
+    def updateBehaviour(self,id_, name,active):
+        if  name == None and active == None:
+            return self.database.execute(Retriever.GET_BEHAVIOUR,[id_])[0]
+        params={}
+        params['name']=name
+        params['active']=active
+        sql="Update behaviour set %s where id=?" %(
+            ','.join('%s=?'% p for p, val  in params.items() if val != None ))
+        self.database.execute(sql,[v for v in params.values() if v != None]+[id_])
+        return self.database.execute(Retriever.GET_BEHAVIOUR,[id_])[0]
+        
+
 
     def stopSession(self,session_id):
         self.database.execute(Retriever.STOP_SESSION,[session_id])

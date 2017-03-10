@@ -69,4 +69,27 @@ class ModelBuilderTest (TestCase):
         self.assertEqual(100,volume['parameters'][0]['max'])
         self.assertEqual(50,volume['parameters'][0]['value'])
 
+    def test_toggle_behaviour(self):
+        self.modelBuilder.received(Message(Message.Request,data=
+        {
+            'set':'behaviour', 
+            'id':1, 
+            'value' : {"name" :"New Name" }
+        }))
+        self.mockStrategy.activateBehaviour.assert_not_called()
+        self.mockStrategy.deactivateBehaviour.assert_not_called()
+        self.modelBuilder.received(Message(Message.Request,data=
+        {
+            'set':'behaviour', 
+            'id':1, 
+            'value' : {"active" :True }
+        }))
+        self.mockStrategy.activateBehaviour.assert_called_with(1)
 
+        self.modelBuilder.received(Message(Message.Request,data=
+        {
+            'set':'behaviour', 
+            'id':1, 
+            'value' : {"active" :0 }
+        }))
+        self.mockStrategy.deactivateBehaviour.assert_called_with(1)
