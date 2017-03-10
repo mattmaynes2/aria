@@ -27,9 +27,9 @@ class BehaviourControl extends Component {
     static activeState(val) {
         if (typeof val === 'string') {
             return val === 'Active';
-        }else{
-            return val == true ? 'Active' : 'Inactive';
         }
+        return val ? 'Active' : 'Inactive';
+        
     }
 
     _postrender () {
