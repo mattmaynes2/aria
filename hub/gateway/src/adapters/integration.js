@@ -148,6 +148,7 @@ let IntegrateAdapter = (function () {
         }
         else if (payload.set){
             response = requestSet.call(this, payload);
+            logger.debug("Response ", response);
         }
         else if (payload.create) {
             response = requestCreate.call(this, payload);
@@ -187,6 +188,7 @@ let IntegrateAdapter = (function () {
     }
 
     function requestGet (payload) {
+        logger.debug("Get request payload ", payload);
         switch (payload.get) {
             case 'status':
                 return wrap(payload.get, {
@@ -216,6 +218,8 @@ let IntegrateAdapter = (function () {
                         )
                     )
                 });
+            case 'behaviour' :
+                return wrap(payload.get, getBehaviour.call(this, parseInt(payload.id)));
             case 'sessions':
                logger.debug('Getting sessions for behaviour id: ' + payload.behaviourId);
                var behaviour = getBehaviour.call(this, payload.behaviourId);
@@ -243,10 +247,17 @@ let IntegrateAdapter = (function () {
                 logger.debug(`Setting hub name to ${payload.value}`);
                 this._state.hub.name = payload.value;
                 break;
+            case 'behaviour':
+                var behaviour = getBehaviour.call(this, parseInt(payload.id));
+                logger.debug(JSON.stringify(payload.value));
+                behaviour.name = payload.value.name;
+                behaviour.active = payload.value.active;
+                return wrap(payload.set, behaviour);
             default:
                 throw new Error ('Unknown request');
         }
         payload.get = payload.set;
+        logger.debug('Returning payload ', payload);
         return requestGet.call(this, payload);
     }
 
