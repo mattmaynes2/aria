@@ -292,7 +292,7 @@ class V4StrategyTest(TestCase):
     def test_toggle_behaviour(self):
         # Setup the strategy with 
         strategy= V4Strategy("v4.json",[1])
-         session2 = [{
+        session2 = [{
                         'source': str(self.sensorId),
                         'attribute_name': 'Bar',
                         'parameter_name': 'Foo',
@@ -302,13 +302,13 @@ class V4StrategyTest(TestCase):
                     },
                     
                     {
-                        'source': str(self.sensorId),
-                        'attribute_name': 'Bar',
+                        'source': str(self.userActionId),
+                        'attribute_name': 'Foo',
                         'parameter_name': 'Foo',
-                        'value': '8',
-                        'request_id': None,
-                         'behaviour_id': 2
-                    }]
+                        'value': '5',
+                        'request_id': 2,
+                        'behaviour_id': 2
+                        }]
 
         event = Mock()
         event.type = Message.Event
@@ -345,9 +345,9 @@ class V4StrategyTest(TestCase):
                             "name": "Foo",
                             "value": "5"
                         }])
-                        
+
         # test that the deactivated behaviour doesn't make decisions
         strategy.deactivateBehaviour(2)
-        self.assertEqual(strategy.decide(event)[0].data["value"], [])
+        self.assertEqual(strategy.decide(event), [])
 
 
