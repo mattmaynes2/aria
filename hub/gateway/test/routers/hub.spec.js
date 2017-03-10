@@ -131,6 +131,24 @@ describe('Test the endpoints provided by the hub router', function(){
                                                                 });
     });
     
+    it ('Should have an endpoint for updating a behaviour', () => {
+        var hubRouter = new HubRouter(stubAdapter);
+        hubRouter.router();
+
+        var postFn = stubApp.post.withArgs('/training/behaviour/:id').getCalls()[0].args[1];
+        var req = { params : {id: 1}, body : {name: 'myBehaviour', active: false}};
+        var res = {};
+        postFn(req, res);
+        sinon.assert.calledWith(stubAdapter.send, ipc.Request, { 
+                                                                'set' : 'behaviour',
+                                                                    'id' : 1,
+                                                                    'value' : {
+                                                                        'name' : 'myBehaviour',
+                                                                        'active' : false
+                                                                    } 
+                                                                });
+    });
+    
     it ('Should have an endpoint for deleting a session', () => {
         var hubRouter = new HubRouter(stubAdapter);
         hubRouter.router();
