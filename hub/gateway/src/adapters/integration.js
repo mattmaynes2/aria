@@ -148,7 +148,6 @@ let IntegrateAdapter = (function () {
         }
         else if (payload.set){
             response = requestSet.call(this, payload);
-            logger.debug("Response ", response);
         }
         else if (payload.create) {
             response = requestCreate.call(this, payload);
@@ -188,7 +187,6 @@ let IntegrateAdapter = (function () {
     }
 
     function requestGet (payload) {
-        logger.debug("Get request payload ", payload);
         switch (payload.get) {
             case 'status':
                 return wrap(payload.get, {
