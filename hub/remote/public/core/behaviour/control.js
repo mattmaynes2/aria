@@ -28,7 +28,7 @@ class BehaviourControl extends Component {
         if (typeof val === 'string') {
             return val === 'Active';
         }else{
-            return val === true ? 'Active' : 'Inactive';
+            return val == true ? 'Active' : 'Inactive';
         }
     }
 
