@@ -29,13 +29,15 @@ class Retriever:
 	                            " p.NAME as parameter_name, " +\
 	                            " pc.value, " +\
 	                            " e.request_id, " +\
-                                " a.name as attribute_name " +\
+                                " a.name as attribute_name, " +\
+                                " s.behaviour_id " +\
 	                            "FROM   event e " +\
 	                            "  JOIN parameter_change pc " +\
 	                            "    ON e.id = pc.event_id " +\
 	                            "  JOIN parameter p " +\
 	                            "    ON p.id = pc.parameter " +\
-                                "  JOIN attribute a on a.id = p.attribute_id"+\
+                                "  JOIN attribute a on a.id = p.attribute_id "+\
+                                "  JOIN session s on e.session_id= s.id "+\
 	                            " WHERE  session_id = ? order by e.timestamp ASC"
     STOP_SESSION            = "UPDATE session set stopped = 1 where id=?"  
     DELETE_BEHAVIOUR        = "DELETE FROM behaviour where id=?"
