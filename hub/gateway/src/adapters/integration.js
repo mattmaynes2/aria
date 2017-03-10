@@ -216,6 +216,8 @@ let IntegrateAdapter = (function () {
                         )
                     )
                 });
+            case 'behaviour' :
+                return wrap(payload.get, getBehaviour.call(this, parseInt(payload.id)));
             case 'sessions':
                logger.debug('Getting sessions for behaviour id: ' + payload.behaviourId);
                var behaviour = getBehaviour.call(this, payload.behaviourId);
@@ -243,10 +245,18 @@ let IntegrateAdapter = (function () {
                 logger.debug(`Setting hub name to ${payload.value}`);
                 this._state.hub.name = payload.value;
                 break;
+            case 'behaviour':
+                var behaviour = getBehaviour.call(this, parseInt(payload.id));
+                logger.debug(JSON.stringify(payload.value));
+                behaviour.name = payload.value.name || behaviour.name;
+                behaviour.active = typeof payload.value.active === 'undefined' ?
+                     behaviour.active : payload.value.active;
+                return wrap(payload.set, behaviour);
             default:
                 throw new Error ('Unknown request');
         }
         payload.get = payload.set;
+        logger.debug('Returning payload ', payload);
         return requestGet.call(this, payload);
     }
 
@@ -341,7 +351,7 @@ let IntegrateAdapter = (function () {
             behaviour = this._state.hub.behaviours[i];
             if (behaviour.id === parseInt(id)) {
                 logger.debug('Found behaviour to delete: ' + JSON.stringify(behaviour));
-                delete this._state.hub.behaviours[i];
+                this._state.hub.behaviours.splice(i, 1);
             }
         }
     }

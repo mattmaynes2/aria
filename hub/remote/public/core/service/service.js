@@ -29,6 +29,10 @@ class Service {
         return Service.send('POST', endpoint, data);
     }
 
+    static delete (endpoint, data) {
+        return Service.send('DELETE', endpoint, data);
+    }
+
     static send (method, endpoint, data) {
         data = data || '';
         return new Promise((resolve, reject) => {
