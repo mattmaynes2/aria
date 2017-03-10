@@ -289,4 +289,65 @@ class V4StrategyTest(TestCase):
         except OSError as e:
             pass
 
+    def test_toggle_behaviour(self):
+        # Setup the strategy with 
+        strategy= V4Strategy("v4.json",[1])
+         session2 = [{
+                        'source': str(self.sensorId),
+                        'attribute_name': 'Bar',
+                        'parameter_name': 'Foo',
+                        'value': '10',
+                        'request_id': None,
+                        'behaviour_id': 2
+                    },
+                    
+                    {
+                        'source': str(self.sensorId),
+                        'attribute_name': 'Bar',
+                        'parameter_name': 'Foo',
+                        'value': '8',
+                        'request_id': None,
+                         'behaviour_id': 2
+                    }]
+
+        event = Mock()
+        event.type = Message.Event
+        event.sender = self.sensorId.bytes
+        event.receiver = uuid.uuid4().bytes
+        event.data ={
+                                            "event": "device.event",
+                                            "attribute": {
+                                                "name": "Bar",
+                                                "parameters": [{
+                                                    "name": "Foo",
+                                                    "value": "10"
+                                                }]
+                                            }
+                                        }
+        
+        # process both sessions
+        strategy.processSession(self.testEvents,self.testState)
+        strategy.processSession(session2,self.testState)
+        # test that disabled behaviour doesn't trigger decisions
+        self.assertEqual(strategy.decide(self.testTriggeringEvent), [])
+
+        # test that non disabled devices still trigger events
+        self.assertEqual(strategy.decide(event)[0].data["value"], 
+                        [{
+                            "name": "Foo",
+                            "value": "5"
+                        }])
+        # reactivate event
+        strategy.activateBehaviour(1)
+        # test that resactivated event  trigger events
+        self.assertEqual(strategy.decide(self.testTriggeringEvent)[0].data["value"], 
+                        [{
+                            "name": "Foo",
+                            "value": "5"
+                        }])
+                        
+        # test that the deactivated behaviour doesn't make decisions
+        strategy.deactivateBehaviour(2)
+        self.assertEqual(strategy.decide(event)[0].data["value"], [])
+
 
