@@ -62,16 +62,29 @@ let HubRouter = (function () {
             });
 
         app.delete('/training/behaviour/:id', (req, res) => {
-            this._adapter
-                .send(IPC.Request, {
-                    delete  : 'behaviour',
-                    id      : req.params.id
-                })
-                .then((reply) => {
-                    res.json(reply.payload.value || {});
-                })
-                .catch(onError.bind(this, res));
-        });
+                this._adapter
+                    .send(IPC.Request, {
+                        delete  : 'behaviour',
+                        id      : req.params.id
+                    })
+                    .then((reply) => {
+                        res.json(reply.payload.value || {});
+                    })
+                    .catch(onError.bind(this, res));
+            });
+        
+        app.post('/training/behaviour/:id', (req, res) => {
+                this._adapter
+                    .send(IPC.Request, {
+                        set: 'behaviour',
+                        id : req.params.id,
+                        value : req.body
+                    })
+                    .then((reply) => {
+                        res.json(reply.payload.value || {});
+                    })
+                    .catch(onError.bind(this, res));
+            });
 
         app.post('/training/behaviour', (req, res) => {
             this._adapter
@@ -166,6 +179,7 @@ let HubRouter = (function () {
 
     function onError (res, err) {
         logger.error('Error handling request: ', err.message);
+        logger.debug('Error stack: ' + err.stack);
         res.status(500).json({ error : err.message || '' });
     }
 

@@ -3,6 +3,8 @@ import Button       from '../control/button';
 import Dialog       from '../dialog/dialog';
 import Session      from './session';
 import SessionPanel from './session-panel';
+import Service      from '../service/service';
+import StateButton  from '../control/state-button';
 
 import './control.css';
 
@@ -11,16 +13,37 @@ class BehaviourControl extends Component {
         super(state, props);
         this._sessions  = new Button('Sessions').addClass('behaviour-control-button');
         this._remove    = new Button('Remove').addClass('behaviour-control-button');
-        this.append([this._sessions, this._remove]);
+        this._toggleActive = new StateButton(BehaviourControl.activeState(state.active),
+             BehaviourControl.activeStates);
+        this.append([this._sessions, this._remove, this._toggleActive]);
         this.addClass('behaviour-control');
-        this._added = false;
+        this._props.remove = this._props.remove || (() => {});
     }
-    _postrender () {
-        if (!this._added) {
-            this._added = true;
-            this._remove.click(remove.bind(this));
-            this._sessions.click(sessions.bind(this));
+
+    static get activeStates() {
+        return ['Active', 'Inactive'];
+    }
+
+    static activeState(val) {
+        if (typeof val === 'string') {
+            return val === 'Active';
+        }else{
+            return val === true ? 'Active' : 'Inactive';
         }
+    }
+
+    _postrender () {
+        this._remove.$el().off().click(remove.bind(this));
+        this._sessions.$el().off().click(sessions.bind(this));
+        this._toggleActive.change((state) => {
+            Service.set('/hub/training/behaviour/' + this._state.id, { 
+                    active: BehaviourControl.activeState(state)
+                })
+                .then((res) => {
+                    this._state = res.payload;
+                    this.render();
+                });
+        });
     }
 }
 
@@ -55,7 +78,13 @@ function remove () {
                 },
                 {
                     text    : 'Remove',
-                    click   : () => { console.log('Removing behaviour'); d.remove(); }
+                    click   : () => {
+                        Service.delete('/hub/training/behaviour/' + this._state.id)
+                            .then(() => {
+                                this._props.remove();
+                            });
+                        d.remove();
+                    }
                 }
             ]
         }

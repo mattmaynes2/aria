@@ -17,9 +17,15 @@ class Behaviour extends Widget {
             createdDate : state.createdDate   || 0,
             lastUpdated : state.lastUpdated   || 0
         };
+        this._props.remove = this._props.remove || (() => {});
 
         this._view = new BehaviourView(this._state);
-        this._control = new BehaviourControl(this._state);
+        this._control = new BehaviourControl(this._state, {
+            remove : () => {
+                this._$el.remove();
+                this._props.remove();
+            }
+        });
     }
     render () {
         super.render();
