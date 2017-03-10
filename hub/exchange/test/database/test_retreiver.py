@@ -63,6 +63,7 @@ class RetrieverTest(TestCase):
 
         self.assertEqual('volume',results[0]['parameter_name'])
         self.assertEqual('bass',results[1]['parameter_name'])
+        self.assertEqual(1,results[1]['behaviour_id'])
 
 
     def test_addBehaviour(self):
