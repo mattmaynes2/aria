@@ -28,7 +28,7 @@ class TestSetBehaviourCommand(TestCase):
         hub.addCommand(command)
 
         message=Message(Message.Request,
-            {"set": "behaviour", "id": 1, "name": "New Name", "active": 0},uuid.uuid4())
+            {"set": "behaviour", "id": 1, "value":{"name": "New Name", "active": 0}},uuid.uuid4())
         adapter.send(message)
         responce = mockDelegate.received.call_args[0][0]
         behaviour=responce.data['value']
