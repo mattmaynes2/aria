@@ -7,8 +7,9 @@ class SetBehaviourCommand(DatabaseCommand):
         super().__init__(CommandType.SET,'behaviour',database)
     
     def execute(self,hub,data):
-        name=data.get('name')
-        active= data.get('active')
+        value= data['value']
+        name=value.get('name')
+        active= value.get('active')
         id_=data['id']
         result = self.retriever.updateBehaviour(id_,name,active)
         result['created_date']=self.formatDate(result['created_date'])
