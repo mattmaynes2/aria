@@ -61,5 +61,5 @@ class V4Strategy(V3Strategy):
         try:
             with open(self.saveFileName, 'rb') as f:
                 self.eventMapping=pickle.load(f)
-        except FileNotFoundError:
-            logger.info("Couldn't find {} not loading any decisions".format(self.saveFileName))
+        except:
+            logger.exception("Couldn't load {} not loading any decisions".format(self.saveFileName))
