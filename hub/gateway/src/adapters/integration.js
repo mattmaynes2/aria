@@ -248,8 +248,9 @@ let IntegrateAdapter = (function () {
             case 'behaviour':
                 var behaviour = getBehaviour.call(this, parseInt(payload.id));
                 logger.debug(JSON.stringify(payload.value));
-                behaviour.name = payload.value.name;
-                behaviour.active = payload.value.active;
+                behaviour.name = payload.value.name || behaviour.name;
+                behaviour.active = typeof payload.value.active === 'undefined' ?
+                     behaviour.active : payload.value.active;
                 return wrap(payload.set, behaviour);
             default:
                 throw new Error ('Unknown request');

@@ -32,17 +32,6 @@ class BehaviourControl extends Component {
         }
     }
 
-    static active(label) {
-        return label === 'Active';
-    }
-
-    static getActive(val) {
-        if (val === true) {
-            return 'Active';
-        }
-        return 'Inactive';
-    }
-
     _postrender () {
         this._remove.$el().off().click(remove.bind(this));
         this._sessions.$el().off().click(sessions.bind(this));
