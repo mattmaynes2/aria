@@ -19,12 +19,12 @@ class DecisionTable():
         logger.debug("adding decision {} event {}".format(decision.message,event))
         row.addDecision(decision)
         
-    def addEvent(self,event):
+    def addEvent(self,event,behaviourId):
         if event in self.table:
             row = self.table[event]
-            row.count+=1
         else:
             row = self.table[event]=TableRow()
+        row.incrementCount(behaviourId)
 
     def getDecision(self,eventString,threshold):
         """
@@ -33,7 +33,7 @@ class DecisionTable():
         decision is greater than the threshold 
         """
         row=self.table.get(eventString,TableRow())
-        return filter( lambda x: x.count/ row.count > threshold, row.decisions)
+        return filter( lambda x: x.count/ row.getCount(x.behaviourId) > threshold, row.decisions)
 
     def __str__(self):
         return str(self.__dict__)
@@ -43,7 +43,7 @@ class DecisionTable():
 
 class TableRow():
     def __init__(self):
-         self.count=1
+         self.behaviourCounts = {}
          self.decisions=[]
     
     def addDecision(self,decision):
@@ -51,14 +51,27 @@ class TableRow():
             if d == decision:
                 logger.debug("found same existing decision")        
                 d.count+=1
-                logger.debug("incremented count count is now {}".format(d.count))
+                logger.debug("incremented count now {}".format(d.count))
                 return
         logger.debug("adding new decision")
         self.decisions.append(decision)
+
+    def incrementCount(self,behaviourId):
+        if( behaviourId in self.behaviourCounts):
+            self.behaviourCounts[behaviourId]+=1
+            logger.debug("Behaviour {} count now {}".format(behaviourId,
+                self.behaviourCounts[behaviourId]))
+        else:
+            logger.debug("adding new behaviour count for id {}".format(behaviourId))
+            self.behaviourCounts[behaviourId]=1
+
+    def getCount(self,behaviourId):
+        logger.debug("looking for behaviour {}".format(behaviourId))
+        return self.behaviourCounts.get(behaviourId,None) 
 
     def __str__(self):
         return str(self.__dict__)
     
     def __iter__(self):
         yield 'decisions' , [dict(d) for d in self.decisions]
-        yield 'count' , self.count
+        yield 'behaviourCounts' , self.behaviourCounts

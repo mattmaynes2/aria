@@ -263,7 +263,7 @@ class V4StrategyTest(TestCase):
         mapping=strategy.eventMapping
         eventString = strategy.buildEventIdentifierFromMessage(self.testTriggeringEvent)
         row=mapping.table[eventString]
-        self.assertEqual(2, row.count)
+        self.assertEqual(2, row.getCount(1))
         self.assertEqual(3,row.decisions[0].count)
 
 

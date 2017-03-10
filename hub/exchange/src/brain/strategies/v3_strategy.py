@@ -22,12 +22,12 @@ class V3Strategy(V2Strategy):
     def processSession(self, events,state):
         logger.debug("Processing data from a new session using v3")
         # remove events that don't change the state
-        events[:] = self.filterEvents(events,state)
+        events = self.filterEvents(events,state)
         logger.debug('after filter events are: {}'.format(events))
         super().processSession(events)
 
     def filterEvents(self,events,state):
-        return filter(partial(changedState,state),events)
+        return list(filter(partial(changedState,state),events))
 
     def findLastEventBefore(self, index, eventList):
         for event in reversed(eventList[:index]):
