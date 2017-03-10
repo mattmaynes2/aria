@@ -3,6 +3,7 @@ import Button       from '../control/button';
 import Dialog       from '../dialog/dialog';
 import Session      from './session';
 import SessionPanel from './session-panel';
+import Service      from '../service/service';
 
 import './control.css';
 
@@ -13,14 +14,11 @@ class BehaviourControl extends Component {
         this._remove    = new Button('Remove').addClass('behaviour-control-button');
         this.append([this._sessions, this._remove]);
         this.addClass('behaviour-control');
-        this._added = false;
+        this._props.remove = this._props.remove || (() => {});
     }
     _postrender () {
-        if (!this._added) {
-            this._added = true;
-            this._remove.click(remove.bind(this));
-            this._sessions.click(sessions.bind(this));
-        }
+        this._remove.$el().off().click(remove.bind(this));
+        this._sessions.$el().off().click(sessions.bind(this));
     }
 }
 
@@ -55,7 +53,13 @@ function remove () {
                 },
                 {
                     text    : 'Remove',
-                    click   : () => { console.log('Removing behaviour'); d.remove(); }
+                    click   : () => {
+                        Service.delete('/hub/training/behaviour/' + this._state.id)
+                            .then(() => {
+                                this._props.remove();
+                            });
+                        d.remove();
+                    }
                 }
             ]
         }
