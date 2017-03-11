@@ -55,7 +55,7 @@ class ZWaveValueWrapper():
         if self.isColourValue():
             if isinstance(value, str) and value[0] != "#":
                 return str.encode("#"+value+"0000")
-            else
+            else:
                 return value
         return self._wrappedValue.check_data(value)
 
