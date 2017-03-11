@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 class ZWaveAdapter(Adapter):
 
     CONTROLLER_NODE = 1
+    DISCOVERY_TIMEOUT = 10
 
     def __init__(self,controller='/dev/zstick',\
     configPath='/home/pi/python-openzwave/openzwave/config',
@@ -34,6 +35,9 @@ class ZWaveAdapter(Adapter):
         # Set up condition variable allowing us to check if the network is ready or not
         self._ready = False
         self._lock = threading.Lock()
+
+        self._discovered = False
+
         #self._ready_condition = threading.Condition(self._lock)
 
         # Pass some default options to OpenZWave
@@ -77,6 +81,7 @@ class ZWaveAdapter(Adapter):
         """
         This is a callback for the OpenZWave SIGNAL_NODE_QUERIES_COMPLETE notification
         """
+        self._discovered = True
         node = kwargs["node"]
         if node.location in self._devices:
             return
@@ -110,6 +115,7 @@ class ZWaveAdapter(Adapter):
             logger.warning("Invalid message type sent to ZWaveAdapter: " + str(message.type))
             
     def setDeviceValue(self, message, device):
+        self.network.controller.kill_command()
         attributeName = message.data["set"]
         value = message.data["value"]
         paramChanges =  []
@@ -151,8 +157,11 @@ class ZWaveAdapter(Adapter):
         return False
 
     def discover(self):
+        self._discovered = False
         self.network.controller.kill_command()
         self.network.controller.add_node()
+        t = threading.Timer(ZWaveAdapter.DISCOVERY_TIMEOUT, lambda self : self.network.controller.kill_command() if not self._discovered else None)
+
 
     def setup(self):
         super().setup()
