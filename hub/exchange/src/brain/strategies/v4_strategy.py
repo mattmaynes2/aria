@@ -28,11 +28,11 @@ class V4Strategy(V3Strategy):
         self.windowSize=window
 
     def deactivateBehaviour(self,behaviourId):
-        self.inactive.add(behaviourId)
+        self.inactive.add(int(behaviourId))
 
     def activateBehaviour(self,behaviourId):
         try:
-            self.inactive.remove(behaviourId)
+            self.inactive.remove(int(behaviourId))
         except:
             logger.debug('Behaviour {} was already active'.format(behaviourId))
         
