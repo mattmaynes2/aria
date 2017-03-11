@@ -58,6 +58,9 @@ class V4Strategy(V3Strategy):
                     self.addDecision(e,message)
         logger.debug("done processing session current table is {}".format(dict(self.eventMapping)))
     
+    def removeBehaviour(self, behaviourId):
+        self.eventMapping.removeBehaviour(behaviourId)
+    
     def save(self):
         '''
         Saves decisions to a file

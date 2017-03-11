@@ -93,3 +93,11 @@ class ModelBuilderTest (TestCase):
             'value' : {"active" :0 }
         }))
         self.mockStrategy.deactivateBehaviour.assert_called_with(1)
+
+    def test_delete_behaviour(self):
+         self.modelBuilder.received(Message(Message.Request,data=
+            {
+            'delete':'behaviour', 
+            'id':1, 
+            }))
+         self.mockStrategy.removeBehaviour.assert_called_with(1)
