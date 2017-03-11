@@ -10,7 +10,7 @@ class Retriever:
     GET_SESSIONS_WINDOW      = "SELECT * FROM session WHERE behaviour_id = ? \
                                 ORDER BY id DESC LIMIT ?,?"
     GET_ALL_EVENT_WINDOW    = "SELECT id as 'index', timestamp, source \
-                               FROM Event WHERE source ORDER BY id DESC LIMIT ?,?"
+                               FROM Event ORDER BY id DESC LIMIT ?,?"
     GET_DEVICE_EVENT_WINDOW = "SELECT * FROM Event WHERE source = ? LIMIT  ?,?"
     GET_PARAM_CHANGE        = "SELECT parameter, value FROM Parameter_Change WHERE event_id = ?"
     GET_PARAM_INFO          = "SELECT name, data_type, attribute_id FROM Parameter WHERE id = ?" 
