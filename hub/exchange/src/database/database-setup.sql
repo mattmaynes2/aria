@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS "Event" (
 	"session_id" INTEGER,
 	FOREIGN KEY ("request_id") REFERENCES Request("id"),
 	FOREIGN KEY ("source") REFERENCES Device("address"),
-	FOREIGN KEY ("session_id") REFERENCES Session("id")
+	FOREIGN KEY ("session_id") REFERENCES Session("id") ON DELETE CASCADE
 );
 
 /*
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS "Parameter_Change" (
 	"value" TEXT,
 	"event_id" INTEGER,
 	FOREIGN KEY ("parameter") REFERENCES Parameter("id"),
-	FOREIGN KEY ("event_id") REFERENCES Event("id")
+	FOREIGN KEY ("event_id") REFERENCES Event("id") ON DELETE CASCADE
 );
 
 /* 
