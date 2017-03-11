@@ -53,7 +53,10 @@ class ZWaveValueWrapper():
 
     def check_data(self, value):
         if self.isColourValue():
-            return str.encode("#"+value+"0000") 
+            if (isinstance(value, str) and value[0] != "#")
+                return str.encode("#"+value+"0000")
+            else
+                return value
         return self._wrappedValue.check_data(value)
 
     def __getattr__(self, attr):
