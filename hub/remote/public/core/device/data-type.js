@@ -32,11 +32,11 @@ class DataType extends Component {
                 break;
             case DataType.Color:
                 this._$el
-                    .css('background-color', '#' + this._state)
+                    .css('background-color', addHash(this._state).substr(0,7))
                     .css('color', brightness(this._state) > 100 ?
                         'black' : 'white'
                     )
-                    .text('#' + this._state.toUpperCase());
+                    .text(addHash(this._state.toUpperCase()));
                 break;
             default:
                 this._$el.text(this._state);
@@ -54,5 +54,10 @@ function brightness (color) {
 
     return  0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 }
+
+function addHash (color) {
+    return typeof color !== 'string' ? '' : color.charAt(0) === '#' ? color : '#' + color;
+}
+
 
 export default DataType;
