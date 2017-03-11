@@ -19,7 +19,6 @@ class V4Strategy(V3Strategy):
 
     def __init__(self,saveFileName, inactive=[],threshold=0.8,window=6):
         super().__init__(saveFileName)
-        self.eventMapping=DecisionTable()
         # set of behaviour Ids that are inactive
         self.inactive=set(inactive)
         # using a threshold of 80% to determine if a decision is should be triggered on an event
@@ -74,4 +73,5 @@ class V4Strategy(V3Strategy):
             with open(self.saveFileName, 'rb') as f:
                 self.eventMapping=pickle.load(f)
         except:
+            self.eventMapping=DecisionTable()
             logger.exception("Couldn't load {} not loading any decisions".format(self.saveFileName))
