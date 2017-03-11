@@ -350,4 +350,8 @@ class V4StrategyTest(TestCase):
         strategy.deactivateBehaviour(2)
         self.assertEqual(strategy.decide(event), [])
 
+        strategy.removeBehaviour(1)
+        self.assertEqual(strategy.decide(self.testTriggeringEvent),[])
+        
+
 

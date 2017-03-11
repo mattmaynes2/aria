@@ -28,6 +28,8 @@ class ModelBuilder(Delegate):
                     self.strategy.activateBehaviour(data['id'])
                 else:
                     self.strategy.deactivateBehaviour(data['id'])
+        elif message.type == Message.Request and isBehaviourDeleteMessage(message):
+            self.strategy.removeBehaviour(message.data['id'])
     
     @property
     def strategy (self):
@@ -58,6 +60,10 @@ def isSessionStartMessage(message):
 def isBehaviourToggleMessage(message):
     data= message.data
     return data.get('set',None) == 'behaviour' and data.get('value',{}).get('active',None) != None
+
+def isBehaviourDeleteMessage(message):
+    data= message.data
+    return data.get('delete',None) == 'behaviour'
 
             
 
