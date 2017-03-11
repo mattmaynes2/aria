@@ -23,7 +23,7 @@ let IconPatterns = [
     { exp : /(tv|tele)/     , url : '/assets/devices/tv.png'     },
     { exp : /(music|tune)/  , url : '/assets/devices/music.png'  },
     { exp : /(switch)/      , url : '/assets/devices/switch.png' },
-    { exp : /(light)/       , url : '/assets/devices/light.png'  },
+    { exp : /(light|bulb)/  , url : '/assets/devices/light.png'  },
     { exp : /.*/            , url : '/assets/devices/device.png' }
 ];
 
