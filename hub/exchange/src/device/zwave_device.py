@@ -56,7 +56,7 @@ class ZWaveValueWrapper():
             if isinstance(value, str) and value[0] != "#":
                 return str.encode("#"+value+"0000")
             else:
-                return value
+                return str.encode(value)
         return self._wrappedValue.check_data(value)
 
     def __getattr__(self, attr):
