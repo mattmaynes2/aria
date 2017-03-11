@@ -70,7 +70,7 @@ class TableRow():
             self.behaviourCounts[behaviourId]=1
 
     def getCount(self,behaviourId):
-        logger.debug("looking for behaviour {} {}".format(behaviourId))
+        logger.debug("looking for behaviour {}".format(behaviourId))
         return self.behaviourCounts.get(behaviourId,None) 
 
     def removeBehaviour(self,behaviourId):
