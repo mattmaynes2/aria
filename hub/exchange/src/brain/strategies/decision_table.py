@@ -74,6 +74,7 @@ class TableRow():
         return self.behaviourCounts.get(behaviourId,None) 
 
     def removeBehaviour(self,behaviourId):
+        behaviourId =int(behaviourId)
         logger.debug("deleting behaviour {}".format(behaviourId))
         self.behaviourCounts.pop(behaviourId,None)
         logger.debug("after pop counts are {}".format(self.behaviourCounts))
