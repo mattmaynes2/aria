@@ -54,7 +54,8 @@ class V4Strategy(V3Strategy):
             if event['request_id']:
                 logger.debug("Found a request made during the session")
                 message=self.buildMessageFromEvent(event)
-                for e in events[ max(0,i-self.windowSize) : i] :
+                eventList=list(filter(lambda e: e['source'] != event['source'],events))
+                for e in eventList[ max(0,i-self.windowSize) : i] :
                     self.addDecision(e,message)
         logger.debug("done processing session current table is {}".format(dict(self.eventMapping)))
     
