@@ -74,6 +74,7 @@ class TableRow():
         return self.behaviourCounts.get(behaviourId,None) 
 
     def removeBehaviour(self,behaviourId):
+        behaviourId =int(behaviourId)
         self.behaviourCounts.pop(behaviourId,None)
         self.decisions= [d for d in self.decisions if d.behaviourId != behaviourId]
                 
