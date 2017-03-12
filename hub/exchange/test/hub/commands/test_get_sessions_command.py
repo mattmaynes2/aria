@@ -36,6 +36,7 @@ class TestGetSessionsCommand(TestCase):
         sessions=responce.data['value']
         self.assertEqual(2,sessions['total'])
         self.assertEqual('Take 2',sessions['records'][0]['name'])
+        self.assertTrue('createdDate' in sessions['records'][0])
 
 
 
