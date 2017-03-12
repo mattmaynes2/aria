@@ -46,6 +46,7 @@
 .dialog-body {
     position    : relative;
     flex-grow   : 1;
+    overflow    : auto;
 }
 
 .dialog-close {
