@@ -72,7 +72,7 @@ function addBehaviour (behaviour) {
     Service.set('/hub/training/behaviour', behaviour.state())
         .then((res) => {
             var b = new Behaviour(res.payload);
-            this._state.behaviours.push(b);
+            this._state.behaviours.unshift(b);
             this.render();
         });
 }
