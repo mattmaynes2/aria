@@ -96,7 +96,7 @@ void processTrainingSession(event[] events)
         if (isUserAction(event))
         {
             action = event
-            for ( j = (i - 5) to i) 
+            for ( j = (i - LOOKBACK_WINDOW) to i) 
             {
                 e = events[j]
                 incrementAssociationCount(e, action)
