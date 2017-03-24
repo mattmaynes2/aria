@@ -10,8 +10,8 @@ class GetBehavioursCommand(DatabaseCommand):
         start=data['start']
         count=data['count']
         results = self.retriever.getBehaviourWindow(start,count)
-        for result in results:
+        for i,result in enumerate(results):
             result['created_date']=self.formatDate(result['created_date'])
             result['last_updated']=self.formatDate(result['last_updated'])
-            result = self._formatColumnNames(result)
+            results[i] = self._formatColumnNames(result)
         return{'total':len(results),'records':results}

@@ -15,6 +15,7 @@ class SessionPanel extends WidgetPanel {
             behaviour   : this._state.behaviour || {},
             sessions    : this._state.sessions  || []
         };
+        this.addClass('session-panel');
     }
 
     update () {
