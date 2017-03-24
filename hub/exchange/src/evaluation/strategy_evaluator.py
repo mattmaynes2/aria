@@ -8,7 +8,7 @@ def main(argv):
     dbName="training.db"
     if len(argv) >= 1 :
         dbName= argv[0] 
-    strategies =[V2Strategy, V3Strategy, V4Strategy
+    strategies =[V2Strategy, V3Strategy, V4Strategy]
     #oracle=Oracle()
     database    = Database(dbName)
     for strategyType in strategies:
@@ -45,26 +45,24 @@ def evaluateDecisions(strategy,behaviourId):
     if isinstance(strategy, V4Strategy):
         decisions = buildDecisionsV4(strategy.eventMapping,behaviourId)
     else:
-        decisions= {event,decisions for  event,decisions in strategy.eventMapping.items() 
+        decisions= {event:decisions for event, decisions in strategy.eventMapping.items() 
         if len(decisions)>0}
     print(decisions)
 
-def buildDecisionsV4(table,behaviourId):
-    decisions ={}
-    for event,row in table.items():
+
+def buildDecisionsV4(table, behaviourId):
+    decisions = {}
+    for event, row in table.table.items():
         if(row.behaviourCounts.get(behaviourId)):
             for decision in row.decisions:
-                if(decision.behaviourId == behaviourId) :
+                if(decision.behaviourId == behaviourId):
                     bCount = row.behaviourCounts[decision.behaviourId]
-                    ratio = decision.count/bCount
-                    if ratio > 0.8 :
-                       if(event in decisions):
-                            decision[event].append(decision)
+                    ratio = decision.count / bCount
+                    if ratio > 0.8:
+                        if(event in decisions):
+                            decisions[event].append(decision)
                         else:
-                            decision[event]=[decision]
-                        print("behaviour {} triggers {} to {} on {} "
-                        .format(decision.behaviourId, decision.message.data, 
-                         receiver, event))
+                            decisions[event] = [decision.message]
     return decisions
 
 
