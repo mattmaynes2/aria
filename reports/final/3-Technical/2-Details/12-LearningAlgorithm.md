@@ -79,7 +79,7 @@ The ratio of `(total event count) / (association count)` is compared to a thresh
 Only events with a ratio above the threshold trigger an action from the learning component.
 The following pseudocode describes the algorithm.
 
-```C
+```
 eventCounts = {}          // Tracks the total number of times that an event was seen across all training sessions
 DECISION_THRESHOLD = 0.8  // Weight parameter - the threshold for triggering an action 
 LOOKBACK_WINDOW = 5       // Number of events to consider associating with an action
