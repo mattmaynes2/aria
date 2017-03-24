@@ -47,7 +47,7 @@ session and associating each one with the event that immediately preceded the re
 
 #### Strategy Version 3 {-}
 
-### Strategy
+##### Strategy {-}
 
 The third strategy also looks at all user requests in a training session. Additionally,
 this strategy uses the state of all sensors at the beginning of the training session to filter out 
@@ -87,13 +87,16 @@ LOOKBACK_WINDOW = 5       // Number of events to consider associating with an ac
 // Interface for providing data from a new training session
 void processTrainingSession(event[] events)
 {
-    for (event, index in events)
+    global eventCounts
+
+    for (i = 0 to events.length)
     {
+        event = events[i]
         eventCounts[event]++ //Increment the number of times this event has been encountered
         if (isUserAction(event))
         {
             action = event
-            for (j = index-LOOKBACK_WINDOW; j < index; ++j) 
+            for (j = i-LOOKBACK_WINDOW; j < i; ++j) 
             {
                 e = events[j]
                 incrementAssociationCount(e, action)
