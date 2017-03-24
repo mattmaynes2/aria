@@ -12,5 +12,10 @@
         device graphics displayed in our user interface, as well as the overall branding of the 
         project.
     </p>
+    <br/>
+    <p>
+        Lastly, we would like to acknowledge Trevor Winn and Julie Maynes for constructing,
+        painting and decorating the booth used to present this project at the poster fair.
+    </p>
 </div>
 
