@@ -1,4 +1,4 @@
-### Learning Algorithm {#sec-3-2-11-2}
+### Learning Algorithm {#sec-3-2-12-2}
 
 #### Introduction {-}
 
@@ -23,7 +23,7 @@ a basic working algorithm is available if unforeseen difficulties are found in i
 
 #### Strategy Version 1 {-}
 
-The first version of the learaning strategy considers the list of device and sensor events for a 
+The first version of the learning strategy considers the list of device and sensor events for a 
 single training session. The simple algorithm proceeds as follows:
 
 1. Find the last user action taken during the training session.
@@ -130,9 +130,10 @@ behaviour was to trigger the action when motion was detected.
 
 Some enhancements that could be made to the algorithm in the future are the discretization of data,
 and learning behaviours based on multiple training sessions. Discretization of the data could allow
-the learning component to decide whether a change in a sensor value is significant enought that
+the learning component to decide whether a change in a sensor value is significant enough that
 an action should be triggered. For example, only temperature changes of a certain number of degrees
 should be considered to be significant changes to the environment.
 
 Future strategies could also consider data from multiple training sessions in order to identify 
 patterns that appear consistently.
+

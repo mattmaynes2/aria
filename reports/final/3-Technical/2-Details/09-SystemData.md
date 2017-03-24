@@ -1,4 +1,4 @@
-### System Data {#sec-3-2-8-1}
+### System Data {#sec-3-2-9-1}
 
 Aria is a machine learning smart home and must be able to process and analyze the data it collects
 to produce actions for the end user. In order to accomplish this, data must be collected, organized,
