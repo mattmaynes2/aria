@@ -1,6 +1,7 @@
 ## Engineering Professionalism
 
 #### General Principles {-}
+
 An important aspect of engineering is communication. Throughout the course of this project, 
 different levels of communication with different audiences were required. The most prevalent
 communication task was internal. Working in a group effectively demands clear and regular
@@ -23,8 +24,7 @@ to inform our project supervisor of our plans for the next week of development.
 Part of the challenge of communication in engineering is identifying the audience and tailoring 
 the content to match their level of technical understanding. Our team was responsible for producing
 an oral presentation to demonstrate to a faculty member the purpose and status of our project at
-that time. 
-
+that time.
 
 
 #### Future Concerns {-}
