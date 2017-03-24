@@ -47,11 +47,81 @@ session and associating each one with the event that immediately preceded the re
 
 #### Strategy Version 3 {-}
 
-The third and current strategy also looks at all user requests in a training session. Additionally,
+##### Strategy {-}
+
+The third strategy also looks at all user requests in a training session. Additionally,
 this strategy uses the state of all sensors at the beginning of the training session to filter out 
 events that did not actually cause a change in the state of the home environment. This strategy 
 triggers a user action based on the first event that indicated a change in the state of the 
 system.
+
+##### Outcome {-}
+
+Using this strategy, the system is able to learn the correct action to take in a given scenario.
+However, it was found that the system often associates user actions with small variations in 
+sensor values, such as temperatures. The effect is that the system often takes action at
+inappropriate times, due to the misidentification of small fluctuations as trigger events.
+
+#### Strategy Version 4 {-}
+
+The fourth and final strategy builds on version three by using data from multiple training sessions
+in order to ignore noise in the training data. This strategy can make use of *negative* training
+sessions. A negative training session is a session in which the user does not perform the 
+action that they are attempting to train the system. Negative training sessions allow this strategy
+to filter out training data that is not strongly associated with a user action that was taken during
+a positive training session. 
+
+##### Algorithm Details {-}
+
+The algorithm works by counting the number of times an event was seen across all training sessions
+and comparing this value to the number of times the event was also associated with a user action.
+The ratio of `(total event count) / (association count)` is compared to a threshold parameter.
+Only events with a ratio above the threshold trigger an action from the learning component.
+The following pseudocode describes the algorithm.
+
+```c
+eventCounts = {}          // Tracks the total number of times that an event was seen across all training sessions
+DECISION_THRESHOLD = 0.8  // Weight parameter - the threshold for triggering an action 
+LOOKBACK_WINDOW = 5       // Number of events to consider associating with an action
+
+// Interface for providing data from a new training session
+void processTrainingSession(event[] events)
+{
+    global eventCounts
+
+    for (i = 0 to events.length)
+    {
+        event = events[i]
+        eventCounts[event]++ //Increment the number of times this event has been encountered
+        if (isUserAction(event))
+        {
+            action = event
+            for ( j = (i - LOOKBACK_WINDOW) to i) 
+            {
+                e = events[j]
+                incrementAssociationCount(e, action)
+            }
+        }
+    }
+}
+
+// Interface for determining which actions to take in response to an event
+decision[] findDecisionsForEvent(e) 
+{
+    decisions = []
+    associations = getAssociationsForEvent(e)
+    for (a in associations)
+    {
+        // If the ratio of (number of times associated with the event)/(number of times event was seen)
+        // is greater than the threshold value, add the action to the list of decisions returned
+        if ( (a.count / eventCounts[e]) > DECISION_THRESHOLD)
+        {
+            decisions.append(a.action)
+        }
+    }
+    return decisions
+}
+```
 
 #### Future Strategies {-}
 
