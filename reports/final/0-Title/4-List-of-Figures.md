@@ -2,34 +2,37 @@
 
 ## List of Figures {-}
 
-| Figure                                            | Author(s)            | Editor(s)            |
-| --------------------------------------------------| -------------------- | -------------------- |
-| [1. Product Design](#fig-product-design)          | Cameron              |                      |
-| [2. System Use Case](#fig-system-use-case)        | Cameron              | Matthew              |
-| [3. Training Use Case](#fig-training-use-case)    | Cameron              | Matthew              |
-| [4. System Components](#fig-system-components)    | Matthew & Jeremy     |                      |
-| [5. Remote Use Case](#fig-remote-use-case)        | Matthew              | Cameron              |
-| [6. System Deployment](#fig-system-deployment)    | Jeremy               |                      |
-| [7. Layer Architecture](#fig-layer-architecture)  | Cameron              |                      |
-| [8. Client-Server Deployment](#fig-client-server) | Cameron              |                      |  
-| [G-1 Office Activity](#fig-g-1)                   | Peter                |                      |
-| [G-2 Office No Activity](#fig-g-2)                | Peter                |                      |
-| [H-1 Exchange Classes](#fig-h-1)                  | Jeremy               |                      |
-| [H-2 Database Entity Relationships](#fig-h-2)     | Jeremy               | Peter                |
-| [H-3 Server Request Sequence](#fig-h-3)           | Cameron 			   |                      |
-| [H-4 Device Request Sequence](#fig-h-4)           | Cameron 			   |                      |
-| [H-5 User Driven Discovery](#fig-h-5) 			| Matthew              |                      |
-| [H-6 Device Driven Discovery](#fig-h-6)           | Matthew              |                      |
-| [H-7 Proposed Home Page](#fig-h-7)                | Peter                |                      |
-| [H-8 Proposed Device Page](#fig-h-8)              | Peter                |                      |
-| [H-9 Aria Home Page](#fig-h-9)                    | Matthew              |                      | 
-| [H-10 Aria Error Notification](#fig-h-10)         | Matthew              |                      | 
-| [H-11 Aria Warning Notification](#fig-h-11)       | Matthew              |                      |
-| [H-12 Aria Discovery Notification](#fig-h-12)     | Matthew              |                      |
-| [H-13 Aria Device Page](#fig-h-13)                | Matthew              |                      |
-| [H-14 Add Device Workflow](#fig-h-14)             | Jeremy & Peter       |                      |
-| [I-1 Code Lifecycle](#fig-i-1)                    | Cameron              |                      |
-
+| Figure                                             | Author(s)            | Editor(s)            |
+| -------------------------------------------------- | -------------------- | -------------------- |
+| [1. Product Design](#fig-product-design)           | Cameron              |                      |
+| [2. System Use Case](#fig-system-use-case)         | Cameron              | Matthew              |
+| [3. Training Use Case](#fig-training-use-case)     | Cameron              | Matthew              |
+| [4. System Components](#fig-system-components)     | Matthew & Jeremy     |                      |
+| [5. Communication Adapters]{#fig-design-adapter}   | Matthew              |                      |
+| [6. Learning Strategies]{#fig-design-strategy}     | Matthew              |                      |
+| [7. Control Commands]{#fig-design-command}         | Matthew              |                      |
+| [8. Reactive Interface]{#fig-design-react}         | Matthew              |                      |
+| [9. Remote Use Case](#fig-remote-use-case)         | Matthew              | Cameron              |
+| [10. System Deployment](#fig-system-deployment)    | Jeremy               |                      |
+| [11. Layer Architecture](#fig-layer-architecture)  | Cameron              |                      |
+| [12. Client-Server Deployment](#fig-client-server) | Cameron              |                      |
+| [G-1 Office Activity](#fig-g-1)                    | Peter                |                      |
+| [G-2 Office No Activity](#fig-g-2)                 | Peter                |                      |
+| [H-1 Exchange Classes](#fig-h-1)                   | Jeremy               |                      |
+| [H-2 Database Entity Relationships](#fig-h-2)      | Jeremy               | Peter                |
+| [H-3 Server Request Sequence](#fig-h-3)            | Cameron              |                      |
+| [H-4 Device Request Sequence](#fig-h-4)            | Cameron              |                      |
+| [H-5 User Driven Discovery](#fig-h-5)              | Matthew              |                      |
+| [H-6 Device Driven Discovery](#fig-h-6)            | Matthew              |                      |
+| [H-7 Proposed Home Page](#fig-h-7)                 | Peter                |                      |
+| [H-8 Proposed Device Page](#fig-h-8)               | Peter                |                      |
+| [H-9 Aria Home Page](#fig-h-9)                     | Matthew              |                      |
+| [H-10 Aria Error Notification](#fig-h-10)          | Matthew              |                      |
+| [H-11 Aria Warning Notification](#fig-h-11)        | Matthew              |                      |
+| [H-12 Aria Discovery Notification](#fig-h-12)      | Matthew              |                      |
+| [H-13 Aria Device Page](#fig-h-13)                 | Matthew              |                      |
+| [H-14 Add Device Workflow](#fig-h-14)              | Jeremy & Peter       |                      |
+| [I-1 Code Lifecycle](#fig-i-1)                     | Cameron              |                      |
 
 <!-- 
 	Image References:
@@ -56,10 +59,14 @@
 [system-use-case]: ./uml/SystemUseCase.png "Figure 2: System Use Case" {#fig-system-use-case}
 [training-use-case]: ./uml/TrainingUseCase.png "Figure 3: Training Use Case" {#fig-training-use-case}
 [system-components]: ./uml/AriaComponents.png "Figure 4: System Components" {#fig-system-components}
-[remote-use-case]: ./uml/RemoteUseCase.png "Figure 5: Remote Use Case" {#fig-remote-use-case}
-[system-deployment]: ./uml/SystemDeployment.png "Figure 6: System Deployment" {#fig-system-deployment}
-[layer-architecture]: ./images/LayerArchitecture.png "Figure 7: Layered Architecture" {#fig-layer-architecture}
-[client-server-deployment]: ./uml/AriaDeployment.png "Figrue 8: Client Server Deployment" {#fig-client-server} 
+[design-adapter]: ./uml/DesignPatternAdapter.png "Figure 5: Communication Adapter Pattern" {#fig-design-adapter}
+[design-strategy]: ./uml/DesignPatternStretegy.png "Figure 6: Learning Strategy Pattern" {#fig-design-strategy}
+[design-command]: ./uml/DesignPatternCommand.png "Figure 7: Control Command Pattern" {#fig-design-command}
+[design-react]: ./uml/DesignPatternReact.png "Figure 8: Reactive Interface Pattern" {#fig-design-react}
+[remote-use-case]: ./uml/RemoteUseCase.png "Figure 9: Remote Use Case" {#fig-remote-use-case}
+[system-deployment]: ./uml/SystemDeployment.png "Figure 10: System Deployment" {#fig-system-deployment}
+[layer-architecture]: ./images/LayerArchitecture.png "Figure 11: Layered Architecture" {#fig-layer-architecture}
+[client-server-deployment]: ./uml/AriaDeployment.png "Figrue 12: Client Server Deployment" {#fig-client-server} 
 
 [g-1]: ./images/Scenario-NoActivity.png "Figure G-1: Graph of no office activity" {#fig-g-1}
 [g-2]: ./images/Scenario-OfficeActivity.png "Figure G-2: Graph of office activity" {#fig-g-2}
@@ -77,7 +84,7 @@
 [h-11]: ./images/Remote-Notify-Warning.png "Figure H-11: Aria Warning Notification" {#fig-h-11}
 [h-12]: ./images/Remote-Notify-Discover.png "Figure H-12: Aria Discovery Notification" {#fig-h-12}
 [h-13]: ./images/Remote-Devices.png "Figure H-13: Aria Device Page" {#fig-h-13}
-[h-14]: ./uml/addDeviceFlow.png "Figure H-14 Add Device Workflow" {#fig-h-14}
+[h-14]: ./uml/AddDeviceFlow.png "Figure H-14 Add Device Workflow" {#fig-h-14}
 
 [i-1]: ./images/Code-Lifecycle.png "Figure 4: Development Lifecycle" {#fig-i-1}
 
