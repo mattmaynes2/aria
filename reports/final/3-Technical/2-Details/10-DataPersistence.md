@@ -1,4 +1,4 @@
-### Data Persistence {#sec-3-2-9-1}
+### Data Persistence {#sec-3-2-10-1}
 
 There are many different ways to achieve data persistence in a system, each with their own
 advantages. The data is to be stored on the system's Smart Hub. The Smart Hub run on a Raspberry Pi

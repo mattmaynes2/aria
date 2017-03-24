@@ -1,4 +1,4 @@
-### Learning Algorithm {#sec-3-2-11-2}
+### Learning Algorithm {#sec-3-2-12-2}
 
 #### Introduction {-}
 
