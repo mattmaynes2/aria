@@ -41,7 +41,7 @@ respond to every type of event. Additionally, some events may require a response
 components. 
 
 One solution to this problem is to allow every component to communicate with every other component. 
-This is undesireable because it would lead to high coupling between components, reducing the 
+This is undesirable because it would lead to high coupling between components, reducing the 
 modifiability of the system.
 
 In order to avoid this high coupling between components, every component that must react to system
@@ -53,7 +53,7 @@ The Exchange Server component provides two interfaces: InternalMessaging and IPC
 InternalMessaging interface provides a way for components that are running in the same process as
 the Exchange Server to send and receive event messages. The IPCMessaging interface allows
 components that are running in different processes to send and receive messages from one another,
-using an IPC (InterProcess Communication) protocol. The IPC protocol is described in further detail
+using an IPC (Interprocess Communication) protocol. The IPC protocol is described in further detail
 in section [Appendix J-1](#J-1). Details about individual implementing this component can be 
 found in [Appendix H-1](#H-1).
 
@@ -68,7 +68,7 @@ selection and design of persistent storage is discussed in [Appendix H-2](#H-2).
 ##### Machine Learning{-}
 
 This component is responsible for the system's autonomous control of devices. Based on the 
-historical data recorded byu the Event Logger, this component constructs a model of how the user 
+historical data recorded by the Event Logger, this component constructs a model of how the user 
 expects their devices to behave.
 
 This component uses the InternalMessaging interface provided by the Exchange Server to 
@@ -78,7 +78,7 @@ generate device control messages to change the state of devices.
 ##### HTTP Gateway {-}
 
 The HTTP gateway is responsible for providing access to system data and business objects to a 
-web client. 
+web client.
 
 In addition to serving static HTML content, the HTTP gateway provides a RESTful API which supports
 AJAX requests from the web client. The basic functionality of the gateway is to marshal HTTP 
@@ -87,7 +87,7 @@ these messages are then serialized into the JSON format that is usable by the we
 
 The HTTP gateway also provides push event functionality. Some system events that are of interest to
 the user interface may not be generated in response to an HTTP request from the web client. In 
-order to propagate these events to the user interface, the HTTP Gateway maintains a Websocket 
+order to propagate these events to the user interface, the HTTP Gateway maintains a websocket 
 connection with the web client. Further details about the implementation of the HTTP Gateway 
 can be found in [Appendix H-7](#H-7).
 
@@ -115,7 +115,7 @@ In order to allow for development on different parts of the code to proceed inde
 necessary to introduce separation of concerns into the organization of components. This project 
 makes use of the layer pattern to improve separation of concerns.
 
-The components of this project are paritioned into three layers: Persistence, Application, and 
+The components of this project are partitioned into three layers: Persistence, Application, and 
 Presentation. This pattern is commonly known as a three-tier architecture for client-server 
 applications.
 
@@ -165,9 +165,9 @@ components into two processes was made following a comparison of the benefits of
 - Allows use of different technologies for the HTTP server and application logic.
 
 The independence between the location of the HTTP server and application logic is ultimately the
-reason for separating the components into different processes. A common feature of existing smart 
-home automation systems is the ability to control and monitor the home from a computer that is not c
-urrently inside the home. For example; a user can see whether  their door is open or not from their
+reason for separating the components into different processes. A common feature of existing smart
+home automation systems is the ability to control and monitor the home from a computer that is not
+currently inside the home. For example; a user can see whether  their door is open or not from their
 work computer. Users expect this feature to be available from any commercial home automation system.
 While this is not currently a feature of the Aria system, the system design accounts for the fact 
 that this is likely an essential feature in the future.
@@ -185,8 +185,10 @@ acting as a broker for the application server. The web client can communicates w
 at a well-known public address, potentially hosted on a cloud computing platform, from any physical 
 location. This server can then relay requests to the Aria hub within the user's home.
 The communication between the HTTP server and the system hub can use a mechanism that does 
-not require special network configuration on the part of the user, such as WebSockets or 
+not require special network configuration on the part of the user, such as websockets or 
 HTTP long polling. 
 
 The extensibility and usability benefits of separating the HTTP and application servers into 
 separate processes are worth the added complexity and overhead. 
+
+
