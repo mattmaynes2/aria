@@ -44,7 +44,7 @@ implementations of the learning strategy to be interchanged easily.
 
 ##### Outcome {-}
 
-This strategy performs very poorly, as expected. Actions are triggered by random reports from 
+This strategy performs very poorly. Actions are triggered by random reports from 
 sensors; the algorithm is unable to learn to perform any useful task.
 
 #### Strategy Version 2 {-}
