@@ -45,20 +45,27 @@ def evaluateDecisions(strategy,behaviourId):
     if isinstance(strategy, V4Strategy):
         decisions = buildDecisionsV4(strategy.eventMapping,behaviourId)
     else:
-        d
+        decisions= {event,decisions for  event,decisions in strategy.eventMapping.items() 
+        if len(decisions)>0}
+    print(decisions)
 
 def buildDecisionsV4(table,behaviourId):
+    decisions ={}
     for event,row in table.items():
         if(row.behaviourCounts.get(behaviourId)):
             for decision in row.decisions:
                 if(decision.behaviourId == behaviourId) :
                     bCount = row.behaviourCounts[decision.behaviourId]
                     ratio = decision.count/bCount
-                    if ratio > 0.6 :
-                        receiver = UUID(bytes= decision.message.receiver)
+                    if ratio > 0.8 :
+                       if(event in decisions):
+                            decision[event].append(decision)
+                        else:
+                            decision[event]=[decision]
                         print("behaviour {} triggers {} to {} on {} "
                         .format(decision.behaviourId, decision.message.data, 
                          receiver, event))
+    return decisions
 
 
 if (__name__ == '__main__'):
