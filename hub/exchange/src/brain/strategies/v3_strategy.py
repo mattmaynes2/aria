@@ -14,7 +14,7 @@ logger.setLevel(logging.DEBUG)
 
 class V3Strategy(V2Strategy):
 
-    def __init__(self, saveFileName):
+    def __init__(self, saveFileName="decisions.json"):
         super().__init__()
         self.saveFileName = saveFileName
         self.load()
