@@ -15,7 +15,7 @@ in motion detection.
 A passive infrared sensor detects motion using the infrared radiation (heat) from a warm body. A
 sensor contains two slots, each of which contains a material which is sensitive to infrared
 radiation. As a warm body passes in front of the sensor, a different amount of radiation is received
-at each slot. This difference in radiation causes a signal in the output of the device.
+at each slot. This difference in radiation causes a signal in the output of the device[^D-1-1].
 
 Use of the PIR modules encountered during this research does not require expert knowledge of circuit
 design; the complexity of the circuits involved in connecting the modules to a microcontroller is
@@ -41,7 +41,7 @@ sensor are ensuring that the detectorès field of view covers the correct area, 
 potentially adjusting the sensitivity of the detector.
 
 PIR sensors are available with a range which is suitable for a typical room (approximately 7m
-range).
+range)[^D-1-2].
 
 The following tutorials explain how to interface with PIR modules:
 
@@ -56,7 +56,7 @@ signal of a known frequency. This signal is reflected by any objects in its path
 it returns to the sensor. The sensor tracks the frequency of the reflected wave; when a wave is
 reflected off of a moving object the frequency of the reflected wave differs from that of the
 incident wave due to the Doppler effect. This change in frequency is detected by the sensor and
-registered as motion.
+registered as motion [^D-1-3].
 
 ##### Infrared Break-Beam {-}
 
@@ -102,5 +102,8 @@ Note: The custom device can potentially support multiple different communication
 | Level of Effort    | Low   |
 | Quality Comparison | Equal |
 
+[^D-1-1]: “PIR Motion Sensor,” How PIRs Work | PIR Motion Sensor | Adafruit Learning System. [Online]. Available: <https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/how-pirs-work>. Accessed: Oct. 29, 2016.
 
+[^D-1-2]: Adafruit Industries, "PIR (motion) sensor ID: 189 - $9.95: Adafruit industries, unique & fun DIY electronics and kits,". [Online]. Available: <https://www.adafruit.com/product/189>. Accessed: Oct. 29, 2016.
 
+[^D-1-3]: "IR beam motion detector", Hkvstar.com, 2017. [Online]. Available: <http://www.hkvstar.com/category/ir-motion-detector.html>. [Accessed: 24-Mar-2017].
