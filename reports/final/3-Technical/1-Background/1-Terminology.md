@@ -1,8 +1,7 @@
 ### Technical Terminology {#sec-3-1-1-1}
 
-In order to describe the Aria system and the field of smart home automation, technical terminology
-will be required. This section outlines a set of technical terms and phrases that will be used
-to describe this field of technology.
+This section outlines a set of technical terms and phrases that will be used to describe this field
+of technology.
 
 ##### Real-Time System {-}
 
@@ -22,29 +21,29 @@ remotely [^TT-2].
 
 ##### Machine Learning {-}
 
-Machine learning is an process for a computer to modify its behaviour based on its inputs [^TT-3].
+Machine learning is a process for a computer to modify its behaviour based on new data from 
+its environment [^TT-3].
 
 ##### Internet of Things (IoT) {-}
 
 The internet of things (IoT) is a term used to describe a network of embedded devices that send
-and receive data via the internet [^TT-4].
+and receive data via the Internet [^TT-4].
 
 ##### Smart Hub {-}
 
-A smart hub is an embedded device that all smart home devices interact with as a central point
-of communication.
+A smart hub is an embedded device that acts as a central point of communication for all smart 
+devices in a home.
 
 ##### Device Scenes {-}
 
 A software configuration of smart devices in a home that outlines specific behaviours of each
-device. Scenes are used by smart homes to recreate a specific setups that a user has configured
+device. Scenes are used by smart homes to recreate a specific setups that a user has configured.
 [^TT-6].
 
 ##### If This Then That (IFTTT) {-}
 
-An algorithm that causes a reaction when a set of criteria are met. If the criteria are met
-then an action is performed.
-
+An service that can be configured to perform actions based on conditional statements. If the 
+conditions are met then an action is performed.
 
 <!-- References -->
 
