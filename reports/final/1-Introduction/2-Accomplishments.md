@@ -39,7 +39,7 @@ devices that are connected to the system. These events are displayed in a live f
 The user is able to configure the system to automate control of their devices without writing 
 explicity rules. The user trains the system to perform actions by placing the system in 
 a learning mode. By manually running through a scenario while in learning mode, the user can teach
-the system to recreate the scenario. The capabilities and limitations of the learning algorithm are
-discussed further in [Learning Algorithm](#sec-3-2-12-2).
+the system to recreate the scenario. The capabilities and limitations of the training functionality
+are discussed further in [Learning Algorithm](#sec-3-2-12-2).
 
 
