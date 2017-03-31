@@ -2,7 +2,7 @@
 
 #### Demo Layout {-}
 
-[demo-layout]: ./images/DemoLayout.png "Demo Layout" {#fig-demo-layout}
+![][demo-layout]
 
 #### Components {-}
 
