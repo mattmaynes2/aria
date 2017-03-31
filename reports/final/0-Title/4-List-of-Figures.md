@@ -16,6 +16,7 @@
 | [10. System Deployment](#fig-system-deployment)    | Jeremy               |                      |
 | [11. Layer Architecture](#fig-layer-architecture)  | Cameron              |                      |
 | [12. Client-Server Deployment](#fig-client-server) | Cameron              |                      |
+| [13. demo-layout](#fig-demo-layout)                | Peter                |                      |
 | [G-1 Office Activity](#fig-g-1)                    | Peter                |                      |
 | [G-2 Office No Activity](#fig-g-2)                 | Peter                |                      |
 | [H-1 Exchange Classes](#fig-h-1)                   | Jeremy               |                      |
