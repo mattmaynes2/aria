@@ -120,7 +120,7 @@ client are outlined in [Appendix I-2](#I-2).
 Similarly to the gateway, the web client undergoes two phases of testing; static and dynamic. The
 static phase is exactly the same as the gateway as it is analyzed by JSHint. The dynamic phase
 slightly differs as the target platform is vastly different from the gateway. In order to
-dynamically tets the remote, a testing library called **Jasmine** was used to write unit tests.
+dynamically test the remote, a testing library called **Jasmine** was used to write unit tests.
 This library is similar to Mocha in that it provides a BDD testing grammar for creating unit tests.
 To run these tests, a test driver called **Karma** was used in conjunction with a daemonized
 browser called **PhantomJS**. The Karma driver runs the Jasmine tests in the PhantomJS browser to
