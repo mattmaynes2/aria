@@ -8,10 +8,10 @@
 | [2. System Use Case](#fig-system-use-case)         | Cameron              |
 | [3. Training Use Case](#fig-training-use-case)     | Cameron              |
 | [4. System Components](#fig-system-components)     | Matthew & Jeremy     |
-| [5. Communication Adapters]{#fig-design-adapter}   | Matthew              |
-| [6. Learning Strategies]{#fig-design-strategy}     | Matthew              |
-| [7. Control Commands]{#fig-design-command}         | Matthew              |
-| [8. Reactive Interface]{#fig-design-react}         | Matthew              |
+| [5. Communication Adapters](#fig-design-adapter)   | Matthew              |
+| [6. Learning Strategies](#fig-design-strategy)     | Matthew              |
+| [7. Control Commands](#fig-design-command)         | Matthew              |
+| [8. Reactive Interface](#fig-design-react)         | Matthew              |
 | [9. Remote Use Case](#fig-remote-use-case)         | Matthew              |
 | [10. System Deployment](#fig-system-deployment)    | Jeremy               |
 | [11. Layer Architecture](#fig-layer-architecture)  | Cameron              |
