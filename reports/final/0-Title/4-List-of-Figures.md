@@ -2,37 +2,37 @@
 
 ## List of Figures {-}
 
-| Figure                                             | Author(s)            | Editor(s)            |
-| -------------------------------------------------- | -------------------- | -------------------- |
-| [1. Product Design](#fig-product-design)           | Cameron              |                      |
-| [2. System Use Case](#fig-system-use-case)         | Cameron              | Matthew              |
-| [3. Training Use Case](#fig-training-use-case)     | Cameron              | Matthew              |
-| [4. System Components](#fig-system-components)     | Matthew & Jeremy     |                      |
-| [5. Communication Adapters]{#fig-design-adapter}   | Matthew              |                      |
-| [6. Learning Strategies]{#fig-design-strategy}     | Matthew              |                      |
-| [7. Control Commands]{#fig-design-command}         | Matthew              |                      |
-| [8. Reactive Interface]{#fig-design-react}         | Matthew              |                      |
-| [9. Remote Use Case](#fig-remote-use-case)         | Matthew              | Cameron              |
-| [10. System Deployment](#fig-system-deployment)    | Jeremy               |                      |
-| [11. Layer Architecture](#fig-layer-architecture)  | Cameron              |                      |
-| [12. Client-Server Deployment](#fig-client-server) | Cameron              |                      |
-| [G-1 Office Activity](#fig-g-1)                    | Peter                |                      |
-| [G-2 Office No Activity](#fig-g-2)                 | Peter                |                      |
-| [H-1 Exchange Classes](#fig-h-1)                   | Jeremy               |                      |
-| [H-2 Database Entity Relationships](#fig-h-2)      | Jeremy               | Peter                |
-| [H-3 Server Request Sequence](#fig-h-3)            | Cameron              |                      |
-| [H-4 Device Request Sequence](#fig-h-4)            | Cameron              |                      |
-| [H-5 User Driven Discovery](#fig-h-5)              | Matthew              |                      |
-| [H-6 Device Driven Discovery](#fig-h-6)            | Matthew              |                      |
-| [H-7 Proposed Home Page](#fig-h-7)                 | Peter                |                      |
-| [H-8 Proposed Device Page](#fig-h-8)               | Peter                |                      |
-| [H-9 Aria Home Page](#fig-h-9)                     | Matthew              |                      |
-| [H-10 Aria Error Notification](#fig-h-10)          | Matthew              |                      |
-| [H-11 Aria Warning Notification](#fig-h-11)        | Matthew              |                      |
-| [H-12 Aria Discovery Notification](#fig-h-12)      | Matthew              |                      |
-| [H-13 Aria Device Page](#fig-h-13)                 | Matthew              |                      |
-| [H-14 Add Device Workflow](#fig-h-14)              | Jeremy & Peter       |                      |
-| [I-1 Code Lifecycle](#fig-i-1)                     | Cameron              |                      |
+| Figure                                             | Author(s)            |
+| -------------------------------------------------- | -------------------- |
+| [1. Product Design](#fig-product-design)           | Cameron              |
+| [2. System Use Case](#fig-system-use-case)         | Cameron              |
+| [3. Training Use Case](#fig-training-use-case)     | Cameron              |
+| [4. System Components](#fig-system-components)     | Matthew & Jeremy     |
+| [5. Communication Adapters]{#fig-design-adapter}   | Matthew              |
+| [6. Learning Strategies]{#fig-design-strategy}     | Matthew              |
+| [7. Control Commands]{#fig-design-command}         | Matthew              |
+| [8. Reactive Interface]{#fig-design-react}         | Matthew              |
+| [9. Remote Use Case](#fig-remote-use-case)         | Matthew              |
+| [10. System Deployment](#fig-system-deployment)    | Jeremy               |
+| [11. Layer Architecture](#fig-layer-architecture)  | Cameron              |
+| [12. Client-Server Deployment](#fig-client-server) | Cameron              |
+| [G-1 Office Activity](#fig-g-1)                    | Peter                |
+| [G-2 Office No Activity](#fig-g-2)                 | Peter                |
+| [H-1 Exchange Classes](#fig-h-1)                   | Jeremy               |
+| [H-2 Database Entity Relationships](#fig-h-2)      | Jeremy               |
+| [H-3 Server Request Sequence](#fig-h-3)            | Cameron              |
+| [H-4 Device Request Sequence](#fig-h-4)            | Cameron              |
+| [H-5 User Driven Discovery](#fig-h-5)              | Matthew              |
+| [H-6 Device Driven Discovery](#fig-h-6)            | Matthew              |
+| [H-7 Proposed Home Page](#fig-h-7)                 | Peter                |
+| [H-8 Proposed Device Page](#fig-h-8)               | Peter                |
+| [H-9 Aria Home Page](#fig-h-9)                     | Matthew              |
+| [H-10 Aria Error Notification](#fig-h-10)          | Matthew              |
+| [H-11 Aria Warning Notification](#fig-h-11)        | Matthew              |
+| [H-12 Aria Discovery Notification](#fig-h-12)      | Matthew              |
+| [H-13 Aria Device Page](#fig-h-13)                 | Matthew              |
+| [H-14 Add Device Workflow](#fig-h-14)              | Jeremy & Peter       |
+| [I-1 Code Lifecycle](#fig-i-1)                     | Cameron              |
 
 <!-- 
 	Image References:
