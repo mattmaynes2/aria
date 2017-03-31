@@ -68,7 +68,7 @@
 [system-deployment]: ./uml/SystemDeployment.png "Figure 10: System Deployment" {#fig-system-deployment}
 [layer-architecture]: ./images/LayerArchitecture.png "Figure 11: Layered Architecture" {#fig-layer-architecture}
 [client-server-deployment]: ./uml/AriaDeployment.png "Figure 12: Client Server Deployment" {#fig-client-server} 
-[demo-layout]: ./images/DemoLayout.png "Demo Layout" {#fig-demo-layout}
+[demo-layout]: ./images/DemoLayout.png "Figure 13: Demo Layout" {#fig-demo-layout}
 
 [g-1]: ./images/Scenario-NoActivity.png "Figure G-1: Graph of no office activity" {#fig-g-1}
 [g-2]: ./images/Scenario-OfficeActivity.png "Figure G-2: Graph of office activity" {#fig-g-2}
