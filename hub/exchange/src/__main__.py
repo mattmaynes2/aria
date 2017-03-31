@@ -83,7 +83,6 @@ def create_exchange (hub, cli, database):
     exchange.register('software', softwareAdapter)
     
     # setup  Machine learning
-    #TODO add past events to strategy
     strategy = V4Strategy('decisions.pickle')
     decisionBroker = DecisionBroker(exchange,hub)
     modelBuilder = ModelBuilder(Retriever(database),decisionBroker,strategy,hub.devices.values())
