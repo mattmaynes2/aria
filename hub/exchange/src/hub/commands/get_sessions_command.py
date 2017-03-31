@@ -11,7 +11,7 @@ class GetSessionsCommand(DatabaseCommand):
         count=data['count']
         behaviourId=data['behaviourId']
         results = self.retriever.getSessionsWindow(start,count,behaviourId)
-        for result in results:
+        for i,result in enumerate(results):
             result['created_date']=self.formatDate(result['created_date'])
-            self._formatColumnNames(result)
+            results[i] = self._formatColumnNames(result)
         return{'total':len(results),'records':results}

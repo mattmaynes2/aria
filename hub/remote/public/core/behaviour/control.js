@@ -27,16 +27,16 @@ class BehaviourControl extends Component {
     static activeState(val) {
         if (typeof val === 'string') {
             return val === 'Active';
-        }else{
-            return val === true ? 'Active' : 'Inactive';
         }
+        return val ? 'Active' : 'Inactive';
+
     }
 
     _postrender () {
         this._remove.$el().off().click(remove.bind(this));
         this._sessions.$el().off().click(sessions.bind(this));
         this._toggleActive.change((state) => {
-            Service.set('/hub/training/behaviour/' + this._state.id, { 
+            Service.set('/hub/training/behaviour/' + this._state.id, {
                     active: BehaviourControl.activeState(state)
                 })
                 .then((res) => {

@@ -20,6 +20,16 @@ class ModelBuilder(Delegate):
         elif message.type == Message.Request and isSessionStopMessage(message):
             events=self.retriever.getSessionEvents(message.data['id']) 
             self.strategy.processSession(events,self.state)
+        elif message.type == Message.Request and isBehaviourToggleMessage(message):
+            data=message.data
+            active = data.get('value').get('active')
+            if active != None:
+                if active:
+                    self.strategy.activateBehaviour(data['id'])
+                else:
+                    self.strategy.deactivateBehaviour(data['id'])
+        elif message.type == Message.Request and isBehaviourDeleteMessage(message):
+            self.strategy.removeBehaviour(message.data['id'])
     
     @property
     def strategy (self):
@@ -46,6 +56,14 @@ def isSessionStopMessage(message):
 def isSessionStartMessage(message):
     data= message.data
     return data.get('activate',None) == 'session'
+
+def isBehaviourToggleMessage(message):
+    data= message.data
+    return data.get('set',None) == 'behaviour' and data.get('value',{}).get('active',None) != None
+
+def isBehaviourDeleteMessage(message):
+    data= message.data
+    return data.get('delete',None) == 'behaviour'
 
             
 

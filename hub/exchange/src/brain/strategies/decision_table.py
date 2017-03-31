@@ -35,6 +35,10 @@ class DecisionTable():
         row=self.table.get(eventString,TableRow())
         return filter( lambda x: x.count/ row.getCount(x.behaviourId) > threshold, row.decisions)
 
+    def removeBehaviour(self,behaviourId):
+        for row in self.table.values():
+            row.removeBehaviour(behaviourId)
+
     def __str__(self):
         return str(self.__dict__)
     
@@ -69,6 +73,11 @@ class TableRow():
         logger.debug("looking for behaviour {}".format(behaviourId))
         return self.behaviourCounts.get(behaviourId,None) 
 
+    def removeBehaviour(self,behaviourId):
+        behaviourId =int(behaviourId)
+        self.behaviourCounts.pop(behaviourId,None)
+        self.decisions= [d for d in self.decisions if d.behaviourId != behaviourId]
+                
     def __str__(self):
         return str(self.__dict__)
     

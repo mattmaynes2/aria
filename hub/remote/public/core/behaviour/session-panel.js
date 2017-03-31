@@ -15,6 +15,7 @@ class SessionPanel extends WidgetPanel {
             behaviour   : this._state.behaviour || {},
             sessions    : this._state.sessions  || []
         };
+        this.addClass('session-panel');
     }
 
     update () {
@@ -29,7 +30,7 @@ class SessionPanel extends WidgetPanel {
                     if (s.id === session.id) {
                         return new Session(s, { isActive : true }).addClass('session-active');
                     }
-                    return new Session(s, { hideButtons : true });
+                    return new Session(s, { hideButtons : !!session.id });
                 });
                 this.render();
             });

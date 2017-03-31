@@ -188,6 +188,8 @@ Smart Lighting Scenario.
 
 ##### Data {-}
 
+The following is actual data from sensors, collected by running through the smart lighting scenario.
+
 <pre>SELECT event_id, 
        e.timestamp, 
        e.source, 
