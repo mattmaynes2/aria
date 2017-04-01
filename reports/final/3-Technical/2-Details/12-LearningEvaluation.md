@@ -1447,12 +1447,13 @@ sessions have no effect or have a worsening effect when version 3 is used.
  </tr>
 </table>
 
-Version 4 is clearly not perfect however it does a pretty good job. The wrong 
-
-#### Future Strategies {-}
-
-One future enhancement that could be made to the algorithm is the discretization of device data.
-Discretization of the data could allow the learning component to decide whether a change in a 
-sensor value is significant enough that an action should be triggered. For example, only temperature 
-changes of a certain number of degrees should be considered to be significant changes to the 
-environment.
+While version 4 has a lower rate of incorrect decisions than any previous version, it does still 
+learn incorrect behaviours. Unlearning some of these incorrect behaviours could be difficult or 
+impossible due to the infrequency of the triggering action. For example if an incorrect behaviour is 
+triggered off of a temperature of exactly 70.0999984741211 it is unlikely that this precise 
+temperature will be observed frequently enough to unlearn the behaviour. One future enhancement that
+could be made to the algorithm is the discretization of device data. Discretization of the data 
+could increase the frequency of these events by treating groups of close values as the same event. 
+For example, the system might consider any temperature in a range of 1 degree to be the same event.
+This would allow incorrect behaviours to be unlearned by decreasing the number of infrequent events
+observed during training sessions.
