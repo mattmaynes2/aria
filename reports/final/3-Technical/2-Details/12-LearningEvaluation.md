@@ -1,7 +1,40 @@
 ------------------------------
 #### Algorithm Evaluation {-}
 
+In this section we will discus the scope of the learning our system is able to perform and how
+well the different versions of the algorithm are able to learn behaviours. 
 
+##### Scope {-}
+
+The system is able to infer simple rules in which an action is triggered by a single event. The 
+system can only associate the exact events with actions, two similar events will not trigger the 
+same action.The //TODO reword
+system is not able to learn more complex behaviours in which a sequence or a combination of events 
+trigger an action or sequence of actions. 
+
+#### Algorithm Performance {-}
+ 
+To test how well the different algorithms performed each algorithm was trained to perform a set of 
+behaviours using training data collected from the [Demo](#sec-3-2-15-1) environment. Each algorithm
+was trained using the exact same training data, and each behaviour was tested independently. In each 
+case a specific event-action pair was identified as the desired behaviour to be learned.
+
+Two metrics were collected using the decision tables of the algorithms after they had been trained. 
+The decision tables contain all of the event-action pairs that the system has learned. Any action in
+this table will be performed when the corresponding event is observed. The first metric is whether 
+or not the desired behaviour was learned. The second metric is the number of behaviours other than 
+the desired behaviour that were learned. 
+
+
+
+For the 4th version of the algorithms different behaviours does not cause  
+Trained using behaviour and session data used in the 
+-	  
+-	From table, we can see that version 2 was only able to learn 4 of 9 behaviours 
+-	Of the 4 it learned it only learned 1 without any wrong decisions.
+-	Version 3 learned all 9 behaviours but only learned 2 without any wrong decisions
+-	Version 4 learned all behaviours and learned 5 of 9 without any wrong behaviours.
+ 
 
 <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
  style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext 1.5pt;
