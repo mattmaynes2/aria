@@ -1,4 +1,4 @@
-------------------------------
+
 #### Algorithm Evaluation {-}
 
 In this section we will discus the scope of the learning our system is able to perform and how
@@ -752,7 +752,7 @@ the desired behaviour that were learned. Table {Tnum} shows the results of the t
 </table>
 
 
-From table, we can see that version 2 was clearly the worst performing strategy as it was only able 
+From the table, we can see that version 2 was clearly the worst performing strategy as it was only able 
 to learn 4 of 9 behaviours. Of the four it learned, it only learned one without learning any 
 additional incorrect behaviours.Version 3 is an improvement on version 2 as it was able to learn 
 all 9 behaviours, however, it was only able to learn two of these behaviours without learning any
@@ -765,9 +765,12 @@ training sessions. Table {reference} illustrates that the number of incorrect de
 version 4 can be reduced by performing additional training sessions, whereas additional training 
 sessions have no effect or have a worsening effect when version 3 is used.
 
+<br/>
 
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=489
- style='width:367.0pt;border-collapse:collapse;border:none'>
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext 1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ 1.5pt solid windowtext;mso-border-insidev:1.5pt solid windowtext'>
  <tr style='height:57.35pt'>
   <td width=186 style='width:139.25pt;border:solid windowtext 1.0pt;padding:
   0in 5.4pt 0in 5.4pt;height:57.35pt'>
