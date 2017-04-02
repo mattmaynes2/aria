@@ -1,16 +1,19 @@
 
 #### Algorithm Evaluation {-}
 
-In this section we will discus the scope of the learning our system is able to perform and how
+In this section we will discuss the scope of the learning our system is able to perform and how
 well the different versions of the algorithm are able to learn behaviours. 
 
 ##### Scope {-}
 
 The system is able to infer simple rules in which an action is triggered by a single event. The 
 system can only associate the exact events with actions, two similar events will not trigger the 
-same action.The //TODO reword
-system is not able to learn more complex behaviours in which a sequence or a combination of events 
-trigger an action or sequence of actions. 
+same action.The system is not able to learn more complex behaviours in which a sequence or a 
+combination of events trigger an action or sequence of actions. For example the system is able
+to learn to turn a light on after a motion event. However, it is not able to learn how to turn on
+the light if a the luminance level in the room is below a threshold. Another example of a behaviour
+that the system would not be able to learn is to turn the light on in response to a combination of 
+a motion event and a  window closing event.
 
 #### Algorithm Performance {-}
  
@@ -752,10 +755,10 @@ the desired behaviour that were learned. Table {Tnum} shows the results of the t
 </table>
 
 
-From the table, we can see that version 2 was clearly the worst performing strategy as it was only able 
-to learn 4 of 9 behaviours. Of the four it learned, it only learned one without learning any 
-additional incorrect behaviours.Version 3 is an improvement on version 2 as it was able to learn 
-all 9 behaviours, however, it was only able to learn two of these behaviours without learning any
+From the table, we can see that version 2 was clearly the worst performing strategy as it was only 
+able to learn four of nine behaviours. Of the four it learned, it only learned one without learning 
+any additional incorrect behaviours.Version 3 is an improvement on version 2 as it was able to learn 
+all nine behaviours, however, it was only able to learn two of these behaviours without learning any
 additional incorrect behaviours.Version 4 is clearly the best strategy as it was able to learn all 
 of the behaviours and it learned five out of the nine without any incorrect behaviours.
 
