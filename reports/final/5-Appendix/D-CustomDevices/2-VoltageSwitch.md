@@ -1,4 +1,4 @@
-### D-2 Variable-Voltage Switch {- #D-1}
+### D-2 Variable-Voltage Switch {- #D-2}
 
 The characteristics of variable-voltage switches vary significantly depending on the type of device
 that the switch is expected to control (DC vs AC).
