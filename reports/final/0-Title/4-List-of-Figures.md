@@ -60,7 +60,7 @@
 [training-use-case]: ./uml/TrainingUseCase.png "Figure 3: Training Use Case" {#fig-training-use-case}
 [system-components]: ./uml/AriaComponents.png "Figure 4: System Components" {#fig-system-components}
 [design-adapter]: ./uml/DesignPatternAdapter.png "Figure 5: Communication Adapter Pattern" {#fig-design-adapter}
-[design-strategy]: ./uml/DesignPatternStretegy.png "Figure 6: Learning Strategy Pattern" {#fig-design-strategy}
+[design-strategy]: ./uml/DesignPatternStrategy.png "Figure 6: Learning Strategy Pattern" {#fig-design-strategy}
 [design-command]: ./uml/DesignPatternCommand.png "Figure 7: Control Command Pattern" {#fig-design-command}
 [design-react]: ./uml/DesignPatternReact.png "Figure 8: Reactive Interface Pattern" {#fig-design-react}
 [remote-use-case]: ./uml/RemoteUseCase.png "Figure 9: Remote Use Case" {#fig-remote-use-case}
