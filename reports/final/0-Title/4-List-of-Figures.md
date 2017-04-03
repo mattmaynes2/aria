@@ -19,7 +19,7 @@
 | [G-1 Office Activity](#fig-g-1)                    | Peter                |
 | [G-2 Office No Activity](#fig-g-2)                 | Peter                |
 | [H-1 Exchange Classes](#fig-h-1)                   | Jeremy               |
-| [H-2 Database Entity Relationships](#fig-h-2)      | Jeremy               |
+| [H-2 Database Entity Relationships](#fig-h-2)      | Jeremy & Peter       |
 | [H-3 Server Request Sequence](#fig-h-3)            | Cameron              |
 | [H-4 Device Request Sequence](#fig-h-4)            | Cameron              |
 | [H-5 User Driven Discovery](#fig-h-5)              | Matthew              |
