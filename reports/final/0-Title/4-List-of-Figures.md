@@ -19,7 +19,7 @@
 | [G-1 Office Activity](#fig-g-1)                    | Peter                |
 | [G-2 Office No Activity](#fig-g-2)                 | Peter                |
 | [H-1 Exchange Classes](#fig-h-1)                   | Jeremy               |
-| [H-2 Database Entity Relationships](#fig-h-2)      | Jeremy               |
+| [H-2 Database Entity Relationships](#fig-h-2)      | Jeremy & Peter       |
 | [H-3 Server Request Sequence](#fig-h-3)            | Cameron              |
 | [H-4 Device Request Sequence](#fig-h-4)            | Cameron              |
 | [H-5 User Driven Discovery](#fig-h-5)              | Matthew              |
@@ -60,7 +60,7 @@
 [training-use-case]: ./uml/TrainingUseCase.png "Figure 3: Training Use Case" {#fig-training-use-case}
 [system-components]: ./uml/AriaComponents.png "Figure 4: System Components" {#fig-system-components}
 [design-adapter]: ./uml/DesignPatternAdapter.png "Figure 5: Communication Adapter Pattern" {#fig-design-adapter}
-[design-strategy]: ./uml/DesignPatternStretegy.png "Figure 6: Learning Strategy Pattern" {#fig-design-strategy}
+[design-strategy]: ./uml/DesignPatternStrategy.png "Figure 6: Learning Strategy Pattern" {#fig-design-strategy}
 [design-command]: ./uml/DesignPatternCommand.png "Figure 7: Control Command Pattern" {#fig-design-command}
 [design-react]: ./uml/DesignPatternReact.png "Figure 8: Reactive Interface Pattern" {#fig-design-react}
 [remote-use-case]: ./uml/RemoteUseCase.png "Figure 9: Remote Use Case" {#fig-remote-use-case}
