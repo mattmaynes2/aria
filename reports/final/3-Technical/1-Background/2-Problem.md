@@ -44,13 +44,6 @@ and controlling their environment. Having clean, user friendly controls will all
 be usable by any non-technical user.
 
 
-Finally, a smart home must provide some form of scheduled configuration. This configuration
-should set a device to a specific state at a desired time. This is yet another feature
-that needs to be simplified to cater to a non-technical audience. The automation of
-this process is much more advanced then automating any other task in the system as it involves
-prediction of user configuration. Having this process automated would be the final component on
-the path to offering a smart home to a non-technical user.
-
 Eliminating the technical tasks required to setup and utilize a smart home would make this
 technology available to a non-technical user and could expand the market of smart home automation.
 
