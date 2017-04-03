@@ -16,8 +16,8 @@ feels comfortable voicing their opinions, giving and receiving critical feedback
 they are making a useful contribution to the overall goals of the team.
 
 With the idea of keeping a clear project direction in mind, our team holds weekly scrums. This is 
-when we collectively decide what goal is for the next week of development, working towards a more
-long term goal. Each team member discusses the work they have been doing and what they plan to 
+when we collectively decide what goal is for the next week of development, working towards a
+longer-term goal. Each team member discusses the work they have been doing and what they plan to 
 accomplish in the upcoming week. Once this meeting is completed, our team drafts an email together
 to inform our project supervisor of our plans for the next week of development.
 

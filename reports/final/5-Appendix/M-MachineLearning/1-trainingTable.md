@@ -1,4 +1,6 @@
-## Machine Learning Training Results {- #M}
+# M Machine Learning {- #M}
+
+## Machine Learning Training Results {- #M-1}
 
 This table shows the training results per session for machine learning algorithms 2 ,3 and 4.
 

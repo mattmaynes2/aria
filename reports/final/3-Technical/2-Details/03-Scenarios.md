@@ -1,6 +1,6 @@
 ### Scenarios {#sec-3-2-3-1}
 
-In order to better understand the motivations for using the learning home automation system,
+To better understand the motivations for using the learning home automation system,
 scenarios outlining expected behaviours have been developed. These scenarios are designed to
 examine use cases of the Aria system. The intent of these scenarios is to explore what ways
 the system could be used, uncover potential areas of concern and to help reason about the technical
@@ -72,7 +72,7 @@ turn on in the rooms that you will enter. Later in the evening, the system cools
 comfortable sleeping temperature and dims the lights.
 
 On the weekend, the house remains warm during the day while you are home. If you leave then
-to go to a store, the system turns off all the lights and lowers the temperature. When your
+to go to a store, the system turns off all the lights and lowers the temperature. When you
 arrive home again the system turns the lights back on and raises the temperature.
 
 In the summer months, when it is more light outside, the system does not turn the home's lights
@@ -87,11 +87,11 @@ in the system. The remote will also need to offer control of the other devices i
 
 The system will also be able to be trained to obtain the desired output. To be able to have the
 lights turn off when the user leaves the room, the user could enter training mode with the
-lights on, leave the room and then turn off the lights. If this interaction was repeated then the
+lights on, leave the room and then turn off the lights. If this interaction was repeated, then the
 system might learn this behaviour.
 
 For the system to learn the desired temperature that the user desired, the learning process may
-be much longer. At different times of day the user will change the temperature. As environmental
+be much longer. At different times of day, the user will change the temperature. As environmental
 factors changes, the system will make these observations and use them to decide what the should
 be set to.
 
@@ -139,7 +139,7 @@ presence. The system will also need to be able to communicate to a smart coffee 
 can observe when it is running as well as turn it off and on. The system will also need to be
 able to differentiate between the different days of the week and the time of day.
 
-In order to train the system, the user could put the system into training mode and then get
+To train the system, the user could put the system into training mode and then get
 into bed. The user could then get out of bed and go directly to the kitchen and make a pot
 of coffee. The system could observe the user's leaving the bed with motion sensors and track
 that they are making coffee in a smart coffee maker.
@@ -167,7 +167,7 @@ smart device that will be required to automate this scenario.
 
 A learning smart home should reduce the need to manually perform everyday environmental control 
 tasks. The system should be able to take in information from multiple sensors and devices, and be
-able to make adjustments to the home environment based on that information. 
+able to adjust the home environment based on that information. 
 
 The homeowner enters their home office on a bright afternoon, and the lights remain turned off. 
 They continue working through the afternoon and into the evening. As the sun begins to set, the lights
@@ -190,7 +190,7 @@ any one input.
 Having the external environment be a factor in this scenario makes it hard to train the system 
 to specifically do this, as you cannot easily control the external light levels. However, assuming the
 home owner keeps the light in the room at a certain level while the system is learning, the behaviour
-should be able to to be learned.
+should be able to be learned.
 
 ###### System Requirements {-}
 

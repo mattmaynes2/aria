@@ -35,7 +35,7 @@ stop syntax errors. This tool reads a python file and reports if it conforms to 
 constraints.
 
 To check the system's dynamic functionality, the system has sets of integrated unit tests.
-Python comes with a built in unit testing framework appropriately named **unittest**. This package
+Python comes with a built-in unit testing framework appropriately named **unittest**. This package
 is being used to develop test stubs and test cases to validate the operations of the exchange.
 To drive these tests, **nosetools** is being used. This tool automatically discovers test cases and
 manages running the test cases in a contained environment. The two tools complement each other

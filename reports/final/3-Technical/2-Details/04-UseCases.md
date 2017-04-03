@@ -97,7 +97,7 @@ Below are the descriptions of each use case for the system.
 +----------------+--------------------------------------------------------------------------------+
 | Precondition   |                                                                                |
 +----------------+--------------------------------------------------------------------------------+
-| Postcondition  | System does not accept learning data, System does not modify the state of      |
+| Postcondition  | System does not accept learning data; System does not modify the state of      |
 |                | devices                                                                        |               
 +----------------+--------------------------------------------------------------------------------+
 | Flow 			 | 1. User enters standby mode                                                    |
@@ -117,7 +117,7 @@ Below are the descriptions of each use case for the system.
 +----------------+--------------------------------------------------------------------------------+
 | Precondition   |                                                                                |
 +----------------+--------------------------------------------------------------------------------+
-| Postcondition  | System does not accept learning data, System does not modify the state of      |
+| Postcondition  | System does not accept learning data; System does not modify the state of      |
 |                | devices                                                                        |               
 +----------------+--------------------------------------------------------------------------------+
 | Flow 			 | 1. User disconnects device from the network                                    |  
@@ -137,7 +137,7 @@ Below are the descriptions of each use case for the system.
 +----------------+--------------------------------------------------------------------------------+
 | Precondition   |                                                                                |
 +----------------+--------------------------------------------------------------------------------+
-| Postcondition  | System does not accept learning data, System does not modify the state of      |
+| Postcondition  | System does not accept learning data; System does not modify the state of      |
 |                | devices                                                                        |               
 +----------------+--------------------------------------------------------------------------------+
 | Flow 			 | 1. User logs in to remote interface                                            | 
@@ -149,7 +149,7 @@ Below are the descriptions of each use case for the system.
 
 #### Training Use Cases {- #sec-3-2-4-2}
 
-A subset of the behaviour required for the sart home behaviour is the training of the system.
+A subset of the behaviour required for the start home behaviour is the training of the system.
 Training involves a user creating a behaviour they wish to train the system to perform, then by
 performing multiple training session, they can train it. This feature has a number of use cases
 associated with it which are depicted in Figure <!-- FIGURE NUMBER -->.
@@ -169,7 +169,7 @@ associated with it which are depicted in Figure <!-- FIGURE NUMBER -->.
 +----------------+--------------------------------------------------------------------------------+
 | Postcondition  |                                                                                |               
 +----------------+--------------------------------------------------------------------------------+
-| Flow 			 | 1. User naviagtes to the training view                  						  |
+| Flow 			 | 1. User navigates to the training view                  						  |
 |                | 2. User is presented with a list of existing behaviours                        |
 +----------------+--------------------------------------------------------------------------------+
 
