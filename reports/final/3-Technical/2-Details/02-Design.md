@@ -2,25 +2,24 @@
 
 ![][product-design]
 
-This design illustrates the configuration that the Aria system will be used in. The smart hub will
-be the main point of communication for all smart devices in the network. The user will use the
-web interface to communicate to the smart hub for all commands. If a command is meant to be
-directed to smart device in the network then the message will first be sent to smart hub before
-being relayed to the specific device.
+This diagram illustrates at a high level the communication between physical devices in the Aria 
+system. The smart hub will be the main point of communication for all smart devices in the network.
+The user will use the web interface to send commands to the smart hub. The smart hub will determine 
+how to relay these commands to smart devices if required.
 
 The design for this system will need to consider the requirement that multiple devices will need
-to connect to a single smart hub. The hub will also need to support concurrent connections with
-users, as more than one may wish to have access at any given time. These features present some
+to connect to a single smart hub. The hub will also need to support concurrent connections in order 
+to allow multiple users to have access at any given time. These features present some
 hardware requirements that must be satisfied. The physical smart hub must have external interfaces
 for communicating to multiple devices and must support concurrent processes. The communication
-protocol to interface with the smart devices themselves must also be considered as it must
+protocol used to interface with the smart devices themselves must also be considered as it must
 work on low power embedded devices with short to medium range connections. Fortunately, the
 data transfer rate requirements for this system will be minimal as only small state transfers
 of sensor readings or device commands must be communicated.
 
 The smart hub's requirements limits the devices that can be utilized for its purpose. A
-comprehensive breakdown of embedded device specifications can be viewed in [Appendix B](#B).
-The research compares a number of miniature computing devices for the role of the smart hub
+comprehensive breakdown of the specifications of considered devices can be viewed in [Appendix B](#B).
+The research compares a number of computing devices for the role of the smart hub
 including various Arduinos, Raspberry Pis and Beagle Bones. Due to the requirement of concurrent
 processes, a number of the computing devices were eliminated. The eliminated computing devices
 were all embedded machines that only offered a single core processor with no operating system
