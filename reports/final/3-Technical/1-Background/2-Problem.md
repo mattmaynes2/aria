@@ -22,13 +22,12 @@ to non-technical users. These companies must present the technical tasks of devi
 configuration and user configuration to a non-technical audience.
 
 The process of device pairing involves connecting a device to the smart hub to be used by the 
-system. There are a number of technical issues when establishing this connection. The device
-will need to know the medium to communicate with, the protocol to use for communication and
-the location of the hub in the network. This process requires a significant amount of technical
-understanding to be able to perform. If this task is left to the user then the system's
-usability is significantly reduced to a narrow portion of the public by isolating it to a
-technical audience. Automating this process could significantly reduce this technical
-requirement and broaden the usability of the system.
+system. There are a number of technical issues when establishing this connection. Connecting a 
+device may require knowledge of the communication protocol used by the device, and the location of 
+the hub in the network. If this task is left to the user then the system's usability may be reduced 
+to a narrow portion of the public by isolating it to a technical audience. Limiting the amount of 
+technical knowledge needed to set up new device could reduce the effect of this technical requirement 
+and broaden the usability of the system.
 
 After the device has been paired with the smart hub, it needs to be configured to provide
 the hub with meaningful information. This configuration process is typically vendor or device
