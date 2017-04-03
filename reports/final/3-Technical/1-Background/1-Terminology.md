@@ -37,13 +37,13 @@ devices in a home.
 ##### Device Scenes {-}
 
 A software configuration of smart devices in a home that outlines specific behaviours of each
-device. Scenes are used by smart homes to recreate a specific setups that a user has configured.
+device. Scenes are used by smart homes to recreate a specific setup that a user has configured.
 [^TT-6].
 
 ##### If This Then That (IFTTT) {-}
 
 An service that can be configured to perform actions based on conditional statements. If the 
-conditions are met then an action is performed.
+conditions are met, then an action is performed.
 
 <!-- References -->
 

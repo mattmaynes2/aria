@@ -1,17 +1,17 @@
 
 #### Algorithm Evaluation {-}
 
-In this section we will discuss the scope of the learning our system is able to perform and how
+In this section, we will discuss the scope of the learning our system is able to perform and how
 well the different versions of the algorithm are able to learn behaviours. 
 
 ##### Scope {-}
 
 The system is able to infer simple rules in which an action is triggered by a single event. The 
 system can only associate the exact events with actions, two similar events will not trigger the 
-same action.The system is not able to learn more complex behaviours in which a sequence or a 
-combination of events trigger an action or sequence of actions. For example the system is able
+same action. The system is not able to learn more complex behaviours in which a sequence or a 
+combination of events trigger an action or sequence of actions. For example, the system is able
 to learn to turn a light on after a motion event. However, it is not able to learn how to turn on
-the light if a the luminance level in the room is below a threshold. Another example of a behaviour
+the light if the luminance level in the room is below a threshold. Another example of a behaviour
 that the system would not be able to learn is to turn the light on in response to a combination of 
 a motion event and a  window closing event.
 
@@ -757,9 +757,9 @@ the desired behaviour that were learned. Table {Tnum} shows the results of the t
 
 From the table, we can see that version 2 was clearly the worst performing strategy as it was only 
 able to learn four of nine behaviours. Of the four it learned, it only learned one without learning 
-any additional incorrect behaviours.Version 3 is an improvement on version 2 as it was able to learn 
+any additional incorrect behaviours. Version 3 is an improvement on version 2 as it was able to learn 
 all nine behaviours, however, it was only able to learn two of these behaviours without learning any
-additional incorrect behaviours.Version 4 is clearly the best strategy as it was able to learn all 
+additional incorrect behaviours. Version 4 is clearly the best strategy as it was able to learn all 
 of the behaviours and it learned five out of the nine without any incorrect behaviours.
 
 An additional observation that can be made about the difference between version 3 and version 4
@@ -1455,8 +1455,8 @@ sessions have no effect or have a worsening effect when version 3 is used.
 
 While version 4 has a lower rate of incorrect decisions than any previous version, it does still 
 learn incorrect behaviours. Unlearning some of these incorrect behaviours could be difficult or 
-impossible due to the infrequency of the triggering action. For example if an incorrect behaviour is 
-triggered off of a temperature of exactly 70.0999984741211 it is unlikely that this precise 
+impossible due to the infrequency of the triggering action. For example, if an incorrect behaviour is 
+triggered off a temperature of exactly 70.0999984741211 it is unlikely that this precise 
 temperature will be observed frequently enough to unlearn the behaviour. One future enhancement that
 could be made to the algorithm is the discretization of device data. Discretization of the data 
 could increase the frequency of these events by treating groups of close values as the same event. 

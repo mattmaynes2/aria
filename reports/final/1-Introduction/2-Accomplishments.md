@@ -17,7 +17,7 @@ on the user interface.
 ##### Device Displayed in User Interface {-}
 
 All devices that have been discovered in the system are visible from the user interface. A web application
-allows the user to observe current devcies states. Some basic metadata including name, manufacturer 
+allows the user to observe current devices states. Some basic metadata including name, manufacturer 
 and protocol is also displayed to the user.
 
 ##### Device Controlled through User Interface {-}
@@ -36,8 +36,8 @@ devices that are connected to the system. These events are displayed in a live f
 
 ##### Behaviour Training {-}
 
-The user is able to configure the system to automate control of their devices without writing 
-explicity rules. The user trains the system to perform actions by placing the system in 
+The user can configure the system to automate control of their devices without writing 
+explicitly rules. The user trains the system to perform actions by placing the system in 
 a learning mode. By manually running through a scenario while in learning mode, the user can teach
 the system to recreate the scenario. The capabilities and limitations of the training functionality
 are discussed further in [Learning Algorithm](#sec-3-2-12-2).

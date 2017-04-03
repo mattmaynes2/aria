@@ -2,7 +2,7 @@
     <h2>Acknowledgements</h2>
     <br/>
     <p>
-        We would like to acknowledge our project supervisor Babak Esfandiari for his assistence
+        We would like to acknowledge our project supervisor Babak Esfandiari for his assistance
         throughout the course of this project.
     </p>
     <br/>

@@ -45,7 +45,7 @@ the case of a system failure or power failure, the critical system data is prese
 operations should be atomic and reversible should they fail.
 
 The learning hub must also be online and available to record system events. If the learning hub is
-to go into a state faulty state then it should indicate this to the user. The system must provide
+to go into a state faulty state, then it should indicate this to the user. The system must provide
 a mechanism for resetting itself if errors are occurring.
 
 ##### Device Reliability {-}

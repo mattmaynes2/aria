@@ -12,7 +12,7 @@ below.
 
 #### Learning Strategies {-}
 
-![][design-stretegy]
+![][design-strategy]
 
 #### Control Commands {-}
 

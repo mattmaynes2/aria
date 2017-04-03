@@ -53,7 +53,7 @@ The Exchange Server component provides two interfaces: InternalMessaging and IPC
 InternalMessaging interface provides a way for components that are running in the same process as
 the Exchange Server to send and receive event messages. The IPCMessaging interface allows
 components that are running in different processes to send and receive messages from one another,
-using an IPC (Interprocess Communication) protocol. The IPC protocol is described in further detail
+using an IPC (Inter-process Communication) protocol. The IPC protocol is described in further detail
 in section [Appendix J-1](#J-1). Details about individual implementing this component can be 
 found in [Appendix H-1](#H-1).
 
@@ -154,7 +154,7 @@ components into two processes was made following a comparison of the benefits of
 - Lower Overhead: Separation of a component into a separate process introduces overhead in 
     communication between components
 
-- Ease of Implementation: Interprocess communication can potentially introduce unnecessary
+- Ease of Implementation: Inter-process communication can potentially introduce unnecessary
     complexity to the code.
 
 ###### Multi-Process Benefits{-}
@@ -181,7 +181,7 @@ is usability, direct communication between a remote client and the user's Aria h
 an acceptable solution.
 
 An acceptable solution to this problem is to make use of a Broker pattern, with the HTTP server 
-acting as a broker for the application server. The web client can communicates with the HTTP server 
+acting as a broker for the application server. The web client can communicate with the HTTP server 
 at a well-known public address, potentially hosted on a cloud computing platform, from any physical 
 location. This server can then relay requests to the Aria hub within the user's home.
 The communication between the HTTP server and the system hub can use a mechanism that does 
