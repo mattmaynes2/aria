@@ -2,7 +2,7 @@
 
 This section lists the capabilities of the home automation system that was built as a solution.
 
-##### Physical Components
+##### Physical Components {-}
 The home automation system consists of a Raspberry Pi and a Z-Wave controller USB device. The system
 can be connected to a home network using a wired Ethernet connection. The system software is 
 started automatically when the Raspberry Pi is powered on.
