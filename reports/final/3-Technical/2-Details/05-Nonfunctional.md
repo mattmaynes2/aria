@@ -9,8 +9,8 @@ communication must be sufficiently large that devices can be placed anywhere in 
 The smart home devices will need to be capable of receiving and transmitting data using this 
 network with enough range.
 
-Supported protocols should allow a centrally located hub to communicate with any device that is 
-within a range of at least 50 square meters
+Supported protocols should allow a centrally located hub to communicate with any device within a 
+reasonable range for an average home.
 
 ##### System Responsiveness {-}
 
