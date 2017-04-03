@@ -18,7 +18,7 @@ logger.setLevel(logging.DEBUG)
 
 class V4Strategy(V3Strategy):
 
-    def __init__(self, saveFileName, inactive=[], threshold=0.8, window=6):
+    def __init__(self, saveFileName="decisions.pickle", inactive=[], threshold=0.8, window=6):
         super().__init__(saveFileName)
         # set of behaviour Ids that are inactive
         self.inactive = set(inactive)

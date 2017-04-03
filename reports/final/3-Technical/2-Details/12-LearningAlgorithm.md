@@ -137,12 +137,3 @@ decision[] findDecisionsForEvent(e)
     return decisions
 }
 ```
-
-#### Future Strategies {-}
-
-One future enhancement that could be made to the algorithm is the discretization of device data.
-Discretization of the data could allow the learning component to decide whether a change in a 
-sensor value is significant enough that an action should be triggered. For example, only temperature 
-changes of a certain number of degrees should be considered to be significant changes to the 
-environment.
-
