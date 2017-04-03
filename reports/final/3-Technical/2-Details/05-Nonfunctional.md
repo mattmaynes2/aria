@@ -4,12 +4,13 @@
 
 ##### Device Communication Range {-}
 
-Devices must be able to communicate wirelessly using the network. The range of communication must be
-sufficiently large that devices can be placed anywhere in an average home. The smart home devices
-will need to be capable of receiving and transmitting data using this network with enough range.
+Devices must be able to communicate with the system hub using a wireless network. The range of 
+communication must be sufficiently large that devices can be placed anywhere in an average home. 
+The smart home devices will need to be capable of receiving and transmitting data using this 
+network with enough range.
 
-The distance between nodes in our system must be no more than 50 meters. The will allow for any
-protocol to communicate with the necessary nodes.
+Supported protocols should allow a centrally located hub to communicate with any device that is 
+within a range of at least 50 square meters
 
 ##### System Responsiveness {-}
 
